@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		98B90DE4240CACD90013E9D2 /* CommonFunctionalityFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98B90E0A240CAD010013E9D2 /* BaseFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90DEE240CAD010013E9D2 /* BaseFeedTableViewCell.swift */; };
+		98B90E0B240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90DF1240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.swift */; };
+		98B90E0C240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90DF2240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.xib */; };
+		98B90E0D240CAD010013E9D2 /* FeedsPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90DF3240CAD010013E9D2 /* FeedsPollTableViewCell.swift */; };
+		98B90E0E240CAD010013E9D2 /* FeedsPollTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90DF4240CAD010013E9D2 /* FeedsPollTableViewCell.xib */; };
+		98B90E0F240CAD010013E9D2 /* FeedsVotedPollTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90DF6240CAD010013E9D2 /* FeedsVotedPollTableViewCell.xib */; };
+		98B90E10240CAD010013E9D2 /* FeedsVotedPollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90DF7240CAD010013E9D2 /* FeedsVotedPollTableViewCell.swift */; };
+		98B90E11240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90DFA240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.swift */; };
+		98B90E12240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90DFB240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.xib */; };
+		98B90E13240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90DFD240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.xib */; };
+		98B90E14240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90DFE240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.swift */; };
+		98B90E15240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E00240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.swift */; };
+		98B90E16240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90E01240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.xib */; };
+		98B90E17240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90E03240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.xib */; };
+		98B90E18240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E04240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.swift */; };
+		98B90E19240CAD010013E9D2 /* FeedsCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E06240CAD010013E9D2 /* FeedsCellFactory.swift */; };
+		98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E07240CAD010013E9D2 /* FeedsViewController.swift */; };
+		98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90E08240CAD010013E9D2 /* FeedsViewController.xib */; };
+		98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		98B90DDF240CACD90013E9D2 /* CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonFunctionalityFramework.h; sourceTree = "<group>"; };
+		98B90DE3240CACD90013E9D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98B90DEE240CAD010013E9D2 /* BaseFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFeedTableViewCell.swift; sourceTree = "<group>"; };
+		98B90DF1240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsNotVotedPollTableViewCell.swift; sourceTree = "<group>"; };
+		98B90DF2240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsNotVotedPollTableViewCell.xib; sourceTree = "<group>"; };
+		98B90DF3240CAD010013E9D2 /* FeedsPollTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsPollTableViewCell.swift; sourceTree = "<group>"; };
+		98B90DF4240CAD010013E9D2 /* FeedsPollTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsPollTableViewCell.xib; sourceTree = "<group>"; };
+		98B90DF6240CAD010013E9D2 /* FeedsVotedPollTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsVotedPollTableViewCell.xib; sourceTree = "<group>"; };
+		98B90DF7240CAD010013E9D2 /* FeedsVotedPollTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsVotedPollTableViewCell.swift; sourceTree = "<group>"; };
+		98B90DFA240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DualMediaFeedsPostTableViewCell.swift; sourceTree = "<group>"; };
+		98B90DFB240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DualMediaFeedsPostTableViewCell.xib; sourceTree = "<group>"; };
+		98B90DFD240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultipleMediaFeedsPostTableViewCell.xib; sourceTree = "<group>"; };
+		98B90DFE240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleMediaFeedsPostTableViewCell.swift; sourceTree = "<group>"; };
+		98B90E00240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextOnlyFeedsPostTableViewCell.swift; sourceTree = "<group>"; };
+		98B90E01240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextOnlyFeedsPostTableViewCell.xib; sourceTree = "<group>"; };
+		98B90E03240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleMediaFeedsPostTableViewCell.xib; sourceTree = "<group>"; };
+		98B90E04240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleMediaFeedsPostTableViewCell.swift; sourceTree = "<group>"; };
+		98B90E06240CAD010013E9D2 /* FeedsCellFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsCellFactory.swift; sourceTree = "<group>"; };
+		98B90E07240CAD010013E9D2 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
+		98B90E08240CAD010013E9D2 /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
+		98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsCoordinator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		98B90DDC240CACD90013E9D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		98B90DD5240CACD90013E9D2 = {
+			isa = PBXGroup;
+			children = (
+				98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */,
+				98B90DE0240CACD90013E9D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		98B90DE0240CACD90013E9D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DDF240CACD90013E9D2 /* CommonFunctionalityFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DEA240CAD010013E9D2 /* Functionalities */,
+				98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */,
+				98B90DE3240CACD90013E9D2 /* Info.plist */,
+			);
+			path = CommonFunctionalityFramework;
+			sourceTree = "<group>";
+		};
+		98B90DEA240CAD010013E9D2 /* Functionalities */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DEB240CAD010013E9D2 /* Feeds */,
+			);
+			path = Functionalities;
+			sourceTree = "<group>";
+		};
+		98B90DEB240CAD010013E9D2 /* Feeds */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DEC240CAD010013E9D2 /* FeedsViewController */,
+				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
+			);
+			path = Feeds;
+			sourceTree = "<group>";
+		};
+		98B90DEC240CAD010013E9D2 /* FeedsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DED240CAD010013E9D2 /* Custom Cells */,
+				98B90E05240CAD010013E9D2 /* FeedsCellFactory */,
+				98B90E07240CAD010013E9D2 /* FeedsViewController.swift */,
+				98B90E08240CAD010013E9D2 /* FeedsViewController.xib */,
+			);
+			path = FeedsViewController;
+			sourceTree = "<group>";
+		};
+		98B90DED240CAD010013E9D2 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DEE240CAD010013E9D2 /* BaseFeedTableViewCell.swift */,
+				98B90DEF240CAD010013E9D2 /* FeedsPoll */,
+				98B90DF8240CAD010013E9D2 /* FeedsPost */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		98B90DEF240CAD010013E9D2 /* FeedsPoll */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DF0240CAD010013E9D2 /* NotVoted */,
+				98B90DF3240CAD010013E9D2 /* FeedsPollTableViewCell.swift */,
+				98B90DF4240CAD010013E9D2 /* FeedsPollTableViewCell.xib */,
+				98B90DF5240CAD010013E9D2 /* Voted */,
+			);
+			path = FeedsPoll;
+			sourceTree = "<group>";
+		};
+		98B90DF0240CAD010013E9D2 /* NotVoted */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DF1240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.swift */,
+				98B90DF2240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.xib */,
+			);
+			path = NotVoted;
+			sourceTree = "<group>";
+		};
+		98B90DF5240CAD010013E9D2 /* Voted */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DF6240CAD010013E9D2 /* FeedsVotedPollTableViewCell.xib */,
+				98B90DF7240CAD010013E9D2 /* FeedsVotedPollTableViewCell.swift */,
+			);
+			path = Voted;
+			sourceTree = "<group>";
+		};
+		98B90DF8240CAD010013E9D2 /* FeedsPost */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DF9240CAD010013E9D2 /* DualMedia */,
+				98B90DFC240CAD010013E9D2 /* MultipleMedia */,
+				98B90DFF240CAD010013E9D2 /* TextOnly */,
+				98B90E02240CAD010013E9D2 /* SingleMedia */,
+			);
+			path = FeedsPost;
+			sourceTree = "<group>";
+		};
+		98B90DF9240CAD010013E9D2 /* DualMedia */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DFA240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.swift */,
+				98B90DFB240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.xib */,
+			);
+			path = DualMedia;
+			sourceTree = "<group>";
+		};
+		98B90DFC240CAD010013E9D2 /* MultipleMedia */ = {
+			isa = PBXGroup;
+			children = (
+				98B90DFD240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.xib */,
+				98B90DFE240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.swift */,
+			);
+			path = MultipleMedia;
+			sourceTree = "<group>";
+		};
+		98B90DFF240CAD010013E9D2 /* TextOnly */ = {
+			isa = PBXGroup;
+			children = (
+				98B90E00240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.swift */,
+				98B90E01240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.xib */,
+			);
+			path = TextOnly;
+			sourceTree = "<group>";
+		};
+		98B90E02240CAD010013E9D2 /* SingleMedia */ = {
+			isa = PBXGroup;
+			children = (
+				98B90E03240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.xib */,
+				98B90E04240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.swift */,
+			);
+			path = SingleMedia;
+			sourceTree = "<group>";
+		};
+		98B90E05240CAD010013E9D2 /* FeedsCellFactory */ = {
+			isa = PBXGroup;
+			children = (
+				98B90E06240CAD010013E9D2 /* FeedsCellFactory.swift */,
+			);
+			path = FeedsCellFactory;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		98B90DDA240CACD90013E9D2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98B90DE4240CACD90013E9D2 /* CommonFunctionalityFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		98B90DDE240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98B90DE7240CACD90013E9D2 /* Build configuration list for PBXNativeTarget "CommonFunctionalityFramework" */;
+			buildPhases = (
+				98B90DDA240CACD90013E9D2 /* Headers */,
+				98B90DDB240CACD90013E9D2 /* Sources */,
+				98B90DDC240CACD90013E9D2 /* Frameworks */,
+				98B90DDD240CACD90013E9D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommonFunctionalityFramework;
+			productName = CommonFunctionalityFramework;
+			productReference = 98B90DDF240CACD90013E9D2 /* CommonFunctionalityFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98B90DD6240CACD90013E9D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = Rewardz;
+				TargetAttributes = {
+					98B90DDE240CACD90013E9D2 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = 98B90DD9240CACD90013E9D2 /* Build configuration list for PBXProject "CommonFunctionalityFramework" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 98B90DD5240CACD90013E9D2;
+			productRefGroup = 98B90DE0240CACD90013E9D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				98B90DDE240CACD90013E9D2 /* CommonFunctionalityFramework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		98B90DDD240CACD90013E9D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98B90E16240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.xib in Resources */,
+				98B90E17240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.xib in Resources */,
+				98B90E0E240CAD010013E9D2 /* FeedsPollTableViewCell.xib in Resources */,
+				98B90E0C240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.xib in Resources */,
+				98B90E12240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.xib in Resources */,
+				98B90E13240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.xib in Resources */,
+				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
+				98B90E0F240CAD010013E9D2 /* FeedsVotedPollTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		98B90DDB240CACD90013E9D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98B90E14240CAD010013E9D2 /* MultipleMediaFeedsPostTableViewCell.swift in Sources */,
+				98B90E0A240CAD010013E9D2 /* BaseFeedTableViewCell.swift in Sources */,
+				98B90E15240CAD010013E9D2 /* TextOnlyFeedsPostTableViewCell.swift in Sources */,
+				98B90E10240CAD010013E9D2 /* FeedsVotedPollTableViewCell.swift in Sources */,
+				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,
+				98B90E18240CAD010013E9D2 /* SingleMediaFeedsPostTableViewCell.swift in Sources */,
+				98B90E11240CAD010013E9D2 /* DualMediaFeedsPostTableViewCell.swift in Sources */,
+				98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */,
+				98B90E0B240CAD010013E9D2 /* FeedsNotVotedPollTableViewCell.swift in Sources */,
+				98B90E0D240CAD010013E9D2 /* FeedsPollTableViewCell.swift in Sources */,
+				98B90E19240CAD010013E9D2 /* FeedsCellFactory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		98B90DE5240CACD90013E9D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		98B90DE6240CACD90013E9D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		98B90DE8240CACD90013E9D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CommonFunctionalityFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rewardz.-CommonFunctionalityFramework.CommonFunctionalityFramework";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		98B90DE9240CACD90013E9D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CommonFunctionalityFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rewardz.-CommonFunctionalityFramework.CommonFunctionalityFramework";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		98B90DD9240CACD90013E9D2 /* Build configuration list for PBXProject "CommonFunctionalityFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98B90DE5240CACD90013E9D2 /* Debug */,
+				98B90DE6240CACD90013E9D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98B90DE7240CACD90013E9D2 /* Build configuration list for PBXNativeTarget "CommonFunctionalityFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98B90DE8240CACD90013E9D2 /* Debug */,
+				98B90DE9240CACD90013E9D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98B90DD6240CACD90013E9D2 /* Project object */;
+}
