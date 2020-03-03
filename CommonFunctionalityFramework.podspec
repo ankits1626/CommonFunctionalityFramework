@@ -26,6 +26,6 @@ spec.author             = { "Rewardz" => "ankit._seeking_job@yahoo.co.in" }
  spec.source       = { :git => "https://github.com/ankits1626/CommonFunctionalityFramework" }
 spec.source_files  = "CommonFunctionalityFramework"
 spec.exclude_files = "Classes/Exclude"
-Spec.swift_version = "5.0"
+spec.swift_version = "5.0"
 
 end
