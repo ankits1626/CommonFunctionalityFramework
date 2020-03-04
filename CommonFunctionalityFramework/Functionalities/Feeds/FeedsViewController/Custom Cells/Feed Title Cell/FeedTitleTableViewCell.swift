@@ -1,0 +1,39 @@
+//
+//  FeedTitleTableViewCell.swift
+//  CommonFunctionalityFramework
+//
+//  Created by Rewardz on 04/03/20.
+//  Copyright © 2020 Rewardz. All rights reserved.
+//
+
+import UIKit
+
+class FeedTitleTableViewCell: UITableViewCell {
+    @IBOutlet weak var feedTitle : UILabel?
+    @IBOutlet weak var containerView : UIView?
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+}
+
+class FeedTitleTableViewCellType : FeedCellTypeProtocol{
+    func getCellCoordinator() -> FeedCellCoordinatorProtocol {
+        return FeedTitleTableViewCellCoordinator()
+    }
+    
+    var cellIdentifier: String{
+        return "FeedTitleTableViewCell"
+    }
+    
+    var cellNib: UINib?{
+        return UINib(nibName: "FeedTitleTableViewCell", bundle: Bundle(for: FeedTitleTableViewCell.self))
+    }
+}

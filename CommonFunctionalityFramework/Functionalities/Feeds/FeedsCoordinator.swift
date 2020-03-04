@@ -15,7 +15,4 @@ public class FeedsCoordinator {
   public func getFeedsView() -> UIViewController{
     return FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
   }
-  
-  
-  
 }
