@@ -37,9 +37,19 @@
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MiO-Cx-TzY">
                                                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                                        <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBo-dC-uc4">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                                                <state key="normal" image="clapHands"/>
+                                                                            </button>
+                                                                        </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                         <constraints>
+                                                                            <constraint firstAttribute="bottom" secondItem="gBo-dC-uc4" secondAttribute="bottom" id="AOg-lr-udt"/>
+                                                                            <constraint firstItem="gBo-dC-uc4" firstAttribute="top" secondItem="MiO-Cx-TzY" secondAttribute="top" id="EPN-jJ-j2C"/>
                                                                             <constraint firstAttribute="width" constant="44" id="OYt-Lb-Snd"/>
+                                                                            <constraint firstItem="gBo-dC-uc4" firstAttribute="leading" secondItem="MiO-Cx-TzY" secondAttribute="leading" id="faG-kq-tZz"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="gBo-dC-uc4" secondAttribute="trailing" id="myx-Pp-CTh"/>
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eig-Rv-xpn">
@@ -77,8 +87,18 @@
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwX-fB-pS1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                                        <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GU4-MR-yLj">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                                                <state key="normal" image="comment"/>
+                                                                            </button>
+                                                                        </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                         <constraints>
+                                                                            <constraint firstItem="GU4-MR-yLj" firstAttribute="top" secondItem="rwX-fB-pS1" secondAttribute="top" id="552-bj-7ok"/>
+                                                                            <constraint firstItem="GU4-MR-yLj" firstAttribute="leading" secondItem="rwX-fB-pS1" secondAttribute="leading" id="D5t-li-mxT"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="GU4-MR-yLj" secondAttribute="trailing" id="VW1-k1-Ia8"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="GU4-MR-yLj" secondAttribute="bottom" id="emA-Sr-hWW"/>
                                                                             <constraint firstAttribute="width" constant="44" id="pSJ-N2-dwr"/>
                                                                         </constraints>
                                                                     </view>
@@ -141,6 +161,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="JeQ-pV-PTn"/>
             <connections>
+                <outlet property="clapsButton" destination="gBo-dC-uc4" id="gpB-eD-wNt"/>
                 <outlet property="clapsCountLabel" destination="Xdo-eI-aAd" id="ATs-ch-hbV"/>
                 <outlet property="commentsCountLabel" destination="hCD-Xn-VEy" id="pWO-hM-09j"/>
                 <outlet property="containerView" destination="U2b-wS-JUv" id="WyP-fd-QXT"/>
@@ -148,4 +169,8 @@
             <point key="canvasLocation" x="216.66666666666669" y="120.87053571428571"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="clapHands" width="20" height="20"/>
+        <image name="comment" width="19" height="19"/>
+    </resources>
 </document>

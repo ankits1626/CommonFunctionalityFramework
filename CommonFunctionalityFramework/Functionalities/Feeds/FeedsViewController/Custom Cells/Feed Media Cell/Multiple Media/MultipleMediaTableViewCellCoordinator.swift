@@ -29,7 +29,7 @@ class MultipleMediaTableViewCellCoordinator : BaseFeedTableViewCellCoordinator, 
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            cell.containerView?.addBorders(edges: [.left, .right], color: .black)
+            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
         }
     }
     

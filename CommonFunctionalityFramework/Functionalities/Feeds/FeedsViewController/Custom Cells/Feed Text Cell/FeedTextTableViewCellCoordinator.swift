@@ -17,7 +17,9 @@ class FeedTextTableViewCellCoordinator : BaseFeedTableViewCellCoordinator,  Feed
         if let cell  = inputModel.targetCell as? FeedTextTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.feedText?.text = feed.getFeedDescription()
-            cell.containerView?.addBorders(edges: [.left, .right], color: .black)
+            cell.feedText?.font = FontApplied.getAppliedFont(sizeType: .MediumTextSize, weight: .Regular)
+            cell.feedText?.textColor = UIColor.getTitleTextColor()
+            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
         }
     }
     
