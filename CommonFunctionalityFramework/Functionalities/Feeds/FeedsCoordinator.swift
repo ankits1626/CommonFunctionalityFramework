@@ -8,11 +8,20 @@
 
 import UIKit
 
+public struct GetFeedsViewModel{
+    var netoworkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    var mediaCoordinator : CFFMediaCoordinatorProtocol
+    public init (netoworkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol){
+        self.netoworkRequestCoordinator = netoworkRequestCoordinator
+        self.mediaCoordinator = mediaCoordinator
+    }
+}
+
 public class FeedsCoordinator {
   
   public init(){}
   
-  public func getFeedsView() -> UIViewController{
+    public func getFeedsView(_ inputModel : GetFeedsViewModel) -> UIViewController{
     return FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
   }
 }
