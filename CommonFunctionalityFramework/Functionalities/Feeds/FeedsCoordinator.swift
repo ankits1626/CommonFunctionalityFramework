@@ -9,19 +9,21 @@
 import UIKit
 
 public struct GetFeedsViewModel{
-    var netoworkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    var networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     var mediaCoordinator : CFFMediaCoordinatorProtocol
-    public init (netoworkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol){
-        self.netoworkRequestCoordinator = netoworkRequestCoordinator
+    public init (networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol){
+        self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
     }
 }
 
 public class FeedsCoordinator {
-  
-  public init(){}
-  
+    
+    public init(){}
+    
     public func getFeedsView(_ inputModel : GetFeedsViewModel) -> UIViewController{
-    return FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
-  }
+        let feedsVc =  FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
+        feedsVc.feedFetcher = inputModel.networkRequestCoordinator
+        return feedsVc
+    }
 }

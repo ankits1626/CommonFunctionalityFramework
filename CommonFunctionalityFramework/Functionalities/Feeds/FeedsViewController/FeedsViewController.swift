@@ -12,20 +12,45 @@ class FeedsViewController: UIViewController {
     @IBOutlet private weak var whatsInYourMindView : UIView?
     @IBOutlet private weak var cameraContainerViewView : UIView?
     
+    var feedFetcher: CFFNetwrokRequestCoordinatorProtocol!
+    
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(feedsDatasource: self)
     }()
     
     var feeds = [FeedsItemProtocol]()
+    var lastFetchedFeeds : FetchedFeedModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDummyFeeds()
+        loadFeeds()
         setup()
     }
     
-    private func loadDummyFeeds(){
-        feeds = DummyFeedProvider.getDummyFeeds()
+    private func loadFeeds(){
+        
+        feedFetcher.getFeeds(request: FetchFeedRequest(nextPageUrl: nil)) { (fetchedFeeds) in
+            self.handleFetchedFeedsResult(fetchedfeeds: fetchedFeeds)
+        }
+        //feeds = DummyFeedProvider.getDummyFeeds()
+    }
+    
+    private func handleFetchedFeedsResult (fetchedfeeds : FetchedFeedModel){
+        self.lastFetchedFeeds = fetchedfeeds
+        loadfetchedFeeds()
+    }
+    
+    private func loadfetchedFeeds(){
+        var tempfeeds = [FeedsItemProtocol]()
+        if let fetchedFeeds = lastFetchedFeeds?.fetchedRawFeeds?["results"] as? [[String : Any]]{
+            fetchedFeeds.forEach { (aRawFeed) in
+                tempfeeds.append(RawFeed(aRawFeed))
+            }
+        }
+        DispatchQueue.main.async {
+            self.feeds = tempfeeds
+            self.feedsTable?.reloadData()
+        }
     }
     
     private func setup(){

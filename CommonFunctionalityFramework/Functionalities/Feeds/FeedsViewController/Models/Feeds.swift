@@ -34,7 +34,7 @@ struct Poll {
     }
 }
 
-struct RawFeed : FeedsItemProtocol {
+public struct RawFeed : FeedsItemProtocol {
     func getPollState() -> PollState {
         return .NotAvailable
     }
@@ -86,22 +86,32 @@ struct RawFeed : FeedsItemProtocol {
     }
     
     func getFeedTitle() -> String? {
-        return rawFeedDictionary["title"] as? String
+        if let unwrappedTitle  = rawFeedDictionary["title"] as? String,
+        !unwrappedTitle.isEmpty{
+            return unwrappedTitle
+        }else{
+            return nil
+        }
     }
     
     func getFeedDescription() -> String? {
-        return rawFeedDictionary["description"] as? String
+        if let unwrappedDescription  = rawFeedDictionary["description"] as? String,
+        !unwrappedDescription.isEmpty{
+            return unwrappedDescription
+        }else{
+            return nil
+        }
     }
     
     func getMediaList() -> [FeedMediaItemProtocol]? {
         var mediaElements = [FeedMediaItemProtocol]()
-        if let videos = rawFeedDictionary["videos"] as? [String]{
+        if let videos = rawFeedDictionary["videos"] as? [[String : Any]]{
             videos.forEach { (aVideo) in
                 mediaElements.append(FeedVideoItem(aVideo))
             }
         }
         
-        if let videos = rawFeedDictionary["images"] as? [String]{
+        if let videos = rawFeedDictionary["images"] as? [[String : Any]]{
             videos.forEach { (anImage) in
                 mediaElements.append(FeedImageItem(anImage))
             }

@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIFont{
-    //static let CFFFont = ".SFUIText"
     static var Title1 : UIFont{
         return UIFont.systemFont(ofSize: 18, weight: .bold)
     }

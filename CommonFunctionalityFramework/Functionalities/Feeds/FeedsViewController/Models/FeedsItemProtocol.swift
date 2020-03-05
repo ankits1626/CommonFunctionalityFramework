@@ -19,30 +19,30 @@ protocol FeedMediaItemProtocol {
 }
 
 struct FeedVideoItem :  FeedMediaItemProtocol{
-    private let videoUrl : String
-    init(_ videoUrl : String) {
-        self.videoUrl = videoUrl
+    private let rawVideo : [String : Any]
+    init(_ rawVideo : [String : Any]) {
+        self.rawVideo = rawVideo
     }
     
     func getMediaType() -> FeedMediaItemType{
         return .Video
     }
     func getCoverImageUrl() -> URL?{
-        return URL(string: videoUrl)
+        return URL(string: "dummy")
     }
 }
 
 struct FeedImageItem :  FeedMediaItemProtocol{
-    private let imageUrl : String
-    init(_ imageUrl : String) {
-        self.imageUrl = imageUrl
+    private let rawImage : [String : Any]
+    init(_ rawImage : [String : Any]) {
+        self.rawImage = rawImage
     }
     
     func getMediaType() -> FeedMediaItemType{
         return .Image
     }
     func getCoverImageUrl() -> URL?{
-        return URL(string: imageUrl)
+        return URL(string: "dummy")
     }
 }
 
