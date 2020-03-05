@@ -8,7 +8,10 @@
 
 import UIKit
 class FeedsViewController: UIViewController {
-    @IBOutlet private weak var feedsTable : UITableView?    
+    @IBOutlet private weak var feedsTable : UITableView?
+    @IBOutlet private weak var whatsInYourMindView : UIView?
+    @IBOutlet private weak var cameraContainerViewView : UIView?
+    
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(feedsDatasource: self)
     }()
@@ -18,11 +21,23 @@ class FeedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDummyFeeds()
-        setupTableView()
+        setup()
     }
     
     private func loadDummyFeeds(){
         feeds = DummyFeedProvider.getDummyFeeds()
+    }
+    
+    private func setup(){
+        setupTopBar()
+        setupTableView()
+    }
+    
+    private func setupTopBar(){
+        whatsInYourMindView?.curvedCornerControl()
+        whatsInYourMindView?.backgroundColor = UIColor.grayBackGroundColor()
+        cameraContainerViewView?.curvedCornerControl()
+        cameraContainerViewView?.backgroundColor = UIColor.grayBackGroundColor()
     }
     
     private func setupTableView(){

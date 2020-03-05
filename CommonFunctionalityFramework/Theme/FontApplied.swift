@@ -42,6 +42,10 @@ extension UIColor{
     static func getGeneralBorderColor() -> UIColor{
         return UIColor.gray
     }
+    
+    static func grayBackGroundColor() -> UIColor{
+        return UIColor(red: 237/255.0, green: 237/255.0, blue: 237/255.0, alpha: 1.0)
+    }
 }
 
 struct AppliedCoornerRadius {
