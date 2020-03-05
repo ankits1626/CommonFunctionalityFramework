@@ -60,11 +60,11 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6w-Ic-PHx">
                                                                         <rect key="frame" x="42" y="0.0" width="305" height="70"/>
                                                                         <subviews>
-                                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="O0U-gl-dCU">
-                                                                                <rect key="frame" x="0.0" y="15" width="305" height="55"/>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="O0U-gl-dCU">
+                                                                                <rect key="frame" x="0.0" y="15" width="305" height="49"/>
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zg-Lz-1f4" userLabel="Name Container">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="305" height="18.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="305" height="16.5"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzG-tc-n0A">
                                                                                                 <rect key="frame" x="9" y="0.0" width="35.5" height="16"/>
@@ -80,7 +80,7 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuU-VV-oEv" userLabel="Department Conatiner">
-                                                                                        <rect key="frame" x="0.0" y="18.5" width="305" height="18"/>
+                                                                                        <rect key="frame" x="0.0" y="16.5" width="305" height="16"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Slv-B1-VLm">
                                                                                                 <rect key="frame" x="9" y="0.0" width="42" height="20.5"/>
@@ -95,7 +95,7 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-13-abe" userLabel="Date Container">
-                                                                                        <rect key="frame" x="0.0" y="36.5" width="305" height="18.5"/>
+                                                                                        <rect key="frame" x="0.0" y="32.5" width="305" height="16.5"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co2-pN-oUt">
                                                                                                 <rect key="frame" x="9" y="0.0" width="42" height="20.5"/>
@@ -113,13 +113,13 @@
                                                                                 <constraints>
                                                                                     <constraint firstItem="Slv-B1-VLm" firstAttribute="leading" secondItem="IzG-tc-n0A" secondAttribute="leading" id="boH-YG-K81"/>
                                                                                     <constraint firstItem="co2-pN-oUt" firstAttribute="leading" secondItem="Slv-B1-VLm" secondAttribute="leading" id="o3B-nl-SKs"/>
+                                                                                    <constraint firstAttribute="height" constant="49" id="rNp-Hr-db0"/>
                                                                                 </constraints>
                                                                             </stackView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="trailing" secondItem="O0U-gl-dCU" secondAttribute="trailing" id="cdj-yO-I1S"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="O0U-gl-dCU" secondAttribute="bottom" id="kac-EK-gcm"/>
                                                                             <constraint firstItem="O0U-gl-dCU" firstAttribute="leading" secondItem="Q6w-Ic-PHx" secondAttribute="leading" id="qza-aT-O9L"/>
                                                                         </constraints>
                                                                     </view>

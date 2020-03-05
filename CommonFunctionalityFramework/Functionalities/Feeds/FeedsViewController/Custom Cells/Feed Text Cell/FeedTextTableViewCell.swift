@@ -10,6 +10,7 @@ import UIKit
 
 class FeedTextTableViewCell: UITableViewCell {
     @IBOutlet weak var feedText : UILabel?
+    @IBOutlet weak var readMorebutton : UIButton?
     @IBOutlet weak var containerView : UIView?
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -26,6 +26,9 @@ class FeedsViewController: UIViewController {
     }
     
     private func setupTableView(){
+        feedsTable?.tableFooterView = UIView(frame: CGRect.zero)
+        feedsTable?.rowHeight = UITableView.automaticDimension
+        feedsTable?.estimatedRowHeight = 140
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
         feedSectionFactory.registerFeedstableWithRespectiveCells(feedsTable)

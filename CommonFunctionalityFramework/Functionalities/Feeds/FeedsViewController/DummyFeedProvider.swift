@@ -23,7 +23,7 @@ class DummyFeedProvider {
             ]),
             RawFeed([
                 "title" : "No media",
-                "description" : "Description of the first post1",
+                "description" : "Description of the first post1 very long description ksdbbksdbkbsdf sdjbfbsdfbsdbf  sdjhbfdsbfjbksdbf  sjdfbbsdfbdskbf  sdjfdsbfbdsbfkdsbf  sdfkdsfhsdhfhdsf  sdfhhsdifhsidhfhdsf",
                 "created_on" : "2020-02-26T09:50:25.865732Z",
                 "author" : ["name" : "Ankit", "department" : "IT"],
                 "images" : [],
@@ -35,7 +35,7 @@ class DummyFeedProvider {
             ]),
             RawFeed([
                 "title" : "1 image",
-                "description" : "Description of the first post2",
+                "description" : "Description of the first post2ksdsifisdhfi  sdifisdfihisdhf sbdfisdfiidsgf uisdfiudisf ",
                 "created_on" : "2020-02-26T09:50:25.865732Z",
                 "author" : ["name" : "Ankit2", "department" : "IT2"],
                 "images" : ["1"],

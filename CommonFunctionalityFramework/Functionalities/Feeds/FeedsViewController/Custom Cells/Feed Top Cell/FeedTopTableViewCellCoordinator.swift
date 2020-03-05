@@ -12,6 +12,7 @@ struct FeedCellDequeueModel {
     var targetIndexpath : IndexPath
     var targetTableView : UITableView
     var cellIdentifier : String
+    var datasource: FeedsDatasource
 }
 
 struct FeedCellLoadDataModel {
@@ -42,7 +43,6 @@ class FeedTopTableViewCellCoordinator:BaseFeedTableViewCellCoordinator,  FeedCel
         return 70
     }
     
-    
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
@@ -57,6 +57,7 @@ class FeedTopTableViewCellCoordinator:BaseFeedTableViewCellCoordinator,  FeedCel
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
             cell.containerView?.roundCorners(corners: [UIRectCorner.topRight, UIRectCorner.topLeft], radius: AppliedCoornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.clipsToBounds = true
             //cell.containerView?.layer.borderWidth = 1.0
         }
     }

@@ -84,7 +84,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         return getCellCoordinator(indexPath: inputModel.targetIndexpath, tableView: inputModel.targetTableView).getCell(FeedCellDequeueModel(
             targetIndexpath: inputModel.targetIndexpath,
             targetTableView: inputModel.targetTableView,
-            cellIdentifier: cellType.cellIdentifier
+            cellIdentifier: cellType.cellIdentifier,
+            datasource: feedsDataSource
             )
         )
     }
