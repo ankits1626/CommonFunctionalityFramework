@@ -15,7 +15,7 @@ class FeedTextTableViewCellCoordinator : BaseFeedTableViewCellCoordinator,  Feed
         if let cell  = targetCell as? FeedTextTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.feedText?.text = feed.getFeedDescription()
-            cell.feedText?.font = FontApplied.getAppliedFont(sizeType: .MediumTextSize, weight: .Regular)
+            cell.feedText?.font = UIFont.Body1
             cell.feedText?.textColor = UIColor.getTitleTextColor()
             cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
             cell.readMorebutton?.isHidden = !(cell.feedText?.isTruncated ?? false)

@@ -19,11 +19,11 @@ class FeedBottomTableViewCellCoordinator : BaseFeedTableViewCellCoordinator,  Fe
         if let cell  = inputModel.targetCell as? FeedBottomTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.commentsCountLabel?.text = feed.getNumberOfComments()
-            cell.commentsCountLabel?.font = FontApplied.getAppliedFont(sizeType: .SmallTextSize, weight: .Regular)
+            cell.commentsCountLabel?.font = UIFont.Caption1
             cell.commentsCountLabel?.textColor = UIColor.getSubTitleTextColor()
             
             cell.clapsCountLabel?.text = feed.getNumberOfClaps()
-            cell.clapsCountLabel?.font = FontApplied.getAppliedFont(sizeType: .SmallTextSize, weight: .Regular)
+            cell.clapsCountLabel?.font = UIFont.Caption1
             cell.clapsCountLabel?.textColor = UIColor.getSubTitleTextColor()
             
             cell.containerView?.roundCorners(corners: [UIRectCorner.bottomLeft, UIRectCorner.bottomRight], radius: AppliedCoornerRadius.standardCornerRadius)

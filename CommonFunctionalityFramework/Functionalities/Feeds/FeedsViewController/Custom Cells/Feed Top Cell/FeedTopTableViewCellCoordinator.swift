@@ -47,13 +47,13 @@ class FeedTopTableViewCellCoordinator:BaseFeedTableViewCellCoordinator,  FeedCel
         if let cell  = inputModel.targetCell as? FeedTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.userName?.text = feed.getUserName()
-            cell.userName?.font = FontApplied.getAppliedFont(sizeType: .TitleTextSize, weight: .Regular)
+            cell.userName?.font = UIFont.Body2
             cell.userName?.textColor = UIColor.getTitleTextColor()
             cell.departmentName?.text = feed.getDepartmentName()
-            cell.departmentName?.font = FontApplied.getAppliedFont(sizeType: .SubtitleTextSize, weight: .Regular)
+            cell.departmentName?.font = UIFont.Caption1
             cell.departmentName?.textColor = UIColor.getSubTitleTextColor()
             cell.dateLabel?.text = feed.getfeedCreationDate()
-            cell.dateLabel?.font = FontApplied.getAppliedFont(sizeType: .SubtitleTextSize, weight: .Regular)
+            cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
             cell.containerView?.roundCorners(corners: [UIRectCorner.topRight, UIRectCorner.topLeft], radius: AppliedCoornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())

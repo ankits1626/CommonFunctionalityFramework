@@ -8,25 +8,30 @@
 
 import UIKit
 
-enum FontSizeType : Int {
-    case TitleTextSize = 13
-    case SubtitleTextSize = 10
-    case MediumTextSize = 11
-    case BoldTitleSize = 18
-    case SmallTextSize = 9
-}
-
-enum FontWeight : String {
-    case Regular = "Regular"
-    case Thin = "Thin"
-    case Medium = "Medium"
-    case Bold = "Bold"
-}
-
-class FontApplied {
-    static func getAppliedFont(sizeType : FontSizeType, weight : FontWeight) -> UIFont?{
-        let fontName = "Montserrat-\(weight.rawValue)"
-        return UIFont(name: fontName, size: CGFloat(sizeType.rawValue))
+extension UIFont{
+    //static let CFFFont = ".SFUIText"
+    static var Title1 : UIFont{
+        return UIFont.systemFont(ofSize: 18, weight: .bold)
+    }
+    
+    static var Body1 : UIFont{
+        return UIFont.systemFont(ofSize: 11, weight: .regular)
+    }
+    
+    static var Highlighter1 : UIFont{
+        return UIFont.systemFont(ofSize: 10, weight: .bold)
+    }
+    
+    static var Caption1 : UIFont{
+        return UIFont.systemFont(ofSize: 10, weight: .regular)
+    }
+    
+    static var Body2 : UIFont{
+        return UIFont.systemFont(ofSize: 13, weight: .medium)
+    }
+    
+    static var Button : UIFont{
+        return UIFont.systemFont(ofSize: 15, weight: .bold)
     }
 }
 

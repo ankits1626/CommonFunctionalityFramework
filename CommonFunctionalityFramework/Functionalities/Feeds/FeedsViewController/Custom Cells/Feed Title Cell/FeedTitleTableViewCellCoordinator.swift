@@ -18,7 +18,7 @@ class FeedTitleTableViewCellCoordinator:BaseFeedTableViewCellCoordinator,  FeedC
         if let cell  = inputModel.targetCell as? FeedTitleTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.feedTitle?.text = feed.getFeedTitle()
-            cell.feedTitle?.font = FontApplied.getAppliedFont(sizeType: .BoldTitleSize, weight: .Bold)
+            cell.feedTitle?.font = UIFont.Title1
             cell.feedTitle?.textColor = UIColor.getTitleTextColor()
             cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
         }
