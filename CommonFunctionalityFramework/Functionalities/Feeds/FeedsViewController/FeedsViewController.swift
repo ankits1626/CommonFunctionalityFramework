@@ -14,6 +14,7 @@ class FeedsViewController: UIViewController {
     
     var feedFetcher: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
+    var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
     
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(feedsDatasource: self, mediaFetcher: mediaFetcher)
@@ -29,11 +30,9 @@ class FeedsViewController: UIViewController {
     }
     
     private func loadFeeds(){
-        
         feedFetcher.getFeeds(request: FetchFeedRequest(nextPageUrl: nil)) { (fetchedFeeds) in
             self.handleFetchedFeedsResult(fetchedfeeds: fetchedFeeds)
         }
-        //feeds = DummyFeedProvider.getDummyFeeds()
     }
     
     private func handleFetchedFeedsResult (fetchedfeeds : FetchedFeedModel){
@@ -97,6 +96,11 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         feedSectionFactory.getHeightOfCell(indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+        feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
     }
 }
 

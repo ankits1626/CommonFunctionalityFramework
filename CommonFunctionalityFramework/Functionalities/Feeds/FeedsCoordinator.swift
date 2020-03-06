@@ -8,13 +8,21 @@
 
 import UIKit
 
+
 public struct GetFeedsViewModel{
     var networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     var mediaCoordinator : CFFMediaCoordinatorProtocol
-    public init (networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol){
+    var feedCoordinatorDelegate : FeedsCoordinatorDelegate
+    
+    public init (networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
+        self.feedCoordinatorDelegate = feedCoordinatorDelegate
     }
+}
+
+public protocol FeedsCoordinatorDelegate {
+    func showFeedDetail(_ detailViewController : UIViewController)
 }
 
 public class FeedsCoordinator {
@@ -25,6 +33,7 @@ public class FeedsCoordinator {
         let feedsVc =  FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
         feedsVc.feedFetcher = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
+        feedsVc.feedCoordinatorDeleagate = inputModel.feedCoordinatorDelegate
         return feedsVc
     }
 }
