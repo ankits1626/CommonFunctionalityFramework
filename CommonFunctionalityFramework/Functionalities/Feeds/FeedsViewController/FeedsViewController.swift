@@ -13,9 +13,10 @@ class FeedsViewController: UIViewController {
     @IBOutlet private weak var cameraContainerViewView : UIView?
     
     var feedFetcher: CFFNetwrokRequestCoordinatorProtocol!
+    var mediaFetcher: CFFMediaCoordinatorProtocol!
     
     lazy var feedSectionFactory: FeedSectionFactory = {
-        return FeedSectionFactory(feedsDatasource: self)
+        return FeedSectionFactory(feedsDatasource: self, mediaFetcher: mediaFetcher)
     }()
     
     var feeds = [FeedsItemProtocol]()

@@ -15,10 +15,12 @@ protocol FeedsDatasource {
 
 class FeedSectionFactory{
     private let  feedsDatasource : FeedsDatasource!
+    private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private var cachedFeedContentCoordinator = [FeedType : FeedContentCoordinatorProtocol]()
     
-    init(feedsDatasource : FeedsDatasource) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!) {
         self.feedsDatasource = feedsDatasource
+        self.mediaFetcher = mediaFetcher
     }
     
     func registerFeedstableWithRespectiveCells(_ feedsTable : UITableView?)  {}
@@ -69,6 +71,6 @@ class FeedSectionFactory{
     }
     
     func getFeedContentCoordinator(feedType : FeedType) -> FeedContentCoordinatorProtocol {
-        return PostFeedContentCoordinator(feedsDatasource: feedsDatasource)
+        return PostFeedContentCoordinator(feedsDatasource: feedsDatasource, mediaFetcher: mediaFetcher)
     }
 }

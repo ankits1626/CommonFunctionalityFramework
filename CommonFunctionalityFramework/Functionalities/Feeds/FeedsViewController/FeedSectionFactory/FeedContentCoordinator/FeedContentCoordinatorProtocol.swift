@@ -45,9 +45,11 @@ protocol FeedContentCoordinatorProtocol {
 
 class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     var feedsDataSource: FeedsDatasource!
+    var mediaFetcher: CFFMediaCoordinatorProtocol!
     private var cachedFeedCellCoordinators = [String : FeedCellCoordinatorProtocol]()
-    init(feedsDatasource : FeedsDatasource) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!) {
         self.feedsDataSource = feedsDatasource
+        self.mediaFetcher = mediaFetcher
     }
     func getRowsToRepresentAFeed(feedIndex : Int) -> [FeedCellTypeProtocol] {
         let feed = feedsDataSource.getFeedItem(feedIndex)
@@ -95,7 +97,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             FeedCellLoadDataModel(
                 targetIndexpath: inputModel.targetIndexpath,
                 targetCell: inputModel.targetCell,
-                datasource: feedsDataSource
+                datasource: feedsDataSource,
+                mediaFetcher: mediaFetcher
             )
         )
     }

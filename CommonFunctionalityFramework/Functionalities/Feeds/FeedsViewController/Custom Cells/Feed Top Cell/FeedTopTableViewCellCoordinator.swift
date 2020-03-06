@@ -19,6 +19,7 @@ struct FeedCellLoadDataModel {
     var targetIndexpath : IndexPath
     var targetCell : UITableViewCell
     var datasource: FeedsDatasource
+    var mediaFetcher: CFFMediaCoordinatorProtocol
 }
 
 struct FeedCellGetHeightModel {

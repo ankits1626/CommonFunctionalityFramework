@@ -15,7 +15,7 @@ enum FeedMediaItemType{
 
 protocol FeedMediaItemProtocol {
     func getMediaType() -> FeedMediaItemType
-    func getCoverImageUrl() -> URL?
+    func getCoverImageUrl() -> String?
 }
 
 struct FeedVideoItem :  FeedMediaItemProtocol{
@@ -27,8 +27,9 @@ struct FeedVideoItem :  FeedMediaItemProtocol{
     func getMediaType() -> FeedMediaItemType{
         return .Video
     }
-    func getCoverImageUrl() -> URL?{
-        return URL(string: "dummy")
+    func getCoverImageUrl() -> String?{
+        
+        return rawVideo["display_img_url"] as? String
     }
 }
 
@@ -41,8 +42,8 @@ struct FeedImageItem :  FeedMediaItemProtocol{
     func getMediaType() -> FeedMediaItemType{
         return .Image
     }
-    func getCoverImageUrl() -> URL?{
-        return URL(string: "dummy")
+    func getCoverImageUrl() -> String?{
+        return rawImage["display_img_url"] as? String
     }
 }
 

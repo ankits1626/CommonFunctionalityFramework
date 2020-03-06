@@ -24,6 +24,7 @@ public class FeedsCoordinator {
     public func getFeedsView(_ inputModel : GetFeedsViewModel) -> UIViewController{
         let feedsVc =  FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
         feedsVc.feedFetcher = inputModel.networkRequestCoordinator
+        feedsVc.mediaFetcher = inputModel.mediaCoordinator
         return feedsVc
     }
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2020 Rewardz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol CFFMediaCoordinatorProtocol {
-    
+    func fetchImageAndLoad(_ targetView : UIImageView? , imageEndPoint : String)
 }
