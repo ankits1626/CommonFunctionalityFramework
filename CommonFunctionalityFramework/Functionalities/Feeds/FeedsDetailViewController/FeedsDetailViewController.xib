@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsDetailViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsDetailViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
+                <outlet property="commentBarView" destination="qH3-ys-vy9" id="ofF-B8-ngx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,8 +18,36 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEs-Ux-26W">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-ys-vy9" customClass="ASChatBarview" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="sf8-l0-Hsu"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="BQ6-Lh-0tZ" id="Pwa-xg-inn"/>
+                        <outlet property="delegate" destination="-1" id="BER-6n-gij"/>
+                        <outlet property="heightConstraint" destination="sf8-l0-Hsu" id="8p6-3N-qvd"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qH3-ys-vy9" secondAttribute="bottom" id="BQ6-Lh-0tZ"/>
+                <constraint firstItem="qEs-Ux-26W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GgV-Zv-dOh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qH3-ys-vy9" secondAttribute="trailing" id="JTT-6d-j9o"/>
+                <constraint firstItem="qEs-Ux-26W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ohw-wb-spi"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qEs-Ux-26W" secondAttribute="bottom" id="U7d-E1-g8o"/>
+                <constraint firstItem="qH3-ys-vy9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Xt3-4q-J0V"/>
+                <constraint firstItem="qEs-Ux-26W" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="m0i-C6-8qb"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="94"/>
         </view>
     </objects>
 </document>
