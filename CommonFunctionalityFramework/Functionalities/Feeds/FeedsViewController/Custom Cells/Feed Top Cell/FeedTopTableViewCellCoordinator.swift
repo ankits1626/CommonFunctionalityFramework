@@ -11,7 +11,6 @@ import UIKit
 struct FeedCellDequeueModel {
     var targetIndexpath : IndexPath
     var targetTableView : UITableView
-    var cellIdentifier : String
     var datasource: FeedsDatasource
 }
 
@@ -31,15 +30,17 @@ protocol FeedCellCongiguratorProtocol {
     func getCell(_ inputModel: FeedCellDequeueModel) -> UITableViewCell
 }
 
-class BaseFeedTableViewCellCoordinator {
+class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
+    var cellType: FeedCellTypeProtocol{
+        return FeedTopTableViewCellType()
+    }
+    
     func getCell(_ inputModel: FeedCellDequeueModel) -> UITableViewCell {
         return inputModel.targetTableView.dequeueReusableCell(
-            withIdentifier: inputModel.cellIdentifier,
+            withIdentifier: cellType.cellIdentifier,
             for: inputModel.targetIndexpath)
     }
-}
-
-class FeedTopTableViewCellCoordinator:BaseFeedTableViewCellCoordinator,  FeedCellCoordinatorProtocol{
+    
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         return 70
     }

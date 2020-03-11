@@ -8,7 +8,11 @@
 
 import UIKit
 
-class SingleVideoTableViewCellCoordinator : BaseFeedTableViewCellCoordinator,  FeedCellCoordinatorProtocol{
+class SingleVideoTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+    var cellType: FeedCellTypeProtocol{
+        return SingleVideoTableViewCellType()
+    }
+    
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         return 205
     }

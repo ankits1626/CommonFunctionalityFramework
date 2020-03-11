@@ -26,9 +26,6 @@ class SingleVideoTableViewCell: UITableViewCell {
 }
 
 class SingleVideoTableViewCellType : FeedCellTypeProtocol{
-    func getCellCoordinator() -> FeedCellCoordinatorProtocol {
-        return SingleVideoTableViewCellCoordinator()
-    }
     
     var cellIdentifier: String{
         return "SingleVideoTableViewCell"

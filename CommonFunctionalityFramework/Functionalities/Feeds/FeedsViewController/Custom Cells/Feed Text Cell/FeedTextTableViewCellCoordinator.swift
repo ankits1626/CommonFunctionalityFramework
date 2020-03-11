@@ -8,17 +8,29 @@
 
 import UIKit
 
-class FeedTextTableViewCellCoordinator : BaseFeedTableViewCellCoordinator,  FeedCellCoordinatorProtocol{
+class FeedTextTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+    var cellType: FeedCellTypeProtocol{
+        return FeedTextTableViewCellType()
+    }
     
-    override func getCell(_ inputModel: FeedCellDequeueModel) -> UITableViewCell {
-        let targetCell = super.getCell(inputModel)
+    func getCell(_ inputModel: FeedCellDequeueModel) -> UITableViewCell {
+        let targetCell = inputModel.targetTableView.dequeueReusableCell(
+        withIdentifier: cellType.cellIdentifier,
+        for: inputModel.targetIndexpath)
         if let cell  = targetCell as? FeedTextTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            if inputModel.datasource.showShowFullfeedDescription(){
+                cell.feedText?.numberOfLines = 0
+            }
             cell.feedText?.text = feed.getFeedDescription()
             cell.feedText?.font = UIFont.Body1
             cell.feedText?.textColor = UIColor.getTitleTextColor()
             cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
-            cell.readMorebutton?.isHidden = !(cell.feedText?.isTruncated ?? false)
+            if inputModel.datasource.showShowFullfeedDescription(){
+                cell.readMorebutton?.isHidden = true
+            }else{
+               cell.readMorebutton?.isHidden = !(cell.feedText?.isTruncated ?? false)
+            }
         }
         return targetCell
     }

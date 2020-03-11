@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsDetailViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="commentBarView" destination="qH3-ys-vy9" id="ofF-B8-ngx"/>
+                <outlet property="feedDetailTableView" destination="qEs-Ux-26W" id="BTC-fK-62e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -1,16 +1,15 @@
 //
-//  FeedTitleTableViewCell.swift
+//  FeedCommentTableViewCell.swift
 //  CommonFunctionalityFramework
 //
-//  Created by Rewardz on 04/03/20.
+//  Created by Rewardz on 11/03/20.
 //  Copyright © 2020 Rewardz. All rights reserved.
 //
 
 import UIKit
 
-class FeedTitleTableViewCell: UITableViewCell {
-    @IBOutlet weak var feedTitle : UILabel?
-    @IBOutlet weak var containerView : UIView?
+class FeedCommentTableViewCell: UITableViewCell {
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,12 +23,13 @@ class FeedTitleTableViewCell: UITableViewCell {
     
 }
 
-class FeedTitleTableViewCellType : FeedCellTypeProtocol{
+class FeedCommentTableViewCellType : FeedCellTypeProtocol{
+   
     var cellIdentifier: String{
-        return "FeedTitleTableViewCell"
+        return "FeedCommentTableViewCell"
     }
     
     var cellNib: UINib?{
-        return UINib(nibName: "FeedTitleTableViewCell", bundle: Bundle(for: FeedTitleTableViewCell.self))
+        return UINib(nibName: "FeedCommentTableViewCell", bundle: Bundle(for: FeedTopTableViewCell.self))
     }
 }

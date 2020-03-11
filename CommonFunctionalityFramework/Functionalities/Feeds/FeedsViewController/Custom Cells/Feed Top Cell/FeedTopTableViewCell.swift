@@ -29,10 +29,7 @@ class FeedTopTableViewCell: UITableViewCell {
 }
 
 class FeedTopTableViewCellType : FeedCellTypeProtocol{
-    func getCellCoordinator() -> FeedCellCoordinatorProtocol {
-        return FeedTopTableViewCellCoordinator()
-    }
-    
+   
     var cellIdentifier: String{
         return "SingleMediaFeedsPostTableViewCell"
     }

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class FeedTitleTableViewCellCoordinator:BaseFeedTableViewCellCoordinator,  FeedCellCoordinatorProtocol{
+class FeedTitleTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
+    var cellType: FeedCellTypeProtocol{
+        return FeedTitleTableViewCellType()
+    }
+    
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         return 24
     }

@@ -25,9 +25,6 @@ class SingleImageTableViewCell: UITableViewCell {
 }
 
 class SingleImageTableViewCellType : FeedCellTypeProtocol{
-    func getCellCoordinator() -> FeedCellCoordinatorProtocol {
-        return SingleImageTableViewCellCoordinator()
-    }
     
     var cellIdentifier: String{
         return "SingleImageTableViewCell"

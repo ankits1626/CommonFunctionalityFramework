@@ -22,6 +22,11 @@ public struct FetchFeedRequest{
     public var nextPageUrl : String?
 }
 
+//public struct FeedDetailFetchRequest{
+//
+//}
+
 public protocol CFFNetwrokRequestCoordinatorProtocol {
     func getFeeds(request : FetchFeedRequest, completion:@escaping(_ fetchedFeedResult : FetchedFeedModel)-> Void)
+    //func getFeedDetail(request: FeedDetailFetchRequest, completion : @escaping(_ fetchedFeedResult : FetchedFeedModel)-> Void)
 }

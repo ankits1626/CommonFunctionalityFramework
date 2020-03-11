@@ -17,7 +17,7 @@ class FeedsViewController: UIViewController {
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
     
     lazy var feedSectionFactory: FeedSectionFactory = {
-        return FeedSectionFactory(feedsDatasource: self, mediaFetcher: mediaFetcher)
+        return FeedSectionFactory(feedsDatasource: self, mediaFetcher: mediaFetcher, targetTableView: feedsTable)
     }()
     
     var feeds = [FeedsItemProtocol]()
@@ -71,7 +71,6 @@ class FeedsViewController: UIViewController {
         feedsTable?.estimatedRowHeight = 140
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
-        feedSectionFactory.registerFeedstableWithRespectiveCells(feedsTable)
         feedsTable?.reloadData()
     }
 }
@@ -100,11 +99,29 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+        feedDetailVC.targetFeedItem = feeds[indexPath.section]
+        feedDetailVC.mediaFetcher = mediaFetcher
         feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
     }
 }
 
 extension FeedsViewController : FeedsDatasource{
+    func showShowFullfeedDescription() -> Bool {
+        return false
+    }
+    
+    func getFeedItem() -> FeedsItemProtocol {
+        return feeds.first!
+    }
+    
+    func getClappedByUsers() -> [ClappedByUser]? {
+        return nil
+    }
+    
+    func getComments() -> [FeedComment]? {
+        return nil
+    }
+    
     func getNumberOfItems() -> Int {
         return feeds.count
     }

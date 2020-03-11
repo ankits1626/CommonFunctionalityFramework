@@ -8,7 +8,11 @@
 
 import UIKit
 
-class MultipleMediaTableViewCellCoordinator : BaseFeedTableViewCellCoordinator,  FeedCellCoordinatorProtocol{
+class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+    var cellType: FeedCellTypeProtocol{
+        return MultipleMediaTableViewCellType()
+    }
+        
     private var cachedMediCollectionCoordinators = [IndexPath : FeedsMediaCollectionCoordinator]()
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)

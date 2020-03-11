@@ -29,9 +29,6 @@ class FeedBottomTableViewCell: UITableViewCell {
 }
 
 class FeedBottomTableViewCellType : FeedCellTypeProtocol{
-    func getCellCoordinator() -> FeedCellCoordinatorProtocol {
-        return FeedBottomTableViewCellCoordinator()
-    }
     
     var cellIdentifier: String{
         return "FeedBottomTableViewCell"

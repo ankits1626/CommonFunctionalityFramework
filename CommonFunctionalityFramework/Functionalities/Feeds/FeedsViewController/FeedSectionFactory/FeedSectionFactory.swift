@@ -11,19 +11,26 @@ import UIKit
 protocol FeedsDatasource {
     func getNumberOfItems() -> Int
     func getFeedItem(_ index: Int) -> FeedsItemProtocol
+    func getFeedItem() -> FeedsItemProtocol
+    func getClappedByUsers() -> [ClappedByUser]?
+    func getComments() -> [FeedComment]?
+    func showShowFullfeedDescription() -> Bool
 }
 
 class FeedSectionFactory{
     private let  feedsDatasource : FeedsDatasource!
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private var cachedFeedContentCoordinator = [FeedType : FeedContentCoordinatorProtocol]()
+    private weak var targetTableView : UITableView?
     
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?) {
         self.feedsDatasource = feedsDatasource
         self.mediaFetcher = mediaFetcher
+        self.targetTableView = targetTableView
     }
-    
-    func registerFeedstableWithRespectiveCells(_ feedsTable : UITableView?)  {}
+    func registerTableViewForAllPossibleCellTypes(_ tableView : UITableView? ){
+        
+    }
     
     func getNumberOfSections() -> Int {
         return feedsDatasource.getNumberOfItems()
@@ -37,9 +44,7 @@ class FeedSectionFactory{
     func getCell(indexPath : IndexPath, tableView: UITableView) -> UITableViewCell {
         let feedItem = feedsDatasource.getFeedItem(indexPath.section)
         return getContentCoordinator(feedType: feedItem.getFeedType()).getCell(
-            FeedContentGetCellModel(
-                targetIndexpath: indexPath,
-                targetTableView: tableView)
+            FeedContentGetCellModel(targetIndexpath: indexPath)
         )
     }
     
@@ -71,6 +76,10 @@ class FeedSectionFactory{
     }
     
     func getFeedContentCoordinator(feedType : FeedType) -> FeedContentCoordinatorProtocol {
-        return PostFeedContentCoordinator(feedsDatasource: feedsDatasource, mediaFetcher: mediaFetcher)
+        return PostFeedContentCoordinator(
+            feedsDatasource: feedsDatasource,
+            mediaFetcher: mediaFetcher,
+            tableview: targetTableView
+        )
     }
 }

@@ -11,18 +11,25 @@ import UIKit
 protocol FeedCellTypeProtocol {
     var cellNib : UINib?{get}
     var cellIdentifier : String {get}
-    func getCellCoordinator() -> FeedCellCoordinatorProtocol
 }
 
 protocol FeedCellCoordinatorProtocol {
+    var cellType : FeedCellTypeProtocol {get}
     func getCell(_ inputModel: FeedCellDequeueModel) -> UITableViewCell
     func loadDataCell(_ inputModel: FeedCellLoadDataModel)
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat
 }
 
+extension FeedCellCoordinatorProtocol{
+    func getCell(_ inputModel: FeedCellDequeueModel) -> UITableViewCell {
+        return inputModel.targetTableView.dequeueReusableCell(
+            withIdentifier: cellType.cellIdentifier,
+            for: inputModel.targetIndexpath)
+    }
+}
+
 struct FeedContentGetCellModel {
     var targetIndexpath : IndexPath
-    var targetTableView : UITableView
 }
 
 struct FeedContentConfigureCellModel {
@@ -36,6 +43,7 @@ struct FeedContentGetHeightOfCellModel {
 
 protocol FeedContentCoordinatorProtocol {
     var feedsDataSource : FeedsDatasource! {set get}
+    func registerTableViewForAllPossibleCellTypes(_ tableView : UITableView? )
     func getRowsToRepresentAFeed(feedIndex : Int) -> [FeedCellTypeProtocol]
     func getCell(_ inputModel: FeedContentGetCellModel) -> UITableViewCell
     func configureCell(_ inputModel: FeedContentConfigureCellModel)
@@ -46,11 +54,33 @@ protocol FeedContentCoordinatorProtocol {
 class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     var feedsDataSource: FeedsDatasource!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
-    private var cachedFeedCellCoordinators = [String : FeedCellCoordinatorProtocol]()
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!) {
+    private weak var targetTableView : UITableView?
+    lazy var cachedFeedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
+        return [
+            FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
+            FeedTitleTableViewCellType().cellIdentifier : FeedTitleTableViewCellCoordinator(),
+            FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
+            SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
+            SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
+            MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
+            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
+        ]
+    }()
+
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?) {
         self.feedsDataSource = feedsDatasource
         self.mediaFetcher = mediaFetcher
+        self.targetTableView = tableview
+        registerTableViewForAllPossibleCellTypes(tableview)
     }
+    
+    internal func registerTableViewForAllPossibleCellTypes(_ tableView : UITableView? ){
+        cachedFeedCellCoordinators.forEach { (cellCoordinator) in
+            self.registerTableViewToRespectiveCellType(cellType: cellCoordinator.value.cellType, tableView: tableView)
+        }
+    }
+    
+    
     func getRowsToRepresentAFeed(feedIndex : Int) -> [FeedCellTypeProtocol] {
         let feed = feedsDataSource.getFeedItem(feedIndex)
         var rows = [FeedCellTypeProtocol] ()
@@ -81,19 +111,16 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     }
     
     func getCell(_ inputModel: FeedContentGetCellModel) -> UITableViewCell{
-        let allRowsForFeed = getRowsToRepresentAFeed(feedIndex: inputModel.targetIndexpath.section)
-        let cellType = allRowsForFeed[inputModel.targetIndexpath.row]
-        return getCellCoordinator(indexPath: inputModel.targetIndexpath, tableView: inputModel.targetTableView).getCell(FeedCellDequeueModel(
+        return getCellCoordinator(indexPath: inputModel.targetIndexpath).getCell(FeedCellDequeueModel(
             targetIndexpath: inputModel.targetIndexpath,
-            targetTableView: inputModel.targetTableView,
-            cellIdentifier: cellType.cellIdentifier,
+            targetTableView: targetTableView!,
             datasource: feedsDataSource
             )
         )
     }
     
     func configureCell(_ inputModel: FeedContentConfigureCellModel){
-        getCellCoordinator(indexPath: inputModel.targetIndexpath, tableView: nil).loadDataCell(
+        getCellCoordinator(indexPath: inputModel.targetIndexpath).loadDataCell(
             FeedCellLoadDataModel(
                 targetIndexpath: inputModel.targetIndexpath,
                 targetCell: inputModel.targetCell,
@@ -104,7 +131,7 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     }
     
     func getHeightOfCell(_ inputModel: FeedContentGetHeightOfCellModel) -> CGFloat{
-        return getCellCoordinator(indexPath: inputModel.targetIndexpath, tableView: nil).getHeight(
+        return getCellCoordinator(indexPath: inputModel.targetIndexpath).getHeight(
             FeedCellGetHeightModel(
                 targetIndexpath: inputModel.targetIndexpath,
                 datasource: feedsDataSource
@@ -112,17 +139,10 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         )
     }
     
-    private func getCellCoordinator(indexPath : IndexPath, tableView: UITableView?) -> FeedCellCoordinatorProtocol {
+    private func getCellCoordinator(indexPath : IndexPath) -> FeedCellCoordinatorProtocol {
         let allRowsForFeed = getRowsToRepresentAFeed(feedIndex: indexPath.section)
         let cellType = allRowsForFeed[indexPath.row]
-        if let cacehedCoordinator = cachedFeedCellCoordinators[cellType.cellIdentifier]{
-            return cacehedCoordinator
-        }else{
-            let coordinator = cellType.getCellCoordinator()
-            registerTableViewToRespectiveCellType(cellType: cellType, tableView: tableView)
-            cachedFeedCellCoordinators[cellType.cellIdentifier] = coordinator
-            return coordinator
-        }
+        return cachedFeedCellCoordinators[cellType.cellIdentifier]!
     }
     
     func registerTableViewToRespectiveCellType(cellType: FeedCellTypeProtocol, tableView: UITableView?) {

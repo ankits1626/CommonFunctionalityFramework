@@ -25,9 +25,6 @@ class MultipleMediaTableViewCell: UITableViewCell {
 }
 
 class MultipleMediaTableViewCellType : FeedCellTypeProtocol{
-    func getCellCoordinator() -> FeedCellCoordinatorProtocol {
-        return MultipleMediaTableViewCellCoordinator()
-    }
     
     var cellIdentifier: String{
         return "MultipleMediaTableViewCell"
