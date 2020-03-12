@@ -58,7 +58,10 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
 
 extension MultipleMediaTableViewCellCoordinator : PostEditorCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
-    
+        if let cell  = inputModel.targetCell as? SingleVideoTableViewCell{
+            cell.containerView?.backgroundColor = .red
+            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+        }
     }
     
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {

@@ -35,7 +35,15 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
 //PostEditorCellCoordinatorProtocol
 extension SingleImageTableViewCellCoordinator : PostEditorCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
-        
+        if let cell  = inputModel.targetCell as? SingleImageTableViewCell{
+            cell.containerView?.backgroundColor = .green
+            //let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+//            if let mediaItem = feed.getMediaList()?.first,
+//                let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
+//                inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: mediaItemEndpoint)
+//            }
+            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+        }
     }
     
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {

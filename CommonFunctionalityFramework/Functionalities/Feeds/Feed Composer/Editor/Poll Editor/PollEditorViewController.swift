@@ -8,18 +8,24 @@
 
 import UIKit
 
-class PollEditorViewController: BaseEditorViewController {
-    
+class PollEditorViewController: UIViewController {
+    var containerTopBarModel : EditorContainerTopBarModel?{
+        didSet{
+            setupContainerTopbar()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
     private func setup(){
+        setupContainerTopbar()
     }
     
-    override func setupContainerTopbar() {
-        super.setupContainerTopbar()
+    private func setupContainerTopbar(){
         containerTopBarModel?.title?.text = "CREATE POLL"
+        containerTopBarModel?.cameraButton?.isHidden = true
     }
+    
 }

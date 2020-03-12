@@ -11,12 +11,18 @@ import UIKit
 protocol EditablePostProtocol {
     var title : String? {set get}
     var postDesciption : String? {set get}
-    var attachedMedia: [FeedMediaItemProtocol]?{set get}
+    //var attachedMedia: [FeedMediaItemProtocol]?{set get}
+    var selectedMediaItems : [LocalSelectedMediaItem]? {set get}
 }
 
 
 
-class PostEditorViewController: BaseEditorViewController {
+class PostEditorViewController: UIViewController {
+    var containerTopBarModel : EditorContainerTopBarModel?{
+        didSet{
+            setupContainerTopbar()
+        }
+    }
     private var post : EditablePostProtocol?
     @IBOutlet weak var postEditorTable : UITableView?
     private lazy var cellFactory: PostEditorCellFactory = {
@@ -29,7 +35,14 @@ class PostEditorViewController: BaseEditorViewController {
     }
     
     private func setup(){
+        setupAnEmptyPostIfRequired()
         setupTableView()
+    }
+    
+    private func setupAnEmptyPostIfRequired(){
+        if post == nil{
+            post = EditablePost()
+        }
     }
     
     private func setupTableView(){
@@ -42,23 +55,68 @@ class PostEditorViewController: BaseEditorViewController {
         postEditorTable?.reloadData()
     }
     
-    override func setupContainerTopbar() {
-        super.setupContainerTopbar()
+    private func setupContainerTopbar(){
         containerTopBarModel?.title?.text = "CREATE POST"
+        containerTopBarModel?.cameraButton?.setImage(
+            UIImage(named: "camera", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
+            for: .normal
+        )
+        containerTopBarModel?.cameraButton?.tintColor = .black
+        containerTopBarModel?.cameraButton?.addTarget(self, action: #selector(initiateMediaAttachment), for: .touchUpInside)
+    }
+    
+    @objc private func initiateMediaAttachment(){
+        let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
+        assetGridVC.assetSelectionCompletion = { (selectedMediaItems) in
+            self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
+        }
+        present(assetGridVC, animated: true, completion: nil)
+    }
+    
+    private func updatePostWithSelectedMediaSection(selectedMediaItems : [LocalSelectedMediaItem]?){
+        if let unwrappedSelectedmediaItems = selectedMediaItems{
+            if post?.selectedMediaItems == nil{
+                // insert
+                post?.selectedMediaItems = selectedMediaItems
+                cellFactory.insertAttachedMediaSection(postEditorTable)
+            }else{
+                //update
+                post?.selectedMediaItems = selectedMediaItems
+                cellFactory.reloadAttachedMediaSections(postEditorTable)
+            }
+        }else{
+            if post?.selectedMediaItems != nil{
+                //delete
+                post?.selectedMediaItems = selectedMediaItems
+                cellFactory.deleteAttachedMediaSections(postEditorTable)
+            }
+        }
     }
 }
+
 
 extension PostEditorViewController : PostEditorCellFactoryDatasource{
     func getTargetPost() -> EditablePostProtocol? {
         return post
     }
+    
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
-    func reloadTitleRow(indexpath: IndexPath) {
+    func updatePosTile(title: String?) {
+        post?.title = title
+    }
+    
+    func updatePostDescription(decription: String?) {
+        post?.postDesciption = description
+    }
+    
+    func reloadTextViewContainingRow(indexpath: IndexPath) {
         print("<< reload text view \(indexpath)")
+        UIView.setAnimationsEnabled(false)
         postEditorTable?.beginUpdates()
         postEditorTable?.endUpdates()
-        postEditorTable?.scrollToRow(at: indexpath, at: .bottom, animated: true)
+        postEditorTable?.scrollToRow(at: indexpath, at: .bottom, animated: false)
+        UIView.setAnimationsEnabled(true)
         //postEditorTable?.reloadRows(at: [indexpath], with: .none)
     }
 }

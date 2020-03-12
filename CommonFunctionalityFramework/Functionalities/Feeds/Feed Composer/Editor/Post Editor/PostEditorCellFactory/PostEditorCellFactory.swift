@@ -13,7 +13,9 @@ protocol PostEditorCellFactoryDatasource : class{
 }
 
 protocol PostEditorCellFactoryDelegate : class {
-    func reloadTitleRow(indexpath : IndexPath)
+    func reloadTextViewContainingRow(indexpath : IndexPath)
+    func updatePosTile( title : String?)
+    func updatePostDescription( decription: String?)
 }
 
 struct PostEditorCellDequeueModel {
@@ -120,12 +122,27 @@ class PostEditorCellFactory {
             PostEditorGetHeightModel(targetIndexpath: indexPath, datasource: datasource!)
         )
     }
+    
+    func insertAttachedMediaSection(_ tableView : UITableView?) {
+        tableView?.insertSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
+        tableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
+    }
+    
+    func reloadAttachedMediaSections(_ tableView : UITableView?) {
+        tableView?.reloadSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
+        tableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
+    }
+    
+    func deleteAttachedMediaSections(_ tableView : UITableView?) {
+        tableView?.deleteSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
+        tableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
+    }
 }
 
 extension PostEditorCellFactory{
     private func getAvailablePostEditorSections() -> [PostEditorSection]{
         var sections = [PostEditorSection.Title , .Description]
-        if let _ = datasource?.getTargetPost()?.attachedMedia{
+        if let _ = datasource?.getTargetPost()?.selectedMediaItems{
             sections.append(.Media)
         }
         return sections
@@ -138,9 +155,9 @@ extension PostEditorCellFactory{
         case .Description:
             return cachedCellCoordinators[FeedEditorDescriptionTableViewCellType().cellIdentifier]!
         case .Media:
-            let attachedMedia : [FeedMediaItemProtocol] = (datasource?.getTargetPost()?.attachedMedia)!
+            let attachedMedia : [LocalSelectedMediaItem] = (datasource?.getTargetPost()?.selectedMediaItems)!
             if attachedMedia.count == 1{
-                if attachedMedia.first!.getMediaType() == .Video{
+                if attachedMedia.first!.mediaType == .video{
                     return cachedCellCoordinators[SingleVideoTableViewCellType().cellIdentifier]!
                 }else{
                     return cachedCellCoordinators[SingleImageTableViewCellType().cellIdentifier]!

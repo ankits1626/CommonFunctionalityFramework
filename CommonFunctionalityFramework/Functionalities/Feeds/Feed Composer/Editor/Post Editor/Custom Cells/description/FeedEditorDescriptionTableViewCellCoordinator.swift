@@ -35,6 +35,7 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
 
 extension FeedEditorDescriptionTableViewCellCoordinator : UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
-        delegate?.reloadTitleRow(indexpath: targetIndexPath)
+        delegate?.reloadTextViewContainingRow(indexpath: targetIndexPath)
+        delegate?.updatePosTile(title: textView.text)
     }
 }
