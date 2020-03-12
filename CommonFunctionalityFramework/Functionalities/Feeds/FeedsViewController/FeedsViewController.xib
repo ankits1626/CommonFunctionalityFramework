@@ -40,12 +40,22 @@
                                                         <constraint firstAttribute="height" constant="37" id="PSd-El-NDn"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kui-lY-C81">
+                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="44"/>
+                                                    <connections>
+                                                        <action selector="openFeedComposerSelectionDrawer" destination="-1" eventType="touchUpInside" id="Vor-gz-3uH"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="mDI-8V-Dd4" firstAttribute="centerY" secondItem="m1h-aP-eMq" secondAttribute="centerY" id="6h7-V5-qaq"/>
+                                                <constraint firstItem="kui-lY-C81" firstAttribute="leading" secondItem="m1h-aP-eMq" secondAttribute="leading" id="Fy0-gt-5dg"/>
                                                 <constraint firstItem="mDI-8V-Dd4" firstAttribute="leading" secondItem="m1h-aP-eMq" secondAttribute="leading" constant="16" id="HNj-1D-csM"/>
+                                                <constraint firstAttribute="trailing" secondItem="kui-lY-C81" secondAttribute="trailing" id="W6F-H7-8Qk"/>
+                                                <constraint firstAttribute="bottom" secondItem="kui-lY-C81" secondAttribute="bottom" id="dSX-Ck-qHP"/>
                                                 <constraint firstAttribute="trailing" secondItem="mDI-8V-Dd4" secondAttribute="trailing" constant="9" id="qgN-Mh-Xl2"/>
+                                                <constraint firstItem="kui-lY-C81" firstAttribute="top" secondItem="m1h-aP-eMq" secondAttribute="top" id="rVC-Ve-CFC"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCH-BK-MAh">
@@ -54,16 +64,26 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6G-U9-vTq">
                                                     <rect key="frame" x="13" y="3.5" width="37" height="37"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qk-0N-TSf">
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qk-0N-TSf">
                                                             <rect key="frame" x="9.5" y="7.5" width="18" height="22"/>
                                                             <state key="normal" image="camera"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkg-vJ-1ja">
+                                                            <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+                                                            <connections>
+                                                                <action selector="openFeedComposerSelectionDrawer" destination="-1" eventType="touchUpInside" id="SYR-PT-UqA"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
+                                                        <constraint firstItem="dkg-vJ-1ja" firstAttribute="leading" secondItem="G6G-U9-vTq" secondAttribute="leading" id="7pz-KR-6pc"/>
+                                                        <constraint firstItem="dkg-vJ-1ja" firstAttribute="top" secondItem="G6G-U9-vTq" secondAttribute="top" id="Cci-Kq-AJy"/>
                                                         <constraint firstItem="3qk-0N-TSf" firstAttribute="centerX" secondItem="G6G-U9-vTq" secondAttribute="centerX" id="RDi-Ic-Evs"/>
                                                         <constraint firstAttribute="width" secondItem="G6G-U9-vTq" secondAttribute="height" multiplier="1:1" id="UZZ-Ao-cOV"/>
                                                         <constraint firstItem="3qk-0N-TSf" firstAttribute="centerY" secondItem="G6G-U9-vTq" secondAttribute="centerY" id="W6h-0S-TDh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="dkg-vJ-1ja" secondAttribute="bottom" id="gYb-HN-rDx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="dkg-vJ-1ja" secondAttribute="trailing" id="sWm-p7-lSh"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

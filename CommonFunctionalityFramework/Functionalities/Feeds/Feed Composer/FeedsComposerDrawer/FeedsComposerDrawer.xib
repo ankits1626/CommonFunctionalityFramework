@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsComposerDrawer" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <connections>
+                <outlet property="createPollButton" destination="tJ7-bR-yYO" id="z5b-2a-hGz"/>
+                <outlet property="createPostButton" destination="yu6-tC-mHP" id="nvR-pB-9Yy"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="316"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qta-ZO-s1H">
+                    <rect key="frame" x="0.0" y="44" width="414" height="272"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckl-GN-6jv">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="90.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yu6-tC-mHP">
+                                    <rect key="frame" x="54" y="24.5" width="306" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="EgO-5T-vxh"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="createPost" destination="-1" eventType="touchUpInside" id="dpg-SU-003"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="yu6-tC-mHP" firstAttribute="leading" secondItem="ckl-GN-6jv" secondAttribute="leading" constant="54" id="Hut-yt-fmO"/>
+                                <constraint firstAttribute="trailing" secondItem="yu6-tC-mHP" secondAttribute="trailing" constant="54" id="XZf-Sl-BU8"/>
+                                <constraint firstItem="yu6-tC-mHP" firstAttribute="centerY" secondItem="ckl-GN-6jv" secondAttribute="centerY" id="haf-ps-4t4"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e25-4y-5wJ">
+                            <rect key="frame" x="0.0" y="90.5" width="414" height="91"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJ7-bR-yYO">
+                                    <rect key="frame" x="54" y="30.5" width="306" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="createPoll" destination="-1" eventType="touchUpInside" id="ACW-1c-PUb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="tJ7-bR-yYO" firstAttribute="leading" secondItem="e25-4y-5wJ" secondAttribute="leading" constant="54" id="SdF-Xx-vQq"/>
+                                <constraint firstItem="tJ7-bR-yYO" firstAttribute="centerY" secondItem="e25-4y-5wJ" secondAttribute="centerY" id="hQ8-bp-EUY"/>
+                                <constraint firstAttribute="trailing" secondItem="tJ7-bR-yYO" secondAttribute="trailing" constant="54" id="hpn-H3-eLw"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jza-eR-Vo7">
+                            <rect key="frame" x="0.0" y="181.5" width="414" height="90.5"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="tJ7-bR-yYO" firstAttribute="width" secondItem="yu6-tC-mHP" secondAttribute="height" multiplier="51:7" id="Tg0-SO-2Ob"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="80g-QH-RHZ"/>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cu4-6c-itf"/>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="hF2-gH-xlu"/>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yGy-oj-cz5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="123.21428571428571"/>
+        </view>
+    </objects>
+</document>

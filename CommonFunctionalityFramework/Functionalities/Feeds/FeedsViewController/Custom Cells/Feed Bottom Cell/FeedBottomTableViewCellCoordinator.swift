@@ -30,7 +30,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.clapsCountLabel?.font = UIFont.Caption1
             cell.clapsCountLabel?.textColor = UIColor.getSubTitleTextColor()
             
-            cell.containerView?.roundCorners(corners: [UIRectCorner.bottomLeft, UIRectCorner.bottomRight], radius: AppliedCoornerRadius.standardCornerRadius)
+            cell.containerView?.roundCorners(corners: [UIRectCorner.bottomLeft, UIRectCorner.bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: UIColor.getGeneralBorderColor())
         }
     }

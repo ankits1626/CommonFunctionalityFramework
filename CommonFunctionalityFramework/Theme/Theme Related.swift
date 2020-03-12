@@ -52,6 +52,6 @@ extension UIColor{
     }
 }
 
-struct AppliedCoornerRadius {
+struct AppliedCornerRadius {
     static let standardCornerRadius : CGFloat = 6.0
 }

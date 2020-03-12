@@ -75,6 +75,21 @@ class FeedsViewController: UIViewController {
     }
 }
 
+extension FeedsViewController{
+    @IBAction func openFeedComposerSelectionDrawer(){
+        let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
+        drawer.feedCoordinatorDeleagate = feedCoordinatorDeleagate
+        do{
+            try drawer.presentDrawer()
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                
+            }
+        }
+    }
+}
+
 extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,6 +105,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
         feedSectionFactory.configureCell(cell: cell, indexPath: indexPath)
     }
     
