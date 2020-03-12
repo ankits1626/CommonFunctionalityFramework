@@ -10,6 +10,10 @@
 		9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */; };
 		9811DD02241A885F003B91FD /* PostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD01241A885F003B91FD /* PostCoordinator.swift */; };
 		9811DD05241A9ECB003B91FD /* BlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD04241A9ECB003B91FD /* BlockButton.swift */; };
+		9811DD1A241AB3B2003B91FD /* APIRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD15241AB3B2003B91FD /* APIRequestModel.swift */; };
+		9811DD1B241AB3B2003B91FD /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD16241AB3B2003B91FD /* APIWorker.swift */; };
+		9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD17241AB3B2003B91FD /* URLGenerator.swift */; };
+		9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F02419FDB1009084D4 /* PollEditorViewController.swift */; };
@@ -109,6 +113,10 @@
 		9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorLocalMediaCollectionCoordinator.swift; sourceTree = "<group>"; };
 		9811DD01241A885F003B91FD /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
 		9811DD04241A9ECB003B91FD /* BlockButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockButton.swift; sourceTree = "<group>"; };
+		9811DD15241AB3B2003B91FD /* APIRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequestModel.swift; sourceTree = "<group>"; };
+		9811DD16241AB3B2003B91FD /* APIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
+		9811DD17241AB3B2003B91FD /* URLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLGenerator.swift; sourceTree = "<group>"; };
+		9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnauthorizedHandler.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F02419FDB1009084D4 /* PollEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollEditorViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +241,25 @@
 				9811DD04241A9ECB003B91FD /* BlockButton.swift */,
 			);
 			path = BlockButton;
+			sourceTree = "<group>";
+		};
+		9811DD13241AB3B2003B91FD /* Web Access Layer */ = {
+			isa = PBXGroup;
+			children = (
+				9811DD14241AB3B2003B91FD /* Api Worker */,
+			);
+			path = "Web Access Layer";
+			sourceTree = "<group>";
+		};
+		9811DD14241AB3B2003B91FD /* Api Worker */ = {
+			isa = PBXGroup;
+			children = (
+				9811DD15241AB3B2003B91FD /* APIRequestModel.swift */,
+				9811DD16241AB3B2003B91FD /* APIWorker.swift */,
+				9811DD17241AB3B2003B91FD /* URLGenerator.swift */,
+				9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */,
+			);
+			path = "Api Worker";
 			sourceTree = "<group>";
 		};
 		983500E92419FC75009084D4 /* Editor */ = {
@@ -687,6 +714,7 @@
 		98B02FC3241A772300CB8690 /* Reusable Components */ = {
 			isa = PBXGroup;
 			children = (
+				9811DD13241AB3B2003B91FD /* Web Access Layer */,
 				98B02FC4241A774000CB8690 /* LocalMediaManager */,
 				9868C0DA2412417E00B12321 /* UI Components */,
 				9868C1012419EDBC00B12321 /* SlideInPresentationManager */,
@@ -961,7 +989,9 @@
 				9868C0932410D9E600B12321 /* UILabel + Extension.swift in Sources */,
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
+				9811DD1A241AB3B2003B91FD /* APIRequestModel.swift in Sources */,
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
+				9811DD1B241AB3B2003B91FD /* APIWorker.swift in Sources */,
 				98B02FC6241A776800CB8690 /* LocalMediaManager.swift in Sources */,
 				9868C1032419EDCD00B12321 /* SlideInPresentationManager.swift in Sources */,
 				9868C0592410326300B12321 /* Date+ Extension.swift in Sources */,
@@ -975,6 +1005,7 @@
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
 				9868C0E12412430700B12321 /* UIView+XibSetup.swift in Sources */,
+				9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
@@ -992,6 +1023,7 @@
 				9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */,
 				9868C1052419F25700B12321 /* UIApplication+Extension.swift in Sources */,
 				983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */,
+				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,
