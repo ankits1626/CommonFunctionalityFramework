@@ -25,6 +25,7 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
             }
             else{
                 cell.containerView?.addBorders(edges: [.bottom,.left, .right], color: UIColor.getGeneralBorderColor())
+                cell.containerView?.curvedCornerControl()
             }
            
             cell.containerView?.clipsToBounds = true

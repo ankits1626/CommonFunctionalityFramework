@@ -71,6 +71,9 @@ class PostEditorViewController: UIViewController {
     @objc private func initiateMediaAttachment(){
         let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
         assetGridVC.localMediaManager = localMediaManager
+        if let selectedItems = postCoordinator.getCurrentPost().selectedMediaItems{
+            assetGridVC.selectedAssets = selectedItems
+        }
         assetGridVC.assetSelectionCompletion = { (selectedMediaItems) in
             self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
         }

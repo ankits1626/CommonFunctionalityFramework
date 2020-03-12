@@ -25,7 +25,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet var uploadButton : UIButton!
     @IBOutlet var collectionView: UICollectionView!
     fileprivate var thumbnailSize: CGSize!
-    fileprivate var selectedAssets = [LocalSelectedMediaItem]()
+    var selectedAssets = [LocalSelectedMediaItem]()
     var localMediaManager : LocalMediaManager!
     
     // MARK: UIViewController / Lifecycle
@@ -35,6 +35,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         setup()
         
     }
+    
     
     private func setup(){
         uploadButton.setTitleColor(.black, for: .normal)

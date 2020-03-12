@@ -44,6 +44,7 @@ extension SingleVideoTableViewCellCoordinator : PostEditorCellCoordinatorProtoco
                 })
             }
            cell.containerView?.addBorders(edges: [.bottom,.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.curvedCornerControl()
         }
     }
     

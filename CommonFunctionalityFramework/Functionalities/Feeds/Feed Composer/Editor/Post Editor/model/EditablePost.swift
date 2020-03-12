@@ -10,6 +10,9 @@ import UIKit
 import Photos
 
 struct LocalSelectedMediaItem : Equatable {
+    static func ==(_ lhs: LocalSelectedMediaItem, _ rhs: LocalSelectedMediaItem) -> Bool {
+      return lhs.identifier == rhs.identifier
+    }
     var identifier : String
     var asset: PHAsset?
     var mediaType : PHAssetMediaType

@@ -21,6 +21,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
             cell.containerView?.clipsToBounds = true
+            cell.containerView?.curvedCornerControl()
         }
     }
     
