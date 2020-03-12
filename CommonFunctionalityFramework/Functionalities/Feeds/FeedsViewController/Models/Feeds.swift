@@ -35,6 +35,9 @@ struct Poll {
 }
 
 public struct RawFeed : FeedsItemProtocol {
+    static var EMPTY_FEED : FeedsItemProtocol {
+        return RawFeed([String : Any]())
+    }
     func getPollState() -> PollState {
         return .NotAvailable
     }

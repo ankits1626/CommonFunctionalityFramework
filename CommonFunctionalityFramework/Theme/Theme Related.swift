@@ -47,6 +47,10 @@ extension UIColor{
         return UIColor.gray
     }
     
+    static func getPlaceholderTextColor() -> UIColor{
+        return UIColor.gray
+    }
+    
     static func grayBackGroundColor() -> UIColor{
         return UIColor(red: 237/255.0, green: 237/255.0, blue: 237/255.0, alpha: 1.0)
     }

@@ -47,8 +47,6 @@
 		9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C05F2410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift */; };
 		9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0812410B13A00B12321 /* DummyFeedProvider.swift */; };
 		9868C0842410B48D00B12321 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0832410B48D00B12321 /* Media.xcassets */; };
-		9868C0892410B4FB00B12321 /* FeedsEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0872410B4FB00B12321 /* FeedsEditorViewController.swift */; };
-		9868C08A2410B4FB00B12321 /* FeedsEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0882410B4FB00B12321 /* FeedsEditorViewController.xib */; };
 		9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C08B2410B56100B12321 /* FeedsDetailViewController.swift */; };
 		9868C08E2410B56100B12321 /* FeedsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C08C2410B56100B12321 /* FeedsDetailViewController.xib */; };
 		9868C0912410C19200B12321 /* Theme Related.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0902410C19200B12321 /* Theme Related.swift */; };
@@ -77,11 +75,22 @@
 		9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C1092419F37C00B12321 /* SlideInPresentationController.swift */; };
 		9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */; };
 		9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */; };
+		98B02F9A241A2B1500CB8690 /* FeedEditorAttachedSingleVideoTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F99241A2B1500CB8690 /* FeedEditorAttachedSingleVideoTableViewCellCoordinator.swift */; };
+		98B02F9C241A2B2100CB8690 /* FeedEditorAttachedSingleImageTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9B241A2B2100CB8690 /* FeedEditorAttachedSingleImageTableViewCellCoordinator.swift */; };
+		98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */; };
 		98B90DE4240CACD90013E9D2 /* CommonFunctionalityFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E07240CAD010013E9D2 /* FeedsViewController.swift */; };
 		98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90E08240CAD010013E9D2 /* FeedsViewController.xib */; };
 		98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */; };
 		98BC8A0A241A0E2F007C175D /* BaseEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A09241A0E2F007C175D /* BaseEditorViewController.swift */; };
+		98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A0C241A1775007C175D /* FeedEditorTitleTableViewCell.swift */; };
+		98BC8A0F241A1775007C175D /* FeedEditorTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BC8A0D241A1775007C175D /* FeedEditorTitleTableViewCell.xib */; };
+		98BC8A14241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A12241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift */; };
+		98BC8A15241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BC8A13241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib */; };
+		98BC8A1E241A19DE007C175D /* PostEditorCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A1D241A19DE007C175D /* PostEditorCellFactory.swift */; };
+		98BC8A20241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A1F241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift */; };
+		98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A21241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift */; };
+		98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A23241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,8 +134,6 @@
 		9868C05F2410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		9868C0812410B13A00B12321 /* DummyFeedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyFeedProvider.swift; sourceTree = "<group>"; };
 		9868C0832410B48D00B12321 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		9868C0872410B4FB00B12321 /* FeedsEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsEditorViewController.swift; sourceTree = "<group>"; };
-		9868C0882410B4FB00B12321 /* FeedsEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsEditorViewController.xib; sourceTree = "<group>"; };
 		9868C08B2410B56100B12321 /* FeedsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsDetailViewController.swift; sourceTree = "<group>"; };
 		9868C08C2410B56100B12321 /* FeedsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsDetailViewController.xib; sourceTree = "<group>"; };
 		9868C0902410C19200B12321 /* Theme Related.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme Related.swift"; sourceTree = "<group>"; };
@@ -155,6 +162,9 @@
 		9868C1092419F37C00B12321 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
 		9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedComposerCoordinator.swift; sourceTree = "<group>"; };
+		98B02F99241A2B1500CB8690 /* FeedEditorAttachedSingleVideoTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorAttachedSingleVideoTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		98B02F9B241A2B2100CB8690 /* FeedEditorAttachedSingleImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorAttachedSingleImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		98B90DDF240CACD90013E9D2 /* CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonFunctionalityFramework.h; sourceTree = "<group>"; };
 		98B90DE3240CACD90013E9D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +172,14 @@
 		98B90E08240CAD010013E9D2 /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
 		98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsCoordinator.swift; sourceTree = "<group>"; };
 		98BC8A09241A0E2F007C175D /* BaseEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditorViewController.swift; sourceTree = "<group>"; };
+		98BC8A0C241A1775007C175D /* FeedEditorTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorTitleTableViewCell.swift; sourceTree = "<group>"; };
+		98BC8A0D241A1775007C175D /* FeedEditorTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedEditorTitleTableViewCell.xib; sourceTree = "<group>"; };
+		98BC8A12241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		98BC8A13241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedEditorDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		98BC8A1D241A19DE007C175D /* PostEditorCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorCellFactory.swift; sourceTree = "<group>"; };
+		98BC8A1F241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorTitleTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		98BC8A21241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorDescriptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		98BC8A23241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorAttachedMediaTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +215,8 @@
 		983500EB2419FC87009084D4 /* Post Editor */ = {
 			isa = PBXGroup;
 			children = (
+				98BC8A1C241A19C9007C175D /* PostEditorCellFactory */,
+				98BC8A0B241A171E007C175D /* Custom Cells */,
 				983500EC2419FDA0009084D4 /* PostEditorViewController.swift */,
 				983500ED2419FDA0009084D4 /* PostEditorViewController.xib */,
 			);
@@ -387,15 +407,6 @@
 			path = CFFMediaCoordinator;
 			sourceTree = "<group>";
 		};
-		9868C0852410B4B600B12321 /* FeedsEditorViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9868C0872410B4FB00B12321 /* FeedsEditorViewController.swift */,
-				9868C0882410B4FB00B12321 /* FeedsEditorViewController.xib */,
-			);
-			path = FeedsEditorViewController;
-			sourceTree = "<group>";
-		};
 		9868C0862410B4C900B12321 /* FeedsDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +448,7 @@
 		9868C0DA2412417E00B12321 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				98B02F9D241A449000CB8690 /* KMPlaceholderTextView */,
 				9868C0DD241242E400B12321 /* ASChatBarview */,
 			);
 			path = "UI Components";
@@ -553,6 +565,47 @@
 			path = "Feed Composer";
 			sourceTree = "<group>";
 		};
+		98B02F94241A2ABC00CB8690 /* single */ = {
+			isa = PBXGroup;
+			children = (
+				98B02F98241A2AFB00CB8690 /* video */,
+				98B02F97241A2AF700CB8690 /* image */,
+			);
+			path = single;
+			sourceTree = "<group>";
+		};
+		98B02F95241A2ACA00CB8690 /* multiple */ = {
+			isa = PBXGroup;
+			children = (
+				98BC8A23241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift */,
+			);
+			path = multiple;
+			sourceTree = "<group>";
+		};
+		98B02F97241A2AF700CB8690 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				98B02F9B241A2B2100CB8690 /* FeedEditorAttachedSingleImageTableViewCellCoordinator.swift */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		98B02F98241A2AFB00CB8690 /* video */ = {
+			isa = PBXGroup;
+			children = (
+				98B02F99241A2B1500CB8690 /* FeedEditorAttachedSingleVideoTableViewCellCoordinator.swift */,
+			);
+			path = video;
+			sourceTree = "<group>";
+		};
+		98B02F9D241A449000CB8690 /* KMPlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */,
+			);
+			path = KMPlaceholderTextView;
+			sourceTree = "<group>";
+		};
 		98B90DD5240CACD90013E9D2 = {
 			isa = PBXGroup;
 			children = (
@@ -601,7 +654,6 @@
 			children = (
 				9868C10E2419F94100B12321 /* Feed Composer */,
 				9868C0862410B4C900B12321 /* FeedsDetailViewController */,
-				9868C0852410B4B600B12321 /* FeedsEditorViewController */,
 				98B90DEC240CAD010013E9D2 /* FeedsViewController */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
 			);
@@ -632,6 +684,61 @@
 				9868C00A240F76CB00B12321 /* Feed Top Cell */,
 			);
 			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		98BC8A0B241A171E007C175D /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				98BC8A1B241A17C5007C175D /* attached document */,
+				98BC8A16241A179D007C175D /* attached media */,
+				98BC8A11241A1783007C175D /* description */,
+				98BC8A10241A177A007C175D /* title */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		98BC8A10241A177A007C175D /* title */ = {
+			isa = PBXGroup;
+			children = (
+				98BC8A0C241A1775007C175D /* FeedEditorTitleTableViewCell.swift */,
+				98BC8A0D241A1775007C175D /* FeedEditorTitleTableViewCell.xib */,
+				98BC8A1F241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift */,
+			);
+			path = title;
+			sourceTree = "<group>";
+		};
+		98BC8A11241A1783007C175D /* description */ = {
+			isa = PBXGroup;
+			children = (
+				98BC8A12241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift */,
+				98BC8A13241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib */,
+				98BC8A21241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift */,
+			);
+			path = description;
+			sourceTree = "<group>";
+		};
+		98BC8A16241A179D007C175D /* attached media */ = {
+			isa = PBXGroup;
+			children = (
+				98B02F95241A2ACA00CB8690 /* multiple */,
+				98B02F94241A2ABC00CB8690 /* single */,
+			);
+			path = "attached media";
+			sourceTree = "<group>";
+		};
+		98BC8A1B241A17C5007C175D /* attached document */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "attached document";
+			sourceTree = "<group>";
+		};
+		98BC8A1C241A19C9007C175D /* PostEditorCellFactory */ = {
+			isa = PBXGroup;
+			children = (
+				98BC8A1D241A19DE007C175D /* PostEditorCellFactory.swift */,
+			);
+			path = PostEditorCellFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -715,12 +822,13 @@
 				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
 				9868C017240F786600B12321 /* FeedTitleTableViewCell.xib in Resources */,
+				98BC8A0F241A1775007C175D /* FeedEditorTitleTableViewCell.xib in Resources */,
 				9868C1002419EB2D00B12321 /* FeedsComposerDrawer.xib in Resources */,
 				9868C0BA2412100B00B12321 /* MediaItemCollectionViewCell.xib in Resources */,
 				983500F32419FDB1009084D4 /* PollEditorViewController.xib in Resources */,
-				9868C08A2410B4FB00B12321 /* FeedsEditorViewController.xib in Resources */,
 				9868C0F32419488000B12321 /* FeedCommentTableViewCell.xib in Resources */,
 				983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */,
+				98BC8A15241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,12 +863,15 @@
 				9868C047240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift in Sources */,
 				9868C005240F660300B12321 /* CommonCellFactory.swift in Sources */,
 				9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */,
+				98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */,
 				9868BFF7240EC2FB00B12321 /* CommonTableCollection.swift in Sources */,
+				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				98BC8A0A241A0E2F007C175D /* BaseEditorViewController.swift in Sources */,
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
 				9868C0E12412430700B12321 /* UIView+XibSetup.swift in Sources */,
+				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
@@ -770,23 +881,28 @@
 				9868C0F9241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift in Sources */,
 				9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */,
 				98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */,
+				98B02F9C241A2B2100CB8690 /* FeedEditorAttachedSingleImageTableViewCellCoordinator.swift in Sources */,
 				9868C0F22419488000B12321 /* FeedCommentTableViewCell.swift in Sources */,
 				9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */,
 				9868C1052419F25700B12321 /* UIApplication+Extension.swift in Sources */,
 				983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,
+				98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */,
+				98BC8A14241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift in Sources */,
 				9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */,
 				9868C0E22412430700B12321 /* UITextView+NumberOfLines.swift in Sources */,
 				9868C03D240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift in Sources */,
 				9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */,
+				98BC8A20241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift in Sources */,
 				9868BFF5240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift in Sources */,
+				98B02F9A241A2B1500CB8690 /* FeedEditorAttachedSingleVideoTableViewCellCoordinator.swift in Sources */,
+				98BC8A1E241A19DE007C175D /* PostEditorCellFactory.swift in Sources */,
 				9868C0E724125ACC00B12321 /* FeedDetailSectionFactory.swift in Sources */,
 				9868C0B92412100B00B12321 /* MediaItemCollectionViewCell.swift in Sources */,
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,
 				9868C041240F9D3900B12321 /* SingleImageTableViewCellCoordinator.swift in Sources */,
-				9868C0892410B4FB00B12321 /* FeedsEditorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

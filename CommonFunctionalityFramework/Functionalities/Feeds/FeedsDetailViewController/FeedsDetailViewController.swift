@@ -49,6 +49,10 @@ class FeedsDetailViewController: UIViewController {
 }
 
 extension FeedsDetailViewController : FeedsDatasource{
+    func getTargetPost() -> EditablePostProtocol? {
+        return nil
+    }
+    
     func showShowFullfeedDescription() -> Bool {
         return true
     }

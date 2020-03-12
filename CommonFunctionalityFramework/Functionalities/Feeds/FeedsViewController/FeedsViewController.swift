@@ -122,6 +122,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDatasource{
+    func getTargetPost() -> EditablePostProtocol? {
+        return nil
+    }
+    
     func showShowFullfeedDescription() -> Bool {
         return false
     }

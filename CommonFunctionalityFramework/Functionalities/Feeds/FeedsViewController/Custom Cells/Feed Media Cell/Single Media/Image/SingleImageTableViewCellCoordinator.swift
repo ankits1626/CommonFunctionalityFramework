@@ -32,3 +32,15 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     
 }
 
+//PostEditorCellCoordinatorProtocol
+extension SingleImageTableViewCellCoordinator : PostEditorCellCoordinatorProtocol{
+    func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
+        
+    }
+    
+    func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
+        return 205
+    }
+    
+    
+}

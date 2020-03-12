@@ -70,7 +70,6 @@ class FeedDetailSectionFactory {
     
     func getCellCoordinator(_ indexpath : IndexPath) -> FeedCellCoordinatorProtocol {
         let cellMap = getRowsToRepresentFeedDetail()
-        var coordinator : FeedCellCoordinatorProtocol!
         switch getAvailablefeedSections()[indexpath.section] {
         case .FeedInfo:
             let feedInfo = cellMap[.FeedInfo]

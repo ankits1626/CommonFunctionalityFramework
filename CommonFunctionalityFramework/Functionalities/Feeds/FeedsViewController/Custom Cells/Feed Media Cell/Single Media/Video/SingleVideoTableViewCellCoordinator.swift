@@ -28,3 +28,14 @@ class SingleVideoTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     
 }
 
+extension SingleVideoTableViewCellCoordinator : PostEditorCellCoordinatorProtocol{
+    func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
+        
+    }
+    
+    func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
+        return 205
+    }
+    
+    
+}

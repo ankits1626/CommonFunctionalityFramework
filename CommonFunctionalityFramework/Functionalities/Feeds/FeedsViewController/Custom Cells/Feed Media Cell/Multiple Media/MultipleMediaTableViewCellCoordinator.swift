@@ -56,3 +56,14 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
 }
 
 
+extension MultipleMediaTableViewCellCoordinator : PostEditorCellCoordinatorProtocol{
+    func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
+    
+    }
+    
+    func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
+        return 122
+    }
+    
+    
+}
