@@ -11,15 +11,19 @@ import UIKit
 struct InitFeedEditorLocalMediaCollectionCoordinatorModel {
     let datasource : PostEditorCellFactoryDatasource
     var mediaManager : LocalMediaManager?
+    var delegate: PostEditorCellFactoryDelegate
 }
 
 class FeedEditorLocalMediaCollectionCoordinator : NSObject {
     let input : InitFeedEditorLocalMediaCollectionCoordinatorModel
+    var targetCollectionView: UICollectionView?
+    
     init(_ input : InitFeedEditorLocalMediaCollectionCoordinatorModel) {
         self.input = input
     }
     
     func loadCollectionView(targetCollectionView : UICollectionView?) {
+        self.targetCollectionView = targetCollectionView
         targetCollectionView?.register(
             UINib(nibName: "MediaItemCollectionViewCell", bundle: Bundle(for: MediaItemCollectionViewCell.self)),
             forCellWithReuseIdentifier: "MediaItemCollectionViewCell"
@@ -27,6 +31,11 @@ class FeedEditorLocalMediaCollectionCoordinator : NSObject {
         targetCollectionView?.dataSource = self
         targetCollectionView?.delegate = self
         targetCollectionView?.reloadData()
+    }
+    
+    func removedLocalMedia(index : Int) {
+        targetCollectionView?.reloadData()
+        //targetCollectionView?.deleteItems(at: [IndexPath(item: index, section: 0)])
     }
 }
 
@@ -38,6 +47,12 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "MediaItemCollectionViewCell",
         for: indexPath) as! MediaItemCollectionViewCell
+        cell.removeButton?.isHidden = false
+        cell.removeButton?.handleControlEvent(
+            event: .touchUpInside,
+            buttonActionBlock: {
+                self.input.delegate.removeSelectedMedia(index: indexPath.item)
+        })
         if let asset = input.datasource.getTargetPost()?.selectedMediaItems?[indexPath.row].asset{
             input.mediaManager?.fetchImageForAsset(asset: asset, size: (cell.mediaCoverImageView?.bounds.size)!, completion: { (_, fetchedImage) in
                 cell.mediaCoverImageView?.image = fetchedImage

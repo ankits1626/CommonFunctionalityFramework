@@ -23,10 +23,15 @@ extension UIView {
                     thickness: CGFloat = 1.0) -> [UIView] {
 
         var borders = [UIView]()
-
+        subviews.forEach { (aSubview) in
+            if aSubview.tag == 99{
+                aSubview.removeFromSuperview()
+            }
+        }
         @discardableResult
         func addBorder(formats: String...) -> UIView {
             let border = UIView(frame: .zero)
+            border.tag = 99
             border.backgroundColor = color
             border.translatesAutoresizingMaskIntoConstraints = false
             addSubview(border)

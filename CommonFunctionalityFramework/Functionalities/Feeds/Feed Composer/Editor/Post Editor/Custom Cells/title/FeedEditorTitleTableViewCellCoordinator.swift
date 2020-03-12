@@ -15,6 +15,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         self.delegate = inputModel.delegate
         targetIndexPath = inputModel.targetIndexpath
         if let cell = inputModel.targetCell as? FeedEditorTitleTableViewCell{
+            cell.selectionStyle = .none
             cell.titleText?.delegate = self
             cell.titleText?.placeholder = "Title"
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()

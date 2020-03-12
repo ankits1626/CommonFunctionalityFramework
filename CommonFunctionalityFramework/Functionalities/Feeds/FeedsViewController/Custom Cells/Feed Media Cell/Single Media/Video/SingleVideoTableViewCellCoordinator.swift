@@ -31,13 +31,19 @@ class SingleVideoTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
 extension SingleVideoTableViewCellCoordinator : PostEditorCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? SingleVideoTableViewCell{
+            cell.selectionStyle = .none
             cell.containerView?.backgroundColor = .yellow
+            cell.removeButton?.isHidden = false
+            cell.removeButton?.handleControlEvent(
+                event: .touchUpInside, buttonActionBlock: {
+                    inputModel.delegate?.removeSelectedMedia(index: 0)
+            })
             if let mediaAsset = inputModel.datasource.getTargetPost()?.selectedMediaItems?.first?.asset{
                 inputModel.localMediaManager?.fetchImageForAsset(asset: mediaAsset, size: cell.feedVideoImageView!.bounds.size, completion: { (_, fetchedImage) in
                     cell.feedVideoImageView?.image = fetchedImage
                 })
             }
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+           cell.containerView?.addBorders(edges: [.bottom,.left, .right], color: UIColor.getGeneralBorderColor())
         }
     }
     

@@ -16,7 +16,8 @@ class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCo
     
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.selectionStyle = .none
+            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: UIColor.getGeneralBorderColor())
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }
@@ -24,8 +25,12 @@ class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCo
     var cellType: FeedCellTypeProtocol{
         return MultipleMediaTableViewCellType()
     }
+    
+    func removeSelectedMediItem(_ inputModel: PostEditorRemoveAttachedMediaDataModel) {
+        cachedMediCollectionCoordinator.removedLocalMedia(index: inputModel.targetIndex)
+    }
         
-    private var cachedMediCollectionCoordinators = [IndexPath : FeedEditorLocalMediaCollectionCoordinator]()
+    private var cachedMediCollectionCoordinator  : FeedEditorLocalMediaCollectionCoordinator!//= [IndexPath : FeedEditorLocalMediaCollectionCoordinator]()
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
         switch feed.getMediaCountState() {
@@ -41,25 +46,18 @@ class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCo
         }
     }
     
-    
-//    func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
-//        if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
-//            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
-//            getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
-//        }
-//    }
-    
     private func getMediaCoordinator(_ inputModel: PostEditorCellLoadDataModel) -> FeedEditorLocalMediaCollectionCoordinator{
-        if let mediaCoordinator = cachedMediCollectionCoordinators[inputModel.targetIndexpath]{
+        if let mediaCoordinator = cachedMediCollectionCoordinator{
             return mediaCoordinator
         }else{
             let coordinator = FeedEditorLocalMediaCollectionCoordinator(
                 InitFeedEditorLocalMediaCollectionCoordinatorModel(
                     datasource: inputModel.datasource,
-                    mediaManager: inputModel.localMediaManager)
+                    mediaManager: inputModel.localMediaManager,
+                    delegate: inputModel.delegate!)
             )
             
-            cachedMediCollectionCoordinators[inputModel.targetIndexpath] = coordinator
+            cachedMediCollectionCoordinator = coordinator
             return coordinator
         }
     }

@@ -16,6 +16,7 @@ protocol PostEditorCellFactoryDelegate : class {
     func reloadTextViewContainingRow(indexpath : IndexPath)
     func updatePostTile( title : String?)
     func updatePostDescription( decription: String?)
+    func removeSelectedMedia(index : Int)
 }
 
 struct PostEditorCellDequeueModel {
@@ -30,6 +31,10 @@ struct PostEditorCellLoadDataModel {
     var datasource: PostEditorCellFactoryDatasource
     var delegate : PostEditorCellFactoryDelegate?
     var localMediaManager : LocalMediaManager?
+}
+
+struct PostEditorRemoveAttachedMediaDataModel {
+    var targetIndex : Int
 }
 
 struct PostEditorGetHeightModel {
@@ -52,6 +57,12 @@ extension PostEditorCellCoordinatorProtocol{
     }
 }
 
+struct InitPostEditorCellFactoryModel {
+    weak var datasource : PostEditorCellFactoryDatasource?
+    weak var delegate : PostEditorCellFactoryDelegate?
+    weak var localMediaManager : LocalMediaManager?
+    weak var targetTableView : UITableView?
+}
 
 class PostEditorCellFactory {
     enum PostEditorSection : Int {
@@ -60,9 +71,7 @@ class PostEditorCellFactory {
         case Media
     }
     
-    weak var datasource : PostEditorCellFactoryDatasource?
-    weak var delegate : PostEditorCellFactoryDelegate?
-    weak var localMediaManager : LocalMediaManager?
+    var input : InitPostEditorCellFactoryModel
     
     lazy var cachedCellCoordinators: [String : PostEditorCellCoordinatorProtocol] = {
         return [
@@ -74,10 +83,8 @@ class PostEditorCellFactory {
         ]
     }()
     
-    init(_ datasource : PostEditorCellFactoryDatasource, delegate : PostEditorCellFactoryDelegate, localMediaManager : LocalMediaManager?) {
-        self.datasource = datasource
-        self.delegate = delegate
-        self.localMediaManager = localMediaManager
+    init(_ input : InitPostEditorCellFactoryModel) {
+        self.input = input
     }
     
     
@@ -104,7 +111,7 @@ class PostEditorCellFactory {
             PostEditorCellDequeueModel(
                 targetIndexpath: indexPath,
                 targetTableView: tableView,
-                datasource: datasource!
+                datasource: input.datasource!
             )
         )
     }
@@ -114,39 +121,25 @@ class PostEditorCellFactory {
             PostEditorCellLoadDataModel(
                 targetIndexpath: indexPath,
                 targetCell: cell,
-                datasource: datasource!,
-                delegate: delegate,
-                localMediaManager: localMediaManager
+                datasource: input.datasource!,
+                delegate: input.delegate,
+                localMediaManager: input.localMediaManager
             )
         )
     }
     
     func getHeight(indexPath: IndexPath) -> CGFloat {
         return getCellCoordinator(PostEditorSection(rawValue: indexPath.section)!).getHeight(
-            PostEditorGetHeightModel(targetIndexpath: indexPath, datasource: datasource!)
+            PostEditorGetHeightModel(targetIndexpath: indexPath, datasource: input.datasource!)
         )
     }
     
-    func insertAttachedMediaSection(_ tableView : UITableView?) {
-        tableView?.insertSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
-        tableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
-    }
-    
-    func reloadAttachedMediaSections(_ tableView : UITableView?) {
-        tableView?.reloadSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
-        tableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
-    }
-    
-    func deleteAttachedMediaSections(_ tableView : UITableView?) {
-        tableView?.deleteSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
-        tableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
-    }
 }
 
 extension PostEditorCellFactory{
     private func getAvailablePostEditorSections() -> [PostEditorSection]{
         var sections = [PostEditorSection.Title , .Description]
-        if let _ = datasource?.getTargetPost()?.selectedMediaItems{
+        if let _ = input.datasource?.getTargetPost()?.selectedMediaItems{
             sections.append(.Media)
         }
         return sections
@@ -159,7 +152,7 @@ extension PostEditorCellFactory{
         case .Description:
             return cachedCellCoordinators[FeedEditorDescriptionTableViewCellType().cellIdentifier]!
         case .Media:
-            let attachedMedia : [LocalSelectedMediaItem] = (datasource?.getTargetPost()?.selectedMediaItems)!
+            let attachedMedia : [LocalSelectedMediaItem] = (input.datasource?.getTargetPost()?.selectedMediaItems)!
             if attachedMedia.count == 1{
                 if attachedMedia.first!.mediaType == .video{
                     return cachedCellCoordinators[SingleVideoTableViewCellType().cellIdentifier]!
@@ -170,5 +163,31 @@ extension PostEditorCellFactory{
                 return cachedCellCoordinators[MultipleMediaTableViewCellType().cellIdentifier]!
             }
         }
+    }
+}
+
+extension PostEditorCellFactory : PostObserver{
+    func removedAttachedMediaitemAtIndex(index: Int) {
+        if let coordinator = cachedCellCoordinators[MultipleMediaTableViewCellType().cellIdentifier ] as? FeedEditorAttachedMutipleMediaTableViewCellCoordinator{
+            
+            coordinator.removeSelectedMediItem(PostEditorRemoveAttachedMediaDataModel(targetIndex: index))
+        }
+    }
+    
+    func mediaAttachedToPost() {
+        input.targetTableView?.reloadData()
+        //input.targetTableView?.insertSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
+        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
+    }
+    
+    func attachedMediaUpdated() {
+        input.targetTableView?.reloadSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
+        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
+    }
+    
+    func allAttachedMediaRemovedFromPost() {
+        input.targetTableView?.reloadData()
+//        input.targetTableView?.deleteSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
+//        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
     }
 }

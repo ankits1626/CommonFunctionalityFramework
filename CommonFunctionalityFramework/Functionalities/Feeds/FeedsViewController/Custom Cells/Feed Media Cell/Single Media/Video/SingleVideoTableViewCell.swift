@@ -12,6 +12,7 @@ class SingleVideoTableViewCell: UITableViewCell {
     @IBOutlet weak var feedVideoImageView : UIImageView?
     @IBOutlet weak var feedVideoPlayButton : UIButton?
     @IBOutlet weak var containerView : UIView?
+    @IBOutlet weak var removeButton : BlockButton?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

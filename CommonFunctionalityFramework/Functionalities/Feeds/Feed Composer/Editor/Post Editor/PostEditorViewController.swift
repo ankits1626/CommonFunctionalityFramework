@@ -23,10 +23,17 @@ class PostEditorViewController: UIViewController {
             setupContainerTopbar()
         }
     }
-    private var post : EditablePostProtocol?
     @IBOutlet weak var postEditorTable : UITableView?
+    
+    lazy var postCoordinator: PostCoordinator = {
+        return PostCoordinator(postObsever: cellFactory)
+    }()
     private lazy var cellFactory: PostEditorCellFactory = {
-        return PostEditorCellFactory(self, delegate: self, localMediaManager: localMediaManager)
+        return PostEditorCellFactory(InitPostEditorCellFactoryModel(
+            datasource: self,
+            delegate: self,
+            localMediaManager: localMediaManager,
+            targetTableView: postEditorTable))
     }()
     
     private lazy var localMediaManager: LocalMediaManager = {
@@ -38,14 +45,7 @@ class PostEditorViewController: UIViewController {
     }
     
     private func setup(){
-        setupAnEmptyPostIfRequired()
         setupTableView()
-    }
-    
-    private func setupAnEmptyPostIfRequired(){
-        if post == nil{
-            post = EditablePost()
-        }
     }
     
     private func setupTableView(){
@@ -78,40 +78,28 @@ class PostEditorViewController: UIViewController {
     }
     
     private func updatePostWithSelectedMediaSection(selectedMediaItems : [LocalSelectedMediaItem]?){
-        if let unwrappedSelectedmediaItems = selectedMediaItems{
-            if post?.selectedMediaItems == nil{
-                // insert
-                post?.selectedMediaItems = selectedMediaItems
-                cellFactory.insertAttachedMediaSection(postEditorTable)
-            }else{
-                //update
-                post?.selectedMediaItems = selectedMediaItems
-                cellFactory.reloadAttachedMediaSections(postEditorTable)
-            }
-        }else{
-            if post?.selectedMediaItems != nil{
-                //delete
-                post?.selectedMediaItems = selectedMediaItems
-                cellFactory.deleteAttachedMediaSections(postEditorTable)
-            }
-        }
+        postCoordinator.updateAttachedMediaItems(selectedMediaItems)
     }
 }
 
 
 extension PostEditorViewController : PostEditorCellFactoryDatasource{
     func getTargetPost() -> EditablePostProtocol? {
-        return post
+        return postCoordinator.getCurrentPost()
     }
     
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func removeSelectedMedia(index: Int) {
+        postCoordinator.removeSelectedMedia(index: index)
+    }
+    
     func updatePostTile(title: String?) {
-        post?.title = title
+        postCoordinator.updatePostTile(title: title)
     }
     
     func updatePostDescription(decription: String?) {
-        post?.postDesciption = description
+        postCoordinator.updatePostDescription(decription: decription)
     }
     
     func reloadTextViewContainingRow(indexpath: IndexPath) {

@@ -15,10 +15,18 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
         self.delegate = inputModel.delegate
         targetIndexPath = inputModel.targetIndexpath
         if let cell = inputModel.targetCell as? FeedEditorDescriptionTableViewCell{
+            cell.selectionStyle = .none
             cell.descriptionText?.delegate = self
             cell.descriptionText?.placeholder = "Whats on your mind?"
             cell.descriptionText?.placeholderColor = .gray
-            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: UIColor.getGeneralBorderColor())
+            if let mediaItems = inputModel.datasource.getTargetPost()?.selectedMediaItems,
+            mediaItems.count > 0{
+                cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            }
+            else{
+                cell.containerView?.addBorders(edges: [.bottom,.left, .right], color: UIColor.getGeneralBorderColor())
+            }
+           
             cell.containerView?.clipsToBounds = true
         }
     }

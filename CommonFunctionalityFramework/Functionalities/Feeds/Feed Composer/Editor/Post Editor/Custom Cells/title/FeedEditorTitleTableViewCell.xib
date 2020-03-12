@@ -10,18 +10,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="188" id="KGk-i7-Jjw" customClass="FeedEditorTitleTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="217" id="KGk-i7-Jjw" customClass="FeedEditorTitleTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMw-Jx-vGc">
-                        <rect key="frame" x="16" y="0.0" width="304" height="172"/>
+                        <rect key="frame" x="16" y="0.0" width="288" height="217"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHg-3e-XyB" customClass="KMPlaceholderTextView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                <rect key="frame" x="15" y="12" width="274" height="148"/>
+                                <rect key="frame" x="15" y="12" width="258" height="193"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -33,10 +33,20 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Title"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yh6-0N-xb4" userLabel="seperator">
+                                <rect key="frame" x="15" y="215" width="258" height="2"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="RaQ-3q-Cmg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="hHg-3e-XyB" firstAttribute="leading" secondItem="UMw-Jx-vGc" secondAttribute="leading" constant="15" id="1Zo-qU-Vsv"/>
+                            <constraint firstItem="Yh6-0N-xb4" firstAttribute="top" secondItem="hHg-3e-XyB" secondAttribute="bottom" constant="10" id="AVg-K6-pdc"/>
+                            <constraint firstAttribute="trailing" secondItem="Yh6-0N-xb4" secondAttribute="trailing" constant="15" id="DIR-bk-uSY"/>
+                            <constraint firstItem="Yh6-0N-xb4" firstAttribute="leading" secondItem="UMw-Jx-vGc" secondAttribute="leading" constant="15" id="MOH-JS-qSS"/>
                             <constraint firstAttribute="bottom" secondItem="hHg-3e-XyB" secondAttribute="bottom" constant="12" id="MXu-ze-MpD"/>
                             <constraint firstAttribute="trailing" secondItem="hHg-3e-XyB" secondAttribute="trailing" constant="15" id="YCc-oB-pIu"/>
                             <constraint firstItem="hHg-3e-XyB" firstAttribute="top" secondItem="UMw-Jx-vGc" secondAttribute="top" constant="12" id="bBX-CF-aRo"/>
@@ -46,9 +56,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="UMw-Jx-vGc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TGQ-PB-WQ9"/>
-                    <constraint firstAttribute="trailing" secondItem="UMw-Jx-vGc" secondAttribute="trailing" id="fjl-D3-Mms"/>
+                    <constraint firstAttribute="trailing" secondItem="UMw-Jx-vGc" secondAttribute="trailing" constant="16" id="fjl-D3-Mms"/>
                     <constraint firstItem="UMw-Jx-vGc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ug4-8u-h3s"/>
-                    <constraint firstAttribute="bottom" secondItem="UMw-Jx-vGc" secondAttribute="bottom" constant="16" id="wE5-He-Fo3"/>
+                    <constraint firstAttribute="bottom" secondItem="UMw-Jx-vGc" secondAttribute="bottom" id="wE5-He-Fo3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -56,7 +66,7 @@
                 <outlet property="containerView" destination="UMw-Jx-vGc" id="GwB-Fw-qsY"/>
                 <outlet property="titleText" destination="hHg-3e-XyB" id="eIv-vG-E5B"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="131.91964285714286"/>
+            <point key="canvasLocation" x="137.68115942028987" y="141.62946428571428"/>
         </tableViewCell>
     </objects>
 </document>

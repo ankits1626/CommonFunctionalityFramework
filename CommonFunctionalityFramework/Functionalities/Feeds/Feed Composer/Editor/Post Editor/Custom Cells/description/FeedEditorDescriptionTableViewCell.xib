@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezA-hU-WYK">
-                        <rect key="frame" x="16" y="0.0" width="304" height="172"/>
+                        <rect key="frame" x="16" y="0.0" width="288" height="188"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivz-tI-KGT" customClass="KMPlaceholderTextView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                <rect key="frame" x="15" y="12" width="274" height="148"/>
+                                <rect key="frame" x="15" y="12" width="258" height="164"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -46,8 +46,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="ezA-hU-WYK" firstAttribute="top" secondItem="Vth-yI-PR3" secondAttribute="top" id="8g1-4P-Uk4"/>
-                    <constraint firstAttribute="trailing" secondItem="ezA-hU-WYK" secondAttribute="trailing" id="QJn-Y7-J0x"/>
-                    <constraint firstAttribute="bottom" secondItem="ezA-hU-WYK" secondAttribute="bottom" constant="16" id="W8d-rW-ile"/>
+                    <constraint firstAttribute="trailing" secondItem="ezA-hU-WYK" secondAttribute="trailing" constant="16" id="QJn-Y7-J0x"/>
+                    <constraint firstAttribute="bottom" secondItem="ezA-hU-WYK" secondAttribute="bottom" id="W8d-rW-ile"/>
                     <constraint firstItem="ezA-hU-WYK" firstAttribute="leading" secondItem="Vth-yI-PR3" secondAttribute="leading" constant="16" id="Xyk-rm-gOv"/>
                 </constraints>
             </tableViewCellContentView>
