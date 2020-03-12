@@ -32,10 +32,10 @@ let UNAUTHORIZED = 401
 typealias ApiCallCompletionHandler<T> = (APICallResult<T>) -> Void
 let REQUEST_TIME_OUT = 40
 
-protocol BaseURLProviderProtocol {
+public protocol BaseURLProviderProtocol {
     func baseURLString() -> String?
 }
-protocol TokenProviderProtocol {
+public protocol TokenProviderProtocol {
     func fetchAccessToken() -> String?
 }
 protocol DeviceInfoProviderProtocol {
@@ -203,17 +203,17 @@ public class CommonAPICall<P: DataParserProtocol> : CommonAPIProtocol {
 
 //MARK:- Providers
 
-class BaseURLProvider: BaseURLProviderProtocol {
-    func baseURLString() -> String? {
-        return nil// getServiceURL()
-    }
-}
+//class BaseURLProvider: BaseURLProviderProtocol {
+//    func baseURLString() -> String? {
+//        return nil// getServiceURL()
+//    }
+//}
 
-class TokenProvider: TokenProviderProtocol {
-    func fetchAccessToken() -> String? {
-        return nil//"Token \(getUserToken())"
-    }
-}
+//class TokenProvider: TokenProviderProtocol {
+//    func fetchAccessToken() -> String? {
+//        return nil//"Token \(getUserToken())"
+//    }
+//}
 
 class DeviceInfoProvider: DeviceInfoProviderProtocol {
     func getDeviceInfo() -> String {

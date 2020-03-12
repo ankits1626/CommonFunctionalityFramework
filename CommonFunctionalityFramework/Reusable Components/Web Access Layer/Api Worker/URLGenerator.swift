@@ -8,15 +8,13 @@
 
 import Foundation
 public class ParameterizedURLBuilder {
-    var baseURLProvider : BaseURLProviderProtocol!
-    public init(){
-        
+    var baseURLProvider : BaseURLProviderProtocol
+    public init(baseURLProvider : BaseURLProviderProtocol){
+        self.baseURLProvider = baseURLProvider
     }
     
     public func getURL(endpoint: String, parameters: [String:String]?) -> URL? {
-        if self.baseURLProvider == nil{
-            self.baseURLProvider = BaseURLProvider()
-        }
+
         if let  baseURLString = baseURLProvider.baseURLString(){
             var components = URLComponents(string: baseURLString + endpoint)!
             var queryItems = [URLQueryItem]()

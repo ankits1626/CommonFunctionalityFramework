@@ -16,9 +16,11 @@ public protocol APIRequestBuilderProtocol {
 }
 
 public class APIRequestBuilder : APIRequestBuilderProtocol {
-    var tokenProvider :  TokenProviderProtocol = TokenProvider()
+    var tokenProvider :  TokenProviderProtocol
     var deviceInfoProvider : DeviceInfoProviderProtocol = DeviceInfoProvider()
-    public init(){}
+    public init(tokenProvider :  TokenProviderProtocol){
+        self.tokenProvider = tokenProvider
+    }
     public func apiRequestWithNoAuthorizationHeader( url: URL?, method : HTTPMethod , httpBodyDict : NSDictionary?) -> URLRequest?{
         if let unwrappedURL = url{
             var apiRequest = URLRequest(url: unwrappedURL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: TimeInterval(REQUEST_TIME_OUT))
