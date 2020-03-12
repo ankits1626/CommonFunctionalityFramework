@@ -27,7 +27,7 @@ public class APIRequestBuilder : APIRequestBuilderProtocol {
             apiRequest.httpMethod = method.rawValue
             apiRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             apiRequest.addValue("keep-alive", forHTTPHeaderField: "Connection")
-            //apiRequest.addValue(getIphoneSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
+            apiRequest.addValue(tokenProvider.getDeviceSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
             apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
             if let unwrappedHttpBody = httpBodyDict{
                 if let httpBody  = (try? JSONSerialization.data(withJSONObject: unwrappedHttpBody, options: .prettyPrinted)){
@@ -46,7 +46,7 @@ public class APIRequestBuilder : APIRequestBuilderProtocol {
             apiRequest.httpMethod = method.rawValue
             apiRequest.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             apiRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-            //apiRequest.addValue(getIphoneSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
+            apiRequest.addValue(tokenProvider.getDeviceSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
             apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
             apiRequest.httpBody = httpBodyDict
             if let authorizationHeaderValue = self.tokenProvider.fetchAccessToken(){
@@ -67,7 +67,7 @@ public class APIRequestBuilder : APIRequestBuilderProtocol {
             apiRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             apiRequest.addValue("keep-alive", forHTTPHeaderField: "Connection")
             apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
-           // apiRequest.addValue(getIphoneSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
+            apiRequest.addValue(tokenProvider.getDeviceSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
             if let unwrappedHttpBody = httpBodyDict{
                 if let httpBody  = (try? JSONSerialization.data(withJSONObject: unwrappedHttpBody, options: .prettyPrinted)){
                     apiRequest.httpBody = httpBody

@@ -14,6 +14,7 @@
 		9811DD1B241AB3B2003B91FD /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD16241AB3B2003B91FD /* APIWorker.swift */; };
 		9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD17241AB3B2003B91FD /* URLGenerator.swift */; };
 		9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */; };
+		9811DD52241AC5E5003B91FD /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F02419FDB1009084D4 /* PollEditorViewController.swift */; };
@@ -117,6 +118,7 @@
 		9811DD16241AB3B2003B91FD /* APIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		9811DD17241AB3B2003B91FD /* URLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLGenerator.swift; sourceTree = "<group>"; };
 		9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnauthorizedHandler.swift; sourceTree = "<group>"; };
+		9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F02419FDB1009084D4 /* PollEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollEditorViewController.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				9868C0582410326300B12321 /* Date+ Extension.swift */,
 				9868C0922410D9E600B12321 /* UILabel + Extension.swift */,
 				9868C1042419F25700B12321 /* UIApplication+Extension.swift */,
+				9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1012,6 +1015,7 @@
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */,
 				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,
+				9811DD52241AC5E5003B91FD /* UIDevice+Extension.swift in Sources */,
 				9868C045240F9D6C00B12321 /* MultipleMediaTableViewCellCoordinator.swift in Sources */,
 				9811DD05241A9ECB003B91FD /* BlockButton.swift in Sources */,
 				9868C0F9241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift in Sources */,

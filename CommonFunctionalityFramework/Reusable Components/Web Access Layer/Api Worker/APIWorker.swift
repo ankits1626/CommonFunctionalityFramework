@@ -6,7 +6,7 @@
 //  Copyright © 2017 Nikhil. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public enum HTTPMethod: String {
     case DELETE = "DELETE"
@@ -37,6 +37,7 @@ public protocol BaseURLProviderProtocol {
 }
 public protocol TokenProviderProtocol {
     func fetchAccessToken() -> String?
+    func getDeviceSelectedLanguage() -> String
 }
 protocol DeviceInfoProviderProtocol {
     func getDeviceInfo() -> String
@@ -196,17 +197,6 @@ public class CommonAPICall<P: DataParserProtocol> : CommonAPIProtocol {
 
 //MARK:- Providers
 
-//class BaseURLProvider: BaseURLProviderProtocol {
-//    func baseURLString() -> String? {
-//        return nil// getServiceURL()
-//    }
-//}
-
-//class TokenProvider: TokenProviderProtocol {
-//    func fetchAccessToken() -> String? {
-//        return nil//"Token \(getUserToken())"
-//    }
-//}
 
 class DeviceInfoProvider: DeviceInfoProviderProtocol {
     func getDeviceInfo() -> String {
@@ -218,10 +208,10 @@ class DeviceInfoProvider: DeviceInfoProviderProtocol {
         let buildVersion = build as! String
       
         //OS Version
-        let OSVersion =  "OS" //UIDevice.current.systemVersion
+        let OSVersion = UIDevice.current.systemVersion
         
         //iOS Model and Make
-        let deviceType =  "device type" //UIDevice.current.deviceType.rawValue
+        let deviceType = UIDevice.current.deviceType.rawValue
         return "iOS | " + deviceType + " | " + OSVersion + " | " + appVersion + " | " + buildVersion 
     }
 }
