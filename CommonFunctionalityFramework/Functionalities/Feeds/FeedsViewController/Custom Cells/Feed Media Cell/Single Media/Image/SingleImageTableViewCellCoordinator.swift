@@ -37,11 +37,11 @@ extension SingleImageTableViewCellCoordinator : PostEditorCellCoordinatorProtoco
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? SingleImageTableViewCell{
             cell.containerView?.backgroundColor = .green
-            //let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-//            if let mediaItem = feed.getMediaList()?.first,
-//                let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
-//                inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: mediaItemEndpoint)
-//            }
+            if let mediaAsset = inputModel.datasource.getTargetPost()?.selectedMediaItems?.first?.asset{
+                inputModel.localMediaManager?.fetchImageForAsset(asset: mediaAsset, size: cell.feedImageView!.bounds.size, completion: { (_, fetchedImage) in
+                    cell.feedImageView?.image = fetchedImage
+                })
+            }
             cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
         }
     }

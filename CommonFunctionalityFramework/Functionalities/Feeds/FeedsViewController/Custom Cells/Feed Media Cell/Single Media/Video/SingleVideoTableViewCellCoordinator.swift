@@ -32,6 +32,11 @@ extension SingleVideoTableViewCellCoordinator : PostEditorCellCoordinatorProtoco
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? SingleVideoTableViewCell{
             cell.containerView?.backgroundColor = .yellow
+            if let mediaAsset = inputModel.datasource.getTargetPost()?.selectedMediaItems?.first?.asset{
+                inputModel.localMediaManager?.fetchImageForAsset(asset: mediaAsset, size: cell.feedVideoImageView!.bounds.size, completion: { (_, fetchedImage) in
+                    cell.feedVideoImageView?.image = fetchedImage
+                })
+            }
             cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
         }
     }

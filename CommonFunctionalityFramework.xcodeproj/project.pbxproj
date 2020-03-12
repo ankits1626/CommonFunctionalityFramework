@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F02419FDB1009084D4 /* PollEditorViewController.swift */; };
@@ -89,6 +90,7 @@
 		98B02FBE241A50DA00CB8690 /* GroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B02FB2241A50DA00CB8690 /* GroupsViewController.xib */; };
 		98B02FBF241A50DA00CB8690 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02FB4241A50DA00CB8690 /* GroupsViewController.swift */; };
 		98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02FC1241A663700CB8690 /* EditablePost.swift */; };
+		98B02FC6241A776800CB8690 /* LocalMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02FC5241A776800CB8690 /* LocalMediaManager.swift */; };
 		98B90DE4240CACD90013E9D2 /* CommonFunctionalityFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E07240CAD010013E9D2 /* FeedsViewController.swift */; };
 		98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90E08240CAD010013E9D2 /* FeedsViewController.xib */; };
@@ -104,6 +106,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorLocalMediaCollectionCoordinator.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F02419FDB1009084D4 /* PollEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollEditorViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +191,7 @@
 		98B02FB4241A50DA00CB8690 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		98B02FB5241A50DA00CB8690 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/GroupsViewController.strings; sourceTree = "<group>"; };
 		98B02FC1241A663700CB8690 /* EditablePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditablePost.swift; sourceTree = "<group>"; };
+		98B02FC5241A776800CB8690 /* LocalMediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMediaManager.swift; sourceTree = "<group>"; };
 		98B90DDF240CACD90013E9D2 /* CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonFunctionalityFramework.h; sourceTree = "<group>"; };
 		98B90DE3240CACD90013E9D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -601,6 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				98BC8A23241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift */,
+				9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */,
 			);
 			path = multiple;
 			sourceTree = "<group>";
@@ -643,8 +648,8 @@
 			children = (
 				98B02FA3241A50DA00CB8690 /* AssetGridViewController.strings */,
 				98B02FA5241A50DA00CB8690 /* Custom Cell */,
-				98B02FA8241A50DA00CB8690 /* AssetGridViewController.xib */,
 				98B02FAA241A50DA00CB8690 /* AssetGridViewController.swift */,
+				98B02FA8241A50DA00CB8690 /* AssetGridViewController.xib */,
 			);
 			path = "Asset Grid";
 			sourceTree = "<group>";
@@ -686,6 +691,25 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		98B02FC3241A772300CB8690 /* Reusable Components */ = {
+			isa = PBXGroup;
+			children = (
+				98B02FC4241A774000CB8690 /* LocalMediaManager */,
+				9868C0DA2412417E00B12321 /* UI Components */,
+				9868C1012419EDBC00B12321 /* SlideInPresentationManager */,
+				9868C1062419F2ED00B12321 /* ErrorDisplayer */,
+			);
+			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		98B02FC4241A774000CB8690 /* LocalMediaManager */ = {
+			isa = PBXGroup;
+			children = (
+				98B02FC5241A776800CB8690 /* LocalMediaManager.swift */,
+			);
+			path = LocalMediaManager;
+			sourceTree = "<group>";
+		};
 		98B90DD5240CACD90013E9D2 = {
 			isa = PBXGroup;
 			children = (
@@ -706,9 +730,7 @@
 		98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
 			isa = PBXGroup;
 			children = (
-				9868C1062419F2ED00B12321 /* ErrorDisplayer */,
-				9868C1012419EDBC00B12321 /* SlideInPresentationManager */,
-				9868C0DA2412417E00B12321 /* UI Components */,
+				98B02FC3241A772300CB8690 /* Reusable Components */,
 				9868C08F2410C17B00B12321 /* Theme */,
 				9868C05D2410A87D00B12321 /* Workers */,
 				9868C0552410313900B12321 /* Utitlities */,
@@ -948,6 +970,7 @@
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
+				98B02FC6241A776800CB8690 /* LocalMediaManager.swift in Sources */,
 				9868C1032419EDCD00B12321 /* SlideInPresentationManager.swift in Sources */,
 				9868C0592410326300B12321 /* Date+ Extension.swift in Sources */,
 				9868C047240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift in Sources */,
@@ -976,6 +999,7 @@
 				9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */,
 				9868C1052419F25700B12321 /* UIApplication+Extension.swift in Sources */,
 				983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */,
+				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,
 				98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */,

@@ -14,7 +14,7 @@ protocol PostEditorCellFactoryDatasource : class{
 
 protocol PostEditorCellFactoryDelegate : class {
     func reloadTextViewContainingRow(indexpath : IndexPath)
-    func updatePosTile( title : String?)
+    func updatePostTile( title : String?)
     func updatePostDescription( decription: String?)
 }
 
@@ -29,6 +29,7 @@ struct PostEditorCellLoadDataModel {
     var targetCell : UITableViewCell
     var datasource: PostEditorCellFactoryDatasource
     var delegate : PostEditorCellFactoryDelegate?
+    var localMediaManager : LocalMediaManager?
 }
 
 struct PostEditorGetHeightModel {
@@ -61,6 +62,7 @@ class PostEditorCellFactory {
     
     weak var datasource : PostEditorCellFactoryDatasource?
     weak var delegate : PostEditorCellFactoryDelegate?
+    weak var localMediaManager : LocalMediaManager?
     
     lazy var cachedCellCoordinators: [String : PostEditorCellCoordinatorProtocol] = {
         return [
@@ -68,13 +70,14 @@ class PostEditorCellFactory {
             FeedEditorDescriptionTableViewCellType().cellIdentifier : FeedEditorDescriptionTableViewCellCoordinator(),
             SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
-            MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
+            MultipleMediaTableViewCellType().cellIdentifier : FeedEditorAttachedMutipleMediaTableViewCellCoordinator(),
         ]
     }()
     
-    init(_ datasource : PostEditorCellFactoryDatasource, delegate : PostEditorCellFactoryDelegate) {
+    init(_ datasource : PostEditorCellFactoryDatasource, delegate : PostEditorCellFactoryDelegate, localMediaManager : LocalMediaManager?) {
         self.datasource = datasource
         self.delegate = delegate
+        self.localMediaManager = localMediaManager
     }
     
     
@@ -112,7 +115,8 @@ class PostEditorCellFactory {
                 targetIndexpath: indexPath,
                 targetCell: cell,
                 datasource: datasource!,
-                delegate: delegate
+                delegate: delegate,
+                localMediaManager: localMediaManager
             )
         )
     }

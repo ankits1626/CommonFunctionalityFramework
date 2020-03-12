@@ -26,9 +26,12 @@ class PostEditorViewController: UIViewController {
     private var post : EditablePostProtocol?
     @IBOutlet weak var postEditorTable : UITableView?
     private lazy var cellFactory: PostEditorCellFactory = {
-        return PostEditorCellFactory(self, delegate: self)
+        return PostEditorCellFactory(self, delegate: self, localMediaManager: localMediaManager)
     }()
     
+    private lazy var localMediaManager: LocalMediaManager = {
+        return LocalMediaManager()
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -67,6 +70,7 @@ class PostEditorViewController: UIViewController {
     
     @objc private func initiateMediaAttachment(){
         let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
+        assetGridVC.localMediaManager = localMediaManager
         assetGridVC.assetSelectionCompletion = { (selectedMediaItems) in
             self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
         }
@@ -102,7 +106,7 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
-    func updatePosTile(title: String?) {
+    func updatePostTile(title: String?) {
         post?.title = title
     }
     
