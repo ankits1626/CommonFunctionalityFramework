@@ -12,7 +12,7 @@ class FeedsViewController: UIViewController {
     @IBOutlet private weak var whatsInYourMindView : UIView?
     @IBOutlet private weak var cameraContainerViewView : UIView?
     
-    var feedFetcher: CFFNetwrokRequestCoordinatorProtocol!
+    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
     
@@ -30,8 +30,19 @@ class FeedsViewController: UIViewController {
     }
     
     private func loadFeeds(){
-        feedFetcher.getFeeds(request: FetchFeedRequest(nextPageUrl: nil)) { (fetchedFeeds) in
-            self.handleFetchedFeedsResult(fetchedfeeds: fetchedFeeds)
+        FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
+        nextPageUrl: nil) { (result) in
+            DispatchQueue.main.async {
+                switch result{
+                    
+                case .Success(let result):
+                    self.handleFetchedFeedsResult(fetchedfeeds: result)
+                case .SuccessWithNoResponseData:
+                    ErrorDisplayer.showError(errorMsg: "No record Found") { (_) in}
+                case .Failure(let error):
+                    ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                }
+            }
         }
     }
     

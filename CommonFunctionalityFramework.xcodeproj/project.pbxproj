@@ -15,6 +15,7 @@
 		9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD17241AB3B2003B91FD /* URLGenerator.swift */; };
 		9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */; };
 		9811DD52241AC5E5003B91FD /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */; };
+		9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD54241AC860003B91FD /* FeedFetcher.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F02419FDB1009084D4 /* PollEditorViewController.swift */; };
@@ -119,6 +120,7 @@
 		9811DD17241AB3B2003B91FD /* URLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLGenerator.swift; sourceTree = "<group>"; };
 		9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnauthorizedHandler.swift; sourceTree = "<group>"; };
 		9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		9811DD54241AC860003B91FD /* FeedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetcher.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F02419FDB1009084D4 /* PollEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollEditorViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,14 @@
 				9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */,
 			);
 			path = "Api Worker";
+			sourceTree = "<group>";
+		};
+		9811DD53241AC84D003B91FD /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				9811DD54241AC860003B91FD /* FeedFetcher.swift */,
+			);
+			path = Worker;
 			sourceTree = "<group>";
 		};
 		983500E92419FC75009084D4 /* Editor */ = {
@@ -789,6 +799,7 @@
 		98B90DEC240CAD010013E9D2 /* FeedsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9811DD53241AC84D003B91FD /* Worker */,
 				9868C04C240FE2D700B12321 /* FeedSectionFactory */,
 				9868BFFE240F584500B12321 /* Models */,
 				98B90DED240CAD010013E9D2 /* Custom Cells */,
@@ -1045,6 +1056,7 @@
 				9868C0B92412100B00B12321 /* MediaItemCollectionViewCell.swift in Sources */,
 				98B02FBF241A50DA00CB8690 /* GroupsViewController.swift in Sources */,
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
+				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,
 				9868C041240F9D3900B12321 /* SingleImageTableViewCellCoordinator.swift in Sources */,
 			);

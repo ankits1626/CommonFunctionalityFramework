@@ -27,6 +27,7 @@ public struct FetchFeedRequest{
 //}
 
 public protocol CFFNetwrokRequestCoordinatorProtocol {
-    func getFeeds(request : FetchFeedRequest, completion:@escaping(_ fetchedFeedResult : FetchedFeedModel)-> Void)
-    //func getFeedDetail(request: FeedDetailFetchRequest, completion : @escaping(_ fetchedFeedResult : FetchedFeedModel)-> Void)
+    func getBaseUrlProvider() -> BaseURLProviderProtocol
+    func getLogoutHandler() -> LogoutResponseHandler
+    func getTokenProvider() -> TokenProviderProtocol
 }

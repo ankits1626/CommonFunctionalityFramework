@@ -32,7 +32,7 @@ public class FeedsCoordinator {
     
     public func getFeedsView(_ inputModel : GetFeedsViewModel) -> UIViewController{
         let feedsVc =  FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
-        feedsVc.feedFetcher = inputModel.networkRequestCoordinator
+        feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         feedsVc.feedCoordinatorDeleagate = inputModel.feedCoordinatorDelegate
         return feedsVc
