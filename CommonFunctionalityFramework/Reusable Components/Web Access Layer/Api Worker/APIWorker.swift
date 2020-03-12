@@ -115,31 +115,24 @@ public func ==(lhs: APIError, rhs: APIError) -> Bool{
     }
 }
 
+public protocol LogoutResponseHandler{
+    func handleLogoutResponse()
+}
+
 public class CommonAPICall<P: DataParserProtocol> : CommonAPIProtocol {
     typealias ParserType = P
     var apiRequestProvider: APIRequestGeneratorProtocol
     var dataParser: P
+    var logouthandler : LogoutResponseHandler
     
-    public init(apiRequestProvider: APIRequestGeneratorProtocol, dataParser: P) {
+    public init(apiRequestProvider: APIRequestGeneratorProtocol, dataParser: P, logouthandler : LogoutResponseHandler) {
         self.apiRequestProvider = apiRequestProvider
         self.dataParser = dataParser
+        self.logouthandler = logouthandler
     }
     
-    func logoutAppforAuthondicationError () {
-        DispatchQueue.main.async {
-//            saveUserToken(accessToken: "")
-//            set_helplinePannel(false)
-//            setActivityTracker("")
-//            set_trackernamefromapi("")
-//            if let navigationController = appdelegate.window?.rootViewController as? UINavigationController {
-//                navigationController.popToRootViewController(animated: true)
-//            } else {
-//                appdelegate.window?
-//                    .rootViewController?
-//                    .navigationController?
-//                    .popToRootViewController(animated: true)
-//            }
-        }
+    private func logoutAppforAuthondicationError () {
+        logouthandler.handleLogoutResponse()
     }
 
     public func callAPI(completionHandler: @escaping (APICallResult<P.ResultType>) -> Void)  {
