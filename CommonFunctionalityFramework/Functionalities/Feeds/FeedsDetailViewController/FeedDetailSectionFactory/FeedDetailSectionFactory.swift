@@ -30,6 +30,8 @@ class FeedDetailSectionFactory {
             SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
+            PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
+            ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
             FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
             FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator()
         ]
@@ -154,6 +156,9 @@ extension FeedDetailSectionFactory{
             fallthrough
         case .MoreThanTwoMediItemPresent:
             rows.append(MultipleMediaTableViewCellType())
+        }
+        feed.getPollOptions()?.forEach { (_) in
+            rows.append(PollOptionsTableViewCellType())
         }
         map[.FeedInfo] = rows
         if feedDataSource.getFeedItem().getFeedDescription() != nil{
