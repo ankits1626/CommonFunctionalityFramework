@@ -35,6 +35,17 @@ struct Poll {
 }
 
 public struct RawFeed : FeedsItemProtocol {
+    func getPollOptions() -> [PollOption]? {
+        var options = [PollOption]()
+        
+        if let rawOptions = rawFeedDictionary["answers"] as? [[String : Any]]{
+            rawOptions.forEach { (aRwaOption) in
+                options.append(PollOption(aRwaOption))
+            }
+        }
+        return options.isEmpty ? nil : options
+    }
+    
     var feedIdentifier: Int64{
         return rawFeedDictionary["id"] as? Int64 ?? -1
     }
@@ -61,7 +72,12 @@ public struct RawFeed : FeedsItemProtocol {
     }
     
     func getFeedType() -> FeedType {
-        return .Post
+        if let type = rawFeedDictionary["post_type"] as? Int,
+            let pollType = FeedType(rawValue: type){
+            return pollType
+        }else{
+            return .Post
+        }
     }
     
     private func getFeedAuthor() -> FeedAuthor?{

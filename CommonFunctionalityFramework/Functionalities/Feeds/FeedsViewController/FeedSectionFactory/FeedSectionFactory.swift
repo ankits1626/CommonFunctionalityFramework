@@ -81,10 +81,20 @@ class FeedSectionFactory{
     }
     
     func getFeedContentCoordinator(feedType : FeedType) -> FeedContentCoordinatorProtocol {
-        return PostFeedContentCoordinator(
-            feedsDatasource: feedsDatasource,
-            mediaFetcher: mediaFetcher,
-            tableview: targetTableView
-        )
+        switch feedType {
+        case .Poll:
+            return PollFeedContentCoordinator(
+                feedsDatasource: feedsDatasource,
+                mediaFetcher: mediaFetcher,
+                tableview: targetTableView
+            )
+        case .Post:
+            return PostFeedContentCoordinator(
+                feedsDatasource: feedsDatasource,
+                mediaFetcher: mediaFetcher,
+                tableview: targetTableView
+            )
+        
+        }
     }
 }

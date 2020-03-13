@@ -113,6 +113,11 @@
 		98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A23241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift */; };
 		98C64899241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C64897241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift */; };
 		98C6489A241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C64898241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib */; };
+		98C6489D241B87A3006689E9 /* PostFeedContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6489C241B87A3006689E9 /* PostFeedContentCoordinator.swift */; };
+		98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6489F241B87D3006689E9 /* PollFeedContentCoordinator.swift */; };
+		98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648A2241B88F5006689E9 /* PollOptionsTableViewCell.swift */; };
+		98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648A3241B88F5006689E9 /* PollOptionsTableViewCell.xib */; };
+		98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648A7241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift */; };
 		A7F66EFD913B6589143437B5 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -229,6 +234,11 @@
 		98BC8A23241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorAttachedMediaTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		98C64897241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuOptionTableViewCell.swift; sourceTree = "<group>"; };
 		98C64898241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingMenuOptionTableViewCell.xib; sourceTree = "<group>"; };
+		98C6489C241B87A3006689E9 /* PostFeedContentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedContentCoordinator.swift; sourceTree = "<group>"; };
+		98C6489F241B87D3006689E9 /* PollFeedContentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollFeedContentCoordinator.swift; sourceTree = "<group>"; };
+		98C648A2241B88F5006689E9 /* PollOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsTableViewCell.swift; sourceTree = "<group>"; };
+		98C648A3241B88F5006689E9 /* PollOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollOptionsTableViewCell.xib; sourceTree = "<group>"; };
+		98C648A7241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -425,6 +435,8 @@
 		9868C00F240F774900B12321 /* Polls Cells */ = {
 			isa = PBXGroup;
 			children = (
+				98C648A6241B88FA006689E9 /* PollSubmitButtonCell */,
+				98C648A1241B88DA006689E9 /* PollOptionsCell */,
 			);
 			path = "Polls Cells";
 			sourceTree = "<group>";
@@ -481,6 +493,8 @@
 		9868C04F2410085D00B12321 /* FeedContentCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				98C6489E241B87B6006689E9 /* PollFeedContentCoordinator */,
+				98C6489B241B8796006689E9 /* PostFeedContentCoordinator */,
 				9868C0502410086600B12321 /* FeedContentCoordinatorProtocol.swift */,
 			);
 			path = FeedContentCoordinator;
@@ -930,6 +944,39 @@
 			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
+		98C6489B241B8796006689E9 /* PostFeedContentCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				98C6489C241B87A3006689E9 /* PostFeedContentCoordinator.swift */,
+			);
+			path = PostFeedContentCoordinator;
+			sourceTree = "<group>";
+		};
+		98C6489E241B87B6006689E9 /* PollFeedContentCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				98C6489F241B87D3006689E9 /* PollFeedContentCoordinator.swift */,
+			);
+			path = PollFeedContentCoordinator;
+			sourceTree = "<group>";
+		};
+		98C648A1241B88DA006689E9 /* PollOptionsCell */ = {
+			isa = PBXGroup;
+			children = (
+				98C648A2241B88F5006689E9 /* PollOptionsTableViewCell.swift */,
+				98C648A7241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift */,
+				98C648A3241B88F5006689E9 /* PollOptionsTableViewCell.xib */,
+			);
+			path = PollOptionsCell;
+			sourceTree = "<group>";
+		};
+		98C648A6241B88FA006689E9 /* PollSubmitButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PollSubmitButtonCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1021,6 +1068,7 @@
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
 				9868C017240F786600B12321 /* FeedTitleTableViewCell.xib in Resources */,
 				98BC8A0F241A1775007C175D /* FeedEditorTitleTableViewCell.xib in Resources */,
+				98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */,
 				9868C1002419EB2D00B12321 /* FeedsComposerDrawer.xib in Resources */,
 				9868C0BA2412100B00B12321 /* MediaItemCollectionViewCell.xib in Resources */,
 				983500F32419FDB1009084D4 /* PollEditorViewController.xib in Resources */,
@@ -1115,13 +1163,17 @@
 				9868C0F9241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift in Sources */,
 				9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */,
 				98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */,
+				98C6489D241B87A3006689E9 /* PostFeedContentCoordinator.swift in Sources */,
 				9811DD02241A885F003B91FD /* PostCoordinator.swift in Sources */,
 				9868C0F22419488000B12321 /* FeedCommentTableViewCell.swift in Sources */,
 				98B02FBA241A50DA00CB8690 /* AssetGridViewController.swift in Sources */,
 				9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */,
 				9868C1052419F25700B12321 /* UIApplication+Extension.swift in Sources */,
 				983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */,
+				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,
+				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
+				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,

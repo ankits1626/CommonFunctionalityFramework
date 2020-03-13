@@ -35,6 +35,10 @@ extension UIFont{
 }
 
 extension UIColor{
+    static var optionContainerBackGroundColor:  UIColor {
+        return UIColor(red: 241/255.0, green: 251/255.0, blue: 255/255.0, alpha: 0.55)
+    }
+    
     static func getTitleTextColor() -> UIColor {
         return UIColor(red: 37/255.0, green: 37/255.0, blue: 37/255.0, alpha: 1.0)
     }

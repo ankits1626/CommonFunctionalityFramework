@@ -47,6 +47,16 @@ struct FeedImageItem :  FeedMediaItemProtocol{
     }
 }
 
+struct PollOption {
+    var title : String{
+        return rawPollOption["answer_text"] as? String ?? ""
+    }
+    private let rawPollOption : [String : Any]
+    init(_ rawPollOption : [String : Any]) {
+        self.rawPollOption = rawPollOption
+    }
+}
+
 protocol FeedsItemProtocol {
     init(_ rawfeedItem : [String:Any])
     var feedIdentifier : Int64{get}
@@ -64,11 +74,12 @@ protocol FeedsItemProtocol {
     func getPollState() -> PollState
     func getMediaCountState() -> MediaCountState
     func getFeedType() -> FeedType
+    func getPollOptions() -> [PollOption]?
 }
 
-enum FeedType{
-    case Poll
-    case Post
+enum FeedType : Int{
+    case Poll = 2
+    case Post = 1
 }
 
 enum PollState {
