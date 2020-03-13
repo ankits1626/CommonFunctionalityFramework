@@ -14,6 +14,7 @@ class PollEditorViewController: UIViewController {
             setupContainerTopbar()
         }
     }
+    @IBOutlet weak var pollEditorTable : UITableView?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

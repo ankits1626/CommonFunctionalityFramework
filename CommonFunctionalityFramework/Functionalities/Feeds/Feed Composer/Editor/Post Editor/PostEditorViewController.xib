@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostEditorViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
+                <outlet property="createButton" destination="4X8-KT-Qfy" id="hCr-em-hvN"/>
                 <outlet property="postEditorTable" destination="KdF-ud-HFa" id="Zh3-ec-kQF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,6 +37,9 @@
                                         <constraint firstAttribute="height" constant="45" id="9Iz-Ik-LoE"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="createButtonPressed" destination="-1" eventType="touchUpInside" id="kbh-Jg-S4F"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

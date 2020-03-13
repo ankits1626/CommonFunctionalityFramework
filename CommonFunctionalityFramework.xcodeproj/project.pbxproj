@@ -118,6 +118,10 @@
 		98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648A2241B88F5006689E9 /* PollOptionsTableViewCell.swift */; };
 		98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648A3241B88F5006689E9 /* PollOptionsTableViewCell.xib */; };
 		98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648A7241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift */; };
+		98C648B3241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648B1241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift */; };
+		98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648B2241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib */; };
+		98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648B5241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift */; };
+		98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648B8241BC952006689E9 /* PostPublisher.swift */; };
 		A7F66EFD913B6589143437B5 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -239,6 +243,10 @@
 		98C648A2241B88F5006689E9 /* PollOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsTableViewCell.swift; sourceTree = "<group>"; };
 		98C648A3241B88F5006689E9 /* PollOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollOptionsTableViewCell.xib; sourceTree = "<group>"; };
 		98C648A7241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		98C648B1241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorPollOptionTableViewCell.swift; sourceTree = "<group>"; };
+		98C648B2241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedEditorPollOptionTableViewCell.xib; sourceTree = "<group>"; };
+		98C648B5241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorPollOptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		98C648B8241BC952006689E9 /* PostPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPublisher.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -346,6 +354,7 @@
 		983500EB2419FC87009084D4 /* Post Editor */ = {
 			isa = PBXGroup;
 			children = (
+				98C648B7241BC8FC006689E9 /* PostPublisher */,
 				9811DD00241A8847003B91FD /* PostCoordinator */,
 				98B02FC0241A662900CB8690 /* model */,
 				98BC8A1C241A19C9007C175D /* PostEditorCellFactory */,
@@ -884,6 +893,7 @@
 		98BC8A0B241A171E007C175D /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				98C648B0241BB4C1006689E9 /* EditablePollOptions */,
 				98BC8A1B241A17C5007C175D /* attached document */,
 				98BC8A16241A179D007C175D /* attached media */,
 				98BC8A11241A1783007C175D /* description */,
@@ -975,6 +985,24 @@
 			children = (
 			);
 			path = PollSubmitButtonCell;
+			sourceTree = "<group>";
+		};
+		98C648B0241BB4C1006689E9 /* EditablePollOptions */ = {
+			isa = PBXGroup;
+			children = (
+				98C648B1241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift */,
+				98C648B2241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib */,
+				98C648B5241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift */,
+			);
+			path = EditablePollOptions;
+			sourceTree = "<group>";
+		};
+		98C648B7241BC8FC006689E9 /* PostPublisher */ = {
+			isa = PBXGroup;
+			children = (
+				98C648B8241BC952006689E9 /* PostPublisher.swift */,
+			);
+			path = PostPublisher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1074,6 +1102,7 @@
 				983500F32419FDB1009084D4 /* PollEditorViewController.xib in Resources */,
 				98B02FBC241A50DA00CB8690 /* GroupCell.xib in Resources */,
 				9868C0F32419488000B12321 /* FeedCommentTableViewCell.xib in Resources */,
+				98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
 				98B02FB9241A50DA00CB8690 /* AssetGridViewController.xib in Resources */,
 				983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */,
 				98BC8A15241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib in Resources */,
@@ -1128,6 +1157,7 @@
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
 				9868C0572410315E00B12321 /* CommonFrameworkUtility.swift in Sources */,
+				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
 				9868C0932410D9E600B12321 /* UILabel + Extension.swift in Sources */,
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
@@ -1155,6 +1185,7 @@
 				9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
+				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
 				9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */,
 				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,
 				9811DD52241AC5E5003B91FD /* UIDevice+Extension.swift in Sources */,
@@ -1193,6 +1224,7 @@
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
 				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,
+				98C648B3241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift in Sources */,
 				9868C041240F9D3900B12321 /* SingleImageTableViewCellCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

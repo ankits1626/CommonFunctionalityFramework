@@ -17,6 +17,7 @@ protocol PostEditorCellFactoryDelegate : class {
     func updatePostTile( title : String?)
     func updatePostDescription( decription: String?)
     func removeSelectedMedia(index : Int)
+    func savePostOption(index : Int, option: String?)
 }
 
 struct PostEditorCellDequeueModel {
@@ -69,6 +70,7 @@ class PostEditorCellFactory {
         case Title = 0
         case Description
         case Media
+        case Poll
     }
     
     var input : InitPostEditorCellFactoryModel
@@ -80,6 +82,7 @@ class PostEditorCellFactory {
             SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : FeedEditorAttachedMutipleMediaTableViewCellCoordinator(),
+            FeedEditorPollOptionTableViewCellType().cellIdentifier : FeedEditorPollOptionTableViewCellCoordinator()
         ]
     }()
     
@@ -103,11 +106,14 @@ class PostEditorCellFactory {
     }
     
     func numberOfRowsInSection(_ section : Int) -> Int {
+        if getCurrentSection(section) == .Poll{
+            return 4
+        }
         return 1
     }
     
     func getCell(indexPath : IndexPath, tableView: UITableView) -> UITableViewCell {
-        return getCellCoordinator(PostEditorSection(rawValue: indexPath.section)!).getCell(
+        return getCellCoordinator(getCurrentSection(indexPath.section)).getCell(
             PostEditorCellDequeueModel(
                 targetIndexpath: indexPath,
                 targetTableView: tableView,
@@ -117,7 +123,7 @@ class PostEditorCellFactory {
     }
     
     func configureCell(cell: UITableViewCell, indexPath: IndexPath) {
-        getCellCoordinator(PostEditorSection(rawValue: indexPath.section)!).loadDataCell(
+        getCellCoordinator(getCurrentSection(indexPath.section)).loadDataCell(
             PostEditorCellLoadDataModel(
                 targetIndexpath: indexPath,
                 targetCell: cell,
@@ -129,16 +135,31 @@ class PostEditorCellFactory {
     }
     
     func getHeight(indexPath: IndexPath) -> CGFloat {
-        return getCellCoordinator(PostEditorSection(rawValue: indexPath.section)!).getHeight(
+        return getCellCoordinator(getCurrentSection(indexPath.section)).getHeight(
             PostEditorGetHeightModel(targetIndexpath: indexPath, datasource: input.datasource!)
         )
+    }
+    
+    private func getCurrentSection(_ index : Int) -> PostEditorSection{
+        let availableSections = getAvailablePostEditorSections()
+        return availableSections[index]
     }
     
 }
 
 extension PostEditorCellFactory{
     private func getAvailablePostEditorSections() -> [PostEditorSection]{
-        var sections = [PostEditorSection.Title , .Description]
+        var sections = [PostEditorSection.Title]
+        
+        if let postType = input.datasource?.getTargetPost()?.postType{
+            switch postType {
+            case .Poll:
+                sections.append(PostEditorCellFactory.PostEditorSection.Poll)
+            case .Post:
+                sections.append(.Description)
+            }
+        }
+        
         if let _ = input.datasource?.getTargetPost()?.selectedMediaItems{
             sections.append(.Media)
         }
@@ -151,6 +172,8 @@ extension PostEditorCellFactory{
             return cachedCellCoordinators[FeedEditorTitleTableViewCellType().cellIdentifier]!
         case .Description:
             return cachedCellCoordinators[FeedEditorDescriptionTableViewCellType().cellIdentifier]!
+        case .Poll:
+            return cachedCellCoordinators[FeedEditorPollOptionTableViewCellType().cellIdentifier]!
         case .Media:
             let attachedMedia : [LocalSelectedMediaItem] = (input.datasource?.getTargetPost()?.selectedMediaItems)!
             if attachedMedia.count == 1{
@@ -169,7 +192,6 @@ extension PostEditorCellFactory{
 extension PostEditorCellFactory : PostObserver{
     func removedAttachedMediaitemAtIndex(index: Int) {
         if let coordinator = cachedCellCoordinators[MultipleMediaTableViewCellType().cellIdentifier ] as? FeedEditorAttachedMutipleMediaTableViewCellCoordinator{
-            
             coordinator.removeSelectedMediItem(PostEditorRemoveAttachedMediaDataModel(targetIndex: index))
         }
     }
@@ -187,7 +209,5 @@ extension PostEditorCellFactory : PostObserver{
     
     func allAttachedMediaRemovedFromPost() {
         input.targetTableView?.reloadData()
-//        input.targetTableView?.deleteSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
-//        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
     }
 }

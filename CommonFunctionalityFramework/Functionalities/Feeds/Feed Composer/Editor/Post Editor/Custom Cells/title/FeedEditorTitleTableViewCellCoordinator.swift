@@ -14,10 +14,17 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         self.delegate = inputModel.delegate
         targetIndexPath = inputModel.targetIndexpath
+        let post = inputModel.datasource.getTargetPost()
         if let cell = inputModel.targetCell as? FeedEditorTitleTableViewCell{
             cell.selectionStyle = .none
             cell.titleText?.delegate = self
-            cell.titleText?.placeholder = "Title"
+            switch post!.postType {
+            case .Poll:
+                cell.titleText?.placeholder = "Ask something"
+            case .Post:
+                cell.titleText?.placeholder = "Title"
+            }
+            
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
             cell.containerView?.clipsToBounds = true

@@ -11,8 +11,11 @@ import UIKit
 protocol EditablePostProtocol {
     var title : String? {set get}
     var postDesciption : String? {set get}
+    var pollOptions : [String]? {get set}
     //var attachedMedia: [FeedMediaItemProtocol]?{set get}
     var selectedMediaItems : [LocalSelectedMediaItem]? {set get}
+    var postType : FeedType {set get}
+    func getNetworkPostableFormat() -> [String : Any]
 }
 
 
@@ -23,10 +26,12 @@ class PostEditorViewController: UIViewController {
             setupContainerTopbar()
         }
     }
+    var postType: FeedType!
     @IBOutlet weak var postEditorTable : UITableView?
-    
+    @IBOutlet weak var createButton : UIButton?
+    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     lazy var postCoordinator: PostCoordinator = {
-        return PostCoordinator(postObsever: cellFactory)
+        return PostCoordinator(postObsever: cellFactory, postType: postType)
     }()
     private lazy var cellFactory: PostEditorCellFactory = {
         return PostEditorCellFactory(InitPostEditorCellFactoryModel(
@@ -44,8 +49,10 @@ class PostEditorViewController: UIViewController {
         setup()
     }
     
+    
     private func setup(){
         setupTableView()
+        setupCreateButton()
     }
     
     private func setupTableView(){
@@ -58,14 +65,32 @@ class PostEditorViewController: UIViewController {
         postEditorTable?.reloadData()
     }
     
+    private func setupCreateButton(){
+        switch postType! {
+        case .Poll:
+            createButton?.setTitle("CREATE POLL", for: .normal)
+        case .Post:
+            createButton?.setTitle("POST", for: .normal)
+        }
+        createButton?.titleLabel?.font = UIFont.Button
+        createButton?.titleLabel?.tintColor = .buttonTextColor
+        createButton?.backgroundColor = .buttonColor
+    }
+    
     private func setupContainerTopbar(){
-        containerTopBarModel?.title?.text = "CREATE POST"
-        containerTopBarModel?.cameraButton?.setImage(
-            UIImage(named: "camera", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
-            for: .normal
-        )
-        containerTopBarModel?.cameraButton?.tintColor = .black
-        containerTopBarModel?.cameraButton?.addTarget(self, action: #selector(initiateMediaAttachment), for: .touchUpInside)
+        switch postType! {
+        case .Poll:
+            containerTopBarModel?.title?.text = "CREATE POLL"
+            containerTopBarModel?.cameraButton?.isHidden = true
+        case .Post:
+            containerTopBarModel?.title?.text = "CREATE POST"
+            containerTopBarModel?.cameraButton?.setImage(
+                UIImage(named: "camera", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
+                for: .normal
+            )
+            containerTopBarModel?.cameraButton?.tintColor = .black
+            containerTopBarModel?.cameraButton?.addTarget(self, action: #selector(initiateMediaAttachment), for: .touchUpInside)
+        }
     }
     
     @objc private func initiateMediaAttachment(){
@@ -83,6 +108,33 @@ class PostEditorViewController: UIViewController {
     private func updatePostWithSelectedMediaSection(selectedMediaItems : [LocalSelectedMediaItem]?){
         postCoordinator.updateAttachedMediaItems(selectedMediaItems)
     }
+    
+    @IBAction func createButtonPressed(){
+        do{
+            try postCoordinator.checkIfPostReadyToPublish()
+            PostPublisher(networkRequestCoordinator: requestCoordinator).publisPost(
+            post: postCoordinator.getCurrentPost()) { (callResult) in
+                DispatchQueue.main.async {
+                    switch callResult{
+                    case .Success(_):
+                        self.dismiss(animated: true, completion: nil)
+                    case .SuccessWithNoResponseData:
+                        ErrorDisplayer.showError(errorMsg: "Unablee to post.") { (_) in
+                            
+                        }
+                    case .Failure(let error):
+                        ErrorDisplayer.showError(errorMsg: "Unablee to post due to \(error.displayableErrorMessage())") { (_) in
+                            
+                        }
+                    }
+                }
+            }
+        }catch let error{
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                
+            }
+        }
+    }
 }
 
 
@@ -93,6 +145,10 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func savePostOption(index: Int, option: String?) {
+        postCoordinator.savePostOption(index: index, option: option)
+    }
+    
     func removeSelectedMedia(index: Int) {
         postCoordinator.removeSelectedMedia(index: index)
     }

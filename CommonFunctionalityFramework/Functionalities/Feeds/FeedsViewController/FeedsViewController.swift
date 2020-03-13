@@ -90,6 +90,7 @@ extension FeedsViewController{
     @IBAction func openFeedComposerSelectionDrawer(){
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
         drawer.feedCoordinatorDeleagate = feedCoordinatorDeleagate
+        drawer.requestCoordinator = requestCoordinator
         do{
             try drawer.presentDrawer()
         }catch let error{

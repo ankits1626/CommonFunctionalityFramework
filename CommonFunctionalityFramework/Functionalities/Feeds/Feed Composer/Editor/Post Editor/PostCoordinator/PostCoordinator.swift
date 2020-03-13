@@ -15,12 +15,28 @@ protocol PostObserver {
     func removedAttachedMediaitemAtIndex(index : Int)
 }
 
-class PostCoordinator {
-    private var currentPost : EditablePostProtocol = EditablePost()
-    var postObsever : PostObserver?
+class PostCoordinatorError {
+    static let PollNotReadyToBePosted = NSError(
+           domain: "com.rewardz.EventDetailCellTypeError",
+           code: 1,
+           userInfo: [NSLocalizedDescriptionKey: "PollNotReadyToBePosted"]
+       )
     
-    init(postObsever : PostObserver?) {
+    static let PostNotReadyToBePosted = NSError(
+        domain: "com.rewardz.EventDetailCellTypeError",
+        code: 1,
+        userInfo: [NSLocalizedDescriptionKey: "PostNotReadyToBePosted"]
+    )
+}
+
+class PostCoordinator {
+    private var currentPost : EditablePostProtocol
+    var postObsever : PostObserver?
+    let postType: FeedType
+    init(postObsever : PostObserver?, postType: FeedType) {
         self.postObsever = postObsever
+        self.postType = postType
+        currentPost = EditablePost(postType: postType)
     }
     
     func getCurrentPost() -> EditablePostProtocol {
@@ -73,5 +89,40 @@ class PostCoordinator {
         }
     }
     
+    private var optionsMap = [Int : String?]()
+    func savePostOption(index : Int, option: String?){
+        optionsMap[index] = option
+        var options = [String]()
+        optionsMap.keys.forEach { (aKey) in
+            if let value = optionsMap[aKey],
+                let unwrappedOption = value{
+                options.append(unwrappedOption)
+            }
+        }
+        currentPost.pollOptions = options.isEmpty ? nil : options
+    }
+    
 }
 
+extension PostCoordinator{
+    func checkIfPostReadyToPublish() throws {
+        switch postType {
+        case .Poll:
+            try checkIfPollReadyToBePosted()
+        case .Post:
+            try checkIfPostReadyToBePosted()
+        }
+    }
+    
+    private func  checkIfPollReadyToBePosted() throws{
+        if let _ = currentPost.pollOptions{
+            
+        }else{
+            throw PostCoordinatorError.PollNotReadyToBePosted
+        }
+    }
+    
+    private func  checkIfPostReadyToBePosted() throws{
+        throw PostCoordinatorError.PostNotReadyToBePosted
+    }
+}

@@ -10,21 +10,26 @@ import Foundation
 
 class FeedComposerCoordinator {
     let feedCoordinatorDeleagate: FeedsCoordinatorDelegate
-    
-    init(delegate : FeedsCoordinatorDelegate) {
+     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
         self.feedCoordinatorDeleagate = delegate
+        self.requestCoordinator = requestCoordinator
     }
     
     func showFeedItemEditor(type : FeedType) {
-        switch type {
-        case .Poll:
-            showPollEditor()
-        case .Post:
-            showPostEditor()
-        }
+        showPostEditor(type)
+        return
+//        switch type {
+//        case .Poll:
+//            showPollEditor()
+//        case .Post:
+//            showPostEditor()
+//        }
     }
-    private func showPostEditor() {
+    private func showPostEditor(_ type : FeedType) {
         let postEditor = PostEditorViewController(nibName: "PostEditorViewController", bundle: Bundle(for: PostEditorViewController.self))
+        postEditor.postType = type
+        postEditor.requestCoordinator = requestCoordinator
         feedCoordinatorDeleagate.showComposer(_composer: postEditor) { (topBarModel) in
             postEditor.containerTopBarModel = topBarModel
         }
