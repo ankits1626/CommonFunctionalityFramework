@@ -35,6 +35,10 @@ struct Poll {
 }
 
 public struct RawFeed : FeedsItemProtocol {
+    var feedIdentifier: Int64{
+        return rawFeedDictionary["id"] as? Int64 ?? -1
+    }
+    
     static var EMPTY_FEED : FeedsItemProtocol {
         return RawFeed([String : Any]())
     }

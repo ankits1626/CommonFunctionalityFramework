@@ -49,6 +49,7 @@ struct FeedImageItem :  FeedMediaItemProtocol{
 
 protocol FeedsItemProtocol {
     init(_ rawfeedItem : [String:Any])
+    var feedIdentifier : Int64{get}
     func getUserImageUrl() -> URL?
     func getUserName() -> String?
     func getDepartmentName() -> String?

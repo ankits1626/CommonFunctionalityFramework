@@ -66,7 +66,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                 buttonActionBlock: {
                     inputModel.delegate.showFeedEditOptions(
                         targetView: cell.editFeedButton,
-                        postIndex: inputModel.targetIndexpath.section
+                        feedIdentifier: feed.feedIdentifier
                     )
             })
             //cell.containerView?.layer.borderWidth = 1.0

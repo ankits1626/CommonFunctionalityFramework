@@ -18,7 +18,7 @@ protocol FeedsDatasource {
 }
 
 protocol FeedsDelegate {
-    func showFeedEditOptions(targetView : UIView?, postIndex : Int)
+    func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
 }
 
 class FeedSectionFactory{

@@ -99,7 +99,7 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
-    func showFeedEditOptions(targetView: UIView?, postIndex: Int) {
+    func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
         
     }
 }

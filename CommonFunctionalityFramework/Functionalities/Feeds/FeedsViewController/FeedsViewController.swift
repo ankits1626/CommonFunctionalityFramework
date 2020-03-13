@@ -133,14 +133,14 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
-    func showFeedEditOptions(targetView : UIView?, postIndex : Int) {
+    func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
         print("show edit option")
         let options = FloatingMenuOptions(options: [
             FloatingMenuOption(title: "EDIT", action: {
-                print("Edit post - \(postIndex)")
+                print("Edit post - \(feedIdentifier)")
             }),
             FloatingMenuOption(title: "DELETE", action: {
-                print("Delete post- \(postIndex)")
+                print("Delete post- \(feedIdentifier)")
             })
         ])
         options.showPopover(sourceView: targetView!)
