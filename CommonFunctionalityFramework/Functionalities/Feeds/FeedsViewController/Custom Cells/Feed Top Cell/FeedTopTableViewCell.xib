@@ -140,7 +140,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtA-cf-XHT" userLabel="3 dot Container">
                                                         <rect key="frame" x="347" y="0.0" width="50" height="70"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkm-Xa-WUK">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkm-Xa-WUK" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="15" width="50" height="38"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="gfe-DF-Yau"/>
@@ -193,6 +193,7 @@
                 <outlet property="containerView" destination="9A6-5o-i10" id="Acv-KF-J5E"/>
                 <outlet property="dateLabel" destination="co2-pN-oUt" id="BsW-6b-GlA"/>
                 <outlet property="departmentName" destination="Slv-B1-VLm" id="XO9-Dk-UAM"/>
+                <outlet property="editFeedButton" destination="xkm-Xa-WUK" id="cDD-hN-7hN"/>
                 <outlet property="userName" destination="IzG-tc-n0A" id="bzx-Tk-LU2"/>
             </connections>
             <point key="canvasLocation" x="216.66666666666669" y="103.125"/>

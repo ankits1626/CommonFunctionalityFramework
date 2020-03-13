@@ -90,11 +90,17 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
         return feedDetailSectionFactory.getCell(indexPath: indexPath, tableView: tableView)
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        feedDetailSectionFactory.configureCell(cell: cell, indexPath: indexPath)
+        feedDetailSectionFactory.configureCell(cell: cell, indexPath: indexPath, delegate: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return feedDetailSectionFactory.getHeightOfCell(indexPath: indexPath)
+    }
+}
+
+extension FeedsDetailViewController : FeedsDelegate{
+    func showFeedEditOptions(targetView: UIView?, postIndex: Int) {
+        
     }
 }
 

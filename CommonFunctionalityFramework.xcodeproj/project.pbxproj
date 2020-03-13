@@ -16,6 +16,8 @@
 		9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */; };
 		9811DD52241AC5E5003B91FD /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */; };
 		9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD54241AC860003B91FD /* FeedFetcher.swift */; };
+		9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */; };
+		9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F02419FDB1009084D4 /* PollEditorViewController.swift */; };
@@ -109,9 +111,14 @@
 		98BC8A20241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A1F241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift */; };
 		98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A21241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift */; };
 		98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A23241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift */; };
+		98C64899241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C64897241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift */; };
+		98C6489A241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C64898241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib */; };
+		A7F66EFD913B6589143437B5 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorLocalMediaCollectionCoordinator.swift; sourceTree = "<group>"; };
 		9811DD01241A885F003B91FD /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
 		9811DD04241A9ECB003B91FD /* BlockButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockButton.swift; sourceTree = "<group>"; };
@@ -121,6 +128,8 @@
 		9811DD18241AB3B2003B91FD /* UnauthorizedHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnauthorizedHandler.swift; sourceTree = "<group>"; };
 		9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		9811DD54241AC860003B91FD /* FeedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetcher.swift; sourceTree = "<group>"; };
+		9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuOptions.swift; sourceTree = "<group>"; };
+		9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingMenuOptions.xib; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F02419FDB1009084D4 /* PollEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollEditorViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +227,9 @@
 		98BC8A1F241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorTitleTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		98BC8A21241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorDescriptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		98BC8A23241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorAttachedMediaTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		98C64897241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuOptionTableViewCell.swift; sourceTree = "<group>"; };
+		98C64898241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingMenuOptionTableViewCell.xib; sourceTree = "<group>"; };
+		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,12 +237,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F66EFD913B6589143437B5 /* Pods_CommonFunctionalityFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57B81525CA26AD644923325C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		922334714FCA734FC7ED75D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */,
+				0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../2020FebFlab/Pods;
+			sourceTree = "<group>";
+		};
 		9811DD00241A8847003B91FD /* PostCoordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +303,16 @@
 				9811DD54241AC860003B91FD /* FeedFetcher.swift */,
 			);
 			path = Worker;
+			sourceTree = "<group>";
+		};
+		9811DD56241B6168003B91FD /* FloatingMenuOptions */ = {
+			isa = PBXGroup;
+			children = (
+				98C64896241B79F9006689E9 /* Custom Cell */,
+				9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */,
+				9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */,
+			);
+			path = FloatingMenuOptions;
 			sourceTree = "<group>";
 		};
 		983500E92419FC75009084D4 /* Editor */ = {
@@ -531,6 +572,7 @@
 		9868C0DA2412417E00B12321 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				9811DD56241B6168003B91FD /* FloatingMenuOptions */,
 				9811DD03241A9ECB003B91FD /* BlockButton */,
 				98B02FA1241A50DA00CB8690 /* Media Picker */,
 				98B02F9D241A449000CB8690 /* KMPlaceholderTextView */,
@@ -750,6 +792,8 @@
 				9868C0832410B48D00B12321 /* Media.xcassets */,
 				98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */,
 				98B90DE0240CACD90013E9D2 /* Products */,
+				922334714FCA734FC7ED75D8 /* Pods */,
+				57B81525CA26AD644923325C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -877,6 +921,15 @@
 			path = PostEditorCellFactory;
 			sourceTree = "<group>";
 		};
+		98C64896241B79F9006689E9 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				98C64897241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift */,
+				98C64898241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -895,6 +948,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98B90DE7240CACD90013E9D2 /* Build configuration list for PBXNativeTarget "CommonFunctionalityFramework" */;
 			buildPhases = (
+				65E9DB959F6D2B2887E6FF6A /* [CP] Check Pods Manifest.lock */,
 				98B90DDA240CACD90013E9D2 /* Headers */,
 				98B90DDB240CACD90013E9D2 /* Sources */,
 				98B90DDC240CACD90013E9D2 /* Frameworks */,
@@ -951,6 +1005,7 @@
 				9868C013240F778100B12321 /* FeedTopTableViewCell.xib in Resources */,
 				9868C0F72419489300B12321 /* ClappedByTableViewCell.xib in Resources */,
 				9868C02C240F79E800B12321 /* SingleVideoTableViewCell.xib in Resources */,
+				98C6489A241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib in Resources */,
 				9868C034240F7A3C00B12321 /* FeedBottomTableViewCell.xib in Resources */,
 				9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */,
 				98B02FB7241A50DA00CB8690 /* GridViewCell.xib in Resources */,
@@ -961,6 +1016,7 @@
 				98B02FB6241A50DA00CB8690 /* AssetGridViewController.strings in Resources */,
 				9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */,
 				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
+				9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */,
 				98B02FBB241A50DA00CB8690 /* GroupsViewController.strings in Resources */,
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
 				9868C017240F786600B12321 /* FeedTitleTableViewCell.xib in Resources */,
@@ -977,6 +1033,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		65E9DB959F6D2B2887E6FF6A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CommonFunctionalityFramework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		98B90DDB240CACD90013E9D2 /* Sources */ = {
@@ -1002,6 +1083,7 @@
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
 				9868C0932410D9E600B12321 /* UILabel + Extension.swift in Sources */,
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
+				98C64899241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift in Sources */,
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
 				9811DD1A241AB3B2003B91FD /* APIRequestModel.swift in Sources */,
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
@@ -1022,6 +1104,7 @@
 				9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
+				9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */,
@@ -1224,6 +1307,7 @@
 		};
 		98B90DE8240CACD90013E9D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -1248,6 +1332,7 @@
 		};
 		98B90DE9240CACD90013E9D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

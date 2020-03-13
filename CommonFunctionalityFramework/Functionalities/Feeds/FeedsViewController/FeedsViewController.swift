@@ -117,7 +117,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = .none
-        feedSectionFactory.configureCell(cell: cell, indexPath: indexPath)
+        feedSectionFactory.configureCell(cell: cell, indexPath: indexPath, delegate: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -131,6 +131,22 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
         feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
     }
 }
+
+extension FeedsViewController : FeedsDelegate{
+    func showFeedEditOptions(targetView : UIView?, postIndex : Int) {
+        print("show edit option")
+        let options = FloatingMenuOptions(options: [
+            FloatingMenuOption(title: "EDIT", action: {
+                print("Edit post - \(postIndex)")
+            }),
+            FloatingMenuOption(title: "DELETE", action: {
+                print("Delete post- \(postIndex)")
+            })
+        ])
+        options.showPopover(sourceView: targetView!)
+    }
+}
+
 
 extension FeedsViewController : FeedsDatasource{
     func getTargetPost() -> EditablePostProtocol? {
@@ -161,3 +177,4 @@ extension FeedsViewController : FeedsDatasource{
         return feeds[index]
     }
 }
+

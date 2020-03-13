@@ -35,6 +35,7 @@ struct FeedContentGetCellModel {
 struct FeedContentConfigureCellModel {
     var targetIndexpath : IndexPath
     var targetCell : UITableViewCell
+    var delegate : FeedsDelegate
 }
 
 struct FeedContentGetHeightOfCellModel {
@@ -125,7 +126,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 targetIndexpath: inputModel.targetIndexpath,
                 targetCell: inputModel.targetCell,
                 datasource: feedsDataSource,
-                mediaFetcher: mediaFetcher
+                mediaFetcher: mediaFetcher,
+                delegate: inputModel.delegate
             )
         )
     }

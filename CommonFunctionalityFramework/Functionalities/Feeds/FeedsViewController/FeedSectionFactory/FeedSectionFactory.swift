@@ -17,6 +17,10 @@ protocol FeedsDatasource {
     func showShowFullfeedDescription() -> Bool
 }
 
+protocol FeedsDelegate {
+    func showFeedEditOptions(targetView : UIView?, postIndex : Int)
+}
+
 class FeedSectionFactory{
     private let  feedsDatasource : FeedsDatasource!
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
@@ -48,12 +52,13 @@ class FeedSectionFactory{
         )
     }
     
-    func configureCell(cell: UITableViewCell, indexPath: IndexPath)  {
+    func configureCell(cell: UITableViewCell, indexPath: IndexPath, delegate : FeedsDelegate)  {
         let feedItem = feedsDatasource.getFeedItem(indexPath.section)
         getContentCoordinator(feedType: feedItem.getFeedType()).configureCell(
             FeedContentConfigureCellModel(
                 targetIndexpath: indexPath,
-                targetCell: cell
+                targetCell: cell,
+                delegate: delegate
             )
         )
     }

@@ -92,13 +92,14 @@ class FeedDetailSectionFactory {
         )
     }
     
-    func configureCell(cell: UITableViewCell, indexPath: IndexPath)  {
+    func configureCell(cell: UITableViewCell, indexPath: IndexPath, delegate: FeedsDelegate)  {
         getCellCoordinator(indexPath).loadDataCell(
             FeedCellLoadDataModel(
                 targetIndexpath: indexPath,
                 targetCell: cell,
                 datasource: feedDataSource,
-                mediaFetcher: mediaFetcher
+                mediaFetcher: mediaFetcher,
+                delegate: delegate
         )
         )
     }

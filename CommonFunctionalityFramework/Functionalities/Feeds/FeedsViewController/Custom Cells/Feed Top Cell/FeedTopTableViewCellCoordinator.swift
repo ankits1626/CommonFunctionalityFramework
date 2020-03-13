@@ -19,6 +19,7 @@ struct FeedCellLoadDataModel {
     var targetCell : UITableViewCell
     var datasource: FeedsDatasource
     var mediaFetcher: CFFMediaCoordinatorProtocol
+    var delegate : FeedsDelegate
 }
 
 struct FeedCellGetHeightModel {
@@ -60,6 +61,14 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.containerView?.roundCorners(corners: [UIRectCorner.topRight, UIRectCorner.topLeft], radius: AppliedCornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
             cell.containerView?.clipsToBounds = true
+            cell.editFeedButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate.showFeedEditOptions(
+                        targetView: cell.editFeedButton,
+                        postIndex: inputModel.targetIndexpath.section
+                    )
+            })
             //cell.containerView?.layer.borderWidth = 1.0
         }
     }
