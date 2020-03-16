@@ -93,7 +93,9 @@ class PostCoordinator {
     func savePostOption(index : Int, option: String?){
         optionsMap[index] = option
         var options = [String]()
-        optionsMap.keys.forEach { (aKey) in
+        optionsMap.keys.sorted(by: { (first, second) -> Bool in
+            return first > second
+        }).forEach { (aKey) in
             if let value = optionsMap[aKey],
                 let unwrappedOption = value{
                 options.append(unwrappedOption)
