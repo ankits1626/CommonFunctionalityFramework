@@ -96,6 +96,14 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return feedDetailSectionFactory.getHeightOfCell(indexPath: indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return feedDetailSectionFactory.getViewForHeaderInSection(section: section, tableView: tableView)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return feedDetailSectionFactory.getHeightOfViewForSection(section: section)
+    }
 }
 
 extension FeedsDetailViewController : FeedsDelegate{

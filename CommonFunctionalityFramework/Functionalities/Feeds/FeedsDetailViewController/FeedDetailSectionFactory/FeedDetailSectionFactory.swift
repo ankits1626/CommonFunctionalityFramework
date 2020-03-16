@@ -37,12 +37,17 @@ class FeedDetailSectionFactory {
         ]
     }()
     
+    private lazy var headerCoordinator: FeedDetailHeaderCoordinator = {
+        return FeedDetailHeaderCoordinator(dataSource: feedDataSource)
+    }()
+    
     
     init(_ feedDataSource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?) {
         self.feedDataSource = feedDataSource
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
         registerTableViewForAllPossibleCellTypes(targetTableView)
+        registerTableViewForHeaderView(targetTableView)
     }
     
     internal func registerTableViewForAllPossibleCellTypes(_ tableView : UITableView? ){
@@ -52,6 +57,13 @@ class FeedDetailSectionFactory {
                 forCellReuseIdentifier: cellCoordinator.value.cellType.cellIdentifier
             )
         }
+    }
+    
+    private func registerTableViewForHeaderView(_ tableView : UITableView?){
+        tableView?.register(
+            UINib(nibName: "FeedDetailHeader", bundle: Bundle(for: FeedDetailHeader.self)),
+            forHeaderFooterViewReuseIdentifier: "FeedDetailHeader"
+        )
     }
         
     func getNumberOfSectionsForFeedDetailView() -> Int {
@@ -64,9 +76,9 @@ class FeedDetailSectionFactory {
         case .FeedInfo:
             return cellMap[FeedDetailSection.FeedInfo]?.count ?? 0
         case .ClapsSection:
-            return feedDataSource.getClappedByUsers()?.count ?? 0
+            return  0 //feedDataSource.getClappedByUsers()?.count ?? 0
         case .Comments:
-            return feedDataSource.getComments()?.count ?? 0
+            return 0 //feedDataSource.getComments()?.count ?? 0
         }
     }
     
@@ -115,6 +127,14 @@ class FeedDetailSectionFactory {
         )
     }
     
+    func getViewForHeaderInSection(section: Int, tableView: UITableView) -> UIView? {
+        return headerCoordinator.getHeader(section: FeedDetailSection(rawValue: section)!, table: tableView)
+    }
+    
+    func getHeightOfViewForSection(section: Int) -> CGFloat {
+        return headerCoordinator.getHeight(section: FeedDetailSection(rawValue: section)!)
+    }
+    
 }
 
 extension FeedDetailSectionFactory{
@@ -128,6 +148,8 @@ extension FeedDetailSectionFactory{
         !comments.isEmpty{
             sections.append(FeedDetailSection.Comments)
         }
+        sections.append(.ClapsSection)
+        sections.append(.Comments)
         return sections
     }
     

@@ -23,13 +23,21 @@ class FeedsViewController: UIViewController {
     var feeds = [FeedsItemProtocol]()
     var lastFetchedFeeds : FetchedFeedModel?
     
+    private lazy var refreshControl : UIRefreshControl  = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(loadFeeds), for: .valueChanged)
+        refreshControl.backgroundColor = .black
+        refreshControl.tintColor = .white //Rgbconverter.HexToColor(get_backgroundColor(), alpha: 1.0)
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadFeeds()
         setup()
     }
     
-    private func loadFeeds(){
+    @objc private func loadFeeds(){
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
         nextPageUrl: nil) { (result) in
             DispatchQueue.main.async {
@@ -59,6 +67,7 @@ class FeedsViewController: UIViewController {
             }
         }
         DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
             self.feeds = tempfeeds
             self.feedsTable?.reloadData()
         }
@@ -77,6 +86,7 @@ class FeedsViewController: UIViewController {
     }
     
     private func setupTableView(){
+        feedsTable?.addSubview(refreshControl)
         feedsTable?.tableFooterView = UIView(frame: CGRect.zero)
         feedsTable?.rowHeight = UITableView.automaticDimension
         feedsTable?.estimatedRowHeight = 140

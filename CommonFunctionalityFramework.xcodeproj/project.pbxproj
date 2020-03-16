@@ -122,6 +122,9 @@
 		98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648B2241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib */; };
 		98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648B5241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift */; };
 		98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648B8241BC952006689E9 /* PostPublisher.swift */; };
+		98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */; };
+		98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */; };
+		98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */; };
 		A7F66EFD913B6589143437B5 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -247,6 +250,9 @@
 		98C648B2241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedEditorPollOptionTableViewCell.xib; sourceTree = "<group>"; };
 		98C648B5241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorPollOptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		98C648B8241BC952006689E9 /* PostPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPublisher.swift; sourceTree = "<group>"; };
+		98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeader.swift; sourceTree = "<group>"; };
+		98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedDetailHeader.xib; sourceTree = "<group>"; };
+		98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeaderCoordinator.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -557,6 +563,7 @@
 		9868C0862410B4C900B12321 /* FeedsDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				98C648BA241F8B70006689E9 /* Custom Header */,
 				9868C0ED2419480100B12321 /* Custom Cell */,
 				9868C0E824125E0F00B12321 /* models */,
 				9868C0E524125AB900B12321 /* FeedDetailSectionFactory */,
@@ -1005,6 +1012,16 @@
 			path = PostPublisher;
 			sourceTree = "<group>";
 		};
+		98C648BA241F8B70006689E9 /* Custom Header */ = {
+			isa = PBXGroup;
+			children = (
+				98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */,
+				98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */,
+				98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */,
+			);
+			path = "Custom Header";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1082,6 +1099,7 @@
 				9868C02C240F79E800B12321 /* SingleVideoTableViewCell.xib in Resources */,
 				98C6489A241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib in Resources */,
 				9868C034240F7A3C00B12321 /* FeedBottomTableViewCell.xib in Resources */,
+				98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */,
 				9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */,
 				98B02FB7241A50DA00CB8690 /* GridViewCell.xib in Resources */,
 				9868C0E42412434300B12321 /* ASChatBarview.xib in Resources */,
@@ -1167,6 +1185,7 @@
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
 				9811DD1B241AB3B2003B91FD /* APIWorker.swift in Sources */,
 				98B02FC6241A776800CB8690 /* LocalMediaManager.swift in Sources */,
+				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
 				9868C1032419EDCD00B12321 /* SlideInPresentationManager.swift in Sources */,
 				9868C0592410326300B12321 /* Date+ Extension.swift in Sources */,
 				9868C047240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift in Sources */,
@@ -1184,6 +1203,7 @@
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
 				9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
+				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
 				9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */,
