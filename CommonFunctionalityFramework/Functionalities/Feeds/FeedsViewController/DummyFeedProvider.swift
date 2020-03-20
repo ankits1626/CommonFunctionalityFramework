@@ -83,4 +83,15 @@ class DummyFeedProvider {
             ]),
         ]
 }
+    
+    
+    static func getDummyComments() -> [FeedComment]{
+        return [
+            FeedComment(["id": 1, "text" : "Hello, very long commen,Hello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentt, Ankit"]),
+            FeedComment(["id": 1, "text" : "Hello1"]),
+            FeedComment(["id": 1, "text" : "Hello2"]),
+            FeedComment(["id": 1, "text" : "Hello3"]),
+            FeedComment(["id": 1, "text" : "Hello, very long commen,Hello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentt, AnkitHello, very long commen,Hello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentt, Ankit"])
+        ]
+    }
 }

@@ -20,7 +20,9 @@ class FeedsDetailViewController: UIViewController {
     @IBOutlet weak var feedDetailTableView : UITableView?
     var targetFeedItem : FeedsItemProtocol!
     var clappedByUsers : [ClappedByUser]?
-    var comments : [FeedComment]?
+    var comments : [FeedComment]?{
+        return DummyFeedProvider.getDummyComments()
+    }
     
     var feedDetailDataFetcher: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
@@ -87,7 +89,9 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return feedDetailSectionFactory.getCell(indexPath: indexPath, tableView: tableView)
+        let cell =  feedDetailSectionFactory.getCell(indexPath: indexPath, tableView: tableView)
+        cell.selectionStyle = .none
+        return cell
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         feedDetailSectionFactory.configureCell(cell: cell, indexPath: indexPath, delegate: self)

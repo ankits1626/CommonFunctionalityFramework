@@ -8,9 +8,36 @@
 
 import Foundation
 
+struct CommentUser {
+    private let rawCommentUser : [String : Any]
+    init(_ rawCommentUser : [String : Any]) {
+        self.rawCommentUser = rawCommentUser
+    }
+    
+    func getUserName() -> String {
+        return "Hashim Amla" //rawCommentUser[]
+    }
+    
+    func getUserDepartmentName() -> String {
+        return "Finance" //rawCommentUser[]
+    }
+}
+
 struct FeedComment {
-    let rawfeedComment : [String : Any]
+    private let rawFeedComment : [String : Any]
     init(_ rawFeedComment : [String : Any]) {
-        self.rawfeedComment = rawFeedComment
+        self.rawFeedComment = rawFeedComment
+    }
+    
+    func getCommentDate() -> String {
+        return "12:30pm"
+    }
+    
+    func getCommentText() -> String? {
+        return rawFeedComment["text"] as? String
+    }
+    
+    func getCommentUser() -> CommentUser {
+        return CommentUser([String : Any]())
     }
 }

@@ -21,6 +21,10 @@ extension UIFont{
         return UIFont.systemFont(ofSize: 10, weight: .bold)
     }
     
+    static var Highlighter2 : UIFont{
+        return UIFont.systemFont(ofSize: 13, weight: .bold)
+    }
+    
     static var Caption1 : UIFont{
         return UIFont.systemFont(ofSize: 10, weight: .regular)
     }

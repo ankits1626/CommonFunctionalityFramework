@@ -26,7 +26,7 @@ class FeedDetailHeaderCoordinator {
                 edges: [.left, .right],
                 color: UIColor.getGeneralBorderColor()
             )
-            header?.headerTitleLabel?.font = UIFont.Body2
+            header?.headerTitleLabel?.font = UIFont.Highlighter2
             header?.headerSecondaryTitleLabel?.font = UIFont.Caption1
             header?.headerSecondaryTitleLabel?.textColor = .getSubTitleTextColor()
             configureHeader(header, section: section)
@@ -47,7 +47,7 @@ class FeedDetailHeaderCoordinator {
     private func configureCommentsHeader(_ view : FeedDetailHeader?){
         view?.headerTitleLabel?.text = "Comments"
         if let commentsCount = feedDataSource.getComments()?.count{
-            view?.headerSecondaryTitleLabel?.text = "\(commentsCount) clap\(commentsCount == 1 ? "" : "s")"
+            view?.headerSecondaryTitleLabel?.text = "\(commentsCount) comment\(commentsCount == 1 ? "" : "s")"
         }else{
             view?.headerSecondaryTitleLabel?.text = nil
         }

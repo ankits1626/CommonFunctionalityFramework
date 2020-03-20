@@ -20,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEs-Ux-26W">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEs-Ux-26W">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-ys-vy9" customClass="ASChatBarview" customModule="CommonFunctionalityFramework" customModuleProvider="target">
@@ -43,12 +43,12 @@
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GgV-Zv-dOh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qH3-ys-vy9" secondAttribute="trailing" id="JTT-6d-j9o"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ohw-wb-spi"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qEs-Ux-26W" secondAttribute="bottom" id="U7d-E1-g8o"/>
                 <constraint firstItem="qH3-ys-vy9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Xt3-4q-J0V"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="m0i-C6-8qb"/>
+                <constraint firstItem="qH3-ys-vy9" firstAttribute="top" secondItem="qEs-Ux-26W" secondAttribute="bottom" id="r2H-Di-7ak"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="94"/>
+            <point key="canvasLocation" x="138.40000000000001" y="93.103448275862078"/>
         </view>
     </objects>
 </document>
