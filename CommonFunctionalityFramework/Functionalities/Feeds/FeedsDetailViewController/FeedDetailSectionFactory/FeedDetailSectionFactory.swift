@@ -76,7 +76,10 @@ class FeedDetailSectionFactory {
         case .FeedInfo:
             return cellMap[FeedDetailSection.FeedInfo]?.count ?? 0
         case .ClapsSection:
-            return  0 //feedDataSource.getClappedByUsers()?.count ?? 0
+            if let _ = feedDataSource.getClappedByUsers()?.count{
+                return 1
+            }
+            return 0
         case .Comments:
             return feedDataSource.getComments()?.count ?? 0
         }
@@ -144,7 +147,6 @@ extension FeedDetailSectionFactory{
         !clappedByUsers.isEmpty{
              sections.append(FeedDetailSection.ClapsSection)
         }
-        sections.append(.ClapsSection)
         if let comments = feedDataSource.getComments(),
         !comments.isEmpty{
             sections.append(FeedDetailSection.Comments)

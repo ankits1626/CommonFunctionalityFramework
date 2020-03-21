@@ -19,7 +19,9 @@ class FeedsDetailViewController: UIViewController {
     @IBOutlet weak var commentBarView : ASChatBarview?
     @IBOutlet weak var feedDetailTableView : UITableView?
     var targetFeedItem : FeedsItemProtocol!
-    var clappedByUsers : [ClappedByUser]?
+    var clappedByUsers : [ClappedByUser]?{
+        return DummyFeedProvider.getDummyLikeList()
+    }
     var comments : [FeedComment]?{
         return DummyFeedProvider.getDummyComments()
     }
@@ -111,6 +113,11 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
+    func showLikedByUsersList() {
+        let allLikedVc = LikeListViewController(nibName: "LikeListViewController", bundle: Bundle(for: LikeListViewController.self))
+        present(allLikedVc, animated: true, completion: nil)
+    }
+    
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
         
     }

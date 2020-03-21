@@ -144,6 +144,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showLikedByUsersList() {
+        
+    }
+    
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
         print("show edit option")
         let options = FloatingMenuOptions(options: [

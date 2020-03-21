@@ -94,4 +94,13 @@ class DummyFeedProvider {
             FeedComment(["id": 1, "text" : "Hello, very long commen,Hello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentt, AnkitHello, very long commen,Hello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentHello, very long commentt, Ankit"])
         ]
     }
+    
+    static func getDummyLikeList() -> [ClappedByUser] {
+        return [
+            ClappedByUser([String : Any]()),
+            ClappedByUser([String : Any]()),
+            ClappedByUser([String : Any]()),
+            ClappedByUser([String : Any]())
+        ]
+    }
 }

@@ -19,6 +19,7 @@ protocol FeedsDatasource {
 
 protocol FeedsDelegate {
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
+    func showLikedByUsersList()
 }
 
 class FeedSectionFactory{

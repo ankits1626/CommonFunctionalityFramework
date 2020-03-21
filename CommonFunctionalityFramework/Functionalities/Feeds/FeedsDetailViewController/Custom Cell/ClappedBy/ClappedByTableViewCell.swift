@@ -9,7 +9,8 @@
 import UIKit
 
 class ClappedByTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var containerView : UIView?
+    @IBOutlet weak var seeAllButton : BlockButton?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -31,6 +31,7 @@ class FeedTextTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else{
                cell.readMorebutton?.isHidden = !(cell.feedText?.isTruncated ?? false)
             }
+            cell.readMorebutton?.isUserInteractionEnabled = false
         }
         return targetCell
     }

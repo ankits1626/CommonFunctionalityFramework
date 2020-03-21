@@ -125,6 +125,11 @@
 		98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */; };
 		98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */; };
 		98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */; };
+		98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FAB2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift */; };
+		98CC2FB02425C4C400E8F9E0 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */; };
+		98CC2FB12425C4C400E8F9E0 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */; };
+		98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */; };
+		98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */; };
 		A7F66EFD913B6589143437B5 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -253,6 +258,11 @@
 		98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeader.swift; sourceTree = "<group>"; };
 		98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedDetailHeader.xib; sourceTree = "<group>"; };
 		98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeaderCoordinator.swift; sourceTree = "<group>"; };
+		98CC2FAB2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFeedSectionProvider.swift; sourceTree = "<group>"; };
+		98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListViewController.swift; sourceTree = "<group>"; };
+		98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
+		98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedByTableViewCell.swift; sourceTree = "<group>"; };
+		98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikedByTableViewCell.xib; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -855,6 +865,7 @@
 			isa = PBXGroup;
 			children = (
 				98B90DEB240CAD010013E9D2 /* Feeds */,
+				9868C0812410B13A00B12321 /* DummyFeedProvider.swift */,
 			);
 			path = Functionalities;
 			sourceTree = "<group>";
@@ -862,6 +873,8 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				98CC2FAD2425C49E00E8F9E0 /* LikeList */,
+				98CC2FAA2425C41800E8F9E0 /* DashboardFeedSectionProvider */,
 				9868C10E2419F94100B12321 /* Feed Composer */,
 				9868C0862410B4C900B12321 /* FeedsDetailViewController */,
 				98B90DEC240CAD010013E9D2 /* FeedsViewController */,
@@ -879,7 +892,6 @@
 				98B90DED240CAD010013E9D2 /* Custom Cells */,
 				98B90E07240CAD010013E9D2 /* FeedsViewController.swift */,
 				98B90E08240CAD010013E9D2 /* FeedsViewController.xib */,
-				9868C0812410B13A00B12321 /* DummyFeedProvider.swift */,
 			);
 			path = FeedsViewController;
 			sourceTree = "<group>";
@@ -1022,6 +1034,33 @@
 			path = "Custom Header";
 			sourceTree = "<group>";
 		};
+		98CC2FAA2425C41800E8F9E0 /* DashboardFeedSectionProvider */ = {
+			isa = PBXGroup;
+			children = (
+				98CC2FAB2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift */,
+			);
+			path = DashboardFeedSectionProvider;
+			sourceTree = "<group>";
+		};
+		98CC2FAD2425C49E00E8F9E0 /* LikeList */ = {
+			isa = PBXGroup;
+			children = (
+				98CC2FB22425C6C400E8F9E0 /* Custom Cell */,
+				98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */,
+				98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */,
+			);
+			path = LikeList;
+			sourceTree = "<group>";
+		};
+		98CC2FB22425C6C400E8F9E0 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */,
+				98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1096,6 +1135,7 @@
 			files = (
 				9868C013240F778100B12321 /* FeedTopTableViewCell.xib in Resources */,
 				9868C0F72419489300B12321 /* ClappedByTableViewCell.xib in Resources */,
+				98CC2FB12425C4C400E8F9E0 /* LikeListViewController.xib in Resources */,
 				9868C02C240F79E800B12321 /* SingleVideoTableViewCell.xib in Resources */,
 				98C6489A241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib in Resources */,
 				9868C034240F7A3C00B12321 /* FeedBottomTableViewCell.xib in Resources */,
@@ -1109,6 +1149,7 @@
 				98B02FB6241A50DA00CB8690 /* AssetGridViewController.strings in Resources */,
 				9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */,
 				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
+				98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */,
 				9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */,
 				98B02FBB241A50DA00CB8690 /* GroupsViewController.strings in Resources */,
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
@@ -1163,6 +1204,7 @@
 				9868C0EA24125E1900B12321 /* ClappedByUser.swift in Sources */,
 				9868C0FF2419EB2D00B12321 /* FeedsComposerDrawer.swift in Sources */,
 				9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */,
+				98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */,
 				9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */,
 				98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */,
 				9868C1082419F2F500B12321 /* ErrorDisplayer.swift in Sources */,
@@ -1220,6 +1262,7 @@
 				98B02FBA241A50DA00CB8690 /* AssetGridViewController.swift in Sources */,
 				9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */,
 				9868C1052419F25700B12321 /* UIApplication+Extension.swift in Sources */,
+				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */,
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,
@@ -1235,6 +1278,7 @@
 				9868C03D240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift in Sources */,
 				98B02FBD241A50DA00CB8690 /* GroupCell.swift in Sources */,
 				9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */,
+				98CC2FB02425C4C400E8F9E0 /* LikeListViewController.swift in Sources */,
 				98BC8A20241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift in Sources */,
 				9868BFF5240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift in Sources */,
 				98BC8A1E241A19DE007C175D /* PostEditorCellFactory.swift in Sources */,

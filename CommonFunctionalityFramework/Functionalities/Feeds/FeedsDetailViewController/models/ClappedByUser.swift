@@ -15,9 +15,12 @@ struct ClappedByUser  {
     }
     
     func getUserName() -> String?{
-        return nil
+        return "Test"
+    }
+    func getDepartmentName() -> String? {
+        return "Test Department"
     }
     func gerProfilePictureImageEndpoint() -> String?{
-        return ""
+        return "Test"
     }
 }
