@@ -154,15 +154,23 @@ extension FeedsViewController : FeedsDelegate{
     
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
         print("show edit option")
-        let options = FloatingMenuOptions(options: [
-            FloatingMenuOption(title: "EDIT", action: {
-                print("Edit post - \(feedIdentifier)")
-            }),
-            FloatingMenuOption(title: "DELETE", action: {
+        let filteredFeeds = feeds.filter { (feeditem) -> Bool in
+            return feeditem.feedIdentifier == feedIdentifier
+        }
+        if let feed =  filteredFeeds.first{
+            var options = [FloatingMenuOption]()
+            if feed.getFeedType() == .Post{
+                options.append(
+                    FloatingMenuOption(title: "EDIT", action: {
+                        print("Edit post - \(feedIdentifier)")
+                    }))
+            }
+            options.append( FloatingMenuOption(title: "DELETE", action: {
                 print("Delete post- \(feedIdentifier)")
-            })
-        ])
-        options.showPopover(sourceView: targetView!)
+            }))
+            
+            FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
+        }
     }
 }
 

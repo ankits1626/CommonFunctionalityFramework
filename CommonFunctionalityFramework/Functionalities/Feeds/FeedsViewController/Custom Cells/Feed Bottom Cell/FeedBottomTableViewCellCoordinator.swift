@@ -25,12 +25,9 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.commentsCountLabel?.text = feed.getNumberOfComments()
             cell.commentsCountLabel?.font = UIFont.Caption1
             cell.commentsCountLabel?.textColor = UIColor.getSubTitleTextColor()
-            
             cell.clapsCountLabel?.text = feed.getNumberOfClaps()
             cell.clapsCountLabel?.font = UIFont.Caption1
             cell.clapsCountLabel?.textColor = UIColor.getSubTitleTextColor()
-            
-            cell.containerView?.roundCorners(corners: [UIRectCorner.bottomLeft, UIRectCorner.bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: UIColor.getGeneralBorderColor())
         }
     }

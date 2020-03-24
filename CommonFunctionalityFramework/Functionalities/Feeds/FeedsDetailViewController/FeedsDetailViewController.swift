@@ -113,14 +113,15 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
+    func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
+        
+    }
+    
     func showLikedByUsersList() {
         let allLikedVc = LikeListViewController(nibName: "LikeListViewController", bundle: Bundle(for: LikeListViewController.self))
         present(allLikedVc, animated: true, completion: nil)
     }
     
-    func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
-        
-    }
 }
 
 extension FeedsDetailViewController : ASChatBarViewDelegate{

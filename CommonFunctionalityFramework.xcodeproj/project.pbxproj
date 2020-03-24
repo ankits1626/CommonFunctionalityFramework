@@ -20,8 +20,6 @@
 		9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
-		983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F02419FDB1009084D4 /* PollEditorViewController.swift */; };
-		983500F32419FDB1009084D4 /* PollEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500F12419FDB1009084D4 /* PollEditorViewController.xib */; };
 		983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F5241A0041009084D4 /* EditorContainerProtocol.swift */; };
 		9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */; };
 		9868BFF5240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868BFF4240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift */; };
@@ -149,8 +147,6 @@
 		9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingMenuOptions.xib; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
-		983500F02419FDB1009084D4 /* PollEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollEditorViewController.swift; sourceTree = "<group>"; };
-		983500F12419FDB1009084D4 /* PollEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollEditorViewController.xib; sourceTree = "<group>"; };
 		983500F5241A0041009084D4 /* EditorContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorContainerProtocol.swift; sourceTree = "<group>"; };
 		9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsItemProtocol.swift; sourceTree = "<group>"; };
 		9868BFF4240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCellCoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -353,18 +349,8 @@
 			isa = PBXGroup;
 			children = (
 				983500EB2419FC87009084D4 /* Post Editor */,
-				983500EA2419FC80009084D4 /* Poll Editor */,
 			);
 			path = Editor;
-			sourceTree = "<group>";
-		};
-		983500EA2419FC80009084D4 /* Poll Editor */ = {
-			isa = PBXGroup;
-			children = (
-				983500F02419FDB1009084D4 /* PollEditorViewController.swift */,
-				983500F12419FDB1009084D4 /* PollEditorViewController.xib */,
-			);
-			path = "Poll Editor";
 			sourceTree = "<group>";
 		};
 		983500EB2419FC87009084D4 /* Post Editor */ = {
@@ -1158,7 +1144,6 @@
 				98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */,
 				9868C1002419EB2D00B12321 /* FeedsComposerDrawer.xib in Resources */,
 				9868C0BA2412100B00B12321 /* MediaItemCollectionViewCell.xib in Resources */,
-				983500F32419FDB1009084D4 /* PollEditorViewController.xib in Resources */,
 				98B02FBC241A50DA00CB8690 /* GroupCell.xib in Resources */,
 				9868C0F32419488000B12321 /* FeedCommentTableViewCell.xib in Resources */,
 				98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
@@ -1263,7 +1248,6 @@
 				9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */,
 				9868C1052419F25700B12321 /* UIApplication+Extension.swift in Sources */,
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
-				983500F22419FDB1009084D4 /* PollEditorViewController.swift in Sources */,
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,

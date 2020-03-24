@@ -12,7 +12,6 @@ protocol EditablePostProtocol {
     var title : String? {set get}
     var postDesciption : String? {set get}
     var pollOptions : [String]? {get set}
-    //var attachedMedia: [FeedMediaItemProtocol]?{set get}
     var selectedMediaItems : [LocalSelectedMediaItem]? {set get}
     var postType : FeedType {set get}
     func getNetworkPostableFormat() -> [String : Any]
@@ -26,10 +25,12 @@ class PostEditorViewController: UIViewController {
             setupContainerTopbar()
         }
     }
-    var postType: FeedType!
+    private let postType: FeedType
+    private let requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    
     @IBOutlet weak var postEditorTable : UITableView?
     @IBOutlet weak var createButton : UIButton?
-    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
+    
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(postObsever: cellFactory, postType: postType)
     }()
@@ -44,6 +45,18 @@ class PostEditorViewController: UIViewController {
     private lazy var localMediaManager: LocalMediaManager = {
         return LocalMediaManager()
     }()
+    
+    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?){
+        self.postType  = postType
+        self.requestCoordinator = requestCoordinator
+        super.init(
+            nibName: "PostEditorViewController"
+            , bundle: Bundle(for: PostEditorViewController.self))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -66,7 +79,7 @@ class PostEditorViewController: UIViewController {
     }
     
     private func setupCreateButton(){
-        switch postType! {
+        switch postType {
         case .Poll:
             createButton?.setTitle("CREATE POLL", for: .normal)
         case .Post:
@@ -78,7 +91,7 @@ class PostEditorViewController: UIViewController {
     }
     
     private func setupContainerTopbar(){
-        switch postType! {
+        switch postType {
         case .Poll:
             containerTopBarModel?.title?.text = "CREATE POLL"
             containerTopBarModel?.cameraButton?.isHidden = true

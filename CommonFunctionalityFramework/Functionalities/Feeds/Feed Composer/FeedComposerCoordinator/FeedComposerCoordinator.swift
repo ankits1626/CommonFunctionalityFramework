@@ -17,28 +17,12 @@ class FeedComposerCoordinator {
     }
     
     func showFeedItemEditor(type : FeedType) {
-        showPostEditor(type)
-        return
-//        switch type {
-//        case .Poll:
-//            showPollEditor()
-//        case .Post:
-//            showPostEditor()
-//        }
-    }
-    private func showPostEditor(_ type : FeedType) {
-        let postEditor = PostEditorViewController(nibName: "PostEditorViewController", bundle: Bundle(for: PostEditorViewController.self))
-        postEditor.postType = type
-        postEditor.requestCoordinator = requestCoordinator
+        let postEditor = PostEditorViewController(
+            postType: type,
+            requestCoordinator: requestCoordinator,
+            post: nil)
         feedCoordinatorDeleagate.showComposer(_composer: postEditor) { (topBarModel) in
             postEditor.containerTopBarModel = topBarModel
-        }
-    }
-    
-    private func showPollEditor(){
-        let pollEditor = PollEditorViewController(nibName: "PollEditorViewController", bundle: Bundle(for: PollEditorViewController.self))
-        feedCoordinatorDeleagate.showComposer(_composer: pollEditor) { (topBarModel) in
-            pollEditor.containerTopBarModel = topBarModel
         }
     }
 }

@@ -58,7 +58,6 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.text = feed.getfeedCreationDate()
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
-            cell.containerView?.roundCorners(corners: [UIRectCorner.topRight, UIRectCorner.topLeft], radius: AppliedCornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
             cell.containerView?.clipsToBounds = true
             cell.editFeedButton?.handleControlEvent(
@@ -69,7 +68,6 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                         feedIdentifier: feed.feedIdentifier
                     )
             })
-            //cell.containerView?.layer.borderWidth = 1.0
         }
     }
     
