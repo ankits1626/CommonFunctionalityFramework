@@ -40,7 +40,6 @@
                                 <state key="normal" image="closeIcon"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.98823529409999999" green="0.79607843140000001" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Nnl-bg-nJK" firstAttribute="centerX" secondItem="cMC-EN-Igx" secondAttribute="centerX" id="8zj-MA-3kJ"/>
                             <constraint firstItem="bHT-LX-dbW" firstAttribute="top" secondItem="cMC-EN-Igx" secondAttribute="top" id="B8r-tX-LK8"/>

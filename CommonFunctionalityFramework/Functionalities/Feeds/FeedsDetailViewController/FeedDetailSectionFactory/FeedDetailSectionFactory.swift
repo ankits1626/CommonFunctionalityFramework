@@ -183,6 +183,7 @@ extension FeedDetailSectionFactory{
         feed.getPollOptions()?.forEach { (_) in
             rows.append(PollOptionsTableViewCellType())
         }
+        rows.append(FeedBottomTableViewCellType())
         map[.FeedInfo] = rows
         if feedDataSource.getFeedItem().getFeedDescription() != nil{
             

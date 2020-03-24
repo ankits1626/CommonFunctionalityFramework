@@ -97,7 +97,6 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bis-ed-yTU" secondAttribute="trailing" id="kMg-E6-el8"/>
                             <constraint firstAttribute="bottom" secondItem="bis-ed-yTU" secondAttribute="bottom" id="pFW-dD-Deq"/>

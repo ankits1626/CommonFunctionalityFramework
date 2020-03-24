@@ -121,7 +121,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="0Tf-jP-6cb" secondAttribute="trailing" id="UEu-Qc-wMF"/>
                                                             <constraint firstItem="0Tf-jP-6cb" firstAttribute="leading" secondItem="ENU-25-k8l" secondAttribute="leading" id="aWb-g0-cn0"/>
@@ -132,7 +132,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="hSr-nG-30V" secondAttribute="trailing" id="AWR-jX-nnR"/>
                                             <constraint firstItem="hSr-nG-30V" firstAttribute="top" secondItem="Xud-Nz-jdJ" secondAttribute="top" id="NgB-UT-iD6"/>
@@ -144,7 +144,6 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="TTd-RL-SQv" firstAttribute="top" secondItem="U2b-wS-JUv" secondAttribute="top" id="Ca3-dq-avA"/>
                             <constraint firstItem="TTd-RL-SQv" firstAttribute="leading" secondItem="U2b-wS-JUv" secondAttribute="leading" id="Zfv-XP-XFj"/>

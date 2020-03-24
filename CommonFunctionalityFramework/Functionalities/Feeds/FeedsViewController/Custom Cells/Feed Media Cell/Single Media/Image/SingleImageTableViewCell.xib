@@ -32,7 +32,6 @@
                                 <state key="normal" image="closeIcon"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.98823529409999999" green="0.79607843140000001" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="4Vc-OZ-Ctj" secondAttribute="bottom" id="diY-Nb-M5m"/>
                             <constraint firstAttribute="trailing" secondItem="RSR-2c-ZbH" secondAttribute="trailing" constant="5" id="hac-fn-mJL"/>
