@@ -8,6 +8,7 @@
 
 import UIKit
 class FeedsViewController: UIViewController {
+    @IBOutlet private weak var composeLabel : UILabel?
     @IBOutlet private weak var feedsTable : UITableView?
     @IBOutlet private weak var whatsInYourMindView : UIView?
     @IBOutlet private weak var cameraContainerViewView : UIView?
@@ -83,6 +84,9 @@ class FeedsViewController: UIViewController {
         whatsInYourMindView?.backgroundColor = UIColor.grayBackGroundColor()
         cameraContainerViewView?.curvedCornerControl()
         cameraContainerViewView?.backgroundColor = UIColor.grayBackGroundColor()
+        composeLabel?.text = "Whats on your mind"
+        composeLabel?.font = .Highlighter1
+        composeLabel?.textColor = .getSubTitleTextColor()
     }
     
     private func setupTableView(){

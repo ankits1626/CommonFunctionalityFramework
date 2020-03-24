@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="cameraContainerViewView" destination="G6G-U9-vTq" id="PI6-lW-BIo"/>
+                <outlet property="composeLabel" destination="IWd-8n-oPd" id="v2t-wF-ycy"/>
                 <outlet property="feedsTable" destination="VdA-C0-ggV" id="E70-6f-TtD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="whatsInYourMindView" destination="mDI-8V-Dd4" id="HZl-ch-feB"/>
@@ -35,9 +36,54 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDI-8V-Dd4">
                                                     <rect key="frame" x="16" y="3.5" width="326" height="37"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghy-aY-beu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="326" height="37"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMf-cN-eZG">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="37"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compose" translatesAutoresizingMaskIntoConstraints="NO" id="dXB-nP-TXr">
+                                                                            <rect key="frame" x="12.5" y="11" width="15" height="15"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="15" id="7oe-Ho-UwW"/>
+                                                                                <constraint firstAttribute="height" constant="15" id="egf-4J-3Av"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="dXB-nP-TXr" firstAttribute="centerX" secondItem="LMf-cN-eZG" secondAttribute="centerX" id="LIm-nV-YTb"/>
+                                                                        <constraint firstAttribute="width" constant="40" id="W2x-kk-euh"/>
+                                                                        <constraint firstItem="dXB-nP-TXr" firstAttribute="centerY" secondItem="LMf-cN-eZG" secondAttribute="centerY" id="ZLS-fL-4Ss"/>
+                                                                    </constraints>
+                                                                </view>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QrS-o8-Xca">
+                                                                    <rect key="frame" x="40" y="0.0" width="286" height="37"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWd-8n-oPd">
+                                                                            <rect key="frame" x="0.0" y="8.5" width="42" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="IWd-8n-oPd" firstAttribute="leading" secondItem="QrS-o8-Xca" secondAttribute="leading" id="0bQ-s4-CGA"/>
+                                                                    </constraints>
+                                                                </view>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="IWd-8n-oPd" firstAttribute="centerY" secondItem="dXB-nP-TXr" secondAttribute="centerY" id="yfz-kA-kn1"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Ghy-aY-beu" secondAttribute="bottom" id="IeT-f1-8dR"/>
                                                         <constraint firstAttribute="height" constant="37" id="PSd-El-NDn"/>
+                                                        <constraint firstItem="Ghy-aY-beu" firstAttribute="leading" secondItem="mDI-8V-Dd4" secondAttribute="leading" id="Smo-cv-QfE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ghy-aY-beu" secondAttribute="trailing" id="aQi-cj-TFI"/>
+                                                        <constraint firstItem="Ghy-aY-beu" firstAttribute="top" secondItem="mDI-8V-Dd4" secondAttribute="top" id="qdL-y7-5P4"/>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kui-lY-C81">
@@ -139,5 +185,6 @@
     </objects>
     <resources>
         <image name="camera" width="18" height="16"/>
+        <image name="compose" width="17" height="16"/>
     </resources>
 </document>
