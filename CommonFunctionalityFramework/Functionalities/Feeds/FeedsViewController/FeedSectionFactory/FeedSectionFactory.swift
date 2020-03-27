@@ -20,6 +20,7 @@ protocol FeedsDatasource {
 protocol FeedsDelegate {
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
     func showLikedByUsersList()
+    func showMediaBrowser(feedIdentifier : Int64,scrollToItemIndex: Int)
 }
 
 class FeedSectionFactory{
@@ -32,9 +33,6 @@ class FeedSectionFactory{
         self.feedsDatasource = feedsDatasource
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
-    }
-    func registerTableViewForAllPossibleCellTypes(_ tableView : UITableView? ){
-        
     }
     
     func getNumberOfSections() -> Int {

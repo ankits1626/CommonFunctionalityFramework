@@ -17,10 +17,19 @@ class FeedComposerCoordinator {
     }
     
     func showFeedItemEditor(type : FeedType) {
+        openEditor(nil, type: type)
+    }
+    
+    func editPost(feed : FeedsItemProtocol) {
+        openEditor(feed, type: feed.getFeedType())
+    }
+    
+    private func openEditor(_ feed : FeedsItemProtocol?, type : FeedType){
         let postEditor = PostEditorViewController(
             postType: type,
             requestCoordinator: requestCoordinator,
-            post: nil)
+            post: feed?.getEditablePost()
+        )
         feedCoordinatorDeleagate.showComposer(_composer: postEditor) { (topBarModel) in
             postEditor.containerTopBarModel = topBarModel
         }

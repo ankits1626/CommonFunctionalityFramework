@@ -33,10 +33,15 @@ class PostCoordinator {
     private var currentPost : EditablePostProtocol
     var postObsever : PostObserver?
     let postType: FeedType
-    init(postObsever : PostObserver?, postType: FeedType) {
+    init(postObsever : PostObserver?, postType: FeedType, editablePost : EditablePostProtocol?) {
         self.postObsever = postObsever
         self.postType = postType
-        currentPost = EditablePost(postType: postType)
+        if let unwrappedPost = editablePost{
+            currentPost = unwrappedPost
+        }else{
+            currentPost = EditablePost(postType: postType)
+        }
+        
     }
     
     func getCurrentPost() -> EditablePostProtocol {

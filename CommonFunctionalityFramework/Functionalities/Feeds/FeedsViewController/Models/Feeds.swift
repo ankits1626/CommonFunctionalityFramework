@@ -35,6 +35,16 @@ struct Poll {
 }
 
 public struct RawFeed : FeedsItemProtocol {
+    func getEditablePost() -> EditablePostProtocol {
+        return EditablePost(
+            postType: getFeedType(),
+            pollOptions: nil,
+            title: getFeedTitle(),
+            postDesciption: getFeedDescription(),
+            attachedMedia: nil,
+            selectedMediaItems: nil)
+    }
+    
     func getPollOptions() -> [PollOption]? {
         var options = [PollOption]()
         

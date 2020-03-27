@@ -148,6 +148,14 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showMediaBrowser(feedIdentifier: Int64, scrollToItemIndex: Int) {
+        let mediaBrowser = CFFMediaBrowserViewController(
+            nibName: "CFFMediaBrowserViewController",
+            bundle: Bundle(for: CFFMediaBrowserViewController.self)
+        )
+        present(mediaBrowser, animated: true, completion: nil)
+    }
+    
     func showLikedByUsersList() {
         
     }
@@ -163,14 +171,26 @@ extension FeedsViewController : FeedsDelegate{
                 options.append(
                     FloatingMenuOption(title: "EDIT", action: {
                         print("Edit post - \(feedIdentifier)")
-                    }))
+                        self.openFeedEditor(feed)
+                    }
+                    )
+                )
             }
             options.append( FloatingMenuOption(title: "DELETE", action: {
                 print("Delete post- \(feedIdentifier)")
-            }))
+            }
+                )
+            )
             
             FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
         }
+    }
+    
+    private func openFeedEditor(_ feed : FeedsItemProtocol){
+        FeedComposerCoordinator(
+            delegate: feedCoordinatorDeleagate,
+            requestCoordinator: requestCoordinator
+        ).editPost(feed: feed)
     }
 }
 

@@ -11,6 +11,18 @@ import UIKit
 class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol{
     var delegate : PostEditorCellFactoryDelegate?
     var targetIndexPath : IndexPath = []
+    
+    func getCell(_ inputModel: PostEditorCellDequeueModel) -> UITableViewCell {
+        let targetCell = inputModel.targetTableView.dequeueReusableCell(
+        withIdentifier: cellType.cellIdentifier,
+        for: inputModel.targetIndexpath)
+        let post = inputModel.datasource.getTargetPost()
+        
+        if let cell  = targetCell as? FeedEditorTitleTableViewCell{
+            cell.titleText?.text = post?.title
+        }
+        return targetCell
+    }
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         self.delegate = inputModel.delegate
         targetIndexPath = inputModel.targetIndexpath
@@ -24,7 +36,6 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             case .Post:
                 cell.titleText?.placeholder = "Title"
             }
-            
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
             cell.containerView?.clipsToBounds = true

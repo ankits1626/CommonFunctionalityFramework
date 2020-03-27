@@ -32,7 +32,7 @@ class PostEditorViewController: UIViewController {
     @IBOutlet weak var createButton : UIButton?
     
     lazy var postCoordinator: PostCoordinator = {
-        return PostCoordinator(postObsever: cellFactory, postType: postType)
+        return PostCoordinator(postObsever: cellFactory, postType: postType, editablePost: editablePost)
     }()
     private lazy var cellFactory: PostEditorCellFactory = {
         return PostEditorCellFactory(InitPostEditorCellFactoryModel(
@@ -45,10 +45,11 @@ class PostEditorViewController: UIViewController {
     private lazy var localMediaManager: LocalMediaManager = {
         return LocalMediaManager()
     }()
-    
+    private let editablePost : EditablePostProtocol?
     init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?){
         self.postType  = postType
         self.requestCoordinator = requestCoordinator
+        self.editablePost = post
         super.init(
             nibName: "PostEditorViewController"
             , bundle: Bundle(for: PostEditorViewController.self))

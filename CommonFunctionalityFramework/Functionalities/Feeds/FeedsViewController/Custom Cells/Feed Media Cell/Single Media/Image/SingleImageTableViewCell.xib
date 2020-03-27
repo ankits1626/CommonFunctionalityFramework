@@ -23,6 +23,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Vc-OZ-Ctj">
                                 <rect key="frame" x="0.0" y="0.0" width="288" height="108"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra7-Lh-5Wn" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="288" height="108"/>
+                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSR-2c-ZbH" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                 <rect key="frame" x="261" y="5" width="22" height="22"/>
                                 <constraints>
@@ -33,11 +36,15 @@
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="ra7-Lh-5Wn" firstAttribute="width" secondItem="4Vc-OZ-Ctj" secondAttribute="width" id="212-Q4-iQO"/>
+                            <constraint firstItem="ra7-Lh-5Wn" firstAttribute="height" secondItem="4Vc-OZ-Ctj" secondAttribute="height" id="W3A-PP-9P4"/>
                             <constraint firstAttribute="bottom" secondItem="4Vc-OZ-Ctj" secondAttribute="bottom" id="diY-Nb-M5m"/>
                             <constraint firstAttribute="trailing" secondItem="RSR-2c-ZbH" secondAttribute="trailing" constant="5" id="hac-fn-mJL"/>
                             <constraint firstItem="RSR-2c-ZbH" firstAttribute="top" secondItem="6XA-k5-rU7" secondAttribute="top" constant="5" id="htd-bU-tnw"/>
                             <constraint firstItem="4Vc-OZ-Ctj" firstAttribute="leading" secondItem="6XA-k5-rU7" secondAttribute="leading" id="lFM-GK-pi3"/>
+                            <constraint firstItem="ra7-Lh-5Wn" firstAttribute="centerY" secondItem="4Vc-OZ-Ctj" secondAttribute="centerY" id="mQf-8j-v3Z"/>
                             <constraint firstAttribute="trailing" secondItem="4Vc-OZ-Ctj" secondAttribute="trailing" id="o3n-1T-NpZ"/>
+                            <constraint firstItem="ra7-Lh-5Wn" firstAttribute="centerX" secondItem="4Vc-OZ-Ctj" secondAttribute="centerX" id="oKY-v8-59S"/>
                             <constraint firstItem="4Vc-OZ-Ctj" firstAttribute="top" secondItem="6XA-k5-rU7" secondAttribute="top" id="z4V-cm-p1E"/>
                         </constraints>
                     </view>
@@ -53,6 +60,7 @@
             <connections>
                 <outlet property="containerView" destination="6XA-k5-rU7" id="FN8-D7-8PT"/>
                 <outlet property="feedImageView" destination="4Vc-OZ-Ctj" id="Obf-kn-Pci"/>
+                <outlet property="imageTapButton" destination="ra7-Lh-5Wn" id="OPf-mF-UYX"/>
                 <outlet property="removeButton" destination="RSR-2c-ZbH" id="tEK-3z-7iK"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>

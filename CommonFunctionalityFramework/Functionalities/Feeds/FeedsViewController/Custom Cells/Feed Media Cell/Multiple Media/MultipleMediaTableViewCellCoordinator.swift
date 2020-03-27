@@ -45,7 +45,8 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
                 InitFeedsMediaCollectionCoordinatorModel(
                     feedsDatasource: inputModel.datasource,
                     feedItemIndex: inputModel.targetIndexpath.section,
-                    mediaFetcher: inputModel.mediaFetcher
+                    mediaFetcher: inputModel.mediaFetcher,
+                    delegate: inputModel.delegate
                 )
             )
             cachedMediCollectionCoordinators[inputModel.targetIndexpath] = coordinator

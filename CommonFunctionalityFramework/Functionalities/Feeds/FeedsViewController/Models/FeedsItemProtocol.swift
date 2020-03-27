@@ -75,6 +75,7 @@ protocol FeedsItemProtocol {
     func getMediaCountState() -> MediaCountState
     func getFeedType() -> FeedType
     func getPollOptions() -> [PollOption]?
+    func getEditablePost() -> EditablePostProtocol
 }
 
 enum FeedType : Int{

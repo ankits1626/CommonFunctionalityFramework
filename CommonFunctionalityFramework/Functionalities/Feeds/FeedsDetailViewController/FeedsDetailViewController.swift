@@ -113,6 +113,14 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
+    func showMediaBrowser(feedIdentifier: Int64, scrollToItemIndex: Int) {
+        let mediaBrowser = CFFMediaBrowserViewController(
+            nibName: "CFFMediaBrowserViewController",
+            bundle: Bundle(for: CFFMediaBrowserViewController.self)
+        )
+        present(mediaBrowser, animated: true, completion: nil)
+    }
+    
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
         
     }

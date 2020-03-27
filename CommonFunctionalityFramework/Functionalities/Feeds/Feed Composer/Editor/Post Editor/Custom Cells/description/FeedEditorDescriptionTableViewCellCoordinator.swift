@@ -11,6 +11,16 @@ import UIKit
 class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol{
     var delegate : PostEditorCellFactoryDelegate?
     var targetIndexPath : IndexPath = []
+    func getCell(_ inputModel: PostEditorCellDequeueModel) -> UITableViewCell {
+        let targetCell = inputModel.targetTableView.dequeueReusableCell(
+        withIdentifier: cellType.cellIdentifier,
+        for: inputModel.targetIndexpath)
+        let post = inputModel.datasource.getTargetPost()
+        if let cell  = targetCell as? FeedEditorDescriptionTableViewCell{
+            cell.descriptionText?.text = post?.postDesciption
+        }
+        return targetCell
+    }
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         self.delegate = inputModel.delegate
         targetIndexPath = inputModel.targetIndexpath
@@ -19,6 +29,7 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
             cell.descriptionText?.delegate = self
             cell.descriptionText?.placeholder = "Whats on your mind?"
             cell.descriptionText?.placeholderColor = .gray
+            
             if let mediaItems = inputModel.datasource.getTargetPost()?.selectedMediaItems,
             mediaItems.count > 0{
                 cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())

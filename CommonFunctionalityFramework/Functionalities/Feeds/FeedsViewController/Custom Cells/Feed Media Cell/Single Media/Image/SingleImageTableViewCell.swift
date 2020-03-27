@@ -12,6 +12,7 @@ class SingleImageTableViewCell: UITableViewCell {
     @IBOutlet weak var feedImageView : UIImageView?
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var removeButton : BlockButton?
+    @IBOutlet weak var imageTapButton : BlockButton?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

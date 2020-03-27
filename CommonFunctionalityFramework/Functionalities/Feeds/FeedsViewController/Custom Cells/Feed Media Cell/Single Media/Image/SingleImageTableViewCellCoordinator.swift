@@ -17,8 +17,6 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
         return 205
     }
     
-    
-    
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? SingleImageTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
@@ -27,6 +25,14 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: mediaItemEndpoint)
             }
             cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.imageTapButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate.showMediaBrowser(
+                        feedIdentifier: feed.feedIdentifier,
+                        scrollToItemIndex: 0
+                    )
+            })
         }
     }
     

@@ -12,6 +12,7 @@ struct InitFeedsMediaCollectionCoordinatorModel {
     let feedsDatasource : FeedsDatasource
     let feedItemIndex : Int
     let mediaFetcher : CFFMediaCoordinatorProtocol
+    let delegate : FeedsDelegate
 }
 
 class FeedsMediaCollectionCoordinator : NSObject {
@@ -49,6 +50,13 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDataSource, UICollec
             cell.playButton?.isHidden = true
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.input.delegate.showMediaBrowser(
+            feedIdentifier: self.input.feedsDatasource.getFeedItem(self.input.feedItemIndex).feedIdentifier,
+            scrollToItemIndex: indexPath.item
+        )
     }
 }
 

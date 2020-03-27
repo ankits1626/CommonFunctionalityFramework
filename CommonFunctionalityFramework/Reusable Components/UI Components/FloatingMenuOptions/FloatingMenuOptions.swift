@@ -38,6 +38,7 @@ class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
         setupTableView()
     }
     private func setupTableView(){
+        listTable?.isScrollEnabled = false
         listTable?.register(
             UINib(nibName: "FloatingMenuOptionTableViewCell", bundle: Bundle(for: FloatingMenuOptionTableViewCell.self)),
             forCellReuseIdentifier: "FloatingMenuOptionTableViewCell"
@@ -58,7 +59,8 @@ extension FloatingMenuOptions : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        options[indexPath.row].action()
-        dismissPopover(animated: true)
+        dismiss(animated: true) {
+            self.options[indexPath.row].action()
+        }
     }
 }
