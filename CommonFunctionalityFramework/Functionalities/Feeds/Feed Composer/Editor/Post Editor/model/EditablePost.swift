@@ -51,7 +51,7 @@ struct EditablePost : EditablePostProtocol{
     
     var postDesciption: String?
     
-    var attachedMedia: [FeedMediaItemProtocol]?
+    var attachedMedia: [MediaItemProtocol]?
     
     var selectedMediaItems : [LocalSelectedMediaItem]?
     

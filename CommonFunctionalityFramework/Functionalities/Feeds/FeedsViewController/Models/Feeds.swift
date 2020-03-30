@@ -136,8 +136,8 @@ public struct RawFeed : FeedsItemProtocol {
         }
     }
     
-    func getMediaList() -> [FeedMediaItemProtocol]? {
-        var mediaElements = [FeedMediaItemProtocol]()
+    func getMediaList() -> [MediaItemProtocol]? {
+        var mediaElements = [MediaItemProtocol]()
         if let videos = rawFeedDictionary["videos"] as? [[String : Any]]{
             videos.forEach { (aVideo) in
                 mediaElements.append(FeedVideoItem(aVideo))

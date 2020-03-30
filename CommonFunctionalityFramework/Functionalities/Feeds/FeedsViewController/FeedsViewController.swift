@@ -148,12 +148,24 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    private func getFeedItem(feedIdentifier: Int64) -> FeedsItemProtocol?{
+        let filteredFeeds = feeds.filter { (feeditem) -> Bool in
+            return feeditem.feedIdentifier == feedIdentifier
+        }
+        return filteredFeeds.first
+    }
+    
+    
     func showMediaBrowser(feedIdentifier: Int64, scrollToItemIndex: Int) {
-        let mediaBrowser = CFFMediaBrowserViewController(
-            nibName: "CFFMediaBrowserViewController",
-            bundle: Bundle(for: CFFMediaBrowserViewController.self)
-        )
-        present(mediaBrowser, animated: true, completion: nil)
+        if let feed =  getFeedItem(feedIdentifier: feedIdentifier),
+            let mediaItems = feed.getMediaList(){
+            let mediaBrowser = CFFMediaBrowserViewController(
+                mediaList: mediaItems,
+                mediaFetcher: mediaFetcher,
+                selectedIndex: scrollToItemIndex
+            )
+            present(mediaBrowser, animated: true, completion: nil)
+        }
     }
     
     func showLikedByUsersList() {
@@ -162,10 +174,7 @@ extension FeedsViewController : FeedsDelegate{
     
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
         print("show edit option")
-        let filteredFeeds = feeds.filter { (feeditem) -> Bool in
-            return feeditem.feedIdentifier == feedIdentifier
-        }
-        if let feed =  filteredFeeds.first{
+        if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
             var options = [FloatingMenuOption]()
             if feed.getFeedType() == .Post{
                 options.append(

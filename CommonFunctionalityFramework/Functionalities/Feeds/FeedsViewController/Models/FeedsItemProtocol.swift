@@ -13,12 +13,13 @@ enum FeedMediaItemType{
     case Video
 }
 
-protocol FeedMediaItemProtocol {
+
+protocol MediaItemProtocol {
     func getMediaType() -> FeedMediaItemType
     func getCoverImageUrl() -> String?
 }
 
-struct FeedVideoItem :  FeedMediaItemProtocol{
+struct FeedVideoItem :  MediaItemProtocol{
     private let rawVideo : [String : Any]
     init(_ rawVideo : [String : Any]) {
         self.rawVideo = rawVideo
@@ -33,7 +34,7 @@ struct FeedVideoItem :  FeedMediaItemProtocol{
     }
 }
 
-struct FeedImageItem :  FeedMediaItemProtocol{
+struct FeedImageItem :  MediaItemProtocol{
     private let rawImage : [String : Any]
     init(_ rawImage : [String : Any]) {
         self.rawImage = rawImage
@@ -67,7 +68,7 @@ protocol FeedsItemProtocol {
     func getIsEditActionAllowedOnFeedItem() -> Bool
     func getFeedTitle() -> String?
     func getFeedDescription() -> String?
-    func getMediaList() -> [FeedMediaItemProtocol]?
+    func getMediaList() -> [MediaItemProtocol]?
     func isClappedByMe() -> Bool
     func getNumberOfClaps() -> String
     func getNumberOfComments() -> String
