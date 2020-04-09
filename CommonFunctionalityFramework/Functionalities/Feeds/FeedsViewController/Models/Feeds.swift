@@ -144,7 +144,7 @@ public struct RawFeed : FeedsItemProtocol {
     }
     
     func getIsEditActionAllowedOnFeedItem() -> Bool {
-        return true
+        return rawFeedDictionary["is_owner"] as? Bool ?? false
     }
     
     func getFeedTitle() -> String? {
@@ -182,16 +182,16 @@ public struct RawFeed : FeedsItemProtocol {
     }
     
     func isClappedByMe() -> Bool {
-        return rawFeedDictionary["isClappedByMe"] as? Bool ?? false
+        return rawFeedDictionary["has_appreciated"] as? Bool ?? false
     }
     
     func getNumberOfClaps() -> String {
-        let claps = rawFeedDictionary["claps"] as? Int ?? 0
+        let claps = rawFeedDictionary["appreciation_count"] as? Int ?? 0
         return "\(claps) Clap".appending(claps == 1 ? "" : "s")
     }
     
     func getNumberOfComments() -> String {
-        let comments = rawFeedDictionary["comments"] as? Int ?? 0
+        let comments = rawFeedDictionary["comments_count"] as? Int ?? 0
         return "\(comments) Comment".appending(comments == 1 ? "" : "s")
     }
     

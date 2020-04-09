@@ -73,39 +73,35 @@ class PostImageDataMapper {
     func prepareMediaUrlMapForPost(_ post : EditablePostProtocol, completion :  @escaping ((_ images : [URL]?, _ error : Error?) -> Void))  {
         if let unwrappedMediaItems  = post.selectedMediaItems{
             //var currentlyProcessedImage = 0
-            for (index, anItem) in unwrappedMediaItems.enumerated(){
-                var images = [UIImage]()
-                var selectedAssets = [String]()
-                unwrappedMediaItems.forEach { (anItem) in
-                    selectedAssets.append(anItem.identifier)
-                }
-                let photoAsset = PHAsset.fetchAssets(withLocalIdentifiers: selectedAssets, options: nil)
-                let contentMode: PHImageContentMode = PHImageContentMode.aspectFit
-                photoAsset.enumerateObjects ({ (object, index, stop) in
-                    let options = PHImageRequestOptions()
-                    options.isSynchronous = true
-                    options.deliveryMode = .highQualityFormat
-                    PHImageManager.default().requestImage(for: object as PHAsset, targetSize: PHImageManagerMaximumSize, contentMode: contentMode, options: options) {
-                        image, info in
-                        images.append(image!)
-                    }
-                })
-                
-                var imageURLs = [URL]()
-                var error : Error?
-                
-                for anImage in images{
-                    let saveImageResult = self.saveImageToDocumentsDirectory(anImage)
-                    if let unwrappedURL = saveImageResult.imageURL{
-                        imageURLs.append(unwrappedURL)
-                    }
-                    if let unwrappedError = saveImageResult.error{
-                        error = unwrappedError
-                    }
-                }
-                completion(imageURLs, error)
-                
+            var images = [UIImage]()
+            var selectedAssets = [String]()
+            unwrappedMediaItems.forEach { (anItem) in
+                selectedAssets.append(anItem.identifier)
             }
+            let photoAsset = PHAsset.fetchAssets(withLocalIdentifiers: selectedAssets, options: nil)
+            let contentMode: PHImageContentMode = PHImageContentMode.aspectFit
+            photoAsset.enumerateObjects ({ (object, index, stop) in
+                let options = PHImageRequestOptions()
+                options.isSynchronous = true
+                options.deliveryMode = .highQualityFormat
+                PHImageManager.default().requestImage(for: object as PHAsset, targetSize: PHImageManagerMaximumSize, contentMode: contentMode, options: options) {
+                    image, info in
+                    images.append(image!)
+                }
+            })
+            var imageURLs = [URL]()
+            var error : Error?
+            
+            for anImage in images{
+                let saveImageResult = self.saveImageToDocumentsDirectory(anImage)
+                if let unwrappedURL = saveImageResult.imageURL{
+                    imageURLs.append(unwrappedURL)
+                }
+                if let unwrappedError = saveImageResult.error{
+                    error = unwrappedError
+                }
+            }
+            completion(imageURLs, error)
         }else{
             completion(nil, nil)
         }

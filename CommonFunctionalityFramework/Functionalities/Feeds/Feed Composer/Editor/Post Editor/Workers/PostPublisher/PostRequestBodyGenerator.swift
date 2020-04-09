@@ -32,7 +32,7 @@ class PostRequestBodyGenerator {
                     partContent = URLContent
                 }
                 if let content = partContent, let filename = partFilename {
-                    let dispose = "Content-Disposition: form-data; name=\"\(index)\"; filename=\"\(filename)\"\r\n"
+                    let dispose = "Content-Disposition: form-data; name=\"images\"; filename=\"\(filename)\"\r\n"
                     body.append(dispose.data(using: String.Encoding.utf8)!)
                     if let type = partMimetype {
                         body.append(
