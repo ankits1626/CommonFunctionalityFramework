@@ -35,7 +35,10 @@ class PostPublisherRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
     private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    var post : EditablePostProtocol
+    private var post : EditablePostProtocol
+    private lazy var feedPostRequestBodyGenerator : PostRequestBodyGenerator = {
+        return PostRequestBodyGenerator()
+    }()
     init( post: EditablePostProtocol, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
         self.post = post
         self.networkRequestCoordinator = networkRequestCoordinator
@@ -52,7 +55,18 @@ class PostPublisherRequestGenerator: APIRequestGeneratorProtocol  {
                     httpBodyDict: post.getNetworkPostableFormat() as NSDictionary
                 )
             case .Post:
-                return nil
+                var request = self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                    url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/"),
+                    method: .POST,
+                    httpBodyDict: nil
+                )
+                let bound = "Ju5tH77P15Aw350m3"
+                let contentType : String? = "multipart/form-data; boundary=\(bound)"
+                if let contentTypeValue = contentType {
+                    request?.setValue(contentTypeValue, forHTTPHeaderField: "Content-Type")
+                }
+                request?.httpBody = feedPostRequestBodyGenerator.getPostRequestBody(post: post, boundary: bound)
+                return request
             }
         }
     }

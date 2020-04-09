@@ -109,6 +109,15 @@ class PostCoordinator {
         currentPost.pollOptions = options.isEmpty ? nil : options
     }
     
+    func saveMediaDataMap(map :[Int : Data]?) {
+        currentPost.postableMediaMap = map
+    }
+    
+    func saveLocalMediUrls(_ urls : [URL]) {
+        currentPost.postableLocalMediaUrls = urls
+    }
+    
+    
 }
 
 extension PostCoordinator{
@@ -130,6 +139,18 @@ extension PostCoordinator{
     }
     
     private func  checkIfPostReadyToBePosted() throws{
-        throw PostCoordinatorError.PostNotReadyToBePosted
+        if let _ = currentPost.pollOptions{
+            return
+        }
+        else if let _  = currentPost.postDesciption{
+            return
+        }else if let mediaItems  = currentPost.selectedMediaItems,
+        !mediaItems.isEmpty{
+            return
+        }
+        else{
+            throw PostCoordinatorError.PollNotReadyToBePosted
+        }
+        
     }
 }

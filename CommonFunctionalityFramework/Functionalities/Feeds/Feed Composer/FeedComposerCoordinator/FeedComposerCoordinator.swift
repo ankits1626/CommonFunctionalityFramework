@@ -9,10 +9,10 @@
 import Foundation
 
 class FeedComposerCoordinator {
-    let feedCoordinatorDeleagate: FeedsCoordinatorDelegate
+    let feedCoordinatorDelegate: FeedsCoordinatorDelegate
      var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
-        self.feedCoordinatorDeleagate = delegate
+        self.feedCoordinatorDelegate = delegate
         self.requestCoordinator = requestCoordinator
     }
     
@@ -30,7 +30,7 @@ class FeedComposerCoordinator {
             requestCoordinator: requestCoordinator,
             post: feed?.getEditablePost()
         )
-        feedCoordinatorDeleagate.showComposer(_composer: postEditor) { (topBarModel) in
+        feedCoordinatorDelegate.showComposer(_composer: postEditor) { (topBarModel) in
             postEditor.containerTopBarModel = topBarModel
         }
     }

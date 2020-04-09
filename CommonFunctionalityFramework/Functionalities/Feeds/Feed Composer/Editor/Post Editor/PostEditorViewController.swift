@@ -15,6 +15,8 @@ protocol EditablePostProtocol {
     var selectedMediaItems : [LocalSelectedMediaItem]? {set get}
     var postType : FeedType {set get}
     func getNetworkPostableFormat() -> [String : Any]
+    var postableMediaMap : [Int : Data]? { get set}
+    var postableLocalMediaUrls : [URL]? { get set}
 }
 
 
@@ -126,23 +128,56 @@ class PostEditorViewController: UIViewController {
     @IBAction func createButtonPressed(){
         do{
             try postCoordinator.checkIfPostReadyToPublish()
-            PostPublisher(networkRequestCoordinator: requestCoordinator).publisPost(
-            post: postCoordinator.getCurrentPost()) { (callResult) in
-                DispatchQueue.main.async {
-                    switch callResult{
-                    case .Success(_):
-                        self.dismiss(animated: true, completion: nil)
-                    case .SuccessWithNoResponseData:
-                        ErrorDisplayer.showError(errorMsg: "Unablee to post.") { (_) in
-                            
-                        }
-                    case .Failure(let error):
-                        ErrorDisplayer.showError(errorMsg: "Unablee to post due to \(error.displayableErrorMessage())") { (_) in
-                            
+            PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
+            self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
+                 print("here")
+                if let unwrappedUrls = localImageUrls{
+                    self.postCoordinator.saveLocalMediUrls(unwrappedUrls)
+                    PostPublisher(networkRequestCoordinator: self.requestCoordinator).publisPost(
+                    post: self.postCoordinator.getCurrentPost()) { (callResult) in
+                        DispatchQueue.main.async {
+                            switch callResult{
+                            case .Success(_):
+                                self.dismiss(animated: true, completion: nil)
+                            case .SuccessWithNoResponseData:
+                                ErrorDisplayer.showError(errorMsg: "Unable to post.") { (_) in
+
+                                }
+                            case .Failure(let error):
+                                ErrorDisplayer.showError(errorMsg: "Unable to post due to \(error.displayableErrorMessage())") { (_) in
+
+                                }
+                            }
                         }
                     }
+                }else{
+                    print("<<<<<<<<<<<<<<<<<<< erorr observed")
                 }
             }
+            /*try PostImageDataMapper(localMediaManager).prepareMediaMapForPost(
+                postCoordinator.getCurrentPost(),
+                completion: { (imageMap) in
+                    print("here")
+                    self.postCoordinator.saveMediaDataMap(map: imageMap)
+                    PostPublisher(
+                        networkRequestCoordinator: self.requestCoordinator).publisPost(
+                    post: self.postCoordinator.getCurrentPost()) { (callResult) in
+                        DispatchQueue.main.async {
+                            switch callResult{
+                            case .Success(_):
+                                self.dismiss(animated: true, completion: nil)
+                            case .SuccessWithNoResponseData:
+                                ErrorDisplayer.showError(errorMsg: "Unable to post.") { (_) in
+
+                                }
+                            case .Failure(let error):
+                                ErrorDisplayer.showError(errorMsg: "Unable to post due to \(error.displayableErrorMessage())") { (_) in
+
+                                }
+                            }
+                        }
+                    }
+            })*/
         }catch let error{
             ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
                 
@@ -167,7 +202,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
         postCoordinator.removeSelectedMedia(index: index)
     }
     
-    func updatePostTile(title: String?) {
+    func updatePostTitle(title: String?) {
         postCoordinator.updatePostTile(title: title)
     }
     

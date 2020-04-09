@@ -19,6 +19,10 @@ struct LocalSelectedMediaItem : Equatable {
 }
 
 struct EditablePost : EditablePostProtocol{
+    var postableLocalMediaUrls: [URL]?
+    
+    var postableMediaMap: [Int : Data]?
+    
     func getNetworkPostableFormat() -> [String : Any] {
         switch postType {
         case .Poll:
@@ -40,7 +44,14 @@ struct EditablePost : EditablePostProtocol{
     }
     
     private func getPostDictionary() -> [String : Any]{
-        return [String : Any]()
+        var postDictionary = [String : Any]()
+        if let unwrappedTitle = title{
+            postDictionary["title"] = unwrappedTitle
+        }
+        if let unwrappedDescription = postDesciption{
+            postDictionary["description"] = unwrappedDescription
+        }
+        return postDictionary
     }
     
     var postType: FeedType

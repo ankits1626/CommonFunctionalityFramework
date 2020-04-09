@@ -14,7 +14,7 @@ protocol PostEditorCellFactoryDatasource : class{
 
 protocol PostEditorCellFactoryDelegate : class {
     func reloadTextViewContainingRow(indexpath : IndexPath)
-    func updatePostTile( title : String?)
+    func updatePostTitle( title : String?)
     func updatePostDescription( decription: String?)
     func removeSelectedMedia(index : Int)
     func savePostOption(index : Int, option: String?)

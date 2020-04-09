@@ -130,6 +130,8 @@
 		98CC2FB12425C4C400E8F9E0 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */; };
 		98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */; };
 		98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */; };
+		98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */; };
+		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		A7F66EFD913B6589143437B5 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +265,8 @@
 		98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
 		98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedByTableViewCell.swift; sourceTree = "<group>"; };
 		98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikedByTableViewCell.xib; sourceTree = "<group>"; };
+		98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequestBodyGenerator.swift; sourceTree = "<group>"; };
+		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -360,8 +364,7 @@
 		983500EB2419FC87009084D4 /* Post Editor */ = {
 			isa = PBXGroup;
 			children = (
-				98C648B7241BC8FC006689E9 /* PostPublisher */,
-				9811DD00241A8847003B91FD /* PostCoordinator */,
+				98DF76D82433CE7900B9B8A1 /* Workers */,
 				98B02FC0241A662900CB8690 /* model */,
 				98BC8A1C241A19C9007C175D /* PostEditorCellFactory */,
 				98BC8A0B241A171E007C175D /* Custom Cells */,
@@ -1020,6 +1023,7 @@
 			isa = PBXGroup;
 			children = (
 				98C648B8241BC952006689E9 /* PostPublisher.swift */,
+				98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */,
 			);
 			path = PostPublisher;
 			sourceTree = "<group>";
@@ -1059,6 +1063,16 @@
 				98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */,
 			);
 			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		98DF76D82433CE7900B9B8A1 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				9811DD00241A8847003B91FD /* PostCoordinator */,
+				98C648B7241BC8FC006689E9 /* PostPublisher */,
+				98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1235,6 +1249,7 @@
 				9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */,
 				98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */,
 				9868BFF7240EC2FB00B12321 /* CommonTableCollection.swift in Sources */,
+				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
@@ -1251,6 +1266,7 @@
 				9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */,
 				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,
 				9811DD52241AC5E5003B91FD /* UIDevice+Extension.swift in Sources */,
+				98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */,
 				9868C045240F9D6C00B12321 /* MultipleMediaTableViewCellCoordinator.swift in Sources */,
 				9811DD05241A9ECB003B91FD /* BlockButton.swift in Sources */,
 				9868C0F9241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift in Sources */,
