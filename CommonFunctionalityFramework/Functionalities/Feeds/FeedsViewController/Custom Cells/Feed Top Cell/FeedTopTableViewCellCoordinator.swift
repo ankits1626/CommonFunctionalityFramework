@@ -68,6 +68,11 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                         feedIdentifier: feed.feedIdentifier
                     )
             })
+            if let profileImageEndpoint = feed.getUserImageUrl(){
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+            }else{
+                cell.profileImage?.image = nil
+            }
         }
     }
     

@@ -23,6 +23,8 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             if let mediaItem = feed.getMediaList()?.first,
                 let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: mediaItemEndpoint)
+            }else{
+                cell.feedImageView?.image = nil
             }
             cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
             cell.imageTapButton?.handleControlEvent(

@@ -15,15 +15,44 @@ struct FeedAuthor {
     }
     
     func getAuthorName() -> String {
-        return rawAuthorDictionary["name"] as? String ?? ""
+        return getFullName()
     }
     
-    func getAuthorProfileImageUrl() -> URL? {
-        return nil
+    private func getFullName() -> String{
+        var name = ""
+        name.append(getFirstName())
+        if name.isEmpty{
+            name.append(getLastName())
+        }else{
+            name.append(" \(getLastName())")
+        }
+        return name
+    }
+    
+    private func getFirstName() -> String {
+        return rawAuthorDictionary["first_name"] as? String ?? ""
+    }
+    
+    private func getLastName() -> String {
+        return rawAuthorDictionary["last_name"] as? String ?? ""
+    }
+    
+    func getAuthorProfileImageUrl() -> String? {
+        return rawAuthorDictionary["profile_img"] as? String
     }
     
     func getAuthorDepartmentName() -> String {
-        return rawAuthorDictionary["department"] as? String ?? ""
+        if let departments = rawAuthorDictionary["departments"] as? [[String : String]]{
+            var departmentValues = [String]()
+            departments.forEach { (aDictionary) in
+                if let unwrappedDepartment = aDictionary["name"]{
+                    departmentValues.append(unwrappedDepartment)
+                }
+            }
+            return departmentValues.joined(separator: ", ")
+        }else{
+            return ""
+        }
     }
 }
 
@@ -91,15 +120,15 @@ public struct RawFeed : FeedsItemProtocol {
     }
     
     private func getFeedAuthor() -> FeedAuthor?{
-        if let rawAuthor = rawFeedDictionary["author"] as? [String:Any]{
+        if let rawAuthor = rawFeedDictionary["user_info"] as? [String:Any]{
             return FeedAuthor(rawAuthorDictionary: rawAuthor)
         }else{
             return nil
         }
     }
     
-    func getUserImageUrl() -> URL? {
-        return nil
+    func getUserImageUrl() -> String? {
+        return getFeedAuthor()?.getAuthorProfileImageUrl()
     }
     
     func getUserName() -> String? {
