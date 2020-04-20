@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 class FeedsViewController: UIViewController {
     @IBOutlet private weak var composeLabel : UILabel?
     @IBOutlet private weak var feedsTable : UITableView?
@@ -21,7 +23,7 @@ class FeedsViewController: UIViewController {
         return FeedSectionFactory(feedsDatasource: self, mediaFetcher: mediaFetcher, targetTableView: feedsTable)
     }()
     
-    var feeds = [FeedsItemProtocol]()
+    //var feeds = [FeedsItemProtocol]()
     var lastFetchedFeeds : FetchedFeedModel?
     
     private lazy var refreshControl : UIRefreshControl  = {
@@ -32,10 +34,44 @@ class FeedsViewController: UIViewController {
         return refreshControl
     }()
     
+    private var frc : NSFetchedResultsController<ManagedPost>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeFRC()
         loadFeeds()
         setup()
+        clearAnyExistingFeedsData {[weak self] in
+            self?.loadFeeds()
+        }
+    }
+    
+    func clearAnyExistingFeedsData(_ completion: @escaping (() -> Void)){
+        CFFCoreDataManager.sharedInstance.manager.deleteAllObjetcs(type: ManagedPost.self) {
+            DispatchQueue.main.async {
+                CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                completion()
+            }
+        }
+    }
+    
+    private func initializeFRC() {
+        let fetchRequest: NSFetchRequest<ManagedPost> = ManagedPost.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "createdTimeStamp", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        frc = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: CFFCoreDataManager.sharedInstance.manager.mainQueueContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        frc?.delegate = self
+        do {
+            try frc?.performFetch()
+            feedsTable?.reloadData()
+        } catch let error {
+            print("<<<<<<<<<< error \(error.localizedDescription)")
+        }
     }
     
     @objc private func loadFeeds(){
@@ -63,13 +99,26 @@ class FeedsViewController: UIViewController {
     private func loadfetchedFeeds(){
         var tempfeeds = [FeedsItemProtocol]()
         if let fetchedFeeds = lastFetchedFeeds?.fetchedRawFeeds?["results"] as? [[String : Any]]{
+            CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                
+                fetchedFeeds.forEach { (aRawFeed) in
+                    //tempfeeds.append(RawFeed(input: aRawFeed))
+                    RawFeed(input: aRawFeed).getManagedObject() as! ManagedPost
+                }
+//                for aFeed in feeds{
+//                    _ = aFeed.getManagedObject() as! ManagedAppreciationFeed
+//                }
+                CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                    CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                }
+            }
             fetchedFeeds.forEach { (aRawFeed) in
-                tempfeeds.append(RawFeed(aRawFeed))
+                tempfeeds.append(RawFeed(input: aRawFeed))
             }
         }
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
-            self.feeds = tempfeeds
+            //self.feeds = tempfeeds
             self.feedsTable?.reloadData()
         }
     }
@@ -96,7 +145,7 @@ class FeedsViewController: UIViewController {
         feedsTable?.estimatedRowHeight = 140
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
-        feedsTable?.reloadData()
+        //feedsTable?.reloadData()
     }
 }
 
@@ -141,7 +190,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
-        feedDetailVC.targetFeedItem = feeds[indexPath.section]
+        feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
         feedDetailVC.mediaFetcher = mediaFetcher
         feedDetailVC.feedDetailDataFetcher = requestCoordinator
         feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
@@ -150,10 +199,19 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 
 extension FeedsViewController : FeedsDelegate{
     private func getFeedItem(feedIdentifier: Int64) -> FeedsItemProtocol?{
-        let filteredFeeds = feeds.filter { (feeditem) -> Bool in
-            return feeditem.feedIdentifier == feedIdentifier
+        let fetchRequest = NSFetchRequest<ManagedPost>(entityName: "ManagedPost")
+        fetchRequest.predicate = NSPredicate (format: "postId != %d", feedIdentifier)
+        do{
+            let filterfilteredFeeds = try CFFCoreDataManager.sharedInstance.manager.mainQueueContext.fetch(fetchRequest)
+            return filterfilteredFeeds.first?.getRawObject() as! FeedsItemProtocol
+        }catch{
+            return nil
         }
-        return filteredFeeds.first
+//        let filterfilteredFeeds = CFFCoreDataManager.sharedInstance.manager.mainQueueContext.fetch(fetchRequest)
+//        let filteredFeeds = feeds.filter { (feeditem) -> Bool in
+//            return feeditem.feedIdentifier == feedIdentifier
+//        }
+//        return filteredFeeds.first
     }
     
     
@@ -214,8 +272,8 @@ extension FeedsViewController : FeedsDatasource{
         return false
     }
     
-    func getFeedItem() -> FeedsItemProtocol {
-        return feeds.first!
+    func getFeedItem() -> FeedsItemProtocol! {
+        return nil
     }
     
     func getClappedByUsers() -> [ClappedByUser]? {
@@ -227,11 +285,69 @@ extension FeedsViewController : FeedsDatasource{
     }
     
     func getNumberOfItems() -> Int {
-        return feeds.count
+        //return feeds.count
+        guard let sections = frc?.sections else {
+            return 0
+        }
+        let sectionInfo = sections[0]
+        return sectionInfo.numberOfObjects
     }
     
     func getFeedItem(_ index: Int) -> FeedsItemProtocol {
-        return feeds[index]
+        return frc?.object(at: IndexPath(item: index, section: 0)).getRawObject() as! FeedsItemProtocol
+        //return feeds[index]
+    }
+}
+
+extension FeedsViewController:  NSFetchedResultsControllerDelegate {
+    
+    public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        // begin update to table
+        feedsTable?.beginUpdates()
+    }
+    
+    // object changed
+    public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                           didChange anObject: Any,
+                           at indexPath: IndexPath?,
+                           for type: NSFetchedResultsChangeType,
+                           newIndexPath: IndexPath?) {
+        //feedsTable?.reloadData()
+        switch type {
+        case .insert:
+            if let unwrappedInsertedIndexpath = newIndexPath {
+                //print("<<<<<<<<<<, inserted row at \(newIndexPath)")
+                feedsTable?.insertSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
+                //feedsTable?.insertRows(at: [unwrappedInsertedIndexpath], with: .fade)
+            }
+        case .delete:
+            if let unwrappedInsertedIndexpath = indexPath {
+                feedsTable?.deleteSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
+                //feedsTable?.deleteRows(at: [unwrappedInsertedIndexpath], with: .fade)
+            }
+        case .update:
+            if let unwrappedInsertedIndexpath = indexPath {
+                feedsTable?.reloadSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
+                //feedsTable?.reloadRows(at: [unwrappedInsertedIndexpath], with: .none)
+            }
+        case .move:
+            if let unwrappedInsertedIndexpath = indexPath {
+                if let unwrappedNewindexpath = newIndexPath {
+                    print("<<<<<<<<<<, moved to row at \(unwrappedNewindexpath)")
+                    feedsTable?.deleteSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
+                    feedsTable?.insertSections(IndexSet(integer: unwrappedNewindexpath.row), with: .fade)
+//                    feedsTable?.deleteRows(at: [unwrappedInsertedIndexpath], with: .none)
+//                    feedsTable?.insertRows(at: [unwrappedNewindexpath], with: .none)
+                }
+            }
+        @unknown default:
+            fatalError("unknown NSFetchedResultsChangeType")
+        }
+    }
+    
+    // did change
+    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        feedsTable?.endUpdates()
     }
 }
 

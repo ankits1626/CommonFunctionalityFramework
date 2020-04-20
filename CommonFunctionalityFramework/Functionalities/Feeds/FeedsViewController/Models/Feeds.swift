@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol FeedBaseUser{
     var rawUserDictionary : [String : Any] {get}
@@ -74,7 +75,39 @@ struct Poll {
     }
 }
 
-public struct RawFeed : FeedsItemProtocol {
+public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
+     private let rawFeedDictionary : [String : Any]
+    
+    init(input : [String : Any]){
+         self.rawFeedDictionary = input
+    }
+    
+    init(managedObject : NSManagedObject){
+        self.rawFeedDictionary = (managedObject as! ManagedPost).postRawDictionary as! [String : Any]
+    }
+    
+    @discardableResult func getManagedObject() -> NSManagedObject{
+        let managedPost : ManagedPost!
+        let fetchRequest : NSFetchRequest<ManagedPost> = ManagedPost.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "postId = %d && postId != -1", self.feedIdentifier)
+        
+        let fetchedFeeds = CFFCoreDataManager.sharedInstance.manager.fetchManagedObject(
+            type: ManagedPost.self,
+            fetchRequest: fetchRequest,
+            context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext
+        )
+        if let firstFetchedManagedFeed = fetchedFeeds.fetchedObjects?.first{
+            managedPost = firstFetchedManagedFeed
+        }else{
+            managedPost = CFFCoreDataManager.sharedInstance.manager.insertManagedObject(type: ManagedPost.self)
+            managedPost.createdTimeStamp = Date()
+        }
+        managedPost.postRawDictionary = rawFeedDictionary as NSDictionary
+        managedPost.postId = feedIdentifier
+        return managedPost
+    }
+    
+    
     func getEditablePost() -> EditablePostProtocol {
         return EditablePost(
             postType: getFeedType(),
@@ -88,7 +121,9 @@ public struct RawFeed : FeedsItemProtocol {
     func getPollOptions() -> [PollOption]? {
         var options = [PollOption]()
         
-        if let rawOptions = rawFeedDictionary["answers"] as? [[String : Any]]{
+        if
+            let rawPollInfo = rawFeedDictionary["poll_info"] as? [String : Any],
+            let rawOptions = rawPollInfo["answers"] as? [[String : Any]]{
             rawOptions.forEach { (aRwaOption) in
                 options.append(PollOption(aRwaOption))
             }
@@ -101,7 +136,7 @@ public struct RawFeed : FeedsItemProtocol {
     }
     
     static var EMPTY_FEED : FeedsItemProtocol {
-        return RawFeed([String : Any]())
+        return RawFeed(input: [String : Any]())
     }
     func getPollState() -> PollState {
         return .NotAvailable
@@ -131,7 +166,7 @@ public struct RawFeed : FeedsItemProtocol {
     }
     
     private func getFeedAuthor() -> FeedAuthor?{
-        if let rawAuthor = rawFeedDictionary["user_info"] as? [String:Any]{
+        if let rawAuthor = rawFeedDictionary["created_by_user_info"] as? [String:Any]{
             return FeedAuthor(rawAuthorDictionary: rawAuthor)
         }else{
             return nil
@@ -206,9 +241,4 @@ public struct RawFeed : FeedsItemProtocol {
         return "\(comments) Comment".appending(comments == 1 ? "" : "s")
     }
     
-    private let rawFeedDictionary : [String : Any]
-    
-    init(_ rawFeedDictionary : [String : Any]) {
-        self.rawFeedDictionary = rawFeedDictionary
-    }
 }

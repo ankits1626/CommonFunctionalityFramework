@@ -10,9 +10,7 @@ import UIKit
 
 class LikeListViewController: UIViewController {
     @IBOutlet private weak var clapsTableView : UITableView?
-    var isLikedByUsers : [ClappedByUser]{
-        return DummyFeedProvider.getDummyLikeList()
-    }
+    var isLikedByUsers : [ClappedByUser] = [ClappedByUser]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

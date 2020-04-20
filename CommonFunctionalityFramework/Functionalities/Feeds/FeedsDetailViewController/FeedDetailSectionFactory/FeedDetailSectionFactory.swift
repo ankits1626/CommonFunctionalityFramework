@@ -168,13 +168,13 @@ extension FeedDetailSectionFactory{
         var map = [FeedDetailSection :  [FeedCellTypeProtocol]]()
         var rows = [FeedCellTypeProtocol] ()
         rows.append(FeedTopTableViewCellType())
-        if feed.getFeedTitle() != nil {
+        if feed!.getFeedTitle() != nil {
             rows.append(FeedTitleTableViewCellType())
         }
-        if feed.getFeedDescription() != nil{
+        if feed!.getFeedDescription() != nil{
             rows.append(FeedTextTableViewCellType())
         }
-        switch feed.getMediaCountState() {
+        switch feed!.getMediaCountState() {
         case .None:
             break
         case .OneMediaItemPresent(let mediaType):
@@ -189,7 +189,7 @@ extension FeedDetailSectionFactory{
         case .MoreThanTwoMediItemPresent:
             rows.append(MultipleMediaTableViewCellType())
         }
-        feed.getPollOptions()?.forEach { (_) in
+        feed!.getPollOptions()?.forEach { (_) in
             rows.append(PollOptionsTableViewCellType())
         }
         rows.append(FeedBottomTableViewCellType())

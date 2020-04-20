@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ManagedPost" representedClassName="ManagedPost" syncable="YES" codeGenerationType="class"/>
-    <entity name="ManagedPostComment" representedClassName="ManagedPostComment" syncable="YES" codeGenerationType="class"/>
+    <entity name="ManagedPost" representedClassName="ManagedPost" syncable="YES" codeGenerationType="class">
+        <attribute name="createdTimeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="postId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="postRawDictionary" optional="YES" attributeType="Transformable"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ManagedPostComment" inverseName="post" inverseEntity="ManagedPostComment"/>
+    </entity>
+    <entity name="ManagedPostComment" representedClassName="ManagedPostComment" syncable="YES" codeGenerationType="class">
+        <attribute name="commentId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="commentRawDictionary" optional="YES" attributeType="Transformable"/>
+        <attribute name="createdTimeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ManagedPost" inverseName="comments" inverseEntity="ManagedPost"/>
+    </entity>
     <elements>
-        <element name="ManagedPostComment" positionX="-63" positionY="-18" width="128" height="43"/>
-        <element name="ManagedPost" positionX="-54" positionY="-9" width="128" height="43"/>
+        <element name="ManagedPost" positionX="-525.40234375" positionY="107.296875" width="128" height="103"/>
+        <element name="ManagedPostComment" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

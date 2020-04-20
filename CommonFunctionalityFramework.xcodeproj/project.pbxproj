@@ -87,6 +87,10 @@
 		9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */; };
 		9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */; };
 		987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 987264AC244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld */; };
+		98726532244DE40B00CD4530 /* GenericCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726531244DE40B00CD4530 /* GenericCoreDataManager.swift */; };
+		9872653D244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872653C244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift */; };
+		98726540244DEC4300CD4530 /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872653F244DEC4300CD4530 /* RawRepresentable.swift */; };
+		98726542244DEF9800CD4530 /* CFFCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726541244DEF9800CD4530 /* CFFCoreDataManager.swift */; };
 		9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */; };
 		9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */; };
 		98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */; };
@@ -221,6 +225,14 @@
 		9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
 		9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedComposerCoordinator.swift; sourceTree = "<group>"; };
 		987264AD244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommonFunctionalityModel.xcdatamodel; sourceTree = "<group>"; };
+		98726531244DE40B00CD4530 /* GenericCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCoreDataManager.swift; sourceTree = "<group>"; };
+		98726534244DE98900CD4530 /* ManagedPostComment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		98726535244DE98900CD4530 /* ManagedPost+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+CoreDataClass.swift"; sourceTree = "<group>"; };
+		98726536244DE98900CD4530 /* ManagedPostComment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		98726537244DE98900CD4530 /* ManagedPost+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9872653C244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedPost+RawRepresentable.swift"; sourceTree = "<group>"; };
+		9872653F244DEC4300CD4530 /* RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
+		98726541244DEF9800CD4530 /* CFFCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFCoreDataManager.swift; sourceTree = "<group>"; };
 		9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaBrowserViewController.swift; sourceTree = "<group>"; };
 		9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMediaBrowserViewController.xib; sourceTree = "<group>"; };
 		98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -746,8 +758,30 @@
 			isa = PBXGroup;
 			children = (
 				987264AC244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld */,
+				98726531244DE40B00CD4530 /* GenericCoreDataManager.swift */,
+				98726541244DEF9800CD4530 /* CFFCoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		98726533244DE94000CD4530 /* Managed Models */ = {
+			isa = PBXGroup;
+			children = (
+				98726535244DE98900CD4530 /* ManagedPost+CoreDataClass.swift */,
+				98726537244DE98900CD4530 /* ManagedPost+CoreDataProperties.swift */,
+				98726536244DE98900CD4530 /* ManagedPostComment+CoreDataClass.swift */,
+				98726534244DE98900CD4530 /* ManagedPostComment+CoreDataProperties.swift */,
+				9872653C244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift */,
+			);
+			path = "Managed Models";
+			sourceTree = "<group>";
+		};
+		9872653E244DEC3D00CD4530 /* RawRepresentable */ = {
+			isa = PBXGroup;
+			children = (
+				9872653F244DEC4300CD4530 /* RawRepresentable.swift */,
+			);
+			path = RawRepresentable;
 			sourceTree = "<group>";
 		};
 		9890CAC4242DE88700E1AE4D /* Media Browser */ = {
@@ -875,6 +909,7 @@
 		98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
 			isa = PBXGroup;
 			children = (
+				9872653E244DEC3D00CD4530 /* RawRepresentable */,
 				987264AB244DD47300CD4530 /* CoreData */,
 				98B02FC3241A772300CB8690 /* Reusable Components */,
 				9868C08F2410C17B00B12321 /* Theme */,
@@ -901,6 +936,7 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				98726533244DE94000CD4530 /* Managed Models */,
 				98CC2FAD2425C49E00E8F9E0 /* LikeList */,
 				98CC2FAA2425C41800E8F9E0 /* DashboardFeedSectionProvider */,
 				9868C10E2419F94100B12321 /* Feed Composer */,
@@ -1266,6 +1302,7 @@
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
 				9811DD1A241AB3B2003B91FD /* APIRequestModel.swift in Sources */,
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
+				9872653D244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift in Sources */,
 				9811DD1B241AB3B2003B91FD /* APIWorker.swift in Sources */,
 				98B02FC6241A776800CB8690 /* LocalMediaManager.swift in Sources */,
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
@@ -1289,6 +1326,7 @@
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
+				98726532244DE40B00CD4530 /* GenericCoreDataManager.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
 				9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */,
 				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,
@@ -1313,6 +1351,7 @@
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */,
+				98726542244DEF9800CD4530 /* CFFCoreDataManager.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,
 				98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */,
@@ -1320,6 +1359,7 @@
 				9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */,
 				9868C0E22412430700B12321 /* UITextView+NumberOfLines.swift in Sources */,
 				9868C03D240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift in Sources */,
+				98726540244DEC4300CD4530 /* RawRepresentable.swift in Sources */,
 				98B02FBD241A50DA00CB8690 /* GroupCell.swift in Sources */,
 				9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */,
 				98CC2FB02425C4C400E8F9E0 /* LikeListViewController.swift in Sources */,

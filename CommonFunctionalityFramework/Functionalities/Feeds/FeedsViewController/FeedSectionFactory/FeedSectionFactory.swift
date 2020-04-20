@@ -11,7 +11,7 @@ import UIKit
 protocol FeedsDatasource {
     func getNumberOfItems() -> Int
     func getFeedItem(_ index: Int) -> FeedsItemProtocol
-    func getFeedItem() -> FeedsItemProtocol
+    func getFeedItem() -> FeedsItemProtocol!
     func getClappedByUsers() -> [ClappedByUser]?
     func getComments() -> [FeedComment]?
     func showShowFullfeedDescription() -> Bool

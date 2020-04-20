@@ -19,9 +19,7 @@ class FeedsDetailViewController: UIViewController {
     @IBOutlet weak var commentBarView : ASChatBarview?
     @IBOutlet weak var feedDetailTableView : UITableView?
     var targetFeedItem : FeedsItemProtocol!
-    var clappedByUsers : [ClappedByUser]?{
-        return DummyFeedProvider.getDummyLikeList()
-    }
+    var clappedByUsers : [ClappedByUser]?
     var comments : [FeedComment]?{
         didSet{
             feedDetailSectionFactory.refreshCommentsSection()
@@ -75,7 +73,7 @@ class FeedsDetailViewController: UIViewController {
     }
 }
 
-extension FeedsDetailViewController : FeedsDatasource{
+extension FeedsDetailViewController : FeedsDatasource{    
     func getTargetPost() -> EditablePostProtocol? {
         return nil
     }
@@ -96,7 +94,7 @@ extension FeedsDetailViewController : FeedsDatasource{
         return clappedByUsers
     }
     
-    func getFeedItem() -> FeedsItemProtocol{
+    func getFeedItem() -> FeedsItemProtocol!{
         return targetFeedItem
     }
         

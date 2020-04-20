@@ -52,11 +52,12 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
             }else{
                 //            return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: getServiceURL()+"event_galleries/?event_pk=\(self.eventPk)"), method: .GET, httpBodyDict: nil)
                 
-                return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
                     url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/"),
                     method: .GET,
                     httpBodyDict: nil
                 )
+                return req
             }
         }
     }

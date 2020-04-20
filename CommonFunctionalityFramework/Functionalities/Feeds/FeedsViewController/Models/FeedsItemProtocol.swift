@@ -59,7 +59,7 @@ struct PollOption {
 }
 
 protocol FeedsItemProtocol {
-    init(_ rawfeedItem : [String:Any])
+
     var feedIdentifier : Int64{get}
     func getUserImageUrl() -> String?
     func getUserName() -> String?
