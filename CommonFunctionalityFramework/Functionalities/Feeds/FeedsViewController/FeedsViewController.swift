@@ -143,6 +143,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
         let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
         feedDetailVC.targetFeedItem = feeds[indexPath.section]
         feedDetailVC.mediaFetcher = mediaFetcher
+        feedDetailVC.feedDetailDataFetcher = requestCoordinator
         feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
     }
 }

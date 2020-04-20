@@ -13,6 +13,7 @@
                 <outlet property="attachImageButton" destination="Dak-Vf-zG6" id="AOa-An-uze"/>
                 <outlet property="leftContainer" destination="eDb-F4-4Cl" id="zDd-ZK-aS4"/>
                 <outlet property="messageTextView" destination="Afc-FB-r6e" id="5lk-89-CRl"/>
+                <outlet property="sendButton" destination="osq-Ai-iT7" id="J3b-va-zE0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -78,9 +79,9 @@
                                 <constraint firstAttribute="width" constant="30" id="na6-H6-wfI"/>
                                 <constraint firstAttribute="height" constant="30" id="zye-B3-5tW"/>
                             </constraints>
-                            <state key="normal" image="send"/>
+                            <state key="normal" image="chatBarSend"/>
                             <connections>
-                                <action selector="rightButtonTapped" destination="-1" eventType="touchUpInside" id="qst-kY-mPf"/>
+                                <action selector="rightButtonTapped" destination="-1" eventType="touchUpInside" id="Gw9-W8-oHG"/>
                             </connections>
                         </button>
                     </subviews>
@@ -110,7 +111,7 @@
         </view>
     </objects>
     <resources>
-        <image name="send" width="46" height="32"/>
+        <image name="chatBarSend" width="37" height="31"/>
         <image name="tag" width="16" height="16"/>
     </resources>
 </document>

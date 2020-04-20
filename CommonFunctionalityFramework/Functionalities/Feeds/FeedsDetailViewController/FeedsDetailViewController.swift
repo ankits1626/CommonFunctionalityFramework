@@ -23,7 +23,9 @@ class FeedsDetailViewController: UIViewController {
         return DummyFeedProvider.getDummyLikeList()
     }
     var comments : [FeedComment]?{
-        return DummyFeedProvider.getDummyComments()
+        didSet{
+            feedDetailSectionFactory.refreshCommentsSection()
+        }
     }
     
     var feedDetailDataFetcher: CFFNetwrokRequestCoordinatorProtocol!
@@ -49,6 +51,27 @@ class FeedsDetailViewController: UIViewController {
         feedDetailTableView?.dataSource = self
         feedDetailTableView?.delegate = self
         feedDetailTableView?.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchComments()
+    }
+    
+    private func fetchComments(){
+        FeedCommentsFetcher(networkRequestCoordinator: feedDetailDataFetcher).fetchComments(
+        feedId: targetFeedItem.feedIdentifier) { (result) in
+            DispatchQueue.main.async {
+                switch result{
+                case .Success(let result):
+                    self.comments = result
+                case .SuccessWithNoResponseData:
+                    fallthrough
+                case .Failure(let _):
+                    print("unable to fetch comments")
+                }
+            }
+        }
     }
 }
 
@@ -150,7 +173,27 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
     }
     
     func rightButtonPressed(_ chatBar: ASChatBarview) {
-        
+        if let message = chatBar.messageTextView?.text{
+            print("post \(message)")
+            FeedCommentPostWorker(networkRequestCoordinator: feedDetailDataFetcher).postComment(
+                comment: PostbaleComment(
+                    feedId: targetFeedItem.feedIdentifier,
+                    commentText: message)) { (result) in
+                        DispatchQueue.main.async {
+                            switch result{
+                            case .Success(let result):
+                                fallthrough
+                            case .SuccessWithNoResponseData:
+                                print("comment posted successfully")
+                            case .Failure(let error):
+                                ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in
+                                    
+                                }
+                                chatBar.messageTextView?.text = message
+                            }
+                        }
+            }
+        }
     }
     
 }

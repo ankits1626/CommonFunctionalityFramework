@@ -18,6 +18,8 @@
 		9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD54241AC860003B91FD /* FeedFetcher.swift */; };
 		9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */; };
 		9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */; };
+		9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */; };
+		9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F5241A0041009084D4 /* EditorContainerProtocol.swift */; };
@@ -84,6 +86,7 @@
 		9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C1092419F37C00B12321 /* SlideInPresentationController.swift */; };
 		9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */; };
 		9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */; };
+		987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 987264AC244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld */; };
 		9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */; };
 		9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */; };
 		98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */; };
@@ -149,6 +152,8 @@
 		9811DD54241AC860003B91FD /* FeedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetcher.swift; sourceTree = "<group>"; };
 		9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuOptions.swift; sourceTree = "<group>"; };
 		9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingMenuOptions.xib; sourceTree = "<group>"; };
+		9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentPostWorker.swift; sourceTree = "<group>"; };
+		9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsFetcher.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F5241A0041009084D4 /* EditorContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorContainerProtocol.swift; sourceTree = "<group>"; };
@@ -215,6 +220,7 @@
 		9868C1092419F37C00B12321 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
 		9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedComposerCoordinator.swift; sourceTree = "<group>"; };
+		987264AD244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommonFunctionalityModel.xcdatamodel; sourceTree = "<group>"; };
 		9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaBrowserViewController.swift; sourceTree = "<group>"; };
 		9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMediaBrowserViewController.xib; sourceTree = "<group>"; };
 		98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -351,6 +357,15 @@
 				9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */,
 			);
 			path = FloatingMenuOptions;
+			sourceTree = "<group>";
+		};
+		9820C107243F5C2700A6A30A /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */,
+				9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		983500E92419FC75009084D4 /* Editor */ = {
@@ -566,6 +581,7 @@
 		9868C0862410B4C900B12321 /* FeedsDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9820C107243F5C2700A6A30A /* Workers */,
 				98C648BA241F8B70006689E9 /* Custom Header */,
 				9868C0ED2419480100B12321 /* Custom Cell */,
 				9868C0E824125E0F00B12321 /* models */,
@@ -726,6 +742,14 @@
 			path = "Feed Composer";
 			sourceTree = "<group>";
 		};
+		987264AB244DD47300CD4530 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				987264AC244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		9890CAC4242DE88700E1AE4D /* Media Browser */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +875,7 @@
 		98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
 			isa = PBXGroup;
 			children = (
+				987264AB244DD47300CD4530 /* CoreData */,
 				98B02FC3241A772300CB8690 /* Reusable Components */,
 				9868C08F2410C17B00B12321 /* Theme */,
 				9868C05D2410A87D00B12321 /* Workers */,
@@ -1225,6 +1250,7 @@
 				98B02FB8241A50DA00CB8690 /* GridViewCell.swift in Sources */,
 				9868C0DC241241AB00B12321 /* ASChatBarview.swift in Sources */,
 				9868C0912410C19200B12321 /* Theme Related.swift in Sources */,
+				987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */,
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				9868C05424101E0200B12321 /* UIView+Extension.swift in Sources */,
@@ -1233,6 +1259,7 @@
 				9868C0572410315E00B12321 /* CommonFrameworkUtility.swift in Sources */,
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
+				9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */,
 				9868C0932410D9E600B12321 /* UILabel + Extension.swift in Sources */,
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
 				98C64899241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift in Sources */,
@@ -1285,6 +1312,7 @@
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
+				9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,
 				98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */,
@@ -1541,6 +1569,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		987264AC244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				987264AD244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodel */,
+			);
+			currentVersion = 987264AD244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodel */;
+			path = CommonFunctionalityModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 98B90DD6240CACD90013E9D2 /* Project object */;
 }

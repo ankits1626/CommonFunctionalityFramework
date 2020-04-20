@@ -8,19 +8,13 @@
 
 import Foundation
 
-struct CommentUser {
-    private let rawCommentUser : [String : Any]
+struct CommentUser : FeedBaseUser{
+    var rawUserDictionary: [String : Any]
+    
     init(_ rawCommentUser : [String : Any]) {
-        self.rawCommentUser = rawCommentUser
+        self.rawUserDictionary = rawCommentUser
     }
     
-    func getUserName() -> String {
-        return "Hashim Amla" //rawCommentUser[]
-    }
-    
-    func getUserDepartmentName() -> String {
-        return "Finance" //rawCommentUser[]
-    }
 }
 
 struct FeedComment {
@@ -30,14 +24,14 @@ struct FeedComment {
     }
     
     func getCommentDate() -> String {
-        return "12:30pm"
+        return rawFeedComment["created_on"] as? String ?? ""
     }
     
     func getCommentText() -> String? {
-        return rawFeedComment["text"] as? String
+        return rawFeedComment["content"] as? String
     }
     
     func getCommentUser() -> CommentUser {
-        return CommentUser([String : Any]())
+        return CommentUser(rawFeedComment["commented_by_user_info"] as? [String : Any] ?? [String : Any]())
     }
 }

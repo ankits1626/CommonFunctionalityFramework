@@ -34,11 +34,11 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedCommentTableViewCell{
             let comment = inputModel.datasource.getComments()?[inputModel.targetIndexpath.row]
-            cell.userNameLabel?.text = comment?.getCommentUser().getUserName()
+            cell.userNameLabel?.text = comment?.getCommentUser().getAuthorName()
             cell.userNameLabel?.font = UIFont.Highlighter2
             cell.commentDateLabel?.text = comment?.getCommentDate()
             cell.commentDateLabel?.font = .Caption1
-            cell.userDepartmentLabel?.text = comment?.getCommentUser().getUserDepartmentName()
+            cell.userDepartmentLabel?.text = comment?.getCommentUser().getAuthorDepartmentName()
             cell.userDepartmentLabel?.font = UIFont.Caption1
             cell.commentLabel?.text = comment?.getCommentText()
             cell.commentLabel?.font = UIFont.Body1
@@ -50,6 +50,11 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             }
             cell.commentContainer?.backgroundColor = .grayBackGroundColor()
             //cell.commentContainer?.curvedCornerControl()
+            if let profileImageEndpoint = comment?.getCommentUser().getAuthorProfileImageUrl(){
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.userProfileImage, imageEndPoint: profileImageEndpoint)
+            }else{
+                cell.userProfileImage?.image = nil
+            }
         }
     }
     

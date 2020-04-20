@@ -244,3 +244,9 @@ extension ASChatBarview{
     }
 
 }
+
+extension ASChatBarview{
+    func clearChatBar() {
+    
+    }
+}

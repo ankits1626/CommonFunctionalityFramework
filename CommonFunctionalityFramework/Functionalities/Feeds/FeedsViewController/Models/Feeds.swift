@@ -8,10 +8,27 @@
 
 import Foundation
 
-struct FeedAuthor {
-    private let rawAuthorDictionary : [String : Any]
-    init(rawAuthorDictionary : [String : Any]) {
-        self.rawAuthorDictionary = rawAuthorDictionary
+protocol FeedBaseUser{
+    var rawUserDictionary : [String : Any] {get}
+    func getAuthorName() -> String
+    func getAuthorDepartmentName() -> String
+    func getAuthorProfileImageUrl() -> String?
+}
+
+extension FeedBaseUser{
+    
+    func getAuthorDepartmentName() -> String {
+        if let departments = rawUserDictionary["departments"] as? [[String : String]]{
+            var departmentValues = [String]()
+            departments.forEach { (aDictionary) in
+                if let unwrappedDepartment = aDictionary["name"]{
+                    departmentValues.append(unwrappedDepartment)
+                }
+            }
+            return departmentValues.joined(separator: ", ")
+        }else{
+            return ""
+        }
     }
     
     func getAuthorName() -> String {
@@ -30,29 +47,23 @@ struct FeedAuthor {
     }
     
     private func getFirstName() -> String {
-        return rawAuthorDictionary["first_name"] as? String ?? ""
+        return rawUserDictionary["first_name"] as? String ?? ""
     }
     
     private func getLastName() -> String {
-        return rawAuthorDictionary["last_name"] as? String ?? ""
+        return rawUserDictionary["last_name"] as? String ?? ""
     }
     
     func getAuthorProfileImageUrl() -> String? {
-        return rawAuthorDictionary["profile_img"] as? String
+        return rawUserDictionary["profile_img"] as? String
     }
-    
-    func getAuthorDepartmentName() -> String {
-        if let departments = rawAuthorDictionary["departments"] as? [[String : String]]{
-            var departmentValues = [String]()
-            departments.forEach { (aDictionary) in
-                if let unwrappedDepartment = aDictionary["name"]{
-                    departmentValues.append(unwrappedDepartment)
-                }
-            }
-            return departmentValues.joined(separator: ", ")
-        }else{
-            return ""
-        }
+}
+
+
+struct FeedAuthor : FeedBaseUser {
+    internal let rawUserDictionary : [String : Any]
+    init(rawAuthorDictionary : [String : Any]) {
+        self.rawUserDictionary = rawAuthorDictionary
     }
 }
 

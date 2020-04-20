@@ -138,6 +138,15 @@ class FeedDetailSectionFactory {
         return headerCoordinator.getHeight(section: FeedDetailSection(rawValue: section)!)
     }
     
+    func refreshCommentsSection() {
+        targetTableView?.reloadData()
+//        for (index, aSection) in getAvailablefeedSections().enumerated() {
+//            if aSection == .Comments{
+//                targetTableView?.reloadSections(IndexSet(integer: index), with: .none)
+//            }
+//        }
+    }
+    
 }
 
 extension FeedDetailSectionFactory{
