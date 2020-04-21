@@ -200,18 +200,13 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 extension FeedsViewController : FeedsDelegate{
     private func getFeedItem(feedIdentifier: Int64) -> FeedsItemProtocol?{
         let fetchRequest = NSFetchRequest<ManagedPost>(entityName: "ManagedPost")
-        fetchRequest.predicate = NSPredicate (format: "postId != %d", feedIdentifier)
+        fetchRequest.predicate = NSPredicate (format: "postId == %d", feedIdentifier)
         do{
             let filterfilteredFeeds = try CFFCoreDataManager.sharedInstance.manager.mainQueueContext.fetch(fetchRequest)
             return filterfilteredFeeds.first?.getRawObject() as! FeedsItemProtocol
         }catch{
             return nil
         }
-//        let filterfilteredFeeds = CFFCoreDataManager.sharedInstance.manager.mainQueueContext.fetch(fetchRequest)
-//        let filteredFeeds = feeds.filter { (feeditem) -> Bool in
-//            return feeditem.feedIdentifier == feedIdentifier
-//        }
-//        return filteredFeeds.first
     }
     
     

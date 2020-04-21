@@ -214,13 +214,13 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     func getMediaList() -> [MediaItemProtocol]? {
         var mediaElements = [MediaItemProtocol]()
         if let videos = rawFeedDictionary["videos"] as? [[String : Any]]{
-            videos.forEach { (aVideo) in
+            for aVideo in videos {
                 mediaElements.append(FeedVideoItem(aVideo))
             }
         }
         
-        if let videos = rawFeedDictionary["images"] as? [[String : Any]]{
-            videos.forEach { (anImage) in
+        if let images = rawFeedDictionary["images"] as? [[String : Any]]{
+            for anImage in images {
                 mediaElements.append(FeedImageItem(anImage))
             }
         }
