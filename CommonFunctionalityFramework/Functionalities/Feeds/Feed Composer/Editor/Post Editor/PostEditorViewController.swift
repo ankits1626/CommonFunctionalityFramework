@@ -133,6 +133,8 @@ class PostEditorViewController: UIViewController {
                  print("here")
                 if let unwrappedUrls = localImageUrls{
                     self.postCoordinator.saveLocalMediUrls(unwrappedUrls)
+                }
+                if error == nil{
                     PostPublisher(networkRequestCoordinator: self.requestCoordinator).publisPost(
                     post: self.postCoordinator.getCurrentPost()) { (callResult) in
                         DispatchQueue.main.async {
@@ -150,8 +152,9 @@ class PostEditorViewController: UIViewController {
                             }
                         }
                     }
-                }else{
-                    print("<<<<<<<<<<<<<<<<<<< erorr observed")
+                }
+                else{
+                    print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
                 }
             }
             /*try PostImageDataMapper(localMediaManager).prepareMediaMapForPost(
