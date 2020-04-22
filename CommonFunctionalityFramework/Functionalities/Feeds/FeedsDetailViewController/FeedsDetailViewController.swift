@@ -26,6 +26,7 @@ class FeedsDetailViewController: UIViewController {
     var clappedByUsers : [ClappedByUser]?
     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
+    var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(self, mediaFetcher: mediaFetcher, targetTableView: feedDetailTableView)
@@ -228,7 +229,30 @@ extension FeedsDetailViewController : FeedsDelegate{
     }
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
+        var options = [FloatingMenuOption]()
+        if targetFeedItem.getFeedType() == .Post{
+            options.append(
+                FloatingMenuOption(title: "EDIT", action: {
+                    print("Edit post - \(feedIdentifier)")
+                    self.openFeedEditor(self.targetFeedItem)
+                }
+                )
+            )
+        }
+        options.append( FloatingMenuOption(title: "DELETE", action: {
+            print("Delete post- \(feedIdentifier)")
+        }
+            )
+        )
         
+        FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
+    }
+    
+    private func openFeedEditor(_ feed : FeedsItemProtocol){
+        FeedComposerCoordinator(
+            delegate: feedCoordinatorDeleagate,
+            requestCoordinator: requestCoordinator
+        ).editPost(feed: feed)
     }
     
     func showLikedByUsersList() {

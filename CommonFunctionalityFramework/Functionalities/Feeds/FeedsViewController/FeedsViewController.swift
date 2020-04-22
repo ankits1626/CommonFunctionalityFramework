@@ -188,7 +188,9 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
         feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
         feedDetailVC.mediaFetcher = mediaFetcher
         feedDetailVC.requestCoordinator = requestCoordinator
+        feedDetailVC.feedCoordinatorDeleagate = feedCoordinatorDeleagate
         feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
+        
     }
 }
 
