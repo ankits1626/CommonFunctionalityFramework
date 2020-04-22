@@ -27,7 +27,7 @@ class FeedsViewController: UIViewController {
     
     private lazy var refreshControl : UIRefreshControl  = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(loadFeeds), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshFeeds), for: .valueChanged)
         refreshControl.backgroundColor = .black
         refreshControl.tintColor = .white //Rgbconverter.HexToColor(get_backgroundColor(), alpha: 1.0)
         return refreshControl
@@ -73,7 +73,13 @@ class FeedsViewController: UIViewController {
         }
     }
     
-    @objc private func loadFeeds(){
+    @objc private func refreshFeeds(){
+        clearAnyExistingFeedsData {[weak self] in
+            self?.loadFeeds()
+        }
+    }
+    
+    private func loadFeeds(){
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
         nextPageUrl: nil) { (result) in
             DispatchQueue.main.async {

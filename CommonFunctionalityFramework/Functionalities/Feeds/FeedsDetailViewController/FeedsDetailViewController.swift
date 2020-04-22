@@ -55,7 +55,7 @@ class FeedsDetailViewController: UIViewController {
     
     private func initializeFRC() {
         let fetchRequest: NSFetchRequest<ManagedPostComment> = ManagedPostComment.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "createdTimeStamp", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "createdTimeStamp", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         frc = NSFetchedResultsController(
             fetchRequest: fetchRequest,
@@ -236,7 +236,12 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
-                                fallthrough
+                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                    let _ = FeedComment(input: result).getManagedObject() as! ManagedPostComment
+                                    CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                        CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                    }
+                                }
                             case .SuccessWithNoResponseData:
                                 print("comment posted successfully")
                             case .Failure(let error):
