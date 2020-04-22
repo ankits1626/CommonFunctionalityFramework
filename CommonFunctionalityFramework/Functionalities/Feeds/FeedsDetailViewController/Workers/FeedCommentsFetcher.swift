@@ -66,7 +66,7 @@ class FeedCommentFetchDataParser: DataParserProtocol {
     func parseFetchedData(fetchedData: ExpectedRawDataType) -> APICallResult<ResultType> {
         var comments = [FeedComment]()
         for aRawComment in fetchedData {
-            comments.append(FeedComment(aRawComment))
+            comments.append(FeedComment(input: aRawComment))
         }
         return APICallResult.Success(result: comments)
     }

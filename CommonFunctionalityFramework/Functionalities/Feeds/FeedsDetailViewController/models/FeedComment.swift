@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct CommentUser : FeedBaseUser{
     var rawUserDictionary: [String : Any]
@@ -17,10 +18,36 @@ struct CommentUser : FeedBaseUser{
     
 }
 
-struct FeedComment {
+struct FeedComment : RawObjectProtocol {
+    
+    @discardableResult func getManagedObject() -> NSManagedObject{
+        let managedPost : ManagedPostComment!
+        let fetchRequest : NSFetchRequest<ManagedPostComment> = ManagedPostComment.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "commentId = %d && commentId != -1", self.getComentId())
+        
+        let fetchedFeeds = CFFCoreDataManager.sharedInstance.manager.fetchManagedObject(
+            type: ManagedPostComment.self,
+            fetchRequest: fetchRequest,
+            context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext
+        )
+        if let firstFetchedManagedFeed = fetchedFeeds.fetchedObjects?.first{
+            managedPost = firstFetchedManagedFeed
+        }else{
+            managedPost = CFFCoreDataManager.sharedInstance.manager.insertManagedObject(type: ManagedPostComment.self)
+            managedPost.createdTimeStamp = Date()
+        }
+        managedPost.commentRawDictionary = rawFeedComment as NSDictionary
+        managedPost.commentId = getComentId()
+        return managedPost
+    }
+    
+    init(managedObject : NSManagedObject) {
+        self.rawFeedComment = (managedObject as! ManagedPostComment).commentRawDictionary as! [String : Any]
+    }
+    
     private let rawFeedComment : [String : Any]
-    init(_ rawFeedComment : [String : Any]) {
-        self.rawFeedComment = rawFeedComment
+    init(input : [String : Any]) {
+        self.rawFeedComment = input
     }
     
     func getCommentDate() -> String {
@@ -33,5 +60,9 @@ struct FeedComment {
     
     func getCommentUser() -> CommentUser {
         return CommentUser(rawFeedComment["commented_by_user_info"] as? [String : Any] ?? [String : Any]())
+    }
+    
+    func getComentId() -> Int64 {
+        return rawFeedComment["id"] as? Int64 ?? -1
     }
 }

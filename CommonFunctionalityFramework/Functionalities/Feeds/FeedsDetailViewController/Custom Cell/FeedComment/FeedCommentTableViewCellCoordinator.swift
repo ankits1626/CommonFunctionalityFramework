@@ -23,7 +23,7 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
         withIdentifier: cellType.cellIdentifier,
         for: inputModel.targetIndexpath)
         if let cell  = targetCell as? FeedCommentTableViewCell{
-            let comment = inputModel.datasource.getComments()?[inputModel.targetIndexpath.row]
+            let comment = inputModel.datasource.getCommentProvider()?.getComment(inputModel.targetIndexpath.row)
             cell.commentLabel?.text = comment?.getCommentText()
             cell.commentLabel?.font = UIFont.Body1
         }
@@ -33,7 +33,7 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedCommentTableViewCell{
-            let comment = inputModel.datasource.getComments()?[inputModel.targetIndexpath.row]
+            let comment = inputModel.datasource.getCommentProvider()?.getComment(inputModel.targetIndexpath.row)
             cell.userNameLabel?.text = comment?.getCommentUser().getAuthorName()
             cell.userNameLabel?.font = UIFont.Highlighter2
             cell.commentDateLabel?.text = comment?.getCommentDate()
@@ -42,7 +42,7 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.userDepartmentLabel?.font = UIFont.Caption1
             cell.commentLabel?.text = comment?.getCommentText()
             cell.commentLabel?.font = UIFont.Body1
-            if inputModel.targetIndexpath.row + 1 == (inputModel.datasource.getComments()?.count ?? 0){
+            if inputModel.targetIndexpath.row + 1 == (inputModel.datasource.getCommentProvider()?.getNumberOfComments() ?? 0){
                 cell.containerView?.addBorders(edges: [.left, .right, .bottom], color: UIColor.getGeneralBorderColor())
                 //cell.containerView?.curvedCornerControl()
             }else{

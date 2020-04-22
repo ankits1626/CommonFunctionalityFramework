@@ -23,7 +23,6 @@ class FeedsViewController: UIViewController {
         return FeedSectionFactory(feedsDatasource: self, mediaFetcher: mediaFetcher, targetTableView: feedsTable)
     }()
     
-    //var feeds = [FeedsItemProtocol]()
     var lastFetchedFeeds : FetchedFeedModel?
     
     private lazy var refreshControl : UIRefreshControl  = {
@@ -38,10 +37,10 @@ class FeedsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeFRC()
-        loadFeeds()
-        setup()
         clearAnyExistingFeedsData {[weak self] in
+            self?.initializeFRC()
+            self?.loadFeeds()
+            self?.setup()
             self?.loadFeeds()
         }
     }
@@ -97,28 +96,18 @@ class FeedsViewController: UIViewController {
     }
     
     private func loadfetchedFeeds(){
-        var tempfeeds = [FeedsItemProtocol]()
         if let fetchedFeeds = lastFetchedFeeds?.fetchedRawFeeds?["results"] as? [[String : Any]]{
             CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
-                
                 fetchedFeeds.forEach { (aRawFeed) in
-                    //tempfeeds.append(RawFeed(input: aRawFeed))
-                    RawFeed(input: aRawFeed).getManagedObject() as! ManagedPost
+                    let _ = RawFeed(input: aRawFeed).getManagedObject() as! ManagedPost
                 }
-//                for aFeed in feeds{
-//                    _ = aFeed.getManagedObject() as! ManagedAppreciationFeed
-//                }
                 CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                     CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                 }
             }
-            fetchedFeeds.forEach { (aRawFeed) in
-                tempfeeds.append(RawFeed(input: aRawFeed))
-            }
         }
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
-            //self.feeds = tempfeeds
             self.feedsTable?.reloadData()
         }
     }
@@ -259,6 +248,10 @@ extension FeedsViewController : FeedsDelegate{
 
 
 extension FeedsViewController : FeedsDatasource{
+    func getCommentProvider() -> FeedsDetailCommentsProviderProtocol? {
+        return nil
+    }
+    
     func getTargetPost() -> EditablePostProtocol? {
         return nil
     }
@@ -290,7 +283,6 @@ extension FeedsViewController : FeedsDatasource{
     
     func getFeedItem(_ index: Int) -> FeedsItemProtocol {
         return frc?.object(at: IndexPath(item: index, section: 0)).getRawObject() as! FeedsItemProtocol
-        //return feeds[index]
     }
 }
 
@@ -307,23 +299,18 @@ extension FeedsViewController:  NSFetchedResultsControllerDelegate {
                            at indexPath: IndexPath?,
                            for type: NSFetchedResultsChangeType,
                            newIndexPath: IndexPath?) {
-        //feedsTable?.reloadData()
         switch type {
         case .insert:
             if let unwrappedInsertedIndexpath = newIndexPath {
-                //print("<<<<<<<<<<, inserted row at \(newIndexPath)")
                 feedsTable?.insertSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
-                //feedsTable?.insertRows(at: [unwrappedInsertedIndexpath], with: .fade)
             }
         case .delete:
             if let unwrappedInsertedIndexpath = indexPath {
                 feedsTable?.deleteSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
-                //feedsTable?.deleteRows(at: [unwrappedInsertedIndexpath], with: .fade)
             }
         case .update:
             if let unwrappedInsertedIndexpath = indexPath {
                 feedsTable?.reloadSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
-                //feedsTable?.reloadRows(at: [unwrappedInsertedIndexpath], with: .none)
             }
         case .move:
             if let unwrappedInsertedIndexpath = indexPath {
@@ -331,8 +318,6 @@ extension FeedsViewController:  NSFetchedResultsControllerDelegate {
                     print("<<<<<<<<<<, moved to row at \(unwrappedNewindexpath)")
                     feedsTable?.deleteSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
                     feedsTable?.insertSections(IndexSet(integer: unwrappedNewindexpath.row), with: .fade)
-//                    feedsTable?.deleteRows(at: [unwrappedInsertedIndexpath], with: .none)
-//                    feedsTable?.insertRows(at: [unwrappedNewindexpath], with: .none)
                 }
             }
         @unknown default:

@@ -13,7 +13,7 @@ protocol FeedsDatasource {
     func getFeedItem(_ index: Int) -> FeedsItemProtocol
     func getFeedItem() -> FeedsItemProtocol!
     func getClappedByUsers() -> [ClappedByUser]?
-    func getComments() -> [FeedComment]?
+    func getCommentProvider() -> FeedsDetailCommentsProviderProtocol?
     func showShowFullfeedDescription() -> Bool
 }
 

@@ -81,7 +81,7 @@ class FeedDetailSectionFactory {
             }
             return 0
         case .Comments:
-            return feedDataSource.getComments()?.count ?? 0
+            return feedDataSource.getCommentProvider()?.getNumberOfComments() ?? 0
         }
     }
     
@@ -147,20 +147,15 @@ class FeedDetailSectionFactory {
 //        }
     }
     
+    func getCommentsSectionIndex() -> Int {
+        return getAvailablefeedSections().firstIndex(of: .Comments)!
+    }
+    
 }
 
 extension FeedDetailSectionFactory{
     private func getAvailablefeedSections() -> [FeedDetailSection]{
-        var sections = [FeedDetailSection.FeedInfo]
-        if let clappedByUsers = feedDataSource.getClappedByUsers(),
-        !clappedByUsers.isEmpty{
-             sections.append(FeedDetailSection.ClapsSection)
-        }
-        if let comments = feedDataSource.getComments(),
-        !comments.isEmpty{
-            sections.append(FeedDetailSection.Comments)
-        }
-        return sections
+        return [FeedDetailSection.FeedInfo,.ClapsSection,  .Comments]
     }
     
     func getRowsToRepresentFeedDetail() -> [FeedDetailSection :  [FeedCellTypeProtocol]] {
