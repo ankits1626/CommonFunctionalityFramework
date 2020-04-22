@@ -20,5 +20,6 @@ extension ManagedPostComment {
     @NSManaged public var commentRawDictionary: NSObject?
     @NSManaged public var post: ManagedPost?
     @NSManaged public var createdTimeStamp: NSDate
-
+    @NSManaged public var isLikedByMe: Bool
+    @NSManaged public var numberOfLikes: Int64
 }

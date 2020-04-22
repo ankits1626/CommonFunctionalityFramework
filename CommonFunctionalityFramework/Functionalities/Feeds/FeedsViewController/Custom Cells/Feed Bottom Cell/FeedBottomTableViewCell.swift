@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedBottomTableViewCell: UITableViewCell {
-    @IBOutlet weak var clapsButton : UIButton?
+    @IBOutlet weak var clapsButton : BlockButton?
     @IBOutlet weak var clapsCountLabel : UILabel?
     @IBOutlet weak var commentsButton : UIButton?
     @IBOutlet weak var commentsCountLabel : UILabel?

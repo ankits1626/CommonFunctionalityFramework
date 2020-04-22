@@ -8,20 +8,21 @@
 
 import UIKit
 
-enum FeedDetailCellType : Int {
-    case Profile = 0
-    case Title
-    case Description
-    case Media
-    case ClappByUsers
-    case Comments
-}
+//enum FeedDetailCellType : Int {
+//    case Profile = 0
+//    case Title
+//    case Description
+//    case Media
+//    case ClappByUsers
+//    case Comments
+//}
 
 
 class FeedDetailSectionFactory {
     let feedDataSource : FeedsDatasource
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var targetTableView : UITableView?
+    private var isLikedByCellIndexpath : IndexPath!
     lazy var cachedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         return [
             FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
@@ -147,6 +148,10 @@ class FeedDetailSectionFactory {
 //        }
     }
     
+    func reloadToShowLikeToggleResult() {
+        targetTableView?.reloadRows(at: [isLikedByCellIndexpath], with: .none)
+    }
+    
     func getCommentsSectionIndex() -> Int {
         return getAvailablefeedSections().firstIndex(of: .Comments)!
     }
@@ -188,15 +193,8 @@ extension FeedDetailSectionFactory{
             rows.append(PollOptionsTableViewCellType())
         }
         rows.append(FeedBottomTableViewCellType())
+        isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)
         map[.FeedInfo] = rows
-        if feedDataSource.getFeedItem().getFeedDescription() != nil{
-            
-            //profileCellTypeMap.append(.Description)
-        }
-        if feedDataSource.getFeedItem().getMediaList() != nil{
-            //profileCellTypeMap.append(.Media)
-        }
-        
         return map
     }
     

@@ -36,6 +36,11 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
                     compatibleWith: nil),
                 for: .normal
             )
+            cell.clapsButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate.toggleClapForPost(feedIdentifier: feed.feedIdentifier)
+            })
         }
     }
     

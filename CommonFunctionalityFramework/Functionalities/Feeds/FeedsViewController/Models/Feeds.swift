@@ -76,14 +76,22 @@ struct Poll {
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
-     private let rawFeedDictionary : [String : Any]
-    
+    func getLikeToggleUrl() -> URL {
+        return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(feedIdentifier)/appreciate/")!
+    }
+    private let rawFeedDictionary : [String : Any]
+    private var numberOfLikes: Int64
+    private var isLikedByMe : Bool
     init(input : [String : Any]){
-         self.rawFeedDictionary = input
+        self.rawFeedDictionary = input
+        isLikedByMe = rawFeedDictionary["has_appreciated"] as? Bool ?? false
+        numberOfLikes = rawFeedDictionary["appreciation_count"] as? Int64 ?? 0
     }
     
     init(managedObject : NSManagedObject){
         self.rawFeedDictionary = (managedObject as! ManagedPost).postRawDictionary as! [String : Any]
+        self.isLikedByMe = (managedObject as! ManagedPost).isLikedByMe
+        self.numberOfLikes = (managedObject as! ManagedPost).numberOfLikes
     }
     
     @discardableResult func getManagedObject() -> NSManagedObject{
@@ -104,6 +112,8 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
         managedPost.postRawDictionary = rawFeedDictionary as NSDictionary
         managedPost.postId = feedIdentifier
+        managedPost.isLikedByMe = isLikedByMe
+        managedPost.numberOfLikes = numberOfLikes
         return managedPost
     }
     
@@ -195,7 +205,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getFeedTitle() -> String? {
         if let unwrappedTitle  = rawFeedDictionary["title"] as? String,
-        !unwrappedTitle.isEmpty{
+            !unwrappedTitle.isEmpty{
             return unwrappedTitle
         }else{
             return nil
@@ -204,7 +214,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getFeedDescription() -> String? {
         if let unwrappedDescription  = rawFeedDictionary["description"] as? String,
-        !unwrappedDescription.isEmpty{
+            !unwrappedDescription.isEmpty{
             return unwrappedDescription
         }else{
             return nil
@@ -228,11 +238,11 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     }
     
     func isClappedByMe() -> Bool {
-        return rawFeedDictionary["has_appreciated"] as? Bool ?? false
+        return isLikedByMe
     }
     
     func getNumberOfClaps() -> String {
-        let claps = rawFeedDictionary["appreciation_count"] as? Int ?? 0
+        let claps = numberOfLikes
         return "\(claps) Clap".appending(claps == 1 ? "" : "s")
     }
     

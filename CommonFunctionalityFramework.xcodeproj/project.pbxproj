@@ -92,6 +92,8 @@
 		98726540244DEC4300CD4530 /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872653F244DEC4300CD4530 /* RawRepresentable.swift */; };
 		98726542244DEF9800CD4530 /* CFFCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726541244DEF9800CD4530 /* CFFCoreDataManager.swift */; };
 		9872654424502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872654324502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift */; };
+		98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726545245044C100CD4530 /* FeedClapToggler.swift */; };
+		987265482450555E00CD4530 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987265472450555E00CD4530 /* Array+Extension.swift */; };
 		9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */; };
 		9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */; };
 		98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */; };
@@ -235,6 +237,8 @@
 		9872653F244DEC4300CD4530 /* RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
 		98726541244DEF9800CD4530 /* CFFCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFCoreDataManager.swift; sourceTree = "<group>"; };
 		9872654324502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+RawRepresentable.swift"; sourceTree = "<group>"; };
+		98726545245044C100CD4530 /* FeedClapToggler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedClapToggler.swift; sourceTree = "<group>"; };
+		987265472450555E00CD4530 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaBrowserViewController.swift; sourceTree = "<group>"; };
 		9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMediaBrowserViewController.xib; sourceTree = "<group>"; };
 		98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -359,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				9811DD54241AC860003B91FD /* FeedFetcher.swift */,
+				98726545245044C100CD4530 /* FeedClapToggler.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -555,6 +560,7 @@
 				9868C0922410D9E600B12321 /* UILabel + Extension.swift */,
 				9868C1042419F25700B12321 /* UIApplication+Extension.swift */,
 				9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */,
+				987265472450555E00CD4530 /* Array+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1287,6 +1293,7 @@
 				98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */,
 				9868C1082419F2F500B12321 /* ErrorDisplayer.swift in Sources */,
 				98B02FB8241A50DA00CB8690 /* GridViewCell.swift in Sources */,
+				987265482450555E00CD4530 /* Array+Extension.swift in Sources */,
 				9868C0DC241241AB00B12321 /* ASChatBarview.swift in Sources */,
 				9868C0912410C19200B12321 /* Theme Related.swift in Sources */,
 				987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */,
@@ -1345,6 +1352,7 @@
 				9868C0F22419488000B12321 /* FeedCommentTableViewCell.swift in Sources */,
 				98B02FBA241A50DA00CB8690 /* AssetGridViewController.swift in Sources */,
 				9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */,
+				98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */,
 				9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */,
 				9868C1052419F25700B12321 /* UIApplication+Extension.swift in Sources */,
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,

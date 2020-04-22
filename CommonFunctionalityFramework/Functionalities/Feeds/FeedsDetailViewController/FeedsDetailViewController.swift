@@ -24,7 +24,7 @@ class FeedsDetailViewController: UIViewController {
     @IBOutlet weak var feedDetailTableView : UITableView?
     var targetFeedItem : FeedsItemProtocol!
     var clappedByUsers : [ClappedByUser]?
-    var feedDetailDataFetcher: CFFNetwrokRequestCoordinatorProtocol!
+    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
@@ -87,7 +87,7 @@ class FeedsDetailViewController: UIViewController {
     }
     
     private func fetchComments(){
-        FeedCommentsFetcher(networkRequestCoordinator: feedDetailDataFetcher).fetchComments(
+        FeedCommentsFetcher(networkRequestCoordinator: requestCoordinator).fetchComments(
         feedId: targetFeedItem.feedIdentifier) { (result) in
             DispatchQueue.main.async {
                 switch result{
@@ -190,6 +190,31 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
+    func toggleClapForPost(feedIdentifier: Int64) {
+        FeedClapToggler(networkRequestCoordinator: requestCoordinator).toggleLike(targetFeedItem) { [weak self](result) in
+            switch result{
+            case .Success(result: let result):
+                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                    let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                    post.isLikedByMe = result
+                    post.numberOfLikes = post.numberOfLikes + ( result ? 1 : -1  )
+                    self?.targetFeedItem = post.getRawObject() as! RawFeed
+                    CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                        CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                        DispatchQueue.main.async {
+                            self?.feedDetailSectionFactory.reloadToShowLikeToggleResult()
+                        }
+                    }
+                }
+            case .SuccessWithNoResponseData:
+                fallthrough
+            case .Failure(error: let _):
+                print("<<<<<<<<<< like/unlike call completed \(result)")
+            }
+            
+        }
+    }
+    
     func showMediaBrowser(feedIdentifier: Int64, scrollToItemIndex: Int) {
         if let feed =  targetFeedItem,
             let mediaItems = feed.getMediaList(){
@@ -229,7 +254,7 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
     func rightButtonPressed(_ chatBar: ASChatBarview) {
         if let message = chatBar.messageTextView?.text{
             print("post \(message)")
-            FeedCommentPostWorker(networkRequestCoordinator: feedDetailDataFetcher).postComment(
+            FeedCommentPostWorker(networkRequestCoordinator: requestCoordinator).postComment(
                 comment: PostbaleComment(
                     feedId: targetFeedItem.feedIdentifier,
                     commentText: message)) { (result) in

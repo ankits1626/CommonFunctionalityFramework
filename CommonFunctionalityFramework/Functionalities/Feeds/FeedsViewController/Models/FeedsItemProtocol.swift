@@ -58,7 +58,7 @@ struct PollOption {
     }
 }
 
-protocol FeedsItemProtocol {
+protocol FeedsItemProtocol : Likeable {
 
     var feedIdentifier : Int64{get}
     func getUserImageUrl() -> String?

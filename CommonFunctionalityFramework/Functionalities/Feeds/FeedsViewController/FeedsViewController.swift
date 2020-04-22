@@ -187,12 +187,39 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
         let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
         feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
         feedDetailVC.mediaFetcher = mediaFetcher
-        feedDetailVC.feedDetailDataFetcher = requestCoordinator
+        feedDetailVC.requestCoordinator = requestCoordinator
         feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
     }
 }
 
 extension FeedsViewController : FeedsDelegate{
+    
+    func toggleClapForPost(feedIdentifier: Int64) {
+        if let feed = getFeedItem(feedIdentifier: feedIdentifier){
+            FeedClapToggler(networkRequestCoordinator: requestCoordinator).toggleLike(feed) { (result) in
+                switch result{
+                case .Success(result: let result):
+                    CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                        let post = ((feed as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
+                        post?.isLikedByMe = result
+                        if let numberOfLikes = post?.numberOfLikes{
+                           post?.numberOfLikes = numberOfLikes + ( result ? 1 : -1  )
+                        }
+                        
+                        CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                            CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                        }
+                    }
+                case .SuccessWithNoResponseData:
+                    fallthrough
+                case .Failure(error: let _):
+                    print("<<<<<<<<<< like/unlike call completed \(result)")
+                }
+                
+            }
+        }
+    }
+    
     private func getFeedItem(feedIdentifier: Int64) -> FeedsItemProtocol?{
         let fetchRequest = NSFetchRequest<ManagedPost>(entityName: "ManagedPost")
         fetchRequest.predicate = NSPredicate (format: "postId == %d", feedIdentifier)
