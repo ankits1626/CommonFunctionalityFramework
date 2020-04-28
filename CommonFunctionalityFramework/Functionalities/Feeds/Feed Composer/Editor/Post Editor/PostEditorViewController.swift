@@ -9,6 +9,7 @@
 import UIKit
 
 protocol EditablePostProtocol {
+    var deletedRemoteMediaArray : [Int] {set get}
     var title : String? {set get}
     var postDesciption : String? {set get}
     var pollOptions : [String]? {get set}
@@ -17,6 +18,9 @@ protocol EditablePostProtocol {
     func getNetworkPostableFormat() -> [String : Any]
     var postableMediaMap : [Int : Data]? { get set}
     var postableLocalMediaUrls : [URL]? { get set}
+    var remoteAttachedMedia: [MediaItemProtocol]?{get set}
+    var remotePostId : String?{get}
+    func getEditablePostNetworkModel() -> EditablePostNetworkModel
 }
 
 
@@ -36,22 +40,34 @@ class PostEditorViewController: UIViewController {
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(postObsever: cellFactory, postType: postType, editablePost: editablePost)
     }()
+    lazy var imageMapper : EditablePostMediaRepository = {
+        return EditablePostMediaRepository(input: EditablePostMediaMapperInitModel(
+            datasource: self,
+            localMediaManager: localMediaManager,
+            mediaFetcher: mediaFetcher
+            )
+        )
+    }()
     private lazy var cellFactory: PostEditorCellFactory = {
         return PostEditorCellFactory(InitPostEditorCellFactoryModel(
             datasource: self,
             delegate: self,
             localMediaManager: localMediaManager,
-            targetTableView: postEditorTable))
+            targetTableView: postEditorTable,
+            postImageMapper: imageMapper
+            )
+        )
     }()
-    
+    private weak var mediaFetcher: CFFMediaCoordinatorProtocol?
     private lazy var localMediaManager: LocalMediaManager = {
         return LocalMediaManager()
     }()
     private let editablePost : EditablePostProtocol?
-    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?){
+    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?){
         self.postType  = postType
         self.requestCoordinator = requestCoordinator
         self.editablePost = post
+        self.mediaFetcher = mediaFetcher
         super.init(
             nibName: "PostEditorViewController"
             , bundle: Bundle(for: PostEditorViewController.self))
@@ -157,30 +173,6 @@ class PostEditorViewController: UIViewController {
                     print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
                 }
             }
-            /*try PostImageDataMapper(localMediaManager).prepareMediaMapForPost(
-                postCoordinator.getCurrentPost(),
-                completion: { (imageMap) in
-                    print("here")
-                    self.postCoordinator.saveMediaDataMap(map: imageMap)
-                    PostPublisher(
-                        networkRequestCoordinator: self.requestCoordinator).publisPost(
-                    post: self.postCoordinator.getCurrentPost()) { (callResult) in
-                        DispatchQueue.main.async {
-                            switch callResult{
-                            case .Success(_):
-                                self.dismiss(animated: true, completion: nil)
-                            case .SuccessWithNoResponseData:
-                                ErrorDisplayer.showError(errorMsg: "Unable to post.") { (_) in
-
-                                }
-                            case .Failure(let error):
-                                ErrorDisplayer.showError(errorMsg: "Unable to post due to \(error.displayableErrorMessage())") { (_) in
-
-                                }
-                            }
-                        }
-                    }
-            })*/
         }catch let error{
             ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
                 
@@ -201,8 +193,8 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
         postCoordinator.savePostOption(index: index, option: option)
     }
     
-    func removeSelectedMedia(index: Int) {
-        postCoordinator.removeSelectedMedia(index: index)
+    func removeSelectedMedia(index : Int, mediaSection: EditableMediaSection) {
+        postCoordinator.removeMedia(index: index, mediaSection: mediaSection)
     }
     
     func updatePostTitle(title: String?) {
@@ -220,7 +212,6 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
         postEditorTable?.endUpdates()
         postEditorTable?.scrollToRow(at: indexpath, at: .bottom, animated: false)
         UIView.setAnimationsEnabled(true)
-        //postEditorTable?.reloadRows(at: [indexpath], with: .none)
     }
 }
 

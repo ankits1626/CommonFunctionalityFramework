@@ -276,7 +276,8 @@ extension FeedsViewController : FeedsDelegate{
     private func openFeedEditor(_ feed : FeedsItemProtocol){
         FeedComposerCoordinator(
             delegate: feedCoordinatorDeleagate,
-            requestCoordinator: requestCoordinator
+            requestCoordinator: requestCoordinator,
+            mediaFetcher: mediaFetcher
         ).editPost(feed: feed)
     }
 }

@@ -11,9 +11,11 @@ import Foundation
 class FeedComposerCoordinator {
     let feedCoordinatorDelegate: FeedsCoordinatorDelegate
      var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    weak var mediaFetcher : CFFMediaCoordinatorProtocol?
+    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?) {
         self.feedCoordinatorDelegate = delegate
         self.requestCoordinator = requestCoordinator
+        self.mediaFetcher = mediaFetcher
     }
     
     func showFeedItemEditor(type : FeedType) {
@@ -28,7 +30,8 @@ class FeedComposerCoordinator {
         let postEditor = PostEditorViewController(
             postType: type,
             requestCoordinator: requestCoordinator,
-            post: feed?.getEditablePost()
+            post: feed?.getEditablePost(),
+            mediaFetcher: mediaFetcher
         )
         feedCoordinatorDelegate.showComposer(_composer: postEditor) { (topBarModel) in
             postEditor.containerTopBarModel = topBarModel

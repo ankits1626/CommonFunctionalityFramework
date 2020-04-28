@@ -94,6 +94,7 @@
 		9872654424502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872654324502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift */; };
 		98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726545245044C100CD4530 /* FeedClapToggler.swift */; };
 		987265482450555E00CD4530 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987265472450555E00CD4530 /* Array+Extension.swift */; };
+		9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */; };
 		9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */; };
 		9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */; };
 		98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */; };
@@ -239,6 +240,7 @@
 		9872654324502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+RawRepresentable.swift"; sourceTree = "<group>"; };
 		98726545245044C100CD4530 /* FeedClapToggler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedClapToggler.swift; sourceTree = "<group>"; };
 		987265472450555E00CD4530 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditablePostMediaRepository.swift; sourceTree = "<group>"; };
 		9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaBrowserViewController.swift; sourceTree = "<group>"; };
 		9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMediaBrowserViewController.xib; sourceTree = "<group>"; };
 		98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -1141,6 +1143,7 @@
 				9811DD00241A8847003B91FD /* PostCoordinator */,
 				98C648B7241BC8FC006689E9 /* PostPublisher */,
 				98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */,
+				9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -1314,6 +1317,7 @@
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
 				9872653D244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift in Sources */,
 				9811DD1B241AB3B2003B91FD /* APIWorker.swift in Sources */,
+				9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */,
 				98B02FC6241A776800CB8690 /* LocalMediaManager.swift in Sources */,
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
 				9868C1032419EDCD00B12321 /* SlideInPresentationManager.swift in Sources */,

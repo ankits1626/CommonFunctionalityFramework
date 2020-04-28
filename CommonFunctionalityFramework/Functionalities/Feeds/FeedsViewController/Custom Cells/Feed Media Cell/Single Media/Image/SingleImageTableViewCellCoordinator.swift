@@ -39,31 +39,3 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     }
     
 }
-
-//PostEditorCellCoordinatorProtocol
-extension SingleImageTableViewCellCoordinator : PostEditorCellCoordinatorProtocol{
-    func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
-        if let cell  = inputModel.targetCell as? SingleImageTableViewCell{
-            cell.selectionStyle = .none
-            cell.containerView?.backgroundColor = .green
-            cell.removeButton?.isHidden = false
-            cell.removeButton?.handleControlEvent(
-                event: .touchUpInside, buttonActionBlock: {
-                    inputModel.delegate?.removeSelectedMedia(index: 0)
-            })
-            if let mediaAsset = inputModel.datasource.getTargetPost()?.selectedMediaItems?.first?.asset{
-                inputModel.localMediaManager?.fetchImageForAsset(asset: mediaAsset, size: cell.feedImageView!.bounds.size, completion: { (_, fetchedImage) in
-                    cell.feedImageView?.image = fetchedImage
-                })
-            }
-            cell.containerView?.addBorders(edges: [.bottom,.left, .right], color: UIColor.getGeneralBorderColor())
-            cell.containerView?.curvedCornerControl()
-        }
-    }
-    
-    func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
-        return 205
-    }
-    
-    
-}

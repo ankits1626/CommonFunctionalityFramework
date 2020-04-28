@@ -19,6 +19,7 @@ struct LocalSelectedMediaItem : Equatable {
 }
 
 struct EditablePost : EditablePostProtocol{
+    var deletedRemoteMediaArray = [Int]()
     var postableLocalMediaUrls: [URL]?
     
     var postableMediaMap: [Int : Data]?
@@ -51,6 +52,9 @@ struct EditablePost : EditablePostProtocol{
         if let unwrappedDescription = postDesciption{
             postDictionary["description"] = unwrappedDescription
         }
+        if !deletedRemoteMediaArray.isEmpty{
+            postDictionary["delete_image_ids"] = deletedRemoteMediaArray
+        }
         return postDictionary
     }
     
@@ -62,8 +66,47 @@ struct EditablePost : EditablePostProtocol{
     
     var postDesciption: String?
     
-    var attachedMedia: [MediaItemProtocol]?
+    var remoteAttachedMedia: [MediaItemProtocol]?
     
     var selectedMediaItems : [LocalSelectedMediaItem]?
     
+    let remotePostId : String?
+    
+    func getEditablePostNetworkModel() -> EditablePostNetworkModel{
+        return EditablePostNetworkModel(
+            url: getEditablePostNetworkUrl(),
+            method: getEditablePostNetworkMethod(),
+            postHttpBodyDict: getNetworkPostableFormat() as NSDictionary
+        )
+    }
+    
+    private func getEditablePostNetworkUrl() -> URL?{
+        if let unwrappedRemotePostId = remotePostId{
+            switch postType {
+            case .Poll:
+                return nil
+            case .Post:
+                return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(unwrappedRemotePostId)/")
+            }
+        }else{
+            switch postType {
+            case .Poll:
+                return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/create_poll/")
+            case .Post:
+                return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/")
+            }
+        }
+    }
+    
+    private func getEditablePostNetworkMethod () -> HTTPMethod{
+        return  remotePostId == nil ? .POST : .PUT
+    }
+    
+}
+
+
+struct EditablePostNetworkModel {
+    var url : URL?
+    var method : HTTPMethod
+    var postHttpBodyDict : NSDictionary?
 }

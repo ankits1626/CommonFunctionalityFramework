@@ -124,8 +124,10 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
             pollOptions: nil,
             title: getFeedTitle(),
             postDesciption: getFeedDescription(),
-            attachedMedia: nil,
-            selectedMediaItems: nil)
+            remoteAttachedMedia: getMediaList(),
+            selectedMediaItems: nil,
+            remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
+        )
     }
     
     func getPollOptions() -> [PollOption]? {

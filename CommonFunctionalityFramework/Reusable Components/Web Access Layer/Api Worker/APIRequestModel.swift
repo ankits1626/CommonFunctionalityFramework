@@ -69,7 +69,7 @@ public class APIRequestBuilder : APIRequestBuilderProtocol {
             apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
             apiRequest.addValue(tokenProvider.getDeviceSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
             if let unwrappedHttpBody = httpBodyDict{
-                if let httpBody  = (try? JSONSerialization.data(withJSONObject: unwrappedHttpBody, options: .prettyPrinted)){
+                if let httpBody  = (try? JSONSerialization.data(withJSONObject: unwrappedHttpBody, options: [])){
                     apiRequest.httpBody = httpBody
                 }
             }

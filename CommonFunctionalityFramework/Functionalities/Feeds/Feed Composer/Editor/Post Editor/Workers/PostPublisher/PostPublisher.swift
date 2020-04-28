@@ -47,27 +47,26 @@ class PostPublisherRequestGenerator: APIRequestGeneratorProtocol  {
     }
     var apiRequest: URLRequest?{
         get{
-            switch post.postType {
-            case .Poll:
-                return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/create_poll/"),
-                    method: .POST,
-                    httpBodyDict: post.getNetworkPostableFormat() as NSDictionary
-                )
-            case .Post:
-                var request = self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/"),
-                    method: .POST,
-                    httpBodyDict: nil
-                )
+            let model = post.getEditablePostNetworkModel()
+            var request = self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                url: model.url,
+                method: model.method,
+                httpBodyDict: model.postHttpBodyDict
+            )
+            if post.postType == .Post{
                 let bound = "Ju5tH77P15Aw350m3"
                 let contentType : String? = "multipart/form-data; boundary=\(bound)"
                 if let contentTypeValue = contentType {
                     request?.setValue(contentTypeValue, forHTTPHeaderField: "Content-Type")
                 }
                 request?.httpBody = feedPostRequestBodyGenerator.getPostRequestBody(post: post, boundary: bound)
-                return request
             }
+            if let httpBody = request?.httpBody,
+                let parameters = NSString(data: httpBody, encoding: String.Encoding.utf8.rawValue),
+            let postData = parameters.data(using: String.Encoding.utf8.rawValue){
+                request?.httpBody = postData
+            }
+            return request
         }
     }
 }

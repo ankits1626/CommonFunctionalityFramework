@@ -16,7 +16,7 @@ protocol PostEditorCellFactoryDelegate : class {
     func reloadTextViewContainingRow(indexpath : IndexPath)
     func updatePostTitle( title : String?)
     func updatePostDescription( decription: String?)
-    func removeSelectedMedia(index : Int)
+    func removeSelectedMedia(index : Int, mediaSection: EditableMediaSection)
     func savePostOption(index : Int, option: String?)
 }
 
@@ -32,6 +32,7 @@ struct PostEditorCellLoadDataModel {
     var datasource: PostEditorCellFactoryDatasource
     var delegate : PostEditorCellFactoryDelegate?
     var localMediaManager : LocalMediaManager?
+    var postImageMapper : EditablePostMediaRepository
 }
 
 struct PostEditorRemoveAttachedMediaDataModel {
@@ -41,6 +42,7 @@ struct PostEditorRemoveAttachedMediaDataModel {
 struct PostEditorGetHeightModel {
     var targetIndexpath : IndexPath
     var datasource: PostEditorCellFactoryDatasource
+    weak var postImageMapper : EditablePostMediaRepository?
 }
 
 protocol PostEditorCellCoordinatorProtocol {
@@ -63,6 +65,7 @@ struct InitPostEditorCellFactoryModel {
     weak var delegate : PostEditorCellFactoryDelegate?
     weak var localMediaManager : LocalMediaManager?
     weak var targetTableView : UITableView?
+    weak var postImageMapper : EditablePostMediaRepository?
 }
 
 class PostEditorCellFactory {
@@ -79,8 +82,6 @@ class PostEditorCellFactory {
         return [
             FeedEditorTitleTableViewCellType().cellIdentifier : FeedEditorTitleTableViewCellCoordinator(),
             FeedEditorDescriptionTableViewCellType().cellIdentifier : FeedEditorDescriptionTableViewCellCoordinator(),
-            SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
-            SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : FeedEditorAttachedMutipleMediaTableViewCellCoordinator(),
             FeedEditorPollOptionTableViewCellType().cellIdentifier : FeedEditorPollOptionTableViewCellCoordinator()
         ]
@@ -129,14 +130,18 @@ class PostEditorCellFactory {
                 targetCell: cell,
                 datasource: input.datasource!,
                 delegate: input.delegate,
-                localMediaManager: input.localMediaManager
+                localMediaManager: input.localMediaManager,
+                postImageMapper: input.postImageMapper!
             )
         )
     }
     
     func getHeight(indexPath: IndexPath) -> CGFloat {
         return getCellCoordinator(getCurrentSection(indexPath.section)).getHeight(
-            PostEditorGetHeightModel(targetIndexpath: indexPath, datasource: input.datasource!)
+            PostEditorGetHeightModel(
+                targetIndexpath: indexPath,
+                datasource: input.datasource!,
+                postImageMapper: input.postImageMapper)
         )
     }
     
@@ -160,7 +165,8 @@ extension PostEditorCellFactory{
             }
         }
         
-        if let _ = input.datasource?.getTargetPost()?.selectedMediaItems{
+        if let shouldDisplayMediaSection = input.postImageMapper?.shouldDisplayMediaSection(input.datasource?.getTargetPost()),
+            shouldDisplayMediaSection{
             sections.append(.Media)
         }
         return sections
@@ -175,16 +181,7 @@ extension PostEditorCellFactory{
         case .Poll:
             return cachedCellCoordinators[FeedEditorPollOptionTableViewCellType().cellIdentifier]!
         case .Media:
-            let attachedMedia : [LocalSelectedMediaItem] = (input.datasource?.getTargetPost()?.selectedMediaItems)!
-            if attachedMedia.count == 1{
-                if attachedMedia.first!.mediaType == .video{
-                    return cachedCellCoordinators[SingleVideoTableViewCellType().cellIdentifier]!
-                }else{
-                    return cachedCellCoordinators[SingleImageTableViewCellType().cellIdentifier]!
-                }
-            }else{
-                return cachedCellCoordinators[MultipleMediaTableViewCellType().cellIdentifier]!
-            }
+            return cachedCellCoordinators[MultipleMediaTableViewCellType().cellIdentifier]!
         }
     }
 }
@@ -198,7 +195,6 @@ extension PostEditorCellFactory : PostObserver{
     
     func mediaAttachedToPost() {
         input.targetTableView?.reloadData()
-        //input.targetTableView?.insertSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
         input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
     }
     

@@ -8,6 +8,6 @@
 
 import UIKit
 
-public protocol CFFMediaCoordinatorProtocol {
+public protocol CFFMediaCoordinatorProtocol : class {
     func fetchImageAndLoad(_ targetView : UIImageView? , imageEndPoint : String)
 }

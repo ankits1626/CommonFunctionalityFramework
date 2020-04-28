@@ -33,13 +33,14 @@ class PostCoordinator {
     private var currentPost : EditablePostProtocol
     var postObsever : PostObserver?
     let postType: FeedType
+    
     init(postObsever : PostObserver?, postType: FeedType, editablePost : EditablePostProtocol?) {
         self.postObsever = postObsever
         self.postType = postType
         if let unwrappedPost = editablePost{
             currentPost = unwrappedPost
         }else{
-            currentPost = EditablePost(postType: postType)
+            currentPost = EditablePost(postType: postType, remotePostId: nil)
         }
         
     }
@@ -76,7 +77,30 @@ class PostCoordinator {
         currentPost.postDesciption = decription
     }
     
-    func removeSelectedMedia(index: Int){
+    func removeMedia(index : Int, mediaSection: EditableMediaSection){
+        switch mediaSection {
+        case .Remote:
+            removeRemoteMedia(index: index)
+        case .Local:
+            removeLocalSelectedMedia(index: index)
+        }
+    }
+    
+    private func removeRemoteMedia(index: Int){
+        if let mediaItem = currentPost.remoteAttachedMedia?[index]{
+            currentPost.deletedRemoteMediaArray.append(mediaItem.getRemoteId())
+        }
+        currentPost.remoteAttachedMedia?.remove(at: index)
+        
+        if let items = currentPost.remoteAttachedMedia{
+           if items.count == 0{
+                currentPost.remoteAttachedMedia = nil
+            }
+        }
+        postObsever?.allAttachedMediaRemovedFromPost()
+    }
+    
+    private func removeLocalSelectedMedia(index: Int){
         currentPost.selectedMediaItems?.remove(at: index)
         if let items = currentPost.selectedMediaItems{
             if items.count == 1{

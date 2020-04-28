@@ -12,6 +12,12 @@ struct InitFeedEditorLocalMediaCollectionCoordinatorModel {
     let datasource : PostEditorCellFactoryDatasource
     var mediaManager : LocalMediaManager?
     var delegate: PostEditorCellFactoryDelegate
+    var postImageMapper : EditablePostMediaRepository
+}
+
+enum EditableMediaSection : Int, CaseIterable{
+    case Remote = 0
+    case Local
 }
 
 class FeedEditorLocalMediaCollectionCoordinator : NSObject {
@@ -35,13 +41,15 @@ class FeedEditorLocalMediaCollectionCoordinator : NSObject {
     
     func removedLocalMedia(index : Int) {
         targetCollectionView?.reloadData()
-        //targetCollectionView?.deleteItems(at: [IndexPath(item: index, section: 0)])
     }
 }
 
 extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource, UICollectionViewDelegate{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return EditableMediaSection.allCases.count
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return input.datasource.getTargetPost()?.selectedMediaItems?.count ?? 0
+        return input.postImageMapper.getNumberOfMediaItemsForPost(input.datasource.getTargetPost(), section: EditableMediaSection(rawValue: section)!)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,13 +59,12 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
         cell.removeButton?.handleControlEvent(
             event: .touchUpInside,
             buttonActionBlock: {
-                self.input.delegate.removeSelectedMedia(index: indexPath.item)
+                self.input.delegate.removeSelectedMedia(
+                    index: indexPath.item,
+                    mediaSection: EditableMediaSection(rawValue: indexPath.section)!
+                )
         })
-        if let asset = input.datasource.getTargetPost()?.selectedMediaItems?[indexPath.row].asset{
-            input.mediaManager?.fetchImageForAsset(asset: asset, size: (cell.mediaCoverImageView?.bounds.size)!, completion: { (_, fetchedImage) in
-                cell.mediaCoverImageView?.image = fetchedImage
-            })
-        }
+        input.postImageMapper.loadImage(indexpath: indexPath, imageView: cell.mediaCoverImageView)
         cell.mediaCoverImageView?.curvedCornerControl()
         return cell
     }
@@ -65,12 +72,16 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
 
 extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let selectedMediaItem = input.datasource.getTargetPost()?.selectedMediaItems
-        
-        if selectedMediaItem!.count == 2{
-            return CGSize(width: 120, height: 90)
-        }else{
-            return CGSize(width: 83, height: 57)
+        let mediaCount = input.postImageMapper.getMediaCount(input.datasource.getTargetPost())
+        if mediaCount == 0 {
+            return CGSize(width: 0, height: 0)
         }
+        if mediaCount == 1{
+            return CGSize(width: UIScreen.main.bounds.width, height: 205)
+        }
+        if mediaCount == 2{
+            return CGSize(width: 120, height: 90)
+        }
+        return CGSize(width: 83, height: 57)
     }
 }

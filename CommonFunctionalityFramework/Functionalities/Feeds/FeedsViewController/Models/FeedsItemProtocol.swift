@@ -17,9 +17,14 @@ enum FeedMediaItemType{
 protocol MediaItemProtocol {
     func getMediaType() -> FeedMediaItemType
     func getCoverImageUrl() -> String?
+    func getRemoteId() -> Int
 }
 
 struct FeedVideoItem :  MediaItemProtocol{
+    func getRemoteId() -> Int {
+        return rawVideo["id"] as! Int
+    }
+    
     private let rawVideo : [String : Any]
     init(_ rawVideo : [String : Any]) {
         self.rawVideo = rawVideo
@@ -35,6 +40,10 @@ struct FeedVideoItem :  MediaItemProtocol{
 }
 
 struct FeedImageItem :  MediaItemProtocol{
+    func getRemoteId() -> Int {
+        return rawImage["id"] as! Int
+    }
+    
     private let rawImage : [String : Any]
     init(_ rawImage : [String : Any]) {
         self.rawImage = rawImage
