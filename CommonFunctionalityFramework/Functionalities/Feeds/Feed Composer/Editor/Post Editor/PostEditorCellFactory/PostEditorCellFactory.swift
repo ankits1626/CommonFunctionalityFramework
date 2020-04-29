@@ -29,6 +29,7 @@ struct PostEditorCellDequeueModel {
 struct PostEditorCellLoadDataModel {
     var targetIndexpath : IndexPath
     var targetCell : UITableViewCell
+    var targetTableView: UITableView?
     var datasource: PostEditorCellFactoryDatasource
     var delegate : PostEditorCellFactoryDelegate?
     var localMediaManager : LocalMediaManager?
@@ -128,6 +129,7 @@ class PostEditorCellFactory {
             PostEditorCellLoadDataModel(
                 targetIndexpath: indexPath,
                 targetCell: cell,
+                targetTableView: input.targetTableView,
                 datasource: input.datasource!,
                 delegate: input.delegate,
                 localMediaManager: input.localMediaManager,

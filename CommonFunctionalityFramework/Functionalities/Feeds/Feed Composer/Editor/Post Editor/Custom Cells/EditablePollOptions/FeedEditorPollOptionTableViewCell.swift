@@ -10,6 +10,7 @@ import UIKit
 
 class FeedEditorPollOptionTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionText : KMPlaceholderTextView?
+    @IBOutlet weak var maxCharacterLabel : UILabel?
     @IBOutlet weak var containerView : UIView?
     override func awakeFromNib() {
         super.awakeFromNib()

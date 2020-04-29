@@ -11,6 +11,7 @@ import UIKit
 class FeedEditorTitleTableViewCell: UITableViewCell {
     @IBOutlet weak var titleText : KMPlaceholderTextView?
     @IBOutlet weak var containerView : UIView?
+    @IBOutlet weak var maxCharacterLabel : UILabel?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

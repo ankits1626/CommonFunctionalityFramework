@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,6 +33,12 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Whats on your mind?"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEr-MG-BUi">
+                                <rect key="frame" x="230" y="83.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -40,7 +46,9 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="9Z5-rA-2WE"/>
                             <constraint firstAttribute="trailing" secondItem="KoK-1I-uqu" secondAttribute="trailing" constant="15" id="JTa-dr-loY"/>
                             <constraint firstItem="KoK-1I-uqu" firstAttribute="leading" secondItem="kTx-5b-btQ" secondAttribute="leading" constant="15" id="LQH-rB-exm"/>
+                            <constraint firstAttribute="trailing" secondItem="zEr-MG-BUi" secondAttribute="trailing" constant="16" id="VDF-Dt-7SY"/>
                             <constraint firstItem="KoK-1I-uqu" firstAttribute="top" secondItem="kTx-5b-btQ" secondAttribute="top" constant="12" id="WgJ-M5-uXS"/>
+                            <constraint firstItem="zEr-MG-BUi" firstAttribute="centerY" secondItem="KoK-1I-uqu" secondAttribute="centerY" id="qOB-fS-Vg3"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -55,6 +63,7 @@
             <connections>
                 <outlet property="containerView" destination="kTx-5b-btQ" id="zzo-wS-dR8"/>
                 <outlet property="descriptionText" destination="KoK-1I-uqu" id="FJG-WS-OVx"/>
+                <outlet property="maxCharacterLabel" destination="zEr-MG-BUi" id="Qsa-Cn-pmC"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="131.91964285714286"/>
         </tableViewCell>

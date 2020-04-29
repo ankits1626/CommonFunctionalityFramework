@@ -10,17 +10,27 @@ import UIKit
 
 class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol{
     var delegate : PostEditorCellFactoryDelegate?
-    var targetIndexPath : IndexPath = []
+    var indexpathMaps = [Int : IndexPath]()
+    private weak var targetTableView : UITableView?
+    private let MAX_CHARACTER_LENGTH = 25
+    
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         self.delegate = inputModel.delegate
-        targetIndexPath = inputModel.targetIndexpath
+        targetTableView = inputModel.targetTableView
+        let targetIndexPath = inputModel.targetIndexpath
+        indexpathMaps[targetIndexPath.item] = targetIndexPath
         if let cell = inputModel.targetCell as? FeedEditorPollOptionTableViewCell{
             cell.selectionStyle = .none
             cell.descriptionText?.textContainer.maximumNumberOfLines = 1
             cell.descriptionText?.delegate = self
             cell.descriptionText?.tag = inputModel.targetIndexpath.row
             cell.descriptionText?.placeholder = targetIndexPath.row > 1 ? "Choice \(targetIndexPath.row + 1) (Optional)" : "Choice \(targetIndexPath.row + 1)"
-            cell.descriptionText?.placeholderColor = .gray
+            cell.descriptionText?.tag = targetIndexPath.item
+            cell.descriptionText?.placeholderFont = .Body2
+            cell.descriptionText?.placeholderColor = UIColor.getPlaceholderTextColor()
+            cell.maxCharacterLabel?.text = "(Max \(MAX_CHARACTER_LENGTH) Character)"
+            cell.maxCharacterLabel?.textColor = UIColor.getPlaceholderTextColor()
+            cell.maxCharacterLabel?.font = .Caption1
             cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
             cell.containerView?.clipsToBounds = true
         }
@@ -38,6 +48,7 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
 
 extension FeedEditorPollOptionTableViewCellCoordinator : UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
+        toggleMaxCharacterCountPlaceHolderVisibility(identifier: textView.tag)
         delegate?.savePostOption(index: textView.tag, option: textView.text)
     }
     
@@ -46,6 +57,17 @@ extension FeedEditorPollOptionTableViewCellCoordinator : UITextViewDelegate{
             textView.resignFirstResponder()
             return false
         }
-        return true
+        return textView.text.count + (text.count - range.length) <= MAX_CHARACTER_LENGTH
+    }
+    
+    private func toggleMaxCharacterCountPlaceHolderVisibility(identifier: Int){
+        if let targetIndexPath = indexpathMaps[identifier],
+            let cell = targetTableView?.cellForRow(at: targetIndexPath) as?FeedEditorPollOptionTableViewCell{
+            if  let isTextempty = cell.descriptionText?.text.isEmpty{
+                cell.maxCharacterLabel?.isHidden = !isTextempty
+            }else{
+                cell.maxCharacterLabel?.isHidden  = false
+            }
+        }
     }
 }
