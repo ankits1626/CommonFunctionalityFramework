@@ -40,7 +40,7 @@ class PostCoordinator {
         if let unwrappedPost = editablePost{
             currentPost = unwrappedPost
         }else{
-            currentPost = EditablePost(postType: postType, remotePostId: nil)
+            currentPost = EditablePost(isShareWithSameDepartmentOnly: false, postType: postType, remotePostId: nil)
         }
         
     }
@@ -141,6 +141,16 @@ class PostCoordinator {
         currentPost.postableLocalMediaUrls = urls
     }
     
+    func isPostWithSameDepartment() -> Bool {
+        return currentPost.isShareWithSameDepartmentOnly
+    }
+    func isDepartmentSharedWithEditable() -> Bool{
+        return getCurrentPost().remotePostId == nil
+    }
+    
+    func updatePostWithSameDepartment(_ flag: Bool) {
+        currentPost.isShareWithSameDepartmentOnly = flag
+    }
     
 }
 

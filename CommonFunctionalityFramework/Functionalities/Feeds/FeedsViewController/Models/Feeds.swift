@@ -120,6 +120,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getEditablePost() -> EditablePostProtocol {
         return EditablePost(
+            isShareWithSameDepartmentOnly: isSharedWithDepartment(),
             postType: getFeedType(),
             pollOptions: nil,
             title: getFeedTitle(),
@@ -128,6 +129,15 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
             selectedMediaItems: nil,
             remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
         )
+    }
+    
+    private func isSharedWithDepartment() -> Bool{
+        if let rawSharedWithValue = rawFeedDictionary["shared_with"] as? Int,
+            let departmentSharedChoice = DepartmentSharedChoice(rawValue: rawSharedWithValue) {
+            return departmentSharedChoice == .SelfDepartment
+        }else{
+            return false
+        }
     }
     
     func getPollOptions() -> [PollOption]? {

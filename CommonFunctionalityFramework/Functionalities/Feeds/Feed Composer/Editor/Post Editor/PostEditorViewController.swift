@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SimpleCheckbox
 
 protocol EditablePostProtocol {
     var deletedRemoteMediaArray : [Int] {set get}
@@ -21,6 +22,7 @@ protocol EditablePostProtocol {
     var remoteAttachedMedia: [MediaItemProtocol]?{get set}
     var remotePostId : String?{get}
     func getEditablePostNetworkModel() -> EditablePostNetworkModel
+    var isShareWithSameDepartmentOnly : Bool {set get}
 }
 
 
@@ -34,8 +36,10 @@ class PostEditorViewController: UIViewController {
     private let postType: FeedType
     private let requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     
-    @IBOutlet weak var postEditorTable : UITableView?
-    @IBOutlet weak var createButton : UIButton?
+    @IBOutlet private weak var postEditorTable : UITableView?
+    @IBOutlet private weak var createButton : UIButton?
+    @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
+    @IBOutlet private weak var postWithSameDepartmentMessage: UILabel?
     
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(postObsever: cellFactory, postType: postType, editablePost: editablePost)
@@ -85,6 +89,20 @@ class PostEditorViewController: UIViewController {
     private func setup(){
         setupTableView()
         setupCreateButton()
+        setupPostWithDepartment()
+    }
+    
+    private func setupPostWithDepartment() {
+        postWithSameDepartmentCheckBox?.isEnabled = postCoordinator.isDepartmentSharedWithEditable()
+        postWithSameDepartmentCheckBox?.checkmarkStyle = .tick
+        postWithSameDepartmentCheckBox?.isChecked = postCoordinator.isPostWithSameDepartment()
+        postWithSameDepartmentCheckBox?.valueChanged = {(isChecked) in
+            self.postCoordinator.updatePostWithSameDepartment(isChecked)
+        }
+        
+        postWithSameDepartmentMessage?.text = "Post with the same department only"
+        postWithSameDepartmentMessage?.font = .Highlighter2
+        
     }
     
     private func setupTableView(){
@@ -140,6 +158,7 @@ class PostEditorViewController: UIViewController {
     private func updatePostWithSelectedMediaSection(selectedMediaItems : [LocalSelectedMediaItem]?){
         postCoordinator.updateAttachedMediaItems(selectedMediaItems)
     }
+    
     
     @IBAction func createButtonPressed(){
         do{

@@ -17,11 +17,15 @@ struct LocalSelectedMediaItem : Equatable {
     var asset: PHAsset?
     var mediaType : PHAssetMediaType
 }
-
+enum DepartmentSharedChoice : Int {
+    case SelfDepartment = 10
+    case AllDepartment = 20
+}
 struct EditablePost : EditablePostProtocol{
+    
+    var isShareWithSameDepartmentOnly: Bool
     var deletedRemoteMediaArray = [Int]()
     var postableLocalMediaUrls: [URL]?
-    
     var postableMediaMap: [Int : Data]?
     
     func getNetworkPostableFormat() -> [String : Any] {
@@ -55,6 +59,7 @@ struct EditablePost : EditablePostProtocol{
         if !deletedRemoteMediaArray.isEmpty{
             postDictionary["delete_image_ids"] = deletedRemoteMediaArray
         }
+        postDictionary["shared_with"] = isShareWithSameDepartmentOnly ? DepartmentSharedChoice.SelfDepartment.rawValue : DepartmentSharedChoice.AllDepartment.rawValue
         return postDictionary
     }
     
