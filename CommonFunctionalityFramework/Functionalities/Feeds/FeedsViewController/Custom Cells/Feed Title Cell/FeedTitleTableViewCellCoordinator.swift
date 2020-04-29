@@ -14,7 +14,21 @@ class FeedTitleTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 24
+        return UITableView.automaticDimension
+    }
+    
+    func getCell(_ inputModel: FeedCellDequeueModel) -> UITableViewCell {
+        let targetCell = inputModel.targetTableView.dequeueReusableCell(
+        withIdentifier: cellType.cellIdentifier,
+        for: inputModel.targetIndexpath)
+        if let cell  = targetCell as? FeedTitleTableViewCell{
+            let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            cell.feedTitle?.text = feed.getFeedTitle()
+            cell.feedTitle?.font = UIFont.Title1
+            cell.feedTitle?.textColor = UIColor.getTitleTextColor()
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+        }
+        return targetCell
     }
     
     
@@ -24,7 +38,7 @@ class FeedTitleTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.feedTitle?.text = feed.getFeedTitle()
             cell.feedTitle?.font = UIFont.Title1
             cell.feedTitle?.textColor = UIColor.getTitleTextColor()
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
         }
     }
     

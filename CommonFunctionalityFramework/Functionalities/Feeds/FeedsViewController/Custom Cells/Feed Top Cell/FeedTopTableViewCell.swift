@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedTopTableViewCell: UITableViewCell {
+class FeedTopTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var profileImage : UIImageView?
     @IBOutlet weak var userName : UILabel?
     @IBOutlet weak var departmentName : UILabel?

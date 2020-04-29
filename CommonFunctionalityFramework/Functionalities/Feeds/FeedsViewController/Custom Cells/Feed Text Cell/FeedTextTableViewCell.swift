@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedTextTableViewCell: UITableViewCell {
+class FeedTextTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var feedText : UILabel?
     @IBOutlet weak var readMorebutton : UIButton?
     @IBOutlet weak var containerView : UIView?

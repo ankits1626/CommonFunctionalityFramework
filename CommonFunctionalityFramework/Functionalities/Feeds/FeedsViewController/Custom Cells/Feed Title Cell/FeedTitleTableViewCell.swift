@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedTitleTableViewCell: UITableViewCell {
+class FeedTitleTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var feedTitle : UILabel?
     @IBOutlet weak var containerView : UIView?
     override func awakeFromNib() {

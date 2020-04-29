@@ -43,7 +43,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 70
+        return 80
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
@@ -58,7 +58,8 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.text = feed.getfeedCreationDate()
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
-            cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
+            cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
             cell.editFeedButton?.handleControlEvent(
                 event: .touchUpInside,

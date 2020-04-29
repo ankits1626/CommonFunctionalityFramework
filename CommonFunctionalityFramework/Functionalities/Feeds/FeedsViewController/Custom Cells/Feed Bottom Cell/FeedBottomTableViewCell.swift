@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedBottomTableViewCell: UITableViewCell {
+class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var clapsButton : BlockButton?
     @IBOutlet weak var clapsCountLabel : UILabel?
     @IBOutlet weak var commentsButton : UIButton?

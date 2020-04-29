@@ -86,6 +86,7 @@ protocol FeedsItemProtocol : Likeable {
     func getFeedType() -> FeedType
     func getPollOptions() -> [PollOption]?
     func getEditablePost() -> EditablePostProtocol
+    func hasOnlyMedia() -> Bool
 }
 
 enum FeedType : Int{

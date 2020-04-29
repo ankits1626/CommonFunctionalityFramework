@@ -14,7 +14,7 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 205
+        return 257
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
@@ -26,7 +26,7 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else{
                 cell.feedImageView?.image = nil
             }
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             cell.imageTapButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

@@ -263,4 +263,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return "\(comments) Comment".appending(comments == 1 ? "" : "s")
     }
     
+    func hasOnlyMedia() -> Bool {
+        return getFeedTitle() == nil && getFeedDescription() == nil
+    }
 }

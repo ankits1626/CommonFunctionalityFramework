@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FeedsCustomCellProtcol {
+    var containerView : UIView?{set get}
+}
+
 protocol FeedsDatasource {
     func getNumberOfItems() -> Int
     func getFeedItem(_ index: Int) -> FeedsItemProtocol
@@ -47,9 +51,14 @@ class FeedSectionFactory{
     
     func getCell(indexPath : IndexPath, tableView: UITableView) -> UITableViewCell {
         let feedItem = feedsDatasource.getFeedItem(indexPath.section)
-        return getContentCoordinator(feedType: feedItem.getFeedType()).getCell(
+        let cell = getContentCoordinator(feedType: feedItem.getFeedType()).getCell(
             FeedContentGetCellModel(targetIndexpath: indexPath)
         )
+        cell.backgroundColor = .clear
+        if let containerdCell = cell as? FeedsCustomCellProtcol{
+            containerdCell.containerView?.backgroundColor = .white
+        }
+        return cell
     }
     
     func configureCell(cell: UITableViewCell, indexPath: IndexPath, delegate : FeedsDelegate)  {

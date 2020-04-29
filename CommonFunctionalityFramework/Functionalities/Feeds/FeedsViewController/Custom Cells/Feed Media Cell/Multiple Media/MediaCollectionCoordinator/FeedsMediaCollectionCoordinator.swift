@@ -63,15 +63,19 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDataSource, UICollec
 extension FeedsMediaCollectionCoordinator : UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let feedItem = input.feedsDatasource.getFeedItem(input.feedItemIndex)
-        switch feedItem.getMediaCountState() {
-        case .None:
-            fallthrough
-        case .OneMediaItemPresent(_):
-            return CGSize.zero
-        case .TwoMediaItemPresent:
+        if feedItem.hasOnlyMedia(){
             return CGSize(width: 120, height: 90)
-        case .MoreThanTwoMediItemPresent:
-            return CGSize(width: 83, height: 57)
+        }else{
+            switch feedItem.getMediaCountState() {
+            case .None:
+                fallthrough
+            case .OneMediaItemPresent(_):
+                return CGSize.zero
+            case .TwoMediaItemPresent:
+                return CGSize(width: 120, height: 90)
+            case .MoreThanTwoMediItemPresent:
+                return CGSize(width: 83, height: 57)
+            }
         }
     }
 }

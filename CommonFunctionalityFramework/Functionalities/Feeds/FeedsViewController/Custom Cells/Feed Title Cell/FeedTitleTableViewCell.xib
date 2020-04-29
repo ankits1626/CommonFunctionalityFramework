@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-4f-ENv">
                         <rect key="frame" x="16" y="0.0" width="288" height="44"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdA-JJ-BXp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Cell" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdA-JJ-BXp">
                                 <rect key="frame" x="12" y="12" width="264" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -29,7 +29,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DdA-JJ-BXp" secondAttribute="trailing" constant="12" id="BaD-Lh-eiR"/>
-                            <constraint firstItem="DdA-JJ-BXp" firstAttribute="centerY" secondItem="BbI-4f-ENv" secondAttribute="centerY" id="dUA-iF-H0l"/>
+                            <constraint firstAttribute="bottom" secondItem="DdA-JJ-BXp" secondAttribute="bottom" constant="11.5" id="JqT-3l-rxp"/>
+                            <constraint firstItem="DdA-JJ-BXp" firstAttribute="top" secondItem="BbI-4f-ENv" secondAttribute="top" constant="12" id="Su3-F2-Dmf"/>
                             <constraint firstItem="DdA-JJ-BXp" firstAttribute="leading" secondItem="BbI-4f-ENv" secondAttribute="leading" constant="12" id="wQR-9o-qa9"/>
                         </constraints>
                     </view>

@@ -75,6 +75,15 @@ extension UIColor{
     static func stepperIndicatorColor() -> UIColor{
         return UIColor(red: 251/255.0, green: 137/255.0, blue: 129/255.0, alpha: 1.0)
     }
+    
+    static var viewBackgroundColor : UIColor {
+        return UIColor(red: 245/255.0, green: 246/255.0, blue: 249/255.0, alpha: 1.0)
+    }
+    
+    static var feedCellBorderColor : UIColor {
+        return .clear
+    }
+    
 }
 
 struct AppliedCornerRadius {

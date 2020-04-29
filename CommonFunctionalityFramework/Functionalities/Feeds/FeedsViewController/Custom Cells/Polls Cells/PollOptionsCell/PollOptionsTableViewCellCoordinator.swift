@@ -34,7 +34,7 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.optionTitle?.font = UIFont.Body1
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
             cell.optionContainerView?.layer.borderColor = UIColor.getGeneralBorderColor().cgColor
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
         }
     }
     

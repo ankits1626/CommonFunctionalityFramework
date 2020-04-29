@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SingleVideoTableViewCell: UITableViewCell {
+class SingleVideoTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var feedVideoImageView : UIImageView?
     @IBOutlet weak var feedVideoPlayButton : UIButton?
     @IBOutlet weak var containerView : UIView?

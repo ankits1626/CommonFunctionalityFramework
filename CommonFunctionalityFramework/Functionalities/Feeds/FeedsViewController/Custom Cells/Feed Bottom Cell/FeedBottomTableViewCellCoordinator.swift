@@ -28,7 +28,8 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.clapsCountLabel?.text = feed.getNumberOfClaps()
             cell.clapsCountLabel?.font = UIFont.Caption1
             cell.clapsCountLabel?.textColor = UIColor.getSubTitleTextColor()
-            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
+            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
             cell.clapsButton?.setImage(
                 UIImage(
                     named: feed.isClappedByMe() ? "clapHands" : "clapHandsNotClappedByMe",

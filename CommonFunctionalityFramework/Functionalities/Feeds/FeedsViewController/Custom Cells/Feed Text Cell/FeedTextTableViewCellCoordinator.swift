@@ -25,7 +25,7 @@ class FeedTextTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.feedText?.text = feed.getFeedDescription()
             cell.feedText?.font = UIFont.Body1
             cell.feedText?.textColor = UIColor.getTitleTextColor()
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             if inputModel.datasource.showShowFullfeedDescription(){
                 cell.readMorebutton?.isHidden = true
             }else{

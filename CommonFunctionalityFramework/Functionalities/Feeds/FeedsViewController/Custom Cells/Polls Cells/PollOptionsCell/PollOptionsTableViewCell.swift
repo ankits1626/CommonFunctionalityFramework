@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PollOptionsTableViewCell: UITableViewCell {
+class PollOptionsTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var optionTitle : UILabel?
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var optionContainerView : UIView?

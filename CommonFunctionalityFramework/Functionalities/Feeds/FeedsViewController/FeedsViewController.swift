@@ -119,6 +119,7 @@ class FeedsViewController: UIViewController {
     }
     
     private func setup(){
+        view.backgroundColor = .viewBackgroundColor
         setupTopBar()
         setupTableView()
     }
