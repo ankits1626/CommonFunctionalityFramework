@@ -24,7 +24,7 @@ class FeedDetailHeaderCoordinator {
             let header = table.dequeueReusableHeaderFooterView(withIdentifier: "FeedDetailHeader") as? FeedDetailHeader
             header?.headerContainer?.addBorders(
                 edges: [.left, .right],
-                color: UIColor.getGeneralBorderColor()
+                color: .feedCellBorderColor
             )
             header?.headerTitleLabel?.font = UIFont.Highlighter2
             header?.headerSecondaryTitleLabel?.font = UIFont.Caption1

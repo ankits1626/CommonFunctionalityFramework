@@ -43,10 +43,10 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.commentLabel?.text = comment?.getCommentText()
             cell.commentLabel?.font = UIFont.Body1
             if inputModel.targetIndexpath.row + 1 == (inputModel.datasource.getCommentProvider()?.getNumberOfComments() ?? 0){
-                cell.containerView?.addBorders(edges: [.left, .right, .bottom], color: UIColor.getGeneralBorderColor())
-                //cell.containerView?.curvedCornerControl()
+                cell.containerView?.addBorders(edges: [.left, .right, .bottom], color: .feedCellBorderColor)
+                cell.containerView?.roundCorners(corners: [.bottomRight, .bottomLeft], radius: AppliedCornerRadius.standardCornerRadius)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             cell.commentContainer?.backgroundColor = .grayBackGroundColor()
             //cell.commentContainer?.curvedCornerControl()

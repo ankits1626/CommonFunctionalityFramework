@@ -24,14 +24,21 @@ class ASChatBarError {
 }
 
 class ASChatBarview : UIView {
+    @IBOutlet weak var container : UIView?
     @IBOutlet weak var attachImageButton : UIButton?
     @IBOutlet weak var sendButton : UIButton?
     @IBOutlet weak var messageTextView : UITextView?
+    @IBOutlet private weak var placeholderLabel : UILabel?
     @IBOutlet weak var delegate : ASChatBarViewDelegate?
     @IBOutlet private weak var heightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainer : UIView?
     @IBOutlet private weak var leftContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainerWidthConstraint : NSLayoutConstraint?
+    override var backgroundColor: UIColor?{
+        didSet{
+            container?.backgroundColor = backgroundColor
+        }
+    }
 //    private lazy var attachedImageView: VynChatBarAttachedImageView = {
 //        let _attachmentView = VynChatBarAttachedImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 70))
 //        _attachmentView.closeButton?.addTarget(self, action: #selector(removeAttachedImage), for: UIControl.Event.touchUpInside)
@@ -61,7 +68,26 @@ class ASChatBarview : UIView {
     private let kAttachmentContainerBottomInset : CGFloat = 5
     private let kDefaultAttachmentContainerWidth : CGFloat = 44
     private let kDefaultAttachmentContainerHeight  : CGFloat = 44
-
+    private var  hasAlreadyLoadedXib = false
+    
+    var placeholder: String?{
+        didSet{
+            placeholderLabel?.text = placeholder
+        }
+    }
+    
+    var placeholderColor : UIColor?{
+        didSet{
+            placeholderLabel?.textColor = placeholderColor
+        }
+    }
+    
+    var placeholderFont : UIFont?{
+        didSet{
+            placeholderLabel?.font = placeholderFont
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonSetup()
@@ -102,6 +128,10 @@ class ASChatBarview : UIView {
     }
 
     private func commonSetup(){
+        if !hasAlreadyLoadedXib{
+            hasAlreadyLoadedXib = true
+            
+        }
         xibSetup()
         registerForKeyboardNotifications()
         registerForTextChangeNotification()
@@ -112,6 +142,7 @@ class ASChatBarview : UIView {
 
     @objc private func textChanged(){
         if let txtview = messageTextView{
+            placeholderLabel?.isHidden = !txtview.text.isEmpty
             attachImageButton?.isEnabled = !txtview.text.isEmpty
             sendButton?.isEnabled = !txtview.text.isEmpty
             if (previousnumberOfLines == nil ) || (previousnumberOfLines != txtview.getNumberOfLines()) || (txtview.getNumberOfLines() == maxNumberOflines){

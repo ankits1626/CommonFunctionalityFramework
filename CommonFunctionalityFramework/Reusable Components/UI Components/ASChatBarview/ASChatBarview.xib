@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,8 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ASChatBarview" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="attachImageButton" destination="Dak-Vf-zG6" id="AOa-An-uze"/>
+                <outlet property="container" destination="12B-mP-0ea" id="enG-a5-7Ot"/>
                 <outlet property="leftContainer" destination="eDb-F4-4Cl" id="zDd-ZK-aS4"/>
                 <outlet property="messageTextView" destination="Afc-FB-r6e" id="5lk-89-CRl"/>
+                <outlet property="placeholderLabel" destination="GPF-Bl-jGZ" id="WEh-jp-inW"/>
                 <outlet property="sendButton" destination="osq-Ai-iT7" id="J3b-va-zE0"/>
             </connections>
         </placeholder>
@@ -38,11 +40,19 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPF-Bl-jGZ">
+                            <rect key="frame" x="10" y="11.5" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Afc-FB-r6e" firstAttribute="leading" secondItem="pDx-RX-Hx7" secondAttribute="leading" constant="5" id="3ba-sq-Aa4"/>
                         <constraint firstAttribute="trailing" secondItem="Afc-FB-r6e" secondAttribute="trailing" constant="5" id="53V-hY-8ad"/>
+                        <constraint firstItem="GPF-Bl-jGZ" firstAttribute="leading" secondItem="Afc-FB-r6e" secondAttribute="leading" constant="5" id="i43-Gh-1by"/>
+                        <constraint firstItem="GPF-Bl-jGZ" firstAttribute="centerY" secondItem="Afc-FB-r6e" secondAttribute="centerY" id="oC0-a9-Vxo"/>
                         <constraint firstAttribute="bottom" secondItem="Afc-FB-r6e" secondAttribute="bottom" constant="5" id="v7S-Wt-gkp"/>
                         <constraint firstItem="Afc-FB-r6e" firstAttribute="top" secondItem="pDx-RX-Hx7" secondAttribute="top" constant="5" id="vfn-YT-evM"/>
                     </constraints>
@@ -62,7 +72,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Dak-Vf-zG6" firstAttribute="centerY" secondItem="eDb-F4-4Cl" secondAttribute="centerY" id="Zf6-A8-SdC"/>
                         <constraint firstAttribute="height" constant="44" id="etz-Yd-wmk"/>
@@ -85,7 +95,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="osq-Ai-iT7" firstAttribute="centerY" secondItem="3Y3-rn-5QX" secondAttribute="centerY" id="EFL-gN-fvq"/>
                         <constraint firstAttribute="height" constant="44" id="KuM-w8-sPM"/>
@@ -94,7 +104,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="eDb-F4-4Cl" firstAttribute="bottom" secondItem="vMR-a9-sCy" secondAttribute="bottom" id="HNy-bN-a4F"/>
                 <constraint firstItem="vMR-a9-sCy" firstAttribute="trailing" secondItem="3Y3-rn-5QX" secondAttribute="trailing" id="LJn-Kj-sTs"/>

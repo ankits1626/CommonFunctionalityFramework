@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClappedByTableViewCell: UITableViewCell {
+class ClappedByTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var seeAllButton : BlockButton?
     override func awakeFromNib() {

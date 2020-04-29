@@ -20,7 +20,7 @@ class ClappedByTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? ClappedByTableViewCell{
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             cell.seeAllButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

@@ -102,12 +102,17 @@ class FeedDetailSectionFactory {
     }
     
     func getCell(indexPath : IndexPath, tableView: UITableView) -> UITableViewCell {
-        return getCellCoordinator(indexPath).getCell(FeedCellDequeueModel(
+        let cell = getCellCoordinator(indexPath).getCell(FeedCellDequeueModel(
             targetIndexpath: indexPath,
             targetTableView: tableView,
             datasource: feedDataSource
             )
         )
+         cell.backgroundColor = .clear
+         if let containerdCell = cell as? FeedsCustomCellProtcol{
+             containerdCell.containerView?.backgroundColor = .white
+         }
+        return cell
     }
     
     func configureCell(cell: UITableViewCell, indexPath: IndexPath, delegate: FeedsDelegate)  {

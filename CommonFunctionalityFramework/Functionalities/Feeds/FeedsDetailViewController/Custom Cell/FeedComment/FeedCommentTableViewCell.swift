@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedCommentTableViewCell: UITableViewCell {
+class FeedCommentTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var commentContainer : UIView?
     @IBOutlet weak var userProfileImage : UIImageView?

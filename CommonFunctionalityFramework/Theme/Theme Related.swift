@@ -80,6 +80,10 @@ extension UIColor{
         return UIColor(red: 245/255.0, green: 246/255.0, blue: 249/255.0, alpha: 1.0)
     }
     
+    static var commentBarBackgroundColor : UIColor {
+        return UIColor(red: 246/255.0, green: 247/255.0, blue: 248/255.0, alpha: 1.0)
+    }
+    
     static var feedCellBorderColor : UIColor {
         return .clear
     }

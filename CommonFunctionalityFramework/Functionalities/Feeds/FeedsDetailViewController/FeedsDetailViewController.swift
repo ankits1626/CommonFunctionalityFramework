@@ -42,7 +42,16 @@ class FeedsDetailViewController: UIViewController {
     }
     
     private func setup(){
+        view.backgroundColor = .viewBackgroundColor
         setupTableView()
+        setupCommentBar()
+    }
+    
+    private func setupCommentBar(){
+        commentBarView?.backgroundColor = .commentBarBackgroundColor
+        commentBarView?.placeholder = "Enter your comments here"
+        commentBarView?.placeholderColor = .getPlaceholderTextColor()
+        commentBarView?.placeholderFont = .Body1
     }
     
     private func setupTableView(){
