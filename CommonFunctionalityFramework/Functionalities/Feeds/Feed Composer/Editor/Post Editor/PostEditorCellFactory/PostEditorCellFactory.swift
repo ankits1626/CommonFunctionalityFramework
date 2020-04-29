@@ -18,6 +18,7 @@ protocol PostEditorCellFactoryDelegate : class {
     func updatePostDescription( decription: String?)
     func removeSelectedMedia(index : Int, mediaSection: EditableMediaSection)
     func savePostOption(index : Int, option: String?)
+    func activeDaysForPollChanged(_ days : Int)
 }
 
 struct PostEditorCellDequeueModel {
@@ -74,7 +75,8 @@ class PostEditorCellFactory {
         case Title = 0
         case Description
         case Media
-        case Poll
+        case PollOptions
+        case PollActiveForDays
     }
     
     var input : InitPostEditorCellFactoryModel
@@ -84,7 +86,8 @@ class PostEditorCellFactory {
             FeedEditorTitleTableViewCellType().cellIdentifier : FeedEditorTitleTableViewCellCoordinator(),
             FeedEditorDescriptionTableViewCellType().cellIdentifier : FeedEditorDescriptionTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : FeedEditorAttachedMutipleMediaTableViewCellCoordinator(),
-            FeedEditorPollOptionTableViewCellType().cellIdentifier : FeedEditorPollOptionTableViewCellCoordinator()
+            FeedEditorPollOptionTableViewCellType().cellIdentifier : FeedEditorPollOptionTableViewCellCoordinator(),
+            PollsActiveDaysTableViewCellType().cellIdentifier : PollsActiveDaysTableViewCellCoordinator()
         ]
     }()
     
@@ -108,7 +111,7 @@ class PostEditorCellFactory {
     }
     
     func numberOfRowsInSection(_ section : Int) -> Int {
-        if getCurrentSection(section) == .Poll{
+        if getCurrentSection(section) == .PollOptions{
             return 4
         }
         return 1
@@ -161,7 +164,8 @@ extension PostEditorCellFactory{
         if let postType = input.datasource?.getTargetPost()?.postType{
             switch postType {
             case .Poll:
-                sections.append(PostEditorCellFactory.PostEditorSection.Poll)
+                sections.append(PostEditorCellFactory.PostEditorSection.PollOptions)
+                sections.append(.PollActiveForDays)
             case .Post:
                 sections.append(.Description)
             }
@@ -180,10 +184,12 @@ extension PostEditorCellFactory{
             return cachedCellCoordinators[FeedEditorTitleTableViewCellType().cellIdentifier]!
         case .Description:
             return cachedCellCoordinators[FeedEditorDescriptionTableViewCellType().cellIdentifier]!
-        case .Poll:
+        case .PollOptions:
             return cachedCellCoordinators[FeedEditorPollOptionTableViewCellType().cellIdentifier]!
         case .Media:
             return cachedCellCoordinators[MultipleMediaTableViewCellType().cellIdentifier]!
+        case .PollActiveForDays:
+            return cachedCellCoordinators[PollsActiveDaysTableViewCellType().cellIdentifier]!
         }
     }
 }

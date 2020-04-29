@@ -18,6 +18,10 @@
 		9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD54241AC860003B91FD /* FeedFetcher.swift */; };
 		9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */; };
 		9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */; };
+		9819120B2459B4560078A2FF /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819120A2459B4560078A2FF /* Stepper.swift */; };
+		9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */; };
+		981912102459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */; };
+		981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */; };
 		9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */; };
 		9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
@@ -160,6 +164,10 @@
 		9811DD54241AC860003B91FD /* FeedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetcher.swift; sourceTree = "<group>"; };
 		9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuOptions.swift; sourceTree = "<group>"; };
 		9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingMenuOptions.xib; sourceTree = "<group>"; };
+		9819120A2459B4560078A2FF /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
+		9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsActiveDaysTableViewCell.swift; sourceTree = "<group>"; };
+		9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollsActiveDaysTableViewCell.xib; sourceTree = "<group>"; };
+		981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsActiveDaysTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentPostWorker.swift; sourceTree = "<group>"; };
 		9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsFetcher.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
@@ -378,6 +386,24 @@
 				9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */,
 			);
 			path = FloatingMenuOptions;
+			sourceTree = "<group>";
+		};
+		981912092459B4480078A2FF /* Stepper */ = {
+			isa = PBXGroup;
+			children = (
+				9819120A2459B4560078A2FF /* Stepper.swift */,
+			);
+			path = Stepper;
+			sourceTree = "<group>";
+		};
+		9819120C2459B5A30078A2FF /* Polls Active Days */ = {
+			isa = PBXGroup;
+			children = (
+				9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */,
+				9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */,
+				981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */,
+			);
+			path = "Polls Active Days";
 			sourceTree = "<group>";
 		};
 		9820C107243F5C2700A6A30A /* Workers */ = {
@@ -643,6 +669,7 @@
 		9868C0DA2412417E00B12321 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				981912092459B4480078A2FF /* Stepper */,
 				9890CAC4242DE88700E1AE4D /* Media Browser */,
 				9811DD56241B6168003B91FD /* FloatingMenuOptions */,
 				9811DD03241A9ECB003B91FD /* BlockButton */,
@@ -987,6 +1014,7 @@
 		98BC8A0B241A171E007C175D /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				9819120C2459B5A30078A2FF /* Polls Active Days */,
 				98C648B0241BB4C1006689E9 /* EditablePollOptions */,
 				98BC8A1B241A17C5007C175D /* attached document */,
 				98BC8A16241A179D007C175D /* attached media */,
@@ -1226,6 +1254,7 @@
 				9868C02C240F79E800B12321 /* SingleVideoTableViewCell.xib in Resources */,
 				98C6489A241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib in Resources */,
 				9868C034240F7A3C00B12321 /* FeedBottomTableViewCell.xib in Resources */,
+				981912102459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib in Resources */,
 				98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */,
 				9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */,
 				98B02FB7241A50DA00CB8690 /* GridViewCell.xib in Resources */,
@@ -1301,6 +1330,8 @@
 				9868C0912410C19200B12321 /* Theme Related.swift in Sources */,
 				987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */,
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
+				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
+				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				9868C05424101E0200B12321 /* UIView+Extension.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
@@ -1362,6 +1393,7 @@
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				9872654424502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift in Sources */,
+				9819120B2459B4560078A2FF /* Stepper.swift in Sources */,
 				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,

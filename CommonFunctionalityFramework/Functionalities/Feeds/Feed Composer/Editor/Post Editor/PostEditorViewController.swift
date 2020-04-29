@@ -208,6 +208,10 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func activeDaysForPollChanged(_ days: Int) {
+        postCoordinator.updateActiveDayForPoll(days)
+    }
+    
     func savePostOption(index: Int, option: String?) {
         postCoordinator.savePostOption(index: index, option: option)
     }

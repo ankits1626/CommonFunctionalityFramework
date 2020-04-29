@@ -152,6 +152,10 @@ class PostCoordinator {
         currentPost.isShareWithSameDepartmentOnly = flag
     }
     
+    func updateActiveDayForPoll(_ days: Int) {
+        
+    }
+    
 }
 
 extension PostCoordinator{
