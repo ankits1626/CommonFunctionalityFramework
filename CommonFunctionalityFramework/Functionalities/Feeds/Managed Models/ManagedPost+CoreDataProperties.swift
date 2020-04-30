@@ -22,6 +22,7 @@ extension ManagedPost {
     @NSManaged public var createdTimeStamp: NSDate
     @NSManaged public var isLikedByMe: Bool
     @NSManaged public var numberOfLikes: Int64
+    @NSManaged public var numberOfComments: Int64
 
 }
 

@@ -153,8 +153,14 @@ class FeedDetailSectionFactory {
 //        }
     }
     
-    func reloadToShowLikeToggleResult() {
+    func reloadToShowLikeAndCommentCountUpdate() {
         targetTableView?.reloadRows(at: [isLikedByCellIndexpath], with: .none)
+    }
+    
+    func reloadToCommentCountHeader() {
+        if let header = targetTableView?.headerView(forSection: FeedDetailSection.Comments.rawValue) as? FeedDetailHeader{
+            headerCoordinator.configureHeader(header, section: FeedDetailSection.Comments)
+        }
     }
     
     func getCommentsSectionIndex() -> Int {

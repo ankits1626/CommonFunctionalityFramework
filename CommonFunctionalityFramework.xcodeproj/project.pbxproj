@@ -806,10 +806,10 @@
 			children = (
 				98726535244DE98900CD4530 /* ManagedPost+CoreDataClass.swift */,
 				98726537244DE98900CD4530 /* ManagedPost+CoreDataProperties.swift */,
+				9872653C244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift */,
 				98726536244DE98900CD4530 /* ManagedPostComment+CoreDataClass.swift */,
 				98726534244DE98900CD4530 /* ManagedPostComment+CoreDataProperties.swift */,
 				9872654324502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift */,
-				9872653C244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift */,
 			);
 			path = "Managed Models";
 			sourceTree = "<group>";

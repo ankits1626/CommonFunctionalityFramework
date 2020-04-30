@@ -212,7 +212,7 @@ extension FeedsDetailViewController : FeedsDelegate{
                     CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                         CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                         DispatchQueue.main.async {
-                            self?.feedDetailSectionFactory.reloadToShowLikeToggleResult()
+                            self?.feedDetailSectionFactory.reloadToShowLikeAndCommentCountUpdate()
                         }
                     }
                 }
@@ -295,7 +295,10 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
-                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {[weak self] in
+                                    let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                                    post.numberOfComments =  post.numberOfComments + 1
+                                    self?.targetFeedItem = post.getRawObject() as! RawFeed
                                     let _ = FeedComment(input: result).getManagedObject() as! ManagedPostComment
                                     CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                                         CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
@@ -361,6 +364,10 @@ extension FeedsDetailViewController:  NSFetchedResultsControllerDelegate {
     
     // did change
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        DispatchQueue.main.async {[weak self] in
+            self?.feedDetailSectionFactory.reloadToShowLikeAndCommentCountUpdate()
+            self?.feedDetailSectionFactory.reloadToCommentCountHeader()
+        }
         feedDetailTableView?.endUpdates()
     }
 }

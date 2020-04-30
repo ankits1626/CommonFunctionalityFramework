@@ -82,16 +82,20 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private let rawFeedDictionary : [String : Any]
     private var numberOfLikes: Int64
     private var isLikedByMe : Bool
+    private var numberOfComments : Int64
+    
     init(input : [String : Any]){
         self.rawFeedDictionary = input
         isLikedByMe = rawFeedDictionary["has_appreciated"] as? Bool ?? false
         numberOfLikes = rawFeedDictionary["appreciation_count"] as? Int64 ?? 0
+        numberOfComments = rawFeedDictionary["comments_count"] as? Int64 ?? 0
     }
     
     init(managedObject : NSManagedObject){
         self.rawFeedDictionary = (managedObject as! ManagedPost).postRawDictionary as! [String : Any]
         self.isLikedByMe = (managedObject as! ManagedPost).isLikedByMe
         self.numberOfLikes = (managedObject as! ManagedPost).numberOfLikes
+        numberOfComments = (managedObject as! ManagedPost).numberOfComments
     }
     
     @discardableResult func getManagedObject() -> NSManagedObject{
@@ -114,6 +118,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         managedPost.postId = feedIdentifier
         managedPost.isLikedByMe = isLikedByMe
         managedPost.numberOfLikes = numberOfLikes
+        managedPost.numberOfComments = numberOfComments
         return managedPost
     }
     
@@ -259,8 +264,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     }
     
     func getNumberOfComments() -> String {
-        let comments = rawFeedDictionary["comments_count"] as? Int ?? 0
-        return "\(comments) Comment".appending(comments == 1 ? "" : "s")
+        return "\(numberOfComments) Comment".appending(numberOfComments == 1 ? "" : "s")
     }
     
     func hasOnlyMedia() -> Bool {
