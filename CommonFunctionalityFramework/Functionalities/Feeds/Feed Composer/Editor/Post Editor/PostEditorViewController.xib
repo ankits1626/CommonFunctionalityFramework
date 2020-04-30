@@ -94,7 +94,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="9Iz-Ik-LoE"/>
                                     </constraints>
-                                    <state key="normal" title="Button"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <connections>
                                         <action selector="createButtonPressed" destination="-1" eventType="touchUpInside" id="kbh-Jg-S4F"/>
                                     </connections>
