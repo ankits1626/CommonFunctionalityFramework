@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PollsActiveDaysTableViewCell: UITableViewCell {
+class PollsActiveDaysTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var activeDaysLabel : UILabel?
     @IBOutlet weak var activeDaysStepper : Stepper?

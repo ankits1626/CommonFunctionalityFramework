@@ -32,10 +32,10 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
             
             if let mediaItems = inputModel.datasource.getTargetPost()?.selectedMediaItems,
             mediaItems.count > 0{
-                cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             else{
-                cell.containerView?.addBorders(edges: [.bottom,.left, .right], color: UIColor.getGeneralBorderColor())
+                cell.containerView?.addBorders(edges: [.bottom,.left, .right], color: .feedCellBorderColor)
                 cell.containerView?.curvedCornerControl()
             }
            

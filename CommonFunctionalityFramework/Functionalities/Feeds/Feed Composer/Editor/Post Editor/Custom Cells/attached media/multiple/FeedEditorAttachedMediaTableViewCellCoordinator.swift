@@ -17,7 +17,7 @@ class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCo
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
             cell.selectionStyle = .none
-            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.curvedCornerControl()
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }

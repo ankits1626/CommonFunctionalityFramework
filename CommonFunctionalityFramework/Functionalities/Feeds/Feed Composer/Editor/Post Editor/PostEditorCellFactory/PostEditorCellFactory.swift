@@ -118,13 +118,18 @@ class PostEditorCellFactory {
     }
     
     func getCell(indexPath : IndexPath, tableView: UITableView) -> UITableViewCell {
-        return getCellCoordinator(getCurrentSection(indexPath.section)).getCell(
+        let cell = getCellCoordinator(getCurrentSection(indexPath.section)).getCell(
             PostEditorCellDequeueModel(
                 targetIndexpath: indexPath,
                 targetTableView: tableView,
                 datasource: input.datasource!
             )
         )
+        cell.backgroundColor = .clear
+        if let containerdCell = cell as? FeedsCustomCellProtcol{
+            containerdCell.containerView?.backgroundColor = .white
+        }
+        return cell
     }
     
     func configureCell(cell: UITableViewCell, indexPath: IndexPath) {

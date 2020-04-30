@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedEditorDescriptionTableViewCell: UITableViewCell {
+class FeedEditorDescriptionTableViewCell: UITableViewCell,FeedsCustomCellProtcol {
     @IBOutlet weak var descriptionText : KMPlaceholderTextView?
     @IBOutlet weak var containerView : UIView?
     override func awakeFromNib() {

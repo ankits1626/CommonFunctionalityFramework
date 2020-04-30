@@ -46,10 +46,10 @@
                                         <rect key="frame" x="0.0" y="24" width="288" height="72"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s97-Un-f2Q" customClass="Stepper" customModule="AIA_Pride" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="16" width="209" height="40"/>
+                                                <rect key="frame" x="15" y="16" width="129" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="209" id="UY3-95-2Fj"/>
+                                                    <constraint firstAttribute="width" constant="129" id="UY3-95-2Fj"/>
                                                     <constraint firstAttribute="height" constant="40" id="Uyb-Ty-8ih"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>

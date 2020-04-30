@@ -14,7 +14,8 @@ protocol StepperDelegate {
 
 @IBDesignable class Stepper: UIControl {
     //MARK:- Properties
-    @IBInspectable var indicatorColor: UIColor = UIColor.white
+    @IBInspectable var incrementIndicatorColor: UIColor = UIColor.white
+    @IBInspectable var decrementIndicatorColor: UIColor = UIColor.white
     @IBInspectable var borderColor: UIColor = UIColor.white
     @IBInspectable var textColor: UIColor = UIColor.lightGray
     @IBInspectable var middleColor: UIColor = UIColor.white
@@ -90,8 +91,8 @@ protocol StepperDelegate {
         counterTxt.backgroundColor = middleColor
         counterTxt.textColor = textColor
         counterTxt.keyboardType = .numberPad
-        decrementButton.backgroundColor = indicatorColor
-        incrementButton.backgroundColor = indicatorColor
+        decrementButton.backgroundColor = decrementIndicatorColor
+        incrementButton.backgroundColor = incrementIndicatorColor
         decrementButton.setTitle("-", for: UIControl.State.normal)
         incrementButton.setTitle("+", for: UIControl.State.normal)
         setNeedsDisplay()

@@ -45,7 +45,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.maxCharacterLabel?.font = .Caption1
             cell.maxCharacterLabel?.text = "(Max \(MAX_CHARACTER_LENGTH) Character)"
             //cell.maxCharacterLabel?.isHidden = cell.titleText?.text.isEmpty ?? false
-            cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
             cell.containerView?.curvedCornerControl()
         }

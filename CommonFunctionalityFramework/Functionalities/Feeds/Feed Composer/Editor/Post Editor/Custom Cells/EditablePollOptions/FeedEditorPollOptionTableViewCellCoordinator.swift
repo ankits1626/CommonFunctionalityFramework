@@ -21,6 +21,7 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
         indexpathMaps[targetIndexPath.item] = targetIndexPath
         if let cell = inputModel.targetCell as? FeedEditorPollOptionTableViewCell{
             cell.selectionStyle = .none
+            cell.descriptionText?.borderedControl()
             cell.descriptionText?.textContainer.maximumNumberOfLines = 1
             cell.descriptionText?.delegate = self
             cell.descriptionText?.tag = inputModel.targetIndexpath.row
@@ -28,16 +29,16 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
             cell.descriptionText?.tag = targetIndexPath.item
             cell.descriptionText?.placeholderFont = .Body2
             cell.descriptionText?.placeholderColor = UIColor.getPlaceholderTextColor()
-            cell.maxCharacterLabel?.text = "(Max \(MAX_CHARACTER_LENGTH) Character)"
+            cell.maxCharacterLabel?.text = "(Max \(MAX_CHARACTER_LENGTH) Char)"
             cell.maxCharacterLabel?.textColor = UIColor.getPlaceholderTextColor()
             cell.maxCharacterLabel?.font = .Caption1
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
         }
     }
     
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
-        return 50
+        return 64
     }
     
     var cellType: FeedCellTypeProtocol{

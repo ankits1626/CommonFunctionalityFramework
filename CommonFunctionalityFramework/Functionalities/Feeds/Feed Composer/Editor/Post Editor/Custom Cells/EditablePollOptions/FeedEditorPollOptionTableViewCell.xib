@@ -34,7 +34,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEr-MG-BUi">
-                                <rect key="frame" x="230" y="83.5" width="42" height="21"/>
+                                <rect key="frame" x="226" y="83.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="9Z5-rA-2WE"/>
                             <constraint firstAttribute="trailing" secondItem="KoK-1I-uqu" secondAttribute="trailing" constant="15" id="JTa-dr-loY"/>
                             <constraint firstItem="KoK-1I-uqu" firstAttribute="leading" secondItem="kTx-5b-btQ" secondAttribute="leading" constant="15" id="LQH-rB-exm"/>
-                            <constraint firstAttribute="trailing" secondItem="zEr-MG-BUi" secondAttribute="trailing" constant="16" id="VDF-Dt-7SY"/>
+                            <constraint firstAttribute="trailing" secondItem="zEr-MG-BUi" secondAttribute="trailing" constant="20" id="VDF-Dt-7SY"/>
                             <constraint firstItem="KoK-1I-uqu" firstAttribute="top" secondItem="kTx-5b-btQ" secondAttribute="top" constant="12" id="WgJ-M5-uXS"/>
                             <constraint firstItem="zEr-MG-BUi" firstAttribute="centerY" secondItem="KoK-1I-uqu" secondAttribute="centerY" id="qOB-fS-Vg3"/>
                         </constraints>

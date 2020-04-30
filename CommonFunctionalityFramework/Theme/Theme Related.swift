@@ -72,8 +72,16 @@ extension UIColor{
         return UIColor(red: 237/255.0, green: 237/255.0, blue: 237/255.0, alpha: 1.0)
     }
     
-    static func stepperIndicatorColor() -> UIColor{
+    static var stepperIncrementIndicatorColor : UIColor{
         return UIColor(red: 251/255.0, green: 137/255.0, blue: 129/255.0, alpha: 1.0)
+    }
+    
+    static var stepperDecrementIndicatorColor : UIColor{
+        return UIColor(red: 171/255.0, green: 171/255.0, blue: 171/255.0, alpha: 1.0)
+    }
+    
+    static var stepperMiddleColor : UIColor{
+        return UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
     }
     
     static var viewBackgroundColor : UIColor {

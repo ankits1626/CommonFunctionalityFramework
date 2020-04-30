@@ -17,9 +17,11 @@ class PollsActiveDaysTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.activeDaysLabel?.font = .Highlighter2
             cell.activeDaysLabel?.text = "Poll Active for (days) :"
             cell.activeDaysStepper?.reading = 1
-            cell.activeDaysStepper?.indicatorColor = .stepperIndicatorColor()
+            cell.activeDaysStepper?.incrementIndicatorColor = .stepperIncrementIndicatorColor
+            cell.activeDaysStepper?.decrementIndicatorColor = .stepperDecrementIndicatorColor
+            cell.activeDaysStepper?.middleColor = .stepperMiddleColor
             cell.activeDaysStepper?.curvedBorderedControl()
-            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
         }
     }
     

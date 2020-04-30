@@ -87,6 +87,7 @@ class PostEditorViewController: UIViewController {
     
     
     private func setup(){
+        view.backgroundColor = .viewBackgroundColor
         setupTableView()
         setupCreateButton()
         setupPostWithDepartment()

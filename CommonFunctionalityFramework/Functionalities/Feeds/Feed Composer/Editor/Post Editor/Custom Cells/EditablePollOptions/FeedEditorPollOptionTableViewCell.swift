@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedEditorPollOptionTableViewCell: UITableViewCell {
+class FeedEditorPollOptionTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var descriptionText : KMPlaceholderTextView?
     @IBOutlet weak var maxCharacterLabel : UILabel?
     @IBOutlet weak var containerView : UIView?
