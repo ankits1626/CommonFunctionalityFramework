@@ -9,6 +9,23 @@
 import UIKit
 import Photos
 
+protocol EditablePostProtocol {
+    var deletedRemoteMediaArray : [Int] {set get}
+    var title : String? {set get}
+    var postDesciption : String? {set get}
+    var pollOptions : [String]? {get set}
+    var selectedMediaItems : [LocalSelectedMediaItem]? {set get}
+    var postType : FeedType {set get}
+    func getNetworkPostableFormat() -> [String : Any]
+    var postableMediaMap : [Int : Data]? { get set}
+    var postableLocalMediaUrls : [URL]? { get set}
+    var remoteAttachedMedia: [MediaItemProtocol]?{get set}
+    var remotePostId : String?{get}
+    func getEditablePostNetworkModel() -> EditablePostNetworkModel
+    var isShareWithSameDepartmentOnly : Bool {set get}
+    var pollActiveDays : Int {set get}
+}
+
 struct LocalSelectedMediaItem : Equatable {
     static func ==(_ lhs: LocalSelectedMediaItem, _ rhs: LocalSelectedMediaItem) -> Bool {
       return lhs.identifier == rhs.identifier
@@ -22,7 +39,7 @@ enum DepartmentSharedChoice : Int {
     case AllDepartment = 20
 }
 struct EditablePost : EditablePostProtocol{
-    
+    var pollActiveDays: Int = 1
     var isShareWithSameDepartmentOnly: Bool
     var deletedRemoteMediaArray = [Int]()
     var postableLocalMediaUrls: [URL]?
@@ -45,6 +62,8 @@ struct EditablePost : EditablePostProtocol{
         if let options = pollOptions{
            pollDictionary["answers"] = options
         }
+        pollDictionary["shared_with"] = isShareWithSameDepartmentOnly ? DepartmentSharedChoice.SelfDepartment.rawValue : DepartmentSharedChoice.AllDepartment.rawValue
+        pollDictionary["active_days"] = pollActiveDays
         return pollDictionary
     }
     

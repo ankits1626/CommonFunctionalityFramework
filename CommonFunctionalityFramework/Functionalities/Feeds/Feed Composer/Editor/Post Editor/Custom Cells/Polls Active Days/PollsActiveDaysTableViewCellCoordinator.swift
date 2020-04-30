@@ -16,6 +16,7 @@ class PollsActiveDaysTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         if let cell = inputModel.targetCell as? PollsActiveDaysTableViewCell{
             cell.activeDaysLabel?.font = .Highlighter2
             cell.activeDaysLabel?.text = "Poll Active for (days) :"
+            cell.activeDaysStepper?.delegate = self
             cell.activeDaysStepper?.reading = 1
             cell.activeDaysStepper?.incrementIndicatorColor = .stepperIncrementIndicatorColor
             cell.activeDaysStepper?.decrementIndicatorColor = .stepperDecrementIndicatorColor

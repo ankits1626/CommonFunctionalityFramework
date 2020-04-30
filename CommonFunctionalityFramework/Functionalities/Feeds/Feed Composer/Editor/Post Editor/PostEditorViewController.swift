@@ -9,24 +9,6 @@
 import UIKit
 import SimpleCheckbox
 
-protocol EditablePostProtocol {
-    var deletedRemoteMediaArray : [Int] {set get}
-    var title : String? {set get}
-    var postDesciption : String? {set get}
-    var pollOptions : [String]? {get set}
-    var selectedMediaItems : [LocalSelectedMediaItem]? {set get}
-    var postType : FeedType {set get}
-    func getNetworkPostableFormat() -> [String : Any]
-    var postableMediaMap : [Int : Data]? { get set}
-    var postableLocalMediaUrls : [URL]? { get set}
-    var remoteAttachedMedia: [MediaItemProtocol]?{get set}
-    var remotePostId : String?{get}
-    func getEditablePostNetworkModel() -> EditablePostNetworkModel
-    var isShareWithSameDepartmentOnly : Bool {set get}
-}
-
-
-
 class PostEditorViewController: UIViewController {
     var containerTopBarModel : EditorContainerTopBarModel?{
         didSet{

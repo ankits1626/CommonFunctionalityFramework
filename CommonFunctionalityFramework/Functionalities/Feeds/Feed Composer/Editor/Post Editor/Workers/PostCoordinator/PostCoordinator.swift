@@ -123,7 +123,7 @@ class PostCoordinator {
         optionsMap[index] = option
         var options = [String]()
         optionsMap.keys.sorted(by: { (first, second) -> Bool in
-            return first > second
+            return first < second
         }).forEach { (aKey) in
             if let value = optionsMap[aKey],
                 let unwrappedOption = value{
@@ -153,7 +153,7 @@ class PostCoordinator {
     }
     
     func updateActiveDayForPoll(_ days: Int) {
-        
+        currentPost.pollActiveDays = days
     }
     
 }
