@@ -68,6 +68,12 @@ class FeedFetchDataParser: DataParserProtocol {
     typealias ResultType = FetchedFeedModel
     
     func parseFetchedData(fetchedData: ExpectedRawDataType) -> APICallResult<ResultType> {
-        return APICallResult.Success(result: FetchedFeedModel(fetchedRawFeeds: fetchedData, error: nil))
+        return APICallResult.Success(
+            result: FetchedFeedModel(
+                fetchedRawFeeds: fetchedData,
+                error: nil,
+                nextPageUrl: fetchedData["next"] as? String
+            )
+        )
     }
 }

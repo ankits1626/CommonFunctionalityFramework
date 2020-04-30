@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UILoadControl
 
 class FeedsViewController: UIViewController {
     @IBOutlet private weak var composeLabel : UILabel?
@@ -75,18 +76,19 @@ class FeedsViewController: UIViewController {
     
     @objc private func refreshFeeds(){
         clearAnyExistingFeedsData {[weak self] in
+            self?.lastFetchedFeeds = nil
             self?.loadFeeds()
         }
     }
     
-    private func loadFeeds(){
+    @objc private func loadFeeds(){
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-        nextPageUrl: nil) { (result) in
+        nextPageUrl: lastFetchedFeeds?.nextPageUrl) {[weak self] (result) in
             DispatchQueue.main.async {
+                self?.feedsTable?.loadControl?.endLoading()
                 switch result{
-                    
                 case .Success(let result):
-                    self.handleFetchedFeedsResult(fetchedfeeds: result)
+                    self?.handleFetchedFeedsResult(fetchedfeeds: result)
                 case .SuccessWithNoResponseData:
                     ErrorDisplayer.showError(errorMsg: "No record Found") { (_) in}
                 case .Failure(let error):
@@ -141,7 +143,8 @@ class FeedsViewController: UIViewController {
         feedsTable?.estimatedRowHeight = 140
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
-        //feedsTable?.reloadData()
+        feedsTable?.loadControl = UILoadControl(target: self, action: #selector(loadFeeds))
+        feedsTable?.loadControl?.heightLimit = 100.0
     }
 }
 
@@ -192,6 +195,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
         feedDetailVC.feedCoordinatorDeleagate = feedCoordinatorDeleagate
         feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.loadControl?.update()
     }
 }
 

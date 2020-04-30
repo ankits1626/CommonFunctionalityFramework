@@ -974,13 +974,13 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
 				98726533244DE94000CD4530 /* Managed Models */,
 				98CC2FAD2425C49E00E8F9E0 /* LikeList */,
 				98CC2FAA2425C41800E8F9E0 /* DashboardFeedSectionProvider */,
 				9868C10E2419F94100B12321 /* Feed Composer */,
 				9868C0862410B4C900B12321 /* FeedsDetailViewController */,
 				98B90DEC240CAD010013E9D2 /* FeedsViewController */,
-				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";

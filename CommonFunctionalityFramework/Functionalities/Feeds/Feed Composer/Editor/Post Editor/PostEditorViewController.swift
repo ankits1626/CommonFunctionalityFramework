@@ -49,6 +49,7 @@ class PostEditorViewController: UIViewController {
         return LocalMediaManager()
     }()
     private let editablePost : EditablePostProtocol?
+    
     init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?){
         self.postType  = postType
         self.requestCoordinator = requestCoordinator
@@ -154,11 +155,11 @@ class PostEditorViewController: UIViewController {
                 }
                 if error == nil{
                     PostPublisher(networkRequestCoordinator: self.requestCoordinator).publisPost(
-                    post: self.postCoordinator.getCurrentPost()) { (callResult) in
+                    post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                         DispatchQueue.main.async {
                             switch callResult{
                             case .Success(_):
-                                self.dismiss(animated: true, completion: nil)
+                                self?.dismiss(animated: true, completion: nil)
                             case .SuccessWithNoResponseData:
                                 ErrorDisplayer.showError(errorMsg: "Unable to post.") { (_) in
 
