@@ -57,46 +57,12 @@ struct FeedImageItem :  MediaItemProtocol{
     }
 }
 
-struct PollOption {
-    var title : String{
-        return rawPollOption["answer_text"] as? String ?? ""
-    }
-    private let rawPollOption : [String : Any]
-    init(_ rawPollOption : [String : Any]) {
-        self.rawPollOption = rawPollOption
-    }
-}
-
-protocol FeedsItemProtocol : Likeable {
-
-    var feedIdentifier : Int64{get}
-    func getUserImageUrl() -> String?
-    func getUserName() -> String?
-    func getDepartmentName() -> String?
-    func getfeedCreationDate() -> String?
-    func getIsEditActionAllowedOnFeedItem() -> Bool
-    func getFeedTitle() -> String?
-    func getFeedDescription() -> String?
-    func getMediaList() -> [MediaItemProtocol]?
-    func isClappedByMe() -> Bool
-    func getNumberOfClaps() -> String
-    func getNumberOfComments() -> String
-    func getPollState() -> PollState
-    func getMediaCountState() -> MediaCountState
-    func getFeedType() -> FeedType
-    func getPollOptions() -> [PollOption]?
-    func getEditablePost() -> EditablePostProtocol
-    func hasOnlyMedia() -> Bool
-}
-
 enum FeedType : Int{
     case Poll = 2
     case Post = 1
 }
 
-enum PollState {
-    case NotAvailable
-}
+
 
 enum MediaCountState {
     case None

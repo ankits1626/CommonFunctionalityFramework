@@ -96,8 +96,21 @@ extension UIColor{
         return .clear
     }
     
+    static var unVotedPollOptionBorderColor : UIColor {
+        return UIColor.getGeneralBorderColor()
+    }
+    
+    static var votedPollOptionBorderColor : UIColor {
+        return .black
+    }
+    
 }
 
 struct AppliedCornerRadius {
     static let standardCornerRadius : CGFloat = 6.0
+}
+
+struct BorderWidths {
+    static let standardBorderWidth : CGFloat = 1.0
+    static let votedOptionBorderWidth : CGFloat = 1.5
 }

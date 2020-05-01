@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */; };
+		980F563B245BFC680093AFE7 /* PollSubmitButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */; };
+		980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */; };
+		980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F563E245C03920093AFE7 /* FeedAuthor.swift */; };
+		980F5641245C03AB0093AFE7 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5640245C03AB0093AFE7 /* Poll.swift */; };
+		980F5645245C1D300093AFE7 /* PollBottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5643245C1D300093AFE7 /* PollBottomTableViewCell.swift */; };
+		980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980F5644245C1D300093AFE7 /* PollBottomTableViewCell.xib */; };
+		980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5647245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift */; };
 		9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */; };
 		9811DD02241A885F003B91FD /* PostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD01241A885F003B91FD /* PostCoordinator.swift */; };
 		9811DD05241A9ECB003B91FD /* BlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD04241A9ECB003B91FD /* BlockButton.swift */; };
@@ -153,6 +161,14 @@
 /* Begin PBXFileReference section */
 		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
 		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
+		980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollSubmitButtonCell.xib; sourceTree = "<group>"; };
+		980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCellCoordinator.swift; sourceTree = "<group>"; };
+		980F563E245C03920093AFE7 /* FeedAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAuthor.swift; sourceTree = "<group>"; };
+		980F5640245C03AB0093AFE7 /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
+		980F5643245C1D300093AFE7 /* PollBottomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollBottomTableViewCell.swift; sourceTree = "<group>"; };
+		980F5644245C1D300093AFE7 /* PollBottomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollBottomTableViewCell.xib; sourceTree = "<group>"; };
+		980F5647245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollBottomTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorLocalMediaCollectionCoordinator.swift; sourceTree = "<group>"; };
 		9811DD01241A885F003B91FD /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
 		9811DD04241A9ECB003B91FD /* BlockButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockButton.swift; sourceTree = "<group>"; };
@@ -334,6 +350,16 @@
 			path = ../2020FebFlab/Pods;
 			sourceTree = "<group>";
 		};
+		980F5642245C1D180093AFE7 /* PollBottomCell */ = {
+			isa = PBXGroup;
+			children = (
+				980F5643245C1D300093AFE7 /* PollBottomTableViewCell.swift */,
+				980F5644245C1D300093AFE7 /* PollBottomTableViewCell.xib */,
+				980F5647245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift */,
+			);
+			path = PollBottomCell;
+			sourceTree = "<group>";
+		};
 		9811DD00241A8847003B91FD /* PostCoordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +485,8 @@
 			children = (
 				9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */,
 				9868BFFF240F585900B12321 /* Feeds.swift */,
+				980F563E245C03920093AFE7 /* FeedAuthor.swift */,
+				980F5640245C03AB0093AFE7 /* Poll.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -515,6 +543,7 @@
 		9868C00F240F774900B12321 /* Polls Cells */ = {
 			isa = PBXGroup;
 			children = (
+				980F5642245C1D180093AFE7 /* PollBottomCell */,
 				98C648A6241B88FA006689E9 /* PollSubmitButtonCell */,
 				98C648A1241B88DA006689E9 /* PollOptionsCell */,
 			);
@@ -1105,6 +1134,9 @@
 		98C648A6241B88FA006689E9 /* PollSubmitButtonCell */ = {
 			isa = PBXGroup;
 			children = (
+				980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */,
+				980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */,
+				980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */,
 			);
 			path = PollSubmitButtonCell;
 			sourceTree = "<group>";
@@ -1264,8 +1296,10 @@
 				9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */,
 				9868C01B240F78E500B12321 /* FeedTextTableViewCell.xib in Resources */,
 				98B02FB6241A50DA00CB8690 /* AssetGridViewController.strings in Resources */,
+				980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */,
 				9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */,
 				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
+				980F563B245BFC680093AFE7 /* PollSubmitButtonCell.xib in Resources */,
 				98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */,
 				9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */,
 				98B02FBB241A50DA00CB8690 /* GroupsViewController.strings in Resources */,
@@ -1329,6 +1363,7 @@
 				9868C0DC241241AB00B12321 /* ASChatBarview.swift in Sources */,
 				9868C0912410C19200B12321 /* Theme Related.swift in Sources */,
 				987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */,
+				980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */,
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
@@ -1352,6 +1387,7 @@
 				98B02FC6241A776800CB8690 /* LocalMediaManager.swift in Sources */,
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
 				9868C1032419EDCD00B12321 /* SlideInPresentationManager.swift in Sources */,
+				980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */,
 				9868C0592410326300B12321 /* Date+ Extension.swift in Sources */,
 				9868C047240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift in Sources */,
 				9868C005240F660300B12321 /* CommonCellFactory.swift in Sources */,
@@ -1379,6 +1415,7 @@
 				98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */,
 				9868C045240F9D6C00B12321 /* MultipleMediaTableViewCellCoordinator.swift in Sources */,
 				9811DD05241A9ECB003B91FD /* BlockButton.swift in Sources */,
+				980F5645245C1D300093AFE7 /* PollBottomTableViewCell.swift in Sources */,
 				9868C0F9241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift in Sources */,
 				9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */,
 				98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */,
@@ -1394,10 +1431,12 @@
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				9872654424502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift in Sources */,
 				9819120B2459B4560078A2FF /* Stepper.swift in Sources */,
+				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
+				980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */,
 				9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */,
 				98726542244DEF9800CD4530 /* CFFCoreDataManager.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
@@ -1418,6 +1457,7 @@
 				9868C0B92412100B00B12321 /* MediaItemCollectionViewCell.swift in Sources */,
 				98B02FBF241A50DA00CB8690 /* GroupsViewController.swift in Sources */,
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
+				980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */,
 				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,
 				98C648B3241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift in Sources */,

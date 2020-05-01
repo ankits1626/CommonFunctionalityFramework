@@ -29,11 +29,13 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                 delta = delta + 1
             }
             let optionRowIndex = inputModel.targetIndexpath.row - delta
-            let feedOption = feed.getPollOptions()?[optionRowIndex]
+            let feedOption = feed.getPoll()?.getPollOptions()[optionRowIndex]
             cell.optionTitle?.text = feedOption?.title
             cell.optionTitle?.font = UIFont.Body1
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
-            cell.optionContainerView?.layer.borderColor = UIColor.getGeneralBorderColor().cgColor
+            cell.optionContainerView?.borderedControl(
+                borderColor: feedOption?.hasVoted ?? false ? .votedPollOptionBorderColor : .unVotedPollOptionBorderColor,
+                borderWidth: feedOption?.hasVoted ?? false ? BorderWidths.votedOptionBorderWidth : BorderWidths.standardBorderWidth)
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
         }
     }

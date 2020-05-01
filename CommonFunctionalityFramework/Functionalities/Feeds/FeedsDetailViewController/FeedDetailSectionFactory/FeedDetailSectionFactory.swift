@@ -200,7 +200,7 @@ extension FeedDetailSectionFactory{
         case .MoreThanTwoMediItemPresent:
             rows.append(MultipleMediaTableViewCellType())
         }
-        feed!.getPollOptions()?.forEach { (_) in
+        feed?.getPoll()?.getPollOptions().forEach { (_) in
             rows.append(PollOptionsTableViewCellType())
         }
         rows.append(FeedBottomTableViewCellType())

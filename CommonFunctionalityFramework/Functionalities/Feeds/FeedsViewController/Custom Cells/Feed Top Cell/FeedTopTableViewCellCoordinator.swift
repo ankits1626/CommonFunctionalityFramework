@@ -61,6 +61,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
+            cell.editFeedButton?.isHidden = !feed.getIsEditActionAllowedOnFeedItem()
             cell.editFeedButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

@@ -17,7 +17,9 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
             FeedTitleTableViewCellType().cellIdentifier : FeedTitleTableViewCellCoordinator(),
             FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
-            PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator()
+            PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
+            PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
+            PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator()
         ]
     }()
 
@@ -45,25 +47,14 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         if feed.getFeedDescription() != nil{
             rows.append(FeedTextTableViewCellType())
         }
-        feed.getPollOptions()?.forEach { (_) in
+        feed.getPoll()?.getPollOptions().forEach { (_) in
             rows.append(PollOptionsTableViewCellType())
         }
-//        switch feed.getMediaCountState() {
-//        case .None:
-//            break
-//        case .OneMediaItemPresent(let mediaType):
-//            switch mediaType {
-//            case .Image:
-//                rows.append(SingleImageTableViewCellType())
-//            case .Video:
-//                rows.append(SingleVideoTableViewCellType())
-//            }
-//        case .TwoMediaItemPresent:
-//            fallthrough
-//        case .MoreThanTwoMediItemPresent:
-//            rows.append(MultipleMediaTableViewCellType())
-//        }
-//        rows.append(FeedBottomTableViewCellType())
+        
+        if feed.getPoll()!.isPollActive(){
+            rows.append(PollSubmitButtonCellType())
+        }
+        rows.append(PollBottomTableViewCelType())
         return rows
     }
     

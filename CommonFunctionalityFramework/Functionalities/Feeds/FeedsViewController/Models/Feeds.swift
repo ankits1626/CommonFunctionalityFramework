@@ -9,73 +9,38 @@
 import Foundation
 import CoreData
 
-protocol FeedBaseUser{
-    var rawUserDictionary : [String : Any] {get}
-    func getAuthorName() -> String
-    func getAuthorDepartmentName() -> String
-    func getAuthorProfileImageUrl() -> String?
-}
+protocol FeedsItemProtocol : Likeable {
 
-extension FeedBaseUser{
-    
-    func getAuthorDepartmentName() -> String {
-        if let departments = rawUserDictionary["departments"] as? [[String : String]]{
-            var departmentValues = [String]()
-            departments.forEach { (aDictionary) in
-                if let unwrappedDepartment = aDictionary["name"]{
-                    departmentValues.append(unwrappedDepartment)
-                }
-            }
-            return departmentValues.joined(separator: ", ")
-        }else{
-            return ""
-        }
-    }
-    
-    func getAuthorName() -> String {
-        return getFullName()
-    }
-    
-    private func getFullName() -> String{
-        var name = ""
-        name.append(getFirstName())
-        if name.isEmpty{
-            name.append(getLastName())
-        }else{
-            name.append(" \(getLastName())")
-        }
-        return name
-    }
-    
-    private func getFirstName() -> String {
-        return rawUserDictionary["first_name"] as? String ?? ""
-    }
-    
-    private func getLastName() -> String {
-        return rawUserDictionary["last_name"] as? String ?? ""
-    }
-    
-    func getAuthorProfileImageUrl() -> String? {
-        return rawUserDictionary["profile_img"] as? String
-    }
-}
-
-
-struct FeedAuthor : FeedBaseUser {
-    internal let rawUserDictionary : [String : Any]
-    init(rawAuthorDictionary : [String : Any]) {
-        self.rawUserDictionary = rawAuthorDictionary
-    }
-}
-
-struct Poll {
-    private let rawPoll : [String : Any]
-    init(rawPoll : [String : Any]) {
-        self.rawPoll = rawPoll
-    }
+    var feedIdentifier : Int64{get}
+    func getUserImageUrl() -> String?
+    func getUserName() -> String?
+    func getDepartmentName() -> String?
+    func getfeedCreationDate() -> String?
+    func getIsEditActionAllowedOnFeedItem() -> Bool
+    func getFeedTitle() -> String?
+    func getFeedDescription() -> String?
+    func getMediaList() -> [MediaItemProtocol]?
+    func isClappedByMe() -> Bool
+    func getNumberOfClaps() -> String
+    func getNumberOfComments() -> String
+    func getPollState() -> PollState
+    func getMediaCountState() -> MediaCountState
+    func getFeedType() -> FeedType
+    //func getPollOptions() -> [PollOption]?
+    func getEditablePost() -> EditablePostProtocol
+    func hasOnlyMedia() -> Bool
+    func getPoll() -> Poll?
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
+    func getPoll() -> Poll? {
+        if let unwrappedRawPoll = rawFeedDictionary["poll_info"] as? [String : Any]{
+            return Poll(rawPoll: unwrappedRawPoll)
+        }else{
+            return nil
+        }
+    }
+    
     func getLikeToggleUrl() -> URL {
         return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(feedIdentifier)/appreciate/")!
     }
@@ -145,19 +110,6 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
     }
     
-    func getPollOptions() -> [PollOption]? {
-        var options = [PollOption]()
-        
-        if
-            let rawPollInfo = rawFeedDictionary["poll_info"] as? [String : Any],
-            let rawOptions = rawPollInfo["answers"] as? [[String : Any]]{
-            rawOptions.forEach { (aRwaOption) in
-                options.append(PollOption(aRwaOption))
-            }
-        }
-        return options.isEmpty ? nil : options
-    }
-    
     var feedIdentifier: Int64{
         return rawFeedDictionary["id"] as? Int64 ?? -1
     }
@@ -166,7 +118,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return RawFeed(input: [String : Any]())
     }
     func getPollState() -> PollState {
-        return .NotAvailable
+        return .NotActive
     }
     
     func getMediaCountState() -> MediaCountState {

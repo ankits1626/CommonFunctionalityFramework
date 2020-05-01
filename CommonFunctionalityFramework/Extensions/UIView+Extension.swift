@@ -71,10 +71,10 @@ extension UIView {
         borderedControl()
     }
     
-    func borderedControl() {
+    func borderedControl(borderColor : UIColor = UIColor.getGeneralBorderColor(), borderWidth : CGFloat  = 1.0 ) {
         self.clipsToBounds = true
-        self.layer.borderColor = UIColor.getGeneralBorderColor().cgColor
-        self.layer.borderWidth = 1.0
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = borderWidth
     }
     
     
