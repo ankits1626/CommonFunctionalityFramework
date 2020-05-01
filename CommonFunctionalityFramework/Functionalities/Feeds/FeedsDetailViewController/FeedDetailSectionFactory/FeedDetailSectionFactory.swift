@@ -32,6 +32,7 @@ class FeedDetailSectionFactory {
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
             PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
+            PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
             FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
             FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator()
@@ -200,9 +201,15 @@ extension FeedDetailSectionFactory{
         case .MoreThanTwoMediItemPresent:
             rows.append(MultipleMediaTableViewCellType())
         }
-        feed?.getPoll()?.getPollOptions().forEach { (_) in
-            rows.append(PollOptionsTableViewCellType())
+        if let poll = feed?.getPoll(){
+            poll.getPollOptions().forEach { (_) in
+                rows.append(PollOptionsTableViewCellType())
+            }
+            rows.append(PollBottomTableViewCelType())
         }
+//        feed?.getPoll()?.getPollOptions().forEach { (_) in
+//            rows.append(PollOptionsTableViewCellType())
+//        }
         rows.append(FeedBottomTableViewCellType())
         isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)
         map[.FeedInfo] = rows
