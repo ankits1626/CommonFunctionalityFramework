@@ -188,13 +188,14 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
-        feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
-        feedDetailVC.mediaFetcher = mediaFetcher
-        feedDetailVC.requestCoordinator = requestCoordinator
-        feedDetailVC.feedCoordinatorDeleagate = feedCoordinatorDeleagate
-        feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
-        
+        if getFeedItem(indexPath.section).shouldShowDetail(){
+            let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+            feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
+            feedDetailVC.mediaFetcher = mediaFetcher
+            feedDetailVC.requestCoordinator = requestCoordinator
+            feedDetailVC.feedCoordinatorDeleagate = feedCoordinatorDeleagate
+            feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -30,9 +30,18 @@ protocol FeedsItemProtocol : Likeable {
     func getEditablePost() -> EditablePostProtocol
     func hasOnlyMedia() -> Bool
     func getPoll() -> Poll?
+    func shouldShowDetail() -> Bool
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
+    func shouldShowDetail() -> Bool {
+        if let unwrappedPoll = getPoll(){
+            return !unwrappedPoll.isPollActive()
+        }else{
+            return true
+        }
+    }
+    
     func getPoll() -> Poll? {
         if let unwrappedRawPoll = rawFeedDictionary["poll_info"] as? [String : Any]{
             return Poll(rawPoll: unwrappedRawPoll)
