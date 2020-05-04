@@ -14,7 +14,7 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 257
+        return 273
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {

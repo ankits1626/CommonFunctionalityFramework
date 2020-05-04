@@ -207,9 +207,6 @@ extension FeedDetailSectionFactory{
             }
             rows.append(PollBottomTableViewCelType())
         }
-//        feed?.getPoll()?.getPollOptions().forEach { (_) in
-//            rows.append(PollOptionsTableViewCellType())
-//        }
         rows.append(FeedBottomTableViewCellType())
         isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)
         map[.FeedInfo] = rows

@@ -35,6 +35,7 @@ class FeedsViewController: UIViewController {
     }()
     
     private var frc : NSFetchedResultsController<ManagedPost>?
+    private var pollAnswerSubmitter : PollAnswerSubmitter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -204,6 +205,30 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    
+    func submitPollAnswer(feedIdentifier : Int64){
+        print("post answer")
+        self.pollAnswerSubmitter?.submitAnswer(completionHandler: { (result) in
+            switch result{
+                
+            case .Success(result: let result):
+                print("<<<<<<<< update raw poll after answer submission")
+            case .SuccessWithNoResponseData:
+                fallthrough
+            case .Failure(error: _):
+                print("<<<<<<<<<< like/unlike call completed \(result)")
+            }
+        })
+    }
+    
+    func selectPollAnswer(feedIdentifier : Int64, pollOption: PollOption){
+        print("select answer for feed \(feedIdentifier), answer : \(pollOption.getNewtowrkPostableAnswer())")
+        self.pollAnswerSubmitter = PollAnswerSubmitter(
+            networkRequestCoordinator: requestCoordinator,
+            feedIdentifier: feedIdentifier,
+            answer: pollOption
+        )
+    }
     
     func toggleClapForPost(feedIdentifier: Int64) {
         if let feed = getFeedItem(feedIdentifier: feedIdentifier){

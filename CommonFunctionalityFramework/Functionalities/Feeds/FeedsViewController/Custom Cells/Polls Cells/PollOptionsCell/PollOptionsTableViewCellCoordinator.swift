@@ -37,6 +37,13 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                 borderColor: feedOption?.hasVoted ?? false ? .votedPollOptionBorderColor : .unVotedPollOptionBorderColor,
                 borderWidth: feedOption?.hasVoted ?? false ? BorderWidths.votedOptionBorderWidth : BorderWidths.standardBorderWidth)
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            cell.optionSelectionButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate.selectPollAnswer(
+                        feedIdentifier: feed.feedIdentifier,
+                        pollOption: feedOption!)
+            })
         }
     }
     

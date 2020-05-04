@@ -21,11 +21,13 @@ protocol FeedsDatasource {
     func showShowFullfeedDescription() -> Bool
 }
 
-protocol FeedsDelegate {
+protocol FeedsDelegate : class {
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
     func showLikedByUsersList()
     func showMediaBrowser(feedIdentifier : Int64,scrollToItemIndex: Int)
     func toggleClapForPost(feedIdentifier : Int64)
+    func selectPollAnswer(feedIdentifier : Int64, pollOption: PollOption)
+    func submitPollAnswer(feedIdentifier : Int64)
 }
 
 class FeedSectionFactory{

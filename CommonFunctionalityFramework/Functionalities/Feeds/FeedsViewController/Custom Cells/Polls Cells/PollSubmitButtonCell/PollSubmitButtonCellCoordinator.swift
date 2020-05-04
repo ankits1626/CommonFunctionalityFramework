@@ -20,13 +20,20 @@ class PollSubmitButtonCellCoordinator:  FeedCellCoordinatorProtocol{
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? PollSubmitButtonCell{
-            //let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             cell.submitButton?.backgroundColor = .black
             cell.submitButton?.setTitle("SUBMIT", for: .normal)
             cell.submitButton?.setTitleColor(.white, for: .normal)
             cell.submitButton?.titleLabel?.font = .Highlighter1
+            let delegate = inputModel.delegate
+            let feedIdentifier = feed.feedIdentifier
+            cell.submitButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {[weak delegate] in
+                    delegate?.submitPollAnswer(feedIdentifier: feedIdentifier)
+            })
         }
     }
     

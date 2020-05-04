@@ -200,6 +200,14 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
+    func submitPollAnswer(feedIdentifier: Int64) {
+        
+    }
+    
+    func selectPollAnswer(feedIdentifier: Int64, pollOption: PollOption) {
+        
+    }
+    
     func toggleClapForPost(feedIdentifier: Int64) {
         FeedClapToggler(networkRequestCoordinator: requestCoordinator).toggleLike(targetFeedItem) { [weak self](result) in
             switch result{

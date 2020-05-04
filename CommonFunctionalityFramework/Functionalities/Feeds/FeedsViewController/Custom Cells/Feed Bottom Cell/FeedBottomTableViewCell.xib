@@ -20,8 +20,15 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2b-wS-JUv">
                         <rect key="frame" x="16" y="0.0" width="397" height="115"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-72-VQr">
+                                <rect key="frame" x="6" y="0.0" width="385" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="TqB-uu-xdR"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TTd-RL-SQv">
-                                <rect key="frame" x="0.0" y="0.0" width="397" height="44"/>
+                                <rect key="frame" x="0.0" y="1" width="397" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xud-Nz-jdJ" userLabel="Action Container">
                                         <rect key="frame" x="0.0" y="0.0" width="397" height="44"/>
@@ -145,9 +152,12 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="TTd-RL-SQv" firstAttribute="top" secondItem="U2b-wS-JUv" secondAttribute="top" id="Ca3-dq-avA"/>
+                            <constraint firstAttribute="trailing" secondItem="lxC-72-VQr" secondAttribute="trailing" constant="6" id="Hbt-99-bRX"/>
+                            <constraint firstItem="lxC-72-VQr" firstAttribute="top" secondItem="U2b-wS-JUv" secondAttribute="top" id="IH2-C8-4d1"/>
                             <constraint firstItem="TTd-RL-SQv" firstAttribute="leading" secondItem="U2b-wS-JUv" secondAttribute="leading" id="Zfv-XP-XFj"/>
+                            <constraint firstItem="TTd-RL-SQv" firstAttribute="top" secondItem="lxC-72-VQr" secondAttribute="bottom" id="hYr-N4-f3i"/>
                             <constraint firstAttribute="trailing" secondItem="TTd-RL-SQv" secondAttribute="trailing" id="lZJ-ar-HaK"/>
+                            <constraint firstItem="lxC-72-VQr" firstAttribute="leading" secondItem="U2b-wS-JUv" secondAttribute="leading" constant="6" id="qIT-HT-g9c"/>
                         </constraints>
                     </view>
                 </subviews>

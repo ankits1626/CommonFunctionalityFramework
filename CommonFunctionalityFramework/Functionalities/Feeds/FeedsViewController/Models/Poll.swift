@@ -20,9 +20,15 @@ struct PollOption {
     }
     let hasVoted : Bool
     private let rawPollOption : [String : Any]
+    private let answerID : Int64
     init(_ rawPollOption : [String : Any]) {
         self.rawPollOption = rawPollOption
         hasVoted = rawPollOption["has_voted"] as? Bool ?? false
+        answerID = rawPollOption["id"] as! Int64
+    }
+    
+    func getNewtowrkPostableAnswer() -> [String: Any] {
+        return ["answer_id" :  answerID] 
     }
 }
 
