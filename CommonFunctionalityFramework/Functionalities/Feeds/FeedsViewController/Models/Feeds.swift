@@ -86,7 +86,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
             managedPost = firstFetchedManagedFeed
         }else{
             managedPost = CFFCoreDataManager.sharedInstance.manager.insertManagedObject(type: ManagedPost.self)
-            managedPost.createdTimeStamp = Date()
+            managedPost.createdTimeStamp = NSDate()
         }
         managedPost.postRawDictionary = rawFeedDictionary as NSDictionary
         managedPost.postId = feedIdentifier

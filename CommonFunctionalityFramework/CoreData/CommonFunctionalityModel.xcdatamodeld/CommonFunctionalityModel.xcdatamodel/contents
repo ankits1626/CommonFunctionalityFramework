@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ManagedPost" representedClassName="ManagedPost" syncable="YES" codeGenerationType="class">
+    <entity name="ManagedPost" representedClassName="ManagedPost" syncable="YES">
         <attribute name="createdTimeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isLikedByMe" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="numberOfComments" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -9,7 +9,7 @@
         <attribute name="postRawDictionary" optional="YES" attributeType="Transformable"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ManagedPostComment" inverseName="post" inverseEntity="ManagedPostComment"/>
     </entity>
-    <entity name="ManagedPostComment" representedClassName="ManagedPostComment" syncable="YES" codeGenerationType="class">
+    <entity name="ManagedPostComment" representedClassName="ManagedPostComment" syncable="YES">
         <attribute name="commentId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="commentRawDictionary" optional="YES" attributeType="Transformable"/>
         <attribute name="createdTimeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

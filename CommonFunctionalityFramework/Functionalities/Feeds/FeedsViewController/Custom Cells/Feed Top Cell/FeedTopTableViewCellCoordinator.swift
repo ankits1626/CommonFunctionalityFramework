@@ -20,6 +20,7 @@ struct FeedCellLoadDataModel {
     var datasource: FeedsDatasource
     var mediaFetcher: CFFMediaCoordinatorProtocol
     var delegate : FeedsDelegate
+    weak var selectedoptionMapper : SelectedPollAnswerMapper?
 }
 
 struct FeedCellGetHeightModel {

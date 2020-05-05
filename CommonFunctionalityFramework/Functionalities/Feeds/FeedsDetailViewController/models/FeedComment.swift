@@ -34,7 +34,7 @@ struct FeedComment : RawObjectProtocol {
             managedPost = firstFetchedManagedFeed
         }else{
             managedPost = CFFCoreDataManager.sharedInstance.manager.insertManagedObject(type: ManagedPostComment.self)
-            managedPost.createdTimeStamp = Date()
+            managedPost.createdTimeStamp = NSDate()
         }
         managedPost.commentRawDictionary = rawFeedComment as NSDictionary
         managedPost.commentId = getComentId()

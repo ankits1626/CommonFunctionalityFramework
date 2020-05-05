@@ -21,7 +21,15 @@ class FeedsViewController: UIViewController {
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
     
     lazy var feedSectionFactory: FeedSectionFactory = {
-        return FeedSectionFactory(feedsDatasource: self, mediaFetcher: mediaFetcher, targetTableView: feedsTable)
+        return FeedSectionFactory(
+            feedsDatasource: self,
+            mediaFetcher: mediaFetcher,
+            targetTableView: feedsTable,
+            selectedOptionMapper: pollSelectedAnswerMapper
+        )
+    }()
+    lazy var pollSelectedAnswerMapper: SelectedPollAnswerMapper = {
+        return SelectedPollAnswerMapper()
     }()
     
     var lastFetchedFeeds : FetchedFeedModel?
@@ -210,9 +218,15 @@ extension FeedsViewController : FeedsDelegate{
         print("post answer")
         self.pollAnswerSubmitter?.submitAnswer(completionHandler: { (result) in
             switch result{
-                
             case .Success(result: let result):
                 print("<<<<<<<< update raw poll after answer submission")
+                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                    let _ = result.getManagedObject() as! ManagedPost
+                    CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                        CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                    }
+                }
+                
             case .SuccessWithNoResponseData:
                 fallthrough
             case .Failure(error: _):
@@ -223,11 +237,12 @@ extension FeedsViewController : FeedsDelegate{
     
     func selectPollAnswer(feedIdentifier : Int64, pollOption: PollOption){
         print("select answer for feed \(feedIdentifier), answer : \(pollOption.getNewtowrkPostableAnswer())")
-        self.pollAnswerSubmitter = PollAnswerSubmitter(
-            networkRequestCoordinator: requestCoordinator,
-            feedIdentifier: feedIdentifier,
-            answer: pollOption
-        )
+        pollSelectedAnswerMapper.toggleOptionSelection(pollId: feedIdentifier, selectedOption: pollOption)
+//        self.pollAnswerSubmitter = PollAnswerSubmitter(
+//            networkRequestCoordinator: requestCoordinator,
+//            feedIdentifier: feedIdentifier,
+//            answer: pollOption
+//        )
     }
     
     func toggleClapForPost(feedIdentifier: Int64) {

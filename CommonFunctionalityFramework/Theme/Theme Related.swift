@@ -104,6 +104,14 @@ extension UIColor{
         return .black
     }
     
+    static var progressColor : UIColor {
+        return UIColor(red: 234/255.0, green: 239/255.0, blue: 242/255.0, alpha: 1.0)
+    }
+    
+    static var progressTrackColor : UIColor {
+        return .white
+    }
+    
 }
 
 struct AppliedCornerRadius {

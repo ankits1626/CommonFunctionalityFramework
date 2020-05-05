@@ -99,12 +99,20 @@
 		9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C1092419F37C00B12321 /* SlideInPresentationController.swift */; };
 		9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */; };
 		9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */; };
+		9872266824616BBE00809D7A /* ManagedPost+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266224616BBE00809D7A /* ManagedPost+RawRepresentable.swift */; };
+		9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266624616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift */; };
+		9872266E246173B500809D7A /* ManagedPostComment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266524616BBE00809D7A /* ManagedPostComment+CoreDataProperties.swift */; };
+		987226702461769400809D7A /* ManagedPost+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266424616BBE00809D7A /* ManagedPost+CoreDataProperties.swift */; };
+		98722671246176E700809D7A /* ManagedPostComment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266324616BBE00809D7A /* ManagedPostComment+CoreDataClass.swift */; };
+		98722672246176E700809D7A /* ManagedPost+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266724616BBE00809D7A /* ManagedPost+CoreDataClass.swift */; };
+		98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98722673246179B800809D7A /* SelectedPollAnswerMapper.swift */; };
+		987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872267E2461806E00809D7A /* PollOptionsVotedTableViewCell.swift */; };
+		987226812461806E00809D7A /* PollOptionsVotedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9872267F2461806E00809D7A /* PollOptionsVotedTableViewCell.xib */; };
+		98722683246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98722682246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift */; };
 		987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 987264AC244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld */; };
 		98726532244DE40B00CD4530 /* GenericCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726531244DE40B00CD4530 /* GenericCoreDataManager.swift */; };
-		9872653D244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872653C244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift */; };
 		98726540244DEC4300CD4530 /* RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872653F244DEC4300CD4530 /* RawRepresentable.swift */; };
 		98726542244DEF9800CD4530 /* CFFCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726541244DEF9800CD4530 /* CFFCoreDataManager.swift */; };
-		9872654424502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872654324502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift */; };
 		98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726545245044C100CD4530 /* FeedClapToggler.swift */; };
 		987265482450555E00CD4530 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987265472450555E00CD4530 /* Array+Extension.swift */; };
 		9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */; };
@@ -254,16 +262,20 @@
 		9868C1092419F37C00B12321 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
 		9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedComposerCoordinator.swift; sourceTree = "<group>"; };
+		9872266224616BBE00809D7A /* ManagedPost+RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+RawRepresentable.swift"; sourceTree = "<group>"; };
+		9872266324616BBE00809D7A /* ManagedPostComment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9872266424616BBE00809D7A /* ManagedPost+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9872266524616BBE00809D7A /* ManagedPostComment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9872266624616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+RawRepresentable.swift"; sourceTree = "<group>"; };
+		9872266724616BBE00809D7A /* ManagedPost+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+CoreDataClass.swift"; sourceTree = "<group>"; };
+		98722673246179B800809D7A /* SelectedPollAnswerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPollAnswerMapper.swift; sourceTree = "<group>"; };
+		9872267E2461806E00809D7A /* PollOptionsVotedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsVotedTableViewCell.swift; sourceTree = "<group>"; };
+		9872267F2461806E00809D7A /* PollOptionsVotedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollOptionsVotedTableViewCell.xib; sourceTree = "<group>"; };
+		98722682246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsVotedTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		987264AD244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommonFunctionalityModel.xcdatamodel; sourceTree = "<group>"; };
 		98726531244DE40B00CD4530 /* GenericCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCoreDataManager.swift; sourceTree = "<group>"; };
-		98726534244DE98900CD4530 /* ManagedPostComment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		98726535244DE98900CD4530 /* ManagedPost+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+CoreDataClass.swift"; sourceTree = "<group>"; };
-		98726536244DE98900CD4530 /* ManagedPostComment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+CoreDataClass.swift"; sourceTree = "<group>"; };
-		98726537244DE98900CD4530 /* ManagedPost+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9872653C244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedPost+RawRepresentable.swift"; sourceTree = "<group>"; };
 		9872653F244DEC4300CD4530 /* RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentable.swift; sourceTree = "<group>"; };
 		98726541244DEF9800CD4530 /* CFFCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFCoreDataManager.swift; sourceTree = "<group>"; };
-		9872654324502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+RawRepresentable.swift"; sourceTree = "<group>"; };
 		98726545245044C100CD4530 /* FeedClapToggler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedClapToggler.swift; sourceTree = "<group>"; };
 		987265472450555E00CD4530 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditablePostMediaRepository.swift; sourceTree = "<group>"; };
@@ -403,6 +415,7 @@
 				9811DD54241AC860003B91FD /* FeedFetcher.swift */,
 				98726545245044C100CD4530 /* FeedClapToggler.swift */,
 				980F5649245C51B30093AFE7 /* PollAnswerSubmitter.swift */,
+				98722673246179B800809D7A /* SelectedPollAnswerMapper.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -546,6 +559,7 @@
 		9868C00F240F774900B12321 /* Polls Cells */ = {
 			isa = PBXGroup;
 			children = (
+				987226752461800500809D7A /* PollOptionsVotedCell */,
 				980F5642245C1D180093AFE7 /* PollBottomCell */,
 				98C648A6241B88FA006689E9 /* PollSubmitButtonCell */,
 				98C648A1241B88DA006689E9 /* PollOptionsCell */,
@@ -823,6 +837,29 @@
 			path = "Feed Composer";
 			sourceTree = "<group>";
 		};
+		9872266124616BBE00809D7A /* Managed Models */ = {
+			isa = PBXGroup;
+			children = (
+				9872266224616BBE00809D7A /* ManagedPost+RawRepresentable.swift */,
+				9872266324616BBE00809D7A /* ManagedPostComment+CoreDataClass.swift */,
+				9872266424616BBE00809D7A /* ManagedPost+CoreDataProperties.swift */,
+				9872266524616BBE00809D7A /* ManagedPostComment+CoreDataProperties.swift */,
+				9872266624616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift */,
+				9872266724616BBE00809D7A /* ManagedPost+CoreDataClass.swift */,
+			);
+			path = "Managed Models";
+			sourceTree = "<group>";
+		};
+		987226752461800500809D7A /* PollOptionsVotedCell */ = {
+			isa = PBXGroup;
+			children = (
+				9872267E2461806E00809D7A /* PollOptionsVotedTableViewCell.swift */,
+				9872267F2461806E00809D7A /* PollOptionsVotedTableViewCell.xib */,
+				98722682246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift */,
+			);
+			path = PollOptionsVotedCell;
+			sourceTree = "<group>";
+		};
 		987264AB244DD47300CD4530 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,19 +868,6 @@
 				98726541244DEF9800CD4530 /* CFFCoreDataManager.swift */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		98726533244DE94000CD4530 /* Managed Models */ = {
-			isa = PBXGroup;
-			children = (
-				98726535244DE98900CD4530 /* ManagedPost+CoreDataClass.swift */,
-				98726537244DE98900CD4530 /* ManagedPost+CoreDataProperties.swift */,
-				9872653C244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift */,
-				98726536244DE98900CD4530 /* ManagedPostComment+CoreDataClass.swift */,
-				98726534244DE98900CD4530 /* ManagedPostComment+CoreDataProperties.swift */,
-				9872654324502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift */,
-			);
-			path = "Managed Models";
 			sourceTree = "<group>";
 		};
 		9872653E244DEC3D00CD4530 /* RawRepresentable */ = {
@@ -1006,8 +1030,8 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				9872266124616BBE00809D7A /* Managed Models */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
-				98726533244DE94000CD4530 /* Managed Models */,
 				98CC2FAD2425C49E00E8F9E0 /* LikeList */,
 				98CC2FAA2425C41800E8F9E0 /* DashboardFeedSectionProvider */,
 				9868C10E2419F94100B12321 /* Feed Composer */,
@@ -1313,6 +1337,7 @@
 				9868C1002419EB2D00B12321 /* FeedsComposerDrawer.xib in Resources */,
 				9868C0BA2412100B00B12321 /* MediaItemCollectionViewCell.xib in Resources */,
 				98B02FBC241A50DA00CB8690 /* GroupCell.xib in Resources */,
+				987226812461806E00809D7A /* PollOptionsVotedTableViewCell.xib in Resources */,
 				9868C0F32419488000B12321 /* FeedCommentTableViewCell.xib in Resources */,
 				98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
 				98B02FB9241A50DA00CB8690 /* AssetGridViewController.xib in Resources */,
@@ -1353,6 +1378,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98722671246176E700809D7A /* ManagedPostComment+CoreDataClass.swift in Sources */,
+				98722672246176E700809D7A /* ManagedPost+CoreDataClass.swift in Sources */,
+				987226702461769400809D7A /* ManagedPost+CoreDataProperties.swift in Sources */,
+				9872266E246173B500809D7A /* ManagedPostComment+CoreDataProperties.swift in Sources */,
 				980F564A245C51B30093AFE7 /* PollAnswerSubmitter.swift in Sources */,
 				9868C04E240FE2F200B12321 /* FeedSectionFactory.swift in Sources */,
 				9868C0EA24125E1900B12321 /* ClappedByUser.swift in Sources */,
@@ -1367,6 +1396,7 @@
 				9868C0DC241241AB00B12321 /* ASChatBarview.swift in Sources */,
 				9868C0912410C19200B12321 /* Theme Related.swift in Sources */,
 				987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */,
+				98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */,
 				980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */,
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
@@ -1375,6 +1405,7 @@
 				9868C05424101E0200B12321 /* UIView+Extension.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
+				9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */,
 				9868C0572410315E00B12321 /* CommonFrameworkUtility.swift in Sources */,
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
@@ -1385,12 +1416,12 @@
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
 				9811DD1A241AB3B2003B91FD /* APIRequestModel.swift in Sources */,
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
-				9872653D244DEA6000CD4530 /* ManagedPost+RawRepresentable.swift in Sources */,
 				9811DD1B241AB3B2003B91FD /* APIWorker.swift in Sources */,
 				9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */,
 				98B02FC6241A776800CB8690 /* LocalMediaManager.swift in Sources */,
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
 				9868C1032419EDCD00B12321 /* SlideInPresentationManager.swift in Sources */,
+				9872266824616BBE00809D7A /* ManagedPost+RawRepresentable.swift in Sources */,
 				980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */,
 				9868C0592410326300B12321 /* Date+ Extension.swift in Sources */,
 				9868C047240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift in Sources */,
@@ -1398,6 +1429,7 @@
 				9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */,
 				98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */,
 				9868BFF7240EC2FB00B12321 /* CommonTableCollection.swift in Sources */,
+				987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */,
 				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
@@ -1407,6 +1439,7 @@
 				9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
+				98722683246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift in Sources */,
 				9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
@@ -1433,7 +1466,6 @@
 				9868C1052419F25700B12321 /* UIApplication+Extension.swift in Sources */,
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
-				9872654424502C1000CD4530 /* ManagedPostComment+RawRepresentable.swift in Sources */,
 				9819120B2459B4560078A2FF /* Stepper.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,

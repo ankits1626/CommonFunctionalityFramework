@@ -36,6 +36,7 @@ struct FeedContentConfigureCellModel {
     var targetIndexpath : IndexPath
     var targetCell : UITableViewCell
     var delegate : FeedsDelegate
+    weak var selectedoptionMapper : SelectedPollAnswerMapper?
 }
 
 struct FeedContentGetHeightOfCellModel {

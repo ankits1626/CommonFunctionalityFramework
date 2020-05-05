@@ -19,7 +19,8 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
             PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
             PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
-            PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator()
+            PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
+            PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator()
         ]
     }()
 
@@ -47,13 +48,25 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         if feed.getFeedDescription() != nil{
             rows.append(FeedTextTableViewCellType())
         }
-        feed.getPoll()?.getPollOptions().forEach { (_) in
-            rows.append(PollOptionsTableViewCellType())
+        
+        if let unwrappedPoll = feed.getPoll(){
+            if unwrappedPoll.isPollActive() && !unwrappedPoll.hasUserVoted(){
+                feed.getPoll()?.getPollOptions().forEach { (_) in
+                    rows.append(PollOptionsTableViewCellType())
+                }
+                rows.append(PollSubmitButtonCellType())
+            }else{
+                feed.getPoll()?.getPollOptions().forEach { (_) in
+                    rows.append(PollOptionsVotedTableViewCellType())
+                }
+            }
         }
         
-        if feed.getPoll()!.isPollActive(){
-            rows.append(PollSubmitButtonCellType())
-        }
+//        if feed.getPoll()!.isPollActive(){
+//            if !feed.getPoll()!.hasUserVoted(){
+//                rows.append(PollSubmitButtonCellType())
+//            }
+//        }
         rows.append(PollBottomTableViewCelType())
         return rows
     }
@@ -74,7 +87,8 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 targetCell: inputModel.targetCell,
                 datasource: feedsDataSource,
                 mediaFetcher: mediaFetcher,
-                delegate: inputModel.delegate
+                delegate: inputModel.delegate,
+                selectedoptionMapper: inputModel.selectedoptionMapper
             )
         )
     }

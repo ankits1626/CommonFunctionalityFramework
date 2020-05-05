@@ -83,7 +83,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 targetCell: inputModel.targetCell,
                 datasource: feedsDataSource,
                 mediaFetcher: mediaFetcher,
-                delegate: inputModel.delegate
+                delegate: inputModel.delegate,
+                selectedoptionMapper: inputModel.selectedoptionMapper
             )
         )
     }

@@ -14,7 +14,11 @@ enum PollState {
 }
 
 
-struct PollOption {
+struct PollOption : Equatable {
+    static func == (lhs: PollOption, rhs: PollOption) -> Bool {
+        return lhs.answerID == rhs.answerID
+    }
+    
     var title : String{
         return rawPollOption["answer_text"] as? String ?? ""
     }
@@ -29,6 +33,10 @@ struct PollOption {
     
     func getNewtowrkPostableAnswer() -> [String: Any] {
         return ["answer_id" :  answerID] 
+    }
+    
+    func getPercentage() -> Int {
+        return rawPollOption["percentage"] as?  Int ?? 0
     }
 }
 
@@ -63,7 +71,7 @@ struct Poll {
         return rawPoll["is_poll_active"] as? Bool ?? false
     }
     
-    private func hasUserVoted() -> Bool{
+    func hasUserVoted() -> Bool{
         return rawPoll["user_has_voted"] as? Bool ?? false
     }
     
@@ -76,6 +84,10 @@ struct Poll {
             pollInfos.append("\(pollRemainingTime) left")
         }
         return pollInfos.joined(separator:  " . ")
+    }
+    
+    func getPollId() -> Int64 {
+        return rawPoll["id"] as? Int64 ?? -1
     }
     
 }

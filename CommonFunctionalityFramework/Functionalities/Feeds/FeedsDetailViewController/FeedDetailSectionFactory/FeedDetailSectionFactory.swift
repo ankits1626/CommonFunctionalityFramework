@@ -123,7 +123,8 @@ class FeedDetailSectionFactory {
                 targetCell: cell,
                 datasource: feedDataSource,
                 mediaFetcher: mediaFetcher,
-                delegate: delegate
+                delegate: delegate,
+                selectedoptionMapper: nil
         )
         )
     }
