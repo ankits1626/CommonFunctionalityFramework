@@ -19,13 +19,13 @@ class PostCoordinatorError {
     static let PollNotReadyToBePosted = NSError(
            domain: "com.rewardz.EventDetailCellTypeError",
            code: 1,
-           userInfo: [NSLocalizedDescriptionKey: "PollNotReadyToBePosted"]
+           userInfo: [NSLocalizedDescriptionKey: "Poll is not ready to be posted. Please fill all the required fields."]
        )
     
     static let PostNotReadyToBePosted = NSError(
         domain: "com.rewardz.EventDetailCellTypeError",
         code: 1,
-        userInfo: [NSLocalizedDescriptionKey: "PostNotReadyToBePosted"]
+        userInfo: [NSLocalizedDescriptionKey: "Post is not ready to be posted. Please fill all the required fields."]
     )
 }
 

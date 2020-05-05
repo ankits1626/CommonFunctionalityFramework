@@ -42,6 +42,14 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         self.navigationColor.image = UIImage(named: "")
         setupCollectionView()
         setupFetchresult()
+        setupUploadButton()
+    }
+    
+    private func setupUploadButton(){
+        uploadButton.backgroundColor = .black
+        uploadButton.curvedCornerControl()
+        uploadButton.setTitleColor(.white, for: .normal)
+        uploadButton.titleLabel?.font = .Button
     }
     
     private func setupFetchresult(){

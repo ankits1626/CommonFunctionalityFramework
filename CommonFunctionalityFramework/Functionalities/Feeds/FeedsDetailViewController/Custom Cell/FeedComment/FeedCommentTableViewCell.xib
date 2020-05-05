@@ -124,7 +124,7 @@
                                                                         <rect key="frame" x="0.0" y="39" width="315" height="96"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CzA-vt-fmv">
-                                                                                <rect key="frame" x="12" y="5" width="291" height="83"/>
+                                                                                <rect key="frame" x="12" y="10" width="291" height="78"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -134,7 +134,7 @@
                                                                             <constraint firstItem="CzA-vt-fmv" firstAttribute="leading" secondItem="W3h-Gd-Kzc" secondAttribute="leading" constant="12" id="N20-gp-pPx"/>
                                                                             <constraint firstAttribute="bottom" secondItem="CzA-vt-fmv" secondAttribute="bottom" constant="8" id="VjI-W8-Qmm"/>
                                                                             <constraint firstAttribute="trailing" secondItem="CzA-vt-fmv" secondAttribute="trailing" constant="12" id="lYf-vF-NQJ"/>
-                                                                            <constraint firstItem="CzA-vt-fmv" firstAttribute="top" secondItem="W3h-Gd-Kzc" secondAttribute="top" constant="5" id="xUx-jV-Yig"/>
+                                                                            <constraint firstItem="CzA-vt-fmv" firstAttribute="top" secondItem="W3h-Gd-Kzc" secondAttribute="top" constant="10" id="xUx-jV-Yig"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>

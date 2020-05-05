@@ -117,7 +117,7 @@ class PostEditorViewController: UIViewController {
             containerTopBarModel?.title?.text = "CREATE POLL"
             containerTopBarModel?.cameraButton?.isHidden = true
         case .Post:
-            containerTopBarModel?.title?.text = "CREATE POST"
+            containerTopBarModel?.title?.text = editablePost?.remotePostId == nil ? "CREATE POST" :  "EDIT POST"
             containerTopBarModel?.cameraButton?.setImage(
                 UIImage(named: "camera", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
                 for: .normal
