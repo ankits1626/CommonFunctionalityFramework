@@ -38,7 +38,7 @@
                     </connections>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qH3-ys-vy9" secondAttribute="bottom" id="BQ6-Lh-0tZ"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GgV-Zv-dOh"/>

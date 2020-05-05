@@ -8,20 +8,27 @@
 
 import Foundation
 
-typealias FeedCommentFetchHandler = (APICallResult<[FeedComment]>) -> Void
+struct FeedCommentsFetchResult {
+    var fetchedComments : [FeedComment]?
+    var nextPageUrl : String?
+}
+
+
+typealias FeedCommentFetchHandler = (APICallResult<FeedCommentsFetchResult>) -> Void
 
 class FeedCommentsFetcher  {
-    typealias ResultType = [FeedComment]
+    typealias ResultType = FeedCommentsFetchResult
     var commonAPICall : CommonAPICall<FeedCommentFetchDataParser>?
     private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func fetchComments(feedId : Int64, completionHandler: @escaping FeedCommentFetchHandler) {
+    func fetchComments(feedId : Int64, nextpageUrl: String?, completionHandler: @escaping FeedCommentFetchHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: FeedCommentFetchRequestGenerator(
                     feedId: feedId,
+                    nextpageUrl: nextpageUrl,
                     networkRequestCoordinator: networkRequestCoordinator
                 ),
                 dataParser: FeedCommentFetchDataParser(),
@@ -42,32 +49,45 @@ class FeedCommentFetchRequestGenerator: APIRequestGeneratorProtocol  {
     private lazy var feedPostRequestBodyGenerator : PostRequestBodyGenerator = {
         return PostRequestBodyGenerator()
     }()
-    init(feedId : Int64, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private var nextpageUrl: String?
+    init(feedId : Int64, nextpageUrl: String?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
         self.feedId = feedId
+        self.nextpageUrl = nextpageUrl
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
     }
     var apiRequest: URLRequest?{
         get{
-            return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(feedId)/comments/"),
+            let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                url: URL(string: nextpageUrl ?? "https://demo.flabulessdev.com/feeds/api/posts/\(feedId)/comments/"),
                 method: .GET,
                 httpBodyDict: nil
             )
+            
+            return req
         }
     }
 }
 
 class FeedCommentFetchDataParser: DataParserProtocol {
-    typealias ExpectedRawDataType = [[String : Any]]
-    typealias ResultType = [FeedComment]
+    typealias ExpectedRawDataType = [String : Any]
+    typealias ResultType = FeedCommentsFetchResult
     
     func parseFetchedData(fetchedData: ExpectedRawDataType) -> APICallResult<ResultType> {
         var comments = [FeedComment]()
-        for aRawComment in fetchedData {
-            comments.append(FeedComment(input: aRawComment))
+        if let results = fetchedData["results"] as? [[String : Any]]{
+            for aRawComment in results {
+                comments.append(FeedComment(input: aRawComment))
+            }
         }
-        return APICallResult.Success(result: comments)
+        
+        
+        return APICallResult.Success(
+            result: FeedCommentsFetchResult(
+                fetchedComments: comments.isEmpty ? nil : comments,
+                nextPageUrl: fetchedData["next"] as? String
+            )
+        )
     }
 }

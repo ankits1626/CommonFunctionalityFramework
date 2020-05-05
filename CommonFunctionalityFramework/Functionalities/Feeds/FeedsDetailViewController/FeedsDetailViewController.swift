@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UILoadControl
 
 enum FeedDetailSection : Int {
     case FeedInfo = 0
@@ -32,6 +33,7 @@ class FeedsDetailViewController: UIViewController {
         return FeedDetailSectionFactory(self, mediaFetcher: mediaFetcher, targetTableView: feedDetailTableView)
     }()
     private var frc : NSFetchedResultsController<ManagedPostComment>?
+    private var lastFetchedComments : FeedCommentsFetchResult?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +63,13 @@ class FeedsDetailViewController: UIViewController {
         feedDetailTableView?.dataSource = self
         feedDetailTableView?.delegate = self
         feedDetailTableView?.reloadData()
+        feedDetailTableView?.loadControl = UILoadControl(target: self, action: #selector(fetchComments))
+        feedDetailTableView?.loadControl?.heightLimit = 100.0
     }
     
     private func initializeFRC() {
         let fetchRequest: NSFetchRequest<ManagedPostComment> = ManagedPostComment.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "createdTimeStamp", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "commentId", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         frc = NSFetchedResultsController(
             fetchRequest: fetchRequest,
@@ -96,18 +100,24 @@ class FeedsDetailViewController: UIViewController {
         fetchComments()
     }
     
-    private func fetchComments(){
+    @objc private func fetchComments(){
         FeedCommentsFetcher(networkRequestCoordinator: requestCoordinator).fetchComments(
-        feedId: targetFeedItem.feedIdentifier) { (result) in
+        feedId: targetFeedItem.feedIdentifier, nextpageUrl: lastFetchedComments?.nextPageUrl) { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(let result):
+                    DispatchQueue.main.async {[weak self] in
+                        self?.lastFetchedComments = result
+                        self?.feedDetailTableView?.loadControl?.endLoading()
+                    }
                     CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
-                        result.forEach { (aRawComment) in
-                            let _ = aRawComment.getManagedObject() as! ManagedPostComment
-                        }
-                        CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
-                            CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                        if let comments = result.fetchedComments{
+                            comments.forEach { (aRawComment) in
+                                let _ = aRawComment.getManagedObject() as! ManagedPostComment
+                            }
+                            CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                            }
                         }
                     }
                     
@@ -196,6 +206,10 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return feedDetailSectionFactory.getHeightOfViewForSection(section: section)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.loadControl?.update()
     }
 }
 

@@ -32,7 +32,7 @@ class FeedsViewController: UIViewController {
         return SelectedPollAnswerMapper()
     }()
     
-    var lastFetchedFeeds : FetchedFeedModel?
+    private var lastFetchedFeeds : FetchedFeedModel?
     
     private lazy var refreshControl : UIRefreshControl  = {
         let refreshControl = UIRefreshControl()
@@ -123,9 +123,10 @@ class FeedsViewController: UIViewController {
                 }
             }
         }
-        DispatchQueue.main.async {
-            self.refreshControl.endRefreshing()
-            self.feedsTable?.reloadData()
+        DispatchQueue.main.async {[weak self] in
+            self?.feedsTable?.loadControl?.endLoading()
+            self?.refreshControl.endRefreshing()
+            self?.feedsTable?.reloadData()
         }
     }
     
