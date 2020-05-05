@@ -31,7 +31,7 @@ class FeedDetailSectionFactory {
             SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
-            PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
+            PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
             FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
@@ -204,7 +204,7 @@ extension FeedDetailSectionFactory{
         }
         if let poll = feed?.getPoll(){
             poll.getPollOptions().forEach { (_) in
-                rows.append(PollOptionsTableViewCellType())
+                rows.append(PollOptionsVotedTableViewCellType())
             }
             rows.append(PollBottomTableViewCelType())
         }

@@ -24,4 +24,12 @@ class SelectedPollAnswerMapper {
     func isOptionSelected(_ option : PollOption) -> Bool {
         return selectedPollAnswerMap.values.contains(option)
     }
+    
+    func getSelectedOption(feedIdentifier : Int64) -> PollOption? {
+        return selectedPollAnswerMap[feedIdentifier]
+    }
+    
+    func removeSelectedOptionAfterAnswerIsPosted(feedIdentifier : Int64) {
+        selectedPollAnswerMap.removeValue(forKey: feedIdentifier)
+    }
 }
