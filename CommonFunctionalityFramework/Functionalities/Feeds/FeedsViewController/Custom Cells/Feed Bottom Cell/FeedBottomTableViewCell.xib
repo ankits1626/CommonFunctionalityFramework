@@ -97,7 +97,7 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GU4-MR-yLj">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                                                <state key="normal" image="comment"/>
+                                                                                <state key="normal" image="commentedByMe"/>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -180,6 +180,6 @@
     </objects>
     <resources>
         <image name="clapHands" width="20" height="20"/>
-        <image name="comment" width="19" height="19"/>
+        <image name="commentedByMe" width="18" height="18"/>
     </resources>
 </document>
