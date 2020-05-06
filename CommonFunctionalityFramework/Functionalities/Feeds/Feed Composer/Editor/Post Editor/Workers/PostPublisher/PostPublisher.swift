@@ -17,7 +17,7 @@ class PostPublisher  {
     init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func publisPost(post: EditablePostProtocol, completionHandler: @escaping PostPublisherHandler) {
+    func publishPost(post: EditablePostProtocol, completionHandler: @escaping PostPublisherHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: PostPublisherRequestGenerator(post: post, networkRequestCoordinator: networkRequestCoordinator),

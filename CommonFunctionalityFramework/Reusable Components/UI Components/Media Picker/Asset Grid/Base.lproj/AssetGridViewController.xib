@@ -116,6 +116,9 @@
                                         <constraint firstAttribute="height" constant="45" id="UDP-bc-k9w"/>
                                     </constraints>
                                     <state key="normal" title="SELECT"/>
+                                    <connections>
+                                        <action selector="uploadButtonTapped:" destination="-1" eventType="touchUpInside" id="EhG-RO-o9m"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

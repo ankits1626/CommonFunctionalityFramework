@@ -76,7 +76,7 @@ struct EditablePost : EditablePostProtocol{
             postDictionary["description"] = unwrappedDescription
         }
         if !deletedRemoteMediaArray.isEmpty{
-            postDictionary["delete_image_ids"] = deletedRemoteMediaArray
+            postDictionary["delete_image_ids"] = (deletedRemoteMediaArray.map{String($0)}).joined(separator: ",")
         }
         postDictionary["shared_with"] = isShareWithSameDepartmentOnly ? DepartmentSharedChoice.SelfDepartment.rawValue : DepartmentSharedChoice.AllDepartment.rawValue
         return postDictionary

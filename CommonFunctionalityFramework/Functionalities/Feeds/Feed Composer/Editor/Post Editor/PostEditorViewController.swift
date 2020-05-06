@@ -154,12 +154,22 @@ class PostEditorViewController: UIViewController {
                     self.postCoordinator.saveLocalMediUrls(unwrappedUrls)
                 }
                 if error == nil{
-                    PostPublisher(networkRequestCoordinator: self.requestCoordinator).publisPost(
+                    PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
                     post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                         DispatchQueue.main.async {
                             switch callResult{
-                            case .Success(_):
-                                self?.dismiss(animated: true, completion: nil)
+                            case .Success(let rawFeed):
+                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                    let post = ((RawFeed(input: rawFeed)).getManagedObject() as! ManagedPost)
+                                    CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                        CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                        DispatchQueue.main.async {
+                                            self?.dismiss(animated: true, completion: nil)
+                                            //self?.feedDetailSectionFactory.reloadToShowLikeAndCommentCountUpdate()
+                                        }
+                                    }
+                                }
+                                
                             case .SuccessWithNoResponseData:
                                 ErrorDisplayer.showError(errorMsg: "Unable to post.") { (_) in
 
