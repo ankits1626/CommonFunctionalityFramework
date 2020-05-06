@@ -36,6 +36,9 @@
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F5241A0041009084D4 /* EditorContainerProtocol.swift */; };
+		983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */; };
+		983C4F8A2462F08000FDEB76 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */; };
+		983C4F8D2462F09E00FDEB76 /* PostDeleteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C4F8C2462F09E00FDEB76 /* PostDeleteWorker.swift */; };
 		9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */; };
 		9868BFF5240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868BFF4240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift */; };
 		9868BFF7240EC2FB00B12321 /* CommonTableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868BFF6240EC2FB00B12321 /* CommonTableCollection.swift */; };
@@ -200,6 +203,9 @@
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F5241A0041009084D4 /* EditorContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorContainerProtocol.swift; sourceTree = "<group>"; };
+		983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostConfirmationDrawer.swift; sourceTree = "<group>"; };
+		983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
+		983C4F8C2462F09E00FDEB76 /* PostDeleteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDeleteWorker.swift; sourceTree = "<group>"; };
 		9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsItemProtocol.swift; sourceTree = "<group>"; };
 		9868BFF4240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCellCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		9868BFF6240EC2FB00B12321 /* CommonTableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTableCollection.swift; sourceTree = "<group>"; };
@@ -414,6 +420,7 @@
 		9811DD53241AC84D003B91FD /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				983C4F8C2462F09E00FDEB76 /* PostDeleteWorker.swift */,
 				9811DD54241AC860003B91FD /* FeedFetcher.swift */,
 				98726545245044C100CD4530 /* FeedClapToggler.swift */,
 				980F5649245C51B30093AFE7 /* PollAnswerSubmitter.swift */,
@@ -486,6 +493,15 @@
 				983500F5241A0041009084D4 /* EditorContainerProtocol.swift */,
 			);
 			path = "Editor Container";
+			sourceTree = "<group>";
+		};
+		983C4F862462F05800FDEB76 /* DeletePostConfirmationDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */,
+				983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */,
+			);
+			path = DeletePostConfirmationDrawer;
 			sourceTree = "<group>";
 		};
 		9868BFF3240EAFA800B12321 /* Common Collection */ = {
@@ -1032,6 +1048,7 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				983C4F862462F05800FDEB76 /* DeletePostConfirmationDrawer */,
 				9872266124616BBE00809D7A /* Managed Models */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
 				98CC2FAD2425C49E00E8F9E0 /* LikeList */,
@@ -1318,6 +1335,7 @@
 				9868C034240F7A3C00B12321 /* FeedBottomTableViewCell.xib in Resources */,
 				981912102459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib in Resources */,
 				98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */,
+				983C4F8A2462F08000FDEB76 /* DeletePostConfirmationDrawer.xib in Resources */,
 				9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */,
 				98B02FB7241A50DA00CB8690 /* GridViewCell.xib in Resources */,
 				9868C0E42412434300B12321 /* ASChatBarview.xib in Resources */,
@@ -1401,6 +1419,7 @@
 				987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */,
 				98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */,
 				980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */,
+				983C4F8D2462F09E00FDEB76 /* PostDeleteWorker.swift in Sources */,
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
@@ -1497,6 +1516,7 @@
 				9868C0B92412100B00B12321 /* MediaItemCollectionViewCell.swift in Sources */,
 				98B02FBF241A50DA00CB8690 /* GroupsViewController.swift in Sources */,
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
+				983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */,
 				980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */,
 				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,

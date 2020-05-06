@@ -104,6 +104,10 @@ extension UIColor{
         return .black
     }
     
+    static var bottomButtonTextColor : UIColor {
+        return .black
+    }
+    
     static var progressColor : UIColor {
         return UIColor(red: 234/255.0, green: 239/255.0, blue: 242/255.0, alpha: 1.0)
     }
