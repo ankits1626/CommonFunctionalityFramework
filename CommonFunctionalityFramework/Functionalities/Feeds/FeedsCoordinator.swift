@@ -23,6 +23,7 @@ public struct GetFeedsViewModel{
 
 public protocol FeedsCoordinatorDelegate {
     func showFeedDetail(_ detailViewController : UIViewController)
+    func removeFeedDetail()
     func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerTopBarModel) -> Void))
 }
 
