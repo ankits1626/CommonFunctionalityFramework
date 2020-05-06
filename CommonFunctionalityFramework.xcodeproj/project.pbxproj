@@ -164,6 +164,7 @@
 		98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */; };
 		98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */; };
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
+		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		A7F66EFD913B6589143437B5 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -331,6 +332,7 @@
 		98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikedByTableViewCell.xib; sourceTree = "<group>"; };
 		98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequestBodyGenerator.swift; sourceTree = "<group>"; };
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
+		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1227,6 +1229,7 @@
 		98DF76D82433CE7900B9B8A1 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */,
 				9811DD00241A8847003B91FD /* PostCoordinator */,
 				98C648B7241BC8FC006689E9 /* PostPublisher */,
 				98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */,
@@ -1480,6 +1483,7 @@
 				98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */,
 				98BC8A14241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift in Sources */,
 				9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */,
+				98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */,
 				9868C0E22412430700B12321 /* UITextView+NumberOfLines.swift in Sources */,
 				9868C03D240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift in Sources */,
 				98726540244DEC4300CD4530 /* RawRepresentable.swift in Sources */,

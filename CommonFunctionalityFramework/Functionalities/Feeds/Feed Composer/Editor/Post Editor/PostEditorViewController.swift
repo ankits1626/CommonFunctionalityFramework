@@ -8,6 +8,7 @@
 
 import UIKit
 import SimpleCheckbox
+import CoreData
 
 class PostEditorViewController: UIViewController {
     var containerTopBarModel : EditorContainerTopBarModel?{
@@ -34,6 +35,11 @@ class PostEditorViewController: UIViewController {
             )
         )
     }()
+    
+    private lazy var feedOrderManager: FeedOrderManager = {
+        return FeedOrderManager()
+    }()
+    
     private lazy var cellFactory: PostEditorCellFactory = {
         return PostEditorCellFactory(InitPostEditorCellFactoryModel(
             datasource: self,
@@ -159,16 +165,12 @@ class PostEditorViewController: UIViewController {
                         DispatchQueue.main.async {
                             switch callResult{
                             case .Success(let rawFeed):
-                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
-                                    let post = ((RawFeed(input: rawFeed)).getManagedObject() as! ManagedPost)
-                                    CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
-                                        CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
-                                        DispatchQueue.main.async {
-                                            self?.dismiss(animated: true, completion: nil)
-                                            //self?.feedDetailSectionFactory.reloadToShowLikeAndCommentCountUpdate()
-                                        }
-                                    }
-                                }
+                                self?.feedOrderManager.insertFeeds(
+                                    rawFeeds: [rawFeed],
+                                    insertDirection: self?.editablePost?.remotePostId == nil ? .Top : .Bottom,
+                                    completion: {[weak self] in
+                                        self?.dismiss(animated: true, completion: nil)
+                                })
                                 
                             case .SuccessWithNoResponseData:
                                 ErrorDisplayer.showError(errorMsg: "Unable to post.") { (_) in
