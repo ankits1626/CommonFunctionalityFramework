@@ -228,8 +228,8 @@ extension FeedsDetailViewController : FeedsDelegate{
             case .Success(result: let result):
                 CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                     let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
-                    post.isLikedByMe = result
-                    post.numberOfLikes = post.numberOfLikes + ( result ? 1 : -1  )
+                    post.isLikedByMe = result.isLiked
+                    post.numberOfLikes = result.totalLikeCount
                     self?.targetFeedItem = post.getRawObject() as! RawFeed
                     CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                         CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()

@@ -12,10 +12,15 @@ protocol Likeable {
     func getLikeToggleUrl() -> URL
 }
 
-typealias FeedClapTogglerResultHandler = (APICallResult<Bool>) -> Void
+struct LikeToggleResult {
+    var isLiked : Bool
+    var totalLikeCount : Int64
+}
+
+typealias FeedClapTogglerResultHandler = (APICallResult<LikeToggleResult>) -> Void
 
 class FeedClapToggler  {
-    typealias ResultType = Bool
+    typealias ResultType = LikeToggleResult
     var commonAPICall : CommonAPICall<FeedClapTogglerDataParser>?
     private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
@@ -60,11 +65,12 @@ class FeedClapTogglerRequestGenerator: APIRequestGeneratorProtocol  {
 
 class FeedClapTogglerDataParser: DataParserProtocol {
     typealias ExpectedRawDataType = [String : Any]
-    typealias ResultType = Bool
+    typealias ResultType = LikeToggleResult
     
     func parseFetchedData(fetchedData: ExpectedRawDataType) -> APICallResult<ResultType> {
-        if let likedState = fetchedData["liked"] as? Bool{
-            return .Success(result: likedState)
+        if let likedState = fetchedData["liked"] as? Bool,
+            let count = fetchedData["count"] as? Int64{
+            return .Success(result: LikeToggleResult(isLiked: likedState, totalLikeCount: count))
         }else{
             return .Failure(error: APIError.Others("Unexpected response"))
         }
