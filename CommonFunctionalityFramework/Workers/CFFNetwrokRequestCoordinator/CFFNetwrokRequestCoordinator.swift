@@ -24,7 +24,7 @@ public struct FetchFeedRequest{
     public var nextPageUrl : String?
 }
 
-public protocol CFFNetwrokRequestCoordinatorProtocol {
+public protocol CFFNetwrokRequestCoordinatorProtocol : class {
     func getBaseUrlProvider() -> BaseURLProviderProtocol
     func getLogoutHandler() -> LogoutResponseHandler
     func getTokenProvider() -> TokenProviderProtocol

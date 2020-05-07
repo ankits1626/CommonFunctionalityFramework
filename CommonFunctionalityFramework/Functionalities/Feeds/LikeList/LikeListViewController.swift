@@ -9,8 +9,30 @@
 import UIKit
 
 class LikeListViewController: UIViewController {
+    var containerTopBarModel : GenericContainerTopBarModel?{
+        didSet{
+            setupContainerTopbar()
+        }
+    }
+    
     @IBOutlet private weak var clapsTableView : UITableView?
     var isLikedByUsers : [ClappedByUser] = [ClappedByUser]()
+    weak var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol?
+    let  feedIdentifier: Int64
+    private var fetchedLikeList : FetchedLikesModel?
+    private weak var mediaFetcher: CFFMediaCoordinatorProtocol?
+    
+    init(feedIdentifier: Int64, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?) {
+        self.feedIdentifier = feedIdentifier
+        self.requestCoordinator = requestCoordinator
+        self.mediaFetcher = mediaFetcher
+        super.init(nibName: "LikeListViewController", bundle: Bundle(for: LikeListViewController.self))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -18,6 +40,40 @@ class LikeListViewController: UIViewController {
     
     private func setup(){
         setupTableView()
+        fetchUsers()
+    }
+    
+    private func setupContainerTopbar(){
+        containerTopBarModel?.title?.text = "CLAPS"
+    }
+    
+    private func fetchUsers(){
+        if let unwrappedrequestCoordinator = requestCoordinator{
+            PostLikeListFetcher(networkRequestCoordinator: unwrappedrequestCoordinator).fetchFeeds(
+            feedIdentifier: feedIdentifier, nextPageUrl: fetchedLikeList?.nextPageUrl) { (result) in
+                switch result{
+                case .Success(result: let result):
+                    var likeList = [ClappedByUser]()
+                    if let results = result.fetchedLikes?["results"] as? [[String : Any]]{
+                        results.forEach { (aRawLike) in
+                            if let userInfo = aRawLike["user_info"] as? [String : Any]{
+                                likeList.append(ClappedByUser(userInfo))
+                            }
+                        }
+                    }
+                    
+                    DispatchQueue.main.async {[weak self] in
+                        self?.fetchedLikeList = result
+                        self?.isLikedByUsers = likeList
+                        self?.clapsTableView?.reloadData()
+                    }
+                case .SuccessWithNoResponseData:
+                    fallthrough
+                case .Failure(error: _):
+                    print("<<<<<<< error while fetching like list")
+                }
+            }
+        }
     }
     
     private func setupTableView(){
@@ -45,10 +101,16 @@ extension LikeListViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = isLikedByUsers[indexPath.row]
         if let targetCell = cell as? LikedByTableViewCell{
-            targetCell.userName?.text = user.getUserName()
+            targetCell.userName?.text = user.getAuthorName()
             targetCell.userName?.font = .Body2
-            targetCell.departmentName?.text = user.getDepartmentName()
+            targetCell.departmentName?.text = user.getAuthorDepartmentName()
             targetCell.departmentName?.font = .Caption1
+            if let profileImageEndpoint = user.getAuthorProfileImageUrl(){
+                mediaFetcher?.fetchImageAndLoad(targetCell.profileImage, imageEndPoint: profileImageEndpoint)
+            }else{
+                targetCell.profileImage?.image = nil
+            }
+            
         }
     }
     

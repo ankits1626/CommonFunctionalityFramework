@@ -20,6 +20,28 @@ public struct EditorContainerTopBarModel{
     }
 }
 
+public enum GenericContainerPresentationOption{
+    case Present
+    case Navigate
+}
+
 public protocol EditorContainerProtocol {
     var topBarItems : EditorContainerTopBarModel{get}
+}
+
+public struct GenericContainerTopBarModel{
+    var title : UILabel?
+    var leftButton : UIButton?
+    var rightButton : UIButton?
+    
+    public init(title : UILabel? , leftButton : UIButton?, rightButton : UIButton?){
+        self.title = title
+        self.leftButton = leftButton
+        self.rightButton = rightButton
+    }
+}
+
+public protocol GenericContainerProtocol{
+    var presentationStyle : GenericContainerPresentationOption {get set}
+    var topBarItems : GenericContainerTopBarModel{get}
 }

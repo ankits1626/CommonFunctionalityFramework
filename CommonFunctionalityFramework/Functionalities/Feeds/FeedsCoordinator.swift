@@ -25,6 +25,7 @@ public protocol FeedsCoordinatorDelegate {
     func showFeedDetail(_ detailViewController : UIViewController)
     func removeFeedDetail()
     func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerTopBarModel) -> Void))
+    func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void)) 
 }
 
 public class FeedsCoordinator {

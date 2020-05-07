@@ -214,6 +214,10 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
+    func showAllClaps(feedIdentifier: Int64) {
+        
+    }
+    
     func submitPollAnswer(feedIdentifier: Int64) {
         
     }
@@ -333,8 +337,8 @@ extension FeedsDetailViewController : FeedsDelegate{
     }
     
     func showLikedByUsersList() {
-        let allLikedVc = LikeListViewController(nibName: "LikeListViewController", bundle: Bundle(for: LikeListViewController.self))
-        present(allLikedVc, animated: true, completion: nil)
+//        let allLikedVc = LikeListViewController(nibName: "LikeListViewController", bundle: Bundle(for: LikeListViewController.self))
+//        present(allLikedVc, animated: true, completion: nil)
     }
     
 }

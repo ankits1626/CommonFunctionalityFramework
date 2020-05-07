@@ -62,6 +62,9 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eig-Rv-xpn">
                                                                         <rect key="frame" x="44" y="0.0" width="154.5" height="44"/>
                                                                         <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cF-qw-ohN" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                                                                <rect key="frame" x="6" y="7" width="30" height="30"/>
+                                                                            </button>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdo-eI-aAd">
                                                                                 <rect key="frame" x="0.0" y="12" width="42" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -71,8 +74,12 @@
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                         <constraints>
+                                                                            <constraint firstItem="6cF-qw-ohN" firstAttribute="centerX" secondItem="Xdo-eI-aAd" secondAttribute="centerX" id="2Iq-RD-eQ8"/>
                                                                             <constraint firstItem="Xdo-eI-aAd" firstAttribute="leading" secondItem="eig-Rv-xpn" secondAttribute="leading" id="gVm-mC-U6y"/>
+                                                                            <constraint firstItem="6cF-qw-ohN" firstAttribute="width" secondItem="Xdo-eI-aAd" secondAttribute="width" multiplier="0.714286" id="qih-qP-I6o"/>
                                                                             <constraint firstItem="Xdo-eI-aAd" firstAttribute="centerY" secondItem="eig-Rv-xpn" secondAttribute="centerY" id="v0v-UE-uGE"/>
+                                                                            <constraint firstItem="6cF-qw-ohN" firstAttribute="centerY" secondItem="Xdo-eI-aAd" secondAttribute="centerY" id="vJX-ka-GBw"/>
+                                                                            <constraint firstItem="6cF-qw-ohN" firstAttribute="height" secondItem="Xdo-eI-aAd" secondAttribute="height" multiplier="1.46341" id="y3H-fF-uYT"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -174,6 +181,7 @@
                 <outlet property="clapsCountLabel" destination="Xdo-eI-aAd" id="ATs-ch-hbV"/>
                 <outlet property="commentsCountLabel" destination="hCD-Xn-VEy" id="pWO-hM-09j"/>
                 <outlet property="containerView" destination="U2b-wS-JUv" id="WyP-fd-QXT"/>
+                <outlet property="showAllClapsButton" destination="6cF-qw-ohN" id="iuV-lr-YfT"/>
             </connections>
             <point key="canvasLocation" x="216.66666666666669" y="120.87053571428571"/>
         </tableViewCell>

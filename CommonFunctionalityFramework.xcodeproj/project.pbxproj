@@ -33,6 +33,7 @@
 		981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */; };
 		9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */; };
 		9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */; };
+		9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830E848246323A100FEFC0F /* PostLikeListFetcher.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F5241A0041009084D4 /* EditorContainerProtocol.swift */; };
@@ -200,6 +201,7 @@
 		981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsActiveDaysTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentPostWorker.swift; sourceTree = "<group>"; };
 		9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsFetcher.swift; sourceTree = "<group>"; };
+		9830E848246323A100FEFC0F /* PostLikeListFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikeListFetcher.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F5241A0041009084D4 /* EditorContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorContainerProtocol.swift; sourceTree = "<group>"; };
@@ -464,6 +466,14 @@
 				9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		9830E8472463231200FEFC0F /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				9830E848246323A100FEFC0F /* PostLikeListFetcher.swift */,
+			);
+			path = Worker;
 			sourceTree = "<group>";
 		};
 		983500E92419FC75009084D4 /* Editor */ = {
@@ -1227,6 +1237,7 @@
 		98CC2FAD2425C49E00E8F9E0 /* LikeList */ = {
 			isa = PBXGroup;
 			children = (
+				9830E8472463231200FEFC0F /* Worker */,
 				98CC2FB22425C6C400E8F9E0 /* Custom Cell */,
 				98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */,
 				98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */,
@@ -1491,6 +1502,7 @@
 				9819120B2459B4560078A2FF /* Stepper.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,
+				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,

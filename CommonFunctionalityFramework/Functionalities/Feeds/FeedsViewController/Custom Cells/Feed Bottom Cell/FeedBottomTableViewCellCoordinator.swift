@@ -42,6 +42,9 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
                 buttonActionBlock: {
                     inputModel.delegate.toggleClapForPost(feedIdentifier: feed.feedIdentifier)
             })
+            cell.showAllClapsButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
+                inputModel.delegate.showAllClaps(feedIdentifier: feed.feedIdentifier)
+            })
         }
     }
     

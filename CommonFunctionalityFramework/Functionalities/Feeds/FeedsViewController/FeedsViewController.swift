@@ -214,6 +214,18 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showAllClaps(feedIdentifier: Int64) {
+        print("show all claps for \(feedIdentifier)")
+        let likeListVC = LikeListViewController(
+            feedIdentifier: feedIdentifier,
+            requestCoordinator: requestCoordinator,
+            mediaFetcher: mediaFetcher
+        )
+        feedCoordinatorDeleagate.showPostLikeList(likeListVC, presentationOption: .Navigate) { (topBarModel) in
+            likeListVC.containerTopBarModel = topBarModel
+        } 
+    }
+    
     
     func submitPollAnswer(feedIdentifier : Int64){
         print("post answer")
