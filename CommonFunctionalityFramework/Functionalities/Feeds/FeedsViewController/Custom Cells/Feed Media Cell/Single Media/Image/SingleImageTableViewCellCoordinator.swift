@@ -30,7 +30,7 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.imageTapButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {
-                    inputModel.delegate.showMediaBrowser(
+                    inputModel.delegate?.showMediaBrowser(
                         feedIdentifier: feed.feedIdentifier,
                         scrollToItemIndex: 0
                     )

@@ -20,6 +20,7 @@ import UIKit
 
 class FeedDetailSectionFactory {
     let feedDataSource : FeedsDatasource
+    private weak var feedDetailDelegate: FeedsDelegate?
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var targetTableView : UITableView?
     private var isLikedByCellIndexpath : IndexPath!
@@ -40,12 +41,13 @@ class FeedDetailSectionFactory {
     }()
     
     private lazy var headerCoordinator: FeedDetailHeaderCoordinator = {
-        return FeedDetailHeaderCoordinator(dataSource: feedDataSource)
+        return FeedDetailHeaderCoordinator(dataSource: feedDataSource, delegate: feedDetailDelegate)
     }()
     
     
-    init(_ feedDataSource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?) {
+    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?) {
         self.feedDataSource = feedDataSource
+        self.feedDetailDelegate = feedDetailDelegate
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
         registerTableViewForAllPossibleCellTypes(targetTableView)
@@ -67,7 +69,7 @@ class FeedDetailSectionFactory {
             forHeaderFooterViewReuseIdentifier: "FeedDetailHeader"
         )
     }
-        
+    
     func getNumberOfSectionsForFeedDetailView() -> Int {
         return getAvailablefeedSections().count
     }
@@ -78,7 +80,8 @@ class FeedDetailSectionFactory {
         case .FeedInfo:
             return cellMap[FeedDetailSection.FeedInfo]?.count ?? 0
         case .ClapsSection:
-            if let _ = feedDataSource.getClappedByUsers()?.count{
+            if let clappedUserCount = feedDataSource.getClappedByUsers()?.count,
+                clappedUserCount > 0{
                 return 1
             }
             return 0
@@ -94,7 +97,7 @@ class FeedDetailSectionFactory {
             let feedInfo = cellMap[.FeedInfo]
             let cellType =  feedInfo?[indexpath.row]
             return cachedCellCoordinators[cellType!.cellIdentifier]!
-            //return cellMap[FeedDetailSection.FeedInfo]?.count ?? 0
+        //return cellMap[FeedDetailSection.FeedInfo]?.count ?? 0
         case .ClapsSection:
             return cachedCellCoordinators[ClappedByTableViewCellType().cellIdentifier]!
         case .Comments:
@@ -109,23 +112,23 @@ class FeedDetailSectionFactory {
             datasource: feedDataSource
             )
         )
-         cell.backgroundColor = .clear
-         if let containerdCell = cell as? FeedsCustomCellProtcol{
-             containerdCell.containerView?.backgroundColor = .white
-         }
+        cell.backgroundColor = .clear
+        if let containerdCell = cell as? FeedsCustomCellProtcol{
+            containerdCell.containerView?.backgroundColor = .white
+        }
         return cell
     }
     
-    func configureCell(cell: UITableViewCell, indexPath: IndexPath, delegate: FeedsDelegate)  {
+    func configureCell(cell: UITableViewCell, indexPath: IndexPath)  {
         getCellCoordinator(indexPath).loadDataCell(
             FeedCellLoadDataModel(
                 targetIndexpath: indexPath,
                 targetCell: cell,
                 datasource: feedDataSource,
                 mediaFetcher: mediaFetcher,
-                delegate: delegate,
+                delegate: feedDetailDelegate,
                 selectedoptionMapper: nil
-        )
+            )
         )
     }
     
@@ -139,7 +142,10 @@ class FeedDetailSectionFactory {
     }
     
     func getViewForHeaderInSection(section: Int, tableView: UITableView) -> UIView? {
-        return headerCoordinator.getHeader(section: FeedDetailSection(rawValue: section)!, table: tableView)
+        return headerCoordinator.getHeader(input: GetFeedDetailtableHeaderInput(
+            section: FeedDetailSection(rawValue: section)!,
+            table: tableView)
+        )
     }
     
     func getHeightOfViewForSection(section: Int) -> CGFloat {
@@ -148,11 +154,11 @@ class FeedDetailSectionFactory {
     
     func refreshCommentsSection() {
         targetTableView?.reloadData()
-//        for (index, aSection) in getAvailablefeedSections().enumerated() {
-//            if aSection == .Comments{
-//                targetTableView?.reloadSections(IndexSet(integer: index), with: .none)
-//            }
-//        }
+        //        for (index, aSection) in getAvailablefeedSections().enumerated() {
+        //            if aSection == .Comments{
+        //                targetTableView?.reloadSections(IndexSet(integer: index), with: .none)
+        //            }
+        //        }
     }
     
     func reloadToShowLikeAndCommentCountUpdate() {
@@ -161,7 +167,8 @@ class FeedDetailSectionFactory {
     
     func reloadToCommentCountHeader() {
         if let header = targetTableView?.headerView(forSection: FeedDetailSection.Comments.rawValue) as? FeedDetailHeader{
-            headerCoordinator.configureHeader(header, section: FeedDetailSection.Comments)
+            headerCoordinator.configureHeader(ConfigureHeaderInput(view: header, section: FeedDetailSection.Comments))
+            //headerCoordinator.configureHeader(header, section: FeedDetailSection.Comments)
         }
     }
     

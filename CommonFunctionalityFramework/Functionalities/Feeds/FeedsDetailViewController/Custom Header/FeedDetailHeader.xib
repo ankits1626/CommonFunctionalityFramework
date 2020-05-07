@@ -29,10 +29,16 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-Y0-K8n" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                            <rect key="frame" x="320" y="6.5" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="RCH-DN-M52" firstAttribute="leading" secondItem="QfA-JF-Dry" secondAttribute="leading" constant="12" id="RW0-ba-c6u"/>
+                        <constraint firstItem="Hqx-Y0-K8n" firstAttribute="centerY" secondItem="RCH-DN-M52" secondAttribute="centerY" id="UAY-Mw-dkB"/>
+                        <constraint firstAttribute="trailing" secondItem="Hqx-Y0-K8n" secondAttribute="trailing" constant="16" id="a2P-5a-JvV"/>
                         <constraint firstItem="u3C-p8-MJf" firstAttribute="centerY" secondItem="RCH-DN-M52" secondAttribute="centerY" id="bGt-FU-REt"/>
                         <constraint firstItem="u3C-p8-MJf" firstAttribute="leading" secondItem="RCH-DN-M52" secondAttribute="trailing" constant="5" id="rp7-aP-Osh"/>
                         <constraint firstItem="RCH-DN-M52" firstAttribute="top" secondItem="QfA-JF-Dry" secondAttribute="top" constant="11" id="u3W-Mv-xDW"/>
@@ -49,6 +55,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="headerActionButton" destination="Hqx-Y0-K8n" id="ndV-Hi-6S7"/>
                 <outlet property="headerContainer" destination="QfA-JF-Dry" id="4bP-xP-XD2"/>
                 <outlet property="headerSecondaryTitleLabel" destination="u3C-p8-MJf" id="9hJ-kS-v6c"/>
                 <outlet property="headerTitleLabel" destination="RCH-DN-M52" id="XrQ-9h-oxJ"/>

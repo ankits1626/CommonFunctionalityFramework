@@ -18,7 +18,7 @@ class FeedsViewController: UIViewController {
     
     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
-    var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
+    var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
@@ -161,7 +161,7 @@ class FeedsViewController: UIViewController {
 extension FeedsViewController{
     @IBAction func openFeedComposerSelectionDrawer(){
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
-        drawer.feedCoordinatorDeleagate = feedCoordinatorDeleagate
+        drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator
         do{
             try drawer.presentDrawer()
@@ -203,8 +203,8 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
             feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
             feedDetailVC.mediaFetcher = mediaFetcher
             feedDetailVC.requestCoordinator = requestCoordinator
-            feedDetailVC.feedCoordinatorDeleagate = feedCoordinatorDeleagate
-            feedCoordinatorDeleagate.showFeedDetail(feedDetailVC)
+            feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
+            feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
         }
     }
     
@@ -221,7 +221,7 @@ extension FeedsViewController : FeedsDelegate{
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher
         )
-        feedCoordinatorDeleagate.showPostLikeList(likeListVC, presentationOption: .Navigate) { (topBarModel) in
+        feedCoordinatorDelegate.showPostLikeList(likeListVC, presentationOption: .Navigate) { (topBarModel) in
             likeListVC.containerTopBarModel = topBarModel
         } 
     }
@@ -352,7 +352,7 @@ extension FeedsViewController : FeedsDelegate{
     
     private func openFeedEditor(_ feed : FeedsItemProtocol){
         FeedComposerCoordinator(
-            delegate: feedCoordinatorDeleagate,
+            delegate: feedCoordinatorDelegate,
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher
         ).editPost(feed: feed)

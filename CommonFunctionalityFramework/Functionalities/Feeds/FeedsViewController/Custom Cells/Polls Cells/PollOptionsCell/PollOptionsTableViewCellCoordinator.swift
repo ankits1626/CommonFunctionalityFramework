@@ -51,7 +51,7 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.optionSelectionButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {
-                    inputModel.delegate.selectPollAnswer(
+                    inputModel.delegate?.selectPollAnswer(
                         feedIdentifier: feed.feedIdentifier,
                         pollOption: feedOption!)
             })

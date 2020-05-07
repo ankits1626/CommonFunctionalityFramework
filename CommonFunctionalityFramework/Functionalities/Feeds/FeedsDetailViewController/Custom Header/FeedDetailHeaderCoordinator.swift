@@ -8,20 +8,32 @@
 
 import UIKit
 
+struct ConfigureHeaderInput {
+    var view : FeedDetailHeader?
+    var section: FeedDetailSection
+}
+
+struct GetFeedDetailtableHeaderInput{
+    var section: FeedDetailSection
+    var table : UITableView?
+}
+
 
 class FeedDetailHeaderCoordinator {
     let feedDataSource : FeedsDatasource
-    init(dataSource: FeedsDatasource) {
+    weak var delegate: FeedsDelegate?
+    init(dataSource: FeedsDatasource, delegate: FeedsDelegate?) {
         self.feedDataSource = dataSource
+        self.delegate = delegate
     }
-    func getHeader(section: FeedDetailSection, table : UITableView) -> UIView? {
-        switch section {
+    func getHeader(input: GetFeedDetailtableHeaderInput) -> UIView? {
+        switch input.section {
         case .FeedInfo:
             return nil
         case .ClapsSection:
             fallthrough
         case .Comments:
-            let header = table.dequeueReusableHeaderFooterView(withIdentifier: "FeedDetailHeader") as? FeedDetailHeader
+            let header = input.table?.dequeueReusableHeaderFooterView(withIdentifier: "FeedDetailHeader") as? FeedDetailHeader
             header?.headerContainer?.addBorders(
                 edges: [.left, .right],
                 color: .feedCellBorderColor
@@ -29,23 +41,24 @@ class FeedDetailHeaderCoordinator {
             header?.headerTitleLabel?.font = UIFont.Highlighter2
             header?.headerSecondaryTitleLabel?.font = UIFont.Caption1
             header?.headerSecondaryTitleLabel?.textColor = .getSubTitleTextColor()
-            configureHeader(header, section: section)
+            configureHeader(ConfigureHeaderInput(view: header, section: input.section))
             return header
         }
     }
-    func configureHeader(_ view : FeedDetailHeader?, section: FeedDetailSection){
-        switch section {
+    func configureHeader(_ input : ConfigureHeaderInput){
+        switch input.section {
         case .FeedInfo:
             print("feed info")
         case .ClapsSection:
-            configureClapsHeader(view)
+            configureClapsHeader(input.view)
         case .Comments:
-            configureCommentsHeader(view)
+            configureCommentsHeader(input.view)
         }
     }
     
     private func configureCommentsHeader(_ view : FeedDetailHeader?){
         view?.headerTitleLabel?.text = "Comments"
+        view?.headerActionButton?.isHidden = true
         if let commentsCount = feedDataSource.getCommentProvider()?.getNumberOfComments(),
             commentsCount != 0 {
             view?.headerSecondaryTitleLabel?.text = "\(commentsCount) comment\(commentsCount == 1 ? "" : "s")"
@@ -56,11 +69,14 @@ class FeedDetailHeaderCoordinator {
     
     private func configureClapsHeader(_ view : FeedDetailHeader?){
         view?.headerTitleLabel?.text = "Claps"
-        if let clapsCount = feedDataSource.getClappedByUsers()?.count{
-            view?.headerSecondaryTitleLabel?.text = "\(clapsCount) clap\(clapsCount == 1 ? "" : "s")"
-        }else{
-            view?.headerSecondaryTitleLabel?.text = nil
-        }
+        view?.headerActionButton?.setTitle("SEE ALL", for: .normal)
+        view?.headerActionButton?.setTitleColor(.bottomButtonTextColor, for: .normal)
+        view?.headerActionButton?.titleLabel?.font = .Highlighter1
+        view?.headerActionButton?.isHidden = false
+        view?.headerSecondaryTitleLabel?.text = nil
+        view?.headerActionButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+            self?.delegate?.showLikedByUsersList()
+        })
     }
     
     func getHeight(section: FeedDetailSection) -> CGFloat {

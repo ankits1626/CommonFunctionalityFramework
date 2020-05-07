@@ -27,10 +27,10 @@ class FeedsDetailViewController: UIViewController {
     var clappedByUsers : [ClappedByUser]?
     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
-    var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
+    var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
-        return FeedDetailSectionFactory(self, mediaFetcher: mediaFetcher, targetTableView: feedDetailTableView)
+        return FeedDetailSectionFactory(self, feedDetailDelegate: self, mediaFetcher: mediaFetcher, targetTableView: feedDetailTableView)
     }()
     private var frc : NSFetchedResultsController<ManagedPostComment>?
     private var lastFetchedComments : FeedCommentsFetchResult?
@@ -47,6 +47,7 @@ class FeedsDetailViewController: UIViewController {
         view.backgroundColor = .viewBackgroundColor
         setupTableView()
         setupCommentBar()
+        fetchClappedByUsers()
     }
     
     private func setupCommentBar(){
@@ -129,6 +130,32 @@ class FeedsDetailViewController: UIViewController {
             }
         }
     }
+    
+    private func fetchClappedByUsers(){
+        PostLikeListFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
+        feedIdentifier: targetFeedItem.feedIdentifier, nextPageUrl: nil) { (result) in
+            switch result{
+            case .Success(result: let result):
+                var likeList = [ClappedByUser]()
+                if let results = result.fetchedLikes?["results"] as? [[String : Any]]{
+                    results.forEach { (aRawLike) in
+                        if let userInfo = aRawLike["user_info"] as? [String : Any]{
+                            likeList.append(ClappedByUser(userInfo))
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {[weak self] in
+                    self?.clappedByUsers = likeList
+                    self?.feedDetailTableView?.reloadData()
+                }
+            case .SuccessWithNoResponseData:
+                fallthrough
+            case .Failure(error: _):
+                print("<<<<<<< error while fetching like list")
+            }
+        }
+    }
 }
 
 extension FeedsDetailViewController : FeedsDetailCommentsProviderProtocol{
@@ -193,7 +220,7 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        feedDetailSectionFactory.configureCell(cell: cell, indexPath: indexPath, delegate: self)
+        feedDetailSectionFactory.configureCell(cell: cell, indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -239,6 +266,7 @@ extension FeedsDetailViewController : FeedsDelegate{
                         CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                         DispatchQueue.main.async {
                             self?.feedDetailSectionFactory.reloadToShowLikeAndCommentCountUpdate()
+                            self?.fetchClappedByUsers()
                         }
                     }
                 }
@@ -286,7 +314,7 @@ extension FeedsDetailViewController : FeedsDelegate{
     
     private func openFeedEditor(_ feed : FeedsItemProtocol){
         FeedComposerCoordinator(
-            delegate: feedCoordinatorDeleagate,
+            delegate: feedCoordinatorDelegate,
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher
         ).editPost(feed: feed)
@@ -313,7 +341,7 @@ extension FeedsDetailViewController : FeedsDelegate{
                                             print("<<<<<<<<<<<<<poll deleted suceessfully")
                                             CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                                             DispatchQueue.main.async {
-                                                self?.feedCoordinatorDeleagate.removeFeedDetail()
+                                                self?.feedCoordinatorDelegate.removeFeedDetail()
                                             }
                                         }
                                     }
@@ -337,8 +365,14 @@ extension FeedsDetailViewController : FeedsDelegate{
     }
     
     func showLikedByUsersList() {
-//        let allLikedVc = LikeListViewController(nibName: "LikeListViewController", bundle: Bundle(for: LikeListViewController.self))
-//        present(allLikedVc, animated: true, completion: nil)
+        let likeListVC = LikeListViewController(
+            feedIdentifier: targetFeedItem.feedIdentifier,
+            requestCoordinator: requestCoordinator,
+            mediaFetcher: mediaFetcher
+        )
+        feedCoordinatorDelegate.showPostLikeList(likeListVC, presentationOption: .Navigate) { (topBarModel) in
+            likeListVC.containerTopBarModel = topBarModel
+        }
     }
     
 }

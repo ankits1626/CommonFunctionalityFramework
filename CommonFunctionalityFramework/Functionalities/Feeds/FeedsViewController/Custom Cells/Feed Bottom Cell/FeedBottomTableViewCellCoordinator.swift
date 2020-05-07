@@ -40,10 +40,10 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.clapsButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {
-                    inputModel.delegate.toggleClapForPost(feedIdentifier: feed.feedIdentifier)
+                    inputModel.delegate?.toggleClapForPost(feedIdentifier: feed.feedIdentifier)
             })
             cell.showAllClapsButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
-                inputModel.delegate.showAllClaps(feedIdentifier: feed.feedIdentifier)
+                inputModel.delegate?.showAllClaps(feedIdentifier: feed.feedIdentifier)
             })
         }
     }

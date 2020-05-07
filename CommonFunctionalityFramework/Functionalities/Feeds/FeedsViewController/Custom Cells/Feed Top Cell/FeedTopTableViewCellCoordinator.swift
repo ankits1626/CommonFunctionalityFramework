@@ -19,7 +19,7 @@ struct FeedCellLoadDataModel {
     var targetCell : UITableViewCell
     var datasource: FeedsDatasource
     var mediaFetcher: CFFMediaCoordinatorProtocol
-    var delegate : FeedsDelegate
+    var delegate : FeedsDelegate?
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
 }
 
@@ -66,7 +66,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.editFeedButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {
-                    inputModel.delegate.showFeedEditOptions(
+                    inputModel.delegate?.showFeedEditOptions(
                         targetView: cell.editFeedButton,
                         feedIdentifier: feed.feedIdentifier
                     )
