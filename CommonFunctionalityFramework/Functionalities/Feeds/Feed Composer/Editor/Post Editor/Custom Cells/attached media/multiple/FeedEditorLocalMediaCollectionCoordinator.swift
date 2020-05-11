@@ -56,6 +56,8 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "MediaItemCollectionViewCell",
         for: indexPath) as! MediaItemCollectionViewCell
         cell.removeButton?.isHidden = false
+        cell.editTransparentView?.isHidden = false
+        cell.curvedCornerControl()
         cell.removeButton?.handleControlEvent(
             event: .touchUpInside,
             buttonActionBlock: {
@@ -77,7 +79,7 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDelegateFl
             return CGSize(width: 0, height: 0)
         }
         if mediaCount == 1{
-            return CGSize(width: UIScreen.main.bounds.width, height: 205)
+            return CGSize(width: UIScreen.main.bounds.width - ( 2 * (16 + 12)), height: 273 - 16 - 16)
         }
         if mediaCount == 2{
             return CGSize(width: 120, height: 90)

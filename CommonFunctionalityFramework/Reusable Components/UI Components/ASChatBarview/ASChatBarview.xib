@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ASChatBarview" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
-                <outlet property="attachImageButton" destination="Dak-Vf-zG6" id="AOa-An-uze"/>
                 <outlet property="container" destination="12B-mP-0ea" id="enG-a5-7Ot"/>
                 <outlet property="leftContainer" destination="eDb-F4-4Cl" id="zDd-ZK-aS4"/>
                 <outlet property="messageTextView" destination="Afc-FB-r6e" id="5lk-89-CRl"/>
@@ -24,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDx-RX-Hx7">
-                    <rect key="frame" x="44" y="0.0" width="287" height="44"/>
+                    <rect key="frame" x="5" y="0.0" width="326" height="44"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-FB-r6e">
-                            <rect key="frame" x="5" y="5" width="277" height="34"/>
+                            <rect key="frame" x="5" y="5" width="316" height="34"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -58,26 +57,11 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="eDb-F4-4Cl" userLabel="blue view">
-                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dak-Vf-zG6">
-                            <rect key="frame" x="7" y="7" width="30" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="BjC-0t-8t1"/>
-                                <constraint firstAttribute="width" constant="30" id="gKY-wS-rk5"/>
-                            </constraints>
-                            <state key="normal" image="tag"/>
-                            <connections>
-                                <action selector="leftButtonTapped" destination="-1" eventType="touchUpInside" id="omR-Qh-9jb"/>
-                            </connections>
-                        </button>
-                    </subviews>
+                    <rect key="frame" x="0.0" y="0.0" width="5" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="Dak-Vf-zG6" firstAttribute="centerY" secondItem="eDb-F4-4Cl" secondAttribute="centerY" id="Zf6-A8-SdC"/>
                         <constraint firstAttribute="height" constant="44" id="etz-Yd-wmk"/>
-                        <constraint firstAttribute="width" constant="44" id="t1T-Nt-z35"/>
-                        <constraint firstItem="Dak-Vf-zG6" firstAttribute="centerX" secondItem="eDb-F4-4Cl" secondAttribute="centerX" id="wj0-Hh-gZB"/>
+                        <constraint firstAttribute="width" constant="5" id="t1T-Nt-z35"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Y3-rn-5QX">
@@ -122,6 +106,5 @@
     </objects>
     <resources>
         <image name="chatBarSend" width="37" height="31"/>
-        <image name="tag" width="16" height="16"/>
     </resources>
 </document>

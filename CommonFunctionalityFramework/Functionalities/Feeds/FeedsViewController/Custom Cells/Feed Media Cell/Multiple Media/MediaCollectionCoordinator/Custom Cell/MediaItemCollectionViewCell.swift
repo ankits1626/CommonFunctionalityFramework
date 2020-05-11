@@ -12,6 +12,7 @@ class MediaItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mediaCoverImageView : UIImageView?
     @IBOutlet weak var removeButton : BlockButton?
     @IBOutlet weak var playButton : BlockButton?
+    @IBOutlet weak var editTransparentView : UIView?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

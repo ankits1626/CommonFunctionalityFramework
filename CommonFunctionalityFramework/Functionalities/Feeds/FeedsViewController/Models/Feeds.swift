@@ -31,6 +31,9 @@ protocol FeedsItemProtocol : Likeable {
     func hasOnlyMedia() -> Bool
     func getPoll() -> Poll?
     func shouldShowDetail() -> Bool
+    func isFeedEditAllowed() -> Bool
+    func isFeedDeleteAllowed() -> Bool
+    func isActionsAllowed() -> Bool
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -156,6 +159,19 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
             return .Post
         }
     }
+    
+    func isFeedEditAllowed() -> Bool {
+        return rawFeedDictionary["can_edit"] as? Bool ?? false
+    }
+    
+    func isFeedDeleteAllowed() -> Bool {
+        return rawFeedDictionary["can_delete"] as? Bool ?? false
+    }
+    
+    func isActionsAllowed() -> Bool {
+        return isFeedEditAllowed() || isFeedDeleteAllowed()
+    }
+    
     
     private func getFeedAuthor() -> FeedAuthor?{
         if let rawAuthor = rawFeedDictionary["created_by_user_info"] as? [String:Any]{

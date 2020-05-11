@@ -293,7 +293,8 @@ extension FeedsDetailViewController : FeedsDelegate{
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
         var options = [FloatingMenuOption]()
-        if targetFeedItem.getFeedType() == .Post{
+        if targetFeedItem.getFeedType() == .Post,
+            targetFeedItem.isFeedEditAllowed(){
             options.append(
                 FloatingMenuOption(title: "EDIT", action: {
                     print("Edit post - \(feedIdentifier)")
@@ -302,13 +303,14 @@ extension FeedsDetailViewController : FeedsDelegate{
                 )
             )
         }
-        options.append( FloatingMenuOption(title: "DELETE", action: {[weak self] in
-            print("Delete post- \(feedIdentifier)")
-            self?.showDeletePostConfirmation(feedIdentifier)
-        }
+        if targetFeedItem.isFeedDeleteAllowed(){
+            options.append( FloatingMenuOption(title: "DELETE", action: {[weak self] in
+                print("Delete post- \(feedIdentifier)")
+                self?.showDeletePostConfirmation(feedIdentifier)
+                }
+                )
             )
-        )
-        
+        }
         FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
     }
     

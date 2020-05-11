@@ -11,7 +11,7 @@ import UIKit
 
 class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCoordinatorProtocol{
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
-        return inputModel.postImageMapper?.getMediaCount(inputModel.datasource.getTargetPost()) == 1 ? 205 : 122
+        return inputModel.postImageMapper?.getMediaCount(inputModel.datasource.getTargetPost()) == 1 ? 273 : 122
     }
     
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {

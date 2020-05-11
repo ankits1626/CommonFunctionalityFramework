@@ -39,12 +39,6 @@ class ASChatBarview : UIView {
             container?.backgroundColor = backgroundColor
         }
     }
-//    private lazy var attachedImageView: VynChatBarAttachedImageView = {
-//        let _attachmentView = VynChatBarAttachedImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 70))
-//        _attachmentView.closeButton?.addTarget(self, action: #selector(removeAttachedImage), for: UIControl.Event.touchUpInside)
-//        return _attachmentView
-//    }()
-
     lazy var tap: UITapGestureRecognizer = {
         return UITapGestureRecognizer(target: self, action: #selector(dismiss))
     }()
@@ -172,7 +166,8 @@ class ASChatBarview : UIView {
         let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
         var bottomInset : CGFloat = 0
         if #available(iOS 11.0, *) {
-            bottomInset = self.superview?.safeAreaInsets.bottom ?? 0
+            //TO:DO: Needs to be refactored
+            bottomInset = self.superview?.superview?.superview?.safeAreaInsets.bottom ?? 34
         }
         bottomConstraint.constant = isKeyboardShowing ?  keyboardFrame.height - bottomInset : 0
         UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
