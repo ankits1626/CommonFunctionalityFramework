@@ -24,6 +24,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var deletePressedCompletion :(() -> Void)?
+    var targetFeed : FeedsItemProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -33,6 +34,19 @@ class DeletePostConfirmationDrawer: UIViewController {
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
+        if let type = targetFeed?.getFeedType() {
+            switch type {
+            case .Poll:
+                titleLabel?.text = "Delete Poll"
+                messageLabel?.text = "Are you sure that you need to delete this poll? By deleting all the users answers till now would be lost and not retrievable."
+            case .Post:
+                titleLabel?.text = "Delete Post"
+                messageLabel?.text = "Are you sure that you need to delete this post? "
+            }
+        }else{
+            titleLabel?.text = "Delete Post"
+            messageLabel?.text = "Are you sure that you need to delete this post? "
+        }
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
         messageLabel?.font = .Highlighter2

@@ -187,7 +187,7 @@ extension PostCoordinator{
             return
         }
         else{
-            throw PostCoordinatorError.PollNotReadyToBePosted
+            throw PostCoordinatorError.PostNotReadyToBePosted
         }
         
     }

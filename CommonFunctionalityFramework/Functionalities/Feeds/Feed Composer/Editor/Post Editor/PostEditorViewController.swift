@@ -169,7 +169,10 @@ class PostEditorViewController: UIViewController {
                                     rawFeeds: [rawFeed],
                                     insertDirection: self?.editablePost?.remotePostId == nil ? .Top : .Bottom,
                                     completion: {[weak self] in
-                                        self?.dismiss(animated: true, completion: nil)
+                                        DispatchQueue.main.async {
+                                            self?.dismiss(animated: true, completion: nil)
+                                        }
+                                        
                                 })
                                 
                             case .SuccessWithNoResponseData:

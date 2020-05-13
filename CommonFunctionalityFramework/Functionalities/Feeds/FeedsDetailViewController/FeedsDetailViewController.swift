@@ -327,6 +327,7 @@ extension FeedsDetailViewController : FeedsDelegate{
             nibName: "DeletePostConfirmationDrawer",
             bundle: Bundle(for: DeletePostConfirmationDrawer.self)
         )
+        deleteConfirmationDrawer.targetFeed = targetFeedItem 
         deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
             print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")
             if let unwrappedSelf = self{
