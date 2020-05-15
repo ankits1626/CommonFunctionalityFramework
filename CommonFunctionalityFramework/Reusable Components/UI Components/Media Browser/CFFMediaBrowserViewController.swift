@@ -10,6 +10,7 @@ import UIKit
 
 class CFFMediaBrowserViewController: UIViewController {
     @IBOutlet private weak var mediaCollectionView : UICollectionView?
+    @IBOutlet private weak var downloadButton : UIButton?
     
     private let mediaList : [MediaItemProtocol]
     private let mediaFetcher : CFFMediaCoordinatorProtocol
@@ -58,6 +59,17 @@ class CFFMediaBrowserViewController: UIViewController {
     }
     
     @IBAction private func downloadMedia(){
+        if let centralIndexpath = mediaCollectionView?.centerCellIndexPath,
+            let cell = mediaCollectionView?.cellForItem(at: centralIndexpath) as? MediaItemCollectionViewCell,
+            let image = cell.mediaCoverImageView?.image{
+            downloadButton?.isHidden = true
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print("download complete")
+        downloadButton?.isHidden = false
     }
 }
 
@@ -80,6 +92,7 @@ extension CFFMediaBrowserViewController : UICollectionViewDataSource, UICollecti
         }
         return cell
     }
+    
 }
 
 extension CFFMediaBrowserViewController : UICollectionViewDelegateFlowLayout{

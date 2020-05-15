@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CFFMediaBrowserViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
+                <outlet property="downloadButton" destination="Epe-eb-6uu" id="Fwk-l5-29T"/>
                 <outlet property="mediaCollectionView" destination="uHI-xW-MDk" id="bUe-tk-Zck"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
