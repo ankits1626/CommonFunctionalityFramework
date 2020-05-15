@@ -77,6 +77,10 @@ class PostCoordinator {
         currentPost.postDesciption = decription
     }
     
+    func getRemoteMediaCount() -> Int {
+        return currentPost.remoteAttachedMedia?.count ?? 0
+    }
+    
     func removeMedia(index : Int, mediaSection: EditableMediaSection){
         switch mediaSection {
         case .Remote:

@@ -27,6 +27,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     fileprivate var thumbnailSize: CGSize!
     var selectedAssets = [LocalSelectedMediaItem]()
     var localMediaManager : LocalMediaManager!
+    var maximumItemSelectionAllowed = 10
     
     // MARK: UIViewController / Lifecycle
     
@@ -220,7 +221,13 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         if selectedAssets.contains(LocalSelectedMediaItem(identifier: asset.localIdentifier, mediaType: asset.mediaType)){
             selectedAssets = selectedAssets.filter(){$0 != LocalSelectedMediaItem(identifier: asset.localIdentifier, mediaType: asset.mediaType)}
         }else{
-            selectedAssets.append(LocalSelectedMediaItem(identifier: asset.localIdentifier, asset: asset, mediaType: asset.mediaType))
+            if selectedAssets.count < maximumItemSelectionAllowed{
+                selectedAssets.append(LocalSelectedMediaItem(identifier: asset.localIdentifier, asset: asset, mediaType: asset.mediaType))
+            }else{
+                ErrorDisplayer.showError(errorMsg: "Cannot select more than 10 images") { (_) in
+                }
+            }
+            
         }
         updateSelectionMarkerForItem(indexpath: indexpath)
     }

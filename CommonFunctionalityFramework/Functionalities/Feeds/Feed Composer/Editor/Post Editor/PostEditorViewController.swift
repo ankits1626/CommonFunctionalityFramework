@@ -142,6 +142,7 @@ class PostEditorViewController: UIViewController {
         assetGridVC.assetSelectionCompletion = { (selectedMediaItems) in
             self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
         }
+        assetGridVC.maximumItemSelectionAllowed = 10 - postCoordinator.getRemoteMediaCount()
         present(assetGridVC, animated: true, completion: nil)
     }
     
