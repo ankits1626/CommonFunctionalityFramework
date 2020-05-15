@@ -70,14 +70,15 @@ struct InitPostEditorCellFactoryModel {
     weak var postImageMapper : EditablePostMediaRepository?
 }
 
+enum PostEditorSection : Int {
+    case Title = 0
+    case Description
+    case Media
+    case PollOptions
+    case PollActiveForDays
+}
+
 class PostEditorCellFactory {
-    enum PostEditorSection : Int {
-        case Title = 0
-        case Description
-        case Media
-        case PollOptions
-        case PollActiveForDays
-    }
     
     var input : InitPostEditorCellFactoryModel
     
@@ -90,6 +91,10 @@ class PostEditorCellFactory {
             PollsActiveDaysTableViewCellType().cellIdentifier : PollsActiveDaysTableViewCellCoordinator()
         ]
     }()
+    
+    private lazy var headerCoordinator: FeedEditorHeaderCoordinator = {
+        return FeedEditorHeaderCoordinator(dataSource: input.datasource)
+       }()
     
     init(_ input : InitPostEditorCellFactoryModel) {
         self.input = input
@@ -104,6 +109,14 @@ class PostEditorCellFactory {
                 forCellReuseIdentifier: cellCoordinator.value.cellType.cellIdentifier
             )
         }
+        registerTableViewForHeaderView(targetTableView)
+    }
+    
+    private func registerTableViewForHeaderView(_ tableView : UITableView?){
+        tableView?.register(
+            UINib(nibName: "FeedDetailHeader", bundle: Bundle(for: FeedDetailHeader.self)),
+            forHeaderFooterViewReuseIdentifier: "FeedDetailHeader"
+        )
     }
     
     func getNumberOfSection() -> Int {
@@ -160,6 +173,19 @@ class PostEditorCellFactory {
         return availableSections[index]
     }
     
+    func getHeightOfViewForSection(section: Int) -> CGFloat {
+        return headerCoordinator.getHeight(section: PostEditorSection(rawValue: section)!)
+        
+    }
+    
+    func getViewForHeaderInSection(section: Int, tableView: UITableView) -> UIView? {
+        return headerCoordinator.getHeader(input: GetPostEditorDetailtableHeaderInput(
+            section: PostEditorSection(rawValue: section)!,
+            table: tableView
+            )
+        )
+    }
+    
 }
 
 extension PostEditorCellFactory{
@@ -169,7 +195,7 @@ extension PostEditorCellFactory{
         if let postType = input.datasource?.getTargetPost()?.postType{
             switch postType {
             case .Poll:
-                sections.append(PostEditorCellFactory.PostEditorSection.PollOptions)
+                sections.append(PostEditorSection.PollOptions)
                 sections.append(.PollActiveForDays)
             case .Post:
                 sections.append(.Description)

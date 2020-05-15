@@ -35,6 +35,7 @@
 		9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */; };
 		9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830E848246323A100FEFC0F /* PostLikeListFetcher.swift */; };
 		9830E84B246EBB5800FEFC0F /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830E84A246EBB5800FEFC0F /* UICollectionView+Extension.swift */; };
+		9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830E84D246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
 		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F5241A0041009084D4 /* EditorContainerProtocol.swift */; };
@@ -204,6 +205,7 @@
 		9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsFetcher.swift; sourceTree = "<group>"; };
 		9830E848246323A100FEFC0F /* PostLikeListFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikeListFetcher.swift; sourceTree = "<group>"; };
 		9830E84A246EBB5800FEFC0F /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		9830E84D246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorHeaderCoordinator.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F5241A0041009084D4 /* EditorContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorContainerProtocol.swift; sourceTree = "<group>"; };
@@ -478,6 +480,14 @@
 			path = Worker;
 			sourceTree = "<group>";
 		};
+		9830E84C246EC9BF00FEFC0F /* Custom Header */ = {
+			isa = PBXGroup;
+			children = (
+				9830E84D246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift */,
+			);
+			path = "Custom Header";
+			sourceTree = "<group>";
+		};
 		983500E92419FC75009084D4 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +499,7 @@
 		983500EB2419FC87009084D4 /* Post Editor */ = {
 			isa = PBXGroup;
 			children = (
+				9830E84C246EC9BF00FEFC0F /* Custom Header */,
 				98DF76D82433CE7900B9B8A1 /* Workers */,
 				98B02FC0241A662900CB8690 /* model */,
 				98BC8A1C241A19C9007C175D /* PostEditorCellFactory */,
@@ -1481,6 +1492,7 @@
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				98726532244DE40B00CD4530 /* GenericCoreDataManager.swift in Sources */,
+				9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
 				9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */,
 				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,

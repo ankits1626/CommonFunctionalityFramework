@@ -257,4 +257,12 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellFactory.getHeight(indexPath: indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellFactory.getHeightOfViewForSection(section: section)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return cellFactory.getViewForHeaderInSection(section: section, tableView: tableView)
+    }
 }
