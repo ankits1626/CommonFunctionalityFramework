@@ -184,10 +184,13 @@ extension PostCoordinator{
         if let _ = currentPost.pollOptions{
             return
         }
+        else if let _  = currentPost.title{
+            return
+        }
         else if let _  = currentPost.postDesciption{
             return
         }else if let mediaItems  = currentPost.selectedMediaItems,
-        !mediaItems.isEmpty{
+            !mediaItems.isEmpty{
             return
         }
         else{
