@@ -80,6 +80,9 @@ struct Poll {
         if let totalVotes = rawPoll["total_votes"] as? Int64{
             pollInfos.append("\(totalVotes) vote\(totalVotes == 1 ? "" : "s")")
         }
+        if !isPollActive(){
+            pollInfos.append("Final Result")
+        }
         if let pollRemainingTime = rawPoll["poll_remaining_time"] as? String{
             pollInfos.append("\(pollRemainingTime) left")
         }
