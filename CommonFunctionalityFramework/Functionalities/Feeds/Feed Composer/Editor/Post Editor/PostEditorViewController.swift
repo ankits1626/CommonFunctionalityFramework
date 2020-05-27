@@ -82,6 +82,10 @@ class PostEditorViewController: UIViewController {
         setupPostWithDepartment()
     }
     
+    private func setupCheckbox(){
+        postWithSameDepartmentCheckBox?.tintColor = .stepperActiveColor
+    }
+    
     private func setupPostWithDepartment() {
         postWithSameDepartmentCheckBox?.isEnabled = postCoordinator.isDepartmentSharedWithEditable()
         postWithSameDepartmentCheckBox?.checkmarkStyle = .tick

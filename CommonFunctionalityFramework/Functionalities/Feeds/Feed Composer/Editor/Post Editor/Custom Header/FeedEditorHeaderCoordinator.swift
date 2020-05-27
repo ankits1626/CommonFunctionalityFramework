@@ -28,7 +28,7 @@ class FeedEditorHeaderCoordinator {
                 color: .feedCellBorderColor
             )
             header?.headerTitleLabel?.font = UIFont.Highlighter1
-            header?.headerTitleLabel?.textColor = .stepperDecrementIndicatorColor
+            header?.headerTitleLabel?.textColor = .stepperInactiveColor
             header?.headerTitleLabel?.text = "PHOTOS"
             header?.headerSecondaryTitleLabel?.isHidden = true
             //configureHeader(ConfigureHeaderInput(view: header, section: input.section))
@@ -53,7 +53,7 @@ class FeedEditorHeaderCoordinator {
     func getHeight(section: PostEditorSection) -> CGFloat {
         switch section {
         case .Media:
-            return 20
+            return postEditorDataSource?.getTargetPost()?.postType == FeedType.Post ?  20 : 0
         case .Title:
             fallthrough
         case .Description:

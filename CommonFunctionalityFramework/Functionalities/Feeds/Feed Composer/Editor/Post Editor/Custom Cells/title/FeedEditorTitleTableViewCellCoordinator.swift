@@ -38,6 +38,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
                 cell.titleText?.placeholder = "Ask something"
             case .Post:
                 cell.titleText?.placeholder = "Title"
+                cell.titleText?.font = .SemiBold14
             }
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()
             cell.titleText?.placeholderFont = .Body2

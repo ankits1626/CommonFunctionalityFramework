@@ -16,7 +16,7 @@ struct FloatingMenuOption {
 
 class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
     var contentSize: CGSize {
-        return CGSize(width: 92, height: max(44, 44 * options.count))
+        return CGSize(width: 92, height: max(48, 24 * options.count))
     }
     var arrowDirection: UIPopoverArrowDirection = .none
     var options : [FloatingMenuOption]
@@ -29,6 +29,13 @@ class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
         fatalError("init(coder:) has not been implemented")
     }
     @IBOutlet private weak var listTable : UITableView?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.superview?.layer.cornerRadius = 0.0;
+        self.view.superview?.clipsToBounds = false
+        self.view.superview?.layoutSubviews()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -37,6 +44,7 @@ class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
     private func setup(){
         setupTableView()
     }
+    
     private func setupTableView(){
         listTable?.isScrollEnabled = false
         listTable?.register(
@@ -56,6 +64,10 @@ extension FloatingMenuOptions : UITableViewDataSource, UITableViewDelegate{
         cell.optionTile?.text = options[indexPath.row].title
         cell.optionTile?.font = UIFont.Button
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 24
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

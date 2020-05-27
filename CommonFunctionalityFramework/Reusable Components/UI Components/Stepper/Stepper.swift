@@ -14,8 +14,16 @@ protocol StepperDelegate {
 
 @IBDesignable class Stepper: UIControl {
     //MARK:- Properties
-    @IBInspectable var incrementIndicatorColor: UIColor = UIColor.white
-    @IBInspectable var decrementIndicatorColor: UIColor = UIColor.white
+    @IBInspectable var incrementIndicatorColor: UIColor = UIColor.white{
+        didSet{
+            layoutSubviews()
+        }
+    }
+    @IBInspectable var decrementIndicatorColor: UIColor = UIColor.white{
+        didSet{
+            layoutSubviews()
+        }
+    }
     @IBInspectable var borderColor: UIColor = UIColor.white
     @IBInspectable var textColor: UIColor = UIColor.lightGray
     @IBInspectable var middleColor: UIColor = UIColor.white
@@ -82,6 +90,8 @@ protocol StepperDelegate {
         self.decrementButton.frame = leftButtonframe
         self.incrementButton.frame = rightButtonFrame
         self.counterTxt.frame = counterLabelFrame
+        counterTxt.isScrollEnabled = false
+        counterTxt.contentOffset = CGPoint(x: 0, y: -5)
         counterTxt.layer.borderWidth = borderWidth
         counterTxt.layer.borderColor = borderColor.cgColor
         self.layer.borderWidth = borderWidth

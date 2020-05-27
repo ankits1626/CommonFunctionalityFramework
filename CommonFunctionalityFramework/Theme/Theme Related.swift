@@ -36,6 +36,10 @@ extension UIFont{
     static var Button : UIFont{
         return UIFont.systemFont(ofSize: 15, weight: .bold)
     }
+    
+    static var SemiBold14 : UIFont{
+        return UIFont.systemFont(ofSize: 14, weight: .semibold)
+    }
 }
 
 extension UIColor{
@@ -72,11 +76,11 @@ extension UIColor{
         return UIColor(red: 237/255.0, green: 237/255.0, blue: 237/255.0, alpha: 1.0)
     }
     
-    static var stepperIncrementIndicatorColor : UIColor{
+    static var stepperActiveColor : UIColor{
         return UIColor(red: 251/255.0, green: 137/255.0, blue: 129/255.0, alpha: 1.0)
     }
     
-    static var stepperDecrementIndicatorColor : UIColor{
+    static var stepperInactiveColor : UIColor{
         return UIColor(red: 171/255.0, green: 171/255.0, blue: 171/255.0, alpha: 1.0)
     }
     

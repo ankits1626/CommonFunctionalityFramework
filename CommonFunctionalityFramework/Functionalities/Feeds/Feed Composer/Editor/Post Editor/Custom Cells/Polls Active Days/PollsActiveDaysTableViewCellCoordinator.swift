@@ -18,8 +18,8 @@ class PollsActiveDaysTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.activeDaysLabel?.text = "Poll Active for (days) :"
             cell.activeDaysStepper?.delegate = self
             cell.activeDaysStepper?.reading = 1
-            cell.activeDaysStepper?.incrementIndicatorColor = .stepperIncrementIndicatorColor
-            cell.activeDaysStepper?.decrementIndicatorColor = .stepperDecrementIndicatorColor
+            cell.activeDaysStepper?.incrementIndicatorColor = .stepperActiveColor
+            cell.activeDaysStepper?.decrementIndicatorColor = .stepperInactiveColor
             cell.activeDaysStepper?.middleColor = .stepperMiddleColor
             cell.activeDaysStepper?.curvedBorderedControl()
             cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
@@ -36,6 +36,22 @@ class PollsActiveDaysTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
 
 extension PollsActiveDaysTableViewCellCoordinator : StepperDelegate{
     func stepperDidChanged(sender: Stepper) {
+        if let minVal = sender.minVal?.intValue{
+            if sender.reading == minVal{
+                sender.decrementIndicatorColor = .stepperInactiveColor
+            }else{
+                sender.decrementIndicatorColor = .stepperActiveColor
+            }
+        }
+        
+        if let maxVal = sender.maxVal?.intValue{
+            if sender.reading == maxVal{
+                sender.incrementIndicatorColor = .stepperInactiveColor
+            }else{
+                sender.incrementIndicatorColor = .stepperActiveColor
+            }
+        }
+        
         delegate?.activeDaysForPollChanged(sender.reading)
     }
 }
