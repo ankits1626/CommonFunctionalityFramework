@@ -34,7 +34,7 @@ class FeedsDetailViewController: UIViewController {
     }()
     private var frc : NSFetchedResultsController<ManagedPostComment>?
     private var lastFetchedComments : FeedCommentsFetchResult?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         clearAnyExistingFeedsData {[weak self] in
@@ -48,6 +48,15 @@ class FeedsDetailViewController: UIViewController {
         setupTableView()
         setupCommentBar()
         fetchClappedByUsers()
+        observeChangesToPost()
+    }
+    
+    private func observeChangesToPost(){
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(reloadPost),
+            name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
+            object: CFFCoreDataManager.sharedInstance.manager.mainQueueContext)
     }
     
     private func setupCommentBar(){
@@ -156,6 +165,17 @@ class FeedsDetailViewController: UIViewController {
             }
         }
     }
+    
+    @objc private func reloadPost(notification: NSNotification){
+        guard let userInfo = notification.userInfo else { return }
+        if let updates = userInfo[NSUpdatedObjectsKey] as? Set<ManagedPost>,
+            let updatedPost = updates.first?.getRawObject() as? FeedsItemProtocol{
+             print("<<<<<<<<<<< reloadPost")
+            targetFeedItem = updatedPost
+            feedDetailTableView?.reloadSections(IndexSet(integer: 0), with: .none)
+        }
+    }
+    
 }
 
 extension FeedsDetailViewController : FeedsDetailCommentsProviderProtocol{
