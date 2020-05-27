@@ -7,8 +7,8 @@
 //
 
 import Foundation
-class CommonFrameworkUtility {
-    static func getdateFromStringFrom(_ date : String, dateFormat: String) -> Date?
+class CommonFrameworkDateUtility {
+    static func getDateFromStringFrom(_ date : String, dateFormat: String) -> Date?
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
@@ -18,6 +18,10 @@ class CommonFrameworkUtility {
         {
             return strDate
         }
+        return nil
+    }
+    
+    static func getDisplayableDate(input: String) -> String?{
         return nil
     }
 }

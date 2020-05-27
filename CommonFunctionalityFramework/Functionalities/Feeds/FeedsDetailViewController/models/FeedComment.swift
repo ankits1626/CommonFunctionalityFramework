@@ -51,6 +51,9 @@ struct FeedComment : RawObjectProtocol {
     }
     
     func getCommentDate() -> String {
+        if let rawDate = rawFeedComment["created_on"] as? String{
+            return CommonFrameworkDateUtility.getDisplayableDate(input: rawDate, dateFormat: "yyyy-MM-dd HH:mm:ss") ?? ""
+        }
         return rawFeedComment["created_on"] as? String ?? ""
     }
     

@@ -194,6 +194,10 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     }
     
     func getfeedCreationDate() -> String? {
+        //hello
+        if let rawDate = rawFeedDictionary["created_on"] as? String{
+            return CommonFrameworkDateUtility.getDisplayedDateInFormatDMMMYYYY(input: rawDate, dateFormat: "yyyy-MM-dd") ?? ""
+        }
         return rawFeedDictionary["created_on"] as? String
     }
     

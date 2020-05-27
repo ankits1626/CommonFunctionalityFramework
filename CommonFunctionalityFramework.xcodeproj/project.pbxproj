@@ -71,7 +71,7 @@
 		9868C04E240FE2F200B12321 /* FeedSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C04D240FE2F200B12321 /* FeedSectionFactory.swift */; };
 		9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0502410086600B12321 /* FeedContentCoordinatorProtocol.swift */; };
 		9868C05424101E0200B12321 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C05324101E0200B12321 /* UIView+Extension.swift */; };
-		9868C0572410315E00B12321 /* CommonFrameworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0562410315E00B12321 /* CommonFrameworkUtility.swift */; };
+		9868C0572410315E00B12321 /* CommonFrameworkDateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0562410315E00B12321 /* CommonFrameworkDateUtility.swift */; };
 		9868C0592410326300B12321 /* Date+ Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0582410326300B12321 /* Date+ Extension.swift */; };
 		9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C05B2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift */; };
 		9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C05F2410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift */; };
@@ -241,7 +241,7 @@
 		9868C04D240FE2F200B12321 /* FeedSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSectionFactory.swift; sourceTree = "<group>"; };
 		9868C0502410086600B12321 /* FeedContentCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		9868C05324101E0200B12321 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		9868C0562410315E00B12321 /* CommonFrameworkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFrameworkUtility.swift; sourceTree = "<group>"; };
+		9868C0562410315E00B12321 /* CommonFrameworkDateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFrameworkDateUtility.swift; sourceTree = "<group>"; };
 		9868C0582410326300B12321 /* Date+ Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ Extension.swift"; sourceTree = "<group>"; };
 		9868C05B2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFNetwrokRequestCoordinator.swift; sourceTree = "<group>"; };
 		9868C05F2410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaCoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -684,7 +684,7 @@
 		9868C0552410313900B12321 /* Utitlities */ = {
 			isa = PBXGroup;
 			children = (
-				9868C0562410315E00B12321 /* CommonFrameworkUtility.swift */,
+				9868C0562410315E00B12321 /* CommonFrameworkDateUtility.swift */,
 			);
 			path = Utitlities;
 			sourceTree = "<group>";
@@ -1453,7 +1453,7 @@
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
 				9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */,
-				9868C0572410315E00B12321 /* CommonFrameworkUtility.swift in Sources */,
+				9868C0572410315E00B12321 /* CommonFrameworkDateUtility.swift in Sources */,
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
 				9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */,
