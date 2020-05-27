@@ -42,11 +42,26 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         uploadButton.setTitleColor(.black, for: .normal)
         self.navigationColor.image = UIImage(named: "")
         setupCollectionView()
-        setupFetchresult()
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .authorized:
+            setupFetchresult()
+        case .notDetermined:
+            fallthrough
+        case .restricted:
+            fallthrough
+        case .denied:
+            fallthrough
+        @unknown default:
+            ErrorDisplayer.showError(errorMsg: "Access denied to Photos") { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
         setupUploadButton()
     }
     
     private func setupUploadButton(){
+        uploadButton.isHidden = selectedAssets.count == 0
         uploadButton.backgroundColor = .black
         uploadButton.curvedCornerControl()
         uploadButton.setTitleColor(.white, for: .normal)
