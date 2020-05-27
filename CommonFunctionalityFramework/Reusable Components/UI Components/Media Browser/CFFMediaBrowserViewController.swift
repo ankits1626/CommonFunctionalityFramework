@@ -36,6 +36,7 @@ class CFFMediaBrowserViewController: UIViewController {
     }
     
     private func setupCollectionView(){
+        mediaCollectionView?.alpha = 0
         mediaCollectionView?.register(
             UINib(nibName: "MediaItemCollectionViewCell", bundle: Bundle(for: MediaItemCollectionViewCell.self)),
             forCellWithReuseIdentifier: "MediaItemCollectionViewCell"
@@ -95,6 +96,9 @@ extension CFFMediaBrowserViewController : UICollectionViewDataSource, UICollecti
         return cell
     }
     
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        mediaCollectionView?.alpha = 1
+    }
 }
 
 extension CFFMediaBrowserViewController : UICollectionViewDelegateFlowLayout{
