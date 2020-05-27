@@ -157,6 +157,7 @@ class PostEditorViewController: UIViewController {
     
     @IBAction func createButtonPressed(){
         do{
+            createButton?.isUserInteractionEnabled  = false
             try postCoordinator.checkIfPostReadyToPublish()
             PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
             self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
@@ -168,6 +169,7 @@ class PostEditorViewController: UIViewController {
                     PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
                     post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                         DispatchQueue.main.async {
+                            self?.createButton?.isUserInteractionEnabled  = true
                             switch callResult{
                             case .Success(let rawFeed):
                                 self?.feedOrderManager.insertFeeds(
@@ -175,9 +177,10 @@ class PostEditorViewController: UIViewController {
                                     insertDirection: self?.editablePost?.remotePostId == nil ? .Top : .Bottom,
                                     completion: {[weak self] in
                                         DispatchQueue.main.async {
-                                            self?.dismiss(animated: true, completion: nil)
+                                            ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSucessMessage() ?? "Success") { (_) in
+                                                self?.dismiss(animated: true, completion: nil)
+                                            }
                                         }
-                                        
                                 })
                                 
                             case .SuccessWithNoResponseData:
@@ -193,10 +196,12 @@ class PostEditorViewController: UIViewController {
                     }
                 }
                 else{
+                    self.createButton?.isUserInteractionEnabled  = true
                     print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
                 }
             }
         }catch let error{
+            createButton?.isUserInteractionEnabled  = true
             ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
                 
             }

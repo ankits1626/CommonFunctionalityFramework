@@ -69,6 +69,8 @@ class CFFMediaBrowserViewController: UIViewController {
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         print("download complete")
+        ErrorDisplayer.showError(errorMsg: "Image downloaded successfully.") { (_) in
+        }
         downloadButton?.isHidden = false
     }
 }

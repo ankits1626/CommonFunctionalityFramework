@@ -160,6 +160,14 @@ class PostCoordinator {
         currentPost.pollActiveDays = days
     }
     
+    func getPostSucessMessage() -> String {
+        switch currentPost.postType {
+        case .Poll:
+            return "Poll successfully created."
+        case .Post:
+            return "Post successfully created."
+        }
+    }
 }
 
 extension PostCoordinator{
