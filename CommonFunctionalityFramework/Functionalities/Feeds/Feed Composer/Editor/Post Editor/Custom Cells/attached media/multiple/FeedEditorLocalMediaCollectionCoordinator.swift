@@ -16,8 +16,8 @@ struct InitFeedEditorLocalMediaCollectionCoordinatorModel {
 }
 
 enum EditableMediaSection : Int, CaseIterable{
-    case Remote = 0
-    case Local
+    case Local = 0
+    case Remote
 }
 
 class FeedEditorLocalMediaCollectionCoordinator : NSObject {
