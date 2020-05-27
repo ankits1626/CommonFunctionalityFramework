@@ -160,12 +160,16 @@ class PostCoordinator {
         currentPost.pollActiveDays = days
     }
     
-    func getPostSucessMessage() -> String {
+    func getPostSuccessMessage() -> String {
         switch currentPost.postType {
         case .Poll:
             return "Poll successfully created."
         case .Post:
-            return "Post successfully created."
+            if currentPost.remotePostId == nil{
+                return "Post successfully created."
+            }else{
+                return "Post edited successfully."
+            }
         }
     }
 }
@@ -199,6 +203,9 @@ extension PostCoordinator{
             return
         }else if let mediaItems  = currentPost.selectedMediaItems,
             !mediaItems.isEmpty{
+            return
+        }else if let remoteMediaItems  = currentPost.remoteAttachedMedia,
+            !remoteMediaItems.isEmpty{
             return
         }
         else{
