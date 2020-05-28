@@ -51,8 +51,9 @@ class CFFMediaBrowserViewController: UIViewController {
         mediaCollectionView?.scrollToItem(
             at: IndexPath(item: selectedIndex, section: 0),
             at: UICollectionView.ScrollPosition.centeredHorizontally,
-            animated: true
+            animated: false
         )
+        mediaCollectionView?.alpha = 1
     }
     
     @IBAction private func closeBowser(){
