@@ -120,6 +120,10 @@ extension UIColor{
         return .white
     }
     
+    static var urlColor : UIColor {
+        return UIColor(red: 53.0/255, green: 152.0/255, blue: 220.0/255, alpha: 1)
+    }
+    
 }
 
 struct AppliedCornerRadius {

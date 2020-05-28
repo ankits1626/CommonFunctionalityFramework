@@ -7,8 +7,9 @@
 //
 
 import UIKit
+//import TTTAttributedLabel
 
-class FeedTitleTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
+class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
     var cellType: FeedCellTypeProtocol{
         return FeedTitleTableViewCellType()
     }
@@ -23,7 +24,26 @@ class FeedTitleTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
         for: inputModel.targetIndexpath)
         if let cell  = targetCell as? FeedTitleTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            cell.feedTitle?.enabledTypes  = [.url]
             cell.feedTitle?.text = feed.getFeedTitle()
+            cell.feedTitle?.URLColor = .urlColor
+            cell.feedTitle?.handleURLTap({ (targetUrl) in
+                print("<<<<<<<< open \(targetUrl)")
+                if !targetUrl.absoluteString.hasPrefix("http"),
+                    let modifiedUrl = URL(string: "http://\(targetUrl.absoluteString)"){
+                    UIApplication.shared.open(
+                        modifiedUrl,
+                        options: [:],
+                        completionHandler: nil
+                    )
+                }else{
+                    UIApplication.shared.open(
+                        targetUrl,
+                        options: [:],
+                        completionHandler: nil
+                    )
+                }
+            })
             cell.feedTitle?.font = UIFont.Title1
             cell.feedTitle?.textColor = UIColor.getTitleTextColor()
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
@@ -43,3 +63,13 @@ class FeedTitleTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     }
     
 }
+
+//extension FeedTitleTableViewCellCoordinator : TTTAttributedLabelDelegate{
+//    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+//        UIApplication.shared.open(
+//            url,
+//            options: [:],
+//            completionHandler: nil
+//        )
+//    }
+//}

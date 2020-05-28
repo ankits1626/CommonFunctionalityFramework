@@ -8,7 +8,8 @@
 
 import UIKit
 
-class FeedTextTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+
+class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
     var cellType: FeedCellTypeProtocol{
         return FeedTextTableViewCellType()
     }
@@ -22,9 +23,28 @@ class FeedTextTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             if inputModel.datasource.showShowFullfeedDescription(){
                 cell.feedText?.numberOfLines = 0
             }
+            cell.feedText?.enabledTypes  = [.url]
             cell.feedText?.text = feed.getFeedDescription()
+            cell.feedText?.URLColor = .urlColor
             cell.feedText?.font = UIFont.Body1
             cell.feedText?.textColor = UIColor.getTitleTextColor()
+            cell.feedText?.handleURLTap({ (targetUrl) in
+                print("<<<<<<<< open \(targetUrl)")
+                if !targetUrl.absoluteString.hasPrefix("http"),
+                    let modifiedUrl = URL(string: "http://\(targetUrl.absoluteString)"){
+                    UIApplication.shared.open(
+                        modifiedUrl,
+                        options: [:],
+                        completionHandler: nil
+                    )
+                }else{
+                    UIApplication.shared.open(
+                        targetUrl,
+                        options: [:],
+                        completionHandler: nil
+                    )
+                }
+            })
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             if inputModel.datasource.showShowFullfeedDescription(){
                 cell.readMorebutton?.isHidden = true

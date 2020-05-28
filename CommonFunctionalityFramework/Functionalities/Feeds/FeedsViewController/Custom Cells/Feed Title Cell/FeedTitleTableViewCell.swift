@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class FeedTitleTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
-    @IBOutlet weak var feedTitle : UILabel?
+    @IBOutlet weak var feedTitle : ActiveLabel?
     @IBOutlet weak var containerView : UIView?
     override func awakeFromNib() {
         super.awakeFromNib()
