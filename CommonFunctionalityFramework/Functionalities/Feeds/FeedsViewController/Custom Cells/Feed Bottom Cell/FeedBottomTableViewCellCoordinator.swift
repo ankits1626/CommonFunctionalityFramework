@@ -22,6 +22,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedBottomTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            cell.seperator?.backgroundColor = .seperatorColor
             cell.commentsCountLabel?.text = feed.getNumberOfComments()
             cell.commentsCountLabel?.font = UIFont.Caption1
             cell.commentsCountLabel?.textColor = UIColor.getSubTitleTextColor()

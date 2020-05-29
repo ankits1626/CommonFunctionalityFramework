@@ -16,7 +16,7 @@ struct FloatingMenuOption {
 
 class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
     var contentSize: CGSize {
-        return CGSize(width: 92, height: max(48, 24 * options.count))
+        return CGSize(width: 92, height: max(24, 24 * options.count))
     }
     var arrowDirection: UIPopoverArrowDirection = .none
     var options : [FloatingMenuOption]
@@ -46,6 +46,7 @@ class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
     }
     
     private func setupTableView(){
+        listTable?.separatorStyle = options.count == 1 ? .none : .singleLine
         listTable?.isScrollEnabled = false
         listTable?.register(
             UINib(nibName: "FloatingMenuOptionTableViewCell", bundle: Bundle(for: FloatingMenuOptionTableViewCell.self)),

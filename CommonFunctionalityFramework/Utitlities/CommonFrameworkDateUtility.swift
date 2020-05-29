@@ -40,16 +40,19 @@ class CommonFrameworkDateUtility {
         let date = dateFormatter.date(from:input)!
         let days =  getDaysDifferenceBetweenTwoDates(from: Date(), to: date)
         
+        let calendar = Calendar.current
         if days == 0{
-            return "Today"
-        }
-        else if days == -1{
-            return "Yesterday"
-        }else{
-            let calendar = Calendar.current
-            let components = calendar.dateComponents([.year, .month, .day], from: date)
-            dateFormatter.dateFormat = "dd-MM-yyyy"
+            var components = calendar.dateComponents([.hour, .minute], from: date)
+            components.hour = 11
+            dateFormatter.dateFormat = "hh:mma"
+            dateFormatter.amSymbol = "am"
+            dateFormatter.pmSymbol = "pm"
             return dateFormatter.string(from: calendar.date(from:components)!)
+        }else{
+            return getDisplayedDateInFormatDMMMYYYY(input: input, dateFormat: dateFormat)
+//            let components = calendar.dateComponents([.year, .month, .day], from: date)
+//            dateFormatter.dateFormat = "dd-MM-yyyy"
+//            return dateFormatter.string(from: calendar.date(from:components)!)
         }
     }
     

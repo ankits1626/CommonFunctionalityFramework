@@ -124,6 +124,10 @@ extension UIColor{
         return UIColor(red: 53.0/255, green: 152.0/255, blue: 220.0/255, alpha: 1)
     }
     
+    static var seperatorColor : UIColor {
+        return UIColor(red: 240.0/255, green: 240.0/255, blue: 240.0/255, alpha: 1)
+    }
+    
 }
 
 struct AppliedCornerRadius {

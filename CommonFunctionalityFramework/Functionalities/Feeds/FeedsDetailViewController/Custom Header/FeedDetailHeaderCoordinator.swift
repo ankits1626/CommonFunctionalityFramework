@@ -59,12 +59,7 @@ class FeedDetailHeaderCoordinator {
     private func configureCommentsHeader(_ view : FeedDetailHeader?){
         view?.headerTitleLabel?.text = "Comments"
         view?.headerActionButton?.isHidden = true
-        if let commentsCount = feedDataSource.getCommentProvider()?.getNumberOfComments(),
-            commentsCount != 0 {
-            view?.headerSecondaryTitleLabel?.text = "\(commentsCount) comment\(commentsCount == 1 ? "" : "s")"
-        }else{
-            view?.headerSecondaryTitleLabel?.text = nil
-        }
+        view?.headerSecondaryTitleLabel?.text = nil
     }
     
     private func configureClapsHeader(_ view : FeedDetailHeader?){

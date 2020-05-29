@@ -174,6 +174,7 @@
                     </subviews>
                 </stackView>
             </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bnc-tH-YUH" secondAttribute="trailing" id="C0W-k3-JS4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Bnc-tH-YUH" secondAttribute="bottom" id="QSc-SM-bS8"/>

@@ -170,6 +170,7 @@
                 <outlet property="clapsCountLabel" destination="Xdo-eI-aAd" id="ATs-ch-hbV"/>
                 <outlet property="commentsCountLabel" destination="hCD-Xn-VEy" id="pWO-hM-09j"/>
                 <outlet property="containerView" destination="U2b-wS-JUv" id="WyP-fd-QXT"/>
+                <outlet property="seperator" destination="lxC-72-VQr" id="6iw-KE-GlA"/>
                 <outlet property="showAllClapsButton" destination="6cF-qw-ohN" id="iuV-lr-YfT"/>
             </connections>
             <point key="canvasLocation" x="216.66666666666669" y="120.87053571428571"/>

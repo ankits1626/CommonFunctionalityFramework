@@ -38,8 +38,10 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.userNameLabel?.font = UIFont.Highlighter2
             cell.commentDateLabel?.text = comment?.getCommentDate()
             cell.commentDateLabel?.font = .Caption1
+            cell.commentDateLabel?.textColor = .getSubTitleTextColor()
             cell.userDepartmentLabel?.text = comment?.getCommentUser().getAuthorDepartmentName()
             cell.userDepartmentLabel?.font = UIFont.Caption1
+            cell.userDepartmentLabel?.textColor = .getSubTitleTextColor()
             cell.commentLabel?.text = comment?.getCommentText()
             cell.commentLabel?.font = UIFont.Body1
             if inputModel.targetIndexpath.row + 1 == (inputModel.datasource.getCommentProvider()?.getNumberOfComments() ?? 0){

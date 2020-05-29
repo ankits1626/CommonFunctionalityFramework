@@ -37,8 +37,8 @@ class FeedsViewController: UIViewController {
     private lazy var refreshControl : UIRefreshControl  = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshFeeds), for: .valueChanged)
-        refreshControl.backgroundColor = .black
-        refreshControl.tintColor = .white //Rgbconverter.HexToColor(get_backgroundColor(), alpha: 1.0)
+        refreshControl.backgroundColor = .clear
+        refreshControl.tintColor = .gray
         return refreshControl
     }()
     
@@ -154,6 +154,7 @@ class FeedsViewController: UIViewController {
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
         feedsTable?.loadControl = UILoadControl(target: self, action: #selector(loadFeeds))
+        feedsTable?.loadControl?.tintColor = .gray
         feedsTable?.loadControl?.heightLimit = 100.0
     }
 }

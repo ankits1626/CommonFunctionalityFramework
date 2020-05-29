@@ -15,6 +15,7 @@ class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var commentsButton : UIButton?
     @IBOutlet weak var commentsCountLabel : UILabel?
     @IBOutlet weak var containerView : UIView?
+    @IBOutlet weak var seperator : UIView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
