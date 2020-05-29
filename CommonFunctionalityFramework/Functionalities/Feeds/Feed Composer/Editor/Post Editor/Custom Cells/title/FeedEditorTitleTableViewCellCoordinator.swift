@@ -47,7 +47,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.titleText?.placeholderFont = .Body2
             cell.maxCharacterLabel?.textColor = UIColor.getPlaceholderTextColor()
             cell.maxCharacterLabel?.font = .Caption1
-            cell.maxCharacterLabel?.text = "(Max \(max_title_length) Character)"
+            cell.maxCharacterLabel?.text = "(Max \(max_title_length) Characters)"
             //cell.maxCharacterLabel?.isHidden = cell.titleText?.text.isEmpty ?? false
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true

@@ -33,18 +33,26 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        
+        setupAfterViewDidLoad()
     }
     
-    
-    private func setup(){
+    private func setupAfterViewDidLoad(){
         uploadButton.setTitleColor(.black, for: .normal)
         self.navigationColor.image = UIImage(named: "")
-        setupCollectionView()
+        setupUploadButton()
+    }
+    
+    private func setup(){
+        checkPermissions {
+            setupCollectionView()
+        }
+    }
+    
+    private func checkPermissions(_ completion :(() -> Void)){
         switch PHPhotoLibrary.authorizationStatus() {
         case .authorized:
             setupFetchresult()
+            completion()
         case .notDetermined:
             fallthrough
         case .restricted:
@@ -56,8 +64,6 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
                 self.dismiss(animated: true, completion: nil)
             }
         }
-        
-        setupUploadButton()
     }
     
     private func setupUploadButton(){
@@ -161,12 +167,12 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         updateItemSize()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setup()
     }
         
     private func updateItemSize() {
@@ -193,7 +199,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     // MARK: UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fetchResult.count
+        return fetchResult == nil ? 0 : fetchResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
