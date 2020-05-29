@@ -19,13 +19,13 @@ class PostCoordinatorError {
     static let PollNotReadyToBePosted = NSError(
            domain: "com.rewardz.EventDetailCellTypeError",
            code: 1,
-           userInfo: [NSLocalizedDescriptionKey: "Poll is not ready to be posted. Please fill all the required fields."]
+           userInfo: [NSLocalizedDescriptionKey: "Cannot post an empty Poll."]
        )
     
     static let PostNotReadyToBePosted = NSError(
         domain: "com.rewardz.EventDetailCellTypeError",
         code: 1,
-        userInfo: [NSLocalizedDescriptionKey: "Post is not ready to be posted. Please fill all the required fields."]
+        userInfo: [NSLocalizedDescriptionKey: "Cannot post an empty Post."]
     )
 }
 
@@ -196,10 +196,12 @@ extension PostCoordinator{
         if let _ = currentPost.pollOptions{
             return
         }
-        else if let _  = currentPost.title{
+        else if let title  = currentPost.title,
+        !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             return
         }
-        else if let _  = currentPost.postDesciption{
+        else if let description  = currentPost.postDesciption,
+            !description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
             return
         }else if let mediaItems  = currentPost.selectedMediaItems,
             !mediaItems.isEmpty{

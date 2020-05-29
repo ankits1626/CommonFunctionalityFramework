@@ -12,8 +12,9 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
     var delegate : PostEditorCellFactoryDelegate?
     var targetIndexPath : IndexPath = []
     private weak var targetTableView : UITableView?
-    private let MAX_CHARACTER_LENGTH = 80
-    
+    private let POST_MAX_CHARACTER_LENGTH = 80
+    private let POLL_MAX_CHARACTER_LENGTH = 200
+    private var max_title_length = 0
     func getCell(_ inputModel: PostEditorCellDequeueModel) -> UITableViewCell {
         targetTableView = inputModel.targetTableView
         let targetCell = inputModel.targetTableView.dequeueReusableCell(
@@ -36,15 +37,17 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             switch post!.postType {
             case .Poll:
                 cell.titleText?.placeholder = "Ask something"
+                max_title_length = POLL_MAX_CHARACTER_LENGTH
             case .Post:
                 cell.titleText?.placeholder = "Title"
                 cell.titleText?.font = .SemiBold14
+                max_title_length = POST_MAX_CHARACTER_LENGTH
             }
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()
             cell.titleText?.placeholderFont = .Body2
             cell.maxCharacterLabel?.textColor = UIColor.getPlaceholderTextColor()
             cell.maxCharacterLabel?.font = .Caption1
-            cell.maxCharacterLabel?.text = "(Max \(MAX_CHARACTER_LENGTH) Character)"
+            cell.maxCharacterLabel?.text = "(Max \(max_title_length) Character)"
             //cell.maxCharacterLabel?.isHidden = cell.titleText?.text.isEmpty ?? false
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
@@ -70,7 +73,7 @@ extension FeedEditorTitleTableViewCellCoordinator : UITextViewDelegate{
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        return textView.text.count + (text.count - range.length) <= MAX_CHARACTER_LENGTH
+        return textView.text.count + (text.count - range.length) <= max_title_length
     }
     
     private func toggleMaxCharacterCountPlaceHolderVisibility(){
