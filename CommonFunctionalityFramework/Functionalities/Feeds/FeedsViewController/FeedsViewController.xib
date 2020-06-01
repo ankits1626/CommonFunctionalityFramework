@@ -117,7 +117,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkg-vJ-1ja">
                                                             <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
                                                             <connections>
-                                                                <action selector="openFeedComposerSelectionDrawer" destination="-1" eventType="touchUpInside" id="SYR-PT-UqA"/>
+                                                                <action selector="openImagePickerToComposePost" destination="-1" eventType="touchUpInside" id="T7C-cH-rXc"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>

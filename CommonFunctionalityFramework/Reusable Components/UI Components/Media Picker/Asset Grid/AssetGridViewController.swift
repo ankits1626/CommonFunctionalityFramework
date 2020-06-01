@@ -87,6 +87,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     
     private func setupCollectionView(){
         collectionView.register(UINib(nibName: "GridViewCell", bundle: Bundle(for: GridViewCell.self)), forCellWithReuseIdentifier: "GridViewCell")
+        collectionView.reloadData()
     }
     
     @IBAction func backButtonTapped(_ sender: AnyObject) {

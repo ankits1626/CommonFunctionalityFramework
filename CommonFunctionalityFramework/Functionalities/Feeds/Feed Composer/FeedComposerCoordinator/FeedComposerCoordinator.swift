@@ -12,10 +12,12 @@ class FeedComposerCoordinator {
     let feedCoordinatorDelegate: FeedsCoordinatorDelegate
      var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
-    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?) {
+    private var shouldOpenGallery : Bool = false
+    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, shouldOpenGallery : Bool) {
         self.feedCoordinatorDelegate = delegate
         self.requestCoordinator = requestCoordinator
         self.mediaFetcher = mediaFetcher
+        self.shouldOpenGallery = shouldOpenGallery
     }
     
     func showFeedItemEditor(type : FeedType) {
@@ -31,7 +33,8 @@ class FeedComposerCoordinator {
             postType: type,
             requestCoordinator: requestCoordinator,
             post: feed?.getEditablePost(),
-            mediaFetcher: mediaFetcher
+            mediaFetcher: mediaFetcher,
+            shouldOpenGallery: shouldOpenGallery
         )
         feedCoordinatorDelegate.showComposer(_composer: postEditor) { (topBarModel) in
             postEditor.containerTopBarModel = topBarModel

@@ -55,12 +55,13 @@ class PostEditorViewController: UIViewController {
         return LocalMediaManager()
     }()
     private let editablePost : EditablePostProtocol?
-    
-    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?){
+    private var shouldOpenGallery : Bool = false
+    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, shouldOpenGallery:Bool){
         self.postType  = postType
         self.requestCoordinator = requestCoordinator
         self.editablePost = post
         self.mediaFetcher = mediaFetcher
+        self.shouldOpenGallery = shouldOpenGallery
         super.init(
             nibName: "PostEditorViewController"
             , bundle: Bundle(for: PostEditorViewController.self))
@@ -74,6 +75,13 @@ class PostEditorViewController: UIViewController {
         setup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if shouldOpenGallery{
+            shouldOpenGallery = false
+            initiateMediaAttachment()
+        }
+    }
     
     private func setup(){
         view.backgroundColor = .viewBackgroundColor

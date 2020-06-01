@@ -338,7 +338,8 @@ extension FeedsDetailViewController : FeedsDelegate{
         FeedComposerCoordinator(
             delegate: feedCoordinatorDelegate,
             requestCoordinator: requestCoordinator,
-            mediaFetcher: mediaFetcher
+            mediaFetcher: mediaFetcher,
+            shouldOpenGallery: false
         ).editPost(feed: feed)
     }
     

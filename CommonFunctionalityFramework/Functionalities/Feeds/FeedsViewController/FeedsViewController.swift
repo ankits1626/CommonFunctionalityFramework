@@ -169,10 +169,19 @@ extension FeedsViewController{
         }catch let error{
             print("show error")
             ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
-                
             }
         }
     }
+    
+    @IBAction func openImagePickerToComposePost(){
+        FeedComposerCoordinator(
+            delegate: feedCoordinatorDelegate,
+            requestCoordinator: requestCoordinator,
+            mediaFetcher: mediaFetcher,
+            shouldOpenGallery: true
+        ).showFeedItemEditor(type: .Post)
+    }
+    
 }
 
 extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
@@ -267,8 +276,6 @@ extension FeedsViewController : FeedsDelegate{
             CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                 let post = ((feedItem as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
                 post?.pollUpdatedTrigger = NSDate()
-               
-                
                 CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                     CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                 }
@@ -357,7 +364,8 @@ extension FeedsViewController : FeedsDelegate{
         FeedComposerCoordinator(
             delegate: feedCoordinatorDelegate,
             requestCoordinator: requestCoordinator,
-            mediaFetcher: mediaFetcher
+            mediaFetcher: mediaFetcher,
+            shouldOpenGallery: false 
         ).editPost(feed: feed)
     }
     
@@ -460,22 +468,22 @@ extension FeedsViewController:  NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             if let unwrappedInsertedIndexpath = newIndexPath {
-                feedsTable?.insertSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
+                feedsTable?.insertSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .none)
             }
         case .delete:
             if let unwrappedInsertedIndexpath = indexPath {
-                feedsTable?.deleteSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
+                feedsTable?.deleteSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .none)
             }
         case .update:
             if let unwrappedInsertedIndexpath = indexPath {
-                feedsTable?.reloadSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
+                feedsTable?.reloadSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .none)
             }
         case .move:
             if let unwrappedInsertedIndexpath = indexPath {
                 if let unwrappedNewindexpath = newIndexPath {
                     print("<<<<<<<<<<, moved to row at \(unwrappedNewindexpath)")
-                    feedsTable?.deleteSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .fade)
-                    feedsTable?.insertSections(IndexSet(integer: unwrappedNewindexpath.row), with: .fade)
+                    feedsTable?.deleteSections(IndexSet(integer: unwrappedInsertedIndexpath.row), with: .none)
+                    feedsTable?.insertSections(IndexSet(integer: unwrappedNewindexpath.row), with: .none)
                 }
             }
         @unknown default:
