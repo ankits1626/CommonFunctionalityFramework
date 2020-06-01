@@ -105,6 +105,7 @@ extension LikeListViewController : UITableViewDataSource, UITableViewDelegate{
             targetCell.userName?.font = .Body2
             targetCell.departmentName?.text = user.getAuthorDepartmentName()
             targetCell.departmentName?.font = .Caption1
+            targetCell.departmentName?.textColor = .getSubTitleTextColor()
             if let profileImageEndpoint = user.getAuthorProfileImageUrl(){
                 mediaFetcher?.fetchImageAndLoad(targetCell.profileImage, imageEndPoint: profileImageEndpoint)
             }else{

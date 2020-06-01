@@ -52,6 +52,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
             cell.containerView?.curvedCornerControl()
+            hideMaxCharacterCountLabel(cell)
         }
     }
     
@@ -78,11 +79,15 @@ extension FeedEditorTitleTableViewCellCoordinator : UITextViewDelegate{
     
     private func toggleMaxCharacterCountPlaceHolderVisibility(){
         if let cell = targetTableView?.cellForRow(at: targetIndexPath) as?FeedEditorTitleTableViewCell{
-            if  let isTextempty = cell.titleText?.text.isEmpty{
-                cell.maxCharacterLabel?.isHidden = !isTextempty
-            }else{
-                cell.maxCharacterLabel?.isHidden  = false
-            }
+            hideMaxCharacterCountLabel(cell)
+        }
+    }
+    
+    private func hideMaxCharacterCountLabel(_ cell : FeedEditorTitleTableViewCell){
+        if  let isTextempty = cell.titleText?.text.isEmpty{
+            cell.maxCharacterLabel?.isHidden = !isTextempty
+        }else{
+            cell.maxCharacterLabel?.isHidden  = false
         }
     }
 }
