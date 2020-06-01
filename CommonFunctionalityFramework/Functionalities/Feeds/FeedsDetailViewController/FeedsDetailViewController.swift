@@ -355,7 +355,6 @@ extension FeedsDetailViewController : FeedsDelegate{
                 PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier) { (result) in
                     switch result{
                     case .Success(result: _):
-                        
                         DispatchQueue.main.async {[weak self] in
                             if let feedItem = self?.targetFeedItem{
                                 CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
@@ -365,7 +364,9 @@ extension FeedsDetailViewController : FeedsDelegate{
                                             print("<<<<<<<<<<<<<poll deleted suceessfully")
                                             CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                                             DispatchQueue.main.async {
-                                                self?.feedCoordinatorDelegate.removeFeedDetail()
+                                                ErrorDisplayer.showError(errorMsg: "Deleted successfully.") { (_) in
+                                                    self?.feedCoordinatorDelegate.removeFeedDetail()
+                                                }
                                             }
                                         }
                                     }

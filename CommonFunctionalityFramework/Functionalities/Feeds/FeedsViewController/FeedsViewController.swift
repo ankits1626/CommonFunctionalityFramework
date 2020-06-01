@@ -380,8 +380,7 @@ extension FeedsViewController : FeedsDelegate{
             if let unwrappedSelf = self{
                 PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier) { (result) in
                     switch result{
-                    case .Success(result: let result):
-                        
+                    case .Success(result: _):
                         DispatchQueue.main.async {[weak self] in
                             if let feedItem = self?.getFeedItem(feedIdentifier: feedIdentifier){
                                 CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
@@ -393,6 +392,7 @@ extension FeedsViewController : FeedsDelegate{
                                         }
                                     }
                                 }
+                                 ErrorDisplayer.showError(errorMsg: "Deleted successfully.") { (_) in}
                             }
                         }
                     case .SuccessWithNoResponseData:

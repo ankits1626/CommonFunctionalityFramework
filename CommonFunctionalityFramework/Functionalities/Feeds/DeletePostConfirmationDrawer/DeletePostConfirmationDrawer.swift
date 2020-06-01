@@ -72,8 +72,9 @@ class DeletePostConfirmationDrawer: UIViewController {
     
     @IBAction private func deleteButtonPressed(){
         if let unwrappedCompletion = deletePressedCompletion{
-            unwrappedCompletion()
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true) {
+                unwrappedCompletion()
+            }
         }
     }
 }
