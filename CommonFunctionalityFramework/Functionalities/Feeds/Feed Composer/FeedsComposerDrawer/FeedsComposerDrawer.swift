@@ -72,7 +72,7 @@ extension FeedsComposerDrawer{
             FeedComposerCoordinator(
                 delegate: self.feedCoordinatorDeleagate,
                 requestCoordinator: self.requestCoordinator,
-                mediaFetcher: nil, shouldOpenGallery: false).showFeedItemEditor(type: type)
+                mediaFetcher: nil, selectedAssets: nil).showFeedItemEditor(type: type)
         }
     }
     

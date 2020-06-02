@@ -174,12 +174,20 @@ extension FeedsViewController{
     }
     
     @IBAction func openImagePickerToComposePost(){
-        FeedComposerCoordinator(
-            delegate: feedCoordinatorDelegate,
-            requestCoordinator: requestCoordinator,
-            mediaFetcher: mediaFetcher,
-            shouldOpenGallery: true
-        ).showFeedItemEditor(type: .Post)
+        let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
+        assetGridVC.localMediaManager = LocalMediaManager()
+        assetGridVC.assetSelectionCompletion = { (selectedMediaItems) in
+            FeedComposerCoordinator(
+                delegate: self.feedCoordinatorDelegate,
+                requestCoordinator: self.requestCoordinator,
+                mediaFetcher: self.mediaFetcher,
+                selectedAssets: selectedMediaItems
+            ).showFeedItemEditor(type: .Post)
+        }
+        assetGridVC.maximumItemSelectionAllowed = 10
+        present(assetGridVC, animated: true, completion: nil)
+        
+        
     }
     
 }
@@ -365,7 +373,7 @@ extension FeedsViewController : FeedsDelegate{
             delegate: feedCoordinatorDelegate,
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher,
-            shouldOpenGallery: false 
+            selectedAssets: nil
         ).editPost(feed: feed)
     }
     

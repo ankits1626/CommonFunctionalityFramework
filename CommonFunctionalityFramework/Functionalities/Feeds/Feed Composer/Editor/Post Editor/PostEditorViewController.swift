@@ -55,16 +55,20 @@ class PostEditorViewController: UIViewController {
         return LocalMediaManager()
     }()
     private let editablePost : EditablePostProtocol?
-    private var shouldOpenGallery : Bool = false
-    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, shouldOpenGallery:Bool){
+    private var deferredSelectedMediaLoad : (() -> Void)?
+    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?){
         self.postType  = postType
         self.requestCoordinator = requestCoordinator
         self.editablePost = post
         self.mediaFetcher = mediaFetcher
-        self.shouldOpenGallery = shouldOpenGallery
         super.init(
             nibName: "PostEditorViewController"
             , bundle: Bundle(for: PostEditorViewController.self))
+        if let unwrappedAssets = selectedAssets{
+            deferredSelectedMediaLoad = {
+                self.postCoordinator.updateAttachedMediaItems(unwrappedAssets)
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -75,19 +79,14 @@ class PostEditorViewController: UIViewController {
         setup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if shouldOpenGallery{
-            shouldOpenGallery = false
-            initiateMediaAttachment()
-        }
-    }
-    
     private func setup(){
         view.backgroundColor = .viewBackgroundColor
         setupTableView()
         setupCreateButton()
         setupPostWithDepartment()
+        if let deferredLoad = deferredSelectedMediaLoad{
+            deferredLoad()
+        }
     }
     
     private func setupCheckbox(){
