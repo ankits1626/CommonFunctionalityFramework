@@ -1,10 +1,3 @@
-//
-//  UIView+XibSetup.swift
-//  Vyn
-//
-//  Created by ankit on 26/06/19.
-//  Copyright © 2019 humanLearning. All rights reserved.
-//
 
 import UIKit
 
