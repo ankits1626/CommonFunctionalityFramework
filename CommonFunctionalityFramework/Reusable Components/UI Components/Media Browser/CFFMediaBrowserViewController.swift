@@ -88,6 +88,7 @@ extension CFFMediaBrowserViewController : UICollectionViewDataSource, UICollecti
         let mediaItemUrl = mediaList[indexPath.row].getCoverImageUrl()
         mediaFetcher.fetchImageAndLoad(cell.mediaCoverImageView, imageEndPoint: mediaItemUrl ?? "")
         cell.mediaCoverImageView?.curvedCornerControl()
+        cell.mediaCoverImageView?.contentMode = .scaleAspectFit
         let mediaType = mediaList[indexPath.row].getMediaType()
         if mediaType == .Video{
              cell.playButton?.isHidden = false
