@@ -62,7 +62,6 @@ class ASChatBarview : UIView {
     private let kAttachmentContainerBottomInset : CGFloat = 5
     private let kDefaultAttachmentContainerWidth : CGFloat = 44
     private let kDefaultAttachmentContainerHeight  : CGFloat = 44
-    private var  hasAlreadyLoadedXib = false
     
     var placeholder: String?{
         didSet{
@@ -122,10 +121,6 @@ class ASChatBarview : UIView {
     }
 
     private func commonSetup(){
-        if !hasAlreadyLoadedXib{
-            hasAlreadyLoadedXib = true
-            
-        }
         xibSetup()
         registerForKeyboardNotifications()
         registerForTextChangeNotification()

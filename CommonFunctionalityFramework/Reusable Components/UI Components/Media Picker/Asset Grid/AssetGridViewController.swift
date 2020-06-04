@@ -44,17 +44,20 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     
     private func setup(){
         checkPermissions {
-            setupCollectionView()
+            self.setupCollectionView()
         }
     }
     
-    private func checkPermissions(_ completion :(() -> Void)){
+    private func checkPermissions(_ completion :@escaping (() -> Void)){
         switch PHPhotoLibrary.authorizationStatus() {
         case .authorized:
             setupFetchresult()
             completion()
         case .notDetermined:
-            fallthrough
+            askForPermission {
+                self.setupFetchresult()
+                completion()
+            }
         case .restricted:
             fallthrough
         case .denied:
@@ -62,6 +65,16 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         @unknown default:
             ErrorDisplayer.showError(errorMsg: "Access denied to Photos") { (_) in
                 self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func askForPermission(_ completion: @escaping (() -> Void)){
+        PHPhotoLibrary.requestAuthorization { (status) in
+            DispatchQueue.main.async {
+                self.checkPermissions {
+                    completion()
+                }
             }
         }
     }
