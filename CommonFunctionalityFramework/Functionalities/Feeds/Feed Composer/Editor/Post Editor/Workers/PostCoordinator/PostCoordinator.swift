@@ -19,13 +19,17 @@ class PostCoordinatorError {
     static let PollNotReadyToBePosted = NSError(
            domain: "com.rewardz.EventDetailCellTypeError",
            code: 1,
-           userInfo: [NSLocalizedDescriptionKey: "Cannot post an empty Poll."]
+           userInfo: [NSLocalizedDescriptionKey: "Cannot create an empty Poll."]
        )
-    
+    static let PollWithLessThan2ValidOptionsNotReadyToBePosted = NSError(
+        domain: "com.rewardz.EventDetailCellTypeError",
+        code: 1,
+        userInfo: [NSLocalizedDescriptionKey: "Cannot create a poll with less than 2 valid options."]
+    )
     static let PostNotReadyToBePosted = NSError(
         domain: "com.rewardz.EventDetailCellTypeError",
         code: 1,
-        userInfo: [NSLocalizedDescriptionKey: "Cannot post an empty Post."]
+        userInfo: [NSLocalizedDescriptionKey: "Cannot create an empty Post."]
     )
 }
 
@@ -185,10 +189,21 @@ extension PostCoordinator{
     }
     
     private func  checkIfPollReadyToBePosted() throws{
-        if let _ = currentPost.pollOptions{
-            
-        }else{
+        if currentPost.title == nil{
             throw PostCoordinatorError.PollNotReadyToBePosted
+        }
+        
+        if let title  = currentPost.title,
+            title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            throw PostCoordinatorError.PollNotReadyToBePosted
+        }
+        if currentPost.pollOptions == nil{
+            throw PostCoordinatorError.PollWithLessThan2ValidOptionsNotReadyToBePosted
+        }
+        else if let options = currentPost.getCleanPollOptions(){
+            if options.count < 2{
+                throw PostCoordinatorError.PollWithLessThan2ValidOptionsNotReadyToBePosted
+            }
         }
     }
     

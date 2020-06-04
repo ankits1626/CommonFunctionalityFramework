@@ -24,6 +24,7 @@ protocol EditablePostProtocol {
     func getEditablePostNetworkModel() -> EditablePostNetworkModel
     var isShareWithSameDepartmentOnly : Bool {set get}
     var pollActiveDays : Int {set get}
+    func getCleanPollOptions() -> [String]?
 }
 
 struct LocalSelectedMediaItem : Equatable {
@@ -39,6 +40,12 @@ enum DepartmentSharedChoice : Int {
     case AllDepartment = 20
 }
 struct EditablePost : EditablePostProtocol{
+    func getCleanPollOptions() -> [String]? {
+        return pollOptions?.filter { (anOption) -> Bool in
+            return !anOption.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        }
+    }
+    
     var pollActiveDays: Int = 1
     var isShareWithSameDepartmentOnly: Bool
     var deletedRemoteMediaArray = [Int]()
@@ -59,7 +66,7 @@ struct EditablePost : EditablePostProtocol{
         if let unwrappedTitle = title{
             pollDictionary["title"] = unwrappedTitle
         }
-        if let options = pollOptions{
+        if let options = getCleanPollOptions(){
            pollDictionary["answers"] = options
         }
         pollDictionary["shared_with"] = isShareWithSameDepartmentOnly ? DepartmentSharedChoice.SelfDepartment.rawValue : DepartmentSharedChoice.AllDepartment.rawValue
