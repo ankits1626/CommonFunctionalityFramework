@@ -23,6 +23,7 @@ class PostEditorViewController: UIViewController {
     @IBOutlet private weak var createButton : UIButton?
     @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
     @IBOutlet private weak var postWithSameDepartmentMessage: UILabel?
+    @IBOutlet private weak var postWithSameDepartmentContainer: UIView?
     
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(postObsever: cellFactory, postType: postType, editablePost: editablePost)
@@ -87,6 +88,7 @@ class PostEditorViewController: UIViewController {
         if let deferredLoad = deferredSelectedMediaLoad{
             deferredLoad()
         }
+        postWithSameDepartmentContainer?.isHidden = editablePost?.remotePostId != nil
     }
     
     private func setupCheckbox(){
