@@ -22,6 +22,7 @@ class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             if inputModel.datasource.showShowFullfeedDescription(){
                 cell.feedText?.numberOfLines = 0
+                cell.feedText?.lineBreakMode = NSLineBreakMode.byClipping
             }
             cell.feedText?.enabledTypes  = [.url]
             cell.feedText?.text = feed.getFeedDescription()

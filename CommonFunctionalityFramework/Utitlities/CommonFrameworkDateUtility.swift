@@ -22,37 +22,38 @@ class CommonFrameworkDateUtility {
     }
     
     static func getDisplayedDateInFormatDMMMYYYY(input: String, dateFormat : String) -> String?{
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = dateFormat
+        let dateFormatter = getDateFormatter(dateFormat: dateFormat)
         let date = dateFormatter.date(from:input)!
-        
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: date)
         dateFormatter.dateFormat = "d MMM yyyy"
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: calendar.date(from:components)!)
     }
     
-    static func getDisplayableDate(input: String, dateFormat : String) -> String?{
+    static func getDateFormatter (dateFormat : String) -> DateFormatter{
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = dateFormat
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter
+    }
+    
+    static func getDisplayableDate(input: String, dateFormat : String) -> String?{
+        let dateFormatter = getDateFormatter(dateFormat: dateFormat)
         let date = dateFormatter.date(from:input)!
         let days =  getDaysDifferenceBetweenTwoDates(from: Date(), to: date)
         
         let calendar = Calendar.current
         if days == 0{
-            var components = calendar.dateComponents([.hour, .minute], from: date)
-            components.hour = 11
+            let components = calendar.dateComponents([.hour, .minute], from: date)
+            dateFormatter.timeZone = TimeZone.current
             dateFormatter.dateFormat = "hh:mma"
             dateFormatter.amSymbol = "am"
             dateFormatter.pmSymbol = "pm"
             return dateFormatter.string(from: calendar.date(from:components)!)
         }else{
             return getDisplayedDateInFormatDMMMYYYY(input: input, dateFormat: dateFormat)
-//            let components = calendar.dateComponents([.year, .month, .day], from: date)
-//            dateFormatter.dateFormat = "dd-MM-yyyy"
-//            return dateFormatter.string(from: calendar.date(from:components)!)
         }
     }
     
