@@ -59,11 +59,15 @@ class FeedCommentPosRequestGenerator: APIRequestGeneratorProtocol  {
     }
     var apiRequest: URLRequest?{
         get{
-            return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(comment.feedId)/comments/"),
-                method: .POST,
-                httpBodyDict: comment.getNetworkPostableFormat() as NSDictionary
-            )
+            if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                    url: URL(string: baseUrl + "feeds/api/posts/\(comment.feedId)/comments/"),
+                    method: .POST,
+                    httpBodyDict: comment.getNetworkPostableFormat() as NSDictionary
+                )
+                return req
+            }
+            return nil
         }
     }
 }

@@ -53,8 +53,8 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
     }
     
-    func getLikeToggleUrl() -> URL {
-        return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(feedIdentifier)/appreciate/")!
+    func getLikeToggleUrl(_ baseUrl : String) -> URL {
+        return URL(string: baseUrl + "feeds/api/posts/\(feedIdentifier)/appreciate/")!
     }
     private let rawFeedDictionary : [String : Any]
     private var numberOfLikes: Int64

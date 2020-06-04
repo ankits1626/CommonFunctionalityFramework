@@ -21,7 +21,7 @@ protocol EditablePostProtocol {
     var postableLocalMediaUrls : [URL]? { get set}
     var remoteAttachedMedia: [MediaItemProtocol]?{get set}
     var remotePostId : String?{get}
-    func getEditablePostNetworkModel() -> EditablePostNetworkModel
+    func getEditablePostNetworkModel(_ baseUrl : String) -> EditablePostNetworkModel
     var isShareWithSameDepartmentOnly : Bool {set get}
     var pollActiveDays : Int {set get}
     func getCleanPollOptions() -> [String]?
@@ -103,28 +103,28 @@ struct EditablePost : EditablePostProtocol{
     
     let remotePostId : String?
     
-    func getEditablePostNetworkModel() -> EditablePostNetworkModel{
+    func getEditablePostNetworkModel(_ baseUrl : String) -> EditablePostNetworkModel{
         return EditablePostNetworkModel(
-            url: getEditablePostNetworkUrl(),
+            url: getEditablePostNetworkUrl(baseUrl),
             method: getEditablePostNetworkMethod(),
             postHttpBodyDict: getNetworkPostableFormat() as NSDictionary
         )
     }
     
-    private func getEditablePostNetworkUrl() -> URL?{
+    private func getEditablePostNetworkUrl(_ baseUrl : String) -> URL?{
         if let unwrappedRemotePostId = remotePostId{
             switch postType {
             case .Poll:
                 return nil
             case .Post:
-                return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(unwrappedRemotePostId)/")
+                return URL(string: baseUrl + "feeds/api/posts/\(unwrappedRemotePostId)/")
             }
         }else{
             switch postType {
             case .Poll:
-                return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/create_poll/")
+                return URL(string: baseUrl + "feeds/api/posts/create_poll/")
             case .Post:
-                return URL(string: "https://demo.flabulessdev.com/feeds/api/posts/")
+                return URL(string: baseUrl + "feeds/api/posts/")
             }
         }
     }

@@ -55,12 +55,15 @@ class PollAnswerSubmitRequestGenerator: APIRequestGeneratorProtocol  {
     var apiRequest: URLRequest?{
         get{
             //URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(feedIdentifier)/appreciate/")!
-           let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(feedIdentifier)/vote/"),
-                method: .POST,
-                httpBodyDict: answer.getNewtowrkPostableAnswer() as NSDictionary
-            )
-            return req
+            if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                    url: URL(string: baseUrl + "feeds/api/posts/\(feedIdentifier)/vote/"),
+                    method: .POST,
+                    httpBodyDict: answer.getNewtowrkPostableAnswer() as NSDictionary
+                )
+                return req
+            }
+            return nil
         }
     }
 }

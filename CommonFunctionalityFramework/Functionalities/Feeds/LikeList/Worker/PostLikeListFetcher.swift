@@ -65,12 +65,15 @@ class PostLikeListFetchRequestGenerator: APIRequestGeneratorProtocol  {
             if let unwrappedNextPageUrl = nextPageUrl {
                 return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: unwrappedNextPageUrl), method: .GET, httpBodyDict: nil)
             }else{
-                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(feedIdentifier)/appreciated_by/"),
-                    method: .GET,
-                    httpBodyDict: nil
-                )
-                return req
+                if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                    let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                        url: URL(string: baseUrl + "feeds/api/posts/\(feedIdentifier)/appreciated_by/"),
+                        method: .GET,
+                        httpBodyDict: nil
+                    )
+                    return req
+                }
+                return nil
             }
         }
     }

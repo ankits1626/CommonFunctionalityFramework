@@ -47,7 +47,7 @@ class PostPublisherRequestGenerator: APIRequestGeneratorProtocol  {
     }
     var apiRequest: URLRequest?{
         get{
-            let model = post.getEditablePostNetworkModel()
+            let model = post.getEditablePostNetworkModel(networkRequestCoordinator.getBaseUrlProvider().baseURLString()!)
             var request = self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
                 url: model.url,
                 method: model.method,

@@ -44,12 +44,15 @@ class PostDeleteRequestGenerator: APIRequestGeneratorProtocol  {
     }
     var apiRequest: URLRequest?{
         get{
-            let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/\(feedIdentifier)/"),
-                method: .DELETE,
-                httpBodyDict: nil
-            )
-            return req
+            if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                    url: URL(string: baseUrl + "feeds/api/posts/\(feedIdentifier)/"),
+                    method: .DELETE,
+                    httpBodyDict: nil
+                )
+                return req
+            }
+            return nil
         }
     }
 }

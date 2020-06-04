@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Likeable {
-    func getLikeToggleUrl() -> URL
+    func getLikeToggleUrl(_ baseUrl : String) -> URL
 }
 
 struct LikeToggleResult {
@@ -54,7 +54,7 @@ class FeedClapTogglerRequestGenerator: APIRequestGeneratorProtocol  {
     var apiRequest: URLRequest?{
         get{
             let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                url: likeableElement.getLikeToggleUrl(),
+                url: likeableElement.getLikeToggleUrl(networkRequestCoordinator.getBaseUrlProvider().baseURLString()!),
                 method: .POST,
                 httpBodyDict: nil
             )

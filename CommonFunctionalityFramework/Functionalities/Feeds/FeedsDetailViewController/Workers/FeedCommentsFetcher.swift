@@ -59,13 +59,15 @@ class FeedCommentFetchRequestGenerator: APIRequestGeneratorProtocol  {
     }
     var apiRequest: URLRequest?{
         get{
-            let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                url: URL(string: nextpageUrl ?? "https://demo.flabulessdev.com/feeds/api/posts/\(feedId)/comments/"),
-                method: .GET,
-                httpBodyDict: nil
-            )
-            
-            return req
+            if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                    url: URL(string: nextpageUrl ?? baseUrl + "feeds/api/posts/\(feedId)/comments/"),
+                    method: .GET,
+                    httpBodyDict: nil
+                )
+                return req
+            }
+            return nil
         }
     }
 }

@@ -50,14 +50,15 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
             if let unwrappedNextPageUrl = nextPageUrl {
                 return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: unwrappedNextPageUrl), method: .GET, httpBodyDict: nil)
             }else{
-                //            return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: getServiceURL()+"event_galleries/?event_pk=\(self.eventPk)"), method: .GET, httpBodyDict: nil)
-                
-                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: "https://demo.flabulessdev.com/feeds/api/posts/"),
-                    method: .GET,
-                    httpBodyDict: nil
-                )
-                return req
+                if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                    let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                        url: URL(string: baseUrl + "feeds/api/posts/"),
+                        method: .GET,
+                        httpBodyDict: nil
+                    )
+                    return req
+                }
+                return nil
             }
         }
     }
