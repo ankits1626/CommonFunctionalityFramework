@@ -18,6 +18,9 @@ class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
     var contentSize: CGSize {
         return CGSize(width: 92, height: max(24, 24 * options.count))
     }
+    var popOverBackgroundColor: UIColor?{
+        return .clear
+    }
     var arrowDirection: UIPopoverArrowDirection = .none
     var options : [FloatingMenuOption]
     init( options : [FloatingMenuOption]) {
@@ -32,7 +35,7 @@ class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.superview?.layer.cornerRadius = 0.0;
+//        self.view.superview?.layer.cornerRadius = 0.0;
         self.view.superview?.clipsToBounds = false
         self.view.superview?.layoutSubviews()
     }
@@ -64,6 +67,9 @@ extension FloatingMenuOptions : UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "FloatingMenuOptionTableViewCell") as! FloatingMenuOptionTableViewCell
         cell.optionTile?.text = options[indexPath.row].title
         cell.optionTile?.font = UIFont.Button
+        if indexPath.row == (options.count - 1){
+            cell.separatorInset = UIEdgeInsets(top: 0, left: view.bounds.width, bottom: 0, right: 0)
+        }
         return cell
     }
     

@@ -186,8 +186,6 @@ extension FeedsViewController{
         }
         assetGridVC.maximumItemSelectionAllowed = 10
         present(assetGridVC, animated: true, completion: nil)
-        
-        
     }
     
 }
