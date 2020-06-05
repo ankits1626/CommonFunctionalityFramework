@@ -42,10 +42,9 @@ class CommonFrameworkDateUtility {
     static func getDisplayableDate(input: String, dateFormat : String) -> String?{
         let dateFormatter = getDateFormatter(dateFormat: dateFormat)
         let date = dateFormatter.date(from:input)!
-        let days =  getDaysDifferenceBetweenTwoDates(from: Date(), to: date)
         
         let calendar = Calendar.current
-        if days == 0{
+        if calendar.isDateInToday(date){
             let components = calendar.dateComponents([.hour, .minute], from: date)
             dateFormatter.timeZone = TimeZone.current
             dateFormatter.dateFormat = "hh:mma"
