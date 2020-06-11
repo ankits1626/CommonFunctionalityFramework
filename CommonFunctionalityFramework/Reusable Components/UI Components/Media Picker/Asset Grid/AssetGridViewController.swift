@@ -10,6 +10,65 @@ import UIKit
 import Photos
 import PhotosUI
 
+class PhotosPermissionChecker {
+    func checkPermissions(_ postPermissionsGrantedCompletionBlock :@escaping (() -> Void)) {
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .authorized:
+            postPermissionsGrantedCompletionBlock()
+        case .notDetermined:
+            askForPermission {
+                postPermissionsGrantedCompletionBlock()
+            }
+        case .restricted:
+            fallthrough
+        case .denied:
+            fallthrough
+        @unknown default:
+            showUserAlertToProvideAccessToPhotos()
+        }
+    }
+    
+    private func askForPermission(_ completion: @escaping (() -> Void)){
+        PHPhotoLibrary.requestAuthorization { (status) in
+            DispatchQueue.main.async {
+                self.checkPermissions {
+                    completion()
+                }
+            }
+        }
+    }
+    
+    private func showUserAlertToProvideAccessToPhotos(){
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            let alertVC = UIAlertController(
+                title: nil,
+                message: "Unable to access photos. Please go to settings and enable photo access to use this service.",
+                preferredStyle: .alert)
+            
+            let leftButtonAction = UIAlertAction(title: "Go to settings", style: .default) { _ in
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    if UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            }
+            alertVC.addAction(leftButtonAction)
+            
+            let okAction = UIAlertAction(
+                title: "Cancel",
+                style: .cancel) { (_) in
+            }
+            alertVC.addAction(okAction)
+            topController.present(alertVC, animated: true, completion: nil)
+        }
+    }
+}
+
+
+
 private extension UICollectionView {
     func indexPathsForElements(in rect: CGRect) -> [IndexPath] {
         let allLayoutAttributes = collectionViewLayout.layoutAttributesForElements(in: rect)!
@@ -63,9 +122,36 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         case .denied:
             fallthrough
         @unknown default:
-            ErrorDisplayer.showError(errorMsg: "Access denied to Photos") { (_) in
-                self.dismiss(animated: true, completion: nil)
+            showUserAlertToProvideAccessToPhotos()
+        }
+    }
+    
+    private func showUserAlertToProvideAccessToPhotos(){
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
             }
+            let alertVC = UIAlertController(
+                title: nil,
+                message: "Access denied, please go to settings and enable photo access to use this service.",
+                preferredStyle: .alert)
+            
+            let leftButtonAction = UIAlertAction(title: "Go to settings", style: .default) { _ in
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    if UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            }
+            alertVC.addAction(leftButtonAction)
+            
+            let okAction = UIAlertAction(
+                title: "Cancel",
+                style: .cancel) { (_) in
+                    self.dismiss(animated: true, completion: nil)
+            }
+            alertVC.addAction(okAction)
+            topController.present(alertVC, animated: true, completion: nil)
         }
     }
     

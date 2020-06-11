@@ -147,6 +147,12 @@ class PostEditorViewController: UIViewController {
     }
     
     @objc private func initiateMediaAttachment(){
+        PhotosPermissionChecker().checkPermissions {[weak self] in
+            self?.showImagePicker()
+        }
+    }
+    
+    private func showImagePicker(){
         let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
         assetGridVC.localMediaManager = localMediaManager
         if let selectedItems = postCoordinator.getCurrentPost().selectedMediaItems{
