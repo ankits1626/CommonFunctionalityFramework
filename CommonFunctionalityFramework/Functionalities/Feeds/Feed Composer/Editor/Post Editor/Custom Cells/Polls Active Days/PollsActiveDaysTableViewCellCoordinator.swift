@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Loaf
 
 class PollsActiveDaysTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol {
     var cellType: FeedCellTypeProtocol = PollsActiveDaysTableViewCellType()
@@ -39,6 +40,7 @@ extension PollsActiveDaysTableViewCellCoordinator : StepperDelegate{
         if let minVal = sender.minVal?.intValue{
             if sender.reading == minVal{
                 sender.decrementIndicatorColor = .stepperInactiveColor
+                showMessage("Poll must be active for more than \(minVal) \(minVal == 1 ? "day" : "days").")
             }else{
                 sender.decrementIndicatorColor = .stepperActiveColor
             }
@@ -47,11 +49,21 @@ extension PollsActiveDaysTableViewCellCoordinator : StepperDelegate{
         if let maxVal = sender.maxVal?.intValue{
             if sender.reading == maxVal{
                 sender.incrementIndicatorColor = .stepperInactiveColor
+                showMessage("Poll cannot be active for more than \(maxVal) \(maxVal == 1 ? "day" : "days").")
             }else{
                 sender.incrementIndicatorColor = .stepperActiveColor
             }
         }
         
         delegate?.activeDaysForPollChanged(sender.reading)
+    }
+    
+    private func showMessage(_ message : String){
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            Loaf(message, sender: topController).show()
+        }
     }
 }
