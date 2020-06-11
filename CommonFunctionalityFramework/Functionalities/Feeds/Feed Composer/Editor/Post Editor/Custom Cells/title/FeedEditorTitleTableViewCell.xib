@@ -40,8 +40,8 @@
                                     <constraint firstAttribute="height" constant="1" id="RaQ-3q-Cmg"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Max 80 Character)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viW-H9-TlB">
-                                <rect key="frame" x="122" y="98" width="150" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viW-H9-TlB">
+                                <rect key="frame" x="251" y="98" width="21" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                 <outlet property="maxCharacterLabel" destination="viW-H9-TlB" id="uaO-Ro-MMW"/>
                 <outlet property="titleText" destination="hHg-3e-XyB" id="eIv-vG-E5B"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="141.62946428571428"/>
+            <point key="canvasLocation" x="-143" y="142"/>
         </tableViewCell>
     </objects>
 </document>

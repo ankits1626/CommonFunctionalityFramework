@@ -27,6 +27,15 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         }
         return targetCell
     }
+    fileprivate func updateMaxCharacterLabel(_ cell: FeedEditorTitleTableViewCell) {
+        let length = cell.titleText?.text.count ?? 0
+        if length == 0{
+            cell.maxCharacterLabel?.text = "(Max \(max_title_length) Characters)"
+        }else{
+            cell.maxCharacterLabel?.text = "\(max_title_length - (cell.titleText?.text.count ?? 0))"
+        }
+    }
+    
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         self.delegate = inputModel.delegate
         targetIndexPath = inputModel.targetIndexpath
@@ -47,12 +56,16 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.titleText?.placeholderFont = .Body2
             cell.maxCharacterLabel?.textColor = UIColor.getPlaceholderTextColor()
             cell.maxCharacterLabel?.font = .Caption1
-            cell.maxCharacterLabel?.text = "(Max \(max_title_length) Characters)"
-            //cell.maxCharacterLabel?.isHidden = cell.titleText?.text.isEmpty ?? false
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
             cell.containerView?.curvedCornerControl()
-            hideMaxCharacterCountLabel(cell)
+            updateMaxCharacterLabel(cell)
+        }
+    }
+    
+    private func updateCharactersLeft(){
+        if let cell = targetTableView?.cellForRow(at: targetIndexPath) as?FeedEditorTitleTableViewCell{
+            updateMaxCharacterLabel(cell)
         }
     }
     
@@ -68,26 +81,14 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
 
 extension FeedEditorTitleTableViewCellCoordinator : UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
-        toggleMaxCharacterCountPlaceHolderVisibility()
         delegate?.reloadTextViewContainingRow(indexpath: targetIndexPath)
         delegate?.updatePostTitle(title: textView.text)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        defer {
+            updateCharactersLeft()
+        }
         return textView.text.count + (text.count - range.length) <= max_title_length
-    }
-    
-    private func toggleMaxCharacterCountPlaceHolderVisibility(){
-        if let cell = targetTableView?.cellForRow(at: targetIndexPath) as?FeedEditorTitleTableViewCell{
-            hideMaxCharacterCountLabel(cell)
-        }
-    }
-    
-    private func hideMaxCharacterCountLabel(_ cell : FeedEditorTitleTableViewCell){
-        if  let isTextempty = cell.titleText?.text.isEmpty{
-            cell.maxCharacterLabel?.isHidden = !isTextempty
-        }else{
-            cell.maxCharacterLabel?.isHidden  = false
-        }
     }
 }
