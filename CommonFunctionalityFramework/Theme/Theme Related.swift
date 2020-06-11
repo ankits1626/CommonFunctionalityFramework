@@ -112,6 +112,22 @@ extension UIColor{
         return .black
     }
     
+    static var bottomAssertiveButtonTextColor : UIColor {
+        return .white
+    }
+    
+    static var bottomAssertiveBackgroundColor : UIColor {
+        return .black
+    }
+    
+    static var bottomDestructiveButtonTextColor : UIColor {
+        return .black
+    }
+    
+    static var bottomDestructiveBackgroundColor : UIColor {
+        return .white
+    }
+    
     static var progressColor : UIColor {
         return UIColor(red: 234/255.0, green: 239/255.0, blue: 242/255.0, alpha: 1.0)
     }

@@ -21,6 +21,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     @IBOutlet private weak var titleLabel : UILabel?
     @IBOutlet private weak var messageLabel : UILabel?
     @IBOutlet private weak var deleteButton : UIButton?
+    @IBOutlet private weak var cancelButton : UIButton?
     
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var deletePressedCompletion :(() -> Void)?
@@ -50,14 +51,29 @@ class DeletePostConfirmationDrawer: UIViewController {
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
         messageLabel?.font = .Highlighter2
+        configureConfirmButton()
+        configureCancelButton()
+    }
+    
+    private func configureConfirmButton(){
+        deleteButton?.setTitle("CONFIRM", for: .normal)
         deleteButton?.titleLabel?.font = .Button
-        deleteButton?.setTitleColor(.bottomButtonTextColor, for: .normal)
+        deleteButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
+        deleteButton?.backgroundColor = .bottomAssertiveBackgroundColor
         deleteButton?.curvedBorderedControl()
+    }
+    
+    private func configureCancelButton(){
+        cancelButton?.setTitle("CANCEL", for: .normal)
+        cancelButton?.titleLabel?.font = .Button
+        cancelButton?.setTitleColor(.bottomDestructiveButtonTextColor, for: .normal)
+        cancelButton?.backgroundColor = .bottomDestructiveBackgroundColor
+        cancelButton?.curvedBorderedControl()
     }
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: 233)
+            slideInTransitioningDelegate.direction = .bottom(height: 320)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
