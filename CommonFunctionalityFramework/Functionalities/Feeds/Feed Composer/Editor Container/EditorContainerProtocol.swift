@@ -8,15 +8,17 @@
 
 import UIKit
 
-public struct EditorContainerTopBarModel{
+public struct EditorContainerModel{
     var title : UILabel?
     var attachPDFButton : UIButton?
     var cameraButton : UIButton?
+    var shouldShowGuidenceMessage : Bool
     
-    public init(title : UILabel? , attachPDFButton : UIButton?, cameraButton : UIButton?){
+    public init(title : UILabel? , attachPDFButton : UIButton?, cameraButton : UIButton?, shouldShowGuidenceMessage : Bool){
         self.title = title
         self.attachPDFButton = attachPDFButton
         self.cameraButton = cameraButton
+        self.shouldShowGuidenceMessage = shouldShowGuidenceMessage
     }
 }
 
@@ -26,7 +28,7 @@ public enum GenericContainerPresentationOption{
 }
 
 public protocol EditorContainerProtocol {
-    var topBarItems : EditorContainerTopBarModel{get}
+    var topBarItems : EditorContainerModel{get}
 }
 
 public struct GenericContainerTopBarModel{

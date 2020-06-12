@@ -11,9 +11,10 @@ import SimpleCheckbox
 import CoreData
 
 class PostEditorViewController: UIViewController {
-    var containerTopBarModel : EditorContainerTopBarModel?{
+    var containerTopBarModel : EditorContainerModel?{
         didSet{
             setupContainerTopbar()
+            setupMessageGuidenceContainer()
         }
     }
     private let postType: FeedType
@@ -24,6 +25,10 @@ class PostEditorViewController: UIViewController {
     @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
     @IBOutlet private weak var postWithSameDepartmentMessage: UILabel?
     @IBOutlet private weak var postWithSameDepartmentContainer: UIView?
+    @IBOutlet private weak var tableBackgroundContainer: UIView?
+    @IBOutlet private weak var messageGuidenceContainer: UIView?
+    @IBOutlet private weak var guidenceMessage: UILabel?
+    @IBOutlet private weak var messageGuidenceContainerHeightContraint: NSLayoutConstraint?
     
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(postObsever: cellFactory, postType: postType, editablePost: editablePost)
@@ -81,6 +86,7 @@ class PostEditorViewController: UIViewController {
     }
     
     private func setup(){
+        tableBackgroundContainer?.curvedCornerControl()
         view.backgroundColor = .viewBackgroundColor
         setupTableView()
         setupCreateButton()
@@ -89,6 +95,18 @@ class PostEditorViewController: UIViewController {
             deferredLoad()
         }
         postWithSameDepartmentContainer?.isHidden = editablePost?.remotePostId != nil
+        setupMessageGuidenceContainer()
+    }
+    
+    private func setupMessageGuidenceContainer(){
+        if let unwrappedContainerModel = containerTopBarModel?.shouldShowGuidenceMessage{
+            messageGuidenceContainerHeightContraint?.constant = unwrappedContainerModel ? 40 : 0
+        }else{
+            messageGuidenceContainerHeightContraint?.constant = 0
+        }
+        messageGuidenceContainer?.curvedCornerControl()
+        messageGuidenceContainer?.backgroundColor = .guidenceViewBackgroundColor
+        guidenceMessage?.font = .Body1
     }
     
     private func setupCheckbox(){
@@ -96,6 +114,7 @@ class PostEditorViewController: UIViewController {
     }
     
     private func setupPostWithDepartment() {
+        postWithSameDepartmentCheckBox?.borderLineWidth = 1
         postWithSameDepartmentCheckBox?.isEnabled = postCoordinator.isDepartmentSharedWithEditable()
         postWithSameDepartmentCheckBox?.checkmarkStyle = .tick
         postWithSameDepartmentCheckBox?.isChecked = postCoordinator.isPostWithSameDepartment()
