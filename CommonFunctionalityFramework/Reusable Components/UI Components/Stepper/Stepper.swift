@@ -91,6 +91,7 @@ protocol StepperDelegate {
         self.incrementButton.frame = rightButtonFrame
         self.counterTxt.frame = counterLabelFrame
         counterTxt.isScrollEnabled = false
+        counterTxt.isUserInteractionEnabled = false
         counterTxt.contentOffset = CGPoint(x: 0, y: -5)
         counterTxt.layer.borderWidth = borderWidth
         counterTxt.layer.borderColor = borderColor.cgColor

@@ -248,7 +248,6 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     func getTargetPost() -> EditablePostProtocol? {
         return postCoordinator.getCurrentPost()
     }
-    
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
     func activeDaysForPollChanged(_ days: Int) {
