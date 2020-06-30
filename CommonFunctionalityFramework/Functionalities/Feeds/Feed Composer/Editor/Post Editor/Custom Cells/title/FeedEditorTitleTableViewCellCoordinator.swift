@@ -24,6 +24,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         
         if let cell  = targetCell as? FeedEditorTitleTableViewCell{
             cell.titleText?.text = post?.title
+            updateMaxCharacterLabel(cell)
         }
         return targetCell
     }
@@ -83,12 +84,11 @@ extension FeedEditorTitleTableViewCellCoordinator : UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         delegate?.reloadTextViewContainingRow(indexpath: targetIndexPath)
         delegate?.updatePostTitle(title: textView.text)
+        delegate?.reloadTextViewContainingRow(indexpath: targetIndexPath)
+        updateCharactersLeft()
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        defer {
-            updateCharactersLeft()
-        }
         return textView.text.count + (text.count - range.length) <= max_title_length
     }
 }
