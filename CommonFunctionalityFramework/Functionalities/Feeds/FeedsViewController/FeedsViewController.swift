@@ -44,9 +44,10 @@ class FeedsViewController: UIViewController {
     
     private var frc : NSFetchedResultsController<ManagedPost>?
     private var pollAnswerSubmitter : PollAnswerSubmitter?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshFeeds), name: NSNotification.Name.didUpdatedPosts, object: nil)
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
             self?.loadFeeds()
