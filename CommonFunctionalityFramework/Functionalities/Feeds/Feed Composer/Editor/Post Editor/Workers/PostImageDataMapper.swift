@@ -76,7 +76,11 @@ class PostImageDataMapper {
             var images = [UIImage]()
             var selectedAssets = [String]()
             unwrappedMediaItems.forEach { (anItem) in
-                selectedAssets.append(anItem.identifier)
+                if let croppedImage = anItem.croppedImage{
+                    images.append(croppedImage)
+                }else{
+                    selectedAssets.append(anItem.identifier)
+                }
             }
             let photoAsset = PHAsset.fetchAssets(withLocalIdentifiers: selectedAssets, options: nil)
             let contentMode: PHImageContentMode = PHImageContentMode.aspectFit

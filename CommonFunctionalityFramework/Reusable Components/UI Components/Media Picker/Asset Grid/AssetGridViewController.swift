@@ -67,13 +67,19 @@ class PhotosPermissionChecker {
     }
 }
 
-
-
 private extension UICollectionView {
     func indexPathsForElements(in rect: CGRect) -> [IndexPath] {
         let allLayoutAttributes = collectionViewLayout.layoutAttributesForElements(in: rect)!
         return allLayoutAttributes.map { $0.indexPath }
     }
+}
+
+struct MediaPickerPresentationModel {
+    var localMediaManager : LocalMediaManager
+    var selectedAssets : [LocalSelectedMediaItem]?
+    var assetSelectionCompletion : ((_ assets : [LocalSelectedMediaItem]?) -> Void)?
+    var maximumItemSelectionAllowed = 10
+    weak var presentingViewController : UIViewController?
 }
 
 class AssetGridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -87,6 +93,19 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     var selectedAssets = [LocalSelectedMediaItem]()
     var localMediaManager : LocalMediaManager!
     var maximumItemSelectionAllowed = 10
+    
+    static func presentMediaPickerStack(presentationModel : MediaPickerPresentationModel){
+        let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
+        assetGridVC.localMediaManager = presentationModel.localMediaManager
+        if let unwrappedAssets = presentationModel.selectedAssets{
+            assetGridVC.selectedAssets = unwrappedAssets
+        }
+        assetGridVC.assetSelectionCompletion = presentationModel.assetSelectionCompletion
+        assetGridVC.maximumItemSelectionAllowed = presentationModel.maximumItemSelectionAllowed
+        let navVC = UINavigationController(rootViewController: assetGridVC)
+        navVC.setNavigationBarHidden(true, animated: false)
+        presentationModel.presentingViewController?.present(navVC, animated: true, completion: nil)
+    }
     
     // MARK: UIViewController / Lifecycle
     
@@ -179,8 +198,6 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
             let allPhotosOptions = PHFetchOptions()
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             fetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: allPhotosOptions)
-            //PHAsset.fetchAssets(with: allPhotosOptions) // for images + videos
-            // PHAsset.fetchAssets(with: PHAssetMediaType.image, options: allPhotosOptions)
         }
     }
     
@@ -191,15 +208,14 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     
     @IBAction func backButtonTapped(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
-       // self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func uploadButtonTapped(_ sender: AnyObject) {
-        dismiss(animated: true) {
-            if let unwrappedCompletion = self.assetSelectionCompletion{
-                unwrappedCompletion(self.selectedAssets)
-            }
-        }
+        let cropperVc = CFFImageCropperViewController(nibName: "CFFImageCropperViewController", bundle: Bundle(for: CFFImageCropperViewController.self))
+        cropperVc.localMediaManager = localMediaManager
+        cropperVc.selectedAssets = selectedAssets
+        cropperVc.assetSelectionCompletion = assetSelectionCompletion
+        navigationController?.pushViewController(cropperVc, animated: true)
     }
     
      private func handleSelectedVideos(selectdImages : [AVAsset]){
@@ -245,7 +261,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    func randomString(length: Int) -> String {
+    private func randomString(length: Int) -> String {
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
         

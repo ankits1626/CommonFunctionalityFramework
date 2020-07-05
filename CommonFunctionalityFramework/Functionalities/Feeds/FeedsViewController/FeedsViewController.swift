@@ -180,18 +180,22 @@ extension FeedsViewController{
     }
     
     private func showImagePicker(){
-        let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
-        assetGridVC.localMediaManager = LocalMediaManager()
-        assetGridVC.assetSelectionCompletion = { (selectedMediaItems) in
-            FeedComposerCoordinator(
-                delegate: self.feedCoordinatorDelegate,
-                requestCoordinator: self.requestCoordinator,
-                mediaFetcher: self.mediaFetcher,
-                selectedAssets: selectedMediaItems
-            ).showFeedItemEditor(type: .Post)
-        }
-        assetGridVC.maximumItemSelectionAllowed = 10
-        present(assetGridVC, animated: true, completion: nil)
+        AssetGridViewController.presentMediaPickerStack(
+            presentationModel: MediaPickerPresentationModel(
+                localMediaManager: LocalMediaManager(),
+                selectedAssets: nil,
+                assetSelectionCompletion: { (selectedMediaItems) in
+                    FeedComposerCoordinator(
+                        delegate: self.feedCoordinatorDelegate,
+                        requestCoordinator: self.requestCoordinator,
+                        mediaFetcher: self.mediaFetcher,
+                        selectedAssets: selectedMediaItems
+                    ).showFeedItemEditor(type: .Post)
+            },
+                maximumItemSelectionAllowed: 10,
+                presentingViewController: self
+            )
+        )
     }
     
 }

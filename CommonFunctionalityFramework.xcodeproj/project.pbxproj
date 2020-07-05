@@ -27,6 +27,10 @@
 		9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD54241AC860003B91FD /* FeedFetcher.swift */; };
 		9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */; };
 		9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */; };
+		98188D4224AEE308003AD3B4 /* CFFImageCropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98188D4024AEE308003AD3B4 /* CFFImageCropperViewController.swift */; };
+		98188D4324AEE308003AD3B4 /* CFFImageCropperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98188D4124AEE308003AD3B4 /* CFFImageCropperViewController.xib */; };
+		98188D4624B21A8B003AD3B4 /* CFFMainCropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98188D4424B21A8B003AD3B4 /* CFFMainCropperViewController.swift */; };
+		98188D4724B21A8B003AD3B4 /* CFFMainCropperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98188D4524B21A8B003AD3B4 /* CFFMainCropperViewController.xib */; };
 		9819120B2459B4560078A2FF /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819120A2459B4560078A2FF /* Stepper.swift */; };
 		9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */; };
 		981912102459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */; };
@@ -122,6 +126,7 @@
 		98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726545245044C100CD4530 /* FeedClapToggler.swift */; };
 		987265482450555E00CD4530 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987265472450555E00CD4530 /* Array+Extension.swift */; };
 		9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */; };
+		9873D61324B24CFC0041504C /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D61224B24CFC0041504C /* UIImage+Extensions.swift */; };
 		9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */; };
 		9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */; };
 		98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */; };
@@ -163,6 +168,10 @@
 		98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */; };
 		98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */; };
 		98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */; };
+		98C8C72324B22940003F56FD /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8C72224B22940003F56FD /* UIImage+Additions.swift */; };
+		98C8C72724B2294A003F56FD /* FAScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8C72424B22949003F56FD /* FAScrollView.swift */; };
+		98C8C72824B2294A003F56FD /* FAGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C8C72524B22949003F56FD /* FAGridView.xib */; };
+		98C8C72924B2294A003F56FD /* FAImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8C72624B22949003F56FD /* FAImageLoader.swift */; };
 		98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FAB2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift */; };
 		98CC2FB02425C4C400E8F9E0 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */; };
 		98CC2FB12425C4C400E8F9E0 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */; };
@@ -197,6 +206,10 @@
 		9811DD54241AC860003B91FD /* FeedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetcher.swift; sourceTree = "<group>"; };
 		9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuOptions.swift; sourceTree = "<group>"; };
 		9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingMenuOptions.xib; sourceTree = "<group>"; };
+		98188D4024AEE308003AD3B4 /* CFFImageCropperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFImageCropperViewController.swift; sourceTree = "<group>"; };
+		98188D4124AEE308003AD3B4 /* CFFImageCropperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFImageCropperViewController.xib; sourceTree = "<group>"; };
+		98188D4424B21A8B003AD3B4 /* CFFMainCropperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMainCropperViewController.swift; sourceTree = "<group>"; };
+		98188D4524B21A8B003AD3B4 /* CFFMainCropperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMainCropperViewController.xib; sourceTree = "<group>"; };
 		9819120A2459B4560078A2FF /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
 		9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsActiveDaysTableViewCell.swift; sourceTree = "<group>"; };
 		9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollsActiveDaysTableViewCell.xib; sourceTree = "<group>"; };
@@ -292,6 +305,7 @@
 		98726545245044C100CD4530 /* FeedClapToggler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedClapToggler.swift; sourceTree = "<group>"; };
 		987265472450555E00CD4530 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditablePostMediaRepository.swift; sourceTree = "<group>"; };
+		9873D61224B24CFC0041504C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaBrowserViewController.swift; sourceTree = "<group>"; };
 		9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMediaBrowserViewController.xib; sourceTree = "<group>"; };
 		98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -337,6 +351,10 @@
 		98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeader.swift; sourceTree = "<group>"; };
 		98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedDetailHeader.xib; sourceTree = "<group>"; };
 		98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeaderCoordinator.swift; sourceTree = "<group>"; };
+		98C8C72224B22940003F56FD /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		98C8C72424B22949003F56FD /* FAScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAScrollView.swift; sourceTree = "<group>"; };
+		98C8C72524B22949003F56FD /* FAGridView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAGridView.xib; sourceTree = "<group>"; };
+		98C8C72624B22949003F56FD /* FAImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAImageLoader.swift; sourceTree = "<group>"; };
 		98CC2FAB2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFeedSectionProvider.swift; sourceTree = "<group>"; };
 		98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListViewController.swift; sourceTree = "<group>"; };
 		98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
@@ -443,6 +461,16 @@
 				9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */,
 			);
 			path = FloatingMenuOptions;
+			sourceTree = "<group>";
+		};
+		98188D3D24AEE2C1003AD3B4 /* Media Cropper */ = {
+			isa = PBXGroup;
+			children = (
+				98C8C71F24B228FB003F56FD /* CFFMainCropperViewController */,
+				98188D4024AEE308003AD3B4 /* CFFImageCropperViewController.swift */,
+				98188D4124AEE308003AD3B4 /* CFFImageCropperViewController.xib */,
+			);
+			path = "Media Cropper";
 			sourceTree = "<group>";
 		};
 		981912092459B4480078A2FF /* Stepper */ = {
@@ -677,6 +705,7 @@
 				9811DD51241AC5E5003B91FD /* UIDevice+Extension.swift */,
 				987265472450555E00CD4530 /* Array+Extension.swift */,
 				9830E84A246EBB5800FEFC0F /* UICollectionView+Extension.swift */,
+				9873D61224B24CFC0041504C /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -757,6 +786,7 @@
 		9868C0DA2412417E00B12321 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				98188D3D24AEE2C1003AD3B4 /* Media Cropper */,
 				981912092459B4480078A2FF /* Stepper */,
 				9890CAC4242DE88700E1AE4D /* Media Browser */,
 				9811DD56241B6168003B91FD /* FloatingMenuOptions */,
@@ -1240,6 +1270,35 @@
 			path = "Custom Header";
 			sourceTree = "<group>";
 		};
+		98C8C71F24B228FB003F56FD /* CFFMainCropperViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98C8C72024B22915003F56FD /* FAUtility */,
+				98188D4424B21A8B003AD3B4 /* CFFMainCropperViewController.swift */,
+				98188D4524B21A8B003AD3B4 /* CFFMainCropperViewController.xib */,
+			);
+			path = CFFMainCropperViewController;
+			sourceTree = "<group>";
+		};
+		98C8C72024B22915003F56FD /* FAUtility */ = {
+			isa = PBXGroup;
+			children = (
+				98C8C72524B22949003F56FD /* FAGridView.xib */,
+				98C8C72624B22949003F56FD /* FAImageLoader.swift */,
+				98C8C72424B22949003F56FD /* FAScrollView.swift */,
+				98C8C72124B22931003F56FD /* Extensions */,
+			);
+			path = FAUtility;
+			sourceTree = "<group>";
+		};
+		98C8C72124B22931003F56FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				98C8C72224B22940003F56FD /* UIImage+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		98CC2FAA2425C41800E8F9E0 /* DashboardFeedSectionProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -1371,12 +1430,15 @@
 				98B02FB6241A50DA00CB8690 /* AssetGridViewController.strings in Resources */,
 				980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */,
 				9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */,
+				98188D4724B21A8B003AD3B4 /* CFFMainCropperViewController.xib in Resources */,
 				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
 				980F563B245BFC680093AFE7 /* PollSubmitButtonCell.xib in Resources */,
 				98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */,
+				98C8C72824B2294A003F56FD /* FAGridView.xib in Resources */,
 				9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */,
 				98B02FBB241A50DA00CB8690 /* GroupsViewController.strings in Resources */,
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
+				98188D4324AEE308003AD3B4 /* CFFImageCropperViewController.xib in Resources */,
 				9868C017240F786600B12321 /* FeedTitleTableViewCell.xib in Resources */,
 				98BC8A0F241A1775007C175D /* FeedEditorTitleTableViewCell.xib in Resources */,
 				98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */,
@@ -1437,7 +1499,9 @@
 				9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */,
 				98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */,
 				9868C1082419F2F500B12321 /* ErrorDisplayer.swift in Sources */,
+				98C8C72924B2294A003F56FD /* FAImageLoader.swift in Sources */,
 				98B02FB8241A50DA00CB8690 /* GridViewCell.swift in Sources */,
+				9873D61324B24CFC0041504C /* UIImage+Extensions.swift in Sources */,
 				987265482450555E00CD4530 /* Array+Extension.swift in Sources */,
 				9868C0DC241241AB00B12321 /* ASChatBarview.swift in Sources */,
 				9868C0912410C19200B12321 /* Theme Related.swift in Sources */,
@@ -1447,6 +1511,7 @@
 				983C4F8D2462F09E00FDEB76 /* PostDeleteWorker.swift in Sources */,
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
+				98188D4624B21A8B003AD3B4 /* CFFMainCropperViewController.swift in Sources */,
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				9868C05424101E0200B12321 /* UIView+Extension.swift in Sources */,
@@ -1521,6 +1586,7 @@
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
+				98C8C72324B22940003F56FD /* UIImage+Additions.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */,
 				9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */,
@@ -1542,9 +1608,11 @@
 				98BC8A1E241A19DE007C175D /* PostEditorCellFactory.swift in Sources */,
 				9868C0E724125ACC00B12321 /* FeedDetailSectionFactory.swift in Sources */,
 				9868C0B92412100B00B12321 /* MediaItemCollectionViewCell.swift in Sources */,
+				98C8C72724B2294A003F56FD /* FAScrollView.swift in Sources */,
 				98B02FBF241A50DA00CB8690 /* GroupsViewController.swift in Sources */,
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
 				983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */,
+				98188D4224AEE308003AD3B4 /* CFFImageCropperViewController.swift in Sources */,
 				980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */,
 				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,

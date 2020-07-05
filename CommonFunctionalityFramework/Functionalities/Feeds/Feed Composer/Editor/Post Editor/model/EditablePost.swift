@@ -34,6 +34,7 @@ struct LocalSelectedMediaItem : Equatable {
     var identifier : String
     var asset: PHAsset?
     var mediaType : PHAssetMediaType
+    var croppedImage : UIImage?
 }
 enum DepartmentSharedChoice : Int {
     case SelfDepartment = 10

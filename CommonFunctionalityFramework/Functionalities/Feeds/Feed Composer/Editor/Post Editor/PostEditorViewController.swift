@@ -147,6 +147,7 @@ class PostEditorViewController: UIViewController {
         createButton?.titleLabel?.font = UIFont.Button
         createButton?.titleLabel?.tintColor = .buttonTextColor
         createButton?.backgroundColor = .buttonColor
+        createButton?.curvedCornerControl()
     }
     
     private func setupContainerTopbar(){
@@ -172,16 +173,17 @@ class PostEditorViewController: UIViewController {
     }
     
     private func showImagePicker(){
-        let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
-        assetGridVC.localMediaManager = localMediaManager
-        if let selectedItems = postCoordinator.getCurrentPost().selectedMediaItems{
-            assetGridVC.selectedAssets = selectedItems
-        }
-        assetGridVC.assetSelectionCompletion = { (selectedMediaItems) in
-            self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
-        }
-        assetGridVC.maximumItemSelectionAllowed = 10 - postCoordinator.getRemoteMediaCount()
-        present(assetGridVC, animated: true, completion: nil)
+        AssetGridViewController.presentMediaPickerStack(
+            presentationModel: MediaPickerPresentationModel(
+                localMediaManager: localMediaManager,
+                selectedAssets: postCoordinator.getCurrentPost().selectedMediaItems,
+                assetSelectionCompletion: { (selectedMediaItems) in
+                    self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
+            },
+                maximumItemSelectionAllowed: 10 - postCoordinator.getRemoteMediaCount(),
+                presentingViewController: self
+            )
+        )
     }
     
     private func updatePostWithSelectedMediaSection(selectedMediaItems : [LocalSelectedMediaItem]?){

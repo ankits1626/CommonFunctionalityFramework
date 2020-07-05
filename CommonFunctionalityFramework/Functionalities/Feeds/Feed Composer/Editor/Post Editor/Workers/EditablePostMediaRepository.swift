@@ -51,10 +51,15 @@ class EditablePostMediaRepository {
     }
     
     private func loadLocalImage(index : Int, imageView: UIImageView?){
-        if let asset = input.datasource?.getTargetPost()?.selectedMediaItems?[index].asset{
-            input.localMediaManager?.fetchImageForAsset(asset: asset, size: (imageView?.bounds.size)!, completion: { (_, fetchedImage) in
-                imageView?.image = fetchedImage
-            })
+        if let mediaItem = input.datasource?.getTargetPost()?.selectedMediaItems?[index]{
+            if let croppedImage = mediaItem.croppedImage{
+                imageView?.image = croppedImage
+                imageView?.contentMode = .scaleAspectFit
+            }else if let asset = mediaItem.asset{
+                input.localMediaManager?.fetchImageForAsset(asset: asset, size: (imageView?.bounds.size)!, completion: { (_, fetchedImage) in
+                    imageView?.image = fetchedImage
+                })
+            }
         }
     }
     
