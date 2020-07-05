@@ -47,13 +47,17 @@ class FeedsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshFeeds), name: NSNotification.Name.didUpdatedPosts, object: nil)
+        registerForPostUpdateNotifications()
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
             self?.loadFeeds()
             self?.setup()
             self?.loadFeeds()
         }
+    }
+    
+    private func registerForPostUpdateNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshFeeds), name: NSNotification.Name.didUpdatedPosts, object: nil)
     }
     
     func clearAnyExistingFeedsData(_ completion: @escaping (() -> Void)){
