@@ -19,7 +19,12 @@ class FeedOrderManager {
     func insertFeeds(rawFeeds : [[String : Any]], insertDirection : FeedInsertDirection, completion :(() -> Void)?){
         CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
             rawFeeds.forEach { (aRawFeed) in
-                let feed = RawFeed(input: aRawFeed).getManagedObject() as! ManagedPost
+                let rawFeed = RawFeed(input: aRawFeed)
+                let feed = rawFeed.getManagedObject() as! ManagedPost
+                FeedDescriptionMarkupParser.sharedInstance.updateDescriptionParserOutputModelForFeed(
+                    feedId: rawFeed.feedIdentifier,
+                    description: rawFeed.getFeedDescription()
+                )
                 if insertDirection == .Top{
                    self.addAtTop(feed)
                 }

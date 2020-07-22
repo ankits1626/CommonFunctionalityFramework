@@ -127,6 +127,22 @@
 		987265482450555E00CD4530 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987265472450555E00CD4530 /* Array+Extension.swift */; };
 		9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */; };
 		9873D61324B24CFC0041504C /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D61224B24CFC0041504C /* UIImage+Extensions.swift */; };
+		9873D61824B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D61624B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift */; };
+		9873D61924B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D61724B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib */; };
+		9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */; };
+		9873D61E24B6C26D0041504C /* FeedsGIFSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */; };
+		9873D62224B6C5C00041504C /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62024B6C5C00041504C /* GifCollectionViewCell.swift */; };
+		9873D62324B6C5C00041504C /* GifCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D62124B6C5C00041504C /* GifCollectionViewCell.xib */; };
+		9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62424B808850041504C /* ManagedGifs+CoreDataProperties.swift */; };
+		9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62524B808850041504C /* ManagedGifs+CoreDataClass.swift */; };
+		9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62824B808A40041504C /* ManagedGifs+RawRepresentable.swift */; };
+		9873D62C24B808DF0041504C /* RawGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62B24B808DF0041504C /* RawGif.swift */; };
+		9873D62F24B80CBE0041504C /* GifFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62E24B80CBE0041504C /* GifFetcher.swift */; };
+		9873D63524BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D63424BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift */; };
+		9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D63624BAC0180041504C /* FeedGifTableViewCell.swift */; };
+		9873D63924BAC0180041504C /* FeedGifTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D63724BAC0180041504C /* FeedGifTableViewCell.xib */; };
+		9873D63C24BAC1200041504C /* CFFGifCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D63B24BAC1200041504C /* CFFGifCacheManager.swift */; };
+		9873D63F24C09C830041504C /* FeedDescriptionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D63E24C09C830041504C /* FeedDescriptionParser.swift */; };
 		9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */; };
 		9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */; };
 		98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */; };
@@ -306,6 +322,22 @@
 		987265472450555E00CD4530 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditablePostMediaRepository.swift; sourceTree = "<group>"; };
 		9873D61224B24CFC0041504C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		9873D61624B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAttachmentOptionsDrawerViewController.swift; sourceTree = "<group>"; };
+		9873D61724B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedAttachmentOptionsDrawerViewController.xib; sourceTree = "<group>"; };
+		9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsGIFSelectorViewController.swift; sourceTree = "<group>"; };
+		9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsGIFSelectorViewController.xib; sourceTree = "<group>"; };
+		9873D62024B6C5C00041504C /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
+		9873D62124B6C5C00041504C /* GifCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCollectionViewCell.xib; sourceTree = "<group>"; };
+		9873D62424B808850041504C /* ManagedGifs+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedGifs+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9873D62524B808850041504C /* ManagedGifs+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedGifs+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9873D62824B808A40041504C /* ManagedGifs+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedGifs+RawRepresentable.swift"; sourceTree = "<group>"; };
+		9873D62B24B808DF0041504C /* RawGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawGif.swift; sourceTree = "<group>"; };
+		9873D62E24B80CBE0041504C /* GifFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifFetcher.swift; sourceTree = "<group>"; };
+		9873D63424BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorAttachedGifTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		9873D63624BAC0180041504C /* FeedGifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGifTableViewCell.swift; sourceTree = "<group>"; };
+		9873D63724BAC0180041504C /* FeedGifTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedGifTableViewCell.xib; sourceTree = "<group>"; };
+		9873D63B24BAC1200041504C /* CFFGifCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFGifCacheManager.swift; sourceTree = "<group>"; };
+		9873D63E24C09C830041504C /* FeedDescriptionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDescriptionParser.swift; sourceTree = "<group>"; };
 		9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaBrowserViewController.swift; sourceTree = "<group>"; };
 		9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMediaBrowserViewController.xib; sourceTree = "<group>"; };
 		98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -449,6 +481,7 @@
 				98726545245044C100CD4530 /* FeedClapToggler.swift */,
 				980F5649245C51B30093AFE7 /* PollAnswerSubmitter.swift */,
 				98722673246179B800809D7A /* SelectedPollAnswerMapper.swift */,
+				9873D63E24C09C830041504C /* FeedDescriptionParser.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -527,6 +560,8 @@
 		983500EB2419FC87009084D4 /* Post Editor */ = {
 			isa = PBXGroup;
 			children = (
+				9873D61A24B6C2590041504C /* FeedsGIFSelector */,
+				9873D61524B63A1B0041504C /* FeedAttachmentOptionsDrawer */,
 				9830E84C246EC9BF00FEFC0F /* Custom Header */,
 				98DF76D82433CE7900B9B8A1 /* Workers */,
 				98B02FC0241A662900CB8690 /* model */,
@@ -729,6 +764,7 @@
 		9868C05D2410A87D00B12321 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				9873D63A24BAC10D0041504C /* CFFGifCacheManager */,
 				9868C05E2410A88800B12321 /* CFFMediaCoordinator */,
 				9868C05A2410A78B00B12321 /* CFFNetwrokRequestCoordinator */,
 			);
@@ -912,12 +948,15 @@
 		9872266124616BBE00809D7A /* Managed Models */ = {
 			isa = PBXGroup;
 			children = (
+				9873D62524B808850041504C /* ManagedGifs+CoreDataClass.swift */,
+				9873D62424B808850041504C /* ManagedGifs+CoreDataProperties.swift */,
 				9872266224616BBE00809D7A /* ManagedPost+RawRepresentable.swift */,
 				9872266324616BBE00809D7A /* ManagedPostComment+CoreDataClass.swift */,
 				9872266424616BBE00809D7A /* ManagedPost+CoreDataProperties.swift */,
 				9872266524616BBE00809D7A /* ManagedPostComment+CoreDataProperties.swift */,
 				9872266624616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift */,
 				9872266724616BBE00809D7A /* ManagedPost+CoreDataClass.swift */,
+				9873D62824B808A40041504C /* ManagedGifs+RawRepresentable.swift */,
 			);
 			path = "Managed Models";
 			sourceTree = "<group>";
@@ -948,6 +987,70 @@
 				9872653F244DEC4300CD4530 /* RawRepresentable.swift */,
 			);
 			path = RawRepresentable;
+			sourceTree = "<group>";
+		};
+		9873D61524B63A1B0041504C /* FeedAttachmentOptionsDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				9873D61624B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift */,
+				9873D61724B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib */,
+			);
+			path = FeedAttachmentOptionsDrawer;
+			sourceTree = "<group>";
+		};
+		9873D61A24B6C2590041504C /* FeedsGIFSelector */ = {
+			isa = PBXGroup;
+			children = (
+				9873D62D24B80C8E0041504C /* Worker */,
+				9873D62A24B808D10041504C /* Models */,
+				9873D61F24B6C5830041504C /* CustomCell */,
+				9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */,
+				9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */,
+			);
+			path = FeedsGIFSelector;
+			sourceTree = "<group>";
+		};
+		9873D61F24B6C5830041504C /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				9873D62024B6C5C00041504C /* GifCollectionViewCell.swift */,
+				9873D62124B6C5C00041504C /* GifCollectionViewCell.xib */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		9873D62A24B808D10041504C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9873D62B24B808DF0041504C /* RawGif.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9873D62D24B80C8E0041504C /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				9873D62E24B80CBE0041504C /* GifFetcher.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		9873D63324BABEFE0041504C /* gif attachment */ = {
+			isa = PBXGroup;
+			children = (
+				9873D63424BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift */,
+				9873D63624BAC0180041504C /* FeedGifTableViewCell.swift */,
+				9873D63724BAC0180041504C /* FeedGifTableViewCell.xib */,
+			);
+			path = "gif attachment";
+			sourceTree = "<group>";
+		};
+		9873D63A24BAC10D0041504C /* CFFGifCacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				9873D63B24BAC1200041504C /* CFFGifCacheManager.swift */,
+			);
+			path = CFFGifCacheManager;
 			sourceTree = "<group>";
 		};
 		9890CAC4242DE88700E1AE4D /* Media Browser */ = {
@@ -1176,6 +1279,7 @@
 		98BC8A16241A179D007C175D /* attached media */ = {
 			isa = PBXGroup;
 			children = (
+				9873D63324BABEFE0041504C /* gif attachment */,
 				98B02F95241A2ACA00CB8690 /* multiple */,
 			);
 			path = "attached media";
@@ -1421,11 +1525,14 @@
 				98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */,
 				983C4F8A2462F08000FDEB76 /* DeletePostConfirmationDrawer.xib in Resources */,
 				9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */,
+				9873D63924BAC0180041504C /* FeedGifTableViewCell.xib in Resources */,
 				98B02FB7241A50DA00CB8690 /* GridViewCell.xib in Resources */,
 				9868C0E42412434300B12321 /* ASChatBarview.xib in Resources */,
 				98B02FBE241A50DA00CB8690 /* GroupsViewController.xib in Resources */,
+				9873D61924B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib in Resources */,
 				9868C08E2410B56100B12321 /* FeedsDetailViewController.xib in Resources */,
 				9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */,
+				9873D61E24B6C26D0041504C /* FeedsGIFSelectorViewController.xib in Resources */,
 				9868C01B240F78E500B12321 /* FeedTextTableViewCell.xib in Resources */,
 				98B02FB6241A50DA00CB8690 /* AssetGridViewController.strings in Resources */,
 				980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */,
@@ -1446,6 +1553,7 @@
 				9868C0BA2412100B00B12321 /* MediaItemCollectionViewCell.xib in Resources */,
 				98B02FBC241A50DA00CB8690 /* GroupCell.xib in Resources */,
 				987226812461806E00809D7A /* PollOptionsVotedTableViewCell.xib in Resources */,
+				9873D62324B6C5C00041504C /* GifCollectionViewCell.xib in Resources */,
 				9868C0F32419488000B12321 /* FeedCommentTableViewCell.xib in Resources */,
 				98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
 				98B02FB9241A50DA00CB8690 /* AssetGridViewController.xib in Resources */,
@@ -1494,8 +1602,10 @@
 				9868C04E240FE2F200B12321 /* FeedSectionFactory.swift in Sources */,
 				9868C0EA24125E1900B12321 /* ClappedByUser.swift in Sources */,
 				9868C0FF2419EB2D00B12321 /* FeedsComposerDrawer.swift in Sources */,
+				9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */,
 				9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */,
 				98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */,
+				9873D63F24C09C830041504C /* FeedDescriptionParser.swift in Sources */,
 				9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */,
 				98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */,
 				9868C1082419F2F500B12321 /* ErrorDisplayer.swift in Sources */,
@@ -1508,6 +1618,7 @@
 				987264AE244DD4AB00CD4530 /* CommonFunctionalityModel.xcdatamodeld in Sources */,
 				98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */,
 				980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */,
+				9873D62C24B808DF0041504C /* RawGif.swift in Sources */,
 				983C4F8D2462F09E00FDEB76 /* PostDeleteWorker.swift in Sources */,
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
@@ -1522,6 +1633,7 @@
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
 				9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */,
+				9873D62224B6C5C00041504C /* GifCollectionViewCell.swift in Sources */,
 				9868C0932410D9E600B12321 /* UILabel + Extension.swift in Sources */,
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
 				98C64899241B7A12006689E9 /* FloatingMenuOptionTableViewCell.swift in Sources */,
@@ -1548,6 +1660,7 @@
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
 				9868C0E12412430700B12321 /* UIView+XibSetup.swift in Sources */,
+				9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */,
 				9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
@@ -1556,6 +1669,7 @@
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
+				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
 				98726532244DE40B00CD4530 /* GenericCoreDataManager.swift in Sources */,
 				9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
@@ -1570,9 +1684,11 @@
 				9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */,
 				98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */,
 				98C6489D241B87A3006689E9 /* PostFeedContentCoordinator.swift in Sources */,
+				9873D61824B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift in Sources */,
 				9811DD02241A885F003B91FD /* PostCoordinator.swift in Sources */,
 				9868C0F22419488000B12321 /* FeedCommentTableViewCell.swift in Sources */,
 				98B02FBA241A50DA00CB8690 /* AssetGridViewController.swift in Sources */,
+				9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */,
 				9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */,
 				98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */,
 				9868C0602410A8B600B12321 /* CFFMediaCoordinatorProtocol.swift in Sources */,
@@ -1585,18 +1701,21 @@
 				9811DD1C241AB3B2003B91FD /* URLGenerator.swift in Sources */,
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
+				9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				98C8C72324B22940003F56FD /* UIImage+Additions.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */,
 				9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */,
 				98726542244DEF9800CD4530 /* CFFCoreDataManager.swift in Sources */,
+				9873D63C24BAC1200041504C /* CFFGifCacheManager.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,
 				98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */,
 				98BC8A14241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift in Sources */,
 				9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */,
 				98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */,
+				9873D62F24B80CBE0041504C /* GifFetcher.swift in Sources */,
 				9868C0E22412430700B12321 /* UITextView+NumberOfLines.swift in Sources */,
 				9868C03D240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift in Sources */,
 				98726540244DEC4300CD4530 /* RawRepresentable.swift in Sources */,
@@ -1606,6 +1725,7 @@
 				98BC8A20241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift in Sources */,
 				9868BFF5240EAFCE00B12321 /* CommonCellCoordinatorProtocol.swift in Sources */,
 				98BC8A1E241A19DE007C175D /* PostEditorCellFactory.swift in Sources */,
+				9873D63524BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift in Sources */,
 				9868C0E724125ACC00B12321 /* FeedDetailSectionFactory.swift in Sources */,
 				9868C0B92412100B00B12321 /* MediaItemCollectionViewCell.swift in Sources */,
 				98C8C72724B2294A003F56FD /* FAScrollView.swift in Sources */,

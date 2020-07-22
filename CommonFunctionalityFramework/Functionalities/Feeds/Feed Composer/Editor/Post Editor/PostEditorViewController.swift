@@ -165,9 +165,51 @@ class PostEditorViewController: UIViewController {
                 UIImage(named: "camera", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
                 for: .normal
             )
+            containerTopBarModel?.attachPDFButton?.setImage(
+               UIImage(named: "attachmentIcon", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
+               for: .normal)
+            containerTopBarModel?.attachPDFButton?.isHidden = false
             containerTopBarModel?.cameraButton?.tintColor = .black
             containerTopBarModel?.cameraButton?.addTarget(self, action: #selector(initiateMediaAttachment), for: .touchUpInside)
+            containerTopBarModel?.attachPDFButton?.addTarget(self, action: #selector(initiateAttachment), for: .touchUpInside)
         }
+    }
+    
+    @objc private func initiateAttachment(){
+        let drawer = FeedAttachmentOptionsDrawerViewController(nibName: "FeedAttachmentOptionsDrawerViewController", bundle: Bundle(for: FeedAttachmentOptionsDrawerViewController.self))
+        do{
+            try drawer.presentDrawer()
+            drawer.attachPhotosButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+                drawer.dismiss(animated: true) {
+                    self?.initiateMediaAttachment()
+                }
+            })
+            drawer.attachGifButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+                drawer.dismiss(animated: true) {
+                    self?.initiateGifAttachment()
+                }
+            })
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
+    }
+    
+    private func initiateGifAttachment(){
+        print("<<<<<<<< initiate gif attachment")
+        let gifSelector = FeedsGIFSelectorViewController(nibName: "FeedsGIFSelectorViewController", bundle: Bundle(for: FeedsGIFSelectorViewController.self))
+        gifSelector.requestCoordinator = requestCoordinator
+        gifSelector.mediaFetcher = mediaFetcher
+        gifSelector.feedsGIFSelectorDelegate = self
+        do{
+            try gifSelector.presentDrawer()
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
+        
     }
     
     @objc private func initiateMediaAttachment(){
@@ -250,6 +292,11 @@ class PostEditorViewController: UIViewController {
     }
 }
 
+extension PostEditorViewController: FeedsGIFSelectorDelegate{
+    func finishedSelectingGif(_ gif: RawGif) {
+        postCoordinator.attachGifItem(gif)
+    }
+}
 
 extension PostEditorViewController : PostEditorCellFactoryDatasource{
     func getTargetPost() -> EditablePostProtocol? {
@@ -257,6 +304,9 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     }
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func removeAttachedGif() {
+        postCoordinator.removeAttachedGif()
+    }
     func activeDaysForPollChanged(_ days: Int) {
         postCoordinator.updateActiveDayForPoll(days)
     }
@@ -270,7 +320,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     }
     
     func updatePostTitle(title: String?) {
-        postCoordinator.updatePostTile(title: title)
+        postCoordinator.updatePostTitle(title: title)
     }
     
     func updatePostDescription(decription: String?) {

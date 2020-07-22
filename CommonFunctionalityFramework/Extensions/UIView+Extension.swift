@@ -66,9 +66,9 @@ extension UIView {
 }
 
 extension UIView {
-    func curvedBorderedControl() {
+    func curvedBorderedControl(borderColor : UIColor = UIColor.getGeneralBorderColor(),borderWidth : CGFloat  = 1.0) {
         self.layer.cornerRadius = 5.0
-        borderedControl()
+        borderedControl(borderColor: borderColor, borderWidth: borderWidth)
     }
     
     func borderedControl(borderColor : UIColor = UIColor.getGeneralBorderColor(), borderWidth : CGFloat  = 1.0 ) {

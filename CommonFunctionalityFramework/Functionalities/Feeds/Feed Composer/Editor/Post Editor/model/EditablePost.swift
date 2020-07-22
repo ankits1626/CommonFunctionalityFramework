@@ -15,6 +15,7 @@ protocol EditablePostProtocol {
     var postDesciption : String? {set get}
     var pollOptions : [String]? {get set}
     var selectedMediaItems : [LocalSelectedMediaItem]? {set get}
+    var attachedGif : RawGif?{set get}
     var postType : FeedType {set get}
     func getNetworkPostableFormat() -> [String : Any]
     var postableMediaMap : [Int : Data]? { get set}
@@ -25,6 +26,7 @@ protocol EditablePostProtocol {
     var isShareWithSameDepartmentOnly : Bool {set get}
     var pollActiveDays : Int {set get}
     func getCleanPollOptions() -> [String]?
+    func isGifAttached() -> Bool
 }
 
 struct LocalSelectedMediaItem : Equatable {
@@ -34,13 +36,22 @@ struct LocalSelectedMediaItem : Equatable {
     var identifier : String
     var asset: PHAsset?
     var mediaType : PHAssetMediaType
-    var croppedImage : UIImage?
+    var croppedImage : UIImage?{
+        didSet{
+            print("heere")
+        }
+    }
 }
 enum DepartmentSharedChoice : Int {
     case SelfDepartment = 10
     case AllDepartment = 20
 }
 struct EditablePost : EditablePostProtocol{
+    
+    func isGifAttached() -> Bool {
+        return attachedGif != nil
+    }
+    
     func getCleanPollOptions() -> [String]? {
         return pollOptions?.filter { (anOption) -> Bool in
             return !anOption.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
@@ -52,6 +63,7 @@ struct EditablePost : EditablePostProtocol{
     var deletedRemoteMediaArray = [Int]()
     var postableLocalMediaUrls: [URL]?
     var postableMediaMap: [Int : Data]?
+    var attachedGif : RawGif?
     
     func getNetworkPostableFormat() -> [String : Any] {
         switch postType {
@@ -83,6 +95,14 @@ struct EditablePost : EditablePostProtocol{
         if let unwrappedDescription = postDesciption{
             postDictionary["description"] = unwrappedDescription
         }
+        if let unwrappedGif = attachedGif?.getGifMarkup(){
+            if let description = postDictionary["description"] as? String{
+                postDictionary["description"] = "\(description)\(unwrappedGif)"
+            }else{
+                postDictionary["description"] = "\(unwrappedGif)"
+            }
+        }
+        
         if !deletedRemoteMediaArray.isEmpty{
             postDictionary["delete_image_ids"] = (deletedRemoteMediaArray.map{String($0)}).joined(separator: ",")
         }

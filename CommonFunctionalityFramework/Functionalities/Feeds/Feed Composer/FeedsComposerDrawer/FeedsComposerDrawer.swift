@@ -23,6 +23,7 @@ class FeedsComposerDrawer: UIViewController {
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
+    weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -72,7 +73,7 @@ extension FeedsComposerDrawer{
             FeedComposerCoordinator(
                 delegate: self.feedCoordinatorDeleagate,
                 requestCoordinator: self.requestCoordinator,
-                mediaFetcher: nil, selectedAssets: nil).showFeedItemEditor(type: type)
+                mediaFetcher: self.mediaFetcher, selectedAssets: nil).showFeedItemEditor(type: type)
         }
     }
     

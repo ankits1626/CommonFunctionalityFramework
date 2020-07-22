@@ -89,6 +89,7 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         getCellCoordinator(indexPath: inputModel.targetIndexpath).loadDataCell(
             FeedCellLoadDataModel(
                 targetIndexpath: inputModel.targetIndexpath,
+                targetTableView: targetTableView,
                 targetCell: inputModel.targetCell,
                 datasource: feedsDataSource,
                 mediaFetcher: mediaFetcher,

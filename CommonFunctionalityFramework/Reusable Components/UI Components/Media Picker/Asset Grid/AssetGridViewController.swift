@@ -104,6 +104,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         assetGridVC.maximumItemSelectionAllowed = presentationModel.maximumItemSelectionAllowed
         let navVC = UINavigationController(rootViewController: assetGridVC)
         navVC.setNavigationBarHidden(true, animated: false)
+        navVC.modalPresentationStyle = .fullScreen
         presentationModel.presentingViewController?.present(navVC, animated: true, completion: nil)
     }
     

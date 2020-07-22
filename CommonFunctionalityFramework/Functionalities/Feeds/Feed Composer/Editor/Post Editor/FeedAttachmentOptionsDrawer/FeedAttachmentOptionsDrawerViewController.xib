@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedAttachmentOptionsDrawerViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <connections>
+                <outlet property="attachGifButton" destination="G7T-h8-f9S" id="Dv5-rk-YAH"/>
+                <outlet property="attachPhotosButton" destination="HDX-0T-jLl" id="y6K-pX-Lrz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="548" height="260"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WXN-a2-z9g">
+                    <rect key="frame" x="0.0" y="44" width="548" height="172"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyH-uY-sbk">
+                            <rect key="frame" x="0.0" y="0.0" width="548" height="86"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDX-0T-jLl" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                    <rect key="frame" x="53" y="44" width="442" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="M2r-eJ-WUQ"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="HDX-0T-jLl" firstAttribute="leading" secondItem="FyH-uY-sbk" secondAttribute="leading" constant="53" id="5ZT-Gc-wk0"/>
+                                <constraint firstAttribute="bottom" secondItem="HDX-0T-jLl" secondAttribute="bottom" id="Gih-nk-7pJ"/>
+                                <constraint firstAttribute="trailing" secondItem="HDX-0T-jLl" secondAttribute="trailing" constant="53" id="Q3V-fC-8oV"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXF-1g-BQf">
+                            <rect key="frame" x="0.0" y="86" width="548" height="86"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7T-h8-f9S" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                    <rect key="frame" x="53" y="44" width="442" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="uca-Yc-gCS"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="G7T-h8-f9S" firstAttribute="leading" secondItem="EXF-1g-BQf" secondAttribute="leading" constant="53" id="C5u-TW-N3p"/>
+                                <constraint firstAttribute="bottom" secondItem="G7T-h8-f9S" secondAttribute="bottom" id="dhm-sy-P6A"/>
+                                <constraint firstAttribute="trailing" secondItem="G7T-h8-f9S" secondAttribute="trailing" constant="53" id="g85-o2-tLH"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="WXN-a2-z9g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="29F-1I-hKO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WXN-a2-z9g" secondAttribute="trailing" id="Dzx-TA-N5y"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="WXN-a2-z9g" secondAttribute="bottom" constant="10" id="SYg-3l-jx2"/>
+                <constraint firstItem="WXN-a2-z9g" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="uWf-0d-dGW"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="-86.956521739130437" y="320.75892857142856"/>
+        </view>
+    </objects>
+</document>

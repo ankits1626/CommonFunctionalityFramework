@@ -32,6 +32,7 @@ class FeedDetailSectionFactory {
             SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
+            FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
             PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
@@ -123,6 +124,7 @@ class FeedDetailSectionFactory {
         getCellCoordinator(indexPath).loadDataCell(
             FeedCellLoadDataModel(
                 targetIndexpath: indexPath,
+                targetTableView: targetTableView,
                 targetCell: cell,
                 datasource: feedDataSource,
                 mediaFetcher: mediaFetcher,
@@ -191,9 +193,23 @@ extension FeedDetailSectionFactory{
         if feed!.getFeedTitle() != nil {
             rows.append(FeedTitleTableViewCellType())
         }
-        if feed!.getFeedDescription() != nil{
-            rows.append(FeedTextTableViewCellType())
+//        if feed!.getFeedDescription() != nil{
+//            rows.append(FeedTextTableViewCellType())
+//        }
+        if
+            let unwrappedFeed = feed{
+            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+                feedId: unwrappedFeed.feedIdentifier,
+                description: unwrappedFeed.getFeedDescription())
+            if model?.displayableDescription.string != nil{
+                if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+                            !disaplyableDescription.isEmpty{
+                //        if feed.getFeedDescription() != nil{
+                            rows.append(FeedTextTableViewCellType())
+                        }
+            }
         }
+        
         switch feed!.getMediaCountState() {
         case .None:
             break
@@ -209,6 +225,16 @@ extension FeedDetailSectionFactory{
         case .MoreThanTwoMediItemPresent:
             rows.append(MultipleMediaTableViewCellType())
         }
+        if
+            let unwrappedFeed = feed{
+            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+                feedId: unwrappedFeed.feedIdentifier,
+                description: unwrappedFeed.getFeedDescription())
+            if model?.attachedGif != nil{
+                rows.append(FeedGifTableViewCellType())
+            }
+        }
+        
         if let poll = feed?.getPoll(){
             poll.getPollOptions().forEach { (_) in
                 rows.append(PollOptionsVotedTableViewCellType())

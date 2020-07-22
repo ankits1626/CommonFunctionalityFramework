@@ -20,6 +20,7 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
+            FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
             FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
         ]
     }()
@@ -45,7 +46,12 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         if feed.getFeedTitle() != nil {
             rows.append(FeedTitleTableViewCellType())
         }
-        if feed.getFeedDescription() != nil{
+        let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+        feedId: feed.feedIdentifier,
+        description: feed.getFeedDescription())
+        if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+            !disaplyableDescription.isEmpty{
+//        if feed.getFeedDescription() != nil{
             rows.append(FeedTextTableViewCellType())
         }
         switch feed.getMediaCountState() {
@@ -62,6 +68,10 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             fallthrough
         case .MoreThanTwoMediItemPresent:
             rows.append(MultipleMediaTableViewCellType())
+        }
+        
+        if model?.attachedGif != nil{
+            rows.append(FeedGifTableViewCellType())
         }
         rows.append(FeedBottomTableViewCellType())
         return rows
@@ -80,6 +90,7 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         getCellCoordinator(indexPath: inputModel.targetIndexpath).loadDataCell(
             FeedCellLoadDataModel(
                 targetIndexpath: inputModel.targetIndexpath,
+                targetTableView: targetTableView,
                 targetCell: inputModel.targetCell,
                 datasource: feedsDataSource,
                 mediaFetcher: mediaFetcher,

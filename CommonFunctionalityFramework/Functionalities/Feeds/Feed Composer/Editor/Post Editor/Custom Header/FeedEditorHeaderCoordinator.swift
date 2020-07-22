@@ -15,9 +15,11 @@ struct GetPostEditorDetailtableHeaderInput{
 
 class FeedEditorHeaderCoordinator {
     weak var postEditorDataSource : PostEditorCellFactoryDatasource?
+    
     init(dataSource: PostEditorCellFactoryDatasource?) {
         self.postEditorDataSource = dataSource
     }
+    
     func getHeader(input: GetPostEditorDetailtableHeaderInput) -> UIView? {
         switch input.section {
             
@@ -37,10 +39,11 @@ class FeedEditorHeaderCoordinator {
             fallthrough
         case .Description:
             fallthrough
-            
         case .PollOptions:
             fallthrough
         case .PollActiveForDays:
+            fallthrough
+        case .AttachedGif:
             return nil
         }
     }
@@ -58,11 +61,12 @@ class FeedEditorHeaderCoordinator {
             fallthrough
         case .Description:
             fallthrough
-            
         case .PollOptions:
             fallthrough
         case .PollActiveForDays:
-            return 0
+            fallthrough
+        case .AttachedGif:
+             return  0
         }
     }
 }

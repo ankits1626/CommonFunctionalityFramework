@@ -6,7 +6,7 @@
 //  Copyright © 2020 Rewardz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 protocol FeedsItemProtocol : Likeable {
@@ -105,16 +105,41 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     
     func getEditablePost() -> EditablePostProtocol {
-        return EditablePost(
-            isShareWithSameDepartmentOnly: isSharedWithDepartment(),
-            postType: getFeedType(),
-            pollOptions: nil,
-            title: getFeedTitle(),
-            postDesciption: getFeedDescription(),
-            remoteAttachedMedia: getMediaList(),
-            selectedMediaItems: nil,
-            remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
-        )
+        if let unrappedDescription = getFeedDescription(){
+            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+                feedId: feedIdentifier,
+                description: unrappedDescription
+            )
+            
+            var post =  EditablePost(
+                isShareWithSameDepartmentOnly: isSharedWithDepartment(),
+                postType: getFeedType(),
+                pollOptions: nil,
+                title: getFeedTitle(),
+                postDesciption:  model?.displayableDescription.string,
+                remoteAttachedMedia: getMediaList(),
+                selectedMediaItems: nil,
+                remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
+            )
+            if let unwrappedGifSource = model?.attachedGif{
+               post.attachedGif = RawGif(sourceUrl: unwrappedGifSource)
+            }
+            
+            return post
+            
+        }else{
+            return EditablePost(
+                isShareWithSameDepartmentOnly: isSharedWithDepartment(),
+                postType: getFeedType(),
+                pollOptions: nil,
+                title: getFeedTitle(),
+                postDesciption:  getFeedDescription(),
+                remoteAttachedMedia: getMediaList(),
+                selectedMediaItems: nil,
+                remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
+            )
+        }
+        
     }
     
     private func isSharedWithDepartment() -> Bool{

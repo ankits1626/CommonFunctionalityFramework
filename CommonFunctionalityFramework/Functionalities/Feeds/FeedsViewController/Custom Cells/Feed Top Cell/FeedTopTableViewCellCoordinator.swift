@@ -16,6 +16,7 @@ struct FeedCellDequeueModel {
 
 struct FeedCellLoadDataModel {
     var targetIndexpath : IndexPath
+    var targetTableView: UITableView?
     var targetCell : UITableViewCell
     var datasource: FeedsDatasource
     var mediaFetcher: CFFMediaCoordinatorProtocol

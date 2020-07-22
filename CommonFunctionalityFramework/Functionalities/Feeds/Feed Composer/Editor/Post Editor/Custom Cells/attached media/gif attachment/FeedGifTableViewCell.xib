@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="215" id="S0S-Ab-mrb" customClass="FeedGifTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="215"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S0S-Ab-mrb" id="SIj-3w-nsc">
+                <rect key="frame" x="0.0" y="0.0" width="321" height="215"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hu7-xb-Cu3">
+                        <rect key="frame" x="16" y="0.0" width="289" height="215"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zW6-5X-CQp" customClass="FLAnimatedImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="199"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tj-I7-h76" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="199"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLd-lg-HVY" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                <rect key="frame" x="262" y="5" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="1NP-UV-Hvu"/>
+                                    <constraint firstAttribute="height" constant="22" id="vdy-mW-xn4"/>
+                                </constraints>
+                                <state key="normal" image="closeIcon"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6tj-I7-h76" firstAttribute="width" secondItem="zW6-5X-CQp" secondAttribute="width" id="30h-8P-4IR"/>
+                            <constraint firstItem="6tj-I7-h76" firstAttribute="centerX" secondItem="zW6-5X-CQp" secondAttribute="centerX" id="FYi-jZ-W1h"/>
+                            <constraint firstItem="6tj-I7-h76" firstAttribute="height" secondItem="zW6-5X-CQp" secondAttribute="height" id="G2z-KL-FdT"/>
+                            <constraint firstItem="zW6-5X-CQp" firstAttribute="top" secondItem="Hu7-xb-Cu3" secondAttribute="top" id="KrK-Lz-6av"/>
+                            <constraint firstItem="PLd-lg-HVY" firstAttribute="top" secondItem="Hu7-xb-Cu3" secondAttribute="top" constant="5" id="Nee-by-dYW"/>
+                            <constraint firstItem="6tj-I7-h76" firstAttribute="centerY" secondItem="zW6-5X-CQp" secondAttribute="centerY" id="Q4h-so-j1w"/>
+                            <constraint firstAttribute="trailing" secondItem="PLd-lg-HVY" secondAttribute="trailing" constant="5" id="cxN-I4-tE4"/>
+                            <constraint firstAttribute="trailing" secondItem="zW6-5X-CQp" secondAttribute="trailing" id="mmf-xK-CdI"/>
+                            <constraint firstItem="zW6-5X-CQp" firstAttribute="leading" secondItem="Hu7-xb-Cu3" secondAttribute="leading" id="vWK-zH-Qq2"/>
+                            <constraint firstAttribute="bottom" secondItem="zW6-5X-CQp" secondAttribute="bottom" constant="16" id="yIM-S7-GFo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Hu7-xb-Cu3" firstAttribute="leading" secondItem="SIj-3w-nsc" secondAttribute="leading" constant="16" id="2f6-Bj-BLO"/>
+                    <constraint firstItem="Hu7-xb-Cu3" firstAttribute="top" secondItem="SIj-3w-nsc" secondAttribute="top" id="QcB-t9-Enq"/>
+                    <constraint firstAttribute="bottom" secondItem="Hu7-xb-Cu3" secondAttribute="bottom" id="XGM-DH-CUe"/>
+                    <constraint firstAttribute="trailing" secondItem="Hu7-xb-Cu3" secondAttribute="trailing" constant="16" id="ubg-8b-fBt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="0uY-wm-GiQ"/>
+            <connections>
+                <outlet property="containerView" destination="Hu7-xb-Cu3" id="Cbe-zE-29C"/>
+                <outlet property="feedGifImage" destination="zW6-5X-CQp" id="U6K-oU-MAp"/>
+                <outlet property="imageTapButton" destination="6tj-I7-h76" id="k72-4m-iJ0"/>
+                <outlet property="removeButton" destination="PLd-lg-HVY" id="ihD-eq-0Ne"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="143.63839285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="closeIcon" width="12" height="12"/>
+    </resources>
+</document>

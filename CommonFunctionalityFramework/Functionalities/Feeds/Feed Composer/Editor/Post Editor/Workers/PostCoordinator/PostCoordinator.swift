@@ -54,6 +54,7 @@ class PostCoordinator {
     }
     
     func updateAttachedMediaItems(_ selectedMediaItems : [LocalSelectedMediaItem]?) {
+        currentPost.attachedGif = nil
         if let _ = selectedMediaItems{
             if currentPost.selectedMediaItems == nil{
                 // insert
@@ -73,7 +74,18 @@ class PostCoordinator {
         }
     }
     
-    func updatePostTile(title: String?) {
+    func attachGifItem(_ selectedGif: RawGif) {
+        currentPost.selectedMediaItems = nil
+        deleteAllRemoteAttachedMediaItems()
+        currentPost.attachedGif = selectedGif
+        postObsever?.allAttachedMediaRemovedFromPost()
+    }
+    
+    func removeAttachedGif() {
+        currentPost.attachedGif = nil
+    }
+    
+    func updatePostTitle(title: String?) {
         currentPost.title = title
     }
     
@@ -94,12 +106,18 @@ class PostCoordinator {
         }
     }
     
+    private func deleteAllRemoteAttachedMediaItems(){
+        currentPost.remoteAttachedMedia?.forEach({ (aMediaItem) in
+            currentPost.deletedRemoteMediaArray.append(aMediaItem.getRemoteId())
+        })
+        currentPost.remoteAttachedMedia = nil
+    }
+    
     private func removeRemoteMedia(index: Int){
         if let mediaItem = currentPost.remoteAttachedMedia?[index]{
             currentPost.deletedRemoteMediaArray.append(mediaItem.getRemoteId())
         }
         currentPost.remoteAttachedMedia?.remove(at: index)
-        
         if let items = currentPost.remoteAttachedMedia{
            if items.count == 0{
                 currentPost.remoteAttachedMedia = nil
@@ -209,6 +227,9 @@ extension PostCoordinator{
     
     private func  checkIfPostReadyToBePosted() throws{
         if let _ = currentPost.pollOptions{
+            return
+        }
+        else if currentPost.attachedGif != nil{
             return
         }
         else if let title  = currentPost.title,

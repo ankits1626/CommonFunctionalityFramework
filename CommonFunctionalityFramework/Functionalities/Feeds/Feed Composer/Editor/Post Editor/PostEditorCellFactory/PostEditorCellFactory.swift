@@ -17,6 +17,7 @@ protocol PostEditorCellFactoryDelegate : class {
     func updatePostTitle( title : String?)
     func updatePostDescription( decription: String?)
     func removeSelectedMedia(index : Int, mediaSection: EditableMediaSection)
+    func removeAttachedGif()
     func savePostOption(index : Int, option: String?)
     func activeDaysForPollChanged(_ days : Int)
 }
@@ -74,6 +75,7 @@ enum PostEditorSection : Int {
     case Title = 0
     case Description
     case Media
+    case AttachedGif
     case PollOptions
     case PollActiveForDays
 }
@@ -87,6 +89,7 @@ class PostEditorCellFactory {
             FeedEditorTitleTableViewCellType().cellIdentifier : FeedEditorTitleTableViewCellCoordinator(),
             FeedEditorDescriptionTableViewCellType().cellIdentifier : FeedEditorDescriptionTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : FeedEditorAttachedMutipleMediaTableViewCellCoordinator(),
+            FeedGifTableViewCellType().cellIdentifier : FeedEditorAttachedGifTableViewCellCoordinator(),
             FeedEditorPollOptionTableViewCellType().cellIdentifier : FeedEditorPollOptionTableViewCellCoordinator(),
             PollsActiveDaysTableViewCellType().cellIdentifier : PollsActiveDaysTableViewCellCoordinator()
         ]
@@ -94,13 +97,11 @@ class PostEditorCellFactory {
     
     private lazy var headerCoordinator: FeedEditorHeaderCoordinator = {
         return FeedEditorHeaderCoordinator(dataSource: input.datasource)
-       }()
+    }()
     
     init(_ input : InitPostEditorCellFactoryModel) {
         self.input = input
     }
-    
-    
     
     func registerTableToAllPossibleCellTypes(_ targetTableView : UITableView?) {
         cachedCellCoordinators.forEach { (cellCoordinator) in
@@ -174,13 +175,14 @@ class PostEditorCellFactory {
     }
     
     func getHeightOfViewForSection(section: Int) -> CGFloat {
-        return headerCoordinator.getHeight(section: PostEditorSection(rawValue: section)!)
+        return headerCoordinator.getHeight(section: getCurrentSection(section))
+//        return headerCoordinator.getHeight(section: PostEditorSection(rawValue: section)!)
         
     }
     
     func getViewForHeaderInSection(section: Int, tableView: UITableView) -> UIView? {
         return headerCoordinator.getHeader(input: GetPostEditorDetailtableHeaderInput(
-            section: PostEditorSection(rawValue: section)!,
+            section: getCurrentSection(section),
             table: tableView
             )
         )
@@ -206,6 +208,12 @@ extension PostEditorCellFactory{
             shouldDisplayMediaSection{
             sections.append(.Media)
         }
+        
+        if let shouldDisplayGifSection = input.datasource?.getTargetPost()?.isGifAttached(),
+            shouldDisplayGifSection{
+            sections.append(.AttachedGif)
+        }
+        
         return sections
     }
     
@@ -221,6 +229,8 @@ extension PostEditorCellFactory{
             return cachedCellCoordinators[MultipleMediaTableViewCellType().cellIdentifier]!
         case .PollActiveForDays:
             return cachedCellCoordinators[PollsActiveDaysTableViewCellType().cellIdentifier]!
+        case .AttachedGif:
+            return cachedCellCoordinators[FeedGifTableViewCellType().cellIdentifier]!
         }
     }
 }

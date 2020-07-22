@@ -121,8 +121,16 @@ class FeedsViewController: UIViewController {
         if let fetchedFeeds = lastFetchedFeeds?.fetchedRawFeeds?["results"] as? [[String : Any]]{
             CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                 fetchedFeeds.forEach { (aRawFeed) in
-                    let _ = RawFeed(input: aRawFeed).getManagedObject() as! ManagedPost
+                    let rawFeed = RawFeed(input: aRawFeed)
+                    let _ = rawFeed.getManagedObject() as! ManagedPost
+                    if let unwrappedDescription = rawFeed.getFeedDescription(){
+                        FeedDescriptionMarkupParser.sharedInstance.updateDescriptionParserOutputModelForFeed(
+                            feedId: rawFeed.feedIdentifier,
+                            description: unwrappedDescription
+                        )
+                    }
                 }
+                
                 CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                     CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                 }
@@ -169,6 +177,7 @@ extension FeedsViewController{
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator
+        drawer.mediaFetcher = mediaFetcher
         do{
             try drawer.presentDrawer()
         }catch let error{

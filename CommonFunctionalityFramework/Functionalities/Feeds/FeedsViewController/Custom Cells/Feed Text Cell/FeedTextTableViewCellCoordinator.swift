@@ -24,11 +24,20 @@ class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
                 cell.feedText?.numberOfLines = 0
                 cell.feedText?.lineBreakMode = NSLineBreakMode.byClipping
             }
-            cell.feedText?.enabledTypes  = [.url]
-            cell.feedText?.text = feed.getFeedDescription()
+            cell.feedText?.enabledTypes  = [.url, .mention]
+            if let unwrappedText = feed.getFeedDescription(){
+                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
+                cell.feedText?.text = model?.displayableDescription.string
+            }else{
+                cell.feedText?.text = feed.getFeedDescription()
+            }
+            //cell.feedText?.text = feed.getFeedDescription()
             cell.feedText?.URLColor = .urlColor
             cell.feedText?.font = UIFont.Body1
             cell.feedText?.textColor = UIColor.getTitleTextColor()
+            cell.feedText?.handleMentionTap({ (mention) in
+                print("tapped on  \(mention)")
+            })
             cell.feedText?.handleURLTap({ (targetUrl) in
                 print("<<<<<<<< open \(targetUrl)")
                 if !targetUrl.absoluteString.hasPrefix("http"),

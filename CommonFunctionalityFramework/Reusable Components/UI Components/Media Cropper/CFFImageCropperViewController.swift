@@ -17,6 +17,7 @@ class CFFImageCropperViewController: UIViewController {
     weak var localMediaManager : LocalMediaManager?
     var assetSelectionCompletion : ((_ assets : [LocalSelectedMediaItem]?) -> Void)?
     private var mainCropper : CFFMainCropperViewController!
+    private var currentlySelectedIndex : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,6 @@ class CFFImageCropperViewController: UIViewController {
     private func setup(){
         setupCollectionView()
         setupProceedButton()
-        
     }
     
     private func addMainCropper(){
@@ -89,31 +89,46 @@ extension CFFImageCropperViewController  : UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "MediaItemCollectionViewCell",
         for: indexPath) as! MediaItemCollectionViewCell
-        cell.removeButton?.isHidden = false
-        cell.editTransparentView?.isHidden = true
-        cell.curvedCornerControl()
-        cell.removeButton?.isHidden = true
-        cell.mediaCoverImageView?.curvedCornerControl()
-        cell.mediaCoverImageView?.contentMode = .scaleAspectFit
-        cell.mediaCoverImageView?.curvedBorderedControl()
-        loadImage(index: indexPath.row, imageView: cell.mediaCoverImageView)
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let mediaItemCell =  cell as? MediaItemCollectionViewCell{
+            mediaItemCell.removeButton?.isHidden = false
+            mediaItemCell.editTransparentView?.isHidden = true
+            mediaItemCell.curvedCornerControl()
+            mediaItemCell.removeButton?.isHidden = true
+            mediaItemCell.mediaCoverImageView?.curvedCornerControl()
+            mediaItemCell.mediaCoverImageView?.contentMode = .scaleAspectFit
+            if indexPath.row == currentlySelectedIndex{
+                mediaItemCell.mediaCoverImageView?.curvedBorderedControl(borderColor: .black, borderWidth: 2.0)
+            }else{
+                mediaItemCell.mediaCoverImageView?.curvedBorderedControl()
+            }
+            loadImage(index: indexPath.row, cell: mediaItemCell, imageView: mediaItemCell.mediaCoverImageView)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let deselectedIndex = currentlySelectedIndex
+        currentlySelectedIndex = indexPath.item
         loadImage(index: indexPath.row)
+        collectionView.reloadItems(at: [
+            IndexPath(item: deselectedIndex, section: 0),
+            IndexPath(item: currentlySelectedIndex, section: 0)
+        ])
     }
     
     private func loadImage(index :Int){
         mainCropper.loadImage(mediaItem: selectedAssets[index])
     }
     
-    private func loadImage(index :Int, imageView: UIImageView?){
+    private func loadImage(index :Int, cell: MediaItemCollectionViewCell, imageView: UIImageView?){
         if let croppedImage = selectedAssets[index].croppedImage{
             imageView?.image = croppedImage
         }else{
             if let asset = selectedAssets[index].asset{
-                localMediaManager?.fetchImageForAsset(asset: asset, size: (imageView?.bounds.size)!, completion: { (_, fetchedImage) in
+                localMediaManager?.fetchImageForAsset(asset: asset, size: (cell.bounds.size), completion: { (_, fetchedImage) in
                    imageView?.image = fetchedImage
                 })
             }
