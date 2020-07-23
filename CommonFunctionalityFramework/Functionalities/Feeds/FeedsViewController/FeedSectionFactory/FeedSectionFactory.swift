@@ -26,6 +26,7 @@ protocol FeedsDelegate : class {
     func showLikedByUsersList()
     func showMediaBrowser(feedIdentifier : Int64,scrollToItemIndex: Int)
     func toggleClapForPost(feedIdentifier : Int64)
+    func toggleLikeForComment(commentIdentifier : Int64)
     func selectPollAnswer(feedIdentifier : Int64, pollOption: PollOption)
     func submitPollAnswer(feedIdentifier : Int64)
     func showAllClaps(feedIdentifier : Int64)

@@ -51,11 +51,31 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                 cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             cell.commentContainer?.backgroundColor = .grayBackGroundColor()
-            //cell.commentContainer?.curvedCornerControl()
+            if let unwrappedComment = comment{
+                cell.commentCountConatiner?.isHidden = unwrappedComment.likeCount() == 0
+                cell.commentCountLabel?.text = unwrappedComment.presentableLikeCount()
+                cell.commentCountLabel?.font = .Caption1
+                cell.commentCountLabel?.textColor = .getTitleTextColor()
+                cell.likeButton?.setImage(
+                    UIImage(
+                        named: unwrappedComment.isLikedByMe() ? "commentUnlike" : "commentLike" ,
+                        in: Bundle(for: FeedBottomTableViewCell.self),
+                        compatibleWith: nil),
+                    for: .normal
+                )
+            }
             if let profileImageEndpoint = comment?.getCommentUser().getAuthorProfileImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.userProfileImage, imageEndPoint: profileImageEndpoint)
             }else{
                 cell.userProfileImage?.image = nil
+            }
+            if let commentId = comment?.getComentId(),
+                commentId != -1{
+                cell.likeButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        inputModel.delegate?.toggleLikeForComment(commentIdentifier: commentId)
+                })
             }
         }
     }

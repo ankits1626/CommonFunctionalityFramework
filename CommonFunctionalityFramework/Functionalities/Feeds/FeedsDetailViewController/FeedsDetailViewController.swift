@@ -258,20 +258,54 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.loadControl?.update()
     }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        scrollView.loadControl?.update()
+    }
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
-    func showAllClaps(feedIdentifier: Int64) {
-        
+    
+    func toggleLikeForComment(commentIdentifier: Int64) {
+        if let comment = getLikeableComment(commentIdentifier: commentIdentifier){
+            print("<<<<<<<<< toggle like \(commentIdentifier)")
+            FeedClapToggler(networkRequestCoordinator: requestCoordinator).toggleLike(comment) { (result) in
+                switch result{
+                case .Success(result: let result):
+                    CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                        let comment = comment.getManagedObject() as! ManagedPostComment
+                        comment.isLikedByMe = result.isLiked
+                        comment.numberOfLikes = result.totalLikeCount
+                    
+                        CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                            CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                        }
+                    }
+                case .SuccessWithNoResponseData:
+                    fallthrough
+                case .Failure(error: let _):
+                    print("<<<<<<<<<< like/unlike call completed \(result)")
+                }
+            }
+        }
     }
     
-    func submitPollAnswer(feedIdentifier: Int64) {
-        
+    private func getLikeableComment(commentIdentifier: Int64) -> FeedComment?{
+        let fetchRequest = NSFetchRequest<ManagedPostComment>(entityName: "ManagedPostComment")
+        fetchRequest.predicate = NSPredicate (format: "commentId == %d", commentIdentifier)
+        do{
+            let filterdComments = try CFFCoreDataManager.sharedInstance.manager.mainQueueContext.fetch(fetchRequest)
+            return filterdComments.first?.getRawObject() as? FeedComment
+        }catch{
+            return nil
+        }
     }
     
-    func selectPollAnswer(feedIdentifier: Int64, pollOption: PollOption) {
-        
-    }
+    func showAllClaps(feedIdentifier: Int64) {}
+    
+    func submitPollAnswer(feedIdentifier: Int64) {}
+    
+    func selectPollAnswer(feedIdentifier: Int64, pollOption: PollOption) {}
     
     func toggleClapForPost(feedIdentifier: Int64) {
         FeedClapToggler(networkRequestCoordinator: requestCoordinator).toggleLike(targetFeedItem) { [weak self](result) in

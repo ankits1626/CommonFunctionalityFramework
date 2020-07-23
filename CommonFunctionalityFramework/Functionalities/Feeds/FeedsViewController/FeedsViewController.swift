@@ -254,6 +254,8 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func toggleLikeForComment(commentIdentifier: Int64) {}
+    
     func showAllClaps(feedIdentifier: Int64) {
         print("show all claps for \(feedIdentifier)")
         let likeListVC = LikeListViewController(

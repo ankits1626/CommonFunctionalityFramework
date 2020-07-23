@@ -18,7 +18,11 @@ struct CommentUser : FeedBaseUser{
     
 }
 
-struct FeedComment : RawObjectProtocol {
+struct FeedComment : RawObjectProtocol,Likeable {
+    func getLikeToggleUrl(_ baseUrl: String) -> URL {
+        return URL(string: baseUrl + "feeds/api/comments/\(getComentId())/like/")!
+    }
+    
     
     @discardableResult func getManagedObject() -> NSManagedObject{
         let managedPost : ManagedPostComment!
@@ -37,17 +41,26 @@ struct FeedComment : RawObjectProtocol {
             managedPost.createdTimeStamp = NSDate()
         }
         managedPost.commentRawDictionary = rawFeedComment as NSDictionary
+        managedPost.isLikedByMe = isLiked
         managedPost.commentId = getComentId()
+        managedPost.numberOfLikes = numberOfLikes
         return managedPost
     }
     
     init(managedObject : NSManagedObject) {
         self.rawFeedComment = (managedObject as! ManagedPostComment).commentRawDictionary as! [String : Any]
+        self.isLiked = (managedObject as! ManagedPostComment).isLikedByMe
+        numberOfLikes = (managedObject as! ManagedPostComment).numberOfLikes
     }
     
     private let rawFeedComment : [String : Any]
+    private var isLiked : Bool
+    private var numberOfLikes : Int64
+    
     init(input : [String : Any]) {
         self.rawFeedComment = input
+        self.isLiked = rawFeedComment["has_liked"] as? Bool ?? false
+        numberOfLikes = rawFeedComment["liked_count"] as? Int64 ?? 0
     }
     
     func getCommentDate() -> String {
@@ -67,5 +80,22 @@ struct FeedComment : RawObjectProtocol {
     
     func getComentId() -> Int64 {
         return rawFeedComment["id"] as? Int64 ?? -1
+    }
+    
+    func isLikedByMe() -> Bool {
+        return isLiked
+    }
+    
+    func likeCount() -> Int64 {
+        return numberOfLikes
+    }
+    
+    func presentableLikeCount() -> String {
+        if numberOfLikes == 1{
+            return "1 Like"
+        }else{
+            return "\(numberOfLikes) Likes"
+        }
+        
     }
 }
