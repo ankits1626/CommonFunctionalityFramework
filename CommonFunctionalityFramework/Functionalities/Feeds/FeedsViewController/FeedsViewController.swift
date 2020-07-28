@@ -163,7 +163,7 @@ class FeedsViewController: UIViewController {
         feedsTable?.addSubview(refreshControl)
         feedsTable?.tableFooterView = UIView(frame: CGRect.zero)
         feedsTable?.rowHeight = UITableView.automaticDimension
-        feedsTable?.estimatedRowHeight = 140
+        feedsTable?.estimatedRowHeight = 500
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
         feedsTable?.loadControl = UILoadControl(target: self, action: #selector(loadFeeds))

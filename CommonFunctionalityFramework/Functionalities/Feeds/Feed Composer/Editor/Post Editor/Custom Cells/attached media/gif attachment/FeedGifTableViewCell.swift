@@ -14,6 +14,7 @@ class FeedGifTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var removeButton : BlockButton?
     @IBOutlet weak var imageTapButton : BlockButton?
+    @IBOutlet weak var imageLoader : UIActivityIndicatorView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +23,6 @@ class FeedGifTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

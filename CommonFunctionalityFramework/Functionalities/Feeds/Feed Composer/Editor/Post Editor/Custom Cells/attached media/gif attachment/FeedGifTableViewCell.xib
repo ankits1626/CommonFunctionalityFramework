@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hu7-xb-Cu3">
                         <rect key="frame" x="16" y="0.0" width="289" height="215"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zW6-5X-CQp" customClass="FLAnimatedImageView">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zW6-5X-CQp" customClass="FLAnimatedImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="289" height="199"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tj-I7-h76" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
@@ -34,16 +34,22 @@
                                 </constraints>
                                 <state key="normal" image="closeIcon"/>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="cnl-s9-Bvg">
+                                <rect key="frame" x="134.5" y="89.5" width="20" height="20"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6tj-I7-h76" firstAttribute="width" secondItem="zW6-5X-CQp" secondAttribute="width" id="30h-8P-4IR"/>
+                            <constraint firstItem="cnl-s9-Bvg" firstAttribute="centerX" secondItem="zW6-5X-CQp" secondAttribute="centerX" id="8cb-5i-Qgb"/>
                             <constraint firstItem="6tj-I7-h76" firstAttribute="centerX" secondItem="zW6-5X-CQp" secondAttribute="centerX" id="FYi-jZ-W1h"/>
                             <constraint firstItem="6tj-I7-h76" firstAttribute="height" secondItem="zW6-5X-CQp" secondAttribute="height" id="G2z-KL-FdT"/>
                             <constraint firstItem="zW6-5X-CQp" firstAttribute="top" secondItem="Hu7-xb-Cu3" secondAttribute="top" id="KrK-Lz-6av"/>
                             <constraint firstItem="PLd-lg-HVY" firstAttribute="top" secondItem="Hu7-xb-Cu3" secondAttribute="top" constant="5" id="Nee-by-dYW"/>
                             <constraint firstItem="6tj-I7-h76" firstAttribute="centerY" secondItem="zW6-5X-CQp" secondAttribute="centerY" id="Q4h-so-j1w"/>
                             <constraint firstAttribute="trailing" secondItem="PLd-lg-HVY" secondAttribute="trailing" constant="5" id="cxN-I4-tE4"/>
+                            <constraint firstItem="cnl-s9-Bvg" firstAttribute="centerY" secondItem="zW6-5X-CQp" secondAttribute="centerY" id="h3d-DP-bFx"/>
                             <constraint firstAttribute="trailing" secondItem="zW6-5X-CQp" secondAttribute="trailing" id="mmf-xK-CdI"/>
                             <constraint firstItem="zW6-5X-CQp" firstAttribute="leading" secondItem="Hu7-xb-Cu3" secondAttribute="leading" id="vWK-zH-Qq2"/>
                             <constraint firstAttribute="bottom" secondItem="zW6-5X-CQp" secondAttribute="bottom" constant="16" id="yIM-S7-GFo"/>
@@ -61,6 +67,7 @@
             <connections>
                 <outlet property="containerView" destination="Hu7-xb-Cu3" id="Cbe-zE-29C"/>
                 <outlet property="feedGifImage" destination="zW6-5X-CQp" id="U6K-oU-MAp"/>
+                <outlet property="imageLoader" destination="cnl-s9-Bvg" id="g8i-Xq-W8B"/>
                 <outlet property="imageTapButton" destination="6tj-I7-h76" id="k72-4m-iJ0"/>
                 <outlet property="removeButton" destination="PLd-lg-HVY" id="ihD-eq-0Ne"/>
             </connections>
