@@ -38,12 +38,14 @@ class FeedSectionFactory{
     private var cachedFeedContentCoordinator = [FeedType : FeedContentCoordinatorProtocol]()
     private weak var targetTableView : UITableView?
     private weak var selectedOptionMapper : SelectedPollAnswerMapper?
+    private weak var themeManager: CFFThemeManagerProtocol?
     
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, selectedOptionMapper : SelectedPollAnswerMapper) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, selectedOptionMapper : SelectedPollAnswerMapper, themeManager: CFFThemeManagerProtocol?) {
         self.feedsDatasource = feedsDatasource
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
         self.selectedOptionMapper = selectedOptionMapper
+        self.themeManager = themeManager
     }
     
     func getNumberOfSections() -> Int {
@@ -74,7 +76,8 @@ class FeedSectionFactory{
                 targetIndexpath: indexPath,
                 targetCell: cell,
                 delegate: delegate,
-                selectedoptionMapper: selectedOptionMapper
+                selectedoptionMapper: selectedOptionMapper,
+                themeManager: themeManager
             )
         )
     }
@@ -102,13 +105,15 @@ class FeedSectionFactory{
             return PollFeedContentCoordinator(
                 feedsDatasource: feedsDatasource,
                 mediaFetcher: mediaFetcher,
-                tableview: targetTableView
+                tableview: targetTableView,
+                themeManager: themeManager
             )
         case .Post:
             return PostFeedContentCoordinator(
                 feedsDatasource: feedsDatasource,
                 mediaFetcher: mediaFetcher,
-                tableview: targetTableView
+                tableview: targetTableView,
+                themeManager: themeManager
             )
         
         }

@@ -12,6 +12,7 @@ struct EditablePostMediaMapperInitModel {
     weak var datasource : PostEditorCellFactoryDatasource?
     weak var localMediaManager : LocalMediaManager?
     weak var mediaFetcher: CFFMediaCoordinatorProtocol?
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 class EditablePostMediaRepository {

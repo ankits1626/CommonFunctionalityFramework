@@ -80,6 +80,7 @@ struct MediaPickerPresentationModel {
     var assetSelectionCompletion : ((_ assets : [LocalSelectedMediaItem]?) -> Void)?
     var maximumItemSelectionAllowed = 10
     weak var presentingViewController : UIViewController?
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 class AssetGridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -93,6 +94,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     var selectedAssets = [LocalSelectedMediaItem]()
     var localMediaManager : LocalMediaManager!
     var maximumItemSelectionAllowed = 10
+    weak var themeManager: CFFThemeManagerProtocol?
     
     static func presentMediaPickerStack(presentationModel : MediaPickerPresentationModel){
         let assetGridVC = AssetGridViewController(nibName: "AssetGridViewController", bundle: Bundle(for: AssetGridViewController.self))
@@ -105,6 +107,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         let navVC = UINavigationController(rootViewController: assetGridVC)
         navVC.setNavigationBarHidden(true, animated: false)
         navVC.modalPresentationStyle = .fullScreen
+        assetGridVC.themeManager = presentationModel.themeManager
         presentationModel.presentingViewController?.present(navVC, animated: true, completion: nil)
     }
     
@@ -187,7 +190,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
     
     private func setupUploadButton(){
         uploadButton.isHidden = selectedAssets.count == 0
-        uploadButton.backgroundColor = .black
+        uploadButton.backgroundColor = themeManager?.getControlActiveColor() ?? .black
         uploadButton.curvedCornerControl()
         uploadButton.setTitleColor(.white, for: .normal)
         uploadButton.titleLabel?.font = .Button
@@ -216,6 +219,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         cropperVc.localMediaManager = localMediaManager
         cropperVc.selectedAssets = selectedAssets
         cropperVc.assetSelectionCompletion = assetSelectionCompletion
+        cropperVc.themeManager = themeManager
         navigationController?.pushViewController(cropperVc, animated: true)
     }
     

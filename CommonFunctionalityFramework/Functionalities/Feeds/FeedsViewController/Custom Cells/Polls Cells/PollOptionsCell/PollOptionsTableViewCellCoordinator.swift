@@ -37,12 +37,12 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             if let selectedOptionMapper = inputModel.selectedoptionMapper,
                 selectedOptionMapper.isOptionSelected(feedOption!){
                 cell.optionContainerView?.borderedControl(
-                    borderColor:.votedPollOptionBorderColor ,
+                    borderColor: inputModel.themeManager?.getControlActiveColor() ?? .votedPollOptionBorderColor ,
                 borderWidth: BorderWidths.votedOptionBorderWidth
                 )
             }else{
                 cell.optionContainerView?.borderedControl(
-                    borderColor:.unVotedPollOptionBorderColor ,
+                    borderColor:inputModel.themeManager?.getControlActiveColor() ?? .unVotedPollOptionBorderColor ,
                     borderWidth: BorderWidths.standardBorderWidth
                 )
             }

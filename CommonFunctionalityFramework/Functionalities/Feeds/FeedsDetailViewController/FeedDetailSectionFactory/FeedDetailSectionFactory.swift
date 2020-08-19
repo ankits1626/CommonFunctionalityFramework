@@ -24,6 +24,7 @@ class FeedDetailSectionFactory {
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var targetTableView : UITableView?
     private var isLikedByCellIndexpath : IndexPath!
+    private weak var themeManager: CFFThemeManagerProtocol?
     lazy var cachedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         return [
             FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
@@ -42,15 +43,16 @@ class FeedDetailSectionFactory {
     }()
     
     private lazy var headerCoordinator: FeedDetailHeaderCoordinator = {
-        return FeedDetailHeaderCoordinator(dataSource: feedDataSource, delegate: feedDetailDelegate)
+        return FeedDetailHeaderCoordinator(dataSource: feedDataSource, delegate: feedDetailDelegate, themeManager: themeManager)
     }()
     
     
-    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?) {
+    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?) {
         self.feedDataSource = feedDataSource
         self.feedDetailDelegate = feedDetailDelegate
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
+        self.themeManager = themeManager
         registerTableViewForAllPossibleCellTypes(targetTableView)
         registerTableViewForHeaderView(targetTableView)
     }
@@ -129,7 +131,8 @@ class FeedDetailSectionFactory {
                 datasource: feedDataSource,
                 mediaFetcher: mediaFetcher,
                 delegate: feedDetailDelegate,
-                selectedoptionMapper: nil
+                selectedoptionMapper: nil,
+                themeManager: themeManager
             )
         )
     }

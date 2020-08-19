@@ -15,6 +15,7 @@ extension Notification.Name{
 }
 
 class PostEditorViewController: UIViewController {
+    weak var themeManager: CFFThemeManagerProtocol?
     var containerTopBarModel : EditorContainerModel?{
         didSet{
             setupContainerTopbar()
@@ -41,7 +42,8 @@ class PostEditorViewController: UIViewController {
         return EditablePostMediaRepository(input: EditablePostMediaMapperInitModel(
             datasource: self,
             localMediaManager: localMediaManager,
-            mediaFetcher: mediaFetcher
+            mediaFetcher: mediaFetcher,
+            themeManager: themeManager
             )
         )
     }()
@@ -56,7 +58,8 @@ class PostEditorViewController: UIViewController {
             delegate: self,
             localMediaManager: localMediaManager,
             targetTableView: postEditorTable,
-            postImageMapper: imageMapper
+            postImageMapper: imageMapper,
+            themeManager: themeManager
             )
         )
     }()
@@ -66,11 +69,12 @@ class PostEditorViewController: UIViewController {
     }()
     private let editablePost : EditablePostProtocol?
     private var deferredSelectedMediaLoad : (() -> Void)?
-    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?){
+    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?){
         self.postType  = postType
         self.requestCoordinator = requestCoordinator
         self.editablePost = post
         self.mediaFetcher = mediaFetcher
+        self.themeManager = themeManager
         super.init(
             nibName: "PostEditorViewController"
             , bundle: Bundle(for: PostEditorViewController.self))
@@ -100,6 +104,7 @@ class PostEditorViewController: UIViewController {
         }
         postWithSameDepartmentContainer?.isHidden = editablePost?.remotePostId != nil
         setupMessageGuidenceContainer()
+        setupCheckbox()
     }
     
     private func setupMessageGuidenceContainer(){
@@ -114,7 +119,9 @@ class PostEditorViewController: UIViewController {
     }
     
     private func setupCheckbox(){
-        postWithSameDepartmentCheckBox?.tintColor = .stepperActiveColor
+        postWithSameDepartmentCheckBox?.uncheckedBorderColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
+        postWithSameDepartmentCheckBox?.checkmarkColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
+        postWithSameDepartmentCheckBox?.checkedBorderColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
     }
     
     private func setupPostWithDepartment() {
@@ -150,7 +157,7 @@ class PostEditorViewController: UIViewController {
         }
         createButton?.titleLabel?.font = UIFont.Button
         createButton?.titleLabel?.tintColor = .buttonTextColor
-        createButton?.backgroundColor = .buttonColor
+        createButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .buttonColor
         createButton?.curvedCornerControl()
     }
     
@@ -227,7 +234,8 @@ class PostEditorViewController: UIViewController {
                     self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
             },
                 maximumItemSelectionAllowed: 10 - postCoordinator.getRemoteMediaCount(),
-                presentingViewController: self
+                presentingViewController: self,
+                themeManager: themeManager
             )
         )
     }

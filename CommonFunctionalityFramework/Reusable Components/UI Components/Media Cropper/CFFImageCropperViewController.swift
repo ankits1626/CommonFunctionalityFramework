@@ -17,6 +17,7 @@ class CFFImageCropperViewController: UIViewController {
     weak var localMediaManager : LocalMediaManager?
     var assetSelectionCompletion : ((_ assets : [LocalSelectedMediaItem]?) -> Void)?
     private var mainCropper : CFFMainCropperViewController!
+    weak var themeManager: CFFThemeManagerProtocol?
     private var currentlySelectedIndex : Int = 0
     
     override func viewDidLoad() {
@@ -39,6 +40,7 @@ class CFFImageCropperViewController: UIViewController {
     private func addMainCropper(){
         mainCropper = CFFMainCropperViewController(nibName: "CFFMainCropperViewController", bundle: Bundle(for: CFFMainCropperViewController.self))
         mainCropper.cropperDelegate = self
+        mainCropper.themeManager = themeManager
         addChild(mainCropper)
         mainCropperContainer.addSubview(mainCropper.view)
         NSLayoutConstraint.activate([
@@ -62,7 +64,7 @@ class CFFImageCropperViewController: UIViewController {
     }
     
     private func setupProceedButton(){
-        proceedButton.backgroundColor = .black
+        proceedButton.backgroundColor = themeManager?.getControlActiveColor() ?? .black
         proceedButton.curvedCornerControl()
         proceedButton.setTitleColor(.white, for: .normal)
         proceedButton.titleLabel?.font = .Button
@@ -101,7 +103,7 @@ extension CFFImageCropperViewController  : UICollectionViewDataSource, UICollect
             mediaItemCell.mediaCoverImageView?.curvedCornerControl()
             mediaItemCell.mediaCoverImageView?.contentMode = .scaleAspectFit
             if indexPath.row == currentlySelectedIndex{
-                mediaItemCell.mediaCoverImageView?.curvedBorderedControl(borderColor: .black, borderWidth: 2.0)
+                mediaItemCell.mediaCoverImageView?.curvedBorderedControl(borderColor: themeManager?.getControlActiveColor() ?? .black, borderWidth: 2.0)
             }else{
                 mediaItemCell.mediaCoverImageView?.curvedBorderedControl()
             }

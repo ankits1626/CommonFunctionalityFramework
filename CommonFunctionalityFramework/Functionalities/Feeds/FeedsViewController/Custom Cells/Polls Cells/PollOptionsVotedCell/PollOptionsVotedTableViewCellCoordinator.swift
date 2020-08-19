@@ -35,7 +35,7 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
             
            cell.optionContainerView?.borderedControl(
-            borderColor: .unVotedPollOptionBorderColor,
+            borderColor: inputModel.themeManager?.getControlActiveColor() ?? .unVotedPollOptionBorderColor,
             borderWidth: BorderWidths.standardBorderWidth
             )
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
@@ -44,8 +44,8 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             let progress = Float((feedOption?.getPercentage() ?? 0)) / 100.0
             print("progress is \(progress)")
             cell.percentageVoteIndicator?.setProgress(progress, animated: false )
-            cell.percentageVoteIndicator?.progressTintColor = .lightGray
-            cell.percentageVoteIndicator?.trackTintColor = .progressTrackColor
+            cell.percentageVoteIndicator?.progressTintColor = inputModel.themeManager?.getControlActiveColor() ?? .lightGray
+            cell.percentageVoteIndicator?.trackTintColor =  .progressTrackColor
         }
     }
     

@@ -31,13 +31,22 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.clapsCountLabel?.textColor = UIColor.getSubTitleTextColor()
             cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
-            cell.clapsButton?.setImage(
-                UIImage(
-                    named: feed.isClappedByMe() ? "clapHands" : "clapHandsNotClappedByMe",
-                    in: Bundle(for: FeedBottomTableViewCell.self),
-                    compatibleWith: nil),
-                for: .normal
-            )
+            if let unwrappedThemeManager = inputModel.themeManager{
+                cell.clapsButton?.setImage(
+                    unwrappedThemeManager.getThemeSpecificImage(feed.isClappedByMe() ? "clapHands" : "clapHandsNotClappedByMe"),
+                    for: .normal
+                )
+                cell.commentsButton?.setImage(unwrappedThemeManager.getThemeSpecificImage("feedComments"), for: .normal)
+            }else{
+                cell.clapsButton?.setImage(
+                    UIImage(
+                        named: feed.isClappedByMe() ? "clapHands" : "clapHandsNotClappedByMe",
+                        in: Bundle(for: FeedBottomTableViewCell.self),
+                        compatibleWith: nil),
+                    for: .normal
+                )
+            }
+            
             cell.clapsButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

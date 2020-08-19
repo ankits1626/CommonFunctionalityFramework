@@ -22,6 +22,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     @IBOutlet private weak var messageLabel : UILabel?
     @IBOutlet private weak var deleteButton : UIButton?
     @IBOutlet private weak var cancelButton : UIButton?
+    weak var themeManager: CFFThemeManagerProtocol?
     
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var deletePressedCompletion :(() -> Void)?
@@ -59,8 +60,12 @@ class DeletePostConfirmationDrawer: UIViewController {
         deleteButton?.setTitle("CONFIRM", for: .normal)
         deleteButton?.titleLabel?.font = .Button
         deleteButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
-        deleteButton?.backgroundColor = .bottomAssertiveBackgroundColor
-        deleteButton?.curvedBorderedControl()
+        deleteButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
+        if let unwrappedThemeManager = themeManager{
+            deleteButton?.curvedBorderedControl(borderColor: unwrappedThemeManager.getControlActiveColor(), borderWidth: 1.0)
+        }else{
+            deleteButton?.curvedBorderedControl()
+        }
     }
     
     private func configureCancelButton(){

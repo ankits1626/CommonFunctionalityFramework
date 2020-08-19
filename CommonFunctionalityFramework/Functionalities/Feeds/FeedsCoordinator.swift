@@ -13,11 +13,13 @@ public struct GetFeedsViewModel{
     var networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     var mediaCoordinator : CFFMediaCoordinatorProtocol
     var feedCoordinatorDelegate : FeedsCoordinatorDelegate
+    var themeManager : CFFThemeManagerProtocol?
     
-    public init (networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate){
+    public init (networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
+        self.themeManager = themeManager
     }
 }
 
@@ -37,6 +39,7 @@ public class FeedsCoordinator {
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         feedsVc.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
+        feedsVc.themeManager = inputModel.themeManager
         return feedsVc
     }
 }

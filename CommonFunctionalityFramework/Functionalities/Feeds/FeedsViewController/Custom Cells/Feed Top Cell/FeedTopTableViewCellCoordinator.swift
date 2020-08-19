@@ -22,6 +22,7 @@ struct FeedCellLoadDataModel {
     var mediaFetcher: CFFMediaCoordinatorProtocol
     var delegate : FeedsDelegate?
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 struct FeedCellGetHeightModel {

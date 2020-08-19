@@ -11,6 +11,7 @@ import UIKit
 class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     var feedsDataSource: FeedsDatasource!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
+    private weak var themeManager: CFFThemeManagerProtocol?
     private weak var targetTableView : UITableView?
     lazy var cachedFeedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         return [
@@ -25,10 +26,11 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         ]
     }()
 
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?) {
         self.feedsDataSource = feedsDatasource
         self.mediaFetcher = mediaFetcher
         self.targetTableView = tableview
+        self.themeManager = themeManager
         registerTableViewForAllPossibleCellTypes(tableview)
     }
     
@@ -95,7 +97,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 datasource: feedsDataSource,
                 mediaFetcher: mediaFetcher,
                 delegate: inputModel.delegate,
-                selectedoptionMapper: inputModel.selectedoptionMapper
+                selectedoptionMapper: inputModel.selectedoptionMapper,
+                themeManager: themeManager
             )
         )
     }

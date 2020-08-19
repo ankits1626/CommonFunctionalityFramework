@@ -12,6 +12,7 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     var feedsDataSource: FeedsDatasource!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var targetTableView : UITableView?
+    private weak var themeManager: CFFThemeManagerProtocol?
     lazy var cachedFeedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         return [
             FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
@@ -25,10 +26,11 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         ]
     }()
 
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?) {
         self.feedsDataSource = feedsDatasource
         self.mediaFetcher = mediaFetcher
         self.targetTableView = tableview
+        self.themeManager = themeManager
         registerTableViewForAllPossibleCellTypes(tableview)
     }
     
@@ -94,7 +96,8 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 datasource: feedsDataSource,
                 mediaFetcher: mediaFetcher,
                 delegate: inputModel.delegate,
-                selectedoptionMapper: inputModel.selectedoptionMapper
+                selectedoptionMapper: inputModel.selectedoptionMapper,
+                themeManager: inputModel.themeManager
             )
         )
     }

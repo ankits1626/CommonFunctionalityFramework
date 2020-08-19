@@ -20,6 +20,7 @@ class CFFMainCropperViewController: UIViewController {
     @IBOutlet private var rotateButtonContainer : UIView!
     private var currentlyProcessingMediaItem : LocalSelectedMediaItem!
     weak var cropperDelegate: CFFMainCropperDelegate?
+    weak var themeManager: CFFThemeManagerProtocol?
     
     // MARK: IBOutlets
     

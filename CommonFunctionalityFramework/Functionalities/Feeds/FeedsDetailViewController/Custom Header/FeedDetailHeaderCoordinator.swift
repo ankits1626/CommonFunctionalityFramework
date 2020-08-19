@@ -22,10 +22,14 @@ struct GetFeedDetailtableHeaderInput{
 class FeedDetailHeaderCoordinator {
     let feedDataSource : FeedsDatasource
     weak var delegate: FeedsDelegate?
-    init(dataSource: FeedsDatasource, delegate: FeedsDelegate?) {
+    weak var themeManager: CFFThemeManagerProtocol?
+    
+    init(dataSource: FeedsDatasource, delegate: FeedsDelegate?, themeManager: CFFThemeManagerProtocol?) {
         self.feedDataSource = dataSource
         self.delegate = delegate
+        self.themeManager = themeManager
     }
+    
     func getHeader(input: GetFeedDetailtableHeaderInput) -> UIView? {
         switch input.section {
         case .FeedInfo:
@@ -65,7 +69,7 @@ class FeedDetailHeaderCoordinator {
     private func configureClapsHeader(_ view : FeedDetailHeader?){
         view?.headerTitleLabel?.text = "Claps"
         view?.headerActionButton?.setTitle("SEE ALL", for: .normal)
-        view?.headerActionButton?.setTitleColor(.bottomButtonTextColor, for: .normal)
+        view?.headerActionButton?.setTitleColor(themeManager?.getControlActiveColor() ?? .bottomButtonTextColor, for: .normal)
         view?.headerActionButton?.titleLabel?.font = .Highlighter1
         view?.headerActionButton?.isHidden = false
         view?.headerSecondaryTitleLabel?.text = nil

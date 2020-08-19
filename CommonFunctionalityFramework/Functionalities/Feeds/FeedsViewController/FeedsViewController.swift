@@ -19,13 +19,15 @@ class FeedsViewController: UIViewController {
     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
+    var themeManager: CFFThemeManagerProtocol?
     
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
             feedsDatasource: self,
             mediaFetcher: mediaFetcher,
             targetTableView: feedsTable,
-            selectedOptionMapper: pollSelectedAnswerMapper
+            selectedOptionMapper: pollSelectedAnswerMapper,
+            themeManager: themeManager
         )
     }()
     lazy var pollSelectedAnswerMapper: SelectedPollAnswerMapper = {
@@ -178,6 +180,7 @@ extension FeedsViewController{
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator
         drawer.mediaFetcher = mediaFetcher
+        drawer.themeManager = themeManager
         do{
             try drawer.presentDrawer()
         }catch let error{
@@ -203,11 +206,10 @@ extension FeedsViewController{
                         delegate: self.feedCoordinatorDelegate,
                         requestCoordinator: self.requestCoordinator,
                         mediaFetcher: self.mediaFetcher,
-                        selectedAssets: selectedMediaItems
+                        selectedAssets: selectedMediaItems,
+                        themeManager: self.themeManager
                     ).showFeedItemEditor(type: .Post)
-            },
-                maximumItemSelectionAllowed: 10,
-                presentingViewController: self
+            }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: themeManager
             )
         )
     }
@@ -240,6 +242,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if getFeedItem(indexPath.section).shouldShowDetail(){
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+            feedDetailVC.themeManager = themeManager
             feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
             feedDetailVC.mediaFetcher = mediaFetcher
             feedDetailVC.requestCoordinator = requestCoordinator
@@ -397,7 +400,8 @@ extension FeedsViewController : FeedsDelegate{
             delegate: feedCoordinatorDelegate,
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher,
-            selectedAssets: nil
+            selectedAssets: nil,
+            themeManager: themeManager
         ).editPost(feed: feed)
     }
     
@@ -406,6 +410,7 @@ extension FeedsViewController : FeedsDelegate{
             nibName: "DeletePostConfirmationDrawer",
             bundle: Bundle(for: DeletePostConfirmationDrawer.self)
         )
+        deleteConfirmationDrawer.themeManager = themeManager
         deleteConfirmationDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
         deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
             print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")

@@ -27,10 +27,17 @@ class FeedsDetailViewController: UIViewController {
     var clappedByUsers : [ClappedByUser]?
     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
+    weak var themeManager: CFFThemeManagerProtocol?
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
-        return FeedDetailSectionFactory(self, feedDetailDelegate: self, mediaFetcher: mediaFetcher, targetTableView: feedDetailTableView)
+        return FeedDetailSectionFactory(
+            self,
+            feedDetailDelegate: self,
+            mediaFetcher: mediaFetcher,
+            targetTableView: feedDetailTableView,
+            themeManager: themeManager
+        )
     }()
     private var frc : NSFetchedResultsController<ManagedPostComment>?
     private var lastFetchedComments : FeedCommentsFetchResult?
@@ -373,7 +380,8 @@ extension FeedsDetailViewController : FeedsDelegate{
             delegate: feedCoordinatorDelegate,
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher,
-            selectedAssets: nil
+            selectedAssets: nil,
+            themeManager: themeManager
         ).editPost(feed: feed)
     }
     
@@ -382,6 +390,7 @@ extension FeedsDetailViewController : FeedsDelegate{
             nibName: "DeletePostConfirmationDrawer",
             bundle: Bundle(for: DeletePostConfirmationDrawer.self)
         )
+        deleteConfirmationDrawer.themeManager = themeManager
         deleteConfirmationDrawer.targetFeed = targetFeedItem 
         deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
             print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")

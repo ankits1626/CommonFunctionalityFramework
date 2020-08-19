@@ -37,6 +37,7 @@ struct FeedContentConfigureCellModel {
     var targetCell : UITableViewCell
     var delegate : FeedsDelegate
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 struct FeedContentGetHeightOfCellModel {

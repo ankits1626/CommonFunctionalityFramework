@@ -36,6 +36,7 @@ struct PostEditorCellLoadDataModel {
     var delegate : PostEditorCellFactoryDelegate?
     var localMediaManager : LocalMediaManager?
     var postImageMapper : EditablePostMediaRepository
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 struct PostEditorRemoveAttachedMediaDataModel {
@@ -69,6 +70,7 @@ struct InitPostEditorCellFactoryModel {
     weak var localMediaManager : LocalMediaManager?
     weak var targetTableView : UITableView?
     weak var postImageMapper : EditablePostMediaRepository?
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 enum PostEditorSection : Int {
@@ -155,7 +157,8 @@ class PostEditorCellFactory {
                 datasource: input.datasource!,
                 delegate: input.delegate,
                 localMediaManager: input.localMediaManager,
-                postImageMapper: input.postImageMapper!
+                postImageMapper: input.postImageMapper!,
+                themeManager: input.themeManager
             )
         )
     }
