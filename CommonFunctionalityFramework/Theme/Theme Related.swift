@@ -148,6 +148,10 @@ extension UIColor{
         return UIColor(red: 240.0/255, green: 240.0/255, blue: 240.0/255, alpha: 1)
     }
     
+    static var borderColor : UIColor {
+        return UIColor(red: 223.0/255, green: 223.0/255, blue: 223.0/255, alpha: 1)
+    }
+    
 }
 
 struct AppliedCornerRadius {

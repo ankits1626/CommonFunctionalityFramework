@@ -41,6 +41,7 @@ class CFFImageCropperViewController: UIViewController {
         mainCropper = CFFMainCropperViewController(nibName: "CFFMainCropperViewController", bundle: Bundle(for: CFFMainCropperViewController.self))
         mainCropper.cropperDelegate = self
         mainCropper.themeManager = themeManager
+        mainCropper.view.frame = mainCropperContainer.bounds
         addChild(mainCropper)
         mainCropperContainer.addSubview(mainCropper.view)
         NSLayoutConstraint.activate([
@@ -84,6 +85,7 @@ class CFFImageCropperViewController: UIViewController {
 }
 
 extension CFFImageCropperViewController  : UICollectionViewDataSource, UICollectionViewDelegate{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return selectedAssets.count
     }
@@ -135,6 +137,12 @@ extension CFFImageCropperViewController  : UICollectionViewDataSource, UICollect
                 })
             }
         }
+    }
+}
+
+extension CFFImageCropperViewController : UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 82, height: 76)
     }
 }
 

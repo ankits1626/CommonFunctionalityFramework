@@ -80,7 +80,7 @@ class CFFMainCropperViewController: UIViewController {
         
         doneButton.titleLabel?.font = .Highlighter1
         doneButton.setTitleColor(.buttonColor, for: .normal)
-        doneButton.borderedControl(borderColor: .getGeneralBorderColor(), borderWidth: 2.0)
+        doneButton.borderedControl(borderColor: .borderColor, borderWidth: 2.0)
         
         rotateButtonContainer.backgroundColor = .grayBackGroundColor()
         rotateButtonContainer.curvedCornerControl()

@@ -91,10 +91,10 @@
                             <rect key="frame" x="0.0" y="73" width="414" height="214"/>
                             <subviews>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ynu-8X-6LH">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="214"/>
+                                    <rect key="frame" x="17" y="0.0" width="380" height="214"/>
                                     <subviews>
                                         <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-Ik-bc0" customClass="FAScrollView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="214"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="380" height="214"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </scrollView>
                                     </subviews>
@@ -107,12 +107,12 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Ynu-8X-6LH" firstAttribute="top" secondItem="aL6-rW-Ex1" secondAttribute="top" id="7qB-P2-8LQ"/>
-                                <constraint firstItem="Ynu-8X-6LH" firstAttribute="leading" secondItem="aL6-rW-Ex1" secondAttribute="leading" id="90l-SL-nar"/>
+                                <constraint firstItem="Ynu-8X-6LH" firstAttribute="leading" secondItem="aL6-rW-Ex1" secondAttribute="leading" constant="17" id="90l-SL-nar"/>
                                 <constraint firstAttribute="bottom" secondItem="Ynu-8X-6LH" secondAttribute="bottom" id="Gmr-Dd-11w"/>
-                                <constraint firstAttribute="trailing" secondItem="Ynu-8X-6LH" secondAttribute="trailing" id="TDn-df-wVM"/>
+                                <constraint firstAttribute="trailing" secondItem="Ynu-8X-6LH" secondAttribute="trailing" constant="17" id="TDn-df-wVM"/>
                                 <constraint firstAttribute="height" constant="214" id="TwI-ja-HhP"/>
                             </constraints>
                         </view>
