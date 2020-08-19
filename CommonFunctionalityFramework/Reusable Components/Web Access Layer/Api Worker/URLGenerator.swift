@@ -34,4 +34,29 @@ public class ParameterizedURLBuilder {
         }
         return nil
     }
+
+    public func getURLWithMultipleSameQueryKeys(endpoint: String, parameters: [String:[String]]?) -> URL? {
+        if let  baseURLString = baseURLProvider.baseURLString(){
+            var components = URLComponents(string: baseURLString + endpoint)!
+            var queryItems = [URLQueryItem]()
+            let baseParams: [String: String] = [:]
+            for (key, value) in baseParams {
+                let item = URLQueryItem(name: key, value: value)
+                queryItems.append(item)
+            }
+            if let aditionalParams = parameters {
+                for (key, value) in aditionalParams {
+                    value.forEach { (aValue) in
+                        let item = URLQueryItem(name: key, value: aValue)
+                        queryItems.append(item)
+                    }
+                }
+            }
+            if queryItems.count > 0 {
+                components.queryItems = queryItems
+            }
+            return components.url
+        }
+        return nil
+    }
 }

@@ -30,7 +30,7 @@ let UNAUTHORIZED = 401
  }*/
 
 typealias ApiCallCompletionHandler<T> = (APICallResult<T>) -> Void
-let REQUEST_TIME_OUT = 40
+public let REQUEST_TIME_OUT = 40
 
 public protocol BaseURLProviderProtocol {
     func baseURLString() -> String?
@@ -38,6 +38,7 @@ public protocol BaseURLProviderProtocol {
 public protocol TokenProviderProtocol {
     func fetchAccessToken() -> String?
     func getDeviceSelectedLanguage() -> String
+    func fetchUserAgent() -> String
 }
 protocol DeviceInfoProviderProtocol {
     func getDeviceInfo() -> String
@@ -198,8 +199,9 @@ public class CommonAPICall<P: DataParserProtocol> : CommonAPIProtocol {
 //MARK:- Providers
 
 
-class DeviceInfoProvider: DeviceInfoProviderProtocol {
-    func getDeviceInfo() -> String {
+public class DeviceInfoProvider: DeviceInfoProviderProtocol {
+    public init(){}
+    public func getDeviceInfo() -> String {
         
         let nsObject: AnyObject? = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject?
         let appVersion = nsObject as! String

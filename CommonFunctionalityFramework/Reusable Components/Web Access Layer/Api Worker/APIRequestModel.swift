@@ -21,14 +21,34 @@ public class APIRequestBuilder : APIRequestBuilderProtocol {
     public init(tokenProvider :  TokenProviderProtocol){
         self.tokenProvider = tokenProvider
     }
-    public func apiRequestWithNoAuthorizationHeader( url: URL?, method : HTTPMethod , httpBodyDict : NSDictionary?) -> URLRequest?{
+    /*public func apiRequestWithNoAuthorizationHeader( url: URL?, method : HTTPMethod , httpBodyDict : NSDictionary?) -> URLRequest?{
         if let unwrappedURL = url{
             var apiRequest = URLRequest(url: unwrappedURL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: TimeInterval(REQUEST_TIME_OUT))
             apiRequest.httpMethod = method.rawValue
             apiRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             apiRequest.addValue("keep-alive", forHTTPHeaderField: "Connection")
             apiRequest.addValue(tokenProvider.getDeviceSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
-            apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
+            //apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
+            apiRequest.setValue("\(tokenProvider.fetchUserAgent()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
+            apiRequest.addValue(tokenProvider.getDeviceSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
+            if let unwrappedHttpBody = httpBodyDict{
+                if let httpBody  = (try? JSONSerialization.data(withJSONObject: unwrappedHttpBody, options: .prettyPrinted)){
+                    apiRequest.httpBody = httpBody
+                }
+            }
+            return apiRequest
+        }else{
+            return nil
+        }
+    }*/
+    public func apiRequestWithNoAuthorizationHeader( url: URL?, method : HTTPMethod , httpBodyDict : NSDictionary?) -> URLRequest?{
+        if let unwrappedURL = url{
+            var apiRequest = URLRequest(url: unwrappedURL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: TimeInterval(REQUEST_TIME_OUT))
+            apiRequest.httpMethod = method.rawValue
+            apiRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            apiRequest.addValue("keep-alive", forHTTPHeaderField: "Connection")
+            apiRequest.setValue("Skor/9 \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
+            
             if let unwrappedHttpBody = httpBodyDict{
                 if let httpBody  = (try? JSONSerialization.data(withJSONObject: unwrappedHttpBody, options: .prettyPrinted)){
                     apiRequest.httpBody = httpBody
@@ -62,11 +82,10 @@ public class APIRequestBuilder : APIRequestBuilderProtocol {
         if let unwrappedURL = url{
             var apiRequest = URLRequest(url: unwrappedURL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: TimeInterval(REQUEST_TIME_OUT))
             apiRequest.httpMethod = method.rawValue
-            //apiRequest.addValue(contentTypeHeaderValue, forHTTPHeaderField: contentTypeHeaderKey)
-            //request.addValue("Token "+token, forHTTPHeaderField: "Authorization")
             apiRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             apiRequest.addValue("keep-alive", forHTTPHeaderField: "Connection")
-            apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
+//            apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
+            apiRequest.setValue("\(tokenProvider.fetchUserAgent()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
             apiRequest.addValue(tokenProvider.getDeviceSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
             if let unwrappedHttpBody = httpBodyDict{
                 if let httpBody  = (try? JSONSerialization.data(withJSONObject: unwrappedHttpBody, options: [])){
