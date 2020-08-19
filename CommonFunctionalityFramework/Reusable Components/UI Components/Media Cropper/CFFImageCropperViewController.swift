@@ -12,6 +12,7 @@ class CFFImageCropperViewController: UIViewController {
     @IBOutlet private weak var selectedPhotosCollectionView : UICollectionView?
     @IBOutlet private var proceedButton : UIButton!
     @IBOutlet private var mainCropperContainer : UIView!
+    @IBOutlet private var titleLabel : UILabel!
     
     var selectedAssets : [LocalSelectedMediaItem] = [LocalSelectedMediaItem]()
     weak var localMediaManager : LocalMediaManager?
@@ -33,8 +34,15 @@ class CFFImageCropperViewController: UIViewController {
     }
     
     private func setup(){
+        configureTitleLabel()
         setupCollectionView()
         setupProceedButton()
+    }
+    
+    private func configureTitleLabel(){
+        if let unwrappedThemeManager = themeManager{
+            titleLabel.font = unwrappedThemeManager.getHeaderFont()
+        }
     }
     
     private func addMainCropper(){
@@ -52,7 +60,6 @@ class CFFImageCropperViewController: UIViewController {
         ])
         mainCropper.didMove(toParent: self)
     }
-    
     
     private func setupCollectionView(){
         selectedPhotosCollectionView?.register(

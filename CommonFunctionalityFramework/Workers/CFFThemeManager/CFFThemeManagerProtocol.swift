@@ -12,4 +12,5 @@ public protocol CFFThemeManagerProtocol : class {
     func getThemeSpecificImage(_ imageName : String) -> UIImage?
     func getControlActiveColor() -> UIColor
     func getStepperActiveColor() -> UIColor
+    func getHeaderFont() -> UIFont
 }

@@ -86,4 +86,12 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDelegateFl
         }
         return CGSize(width: 83, height: 57)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        var edgeInset = UIEdgeInsets()
+        if section > 0{
+            edgeInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        }
+        return edgeInset
+    }
 }

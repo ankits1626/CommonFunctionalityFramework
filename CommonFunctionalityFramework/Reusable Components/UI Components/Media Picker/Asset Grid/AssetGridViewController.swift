@@ -85,6 +85,7 @@ struct MediaPickerPresentationModel {
 
 class AssetGridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var navigationColor: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
     var assetSelectionCompletion : ((_ assets : [LocalSelectedMediaItem]?) -> Void)?
@@ -122,6 +123,9 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
         uploadButton.setTitleColor(.black, for: .normal)
         self.navigationColor.image = UIImage(named: "")
         setupUploadButton()
+        if let unwrappedThemeManager = themeManager{
+            titleLabel.font = unwrappedThemeManager.getHeaderFont()
+        }
     }
     
     private func setup(){
