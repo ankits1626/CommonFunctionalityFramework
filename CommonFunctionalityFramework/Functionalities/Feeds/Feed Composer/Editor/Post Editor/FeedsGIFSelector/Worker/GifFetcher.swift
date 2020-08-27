@@ -73,6 +73,11 @@ class GifFetchRequestGenerator: APIRequestGeneratorProtocol  {
             var initialUrl = "https://api.tenor.com/v1/trending?key=LIVDSRZULELA&limit=20"
             if let unwrappedSearchKey = searchkey{
                 initialUrl = "https://api.tenor.com/v1/search?q=\(unwrappedSearchKey)&key=LIVDSRZULELA&limit=20"
+                if let encodedUrl = initialUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+                   initialUrl = encodedUrl
+                }else{
+                    return nil
+                }
             }
             switch nextPageState {
             case .Initial:

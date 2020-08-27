@@ -48,8 +48,8 @@ class CommonFrameworkDateUtility {
             let components = calendar.dateComponents([.hour, .minute], from: date)
             dateFormatter.timeZone = TimeZone.current
             dateFormatter.dateFormat = "hh:mma"
-            dateFormatter.amSymbol = "am"
-            dateFormatter.pmSymbol = "pm"
+            dateFormatter.amSymbol = "AM"
+            dateFormatter.pmSymbol = "PM"
             return dateFormatter.string(from: calendar.date(from:components)!)
         }else{
             return getDisplayedDateInFormatDMMMYYYY(input: input, dateFormat: dateFormat)

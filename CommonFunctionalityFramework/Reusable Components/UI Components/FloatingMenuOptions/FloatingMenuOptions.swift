@@ -19,7 +19,7 @@ class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
         return CGSize(width: 92, height: max(24, 24 * options.count))
     }
     var popOverBackgroundColor: UIColor?{
-        return .clear
+        return .white
     }
     var arrowDirection: UIPopoverArrowDirection = .none
     var options : [FloatingMenuOption]

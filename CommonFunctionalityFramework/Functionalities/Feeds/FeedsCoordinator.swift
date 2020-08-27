@@ -42,4 +42,35 @@ public class FeedsCoordinator {
         feedsVc.themeManager = inputModel.themeManager
         return feedsVc
     }
+    
+    public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel){
+        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId) { (result) in
+            DispatchQueue.main.async {
+                switch result{
+                case .Success(let result):
+                    if let fetchedFeedDetail = result.fetchedRawFeeds {
+                        let rawFeed = RawFeed(input: fetchedFeedDetail)
+                        let _ = rawFeed.getManagedObject() as! ManagedPost
+                        if let unwrappedDescription = rawFeed.getFeedDescription(){
+                            FeedDescriptionMarkupParser.sharedInstance.updateDescriptionParserOutputModelForFeed(
+                                feedId: rawFeed.feedIdentifier,
+                                description: unwrappedDescription
+                            )
+                        }
+                        let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+                        feedDetailVC.themeManager = inputModel.themeManager
+                        feedDetailVC.targetFeedItem = rawFeed //feeds[indexPath.section]
+                        feedDetailVC.mediaFetcher = inputModel.mediaCoordinator
+                        feedDetailVC.requestCoordinator = inputModel.networkRequestCoordinator
+                        feedDetailVC.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
+                        inputModel.feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
+                    }
+                case .SuccessWithNoResponseData:
+                    ErrorDisplayer.showError(errorMsg: "No record Found") { (_) in}
+                case .Failure(let error):
+                    ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                }
+            }
+        }
+    }
 }

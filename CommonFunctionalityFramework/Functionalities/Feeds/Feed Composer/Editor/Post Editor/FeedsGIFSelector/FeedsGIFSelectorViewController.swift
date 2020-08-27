@@ -142,19 +142,17 @@ class FeedsGIFSelectorViewController: UIViewController {
 extension FeedsGIFSelectorViewController : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count == 0{
-             print("<<<<<<<<< textDidChange")
-            initiateAfterSearcharEditing()
+            initiateAfterSearchBarEditing()
         }
        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("<<<<<<<<<<< searchBarSearchButtonClicked")
-        initiateAfterSearcharEditing()
+        initiateAfterSearchBarEditing()
         searchBar.resignFirstResponder()
     }
     
-    private func initiateAfterSearcharEditing(){
+    private func initiateAfterSearchBarEditing(){
         lastFetchedGifs = FetchedGifModel(fetchedRawGifs: nil, error: nil, nextPageState: FetchedGifNextPageState.Initial)
         clearExistingGifs {[weak self] in
             self?.loadGifs()
@@ -168,7 +166,6 @@ extension FeedsGIFSelectorViewController : UICollectionViewDataSource, UICollect
             return 0
         }
         let sectionInfo = sections[0]
-        print("<<<<<<<<<< number of rows \(sectionInfo.numberOfObjects)")
         return sectionInfo.numberOfObjects
     }
     
@@ -178,18 +175,16 @@ extension FeedsGIFSelectorViewController : UICollectionViewDataSource, UICollect
             for: indexPath) as? GifCollectionViewCell
             else { fatalError("unexpected cell in collection view")
         }
-        let rawGifItem = frc?.object(at: IndexPath(item: indexPath.item, section: 0)).getRawObject() as? RawGif
+        //_ = frc?.object(at: IndexPath(item: indexPath.item, section: 0)).getRawObject() as? RawGif
         cell.identifierLabel?.isHidden = true
-//        cell.identifierLabel?.text = "\(rawGifItem!.gifIdentifier))"
         if let rawGif = (frc?.object(at: IndexPath(item: indexPath.item, section: 0)).getRawObject() as? RawGif)?.getGifIconSourceUrl() {
             if let data = CFFGifCacheManager.sharedInstance.gifCache.object(forKey: rawGif as NSString) as Data?{
-                print("<<<<<<<<<< picked from cache")
                 cell.gifImage?.animatedImage = FLAnimatedImage(animatedGIFData: data)
             }else{
                 cell.gifImage?.animatedImage = nil
                 let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string:rawGif)!)) { (data, _, _) in
                   DispatchQueue.main.async {
-                    if let unwrappeData = data as? NSData{
+                    if let unwrappeData = data as NSData?{
                         CFFGifCacheManager.sharedInstance.gifCache.setObject(unwrappeData, forKey: rawGif as NSString)
                         self.gifCollection?.reloadItems(at: [indexPath])
                     }

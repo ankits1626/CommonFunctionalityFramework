@@ -73,7 +73,11 @@ class DeletePostConfirmationDrawer: UIViewController {
         cancelButton?.titleLabel?.font = .Button
         cancelButton?.setTitleColor(.bottomDestructiveButtonTextColor, for: .normal)
         cancelButton?.backgroundColor = .bottomDestructiveBackgroundColor
-        cancelButton?.curvedBorderedControl()
+        if let controlColor = themeManager?.getControlActiveColor(){
+            cancelButton?.curvedBorderedControl(borderColor: controlColor, borderWidth: 1.0)
+            cancelButton?.setTitleColor(controlColor, for: .normal)
+        }
+        
     }
     
     func presentDrawer() throws{

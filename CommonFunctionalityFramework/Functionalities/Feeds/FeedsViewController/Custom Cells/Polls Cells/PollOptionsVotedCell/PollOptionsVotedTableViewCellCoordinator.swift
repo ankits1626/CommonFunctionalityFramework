@@ -35,16 +35,19 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
             
            cell.optionContainerView?.borderedControl(
-            borderColor: inputModel.themeManager?.getControlActiveColor() ?? .unVotedPollOptionBorderColor,
+            borderColor: .unVotedPollOptionBorderColor,
             borderWidth: BorderWidths.standardBorderWidth
             )
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             cell.myOptionIndicator?.isHidden = !(feedOption?.hasVoted ?? false)
+            if let checkMarkImage = inputModel.themeManager?.getThemeSpecificImage("tick1"){
+                cell.myOptionIndicator?.image = checkMarkImage
+            }
             cell.percentageVote?.text = "\(feedOption?.getPercentage() ?? 0) %"
             let progress = Float((feedOption?.getPercentage() ?? 0)) / 100.0
             print("progress is \(progress)")
             cell.percentageVoteIndicator?.setProgress(progress, animated: false )
-            cell.percentageVoteIndicator?.progressTintColor = inputModel.themeManager?.getControlActiveColor() ?? .lightGray
+            cell.percentageVoteIndicator?.progressTintColor = .lightGray
             cell.percentageVoteIndicator?.trackTintColor =  .progressTrackColor
         }
     }
