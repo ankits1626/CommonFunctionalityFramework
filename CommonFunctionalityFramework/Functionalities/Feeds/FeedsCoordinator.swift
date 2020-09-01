@@ -63,6 +63,7 @@ public class FeedsCoordinator {
                         feedDetailVC.mediaFetcher = inputModel.mediaCoordinator
                         feedDetailVC.requestCoordinator = inputModel.networkRequestCoordinator
                         feedDetailVC.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
+                        feedDetailVC.pollSelectedAnswerMapper = SelectedPollAnswerMapper()
                         inputModel.feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
                     }
                 case .SuccessWithNoResponseData:

@@ -22,6 +22,7 @@ class FeedDetailSectionFactory {
     let feedDataSource : FeedsDatasource
     private weak var feedDetailDelegate: FeedsDelegate?
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
+    private weak var selectedOptionMapper : SelectedPollAnswerMapper?
     private weak var targetTableView : UITableView?
     private var isLikedByCellIndexpath : IndexPath!
     private weak var themeManager: CFFThemeManagerProtocol?
@@ -34,6 +35,8 @@ class FeedDetailSectionFactory {
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
             FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
+            PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
+            PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
             PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
@@ -47,12 +50,13 @@ class FeedDetailSectionFactory {
     }()
     
     
-    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?) {
+    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?) {
         self.feedDataSource = feedDataSource
         self.feedDetailDelegate = feedDetailDelegate
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
         self.themeManager = themeManager
+        self.selectedOptionMapper = selectedOptionMapper
         registerTableViewForAllPossibleCellTypes(targetTableView)
         registerTableViewForHeaderView(targetTableView)
     }
@@ -74,12 +78,12 @@ class FeedDetailSectionFactory {
     }
     
     func getNumberOfSectionsForFeedDetailView() -> Int {
-        return getAvailablefeedSections().count
+        return getAvailableFeedSections().count
     }
     
     func numberOfRowsInSection(_ section : Int) -> Int {
         let cellMap = getRowsToRepresentFeedDetail()
-        switch getAvailablefeedSections()[section] {
+        switch getAvailableFeedSections()[section] {
         case .FeedInfo:
             return cellMap[FeedDetailSection.FeedInfo]?.count ?? 0
         case .ClapsSection:
@@ -95,7 +99,7 @@ class FeedDetailSectionFactory {
     
     func getCellCoordinator(_ indexpath : IndexPath) -> FeedCellCoordinatorProtocol {
         let cellMap = getRowsToRepresentFeedDetail()
-        switch getAvailablefeedSections()[indexpath.section] {
+        switch getAvailableFeedSections()[indexpath.section] {
         case .FeedInfo:
             let feedInfo = cellMap[.FeedInfo]
             let cellType =  feedInfo?[indexpath.row]
@@ -131,7 +135,7 @@ class FeedDetailSectionFactory {
                 datasource: feedDataSource,
                 mediaFetcher: mediaFetcher,
                 delegate: feedDetailDelegate,
-                selectedoptionMapper: nil,
+                selectedoptionMapper: selectedOptionMapper,
                 themeManager: themeManager
             )
         )
@@ -178,13 +182,13 @@ class FeedDetailSectionFactory {
     }
     
     func getCommentsSectionIndex() -> Int {
-        return getAvailablefeedSections().firstIndex(of: .Comments)!
+        return getAvailableFeedSections().firstIndex(of: .Comments)!
     }
     
 }
 
 extension FeedDetailSectionFactory{
-    private func getAvailablefeedSections() -> [FeedDetailSection]{
+    private func getAvailableFeedSections() -> [FeedDetailSection]{
         return [FeedDetailSection.FeedInfo,.ClapsSection,  .Comments]
     }
     
@@ -239,9 +243,20 @@ extension FeedDetailSectionFactory{
         }
         
         if let poll = feed?.getPoll(){
-            poll.getPollOptions().forEach { (_) in
-                rows.append(PollOptionsVotedTableViewCellType())
+            if poll.isPollActive() && !poll.hasUserVoted(){
+                poll.getPollOptions().forEach { (_) in
+                    rows.append(PollOptionsTableViewCellType())
+                }
+                rows.append(PollSubmitButtonCellType())
+            }else{
+                poll.getPollOptions().forEach { (_) in
+                    rows.append(PollOptionsVotedTableViewCellType())
+                }
+                
             }
+//            poll.getPollOptions().forEach { (_) in
+//                rows.append(PollOptionsVotedTableViewCellType())
+//            }
             rows.append(PollBottomTableViewCelType())
         }
         rows.append(FeedBottomTableViewCellType())

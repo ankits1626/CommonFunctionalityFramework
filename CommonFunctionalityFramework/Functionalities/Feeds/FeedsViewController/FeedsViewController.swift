@@ -247,6 +247,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
             feedDetailVC.mediaFetcher = mediaFetcher
             feedDetailVC.requestCoordinator = requestCoordinator
             feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
+            feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
             feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
         }
     }

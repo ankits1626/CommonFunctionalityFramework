@@ -80,6 +80,10 @@ extension UIColor{
         return UIColor(red: 251/255.0, green: 137/255.0, blue: 129/255.0, alpha: 1.0)
     }
     
+    static var controlInactiveColor : UIColor{
+        return UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 1.0)
+    }
+    
     static var stepperInactiveColor : UIColor{
         return UIColor(red: 171/255.0, green: 171/255.0, blue: 171/255.0, alpha: 1.0)
     }

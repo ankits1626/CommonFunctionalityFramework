@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -156,8 +156,14 @@
                                                                     <constraint firstAttribute="height" constant="22" id="Q6p-R9-2Ru"/>
                                                                     <constraint firstAttribute="width" constant="22" id="wHX-8H-bWS"/>
                                                                 </constraints>
-                                                                <state key="normal" image="commentLike"/>
                                                             </button>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparent_comment_like" translatesAutoresizingMaskIntoConstraints="NO" id="twI-4l-XTn">
+                                                                <rect key="frame" x="13.5" y="4" width="19" height="18"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="19" id="xlH-Kh-eNh"/>
+                                                                    <constraint firstAttribute="height" constant="18" id="zc9-Ap-K54"/>
+                                                                </constraints>
+                                                            </imageView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Rt-l5-g5x">
                                                                 <rect key="frame" x="39" y="3" width="271" height="20"/>
                                                                 <subviews>
@@ -220,6 +226,8 @@
                                                             <constraint firstItem="6Rt-l5-g5x" firstAttribute="centerY" secondItem="HF8-IG-Dwm" secondAttribute="centerY" id="PgJ-yw-ap4"/>
                                                             <constraint firstAttribute="trailing" secondItem="6Rt-l5-g5x" secondAttribute="trailing" constant="5" id="kAu-ev-DEW"/>
                                                             <constraint firstAttribute="bottom" secondItem="HF8-IG-Dwm" secondAttribute="bottom" constant="16" id="l5I-1f-2X4"/>
+                                                            <constraint firstItem="twI-4l-XTn" firstAttribute="centerX" secondItem="HF8-IG-Dwm" secondAttribute="centerX" id="lrO-Jr-mGP"/>
+                                                            <constraint firstItem="twI-4l-XTn" firstAttribute="centerY" secondItem="HF8-IG-Dwm" secondAttribute="centerY" id="qRc-kV-Zpu"/>
                                                             <constraint firstAttribute="height" constant="40" id="x8N-gW-5gH"/>
                                                         </constraints>
                                                     </view>
@@ -266,6 +274,7 @@
                 <outlet property="commentLabel" destination="CzA-vt-fmv" id="Vgy-YM-fwe"/>
                 <outlet property="containerView" destination="ALw-Ed-RWu" id="zwU-8V-ecP"/>
                 <outlet property="likeButton" destination="HF8-IG-Dwm" id="unz-a3-hkU"/>
+                <outlet property="likeIndicator" destination="twI-4l-XTn" id="vqQ-g9-esj"/>
                 <outlet property="userDepartmentLabel" destination="oeF-lm-hH5" id="QUJ-Lb-EaH"/>
                 <outlet property="userNameLabel" destination="dyG-uD-yj5" id="IAB-So-HOU"/>
                 <outlet property="userProfileImage" destination="a3E-ni-OTg" id="SSJ-7D-FNk"/>
@@ -274,7 +283,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="commentLike" width="19" height="18"/>
         <image name="dummyProfile" width="30" height="30"/>
+        <image name="transparent_comment_like" width="32" height="32"/>
     </resources>
 </document>

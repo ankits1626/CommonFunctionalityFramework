@@ -40,9 +40,7 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             )
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             cell.myOptionIndicator?.isHidden = !(feedOption?.hasVoted ?? false)
-            if let checkMarkImage = inputModel.themeManager?.getThemeSpecificImage("tick1"){
-                cell.myOptionIndicator?.image = checkMarkImage
-            }
+
             cell.percentageVote?.text = "\(feedOption?.getPercentage() ?? 0) %"
             let progress = Float((feedOption?.getPercentage() ?? 0)) / 100.0
             print("progress is \(progress)")

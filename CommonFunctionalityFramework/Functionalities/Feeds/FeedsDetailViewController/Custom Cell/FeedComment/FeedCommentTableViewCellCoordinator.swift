@@ -56,13 +56,11 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                 cell.commentCountLabel?.text = unwrappedComment.presentableLikeCount()
                 cell.commentCountLabel?.font = .Caption1
                 cell.commentCountLabel?.textColor = .getTitleTextColor()
-                cell.likeButton?.setImage(
-                    UIImage(
-                        named: unwrappedComment.isLikedByMe() ? "commentUnlike" : "commentLike" ,
-                        in: Bundle(for: FeedBottomTableViewCell.self),
-                        compatibleWith: nil),
-                    for: .normal
-                )
+                if let unwrappedThemeManager = inputModel.themeManager{
+                    cell.likeIndicator?.backgroundColor = unwrappedComment.isLikedByMe() ? unwrappedThemeManager.getControlActiveColor() : .controlInactiveColor
+                }else{
+                    cell.likeIndicator?.backgroundColor = unwrappedComment.isLikedByMe() ? .black : .controlInactiveColor
+                }
             }
             if let profileImageEndpoint = comment?.getCommentUser().getAuthorProfileImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.userProfileImage, imageEndPoint: profileImageEndpoint)

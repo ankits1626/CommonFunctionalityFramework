@@ -19,6 +19,7 @@ class FeedCommentTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var commentCountLabel : UILabel?
     @IBOutlet weak var commentCountConatiner : UIView?
     @IBOutlet weak var likeButton : BlockButton?
+    @IBOutlet weak var likeIndicator : UIImageView?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -38,11 +38,12 @@ protocol FeedsItemProtocol : Likeable {
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     func shouldShowDetail() -> Bool {
-        if let unwrappedPoll = getPoll(){
-            return !unwrappedPoll.isPollActive()
-        }else{
-            return true
-        }
+        return true
+//        if let unwrappedPoll = getPoll(){
+//            return !unwrappedPoll.isPollActive()
+//        }else{
+//            return true
+//        }
     }
     
     func getPoll() -> Poll? {

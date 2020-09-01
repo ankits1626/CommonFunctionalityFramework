@@ -32,10 +32,8 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
             if let unwrappedThemeManager = inputModel.themeManager{
-                cell.clapsButton?.setImage(
-                    unwrappedThemeManager.getThemeSpecificImage(feed.isClappedByMe() ? "clapHands" : "clapHandsNotClappedByMe"),
-                    for: .normal
-                )
+                cell.clapIndicator?.backgroundColor = feed.isClappedByMe() ? unwrappedThemeManager.getControlActiveColor() : .controlInactiveColor
+                
                 cell.commentsButton?.setImage(unwrappedThemeManager.getThemeSpecificImage("feedComments"), for: .normal)
             }else{
                 cell.clapsButton?.setImage(
@@ -46,6 +44,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
                     for: .normal
                 )
             }
+            
             
             cell.clapsButton?.handleControlEvent(
                 event: .touchUpInside,

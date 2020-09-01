@@ -47,14 +47,23 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBo-dC-uc4" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
-                                                                                <state key="normal" image="clapHands"/>
+                                                                                <color key="tintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             </button>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparent_post_clap" translatesAutoresizingMaskIntoConstraints="NO" id="8DR-mA-vI7">
+                                                                                <rect key="frame" x="12" y="12" width="20" height="20"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="20" id="1No-T7-MzD"/>
+                                                                                    <constraint firstAttribute="width" constant="20" id="wYa-qF-EKW"/>
+                                                                                </constraints>
+                                                                            </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="bottom" secondItem="gBo-dC-uc4" secondAttribute="bottom" id="AOg-lr-udt"/>
                                                                             <constraint firstItem="gBo-dC-uc4" firstAttribute="top" secondItem="MiO-Cx-TzY" secondAttribute="top" id="EPN-jJ-j2C"/>
+                                                                            <constraint firstItem="8DR-mA-vI7" firstAttribute="centerX" secondItem="gBo-dC-uc4" secondAttribute="centerX" id="H5O-Qd-chR"/>
                                                                             <constraint firstAttribute="width" constant="44" id="OYt-Lb-Snd"/>
+                                                                            <constraint firstItem="8DR-mA-vI7" firstAttribute="centerY" secondItem="gBo-dC-uc4" secondAttribute="centerY" id="XCd-Gl-7Sd"/>
                                                                             <constraint firstItem="gBo-dC-uc4" firstAttribute="leading" secondItem="MiO-Cx-TzY" secondAttribute="leading" id="faG-kq-tZz"/>
                                                                             <constraint firstAttribute="trailing" secondItem="gBo-dC-uc4" secondAttribute="trailing" id="myx-Pp-CTh"/>
                                                                         </constraints>
@@ -166,6 +175,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="JeQ-pV-PTn"/>
             <connections>
+                <outlet property="clapIndicator" destination="8DR-mA-vI7" id="p2G-XY-Pfw"/>
                 <outlet property="clapsButton" destination="gBo-dC-uc4" id="gpB-eD-wNt"/>
                 <outlet property="clapsCountLabel" destination="Xdo-eI-aAd" id="ATs-ch-hbV"/>
                 <outlet property="commentsButton" destination="GU4-MR-yLj" id="OPo-wU-1TO"/>
@@ -178,7 +188,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="clapHands" width="20" height="20"/>
         <image name="comment" width="18" height="18"/>
+        <image name="transparent_post_clap" width="32" height="32"/>
     </resources>
 </document>

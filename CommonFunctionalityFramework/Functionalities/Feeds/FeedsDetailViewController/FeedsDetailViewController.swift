@@ -36,9 +36,11 @@ class FeedsDetailViewController: UIViewController {
             feedDetailDelegate: self,
             mediaFetcher: mediaFetcher,
             targetTableView: feedDetailTableView,
-            themeManager: themeManager
+            themeManager: themeManager,
+            selectedOptionMapper: pollSelectedAnswerMapper
         )
     }()
+    var pollSelectedAnswerMapper: SelectedPollAnswerMapper?
     private var frc : NSFetchedResultsController<ManagedPostComment>?
     private var lastFetchedComments : FeedCommentsFetchResult?
         
@@ -310,9 +312,48 @@ extension FeedsDetailViewController : FeedsDelegate{
     
     func showAllClaps(feedIdentifier: Int64) {}
     
-    func submitPollAnswer(feedIdentifier: Int64) {}
+    func submitPollAnswer(feedIdentifier: Int64) {
+        print("from detail page post answer")
+        if let selectedOption = pollSelectedAnswerMapper?.getSelectedOption(feedIdentifier: feedIdentifier){
+            PollAnswerSubmitter(networkRequestCoordinator: requestCoordinator, feedIdentifier: feedIdentifier, answer: selectedOption).submitAnswer { (result) in
+                switch result{
+                case .Success(result: let result):
+                    print("<<<<<<<< update raw poll after answer submission")
+                    DispatchQueue.main.async {[weak self] in
+                        self?.pollSelectedAnswerMapper?.removeSelectedOptionAfterAnswerIsPosted(feedIdentifier: feedIdentifier)
+                    }
+                    CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                        let _ = result.getManagedObject() as! ManagedPost
+                        CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                            CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                        }
+                    }
+                    
+                case .SuccessWithNoResponseData:
+                    fallthrough
+                case .Failure(error: _):
+                    print("<<<<<<<<<< like/unlike call completed \(result)")
+                }
+                
+            }
+        }else{
+            ErrorDisplayer.showError(errorMsg: "Please select an option.") { (_) in
+                
+            }
+        }
+    }
     
-    func selectPollAnswer(feedIdentifier: Int64, pollOption: PollOption) {}
+    func selectPollAnswer(feedIdentifier: Int64, pollOption: PollOption) {
+        print("select answer for feed \(feedIdentifier), answer : \(pollOption.getNewtowrkPostableAnswer())")
+        pollSelectedAnswerMapper?.toggleOptionSelection(pollId: feedIdentifier, selectedOption: pollOption)
+        CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+            let post = ((self.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
+            post?.pollUpdatedTrigger = NSDate()
+            CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+            }
+        }
+    }
     
     func toggleClapForPost(feedIdentifier: Int64) {
         FeedClapToggler(networkRequestCoordinator: requestCoordinator).toggleLike(targetFeedItem) { [weak self](result) in
