@@ -64,16 +64,18 @@ struct Poll {
                     maxPercentage = anOption.getPercentage()
                 }
             }
-            let maxPercentageOptions = options.filter { (anOption) -> Bool in
-                return anOption.getPercentage() == maxPercentage
-            }
-            if maxPercentageOptions.count == options.count{
-                maxPercentageOptions.forEach { (anOption) in
-                    anOption.optionColor = .progressTrackLightColor
+            if !isPollActive(){
+                let maxPercentageOptions = options.filter { (anOption) -> Bool in
+                    return anOption.getPercentage() == maxPercentage
                 }
-            }else{
-                maxPercentageOptions.forEach { (anOption) in
-                    anOption.optionColor = .progressTrackMaxColor
+                if maxPercentageOptions.count == options.count{
+                    maxPercentageOptions.forEach { (anOption) in
+                        anOption.optionColor = .progressTrackLightColor
+                    }
+                }else{
+                    maxPercentageOptions.forEach { (anOption) in
+                        anOption.optionColor = .progressTrackMaxColor
+                    }
                 }
             }
         }
