@@ -32,15 +32,17 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             let feedOption = feed.getPoll()?.getPollOptions()[optionRowIndex]
             cell.optionTitle?.text = feedOption?.title
             cell.optionTitle?.font = UIFont.Body1
-            cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
+            cell.containerView?.backgroundColor = .optionContainerBackGroundColor
             
             if let selectedOptionMapper = inputModel.selectedoptionMapper,
                 selectedOptionMapper.isOptionSelected(feedOption!){
+                cell.optionContainerView?.backgroundColor = .white
                 cell.optionContainerView?.borderedControl(
                     borderColor: inputModel.themeManager?.getControlActiveColor() ?? .votedPollOptionBorderColor ,
                 borderWidth: BorderWidths.votedOptionBorderWidth
                 )
             }else{
+                cell.optionContainerView?.backgroundColor = .optionContainerBackGroundColor
                 cell.optionContainerView?.borderedControl(
                     borderColor:inputModel.themeManager?.getControlActiveColor() ?? .unVotedPollOptionBorderColor ,
                     borderWidth: BorderWidths.standardBorderWidth
