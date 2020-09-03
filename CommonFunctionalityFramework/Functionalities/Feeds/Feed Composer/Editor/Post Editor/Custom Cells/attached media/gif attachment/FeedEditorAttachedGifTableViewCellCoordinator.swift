@@ -49,10 +49,10 @@ class FeedEditorAttachedGifTableViewCellCoordinator :  PostEditorCellCoordinator
             cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.curvedCornerControl()
             cell.removeButton?.isHidden = false
+            cell.imageTapButton?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
             cell.removeButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
                 print("<<<<<<<< delete attached mediapo ")
                 inputModel.delegate?.removeAttachedGif()
-                //post?.attachedGif = nil
                 inputModel.targetTableView?.reloadData()
             })
         }
@@ -90,7 +90,6 @@ class FeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
                     if let unwrappeData = data as NSData?{
                         CFFGifCacheManager.sharedInstance.gifCache.setObject(unwrappeData, forKey: rawGif as NSString)
                         inputModel.targetTableView.reloadRows(at: [inputModel.targetIndexpath], with: .none)
-                        //self.gifCollection?.reloadItems(at: [indexPath])
                     }
                   }
                 }
@@ -103,6 +102,7 @@ class FeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedGifTableViewCell{
             cell.removeButton?.isHidden = true
+            cell.imageTapButton?.backgroundColor = .clear
         }
     }
     

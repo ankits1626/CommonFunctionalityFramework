@@ -6,7 +6,7 @@
 //  Copyright © 2020 Rewardz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum PollState {
     case NotActive
@@ -14,7 +14,7 @@ enum PollState {
 }
 
 
-struct PollOption : Equatable {
+class PollOption : Equatable {
     static func == (lhs: PollOption, rhs: PollOption) -> Bool {
         return lhs.answerID == rhs.answerID
     }
@@ -25,6 +25,8 @@ struct PollOption : Equatable {
     let hasVoted : Bool
     private let rawPollOption : [String : Any]
     private let answerID : Int64
+    var optionColor : UIColor!
+    
     init(_ rawPollOption : [String : Any]) {
         self.rawPollOption = rawPollOption
         hasVoted = rawPollOption["has_voted"] as? Bool ?? false
@@ -54,6 +56,25 @@ struct Poll {
             let rawOptions = rawPoll["answers"] as? [[String : Any]]{
             rawOptions.forEach { (aRwaOption) in
                 options.append(PollOption(aRwaOption))
+            }
+            var maxPercentage = 0
+            options.forEach { (anOption) in
+                anOption.optionColor = .progressTrackLightColor
+                if anOption.getPercentage() > maxPercentage{
+                    maxPercentage = anOption.getPercentage()
+                }
+            }
+            let maxPercentageOptions = options.filter { (anOption) -> Bool in
+                return anOption.getPercentage() == maxPercentage
+            }
+            if maxPercentageOptions.count == options.count{
+                maxPercentageOptions.forEach { (anOption) in
+                    anOption.optionColor = .progressTrackLightColor
+                }
+            }else{
+                maxPercentageOptions.forEach { (anOption) in
+                    anOption.optionColor = .progressTrackMaxColor
+                }
             }
         }
         return options

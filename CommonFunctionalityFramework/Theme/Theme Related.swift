@@ -109,7 +109,7 @@ extension UIColor{
     }
     
     static var unVotedPollOptionBorderColor : UIColor {
-        return UIColor.getGeneralBorderColor()
+        return UIColor(red: 195/255.0, green: 193/255.0, blue: 193/255.0, alpha: 1.0)
     }
     
     static var votedPollOptionBorderColor : UIColor {
@@ -142,6 +142,14 @@ extension UIColor{
     
     static var progressTrackColor : UIColor {
         return .white
+    }
+    
+    static var progressTrackLightColor:  UIColor {
+        return UIColor(red: 234/255.0, green: 239/255.0, blue: 242/255.0, alpha: 1.0)
+    }
+    
+    static var progressTrackMaxColor:  UIColor {
+        return UIColor(red: 156/255.0, green: 176/255.0, blue: 188/255.0, alpha: 1.0)
     }
     
     static var urlColor : UIColor {

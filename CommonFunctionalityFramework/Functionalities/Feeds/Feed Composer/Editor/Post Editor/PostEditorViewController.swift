@@ -133,7 +133,7 @@ class PostEditorViewController: UIViewController {
             self.postCoordinator.updatePostWithSameDepartment(isChecked)
         }
         
-        postWithSameDepartmentMessage?.text = "Post with the same department only"
+        postWithSameDepartmentMessage?.text = "Post to my department only"
         postWithSameDepartmentMessage?.font = .Highlighter2
         
     }
