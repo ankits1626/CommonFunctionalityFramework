@@ -71,10 +71,11 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
 //            }
 //        }
         rows.append(PollBottomTableViewCelType())
-        if let poll = feed.getPoll(),
-            !poll.isPollActive(){
-            rows.append(FeedBottomTableViewCellType())
-        }
+        rows.append(FeedBottomTableViewCellType())
+//        if let poll = feed.getPoll(),
+//            !poll.isPollActive(){
+//            rows.append(FeedBottomTableViewCellType())
+//        }
         return rows
     }
     
