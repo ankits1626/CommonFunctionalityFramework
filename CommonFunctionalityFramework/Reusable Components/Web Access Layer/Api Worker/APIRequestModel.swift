@@ -47,7 +47,7 @@ public class APIRequestBuilder : APIRequestBuilderProtocol {
             apiRequest.httpMethod = method.rawValue
             apiRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             apiRequest.addValue("keep-alive", forHTTPHeaderField: "Connection")
-            apiRequest.setValue("Skor/9 \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
+            apiRequest.setValue("\(tokenProvider.fetchUserAgent()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
             
             if let unwrappedHttpBody = httpBodyDict{
                 if let httpBody  = (try? JSONSerialization.data(withJSONObject: unwrappedHttpBody, options: .prettyPrinted)){
@@ -67,7 +67,7 @@ public class APIRequestBuilder : APIRequestBuilderProtocol {
             apiRequest.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             apiRequest.addValue("application/json", forHTTPHeaderField: "Accept")
             apiRequest.addValue(tokenProvider.getDeviceSelectedLanguage(), forHTTPHeaderField: "Accept-Language")
-            apiRequest.setValue("\(appName()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
+            apiRequest.setValue("\(tokenProvider.fetchUserAgent()) \(deviceInfoProvider.getDeviceInfo())", forHTTPHeaderField: "User-Agent")
             apiRequest.httpBody = httpBodyDict
             if let authorizationHeaderValue = self.tokenProvider.fetchAccessToken(){
                 apiRequest.addValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
