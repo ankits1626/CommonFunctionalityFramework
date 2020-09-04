@@ -40,13 +40,16 @@ class DeletePostConfirmationDrawer: UIViewController {
             switch type {
             case .Poll:
                 titleLabel?.text = "Delete Poll"
+                messageLabel?.text = "Are you sure you want to delete the Poll?"
             case .Post:
                 titleLabel?.text = "Delete Post"
+                messageLabel?.text = "Are you sure you want to delete the Feed?"
             }
         }else{
             titleLabel?.text = "Delete Post"
+            messageLabel?.text = "Are you sure you want to delete the Feed?"
         }
-        messageLabel?.text = "Are you sure you want to delete the Feed?"
+        
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
         messageLabel?.font = .Highlighter2
