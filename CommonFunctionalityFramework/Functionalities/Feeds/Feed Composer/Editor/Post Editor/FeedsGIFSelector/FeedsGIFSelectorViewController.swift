@@ -24,6 +24,7 @@ class FeedsGIFSelectorViewController: UIViewController {
     private var lastFetchedGifs : FetchedGifModel = FetchedGifModel(fetchedRawGifs: nil, error: nil, nextPageState: FetchedGifNextPageState.Initial)
     
     private var isFetchingNextPage = false
+    private var gifDownloadTasks = [URLSessionDataTask]()
     
     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
     weak var mediaFetcher: CFFMediaCoordinatorProtocol?
@@ -153,6 +154,10 @@ extension FeedsGIFSelectorViewController : UISearchBarDelegate{
     }
     
     private func initiateAfterSearchBarEditing(){
+        gifDownloadTasks.forEach { (aTask) in
+            aTask.cancel()
+        }
+        gifDownloadTasks = [URLSessionDataTask]()
         lastFetchedGifs = FetchedGifModel(fetchedRawGifs: nil, error: nil, nextPageState: FetchedGifNextPageState.Initial)
         clearExistingGifs {[weak self] in
             self?.loadGifs()
@@ -182,14 +187,18 @@ extension FeedsGIFSelectorViewController : UICollectionViewDataSource, UICollect
                 cell.gifImage?.animatedImage = FLAnimatedImage(animatedGIFData: data)
             }else{
                 cell.gifImage?.animatedImage = nil
-                let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string:rawGif)!)) { (data, _, _) in
+                let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string:rawGif)!)) { [weak self](data, _, _) in
                   DispatchQueue.main.async {
                     if let unwrappeData = data as NSData?{
                         CFFGifCacheManager.sharedInstance.gifCache.setObject(unwrappeData, forKey: rawGif as NSString)
-                        self.gifCollection?.reloadItems(at: [indexPath])
+                        if let visibleIndexpaths = self?.gifCollection?.indexPathsForVisibleItems,
+                            visibleIndexpaths.contains(indexPath){
+                            self?.gifCollection?.reloadItems(at: [indexPath])
+                        }
                     }
                   }
                 }
+                gifDownloadTasks.append(task)
                 task.resume()
             }
         }
