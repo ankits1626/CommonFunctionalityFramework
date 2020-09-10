@@ -25,12 +25,15 @@ class PollOption : Equatable {
     let hasVoted : Bool
     private let rawPollOption : [String : Any]
     private let answerID : Int64
-    var optionColor : UIColor!
-    
+    var optionColor : UIColor{
+        return isWinner ? .progressTrackMaxColor : .progressTrackLightColor
+    }
+    let isWinner : Bool
     init(_ rawPollOption : [String : Any]) {
         self.rawPollOption = rawPollOption
         hasVoted = rawPollOption["has_voted"] as? Bool ?? false
         answerID = rawPollOption["id"] as! Int64
+        isWinner = rawPollOption["is_winner"] as? Bool ?? false
     }
     
     func getNewtowrkPostableAnswer() -> [String: Any] {
@@ -56,27 +59,6 @@ struct Poll {
             let rawOptions = rawPoll["answers"] as? [[String : Any]]{
             rawOptions.forEach { (aRwaOption) in
                 options.append(PollOption(aRwaOption))
-            }
-            var maxPercentage = 0
-            options.forEach { (anOption) in
-                anOption.optionColor = .progressTrackLightColor
-                if anOption.getPercentage() > maxPercentage{
-                    maxPercentage = anOption.getPercentage()
-                }
-            }
-            if !isPollActive(){
-                let maxPercentageOptions = options.filter { (anOption) -> Bool in
-                    return anOption.getPercentage() == maxPercentage
-                }
-                if maxPercentageOptions.count == options.count{
-                    maxPercentageOptions.forEach { (anOption) in
-                        anOption.optionColor = .progressTrackLightColor
-                    }
-                }else{
-                    maxPercentageOptions.forEach { (anOption) in
-                        anOption.optionColor = .progressTrackMaxColor
-                    }
-                }
             }
         }
         return options
