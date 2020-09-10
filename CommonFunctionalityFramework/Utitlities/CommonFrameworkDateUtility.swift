@@ -47,7 +47,7 @@ class CommonFrameworkDateUtility {
         if calendar.isDateInToday(date){
             let components = calendar.dateComponents([.hour, .minute], from: date)
             dateFormatter.timeZone = TimeZone.current
-            dateFormatter.dateFormat = "hh:mma"
+            dateFormatter.dateFormat = "hh:mm a"
             dateFormatter.amSymbol = "AM"
             dateFormatter.pmSymbol = "PM"
             return dateFormatter.string(from: calendar.date(from:components)!)
