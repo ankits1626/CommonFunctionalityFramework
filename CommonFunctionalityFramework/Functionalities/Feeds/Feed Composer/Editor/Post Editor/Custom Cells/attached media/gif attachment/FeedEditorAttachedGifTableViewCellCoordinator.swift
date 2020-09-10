@@ -89,7 +89,13 @@ class FeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
                     cell.imageLoader?.stopAnimating()
                     if let unwrappeData = data as NSData?{
                         CFFGifCacheManager.sharedInstance.gifCache.setObject(unwrappeData, forKey: rawGif as NSString)
-                        inputModel.targetTableView.reloadRows(at: [inputModel.targetIndexpath], with: .none)
+                        
+                        if let visibleIndexpaths = inputModel.targetTableView.indexPathsForVisibleRows,
+                            visibleIndexpaths.contains(inputModel.targetIndexpath){
+                            inputModel.targetTableView.reloadRows(at: [inputModel.targetIndexpath], with: .none)
+                        }else{
+                            print("<<<<<<<<<<<<< let it be probably table not visible >>>>>>>>>>")
+                        }
                     }
                   }
                 }
