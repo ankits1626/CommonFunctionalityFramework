@@ -46,8 +46,8 @@
                                 <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="qRO-nS-Zv3"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-zb-a1y">
-                            <rect key="frame" x="135" y="12" width="105" height="27"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD PHOTOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-zb-a1y">
+                            <rect key="frame" x="126.5" y="12" width="122.5" height="27"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="27" id="wc2-Ys-Ihi"/>
                             </constraints>
