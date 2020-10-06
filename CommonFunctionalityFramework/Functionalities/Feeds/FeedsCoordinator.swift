@@ -43,12 +43,13 @@ public class FeedsCoordinator {
         return feedsVc
     }
     
-    public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel){
+    public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
         FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId) { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(let result):
                     if let fetchedFeedDetail = result.fetchedRawFeeds {
+                        completionClosure(["errorMessage" : ""])
                         let rawFeed = RawFeed(input: fetchedFeedDetail)
                         let _ = rawFeed.getManagedObject() as! ManagedPost
                         if let unwrappedDescription = rawFeed.getFeedDescription(){
@@ -67,9 +68,9 @@ public class FeedsCoordinator {
                         inputModel.feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
                     }
                 case .SuccessWithNoResponseData:
-                    ErrorDisplayer.showError(errorMsg: "No record Found") { (_) in}
+                    completionClosure(["errorMessage" : "No record Found"])
                 case .Failure(let error):
-                    ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                    completionClosure(["errorMessage" : error.displayableErrorMessage()])
                 }
             }
         }

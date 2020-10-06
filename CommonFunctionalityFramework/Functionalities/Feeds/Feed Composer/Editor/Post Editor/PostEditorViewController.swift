@@ -34,6 +34,7 @@ class PostEditorViewController: UIViewController {
     @IBOutlet private weak var messageGuidenceContainer: UIView?
     @IBOutlet private weak var guidenceMessage: UILabel?
     @IBOutlet private weak var messageGuidenceContainerHeightContraint: NSLayoutConstraint?
+    var loader = CommonLoader()
     
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(postObsever: cellFactory, postType: postType, editablePost: editablePost)
@@ -249,6 +250,7 @@ class PostEditorViewController: UIViewController {
         do{
             createButton?.isUserInteractionEnabled  = false
             try postCoordinator.checkIfPostReadyToPublish()
+            self.loader.showActivityIndicator(self.view)
             PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
             self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
                  print("here")
@@ -259,6 +261,7 @@ class PostEditorViewController: UIViewController {
                     PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
                     post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                         DispatchQueue.main.async {
+                            self?.loader.hideActivityIndicator(self?.view ?? UIView())
                             self?.createButton?.isUserInteractionEnabled  = true
                             switch callResult{
                             case .Success(let rawFeed):
