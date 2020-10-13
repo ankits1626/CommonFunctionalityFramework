@@ -125,7 +125,7 @@ class PostImageDataMapper {
         let filepath = directoryPath.appending(filename)
         let url = NSURL.fileURL(withPath: filepath)
         do {
-            try sourceImage.jpegData(compressionQuality: 1.0)?.write(to: url, options: .atomic)
+            try sourceImage.jpegData(compressionQuality: 0.6)?.write(to: url, options: .atomic)
             return (url, nil)
             
         } catch {

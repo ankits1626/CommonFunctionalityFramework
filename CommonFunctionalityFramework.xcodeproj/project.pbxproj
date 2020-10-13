@@ -201,6 +201,7 @@
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
+		BED94819251C9FFC00EC96BD /* CommonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED94818251C9FFC00EC96BD /* CommonLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -403,6 +404,7 @@
 		98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequestBodyGenerator.swift; sourceTree = "<group>"; };
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
+		BED94818251C9FFC00EC96BD /* CommonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLoader.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -765,6 +767,7 @@
 			isa = PBXGroup;
 			children = (
 				9868C0562410315E00B12321 /* CommonFrameworkDateUtility.swift */,
+				BED94818251C9FFC00EC96BD /* CommonLoader.swift */,
 			);
 			path = Utitlities;
 			sourceTree = "<group>";
@@ -1637,6 +1640,7 @@
 				987226702461769400809D7A /* ManagedPost+CoreDataProperties.swift in Sources */,
 				9872266E246173B500809D7A /* ManagedPostComment+CoreDataProperties.swift in Sources */,
 				980F564A245C51B30093AFE7 /* PollAnswerSubmitter.swift in Sources */,
+				BED94819251C9FFC00EC96BD /* CommonLoader.swift in Sources */,
 				9868C04E240FE2F200B12321 /* FeedSectionFactory.swift in Sources */,
 				9868C0EA24125E1900B12321 /* ClappedByUser.swift in Sources */,
 				9868C0FF2419EB2D00B12321 /* FeedsComposerDrawer.swift in Sources */,
