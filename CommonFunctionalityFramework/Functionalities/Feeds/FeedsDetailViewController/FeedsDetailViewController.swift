@@ -413,6 +413,14 @@ extension FeedsDetailViewController : FeedsDelegate{
                 )
             )
         }
+        if targetFeedItem.isFeedReportAbuseAllowed(){
+            options.append( FloatingMenuOption(title: "REPORT ABUSE", action: {[weak self] in
+                print("report abuse- \(feedIdentifier)")
+                self?.showReportAbuseConfirmation(feedIdentifier)
+                }
+                )
+            )
+        }
         FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
     }
     
@@ -471,6 +479,36 @@ extension FeedsDetailViewController : FeedsDelegate{
             
         }
         
+    }
+    
+    private func showReportAbuseConfirmation(_ feedIdentifier : Int64){
+        let reportAbuseConfirmationDrawer = ReportAbuseConfirmationDrawer(
+            nibName: "ReportAbuseConfirmationDrawer",
+            bundle: Bundle(for: ReportAbuseConfirmationDrawer.self)
+        )
+        reportAbuseConfirmationDrawer.themeManager = themeManager
+        reportAbuseConfirmationDrawer.targetFeed = targetFeedItem
+        reportAbuseConfirmationDrawer.confirmPressedCompletion = {notes in
+            print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")
+            ReportAbuseWorker(networkRequestCoordinator: self.requestCoordinator).reportAbusePost(feedIdentifier, notes: notes) { (result) in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .Success(_):
+                        ErrorDisplayer.showError(errorMsg: "Reported successfully.") { (_) in}
+                    case .SuccessWithNoResponseData:
+                        fallthrough
+                    case .Failure(_):
+                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.") { (_) in}
+                    }
+                }
+                
+            }
+        }
+        do{
+            try reportAbuseConfirmationDrawer.presentDrawer()
+        }catch {
+            
+        }
     }
     
     func showLikedByUsersList() {

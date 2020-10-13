@@ -1,31 +1,24 @@
 //
-//  DeletePostConfirmationDrawer.swift
+//  ReportAbuseConfirmationDrawer.swift
 //  CommonFunctionalityFramework
 //
-//  Created by Rewardz on 06/05/20.
+//  Created by Ankit Sachan on 10/10/20.
 //  Copyright © 2020 Rewardz. All rights reserved.
 //
 
 import UIKit
 
-class FeedConfirmationDrawerError {
-    static let UnableToGetTopViewController = NSError(
-        domain: "com.commonfunctionality.FeedConfirmationDrawerError",
-        code: 1,
-        userInfo: [NSLocalizedDescriptionKey: "Unable to get top view controller"]
-    )
-}
-
-class DeletePostConfirmationDrawer: UIViewController {
-    @IBOutlet private weak var closeLabel : UILabel?
+class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak var closeLabel : UILabel?
     @IBOutlet private weak var titleLabel : UILabel?
     @IBOutlet private weak var messageLabel : UILabel?
-    @IBOutlet private weak var deleteButton : UIButton?
+    @IBOutlet private weak var commentsLabel : UILabel?
+    @IBOutlet private weak var confirmButton : UIButton?
     @IBOutlet private weak var cancelButton : UIButton?
     weak var themeManager: CFFThemeManagerProtocol?
+    @IBOutlet private weak var descriptionText : KMPlaceholderTextView?
     
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
-    var deletePressedCompletion :(() -> Void)?
+    var confirmPressedCompletion :((_ notes: String?) -> Void)?
     var targetFeed : FeedsItemProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,36 +29,28 @@ class DeletePostConfirmationDrawer: UIViewController {
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
-        if let type = targetFeed?.getFeedType() {
-            switch type {
-            case .Poll:
-                titleLabel?.text = "Delete Poll"
-                messageLabel?.text = "Are you sure you want to delete the Poll?"
-            case .Post:
-                titleLabel?.text = "Delete Post"
-                messageLabel?.text = "Are you sure you want to delete the Feed?"
-            }
-        }else{
-            titleLabel?.text = "Delete Post"
-            messageLabel?.text = "Are you sure you want to delete the Feed?"
-        }
-        
+        titleLabel?.text = "Report Abuse"
+        messageLabel?.text = "If you have any concerns regarding the feed place share below."
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
         messageLabel?.font = .Highlighter2
+        commentsLabel?.font = .Highlighter1
         configureConfirmButton()
         configureCancelButton()
+        descriptionText?.placeholder = "Please type in your concerns"
+        descriptionText?.placeholderColor = .gray
+        descriptionText?.font = .Body1
     }
     
     private func configureConfirmButton(){
-        deleteButton?.setTitle("CONFIRM", for: .normal)
-        deleteButton?.titleLabel?.font = .Button
-        deleteButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
-        deleteButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
+        confirmButton?.setTitle("CONFIRM", for: .normal)
+        confirmButton?.titleLabel?.font = .Button
+        confirmButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
+        confirmButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
         if let unwrappedThemeManager = themeManager{
-            deleteButton?.curvedBorderedControl(borderColor: unwrappedThemeManager.getControlActiveColor(), borderWidth: 1.0)
+            confirmButton?.curvedBorderedControl(borderColor: unwrappedThemeManager.getControlActiveColor(), borderWidth: 1.0)
         }else{
-            deleteButton?.curvedBorderedControl()
+            confirmButton?.curvedBorderedControl()
         }
     }
     
@@ -84,7 +69,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: 320)
+            slideInTransitioningDelegate.direction = .bottom(height: 380)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
@@ -97,10 +82,10 @@ class DeletePostConfirmationDrawer: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func deleteButtonPressed(){
-        if let unwrappedCompletion = deletePressedCompletion{
-            dismiss(animated: true) {
-                unwrappedCompletion()
+    @IBAction private func confirmButtonPressed(){
+        if let unwrappedCompletion = confirmPressedCompletion{
+            dismiss(animated: true) { [weak self] in
+                unwrappedCompletion(self?.descriptionText?.text)
             }
         }
     }

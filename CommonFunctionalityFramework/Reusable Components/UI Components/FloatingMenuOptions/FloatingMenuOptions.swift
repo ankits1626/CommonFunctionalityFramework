@@ -16,7 +16,7 @@ struct FloatingMenuOption {
 
 class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
     var contentSize: CGSize {
-        return CGSize(width: 92, height: max(24, 24 * options.count))
+        return CGSize(width: 130, height: max(24, 24 * options.count))
     }
     var popOverBackgroundColor: UIColor?{
         return .white

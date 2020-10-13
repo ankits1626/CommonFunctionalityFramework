@@ -44,7 +44,7 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             }else{
                 cell.optionContainerView?.backgroundColor = .optionContainerBackGroundColor
                 cell.optionContainerView?.borderedControl(
-                    borderColor:inputModel.themeManager?.getControlActiveColor() ?? .unVotedPollOptionBorderColor ,
+                    borderColor: .unVotedPollOptionBorderColor ,
                     borderWidth: BorderWidths.standardBorderWidth
                 )
             }

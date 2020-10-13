@@ -33,6 +33,7 @@ protocol FeedsItemProtocol : Likeable {
     func shouldShowDetail() -> Bool
     func isFeedEditAllowed() -> Bool
     func isFeedDeleteAllowed() -> Bool
+    func isFeedReportAbuseAllowed() -> Bool
     func isActionsAllowed() -> Bool
 }
 
@@ -194,8 +195,12 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return rawFeedDictionary["can_delete"] as? Bool ?? false
     }
     
+    func isFeedReportAbuseAllowed() -> Bool {
+        return true
+    }
+    
     func isActionsAllowed() -> Bool {
-        return isFeedEditAllowed() || isFeedDeleteAllowed()
+        return isFeedEditAllowed() || isFeedDeleteAllowed() || isFeedReportAbuseAllowed()
     }
     
     
