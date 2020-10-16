@@ -52,7 +52,6 @@ class FeedsViewController: UIViewController {
         registerForPostUpdateNotifications()
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
-            self?.loadFeeds()
             self?.setup()
             self?.loadFeeds()
         }

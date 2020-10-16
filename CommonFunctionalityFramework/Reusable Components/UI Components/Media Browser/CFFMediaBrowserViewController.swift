@@ -65,13 +65,20 @@ class CFFMediaBrowserViewController: UIViewController {
             let cell = mediaCollectionView?.cellForItem(at: centralIndexpath) as? MediaItemCollectionViewCell,
             let image = cell.mediaCoverImageView?.image{
             downloadButton?.isHidden = true
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            }
         }
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         print("download complete")
-        ErrorDisplayer.showError(errorMsg: "Image downloaded successfully.") { (_) in
+        if let unwrappedError = error{
+            ErrorDisplayer.showError(errorMsg: unwrappedError.localizedDescription) { (_) in
+            }
+        }else{
+            ErrorDisplayer.showError(errorMsg: "Image downloaded successfully.") { (_) in
+            }
         }
         downloadButton?.isHidden = false
     }
