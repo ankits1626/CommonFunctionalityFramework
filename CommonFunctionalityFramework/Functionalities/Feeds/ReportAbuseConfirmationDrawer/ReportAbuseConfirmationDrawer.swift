@@ -30,19 +30,21 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
         titleLabel?.text = "Report Abuse"
-        messageLabel?.text = "If you have any concerns regarding the feed place share below."
+        messageLabel?.text = "If you have any concerns regarding the feed please share below."
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
-        messageLabel?.font = .Highlighter2
+        messageLabel?.font = .Body3
         commentsLabel?.font = .Highlighter1
         configureConfirmButton()
         configureCancelButton()
         descriptionText?.placeholder = "Please type in your concerns"
         descriptionText?.placeholderColor = .gray
         descriptionText?.font = .Body1
+        descriptionText?.delegate = self
     }
     
     private func configureConfirmButton(){
+        confirmButton?.isEnabled = false
         confirmButton?.setTitle("CONFIRM", for: .normal)
         confirmButton?.titleLabel?.font = .Button
         confirmButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
@@ -85,8 +87,21 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     @IBAction private func confirmButtonPressed(){
         if let unwrappedCompletion = confirmPressedCompletion{
             dismiss(animated: true) { [weak self] in
-                unwrappedCompletion(self?.descriptionText?.text)
+                if let commentText = self?.descriptionText?.text{
+                     unwrappedCompletion(commentText)
+                }
             }
+        }
+    }
+}
+
+
+extension ReportAbuseConfirmationDrawer : UITextViewDelegate{
+    func textViewDidChange(_ textView: UITextView) {
+        if !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
+            confirmButton?.isEnabled = true
+        }else{
+            confirmButton?.isEnabled = false
         }
     }
 }

@@ -44,7 +44,7 @@
                             <rect key="frame" x="0.0" y="24" width="414" height="40"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="risk" translatesAutoresizingMaskIntoConstraints="NO" id="NgS-Bx-GJt">
-                                    <rect key="frame" x="189.5" y="0.0" width="35" height="40"/>
+                                    <rect key="frame" x="184" y="0.0" width="46" height="40"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -93,8 +93,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVj-Mw-9Re" userLabel="Comment Label Container">
                             <rect key="frame" x="0.0" y="137" width="414" height="45"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMENTS (OPTIONAL)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEh-JK-FaP">
-                                    <rect key="frame" x="53" y="32" width="196" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMENTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEh-JK-FaP">
+                                    <rect key="frame" x="53" y="32" width="96.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -210,7 +210,7 @@
                                     </constraints>
                                     <state key="normal" title="DELETE"/>
                                     <connections>
-                                        <action selector="closeDrawer" destination="-1" eventType="touchUpOutside" id="rDo-1I-LCy"/>
+                                        <action selector="closeDrawer" destination="-1" eventType="touchUpInside" id="LvV-Zu-kGj"/>
                                     </connections>
                                 </button>
                             </subviews>
