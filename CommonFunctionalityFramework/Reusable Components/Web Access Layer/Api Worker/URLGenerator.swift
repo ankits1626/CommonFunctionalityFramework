@@ -29,7 +29,9 @@ public class ParameterizedURLBuilder {
                     queryItems.append(item)
                 }
             }
-            components.queryItems = queryItems
+            if queryItems.count > 0 {
+                components.queryItems = queryItems
+            }
             return components.url
         }
         return nil
