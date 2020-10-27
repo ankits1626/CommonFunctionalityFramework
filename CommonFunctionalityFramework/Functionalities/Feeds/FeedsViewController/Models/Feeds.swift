@@ -196,7 +196,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     }
     
     func isFeedReportAbuseAllowed() -> Bool {
-        return true
+        return !getIsEditActionAllowedOnFeedItem()
     }
     
     func isActionsAllowed() -> Bool {

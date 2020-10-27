@@ -16,7 +16,7 @@ class PollsActiveDaysTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     override func awakeFromNib() {
         super.awakeFromNib()
         activeDaysStepper?.minVal = 1
-        activeDaysStepper?.maxVal = 7
+        activeDaysStepper?.maxVal = 30
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
