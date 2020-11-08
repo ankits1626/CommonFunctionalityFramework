@@ -29,7 +29,7 @@ class PostLikeListFetcher  {
     init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func fetchFeeds(feedIdentifier: Int64, nextPageUrl : String?,completionHandler: @escaping PostLikeListFetcherHandler) {
+    func fetchLikeList(feedIdentifier: Int64, nextPageUrl : String?,completionHandler: @escaping PostLikeListFetcherHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: PostLikeListFetchRequestGenerator(

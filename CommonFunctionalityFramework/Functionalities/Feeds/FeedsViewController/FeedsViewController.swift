@@ -30,6 +30,7 @@ class FeedsViewController: UIViewController {
             themeManager: themeManager
         )
     }()
+    
     lazy var pollSelectedAnswerMapper: SelectedPollAnswerMapper = {
         return SelectedPollAnswerMapper()
     }()
@@ -174,6 +175,7 @@ class FeedsViewController: UIViewController {
 }
 
 extension FeedsViewController{
+    
     @IBAction func openFeedComposerSelectionDrawer(){
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
@@ -271,7 +273,6 @@ extension FeedsViewController : FeedsDelegate{
         } 
     }
     
-    
     func submitPollAnswer(feedIdentifier : Int64){
         print("post answer")
         if let selectedOption = pollSelectedAnswerMapper.getSelectedOption(feedIdentifier: feedIdentifier){
@@ -351,7 +352,6 @@ extension FeedsViewController : FeedsDelegate{
             return nil
         }
     }
-    
     
     func showMediaBrowser(feedIdentifier: Int64, scrollToItemIndex: Int) {
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier),

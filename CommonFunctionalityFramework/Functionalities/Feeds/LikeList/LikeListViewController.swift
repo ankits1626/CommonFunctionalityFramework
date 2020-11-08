@@ -49,7 +49,7 @@ class LikeListViewController: UIViewController {
     
     private func fetchUsers(){
         if let unwrappedrequestCoordinator = requestCoordinator{
-            PostLikeListFetcher(networkRequestCoordinator: unwrappedrequestCoordinator).fetchFeeds(
+            PostLikeListFetcher(networkRequestCoordinator: unwrappedrequestCoordinator).fetchLikeList(
             feedIdentifier: feedIdentifier, nextPageUrl: fetchedLikeList?.nextPageUrl) { (result) in
                 switch result{
                 case .Success(result: let result):

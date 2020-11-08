@@ -150,7 +150,7 @@ class FeedsDetailViewController: UIViewController {
     }
     
     private func fetchClappedByUsers(){
-        PostLikeListFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
+        PostLikeListFetcher(networkRequestCoordinator: requestCoordinator).fetchLikeList(
         feedIdentifier: targetFeedItem.feedIdentifier, nextPageUrl: nil) { (result) in
             switch result{
             case .Success(result: let result):
