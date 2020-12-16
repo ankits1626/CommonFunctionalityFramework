@@ -24,17 +24,22 @@ class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
                 cell.feedText?.numberOfLines = 0
                 cell.feedText?.lineBreakMode = NSLineBreakMode.byClipping
             }
-            cell.feedText?.enabledTypes  = [.url, .mention]
+            cell.feedText?.enabledTypes  = [.url]
             if let unwrappedText = feed.getFeedDescription(){
                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
-                cell.feedText?.text = model?.displayableDescription.string
+                //cell.feedText?.text = model?.displayableDescription.string
+                 ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                    cell.feedText?.text = nil
+                    cell.feedText?.attributedText = attr
+                })
             }else{
                 cell.feedText?.text = feed.getFeedDescription()
             }
             //cell.feedText?.text = feed.getFeedDescription()
             cell.feedText?.URLColor = .urlColor
             cell.feedText?.font = UIFont.Body1
-            cell.feedText?.textColor = UIColor.getTitleTextColor()
+            
+            //cell.feedText?.textColor = UIColor.getTitleTextColor()
             cell.feedText?.handleMentionTap({ (mention) in
                 print("tapped on  \(mention)")
             })

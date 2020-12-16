@@ -24,6 +24,7 @@ class PostEditorViewController: UIViewController {
     }
     private let postType: FeedType
     private let requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private var tagPicker : ASMentionSelectorViewController?
     
     @IBOutlet private weak var postEditorTable : UITableView?
     @IBOutlet private weak var createButton : UIButton?
@@ -255,7 +256,7 @@ class PostEditorViewController: UIViewController {
             self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
                  print("here")
                 if let unwrappedUrls = localImageUrls{
-                    self.postCoordinator.saveLocalMediUrls(unwrappedUrls)
+                    self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
                 }
                 if error == nil{
                     PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
@@ -315,6 +316,7 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     }
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    
     func removeAttachedGif() {
         postCoordinator.removeAttachedGif()
     }
@@ -345,6 +347,24 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
         postEditorTable?.endUpdates()
         postEditorTable?.scrollToRow(at: indexpath, at: .bottom, animated: false)
         UIView.setAnimationsEnabled(true)
+    }
+    
+    func showUserListForTagging(searckKey : String, textView: UITextView, pickerDelegate : TagUserPickerDelegate?){
+        if tagPicker == nil{
+                        tagPicker = ASMentionSelectorViewController(nibName: "ASMentionSelectorViewController", bundle: Bundle(for: ASMentionSelectorViewController.self))
+                        tagPicker?.networkRequestCoordinator = requestCoordinator
+                    }
+        tagPicker?.pickerDelegate = pickerDelegate
+        if let selectedRange = textView.selectedTextRange {
+            let caretRect = textView.caretRect(for: selectedRange.end)
+            let displayRect = textView.convert(caretRect, to: presentingViewController?.view)
+            print(displayRect)
+            tagPicker?.searchForUser(searckKey, displayRect: displayRect, parent: self)
+        }
+    }
+    
+    func dismissUserListForTagging(completion :(() -> Void)){
+        tagPicker?.dismissTagSelector(completion)
     }
 }
 

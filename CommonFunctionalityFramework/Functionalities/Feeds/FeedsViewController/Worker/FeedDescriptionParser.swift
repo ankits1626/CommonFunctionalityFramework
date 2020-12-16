@@ -13,7 +13,7 @@ import CoreData
 enum MarkupTag : String,CaseIterable{
     case None
     case Gif = "gif"
-    case Tag = "tag"
+    case Tag = "tag<deprecated>"
 }
 
 
@@ -109,10 +109,11 @@ class FeedDescriptionMarkupParser : NSObject{
             case .Gif:
                 print("do nothing")
             case .Tag:
-                let font = UIFont.systemFont(ofSize: 72)
-                let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor : UIColor.red]
-                attributaedDescription.append(NSAttributedString(string: "@\(model.content) ", attributes: attributes))
-                modifiedDescriptionWithTags.append("@\(model.content)")
+                print("do nothing")
+//                let font = UIFont.systemFont(ofSize: 72)
+//                let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor : UIColor.red]
+//                attributaedDescription.append(NSAttributedString(string: "@\(model.content) ", attributes: attributes))
+//                modifiedDescriptionWithTags.append("@\(model.content)")
             }
         }
 

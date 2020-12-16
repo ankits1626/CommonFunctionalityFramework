@@ -20,6 +20,8 @@ protocol PostEditorCellFactoryDelegate : class {
     func removeAttachedGif()
     func savePostOption(index : Int, option: String?)
     func activeDaysForPollChanged(_ days : Int)
+    func showUserListForTagging(searckKey : String, textView: UITextView, pickerDelegate : TagUserPickerDelegate?)
+    func dismissUserListForTagging(completion :(() -> Void))
 }
 
 struct PostEditorCellDequeueModel {

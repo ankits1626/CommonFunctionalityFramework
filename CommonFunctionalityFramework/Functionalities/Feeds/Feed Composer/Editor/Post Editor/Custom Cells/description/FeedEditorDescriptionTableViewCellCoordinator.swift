@@ -11,6 +11,9 @@ import UIKit
 class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol{
     var delegate : PostEditorCellFactoryDelegate?
     var targetIndexPath : IndexPath = []
+    
+    var tagPicker : ASMentionSelectorViewController?
+    
     func getCell(_ inputModel: PostEditorCellDequeueModel) -> UITableViewCell {
         let targetCell = inputModel.targetTableView.dequeueReusableCell(
         withIdentifier: cellType.cellIdentifier,
@@ -18,6 +21,7 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
         let post = inputModel.datasource.getTargetPost()
         if let cell  = targetCell as? FeedEditorDescriptionTableViewCell{
             cell.descriptionText?.text = post?.postDesciption
+            setupCoordinator(cell.descriptionText)
         }
         return targetCell
     }
@@ -26,7 +30,9 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
         targetIndexPath = inputModel.targetIndexpath
         if let cell = inputModel.targetCell as? FeedEditorDescriptionTableViewCell{
             cell.selectionStyle = .none
-            cell.descriptionText?.delegate = self
+            //cell.descriptionText?.delegate = self
+            ASMentionCoordinator.shared.delegate = delegate
+            //ASMentionCoordinator.shared.presentingViewController = delegate as? UIViewController
             cell.descriptionText?.placeholder = "Whats on your mind?"
             cell.descriptionText?.placeholderColor = .gray
             
@@ -43,6 +49,12 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
         }
     }
     
+    private func setupCoordinator(_ targetTextView: UITextView?){
+        targetTextView?.delegate = ASMentionCoordinator.shared
+        ASMentionCoordinator.shared.loadInitialText(targetTextView: targetTextView)
+        ASMentionCoordinator.shared.textUpdateListener = self
+    }
+    
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -56,6 +68,14 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
 extension FeedEditorDescriptionTableViewCellCoordinator : UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         delegate?.updatePostDescription(decription: textView.text)
+        delegate?.reloadTextViewContainingRow(indexpath: targetIndexPath)
+    }
+    
+}
+
+extension FeedEditorDescriptionTableViewCellCoordinator : ASMentionCoordinatortextUpdateListener{
+    func textUpdated() {
+        delegate?.updatePostDescription(decription: ASMentionCoordinator.shared.getPostableTaggedText())
         delegate?.reloadTextViewContainingRow(indexpath: targetIndexPath)
     }
 }

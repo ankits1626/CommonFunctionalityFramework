@@ -163,7 +163,7 @@ class PostCoordinator {
         currentPost.postableMediaMap = map
     }
     
-    func saveLocalMediUrls(_ urls : [URL]) {
+    func saveLocalMediaUrls(_ urls : [URL]) {
         currentPost.postableLocalMediaUrls = urls
     }
     
