@@ -55,6 +55,11 @@ class ASMentionSelectorViewController: UIViewController {
     
     private var users : [ASTaggedUser]?
     private var searchKey : String?
+    lazy private var tapGestureRecognizer: UITapGestureRecognizer = {
+        let tap =  UITapGestureRecognizer(target: self, action: #selector(handleKeyboardDismiss))
+        tap.delegate = self
+        return tap
+    }()
     
     @IBOutlet private weak var userListTable : UITableView?
     
@@ -101,6 +106,7 @@ class ASMentionSelectorViewController: UIViewController {
                             unwrappedSelf.searchKey = key
                             self?.users = users
                             unwrappedSelf.userListTable?.reloadData()
+                            parent?.view.addGestureRecognizer(unwrappedSelf.tapGestureRecognizer)
                         }else{
                             fallthrough
                         }
@@ -138,7 +144,6 @@ extension ASMentionSelectorViewController : UITableViewDataSource, UITableViewDe
            let searchKey = self.searchKey{
             pickerDelegate?.didFinishedPickingUser(selectedUser, replacementText: searchKey)
         }
-        
     }
     
     func dismissTagSelector(_ completion :(() -> Void)) {
@@ -147,4 +152,23 @@ extension ASMentionSelectorViewController : UITableViewDataSource, UITableViewDe
         self.removeFromParent()
         completion()
     }
+}
+
+extension ASMentionSelectorViewController{
+    @objc private func handleKeyboardDismiss(){
+        parent?.view.removeGestureRecognizer(tapGestureRecognizer)
+        view.endEditing(true)
+        dismissTagSelector {}
+    }
+}
+
+extension ASMentionSelectorViewController : UIGestureRecognizerDelegate{
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let touchView = touch.view,
+           touchView.isDescendant(of: view){
+            return false
+        }
+        return true
+    }
+    
 }

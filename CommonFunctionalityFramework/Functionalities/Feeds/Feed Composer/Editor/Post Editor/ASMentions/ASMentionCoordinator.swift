@@ -13,16 +13,10 @@ protocol ASMentionCoordinatortextUpdateListener : class {
 
 class ASMentionCoordinator: NSObject{
     weak var textUpdateListener : ASMentionCoordinatortextUpdateListener?
-    //var tagPicker : ASMentionSelectorViewController?
-    //weak var presentingViewController : UIViewController?
     weak var delegate : PostEditorCellFactoryDelegate?
     static let shared = ASMentionCoordinator()
     weak var targetTextview : UITextView?
-    lazy private var tapGestureRecognizer: UITapGestureRecognizer = {
-        let tap =  UITapGestureRecognizer(target: self, action: #selector(handleKeyboardDismiss))
-        tap.delegate = self
-        return tap
-    }()
+    
     private var currentTagRange : NSRange?
     
     func getPresentableMentionText(_ text : String?, completion: ((_ attr: NSAttributedString?) -> Void)) {
@@ -98,7 +92,6 @@ class ASMentionCoordinator: NSObject{
 extension ASMentionCoordinator : UITextViewDelegate{
     
     @objc private func handleKeyboardDismiss(){
-        //presentingViewController?.view.removeGestureRecognizer(tapGestureRecognizer)
         targetTextview?.resignFirstResponder()
         delegate?.dismissUserListForTagging(completion: {})
     }
@@ -109,7 +102,6 @@ extension ASMentionCoordinator : UITextViewDelegate{
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        //presentingViewController?.view.addGestureRecognizer(tapGestureRecognizer)
         return true
     }
     
@@ -218,17 +210,3 @@ extension ASMentionCoordinator : TagUserPickerDelegate{
         
     }
 }
-
-extension ASMentionCoordinator : UIGestureRecognizerDelegate{
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        
-//        if let pickerView = tagPicker?.view,
-//           let touchView = touch.view,
-//           touchView.isDescendant(of: pickerView){
-//            return false
-//        }
-        return true
-    }
-    
-}
-
