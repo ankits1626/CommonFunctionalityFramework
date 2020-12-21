@@ -35,7 +35,7 @@ class KeyboardService: NSObject {
 
     @objc private func keyboardChange(_ notification: Notification) {
         guard measuredSize == CGRect.zero, let info = notification.userInfo,
-              let value = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+              let value = info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue
             else { return }
 
         measuredSize = value.cgRectValue

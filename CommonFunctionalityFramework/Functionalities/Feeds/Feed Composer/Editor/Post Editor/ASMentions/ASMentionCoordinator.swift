@@ -108,13 +108,16 @@ extension ASMentionCoordinator : UITextViewDelegate{
     
     func textViewDidChange(_ textView: UITextView) {
         showTagPickerIfRequired(textView: textView)
+        let r = textView.selectedRange
+        updateTextView()
+        textView.selectedRange = NSMakeRange(r.location , 0)
         textUpdateListener?.textUpdated()
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         print("\(range) -- \(text)")
         let attributes : [NSAttributedString.Key: Any] = [
-            .font : UIFont.systemFont(ofSize: 10),
+            .font : UIFont.Caption2,
             .foregroundColor : UIColor.black
         ]
         textView.typingAttributes = attributes
@@ -135,6 +138,7 @@ extension ASMentionCoordinator : UITextViewDelegate{
             return false
         }else{
             handleTextUpdate(textView: textView, range: range, text: text)
+            //textView.selectedRange = NSMakeRange(range.location + 1 , 0)
         }
         return true
     }
@@ -146,12 +150,13 @@ extension ASMentionCoordinator : UITextViewDelegate{
             }else{
                 ASMentionStore.shared.updateStoreAfterTextReplacement(range, replacementTextLength: text.count)
             }
-            updateTextView()
+//            updateTextView()
+            
         }else{
             print("\(text) has been added in range \(NSMakeRange(range.location, text.count))")
             ASMentionStore.shared.updateStoreAfterTextAddition(NSMakeRange(range.location, text.count))
         }
-        textUpdateListener?.textUpdated()
+        //textUpdateListener?.textUpdated()
     }
     
     private func checkIfTagPickerNeedsToBeDisplayed(_ tagStartingRange : NSRange, inputText : String){

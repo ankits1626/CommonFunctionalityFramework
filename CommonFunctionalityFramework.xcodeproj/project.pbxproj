@@ -110,6 +110,7 @@
 		9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C1092419F37C00B12321 /* SlideInPresentationController.swift */; };
 		9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */; };
 		9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */; };
+		986B9737258DDD1B006EBDA9 /* ASTaggedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B9736258DDD1B006EBDA9 /* ASTaggedUser.swift */; };
 		9872266824616BBE00809D7A /* ManagedPost+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266224616BBE00809D7A /* ManagedPost+RawRepresentable.swift */; };
 		9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266624616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift */; };
 		9872266E246173B500809D7A /* ManagedPostComment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266524616BBE00809D7A /* ManagedPostComment+CoreDataProperties.swift */; };
@@ -147,7 +148,6 @@
 		987D0BA72583DA58001A0F07 /* ASMentionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B912583DA58001A0F07 /* ASMentionStore.swift */; };
 		987D0BA82583DA58001A0F07 /* ASMentionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B922583DA58001A0F07 /* ASMentionCoordinator.swift */; };
 		987D0BA92583DA58001A0F07 /* ASMention+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B942583DA58001A0F07 /* ASMention+Extensions.swift */; };
-		987D0BAA2583DA58001A0F07 /* ASMentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B962583DA58001A0F07 /* ASMentions.swift */; };
 		987D0BAB2583DA58001A0F07 /* ASMentionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B972583DA58001A0F07 /* ASMentionText.swift */; };
 		987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B992583DA58001A0F07 /* ASMentionTextParser.swift */; };
 		987D0BAE2583DA58001A0F07 /* ASMentionSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B9D2583DA58001A0F07 /* ASMentionSelectorViewController.swift */; };
@@ -219,8 +219,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../2020Aug6Cerra/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../2020Aug6Cerra/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../2020Aug6Flab/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../2020Aug6Flab/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
 		980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollSubmitButtonCell.xib; sourceTree = "<group>"; };
 		980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCellCoordinator.swift; sourceTree = "<group>"; };
@@ -324,6 +324,7 @@
 		9868C1092419F37C00B12321 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		9868C10A2419F37C00B12321 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
 		9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedComposerCoordinator.swift; sourceTree = "<group>"; };
+		986B9736258DDD1B006EBDA9 /* ASTaggedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTaggedUser.swift; sourceTree = "<group>"; };
 		9872266224616BBE00809D7A /* ManagedPost+RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+RawRepresentable.swift"; sourceTree = "<group>"; };
 		9872266324616BBE00809D7A /* ManagedPostComment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPostComment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9872266424616BBE00809D7A /* ManagedPost+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -361,7 +362,6 @@
 		987D0B912583DA58001A0F07 /* ASMentionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionStore.swift; sourceTree = "<group>"; };
 		987D0B922583DA58001A0F07 /* ASMentionCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionCoordinator.swift; sourceTree = "<group>"; };
 		987D0B942583DA58001A0F07 /* ASMention+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASMention+Extensions.swift"; sourceTree = "<group>"; };
-		987D0B962583DA58001A0F07 /* ASMentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentions.swift; sourceTree = "<group>"; };
 		987D0B972583DA58001A0F07 /* ASMentionText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionText.swift; sourceTree = "<group>"; };
 		987D0B992583DA58001A0F07 /* ASMentionTextParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionTextParser.swift; sourceTree = "<group>"; };
 		987D0B9D2583DA58001A0F07 /* ASMentionSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionSelectorViewController.swift; sourceTree = "<group>"; };
@@ -1135,7 +1135,6 @@
 		987D0B952583DA58001A0F07 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				987D0B962583DA58001A0F07 /* ASMentions.swift */,
 				987D0B972583DA58001A0F07 /* ASMentionText.swift */,
 			);
 			path = model;
@@ -1439,6 +1438,7 @@
 		98BF39D1258999B400498C85 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				986B9736258DDD1B006EBDA9 /* ASTaggedUser.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1762,6 +1762,7 @@
 				9868C0FF2419EB2D00B12321 /* FeedsComposerDrawer.swift in Sources */,
 				9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */,
 				9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */,
+				986B9737258DDD1B006EBDA9 /* ASTaggedUser.swift in Sources */,
 				98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */,
 				9873D63F24C09C830041504C /* FeedDescriptionParser.swift in Sources */,
 				9868C10C2419F37C00B12321 /* SlideInPresentationAnimator.swift in Sources */,
@@ -1823,7 +1824,6 @@
 				987D0BAB2583DA58001A0F07 /* ASMentionText.swift in Sources */,
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
-				987D0BAA2583DA58001A0F07 /* ASMentions.swift in Sources */,
 				9868C0E12412430700B12321 /* UIView+XibSetup.swift in Sources */,
 				9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */,
 				9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */,

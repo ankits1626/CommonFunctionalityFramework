@@ -33,6 +33,10 @@ extension UIFont{
         return UIFont.systemFont(ofSize: 10, weight: .regular)
     }
     
+    static var Caption2 : UIFont{
+        return UIFont.systemFont(ofSize: 14, weight: .regular)
+    }
+    
     static var Body2 : UIFont{
         return UIFont.systemFont(ofSize: 13, weight: .medium)
     }
@@ -43,6 +47,10 @@ extension UIFont{
     
     static var SemiBold14 : UIFont{
         return UIFont.systemFont(ofSize: 14, weight: .semibold)
+    }
+    
+    static var SemiBold12 : UIFont{
+        return UIFont.systemFont(ofSize: 12, weight: .semibold)
     }
 }
 

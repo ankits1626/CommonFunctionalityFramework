@@ -9,7 +9,9 @@
 import UIKit
 
 class TagUserTableViewCell: UITableViewCell {
+    @IBOutlet weak var profileImage : UIImageView?
     @IBOutlet weak var userDisplayName : UILabel?
+    @IBOutlet weak var department : UILabel?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

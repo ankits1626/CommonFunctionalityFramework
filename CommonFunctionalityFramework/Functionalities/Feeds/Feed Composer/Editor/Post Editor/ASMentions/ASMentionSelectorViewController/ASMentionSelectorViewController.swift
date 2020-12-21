@@ -7,36 +7,6 @@
 
 import UIKit
 
-struct ASTaggedUser {
-    var firstName : String
-    var lastName : String
-    var displayName : String{
-        get{
-            if firstName.isEmpty && lastName.isEmpty{
-                return "\(userId)"
-            }else{
-                return "\(firstName) \(lastName)"
-            }
-        }
-    }
-    var userId : Int
-    var profileImage : String?
-    var emailId: String
-    
-    init(_ rawUser: [String : Any]) {
-        firstName = rawUser["first_name"] as? String ?? ""
-        lastName = rawUser["last_name"] as? String ?? ""
-        userId = rawUser["pk"] as? Int ?? -1
-        emailId = rawUser["email"] as? String ?? ""
-        profileImage = rawUser["profile_img"] as? String
-    }
-    
-    func getTagMarkup() -> String {
-        return "<tag><displayName>\(displayName.isEmpty ? emailId : displayName)</displayName><uid>\(userId)</uid><email_id>\(emailId)</email_id></tag>"
-    }
-}
-
-
 protocol TagUserPickerDelegate : class {
     func didFinishedPickingUser(_ user: ASTaggedUser, replacementText: String)
 }
@@ -48,6 +18,7 @@ class ASMentionSelectorViewController: UIViewController {
     var completion : UserPickerCompletionBlock?
     weak var pickerDelegate : TagUserPickerDelegate?
     var networkRequestCoordinator : CFFNetwrokRequestCoordinatorProtocol!
+    weak var mediaFetcher: CFFMediaCoordinatorProtocol?
     var isAddedToParent = false
     private lazy var listFetcher: TagUserListProvider = {
         return TagUserListProvider(networkRequestCoordinator: networkRequestCoordinator)
@@ -82,20 +53,18 @@ class ASMentionSelectorViewController: UIViewController {
     }
     
     func searchForUser(_ key: String, displayRect: CGRect, parent: UIViewController?) {
-        let keyboardHeight = KeyboardService.shared.measuredSize
-        var y_cord = displayRect.origin.y + 25
-        if displayRect.origin.y + 25 + 100 + 44 > keyboardHeight.origin.y{
-            y_cord = displayRect.origin.y - 25 - 100
-        }
+
         if !isAddedToParent{
             isAddedToParent =  true
             parent?.addChild(self)
-            view.frame = CGRect(x: 30, y: y_cord, width: 200, height: 100)
+//            view.frame = CGRect(x: 30, y: y_cord, width: 200, height: 120)
             parent?.view.addSubview(view)
             didMove(toParent: parent)
         }else{
-            view.frame = CGRect(x: 30, y: y_cord, width: 200, height: 100)
+//            view.frame = CGRect(x: 30, y: y_cord, width: 200, height: 120)
         }
+        
+        
         listFetcher.fetchUserList(key, shouldSearchOnlyDepartment: false) { [weak self](result) in
             DispatchQueue.main.async {
                 if let unwrappedSelf = self{
@@ -107,6 +76,8 @@ class ASMentionSelectorViewController: UIViewController {
                             self?.users = users
                             unwrappedSelf.userListTable?.reloadData()
                             parent?.view.addGestureRecognizer(unwrappedSelf.tapGestureRecognizer)
+                            unwrappedSelf.updateFrameOfPicker(displayRect)
+                            unwrappedSelf.updateShadow()
                         }else{
                             fallthrough
                         }
@@ -122,6 +93,44 @@ class ASMentionSelectorViewController: UIViewController {
             }
         }
     }
+    
+    func updateShadow()  {
+        let shadowPath = UIBezierPath(rect: view.bounds)
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowPath = shadowPath.cgPath
+    }
+    
+    func updateFrameOfPicker(_ cursorRectRect: CGRect) {
+        let keyboardHeight = KeyboardService.shared.measuredSize
+        var convertedRect = cursorRectRect// view.convert(cursorRectRect, to: view.superview)
+        //cursorRectRect.origin.y + 25
+        let delta : CGFloat =  20
+        let pickerHeight = CGFloat(min(120, 40*(users?.count ?? 1)))
+        let viewY = convertedRect.origin.y + pickerHeight + delta + 44
+        let keyboardY = keyboardHeight.origin.y
+        print("\(viewY) --- \(keyboardY)")
+        var y_cord = convertedRect
+        
+        if viewY > keyboardY{
+            y_cord = CGRect(
+                x: convertedRect.origin.x,
+                y: convertedRect.origin.y - delta - pickerHeight,
+                width: 200,
+                height: pickerHeight)
+        }else{
+            y_cord = CGRect(
+                x: convertedRect.origin.x,
+                y: convertedRect.origin.y + delta ,
+                width: 200,
+                height: pickerHeight
+            )
+        }
+        view.frame = y_cord
+    }
+
 }
 
 extension ASMentionSelectorViewController : UITableViewDataSource, UITableViewDelegate{
@@ -132,11 +141,18 @@ extension ASMentionSelectorViewController : UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TagUserTableViewCell") as! TagUserTableViewCell
         cell.userDisplayName?.text = self.users?[indexPath.row].displayName
+        cell.userDisplayName?.font = .SemiBold12
+        cell.department?.text = self.users?[indexPath.row].department
+        cell.department?.font = .Caption1
+        cell.department?.textColor = .getSubTitleTextColor()
+        cell.contentView.backgroundColor = .guidenceViewBackgroundColor
+        mediaFetcher?.fetchImageAndLoad(cell.profileImage, imageEndPoint: self.users?[indexPath.row].profileImage ?? "")
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30
+        return 40
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

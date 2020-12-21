@@ -345,7 +345,24 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
         UIView.setAnimationsEnabled(false)
         postEditorTable?.beginUpdates()
         postEditorTable?.endUpdates()
-        postEditorTable?.scrollToRow(at: indexpath, at: .bottom, animated: false)
+        postEditorTable?.scrollToRow(at: indexpath, at: .top, animated: false)
+        if
+            let cell = postEditorTable?.cellForRow(at: indexpath) as? FeedEditorDescriptionTableViewCell,
+            let textView = cell.descriptionText,
+            let confirmedTextViewCursorPosition = textView.selectedTextRange?.end {
+            
+            let caretPosition = textView.caretRect(for: confirmedTextViewCursorPosition)
+            var textViewActualPosition = textView.convert(caretPosition, to: postEditorTable)
+            textViewActualPosition.size.height +=  textViewActualPosition.size.height/2
+                
+                //postEditorTable?.convert(caretPosition, from: textView.superview?.superview)
+            //textViewActualPosition.origin.y += 50.0 // give the actual padding of textview inside the cell
+            print( "<<<<<<<<< sroll \(textViewActualPosition)")
+            postEditorTable?.scrollRectToVisible(textViewActualPosition, animated: false)
+            
+        }else{
+            postEditorTable?.scrollToRow(at: indexpath, at: .bottom, animated: false)
+        }        
         UIView.setAnimationsEnabled(true)
     }
     
@@ -355,12 +372,20 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
                         tagPicker?.networkRequestCoordinator = requestCoordinator
                     }
         tagPicker?.pickerDelegate = pickerDelegate
-        if let selectedRange = textView.selectedTextRange {
-            let caretRect = textView.caretRect(for: selectedRange.end)
-            let displayRect = textView.convert(caretRect, to: presentingViewController?.view)
-            print(displayRect)
-            tagPicker?.searchForUser(searckKey, displayRect: displayRect, parent: self)
+        tagPicker?.mediaFetcher = mediaFetcher
+        if
+            let confirmedTextViewCursorPosition = textView.selectedTextRange?.end {
+            let caretPosition = textView.caretRect(for: confirmedTextViewCursorPosition)
+            var textViewActualPosition = textView.convert(caretPosition, to: view)
+            //textViewActualPosition.size.height +=  textViewActualPosition.size.height/2
+            tagPicker?.searchForUser(searckKey, displayRect: textViewActualPosition, parent: self)
         }
+//        if let selectedRange = textView.selectedTextRange {
+//            let caretRect = textView.caretRect(for: selectedRange.end)
+//            let displayRect = textView.convert(caretRect, to: presentingViewController?.view)
+//            print(displayRect)
+//            tagPicker?.searchForUser(searckKey, displayRect: displayRect, parent: self)
+//        }
     }
     
     func dismissUserListForTagging(completion :(() -> Void)){

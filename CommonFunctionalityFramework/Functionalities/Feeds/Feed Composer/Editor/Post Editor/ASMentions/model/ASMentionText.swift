@@ -23,8 +23,8 @@ class ASMention : ASMentionEntityProtocol{
     var range : NSRange
     let email : String
     
-    static let DisplayTagName = "displayName"
-    static let UidTagName = "uid"
+    static let DisplayTagName = "display_name"
+    static let UidTagName = "pk"
     static let EmailTagName = "email_id"
     static let StartIndexTagName = "start_index"
     static let EndIndexTagName = "end_index"
@@ -44,9 +44,8 @@ class ASMention : ASMentionEntityProtocol{
     func getPostableMention() -> String {
         return [
             "<tag>",
-            getPostableMentionProperty(ASMention.DisplayTagName, value: displayName),
             getPostableMentionProperty(ASMention.UidTagName, value: id),
-            getPostableMentionProperty(ASMention.EmailTagName, value: email),
+            getPostableMentionProperty(ASMention.DisplayTagName, value: displayName),
             getPostableMentionProperty(ASMention.StartIndexTagName, value: range.location),
             getPostableMentionProperty(ASMention.EndIndexTagName, value: range.location + range.length),
             "</tag>"

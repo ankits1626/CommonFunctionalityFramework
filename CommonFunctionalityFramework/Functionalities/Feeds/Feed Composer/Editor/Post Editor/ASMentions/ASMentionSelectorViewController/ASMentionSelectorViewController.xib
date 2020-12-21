@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ASMentionSelectorViewController" customModule="MentionsPOC" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ASMentionSelectorViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="userListTable" destination="QRZ-5s-Qf9" id="IOt-hx-Jf4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRZ-5s-Qf9">
-                    <rect key="frame" x="20" y="64" width="374" height="778"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRZ-5s-Qf9">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="GQ6-5c-4cf"/>
@@ -31,10 +32,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemOrangeColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QRZ-5s-Qf9" secondAttribute="trailing" constant="20" id="8BV-6x-zJM"/>
-                <constraint firstItem="QRZ-5s-Qf9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="KW0-sL-frH"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QRZ-5s-Qf9" secondAttribute="bottom" constant="20" id="LKl-if-VGh"/>
-                <constraint firstItem="QRZ-5s-Qf9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="TOb-cD-Xmh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QRZ-5s-Qf9" secondAttribute="trailing" id="8BV-6x-zJM"/>
+                <constraint firstItem="QRZ-5s-Qf9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KW0-sL-frH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QRZ-5s-Qf9" secondAttribute="bottom" id="LKl-if-VGh"/>
+                <constraint firstItem="QRZ-5s-Qf9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="TOb-cD-Xmh"/>
             </constraints>
             <point key="canvasLocation" x="114" y="62"/>
         </view>

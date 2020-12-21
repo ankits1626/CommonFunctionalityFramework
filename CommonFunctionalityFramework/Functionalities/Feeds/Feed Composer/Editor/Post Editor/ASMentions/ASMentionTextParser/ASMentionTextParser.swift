@@ -18,7 +18,7 @@ class ASMentionTextParser{
             if part.contains("<tag>"){
                 let sub = part.components(separatedBy: "<tag>")
                 for s in sub{
-                    if s.contains("uid"){
+                    if s.contains("pk"){
                         let mention = ASMention(s, startPosition: presentableString.count)
                         mentions.append(mention)
                         presentableString.append(mention.displayName)

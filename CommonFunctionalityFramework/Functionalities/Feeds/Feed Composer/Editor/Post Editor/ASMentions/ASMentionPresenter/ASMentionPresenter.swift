@@ -14,8 +14,8 @@ class ASMentionPresenter {
         if let unwrappedText = text?.string{
             let processedString : NSMutableAttributedString = NSMutableAttributedString(string: unwrappedText)
             let attributes : [NSAttributedString.Key: Any] = [
-                .font : UIFont.systemFont(ofSize: 18),
-                .foregroundColor : UIColor.blue
+                .font : UIFont.SemiBold14,
+                .foregroundColor : UIColor.black
             ]
             mentions?.forEach({ (aMention) in
                 processedString.addAttributes(attributes, range: aMention.range)
