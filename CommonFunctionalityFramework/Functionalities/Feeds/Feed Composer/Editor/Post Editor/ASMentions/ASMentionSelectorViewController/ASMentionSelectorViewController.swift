@@ -52,20 +52,19 @@ class ASMentionSelectorViewController: UIViewController {
         )
     }
     
-    func searchForUser(_ key: String, displayRect: CGRect, parent: UIViewController?) {
-
+    func addTagPickerToParent(_ parent: UIViewController?) {
         if !isAddedToParent{
             isAddedToParent =  true
             parent?.addChild(self)
-//            view.frame = CGRect(x: 30, y: y_cord, width: 200, height: 120)
+            view.frame = CGRect.zero
             parent?.view.addSubview(view)
             didMove(toParent: parent)
-        }else{
-//            view.frame = CGRect(x: 30, y: y_cord, width: 200, height: 120)
         }
-        
-        
-        listFetcher.fetchUserList(key, shouldSearchOnlyDepartment: false) { [weak self](result) in
+    }
+    
+    func searchForUser(_ key: String, displayRect: CGRect, parent: UIViewController?, shouldSearchOnlyDepartment: Bool) {
+        addTagPickerToParent(parent)
+        listFetcher.fetchUserList(key, shouldSearchOnlyDepartment: shouldSearchOnlyDepartment) { [weak self](result) in
             DispatchQueue.main.async {
                 if let unwrappedSelf = self{
                     switch result {
@@ -84,7 +83,9 @@ class ASMentionSelectorViewController: UIViewController {
                     case .SuccessWithNoResponseData:
                         fallthrough
                     case .Failure(error: _):
+                        self?.users = nil
                         if unwrappedSelf.isAddedToParent{
+                            unwrappedSelf.userListTable?.reloadData()
                             unwrappedSelf.dismissTagSelector {
                             }
                         }
@@ -97,7 +98,13 @@ class ASMentionSelectorViewController: UIViewController {
     func updateShadow()  {
         let shadowPath = UIBezierPath(rect: view.bounds)
         view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
+        if let userCount = users?.count,
+           userCount > 0{
+            view.layer.shadowColor =  UIColor.black.cgColor
+        }else{
+            view.layer.shadowColor =  UIColor.clear.cgColor
+        }
+        
         view.layer.shadowOffset = CGSize(width: 0, height: 0.5)
         view.layer.shadowOpacity = 0.2
         view.layer.shadowPath = shadowPath.cgPath
@@ -105,7 +112,7 @@ class ASMentionSelectorViewController: UIViewController {
     
     func updateFrameOfPicker(_ cursorRectRect: CGRect) {
         let keyboardHeight = KeyboardService.shared.measuredSize
-        var convertedRect = cursorRectRect// view.convert(cursorRectRect, to: view.superview)
+        let convertedRect = cursorRectRect// view.convert(cursorRectRect, to: view.superview)
         //cursorRectRect.origin.y + 25
         let delta : CGFloat =  20
         let pickerHeight = CGFloat(min(120, 40*(users?.count ?? 1)))

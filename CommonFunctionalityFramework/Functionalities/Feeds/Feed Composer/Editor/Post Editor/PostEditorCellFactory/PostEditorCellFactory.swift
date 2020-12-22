@@ -22,6 +22,7 @@ protocol PostEditorCellFactoryDelegate : class {
     func activeDaysForPollChanged(_ days : Int)
     func showUserListForTagging(searckKey : String, textView: UITextView, pickerDelegate : TagUserPickerDelegate?)
     func dismissUserListForTagging(completion :(() -> Void))
+    func updateTagPickerFrame(_ textView: UITextView?)
 }
 
 struct PostEditorCellDequeueModel {

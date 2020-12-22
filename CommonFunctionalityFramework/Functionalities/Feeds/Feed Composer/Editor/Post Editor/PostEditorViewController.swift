@@ -184,6 +184,20 @@ class PostEditorViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addTagPicker()
+    }
+    
+    private func addTagPicker(){
+        if tagPicker == nil{
+                        tagPicker = ASMentionSelectorViewController(nibName: "ASMentionSelectorViewController", bundle: Bundle(for: ASMentionSelectorViewController.self))
+                        tagPicker?.networkRequestCoordinator = requestCoordinator
+                    }
+        tagPicker?.mediaFetcher = mediaFetcher
+        tagPicker?.addTagPickerToParent(self)
+    }
+    
     @objc private func initiateAttachment(){
         let drawer = FeedAttachmentOptionsDrawerViewController(nibName: "FeedAttachmentOptionsDrawerViewController", bundle: Bundle(for: FeedAttachmentOptionsDrawerViewController.self))
         do{
@@ -354,12 +368,10 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
             let caretPosition = textView.caretRect(for: confirmedTextViewCursorPosition)
             var textViewActualPosition = textView.convert(caretPosition, to: postEditorTable)
             textViewActualPosition.size.height +=  textViewActualPosition.size.height/2
-                
-                //postEditorTable?.convert(caretPosition, from: textView.superview?.superview)
-            //textViewActualPosition.origin.y += 50.0 // give the actual padding of textview inside the cell
             print( "<<<<<<<<< sroll \(textViewActualPosition)")
             postEditorTable?.scrollRectToVisible(textViewActualPosition, animated: false)
-            
+            updateTagPickerFrame(textView)
+            tagPicker?.updateShadow()
         }else{
             postEditorTable?.scrollToRow(at: indexpath, at: .bottom, animated: false)
         }        
@@ -367,25 +379,27 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     }
     
     func showUserListForTagging(searckKey : String, textView: UITextView, pickerDelegate : TagUserPickerDelegate?){
-        if tagPicker == nil{
-                        tagPicker = ASMentionSelectorViewController(nibName: "ASMentionSelectorViewController", bundle: Bundle(for: ASMentionSelectorViewController.self))
-                        tagPicker?.networkRequestCoordinator = requestCoordinator
-                    }
         tagPicker?.pickerDelegate = pickerDelegate
-        tagPicker?.mediaFetcher = mediaFetcher
         if
             let confirmedTextViewCursorPosition = textView.selectedTextRange?.end {
             let caretPosition = textView.caretRect(for: confirmedTextViewCursorPosition)
-            var textViewActualPosition = textView.convert(caretPosition, to: view)
-            //textViewActualPosition.size.height +=  textViewActualPosition.size.height/2
-            tagPicker?.searchForUser(searckKey, displayRect: textViewActualPosition, parent: self)
+            let textViewActualPosition = textView.convert(caretPosition, to: view)
+            tagPicker?.searchForUser(
+                searckKey,
+                displayRect: textViewActualPosition,
+                parent: self,
+                shouldSearchOnlyDepartment: postCoordinator.isPostWithSameDepartment()
+            )
         }
-//        if let selectedRange = textView.selectedTextRange {
-//            let caretRect = textView.caretRect(for: selectedRange.end)
-//            let displayRect = textView.convert(caretRect, to: presentingViewController?.view)
-//            print(displayRect)
-//            tagPicker?.searchForUser(searckKey, displayRect: displayRect, parent: self)
-//        }
+    }
+    
+    func updateTagPickerFrame(_ textView: UITextView?) {
+        if
+            let confirmedTextViewCursorPosition = textView?.selectedTextRange?.end,
+            let caretPosition = textView?.caretRect(for: confirmedTextViewCursorPosition),
+            let textViewActualPosition = textView?.convert(caretPosition, to: view){
+            tagPicker?.updateFrameOfPicker(textViewActualPosition)
+        }
     }
     
     func dismissUserListForTagging(completion :(() -> Void)){
