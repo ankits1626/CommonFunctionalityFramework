@@ -50,7 +50,7 @@ class FeedsGIFSelectorViewController: UIViewController {
         gifSearchBar?.backgroundColor = .clear
         gifSearchBar?.backgroundImage = UIImage()
         gifSearchBar?.barTintColor = .clear
-        gifSearchBar?.placeholder = "Search Tenor"
+        gifSearchBar?.placeholder = "Search Tenor".localized
     }
     
     private func setupCollectionView(){
@@ -98,7 +98,7 @@ class FeedsGIFSelectorViewController: UIViewController {
                 case .Success(result: let result):
                     self?.handleFetchedGifsResult(lastFetchedGifs: result)
                 case .SuccessWithNoResponseData:
-                    ErrorDisplayer.showError(errorMsg: "No record Found") { (_) in}
+                    ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
                 case .Failure(error: let error):
                      ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
                 }

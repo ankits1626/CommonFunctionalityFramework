@@ -37,11 +37,11 @@ class FeedsComposerDrawer: UIViewController {
     }
     
     private func setupButtons(){
-        createPollButton?.setTitle("CREATE POLL", for: .normal)
+        createPollButton?.setTitle("CREATE POLL".localized, for: .normal)
         createPollButton?.borderedControl()
         createPollButton?.titleLabel?.font = UIFont.Button
         createPollButton?.setTitleColor(.black, for: .normal)
-        createPostButton?.setTitle("CREATE POST", for: .normal)
+        createPostButton?.setTitle("CREATE POST".localized, for: .normal)
         createPostButton?.borderedControl()
         createPostButton?.titleLabel?.font = UIFont.Button
         createPostButton?.setTitleColor(.black, for: .normal)

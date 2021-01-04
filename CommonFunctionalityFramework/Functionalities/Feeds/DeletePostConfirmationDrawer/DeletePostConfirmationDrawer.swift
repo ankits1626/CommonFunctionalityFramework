@@ -39,15 +39,15 @@ class DeletePostConfirmationDrawer: UIViewController {
         if let type = targetFeed?.getFeedType() {
             switch type {
             case .Poll:
-                titleLabel?.text = "Delete Poll"
-                messageLabel?.text = "Are you sure you want to delete the Poll?"
+                titleLabel?.text = "Delete Poll".localized
+                messageLabel?.text = "Are you sure you want to delete the Poll?".localized
             case .Post:
-                titleLabel?.text = "Delete Post"
-                messageLabel?.text = "Are you sure you want to delete the Post?"
+                titleLabel?.text = "Delete Post".localized
+                messageLabel?.text = "Are you sure you want to delete the Post?".localized
             }
         }else{
-            titleLabel?.text = "Delete Post"
-            messageLabel?.text = "Are you sure you want to delete the Feed?"
+            titleLabel?.text = "Delete Post".localized
+            messageLabel?.text = "Are you sure you want to delete the Feed?".localized
         }
         
         titleLabel?.font = .Title1
@@ -58,7 +58,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     }
     
     private func configureConfirmButton(){
-        deleteButton?.setTitle("CONFIRM", for: .normal)
+        deleteButton?.setTitle("CONFIRM".localized, for: .normal)
         deleteButton?.titleLabel?.font = .Button
         deleteButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
         deleteButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
@@ -70,7 +70,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     }
     
     private func configureCancelButton(){
-        cancelButton?.setTitle("CANCEL", for: .normal)
+        cancelButton?.setTitle("CANCEL".localized, for: .normal)
         cancelButton?.titleLabel?.font = .Button
         cancelButton?.setTitleColor(.bottomDestructiveButtonTextColor, for: .normal)
         cancelButton?.backgroundColor = .bottomDestructiveBackgroundColor

@@ -70,7 +70,7 @@ class FeedsDetailViewController: UIViewController {
     
     private func setupCommentBar(){
         commentBarView?.backgroundColor = .commentBarBackgroundColor
-        commentBarView?.placeholder = "Enter your comments here"
+        commentBarView?.placeholder = "Enter your comments here".localized
         commentBarView?.placeholderColor = .getPlaceholderTextColor()
         commentBarView?.placeholderFont = .Body1
     }
@@ -398,7 +398,7 @@ extension FeedsDetailViewController : FeedsDelegate{
         if targetFeedItem.getFeedType() == .Post,
             targetFeedItem.isFeedEditAllowed(){
             options.append(
-                FloatingMenuOption(title: "EDIT", action: {
+                FloatingMenuOption(title: "EDIT".localized, action: {
                     print("Edit post - \(feedIdentifier)")
                     self.openFeedEditor(self.targetFeedItem)
                 }
@@ -406,7 +406,7 @@ extension FeedsDetailViewController : FeedsDelegate{
             )
         }
         if targetFeedItem.isFeedDeleteAllowed(){
-            options.append( FloatingMenuOption(title: "DELETE", action: {[weak self] in
+            options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
                 print("Delete post- \(feedIdentifier)")
                 self?.showDeletePostConfirmation(feedIdentifier)
                 }
@@ -414,7 +414,7 @@ extension FeedsDetailViewController : FeedsDelegate{
             )
         }
         if targetFeedItem.isFeedReportAbuseAllowed(){
-            options.append( FloatingMenuOption(title: "REPORT ABUSE", action: {[weak self] in
+            options.append( FloatingMenuOption(title: "REPORT ABUSE".localized, action: {[weak self] in
                 print("report abuse- \(feedIdentifier)")
                 self?.showReportAbuseConfirmation(feedIdentifier)
                 }
@@ -456,7 +456,7 @@ extension FeedsDetailViewController : FeedsDelegate{
                                             print("<<<<<<<<<<<<<poll deleted suceessfully")
                                             CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                                             DispatchQueue.main.async {
-                                                ErrorDisplayer.showError(errorMsg: "Deleted successfully.") { (_) in
+                                                ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in
                                                     self?.feedCoordinatorDelegate.removeFeedDetail()
                                                 }
                                             }
@@ -494,11 +494,11 @@ extension FeedsDetailViewController : FeedsDelegate{
                 DispatchQueue.main.async {
                     switch result{
                     case .Success(_):
-                        ErrorDisplayer.showError(errorMsg: "Reported successfully.") { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Reported successfully.".localized) { (_) in}
                     case .SuccessWithNoResponseData:
                         fallthrough
                     case .Failure(_):
-                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.") { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.".localized) { (_) in}
                     }
                 }
                 

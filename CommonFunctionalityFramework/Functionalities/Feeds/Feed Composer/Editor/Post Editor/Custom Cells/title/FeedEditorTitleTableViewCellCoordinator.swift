@@ -31,7 +31,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
     fileprivate func updateMaxCharacterLabel(_ cell: FeedEditorTitleTableViewCell) {
         let length = cell.titleText?.text.count ?? 0
         if length == 0{
-            cell.maxCharacterLabel?.text = "(Max \(max_title_length) Characters)"
+            cell.maxCharacterLabel?.text = "(\("Max".localized) \(max_title_length) \("Characters".localized))"
         }else{
             cell.maxCharacterLabel?.text = "\(max_title_length - (cell.titleText?.text.count ?? 0))"
         }
@@ -46,10 +46,10 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.titleText?.delegate = self
             switch post!.postType {
             case .Poll:
-                cell.titleText?.placeholder = "Ask something"
+                cell.titleText?.placeholder = "Ask something".localized
                 max_title_length = POLL_MAX_CHARACTER_LENGTH
             case .Post:
-                cell.titleText?.placeholder = "Title"
+                cell.titleText?.placeholder = "Title".localized
                 cell.titleText?.font = .SemiBold14
                 max_title_length = POST_MAX_CHARACTER_LENGTH
             }

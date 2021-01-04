@@ -28,12 +28,9 @@
 		9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */; };
 		9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */; };
 		98188D4224AEE308003AD3B4 /* CFFImageCropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98188D4024AEE308003AD3B4 /* CFFImageCropperViewController.swift */; };
-		98188D4324AEE308003AD3B4 /* CFFImageCropperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98188D4124AEE308003AD3B4 /* CFFImageCropperViewController.xib */; };
 		98188D4624B21A8B003AD3B4 /* CFFMainCropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98188D4424B21A8B003AD3B4 /* CFFMainCropperViewController.swift */; };
-		98188D4724B21A8B003AD3B4 /* CFFMainCropperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98188D4524B21A8B003AD3B4 /* CFFMainCropperViewController.xib */; };
 		9819120B2459B4560078A2FF /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819120A2459B4560078A2FF /* Stepper.swift */; };
 		9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */; };
-		981912102459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */; };
 		981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */; };
 		9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */; };
 		9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */; };
@@ -41,10 +38,8 @@
 		9830E84B246EBB5800FEFC0F /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830E84A246EBB5800FEFC0F /* UICollectionView+Extension.swift */; };
 		9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830E84D246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
-		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F5241A0041009084D4 /* EditorContainerProtocol.swift */; };
 		983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */; };
-		983C4F8A2462F08000FDEB76 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */; };
 		983C4F8D2462F09E00FDEB76 /* PostDeleteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C4F8C2462F09E00FDEB76 /* PostDeleteWorker.swift */; };
 		98575A3F2532BBC1007644FE /* ReportAbuseWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98575A3E2532BBC1007644FE /* ReportAbuseWorker.swift */; };
 		9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */; };
@@ -132,7 +127,6 @@
 		9873D61824B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D61624B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift */; };
 		9873D61924B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D61724B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib */; };
 		9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */; };
-		9873D61E24B6C26D0041504C /* FeedsGIFSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */; };
 		9873D62224B6C5C00041504C /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62024B6C5C00041504C /* GifCollectionViewCell.swift */; };
 		9873D62324B6C5C00041504C /* GifCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D62124B6C5C00041504C /* GifCollectionViewCell.xib */; };
 		9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62424B808850041504C /* ManagedGifs+CoreDataProperties.swift */; };
@@ -158,7 +152,6 @@
 		987D0BB32583DA58001A0F07 /* MockUserListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0BA42583DA58001A0F07 /* MockUserListProvider.swift */; };
 		987D0BB42583DA58001A0F07 /* ASMentionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0BA62583DA58001A0F07 /* ASMentionPresenter.swift */; };
 		9890CAC7242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */; };
-		9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */; };
 		98AC087624ECAF6400E6F965 /* CFFThemeManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AC087524ECAF6400E6F965 /* CFFThemeManagerProtocol.swift */; };
 		98B02F9F241A449600CB8690 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */; };
 		98B02FB6241A50DA00CB8690 /* AssetGridViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98B02FA3241A50DA00CB8690 /* AssetGridViewController.strings */; };
@@ -210,17 +203,24 @@
 		98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */; };
 		98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */; };
 		98D5E89225314C0F00813991 /* ReportAbuseConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E89025314C0F00813991 /* ReportAbuseConfirmationDrawer.swift */; };
-		98D5E89325314C0F00813991 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98D5E89125314C0F00813991 /* ReportAbuseConfirmationDrawer.xib */; };
 		98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */; };
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
+		BE03995E25A2EBAF00031610 /* CFFMainCropperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE03996025A2EBAF00031610 /* CFFMainCropperViewController.xib */; };
+		BE03998625A30F5E00031610 /* CFFImageCropperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE03998825A30F5E00031610 /* CFFImageCropperViewController.xib */; };
+		BE03999B25A30F8400031610 /* CFFMediaBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE03999D25A30F8400031610 /* CFFMediaBrowserViewController.xib */; };
+		BE0399B025A30FD700031610 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399B225A30FD700031610 /* ReportAbuseConfirmationDrawer.xib */; };
+		BE0399C525A30FF800031610 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399C725A30FF800031610 /* DeletePostConfirmationDrawer.xib */; };
+		BE0399DA25A3104A00031610 /* FeedsGIFSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399DC25A3104A00031610 /* FeedsGIFSelectorViewController.xib */; };
+		BE0399EF25A3106D00031610 /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399F125A3106D00031610 /* PollsActiveDaysTableViewCell.xib */; };
+		BE039A0425A310A700031610 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE039A0625A310A700031610 /* PostEditorViewController.xib */; };
 		BED94819251C9FFC00EC96BD /* CommonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED94818251C9FFC00EC96BD /* CommonLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../2020Aug6Cerra/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../2020Aug6Cerra/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../skor-ios/MergedChanges/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../skor-ios/MergedChanges/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
 		980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollSubmitButtonCell.xib; sourceTree = "<group>"; };
 		980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCellCoordinator.swift; sourceTree = "<group>"; };
@@ -242,12 +242,9 @@
 		9811DD57241B618A003B91FD /* FloatingMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuOptions.swift; sourceTree = "<group>"; };
 		9811DD58241B618A003B91FD /* FloatingMenuOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FloatingMenuOptions.xib; sourceTree = "<group>"; };
 		98188D4024AEE308003AD3B4 /* CFFImageCropperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFImageCropperViewController.swift; sourceTree = "<group>"; };
-		98188D4124AEE308003AD3B4 /* CFFImageCropperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFImageCropperViewController.xib; sourceTree = "<group>"; };
 		98188D4424B21A8B003AD3B4 /* CFFMainCropperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMainCropperViewController.swift; sourceTree = "<group>"; };
-		98188D4524B21A8B003AD3B4 /* CFFMainCropperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMainCropperViewController.xib; sourceTree = "<group>"; };
 		9819120A2459B4560078A2FF /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
 		9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsActiveDaysTableViewCell.swift; sourceTree = "<group>"; };
-		9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollsActiveDaysTableViewCell.xib; sourceTree = "<group>"; };
 		981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsActiveDaysTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentPostWorker.swift; sourceTree = "<group>"; };
 		9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsFetcher.swift; sourceTree = "<group>"; };
@@ -255,10 +252,8 @@
 		9830E84A246EBB5800FEFC0F /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		9830E84D246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorHeaderCoordinator.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
-		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F5241A0041009084D4 /* EditorContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorContainerProtocol.swift; sourceTree = "<group>"; };
 		983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostConfirmationDrawer.swift; sourceTree = "<group>"; };
-		983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
 		983C4F8C2462F09E00FDEB76 /* PostDeleteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDeleteWorker.swift; sourceTree = "<group>"; };
 		98575A3E2532BBC1007644FE /* ReportAbuseWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseWorker.swift; sourceTree = "<group>"; };
 		9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsItemProtocol.swift; sourceTree = "<group>"; };
@@ -346,7 +341,6 @@
 		9873D61624B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAttachmentOptionsDrawerViewController.swift; sourceTree = "<group>"; };
 		9873D61724B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedAttachmentOptionsDrawerViewController.xib; sourceTree = "<group>"; };
 		9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsGIFSelectorViewController.swift; sourceTree = "<group>"; };
-		9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsGIFSelectorViewController.xib; sourceTree = "<group>"; };
 		9873D62024B6C5C00041504C /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
 		9873D62124B6C5C00041504C /* GifCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCollectionViewCell.xib; sourceTree = "<group>"; };
 		9873D62424B808850041504C /* ManagedGifs+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedGifs+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -372,7 +366,6 @@
 		987D0BA42583DA58001A0F07 /* MockUserListProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUserListProvider.swift; sourceTree = "<group>"; };
 		987D0BA62583DA58001A0F07 /* ASMentionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionPresenter.swift; sourceTree = "<group>"; };
 		9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFMediaBrowserViewController.swift; sourceTree = "<group>"; };
-		9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CFFMediaBrowserViewController.xib; sourceTree = "<group>"; };
 		98AC087524ECAF6400E6F965 /* CFFThemeManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFThemeManagerProtocol.swift; sourceTree = "<group>"; };
 		98B02F9E241A449600CB8690 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		98B02FA4241A50DA00CB8690 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AssetGridViewController.strings"; sourceTree = "<group>"; };
@@ -428,10 +421,104 @@
 		98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedByTableViewCell.swift; sourceTree = "<group>"; };
 		98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikedByTableViewCell.xib; sourceTree = "<group>"; };
 		98D5E89025314C0F00813991 /* ReportAbuseConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseConfirmationDrawer.swift; sourceTree = "<group>"; };
-		98D5E89125314C0F00813991 /* ReportAbuseConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
 		98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequestBodyGenerator.swift; sourceTree = "<group>"; };
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
+		BE03995125A2E85A00031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/GroupsViewController.strings; sourceTree = "<group>"; };
+		BE03995725A2EB0900031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AssetGridViewController.strings; sourceTree = "<group>"; };
+		BE03995925A2EB0F00031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AssetGridViewController.strings"; sourceTree = "<group>"; };
+		BE03995B25A2EB1500031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/AssetGridViewController.strings; sourceTree = "<group>"; };
+		BE03995D25A2EB1A00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/AssetGridViewController.strings; sourceTree = "<group>"; };
+		BE03995F25A2EBAF00031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CFFMainCropperViewController.xib; sourceTree = "<group>"; };
+		BE03996225A2EBF600031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CFFMainCropperViewController.strings; sourceTree = "<group>"; };
+		BE03996425A2EBFC00031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CFFMainCropperViewController.strings"; sourceTree = "<group>"; };
+		BE03996625A2EBFE00031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/CFFMainCropperViewController.strings; sourceTree = "<group>"; };
+		BE03996825A2EBFF00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/CFFMainCropperViewController.strings; sourceTree = "<group>"; };
+		BE03996925A2EC4400031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CFFMainCropperViewController.strings; sourceTree = "<group>"; };
+		BE03996A25A2EC4400031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AssetGridViewController.strings; sourceTree = "<group>"; };
+		BE03996B25A2EC4400031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GroupsViewController.strings; sourceTree = "<group>"; };
+		BE03996C25A2EC5500031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/CFFMainCropperViewController.strings; sourceTree = "<group>"; };
+		BE03996D25A2EC5500031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AssetGridViewController.strings; sourceTree = "<group>"; };
+		BE03996E25A2EC5500031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/GroupsViewController.strings; sourceTree = "<group>"; };
+		BE03996F25A2EC5F00031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/CFFMainCropperViewController.strings; sourceTree = "<group>"; };
+		BE03997025A2EC5F00031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/AssetGridViewController.strings; sourceTree = "<group>"; };
+		BE03997125A2EC5F00031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/GroupsViewController.strings; sourceTree = "<group>"; };
+		BE03997225A2EC6A00031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CFFMainCropperViewController.strings"; sourceTree = "<group>"; };
+		BE03997325A2EC6A00031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AssetGridViewController.strings"; sourceTree = "<group>"; };
+		BE03997425A2EC6A00031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/GroupsViewController.strings"; sourceTree = "<group>"; };
+		BE03997525A2EC7100031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/CFFMainCropperViewController.strings; sourceTree = "<group>"; };
+		BE03997625A2EC7200031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/AssetGridViewController.strings; sourceTree = "<group>"; };
+		BE03997725A2EC7200031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/GroupsViewController.strings; sourceTree = "<group>"; };
+		BE03998725A30F5E00031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CFFImageCropperViewController.xib; sourceTree = "<group>"; };
+		BE03998A25A30F6600031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CFFImageCropperViewController.strings; sourceTree = "<group>"; };
+		BE03998C25A30F6700031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CFFImageCropperViewController.strings"; sourceTree = "<group>"; };
+		BE03998E25A30F6900031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CFFImageCropperViewController.strings"; sourceTree = "<group>"; };
+		BE03999025A30F6B00031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/CFFImageCropperViewController.strings; sourceTree = "<group>"; };
+		BE03999225A30F6D00031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/CFFImageCropperViewController.strings; sourceTree = "<group>"; };
+		BE03999425A30F6E00031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CFFImageCropperViewController.strings; sourceTree = "<group>"; };
+		BE03999625A30F7000031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/CFFImageCropperViewController.strings; sourceTree = "<group>"; };
+		BE03999825A30F7100031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/CFFImageCropperViewController.strings; sourceTree = "<group>"; };
+		BE03999A25A30F7300031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/CFFImageCropperViewController.strings; sourceTree = "<group>"; };
+		BE03999C25A30F8400031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CFFMediaBrowserViewController.xib; sourceTree = "<group>"; };
+		BE03999F25A30F8600031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
+		BE0399A125A30F8800031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CFFMediaBrowserViewController.strings"; sourceTree = "<group>"; };
+		BE0399A325A30F8900031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CFFMediaBrowserViewController.strings"; sourceTree = "<group>"; };
+		BE0399A525A30F8A00031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
+		BE0399A725A30F8C00031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
+		BE0399A925A30F8D00031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
+		BE0399AB25A30F8E00031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
+		BE0399AD25A30F9000031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
+		BE0399AF25A30F9200031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
+		BE0399B125A30FD700031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BE0399B425A30FDC00031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399B625A30FDD00031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ReportAbuseConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BE0399B825A30FDF00031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ReportAbuseConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BE0399BA25A30FE000031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399BC25A30FE400031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399BE25A30FE600031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399C025A30FE800031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399C225A30FEA00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399C425A30FEC00031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399C625A30FF800031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BE0399C925A30FFD00031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399CB25A30FFE00031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DeletePostConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BE0399CD25A3100000031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DeletePostConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BE0399CF25A3100100031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399D125A3100300031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399D325A3100500031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399D525A3100700031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399D725A3100B00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399D925A3100C00031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE0399DB25A3104A00031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedsGIFSelectorViewController.xib; sourceTree = "<group>"; };
+		BE0399DE25A3105000031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BE0399E025A3105200031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedsGIFSelectorViewController.strings"; sourceTree = "<group>"; };
+		BE0399E225A3105300031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedsGIFSelectorViewController.strings"; sourceTree = "<group>"; };
+		BE0399E425A3105600031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BE0399E625A3105800031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BE0399E825A3105A00031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BE0399EA25A3105B00031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BE0399EC25A3105D00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BE0399EE25A3105F00031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BE0399F025A3106D00031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PollsActiveDaysTableViewCell.xib; sourceTree = "<group>"; };
+		BE0399F325A3107000031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BE0399F525A3107200031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PollsActiveDaysTableViewCell.strings"; sourceTree = "<group>"; };
+		BE0399F725A3107300031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PollsActiveDaysTableViewCell.strings"; sourceTree = "<group>"; };
+		BE0399F925A3107500031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BE0399FB25A3107700031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BE0399FD25A3107900031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BE0399FF25A3107A00031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BE039A0125A3107C00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BE039A0325A3107E00031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BE039A0525A310A700031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PostEditorViewController.xib; sourceTree = "<group>"; };
+		BE039A0825A310AD00031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BE039A0A25A310AF00031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PostEditorViewController.strings"; sourceTree = "<group>"; };
+		BE039A0C25A310B000031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PostEditorViewController.strings"; sourceTree = "<group>"; };
+		BE039A0E25A310B200031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BE039A1025A310B400031610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BE039A1225A310B700031610 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BE039A1425A310B900031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BE039A1625A310BA00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BE039A1825A310BC00031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
 		BED94818251C9FFC00EC96BD /* CommonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLoader.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -539,7 +626,7 @@
 			children = (
 				98C8C71F24B228FB003F56FD /* CFFMainCropperViewController */,
 				98188D4024AEE308003AD3B4 /* CFFImageCropperViewController.swift */,
-				98188D4124AEE308003AD3B4 /* CFFImageCropperViewController.xib */,
+				BE03998825A30F5E00031610 /* CFFImageCropperViewController.xib */,
 			);
 			path = "Media Cropper";
 			sourceTree = "<group>";
@@ -556,7 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */,
-				9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */,
+				BE0399F125A3106D00031610 /* PollsActiveDaysTableViewCell.xib */,
 				981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */,
 			);
 			path = "Polls Active Days";
@@ -607,7 +694,7 @@
 				98BC8A1C241A19C9007C175D /* PostEditorCellFactory */,
 				98BC8A0B241A171E007C175D /* Custom Cells */,
 				983500EC2419FDA0009084D4 /* PostEditorViewController.swift */,
-				983500ED2419FDA0009084D4 /* PostEditorViewController.xib */,
+				BE039A0625A310A700031610 /* PostEditorViewController.xib */,
 			);
 			path = "Post Editor";
 			sourceTree = "<group>";
@@ -624,7 +711,7 @@
 			isa = PBXGroup;
 			children = (
 				983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */,
-				983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */,
+				BE0399C725A30FF800031610 /* DeletePostConfirmationDrawer.xib */,
 			);
 			path = DeletePostConfirmationDrawer;
 			sourceTree = "<group>";
@@ -1054,7 +1141,7 @@
 				9873D62A24B808D10041504C /* Models */,
 				9873D61F24B6C5830041504C /* CustomCell */,
 				9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */,
-				9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */,
+				BE0399DC25A3104A00031610 /* FeedsGIFSelectorViewController.xib */,
 			);
 			path = FeedsGIFSelector;
 			sourceTree = "<group>";
@@ -1191,7 +1278,7 @@
 			isa = PBXGroup;
 			children = (
 				9890CAC5242DE96F00E1AE4D /* CFFMediaBrowserViewController.swift */,
-				9890CAC6242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib */,
+				BE03999D25A30F8400031610 /* CFFMediaBrowserViewController.xib */,
 			);
 			path = "Media Browser";
 			sourceTree = "<group>";
@@ -1522,7 +1609,7 @@
 			children = (
 				98C8C72024B22915003F56FD /* FAUtility */,
 				98188D4424B21A8B003AD3B4 /* CFFMainCropperViewController.swift */,
-				98188D4524B21A8B003AD3B4 /* CFFMainCropperViewController.xib */,
+				BE03996025A2EBAF00031610 /* CFFMainCropperViewController.xib */,
 			);
 			path = CFFMainCropperViewController;
 			sourceTree = "<group>";
@@ -1579,7 +1666,7 @@
 			children = (
 				98575A3D2532BB9F007644FE /* Worker */,
 				98D5E89025314C0F00813991 /* ReportAbuseConfirmationDrawer.swift */,
-				98D5E89125314C0F00813991 /* ReportAbuseConfirmationDrawer.xib */,
+				BE0399B225A30FD700031610 /* ReportAbuseConfirmationDrawer.xib */,
 			);
 			path = ReportAbuseConfirmationDrawer;
 			sourceTree = "<group>";
@@ -1652,6 +1739,12 @@
 				Base,
 				"zh-Hans",
 				th,
+				hi,
+				ja,
+				ko,
+				id,
+				"zh-Hant",
+				vi,
 			);
 			mainGroup = 98B90DD5240CACD90013E9D2;
 			productRefGroup = 98B90DE0240CACD90013E9D2 /* Products */;
@@ -1672,12 +1765,12 @@
 				9868C0F72419489300B12321 /* ClappedByTableViewCell.xib in Resources */,
 				98CC2FB12425C4C400E8F9E0 /* LikeListViewController.xib in Resources */,
 				9868C02C240F79E800B12321 /* SingleVideoTableViewCell.xib in Resources */,
-				98D5E89325314C0F00813991 /* ReportAbuseConfirmationDrawer.xib in Resources */,
+				BE0399B025A30FD700031610 /* ReportAbuseConfirmationDrawer.xib in Resources */,
 				98C6489A241B7A12006689E9 /* FloatingMenuOptionTableViewCell.xib in Resources */,
 				9868C034240F7A3C00B12321 /* FeedBottomTableViewCell.xib in Resources */,
-				981912102459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib in Resources */,
+				BE0399EF25A3106D00031610 /* PollsActiveDaysTableViewCell.xib in Resources */,
 				98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */,
-				983C4F8A2462F08000FDEB76 /* DeletePostConfirmationDrawer.xib in Resources */,
+				BE0399C525A30FF800031610 /* DeletePostConfirmationDrawer.xib in Resources */,
 				9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */,
 				9873D63924BAC0180041504C /* FeedGifTableViewCell.xib in Resources */,
 				98B02FB7241A50DA00CB8690 /* GridViewCell.xib in Resources */,
@@ -1685,13 +1778,13 @@
 				98B02FBE241A50DA00CB8690 /* GroupsViewController.xib in Resources */,
 				9873D61924B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib in Resources */,
 				9868C08E2410B56100B12321 /* FeedsDetailViewController.xib in Resources */,
-				9890CAC8242DE96F00E1AE4D /* CFFMediaBrowserViewController.xib in Resources */,
-				9873D61E24B6C26D0041504C /* FeedsGIFSelectorViewController.xib in Resources */,
+				BE03999B25A30F8400031610 /* CFFMediaBrowserViewController.xib in Resources */,
+				BE0399DA25A3104A00031610 /* FeedsGIFSelectorViewController.xib in Resources */,
 				9868C01B240F78E500B12321 /* FeedTextTableViewCell.xib in Resources */,
 				98B02FB6241A50DA00CB8690 /* AssetGridViewController.strings in Resources */,
 				980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */,
 				9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */,
-				98188D4724B21A8B003AD3B4 /* CFFMainCropperViewController.xib in Resources */,
+				BE03995E25A2EBAF00031610 /* CFFMainCropperViewController.xib in Resources */,
 				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
 				987D0BB12583DA58001A0F07 /* ASMentionSelectorViewController.xib in Resources */,
 				980F563B245BFC680093AFE7 /* PollSubmitButtonCell.xib in Resources */,
@@ -1700,7 +1793,7 @@
 				9811DD5A241B618A003B91FD /* FloatingMenuOptions.xib in Resources */,
 				98B02FBB241A50DA00CB8690 /* GroupsViewController.strings in Resources */,
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
-				98188D4324AEE308003AD3B4 /* CFFImageCropperViewController.xib in Resources */,
+				BE03998625A30F5E00031610 /* CFFImageCropperViewController.xib in Resources */,
 				9868C017240F786600B12321 /* FeedTitleTableViewCell.xib in Resources */,
 				98BC8A0F241A1775007C175D /* FeedEditorTitleTableViewCell.xib in Resources */,
 				98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */,
@@ -1713,7 +1806,7 @@
 				98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
 				98B02FB9241A50DA00CB8690 /* AssetGridViewController.xib in Resources */,
 				987D0BB02583DA58001A0F07 /* TagUserTableViewCell.xib in Resources */,
-				983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */,
+				BE039A0425A310A700031610 /* PostEditorViewController.xib in Resources */,
 				98BC8A15241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1929,6 +2022,15 @@
 			isa = PBXVariantGroup;
 			children = (
 				98B02FA9241A50DA00CB8690 /* Base */,
+				BE03995725A2EB0900031610 /* en */,
+				BE03995925A2EB0F00031610 /* zh-Hans */,
+				BE03995B25A2EB1500031610 /* hi */,
+				BE03995D25A2EB1A00031610 /* th */,
+				BE03996A25A2EC4400031610 /* ja */,
+				BE03996D25A2EC5500031610 /* ko */,
+				BE03997025A2EC5F00031610 /* id */,
+				BE03997325A2EC6A00031610 /* zh-Hant */,
+				BE03997625A2EC7200031610 /* vi */,
 			);
 			name = AssetGridViewController.xib;
 			sourceTree = "<group>";
@@ -1946,8 +2048,150 @@
 			isa = PBXVariantGroup;
 			children = (
 				98B02FB3241A50DA00CB8690 /* Base */,
+				BE03995125A2E85A00031610 /* hi */,
+				BE03996B25A2EC4400031610 /* ja */,
+				BE03996E25A2EC5500031610 /* ko */,
+				BE03997125A2EC5F00031610 /* id */,
+				BE03997425A2EC6A00031610 /* zh-Hant */,
+				BE03997725A2EC7200031610 /* vi */,
 			);
 			name = GroupsViewController.xib;
+			sourceTree = "<group>";
+		};
+		BE03996025A2EBAF00031610 /* CFFMainCropperViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE03995F25A2EBAF00031610 /* Base */,
+				BE03996225A2EBF600031610 /* en */,
+				BE03996425A2EBFC00031610 /* zh-Hans */,
+				BE03996625A2EBFE00031610 /* hi */,
+				BE03996825A2EBFF00031610 /* th */,
+				BE03996925A2EC4400031610 /* ja */,
+				BE03996C25A2EC5500031610 /* ko */,
+				BE03996F25A2EC5F00031610 /* id */,
+				BE03997225A2EC6A00031610 /* zh-Hant */,
+				BE03997525A2EC7100031610 /* vi */,
+			);
+			name = CFFMainCropperViewController.xib;
+			sourceTree = "<group>";
+		};
+		BE03998825A30F5E00031610 /* CFFImageCropperViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE03998725A30F5E00031610 /* Base */,
+				BE03998A25A30F6600031610 /* en */,
+				BE03998C25A30F6700031610 /* zh-Hans */,
+				BE03998E25A30F6900031610 /* zh-Hant */,
+				BE03999025A30F6B00031610 /* hi */,
+				BE03999225A30F6D00031610 /* id */,
+				BE03999425A30F6E00031610 /* ja */,
+				BE03999625A30F7000031610 /* ko */,
+				BE03999825A30F7100031610 /* th */,
+				BE03999A25A30F7300031610 /* vi */,
+			);
+			name = CFFImageCropperViewController.xib;
+			sourceTree = "<group>";
+		};
+		BE03999D25A30F8400031610 /* CFFMediaBrowserViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE03999C25A30F8400031610 /* Base */,
+				BE03999F25A30F8600031610 /* en */,
+				BE0399A125A30F8800031610 /* zh-Hans */,
+				BE0399A325A30F8900031610 /* zh-Hant */,
+				BE0399A525A30F8A00031610 /* hi */,
+				BE0399A725A30F8C00031610 /* id */,
+				BE0399A925A30F8D00031610 /* ja */,
+				BE0399AB25A30F8E00031610 /* ko */,
+				BE0399AD25A30F9000031610 /* th */,
+				BE0399AF25A30F9200031610 /* vi */,
+			);
+			name = CFFMediaBrowserViewController.xib;
+			sourceTree = "<group>";
+		};
+		BE0399B225A30FD700031610 /* ReportAbuseConfirmationDrawer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE0399B125A30FD700031610 /* Base */,
+				BE0399B425A30FDC00031610 /* en */,
+				BE0399B625A30FDD00031610 /* zh-Hans */,
+				BE0399B825A30FDF00031610 /* zh-Hant */,
+				BE0399BA25A30FE000031610 /* hi */,
+				BE0399BC25A30FE400031610 /* id */,
+				BE0399BE25A30FE600031610 /* ja */,
+				BE0399C025A30FE800031610 /* ko */,
+				BE0399C225A30FEA00031610 /* th */,
+				BE0399C425A30FEC00031610 /* vi */,
+			);
+			name = ReportAbuseConfirmationDrawer.xib;
+			sourceTree = "<group>";
+		};
+		BE0399C725A30FF800031610 /* DeletePostConfirmationDrawer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE0399C625A30FF800031610 /* Base */,
+				BE0399C925A30FFD00031610 /* en */,
+				BE0399CB25A30FFE00031610 /* zh-Hans */,
+				BE0399CD25A3100000031610 /* zh-Hant */,
+				BE0399CF25A3100100031610 /* hi */,
+				BE0399D125A3100300031610 /* id */,
+				BE0399D325A3100500031610 /* ja */,
+				BE0399D525A3100700031610 /* ko */,
+				BE0399D725A3100B00031610 /* th */,
+				BE0399D925A3100C00031610 /* vi */,
+			);
+			name = DeletePostConfirmationDrawer.xib;
+			sourceTree = "<group>";
+		};
+		BE0399DC25A3104A00031610 /* FeedsGIFSelectorViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE0399DB25A3104A00031610 /* Base */,
+				BE0399DE25A3105000031610 /* en */,
+				BE0399E025A3105200031610 /* zh-Hans */,
+				BE0399E225A3105300031610 /* zh-Hant */,
+				BE0399E425A3105600031610 /* hi */,
+				BE0399E625A3105800031610 /* id */,
+				BE0399E825A3105A00031610 /* ja */,
+				BE0399EA25A3105B00031610 /* ko */,
+				BE0399EC25A3105D00031610 /* th */,
+				BE0399EE25A3105F00031610 /* vi */,
+			);
+			name = FeedsGIFSelectorViewController.xib;
+			sourceTree = "<group>";
+		};
+		BE0399F125A3106D00031610 /* PollsActiveDaysTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE0399F025A3106D00031610 /* Base */,
+				BE0399F325A3107000031610 /* en */,
+				BE0399F525A3107200031610 /* zh-Hans */,
+				BE0399F725A3107300031610 /* zh-Hant */,
+				BE0399F925A3107500031610 /* hi */,
+				BE0399FB25A3107700031610 /* id */,
+				BE0399FD25A3107900031610 /* ja */,
+				BE0399FF25A3107A00031610 /* ko */,
+				BE039A0125A3107C00031610 /* th */,
+				BE039A0325A3107E00031610 /* vi */,
+			);
+			name = PollsActiveDaysTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BE039A0625A310A700031610 /* PostEditorViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE039A0525A310A700031610 /* Base */,
+				BE039A0825A310AD00031610 /* en */,
+				BE039A0A25A310AF00031610 /* zh-Hans */,
+				BE039A0C25A310B000031610 /* zh-Hant */,
+				BE039A0E25A310B200031610 /* hi */,
+				BE039A1025A310B400031610 /* id */,
+				BE039A1225A310B700031610 /* ja */,
+				BE039A1425A310B900031610 /* ko */,
+				BE039A1625A310BA00031610 /* th */,
+				BE039A1825A310BC00031610 /* vi */,
+			);
+			name = PostEditorViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -77,7 +77,7 @@ class CFFMediaBrowserViewController: UIViewController {
             ErrorDisplayer.showError(errorMsg: unwrappedError.localizedDescription) { (_) in
             }
         }else{
-            ErrorDisplayer.showError(errorMsg: "Image downloaded successfully.") { (_) in
+            ErrorDisplayer.showError(errorMsg: "Image downloaded successfully.".localized) { (_) in
             }
         }
         downloadButton?.isHidden = false
@@ -113,5 +113,11 @@ extension CFFMediaBrowserViewController : UICollectionViewDataSource, UICollecti
 extension CFFMediaBrowserViewController : UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.width)
+    }
+}
+
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
     }
 }

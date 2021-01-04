@@ -106,7 +106,7 @@ class FeedsViewController: UIViewController {
                 case .Success(let result):
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
                 case .SuccessWithNoResponseData:
-                    ErrorDisplayer.showError(errorMsg: "No record Found") { (_) in}
+                    ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
                 case .Failure(let error):
                     ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
                 }
@@ -156,7 +156,7 @@ class FeedsViewController: UIViewController {
         whatsInYourMindView?.backgroundColor = UIColor.grayBackGroundColor()
         cameraContainerViewView?.curvedCornerControl()
         cameraContainerViewView?.backgroundColor = UIColor.grayBackGroundColor()
-        composeLabel?.text = "Whats on your mind"
+        composeLabel?.text = "Whats on your mind".localized
         composeLabel?.font = .Highlighter1
         composeLabel?.textColor = .getSubTitleTextColor()
     }
@@ -298,7 +298,7 @@ extension FeedsViewController : FeedsDelegate{
                 
             }
         }else{
-            ErrorDisplayer.showError(errorMsg: "Please select an option.") { (_) in
+            ErrorDisplayer.showError(errorMsg: "Please select an option.".localized) { (_) in
                 
             }
         }
@@ -376,7 +376,7 @@ extension FeedsViewController : FeedsDelegate{
             if feed.getFeedType() == .Post,
             feed.isFeedEditAllowed(){
                 options.append(
-                    FloatingMenuOption(title: "EDIT", action: {
+                    FloatingMenuOption(title: "EDIT".localized, action: {
                         print("Edit post - \(feedIdentifier)")
                         self.openFeedEditor(feed)
                     }
@@ -384,7 +384,7 @@ extension FeedsViewController : FeedsDelegate{
                 )
             }
             if feed.isFeedDeleteAllowed(){
-                options.append( FloatingMenuOption(title: "DELETE", action: {[weak self] in
+                options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
                     print("Delete post- \(feedIdentifier)")
                     self?.showDeletePostConfirmation(feedIdentifier)
                     }
@@ -392,7 +392,7 @@ extension FeedsViewController : FeedsDelegate{
                 )
             }
             if feed.isFeedReportAbuseAllowed(){
-                options.append( FloatingMenuOption(title: "REPORT ABUSE", action: {[weak self] in
+                options.append( FloatingMenuOption(title: "REPORT ABUSE".localized, action: {[weak self] in
                     print("report abuse- \(feedIdentifier)")
                     self?.showReportAbuseConfirmation(feedIdentifier)
                     }
@@ -437,7 +437,7 @@ extension FeedsViewController : FeedsDelegate{
                                         }
                                     }
                                 }
-                                 ErrorDisplayer.showError(errorMsg: "Deleted successfully.") { (_) in}
+                                ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in}
                             }
                         }
                     case .SuccessWithNoResponseData:
@@ -468,11 +468,11 @@ extension FeedsViewController : FeedsDelegate{
                 DispatchQueue.main.async {
                     switch result{
                     case .Success(_):
-                        ErrorDisplayer.showError(errorMsg: "Reported successfully.") { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Reported successfully.".localized) { (_) in}
                     case .SuccessWithNoResponseData:
                         fallthrough
                     case .Failure(_):
-                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.") { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.".localized) { (_) in}
                     }
                 }
                 

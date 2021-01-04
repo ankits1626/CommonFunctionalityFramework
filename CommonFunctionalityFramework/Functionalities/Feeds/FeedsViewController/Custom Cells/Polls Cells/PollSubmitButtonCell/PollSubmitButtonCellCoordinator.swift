@@ -24,7 +24,7 @@ class PollSubmitButtonCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             cell.submitButton?.backgroundColor = inputModel.themeManager?.getControlActiveColor() ?? .black
-            cell.submitButton?.setTitle("SUBMIT", for: .normal)
+            cell.submitButton?.setTitle("SUBMIT".localized, for: .normal)
             cell.submitButton?.setTitleColor(.white, for: .normal)
             cell.submitButton?.titleLabel?.font = .Highlighter1
             let delegate = inputModel.delegate

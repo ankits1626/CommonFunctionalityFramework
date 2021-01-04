@@ -25,11 +25,11 @@ class FeedAttachmentOptionsDrawerViewController: UIViewController {
     }
     
     private func setupButtons(){
-        attachPhotosButton?.setTitle("Photo Library", for: .normal)
+        attachPhotosButton?.setTitle("Photo Library".localized, for: .normal)
         attachPhotosButton?.borderedControl()
         attachPhotosButton?.titleLabel?.font = UIFont.Button
         attachPhotosButton?.setTitleColor(.black, for: .normal)
-        attachGifButton?.setTitle("GIFS", for: .normal)
+        attachGifButton?.setTitle("GIFS".localized, for: .normal)
         attachGifButton?.borderedControl()
         attachGifButton?.titleLabel?.font = UIFont.Button
         attachGifButton?.setTitleColor(.black, for: .normal)

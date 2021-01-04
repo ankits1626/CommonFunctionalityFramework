@@ -44,7 +44,7 @@ class LikeListViewController: UIViewController {
     }
     
     private func setupContainerTopbar(){
-        containerTopBarModel?.title?.text = "CLAPS"
+        containerTopBarModel?.title?.text = "CLAPS".localized
     }
     
     private func fetchUsers(){

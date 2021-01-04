@@ -61,14 +61,14 @@ class FeedDetailHeaderCoordinator {
     }
     
     private func configureCommentsHeader(_ view : FeedDetailHeader?){
-        view?.headerTitleLabel?.text = "Comments"
+        view?.headerTitleLabel?.text = "Comments".localized
         view?.headerActionButton?.isHidden = true
         view?.headerSecondaryTitleLabel?.text = nil
     }
     
     private func configureClapsHeader(_ view : FeedDetailHeader?){
-        view?.headerTitleLabel?.text = "Claps"
-        view?.headerActionButton?.setTitle("SEE ALL", for: .normal)
+        view?.headerTitleLabel?.text = "Claps".localized
+        view?.headerActionButton?.setTitle("SEE ALL".localized, for: .normal)
         view?.headerActionButton?.setTitleColor(themeManager?.getControlActiveColor() ?? .bottomButtonTextColor, for: .normal)
         view?.headerActionButton?.titleLabel?.font = .Highlighter1
         view?.headerActionButton?.isHidden = false

@@ -45,10 +45,10 @@ class PhotosPermissionChecker {
             }
             let alertVC = UIAlertController(
                 title: nil,
-                message: "Unable to access photos. Please go to settings and enable photo access to use this service.",
+                message: "Unable to access photos. Please go to settings and enable photo access to use this service.".localized,
                 preferredStyle: .alert)
             
-            let leftButtonAction = UIAlertAction(title: "Go to settings", style: .default) { _ in
+            let leftButtonAction = UIAlertAction(title: "Go to settings".localized, style: .default) { _ in
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     if UIApplication.shared.canOpenURL(url) {
                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -58,7 +58,7 @@ class PhotosPermissionChecker {
             alertVC.addAction(leftButtonAction)
             
             let okAction = UIAlertAction(
-                title: "Cancel",
+                title: "Cancel".localized,
                 style: .cancel) { (_) in
             }
             alertVC.addAction(okAction)
@@ -160,10 +160,10 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
             }
             let alertVC = UIAlertController(
                 title: nil,
-                message: "Access denied, please go to settings and enable photo access to use this service.",
+                message: "Access denied, please go to settings and enable photo access to use this service.".localized,
                 preferredStyle: .alert)
             
-            let leftButtonAction = UIAlertAction(title: "Go to settings", style: .default) { _ in
+            let leftButtonAction = UIAlertAction(title: "Go to settings".localized, style: .default) { _ in
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     if UIApplication.shared.canOpenURL(url) {
                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -370,7 +370,7 @@ class AssetGridViewController: UIViewController, UICollectionViewDataSource, UIC
             if selectedAssets.count < maximumItemSelectionAllowed{
                 selectedAssets.append(LocalSelectedMediaItem(identifier: asset.localIdentifier, asset: asset, mediaType: asset.mediaType))
             }else{
-                ErrorDisplayer.showError(errorMsg: "Cannot select more than 10 images") { (_) in
+                ErrorDisplayer.showError(errorMsg: "Cannot select more than 10 images".localized) { (_) in
                 }
             }
             

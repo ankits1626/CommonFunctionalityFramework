@@ -29,15 +29,15 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
-        titleLabel?.text = "Report Abuse"
-        messageLabel?.text = "If you have any concerns regarding the feed please share below."
+        titleLabel?.text = "Report Abuse".localized
+        messageLabel?.text = "If you have any concerns regarding the feed please share below.".localized
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
         messageLabel?.font = .Body3
         commentsLabel?.font = .Highlighter1
         configureConfirmButton()
         configureCancelButton()
-        descriptionText?.placeholder = "Please type in your concerns"
+        descriptionText?.placeholder = "Please type in your concerns".localized
         descriptionText?.placeholderColor = .gray
         descriptionText?.font = .Body1
         descriptionText?.delegate = self
@@ -45,7 +45,7 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     
     private func configureConfirmButton(){
         confirmButton?.isEnabled = false
-        confirmButton?.setTitle("CONFIRM", for: .normal)
+        confirmButton?.setTitle("CONFIRM".localized, for: .normal)
         confirmButton?.titleLabel?.font = .Button
         confirmButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
         confirmButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
@@ -57,7 +57,7 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     }
     
     private func configureCancelButton(){
-        cancelButton?.setTitle("CANCEL", for: .normal)
+        cancelButton?.setTitle("CANCEL".localized, for: .normal)
         cancelButton?.titleLabel?.font = .Button
         cancelButton?.setTitleColor(.bottomDestructiveButtonTextColor, for: .normal)
         cancelButton?.backgroundColor = .bottomDestructiveBackgroundColor
