@@ -1,15 +1,15 @@
 
 /* Class = "UILabel"; text = "Close"; ObjectID = "1di-dQ-sfS"; */
-"1di-dQ-sfS.text" = "Close";
+"1di-dQ-sfS.text" = "Đóng";
 
 /* Class = "UIButton"; normalTitle = "DELETE"; ObjectID = "ejB-Od-f3K"; */
-"ejB-Od-f3K.normalTitle" = "DELETE";
+"ejB-Od-f3K.normalTitle" = "Xóa";
 
 /* Class = "UILabel"; text = "Delete Poll"; ObjectID = "iRp-S8-VVW"; */
 "iRp-S8-VVW.text" = "Delete Poll";
 
 /* Class = "UIButton"; normalTitle = "DELETE"; ObjectID = "mx0-Rd-dyy"; */
-"mx0-Rd-dyy.normalTitle" = "DELETE";
+"mx0-Rd-dyy.normalTitle" = "Xóa";
 
 /* Class = "UILabel"; text = "vv"; ObjectID = "p98-tb-pDk"; */
 "p98-tb-pDk.text" = "vv";

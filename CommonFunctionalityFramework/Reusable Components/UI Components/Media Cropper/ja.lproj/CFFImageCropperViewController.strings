@@ -1,9 +1,9 @@
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "Cr3-Hc-BDG"; */
-"Cr3-Hc-BDG.normalTitle" = "Done";
+"Cr3-Hc-BDG.normalTitle" = "完了";
 
 /* Class = "UILabel"; text = "CROP IMAGE"; ObjectID = "RtZ-bR-2hD"; */
-"RtZ-bR-2hD.text" = "CROP IMAGE";
+"RtZ-bR-2hD.text" = "クロップ画像";
 
 /* Class = "UIButton"; normalTitle = "PROCEED"; ObjectID = "sRe-RZ-bxt"; */
-"sRe-RZ-bxt.normalTitle" = "PROCEED";
+"sRe-RZ-bxt.normalTitle" = "続行します";

@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "DONE"; ObjectID = "KUi-OJ-Jqp"; */
-"KUi-OJ-Jqp.normalTitle" = "DONE";
+"KUi-OJ-Jqp.normalTitle" = "완료";
 
 /* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "cAh-f0-3fM"; */
-"cAh-f0-3fM.normalTitle" = "Reset";
+"cAh-f0-3fM.normalTitle" = "초기화";
