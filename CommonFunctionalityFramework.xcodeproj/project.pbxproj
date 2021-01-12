@@ -52,7 +52,6 @@
 		9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C014240F786600B12321 /* FeedTitleTableViewCell.swift */; };
 		9868C017240F786600B12321 /* FeedTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C015240F786600B12321 /* FeedTitleTableViewCell.xib */; };
 		9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C018240F78E500B12321 /* FeedTextTableViewCell.swift */; };
-		9868C01B240F78E500B12321 /* FeedTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C019240F78E500B12321 /* FeedTextTableViewCell.xib */; };
 		9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C025240F799200B12321 /* SingleImageTableViewCell.swift */; };
 		9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C026240F799200B12321 /* SingleImageTableViewCell.xib */; };
 		9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C029240F79E800B12321 /* SingleVideoTableViewCell.swift */; };
@@ -215,12 +214,13 @@
 		BE0399DA25A3104A00031610 /* FeedsGIFSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399DC25A3104A00031610 /* FeedsGIFSelectorViewController.xib */; };
 		BE0399EF25A3106D00031610 /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399F125A3106D00031610 /* PollsActiveDaysTableViewCell.xib */; };
 		BE039A0425A310A700031610 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE039A0625A310A700031610 /* PostEditorViewController.xib */; };
+		BEA1BAB625AD5CA10021942A /* FeedTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA1BAB825AD5CA10021942A /* FeedTextTableViewCell.xib */; };
 		BED94819251C9FFC00EC96BD /* CommonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED94818251C9FFC00EC96BD /* CommonLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../skor-ChineseLocalizationios/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../skor-ChineseLocalizationios/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../skor-NewsFeedios/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../skor-NewsFeedios/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
 		980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollSubmitButtonCell.xib; sourceTree = "<group>"; };
 		980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCellCoordinator.swift; sourceTree = "<group>"; };
@@ -266,7 +266,6 @@
 		9868C014240F786600B12321 /* FeedTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTitleTableViewCell.swift; sourceTree = "<group>"; };
 		9868C015240F786600B12321 /* FeedTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTitleTableViewCell.xib; sourceTree = "<group>"; };
 		9868C018240F78E500B12321 /* FeedTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTextTableViewCell.swift; sourceTree = "<group>"; };
-		9868C019240F78E500B12321 /* FeedTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTextTableViewCell.xib; sourceTree = "<group>"; };
 		9868C025240F799200B12321 /* SingleImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewCell.swift; sourceTree = "<group>"; };
 		9868C026240F799200B12321 /* SingleImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleImageTableViewCell.xib; sourceTree = "<group>"; };
 		9868C029240F79E800B12321 /* SingleVideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVideoTableViewCell.swift; sourceTree = "<group>"; };
@@ -519,6 +518,16 @@
 		BE039A1425A310B900031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
 		BE039A1625A310BA00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
 		BE039A1825A310BC00031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEA1BAB725AD5CA10021942A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedTextTableViewCell.xib; sourceTree = "<group>"; };
+		BEA1BABA25AD5CA30021942A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEA1BABC25AD5CA50021942A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedTextTableViewCell.strings"; sourceTree = "<group>"; };
+		BEA1BABE25AD5CA60021942A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedTextTableViewCell.strings"; sourceTree = "<group>"; };
+		BEA1BAC025AD5CA70021942A /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEA1BAC225AD5CA80021942A /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEA1BAC425AD5CAA0021942A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEA1BAC625AD5CB00021942A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEA1BAC825AD5CB20021942A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEA1BACA25AD5CB40021942A /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
 		BED94818251C9FFC00EC96BD /* CommonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLoader.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -770,7 +779,7 @@
 			children = (
 				9868C018240F78E500B12321 /* FeedTextTableViewCell.swift */,
 				9868C03E240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift */,
-				9868C019240F78E500B12321 /* FeedTextTableViewCell.xib */,
+				BEA1BAB825AD5CA10021942A /* FeedTextTableViewCell.xib */,
 			);
 			path = "Feed Text Cell";
 			sourceTree = "<group>";
@@ -1780,7 +1789,7 @@
 				9868C08E2410B56100B12321 /* FeedsDetailViewController.xib in Resources */,
 				BE03999B25A30F8400031610 /* CFFMediaBrowserViewController.xib in Resources */,
 				BE0399DA25A3104A00031610 /* FeedsGIFSelectorViewController.xib in Resources */,
-				9868C01B240F78E500B12321 /* FeedTextTableViewCell.xib in Resources */,
+				BEA1BAB625AD5CA10021942A /* FeedTextTableViewCell.xib in Resources */,
 				98B02FB6241A50DA00CB8690 /* AssetGridViewController.strings in Resources */,
 				980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */,
 				9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */,
@@ -2192,6 +2201,23 @@
 				BE039A1825A310BC00031610 /* vi */,
 			);
 			name = PostEditorViewController.xib;
+			sourceTree = "<group>";
+		};
+		BEA1BAB825AD5CA10021942A /* FeedTextTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEA1BAB725AD5CA10021942A /* Base */,
+				BEA1BABA25AD5CA30021942A /* en */,
+				BEA1BABC25AD5CA50021942A /* zh-Hans */,
+				BEA1BABE25AD5CA60021942A /* zh-Hant */,
+				BEA1BAC025AD5CA70021942A /* hi */,
+				BEA1BAC225AD5CA80021942A /* id */,
+				BEA1BAC425AD5CAA0021942A /* ja */,
+				BEA1BAC625AD5CB00021942A /* ko */,
+				BEA1BAC825AD5CB20021942A /* th */,
+				BEA1BACA25AD5CB40021942A /* vi */,
+			);
+			name = FeedTextTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
