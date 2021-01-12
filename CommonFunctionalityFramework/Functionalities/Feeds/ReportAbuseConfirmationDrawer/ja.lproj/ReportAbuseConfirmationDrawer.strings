@@ -9,7 +9,7 @@
 "Ajt-vO-zXr.normalTitle" = "削除";
 
 /* Class = "UILabel"; text = "Delete Poll"; ObjectID = "v3b-p5-ePv"; */
-"v3b-p5-ePv.text" = "Delete Poll";
+"v3b-p5-ePv.text" = "投票を削除する";
 
 /* Class = "UILabel"; text = "COMMENTS"; ObjectID = "vEh-JK-FaP"; */
 "vEh-JK-FaP.text" = "COMMENTS";

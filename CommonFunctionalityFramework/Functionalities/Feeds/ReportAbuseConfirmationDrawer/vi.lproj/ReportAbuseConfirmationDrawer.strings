@@ -9,7 +9,7 @@
 "Ajt-vO-zXr.normalTitle" = "Xóa";
 
 /* Class = "UILabel"; text = "Delete Poll"; ObjectID = "v3b-p5-ePv"; */
-"v3b-p5-ePv.text" = "Delete Poll";
+"v3b-p5-ePv.text" = "Xóa cuộc thăm dò ý kiến";
 
 /* Class = "UILabel"; text = "COMMENTS"; ObjectID = "vEh-JK-FaP"; */
 "vEh-JK-FaP.text" = "Ý kiến";

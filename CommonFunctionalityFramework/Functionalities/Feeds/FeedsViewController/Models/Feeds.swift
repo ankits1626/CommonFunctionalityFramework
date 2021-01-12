@@ -276,11 +276,11 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getNumberOfClaps() -> String {
         let claps = numberOfLikes
-        return "\(claps) Clap".appending(claps == 1 ? "" : "s")
+        return "\(claps) \("Clap".localized)".appending(claps == 1 ? "" : "s".localized)
     }
     
     func getNumberOfComments() -> String {
-        return "\(numberOfComments) Comment".appending(numberOfComments == 1 ? "" : "s")
+        return "\(numberOfComments) \("Comment".localized)".appending(numberOfComments == 1 ? "" : "s".localized)
     }
     
     func hasOnlyMedia() -> Bool {
