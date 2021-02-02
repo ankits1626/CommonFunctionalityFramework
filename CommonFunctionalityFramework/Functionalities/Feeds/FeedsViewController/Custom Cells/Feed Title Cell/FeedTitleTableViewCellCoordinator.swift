@@ -25,7 +25,18 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
         if let cell  = targetCell as? FeedTitleTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.feedTitle?.enabledTypes  = [.url]
-            cell.feedTitle?.text = feed.getFeedTitle()
+            let attributes : [NSAttributedString.Key: Any] = [
+                .font : UIFont.Title1,
+                .foregroundColor : UIColor.getTitleTextColor()
+            ]
+            if let title = feed.getFeedTitle(){
+                cell.feedTitle?.attributedText = NSAttributedString(
+                    string: title,
+                    attributes: attributes
+                )
+            }else{
+                cell.feedTitle?.attributedText = nil
+            }
             cell.feedTitle?.URLColor = .urlColor
             cell.feedTitle?.handleURLTap({ (targetUrl) in
                 print("<<<<<<<< open \(targetUrl)")
@@ -44,8 +55,6 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
                     )
                 }
             })
-            cell.feedTitle?.font = UIFont.Title1
-            cell.feedTitle?.textColor = UIColor.getTitleTextColor()
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
         }
         return targetCell
