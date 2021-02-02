@@ -22,7 +22,7 @@ class ASMentionCoordinator: NSObject{
     func getPresentableMentionText(_ text : String?, completion: ((_ attr: NSAttributedString?) -> Void)) {
         if let unwrappedText = text{
             ASMentionTextParser.shared.parse(unwrappedText) { (mentions, unwrppedCleanedString) in
-                let attr = ASMentionPresenter.shared.updatePresentaionOfText(
+                let attr = ASMentionPresenter.shared.updatePresentationOfText(
                     text: NSAttributedString(string: unwrppedCleanedString!),
                     mentions: mentions
                 )
@@ -41,7 +41,7 @@ class ASMentionCoordinator: NSObject{
             ASMentionTextParser.shared.parse(existingText, completion: { (mentions, cleanedString)  in
                 if let unwrppedCleanedString = cleanedString{
                     ASMentionStore.shared.updateStoreAfterTextLoad(mentions)
-                    targetTextView?.attributedText =  ASMentionPresenter.shared.updatePresentaionOfText(text: NSAttributedString(string: unwrppedCleanedString), mentions: mentions)
+                    targetTextView?.attributedText =  ASMentionPresenter.shared.updatePresentationOfText(text: NSAttributedString(string: unwrppedCleanedString), mentions: mentions)
                 }else{
                     print("<<<<<< noting to load after loadInitialText")
                 }
@@ -56,7 +56,7 @@ class ASMentionCoordinator: NSObject{
     
     func getAttributedText() -> NSAttributedString? {
         if let unwrppedCleanedString = targetTextview?.text{
-            let attr =  ASMentionPresenter.shared.updatePresentaionOfText(text: NSAttributedString(string: unwrppedCleanedString), mentions: ASMentionStore.shared.mentions)
+            let attr =  ASMentionPresenter.shared.updatePresentationOfText(text: NSAttributedString(string: unwrppedCleanedString), mentions: ASMentionStore.shared.mentions)
             targetTextview?.attributedText = attr
             return attr
         }else{
