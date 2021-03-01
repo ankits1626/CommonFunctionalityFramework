@@ -13,9 +13,9 @@ typealias TagUserFetchResultHandler = (APICallResult<TaggedUserFetchResult>) -> 
 class TagUserListProvider  {
     typealias ResultType = TaggedUserFetchResult
     var commonAPICall : CommonAPICall<TagUserListDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     
@@ -38,11 +38,11 @@ class TagUserListProvider  {
 class TagUserListRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private var searchKey : String
     private var shouldSearchOnlyDepartment : Bool
     
-    init(_ searchKey: String, shouldSearchOnlyDepartment: Bool, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init(_ searchKey: String, shouldSearchOnlyDepartment: Bool, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
          self.searchKey = searchKey
         self.shouldSearchOnlyDepartment = shouldSearchOnlyDepartment
         self.networkRequestCoordinator = networkRequestCoordinator

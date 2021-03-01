@@ -19,8 +19,8 @@ typealias FeedCommentFetchHandler = (APICallResult<FeedCommentsFetchResult>) -> 
 class FeedCommentsFetcher  {
     typealias ResultType = FeedCommentsFetchResult
     var commonAPICall : CommonAPICall<FeedCommentFetchDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func fetchComments(feedId : Int64, nextpageUrl: String?, completionHandler: @escaping FeedCommentFetchHandler) {
@@ -44,13 +44,13 @@ class FeedCommentsFetcher  {
 class FeedCommentFetchRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private var feedId : Int64
     private lazy var feedPostRequestBodyGenerator : PostRequestBodyGenerator = {
         return PostRequestBodyGenerator()
     }()
     private var nextpageUrl: String?
-    init(feedId : Int64, nextpageUrl: String?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init(feedId : Int64, nextpageUrl: String?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedId = feedId
         self.nextpageUrl = nextpageUrl
         self.networkRequestCoordinator = networkRequestCoordinator

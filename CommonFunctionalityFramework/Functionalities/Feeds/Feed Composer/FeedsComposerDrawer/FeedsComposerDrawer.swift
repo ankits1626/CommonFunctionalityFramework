@@ -22,7 +22,7 @@ class FeedsComposerDrawer: UIViewController {
     @IBOutlet private weak var createPollButton : UIButton?
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
-    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
+    var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     weak var themeManager: CFFThemeManagerProtocol?
     override func viewDidLoad() {

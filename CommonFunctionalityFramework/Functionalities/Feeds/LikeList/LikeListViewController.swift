@@ -17,12 +17,12 @@ class LikeListViewController: UIViewController {
     
     @IBOutlet private weak var clapsTableView : UITableView?
     var isLikedByUsers : [ClappedByUser] = [ClappedByUser]()
-    weak var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol?
+    weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
     let  feedIdentifier: Int64
     private var fetchedLikeList : FetchedLikesModel?
     private weak var mediaFetcher: CFFMediaCoordinatorProtocol?
     
-    init(feedIdentifier: Int64, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?) {
+    init(feedIdentifier: Int64, requestCoordinator: CFFNetworkRequestCoordinatorProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?) {
         self.feedIdentifier = feedIdentifier
         self.requestCoordinator = requestCoordinator
         self.mediaFetcher = mediaFetcher

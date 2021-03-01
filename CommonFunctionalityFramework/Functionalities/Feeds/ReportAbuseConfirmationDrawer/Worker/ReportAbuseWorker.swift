@@ -12,8 +12,8 @@ typealias ReportAbuseWorkerResultHandler = (APICallResult<Any?>) -> Void
 class ReportAbuseWorker  {
     typealias ResultType = Any?
     var commonAPICall : CommonAPICall<ReportAbuseDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func reportAbusePost(_ feedIdentifier: Int64, notes: String?, completionHandler: @escaping ReportAbuseWorkerResultHandler) {
@@ -33,10 +33,10 @@ class ReportAbuseWorker  {
 class ReportAbuseRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var feedIdentifier : Int64
     var notes: String?
-    init( feedIdentifier: Int64, notes: String?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init( feedIdentifier: Int64, notes: String?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
         self.notes = notes
         self.networkRequestCoordinator = networkRequestCoordinator

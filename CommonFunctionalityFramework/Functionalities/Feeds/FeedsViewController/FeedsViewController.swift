@@ -11,15 +11,17 @@ import CoreData
 import UILoadControl
 
 class FeedsViewController: UIViewController {
+    @IBOutlet private weak var composeBarContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var composeLabel : UILabel?
     @IBOutlet private weak var feedsTable : UITableView?
     @IBOutlet private weak var whatsInYourMindView : UIView?
     @IBOutlet private weak var cameraContainerViewView : UIView?
     
-    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
+    var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     var themeManager: CFFThemeManagerProtocol?
+    var mainAppCoordinator : CFFMainAppInformationCoordinator?
     
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
@@ -152,6 +154,10 @@ class FeedsViewController: UIViewController {
     }
     
     private func setupTopBar(){
+        if let unwrappedCanUserCreatePost = self.mainAppCoordinator?.isUserAllowedToPostFeed(),
+           unwrappedCanUserCreatePost == false{
+            composeBarContainerHeightConstraint?.constant = 0
+        }
         whatsInYourMindView?.curvedCornerControl()
         whatsInYourMindView?.backgroundColor = UIColor.grayBackGroundColor()
         cameraContainerViewView?.curvedCornerControl()
@@ -244,6 +250,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
         if getFeedItem(indexPath.section).shouldShowDetail(){
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
             feedDetailVC.themeManager = themeManager
+            feedDetailVC.mainAppCoordinator = mainAppCoordinator
             feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
             feedDetailVC.mediaFetcher = mediaFetcher
             feedDetailVC.requestCoordinator = requestCoordinator
@@ -488,6 +495,11 @@ extension FeedsViewController : FeedsDelegate{
 
 
 extension FeedsViewController : FeedsDatasource{
+    
+    func shouldShowMenuOptionForFeed() -> Bool {
+        return mainAppCoordinator?.isUserAllowedToPostFeed() ?? true
+    }
+    
     func getCommentProvider() -> FeedsDetailCommentsProviderProtocol? {
         return nil
     }

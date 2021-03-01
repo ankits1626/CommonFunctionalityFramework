@@ -8,18 +8,24 @@
 
 import UIKit
 
+public protocol CFFMainAppInformationCoordinator : class {
+    func isUserAllowedToPostFeed() -> Bool
+}
+
 
 public struct GetFeedsViewModel{
-    var networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    var networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var mediaCoordinator : CFFMediaCoordinatorProtocol
     var feedCoordinatorDelegate : FeedsCoordinatorDelegate
     var themeManager : CFFThemeManagerProtocol?
+    var mainAppCoordinator : CFFMainAppInformationCoordinator?
     
-    public init (networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?){
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
         self.themeManager = themeManager
+        self.mainAppCoordinator = mainAppCoordinator
     }
 }
 
@@ -40,6 +46,7 @@ public class FeedsCoordinator {
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         feedsVc.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
         feedsVc.themeManager = inputModel.themeManager
+        feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         return feedsVc
     }
     
