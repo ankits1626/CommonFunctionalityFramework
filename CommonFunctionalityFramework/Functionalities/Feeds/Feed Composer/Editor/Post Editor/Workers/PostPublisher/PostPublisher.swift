@@ -13,8 +13,8 @@ typealias PostPublisherHandler = (APICallResult<[String : Any]>) -> Void
 class PostPublisher  {
     typealias ResultType = [String : Any]
     var commonAPICall : CommonAPICall<PostPublisherDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func publishPost(post: EditablePostProtocol, completionHandler: @escaping PostPublisherHandler) {
@@ -34,12 +34,12 @@ class PostPublisher  {
 class PostPublisherRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private var post : EditablePostProtocol
     private lazy var feedPostRequestBodyGenerator : PostRequestBodyGenerator = {
         return PostRequestBodyGenerator()
     }()
-    init( post: EditablePostProtocol, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init( post: EditablePostProtocol, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.post = post
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())

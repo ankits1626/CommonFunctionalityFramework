@@ -23,7 +23,7 @@ class PostEditorViewController: UIViewController {
         }
     }
     private let postType: FeedType
-    private let requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let requestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private var tagPicker : ASMentionSelectorViewController?
     
     @IBOutlet private weak var postEditorTable : UITableView?
@@ -71,7 +71,7 @@ class PostEditorViewController: UIViewController {
     }()
     private let editablePost : EditablePostProtocol?
     private var deferredSelectedMediaLoad : (() -> Void)?
-    init(postType: FeedType, requestCoordinator : CFFNetwrokRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?){
+    init(postType: FeedType, requestCoordinator : CFFNetworkRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?){
         self.postType  = postType
         self.requestCoordinator = requestCoordinator
         self.editablePost = post

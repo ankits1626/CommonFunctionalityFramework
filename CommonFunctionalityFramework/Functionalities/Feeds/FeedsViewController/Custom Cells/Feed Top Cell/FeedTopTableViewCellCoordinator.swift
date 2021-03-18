@@ -64,7 +64,12 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
-            cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+            if !inputModel.datasource.shouldShowMenuOptionForFeed(){
+                cell.editFeedButton?.isHidden = true
+            }else{
+                cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+            }
+            
             cell.editFeedButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

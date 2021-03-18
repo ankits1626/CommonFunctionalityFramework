@@ -31,8 +31,8 @@ typealias GifFetcherHandler = (APICallResult<FetchedGifModel>) -> Void
 class GifFetcher  {
     typealias ResultType = FetchedGifModel
     var commonAPICall : CommonAPICall<GifFetchDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func fetchGifs(nextPageState : FetchedGifNextPageState,searchKey: String? ,completionHandler: @escaping GifFetcherHandler) {
@@ -56,11 +56,11 @@ class GifFetcher  {
 class GifFetchRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private var nextPageState : FetchedGifNextPageState
     private var searchkey : String?
     
-    init( nextPageState : FetchedGifNextPageState, searchkey: String?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init( nextPageState : FetchedGifNextPageState, searchkey: String?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.nextPageState = nextPageState
         self.searchkey = searchkey
         self.networkRequestCoordinator = networkRequestCoordinator

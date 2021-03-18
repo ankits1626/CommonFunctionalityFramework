@@ -20,15 +20,16 @@ protocol FeedsDetailCommentsProviderProtocol{
     func getComment(_ index : Int) -> FeedComment?
 }
 class FeedsDetailViewController: UIViewController {
-    var feedFetcher: CFFNetwrokRequestCoordinatorProtocol!
+    var feedFetcher: CFFNetworkRequestCoordinatorProtocol!
     @IBOutlet weak var commentBarView : ASChatBarview?
     @IBOutlet weak var feedDetailTableView : UITableView?
     var targetFeedItem : FeedsItemProtocol!
     var clappedByUsers : [ClappedByUser]?
-    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
+    var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     weak var themeManager: CFFThemeManagerProtocol?
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
@@ -204,6 +205,10 @@ extension FeedsDetailViewController : FeedsDetailCommentsProviderProtocol{
 }
 
 extension FeedsDetailViewController : FeedsDatasource{
+    func shouldShowMenuOptionForFeed() -> Bool {
+        return mainAppCoordinator?.isUserAllowedToPostFeed() ?? true
+    }
+    
     func getCommentProvider() -> FeedsDetailCommentsProviderProtocol? {
         return self
     }
