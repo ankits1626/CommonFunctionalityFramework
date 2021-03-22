@@ -100,7 +100,7 @@ class ASMentionSelectorViewController: UIViewController {
         let shadowPath = UIBezierPath(rect: view.bounds)
         view.layer.masksToBounds = false
         view.layer.shadowColor =  UIColor.clear.cgColor
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             if let userCount = self.users?.count,
                userCount > 0{
                 self.view.layer.shadowColor =  UIColor.black.cgColor
@@ -114,6 +114,7 @@ class ASMentionSelectorViewController: UIViewController {
     }
     
     func updateFrameOfPicker(_ cursorRectRect: CGRect) {
+        view.layer.shadowColor =  UIColor.clear.cgColor
         let keyboardHeight = KeyboardService.shared.measuredSize
         let convertedRect = cursorRectRect
         let delta : CGFloat =  20

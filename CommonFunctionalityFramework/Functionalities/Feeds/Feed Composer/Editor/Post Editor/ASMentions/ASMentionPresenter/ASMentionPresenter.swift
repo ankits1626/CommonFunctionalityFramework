@@ -10,7 +10,7 @@ import UIKit
 class ASMentionPresenter {
     static let shared = ASMentionPresenter()
     
-    func updatePresentaionOfText(text : NSAttributedString?, mentions: [ASMentionEntityProtocol]?) -> NSAttributedString? {
+    func updatePresentationOfText(text : NSAttributedString?, mentions: [ASMentionEntityProtocol]?) -> NSAttributedString? {
         if let unwrappedText = text?.string{
             let processedString : NSMutableAttributedString = NSMutableAttributedString(string: unwrappedText)
             let attributes : [NSAttributedString.Key: Any] = [

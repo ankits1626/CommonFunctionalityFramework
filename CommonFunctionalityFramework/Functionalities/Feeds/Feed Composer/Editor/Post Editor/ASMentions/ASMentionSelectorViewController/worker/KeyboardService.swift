@@ -8,7 +8,7 @@
 import UIKit
 
 class KeyboardService: NSObject {
-    static var shared = KeyboardService()
+    static let shared = KeyboardService()
     var measuredSize: CGRect = CGRect.zero
 
     @objc class func keyboardHeight() -> CGFloat {
