@@ -64,7 +64,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private var numberOfComments : Int64
     private let isPriority : Bool
     
-    init(input : [String : Any]){
+    public init(input : [String : Any]){
         self.rawFeedDictionary = input
         isLikedByMe = rawFeedDictionary["has_appreciated"] as? Bool ?? false
         numberOfLikes = rawFeedDictionary["appreciation_count"] as? Int64 ?? 0
@@ -72,7 +72,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
     }
     
-    init(managedObject : NSManagedObject){
+    public init(managedObject : NSManagedObject){
         self.rawFeedDictionary = (managedObject as! ManagedPost).postRawDictionary as! [String : Any]
         self.isLikedByMe = (managedObject as! ManagedPost).isLikedByMe
         self.numberOfLikes = (managedObject as! ManagedPost).numberOfLikes
@@ -80,7 +80,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isPriority = (managedObject as! ManagedPost).isPriority
     }
     
-    @discardableResult func getManagedObject() -> NSManagedObject{
+    @discardableResult public func getManagedObject() -> NSManagedObject{
         let managedPost : ManagedPost!
         let fetchRequest : NSFetchRequest<ManagedPost> = ManagedPost.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "postId = %d && postId != -1", self.feedIdentifier)

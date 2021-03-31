@@ -9,7 +9,7 @@
 import Foundation
 
 extension ManagedPost : RawRepresentable{
-    func getRawObject() -> RawObjectProtocol{
+    public func getRawObject() -> RawObjectProtocol{
         return RawFeed(managedObject: self)
     }
     

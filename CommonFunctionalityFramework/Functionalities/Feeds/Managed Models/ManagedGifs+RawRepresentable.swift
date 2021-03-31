@@ -9,7 +9,7 @@
 import Foundation
 
 extension ManagedGifs : RawRepresentable{
-    func getRawObject() -> RawObjectProtocol{
+    public func getRawObject() -> RawObjectProtocol{
         return RawGif(managedObject: self)
     }
     

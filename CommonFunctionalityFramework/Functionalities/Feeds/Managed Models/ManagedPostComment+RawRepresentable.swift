@@ -9,7 +9,7 @@
 import Foundation
 
 extension ManagedPostComment : RawRepresentable{
-    func getRawObject() -> RawObjectProtocol{
+    public func getRawObject() -> RawObjectProtocol{
         return  FeedComment(managedObject: self)
     }
 }

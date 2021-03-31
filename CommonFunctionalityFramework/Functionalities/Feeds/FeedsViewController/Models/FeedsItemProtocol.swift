@@ -8,17 +8,7 @@
 
 import UIKit
 
-enum FeedMediaItemType{
-    case Image
-    case Video
-}
 
-
-protocol MediaItemProtocol {
-    func getMediaType() -> FeedMediaItemType
-    func getCoverImageUrl() -> String?
-    func getRemoteId() -> Int
-}
 
 struct FeedVideoItem :  MediaItemProtocol{
     func getRemoteId() -> Int {

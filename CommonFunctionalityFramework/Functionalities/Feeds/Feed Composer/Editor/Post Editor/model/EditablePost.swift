@@ -29,19 +29,7 @@ protocol EditablePostProtocol {
     func isGifAttached() -> Bool
 }
 
-struct LocalSelectedMediaItem : Equatable {
-    static func ==(_ lhs: LocalSelectedMediaItem, _ rhs: LocalSelectedMediaItem) -> Bool {
-      return lhs.identifier == rhs.identifier
-    }
-    var identifier : String
-    var asset: PHAsset?
-    var mediaType : PHAssetMediaType
-    var croppedImage : UIImage?{
-        didSet{
-            print("heere")
-        }
-    }
-}
+
 enum DepartmentSharedChoice : Int {
     case SelfDepartment = 10
     case AllDepartment = 20

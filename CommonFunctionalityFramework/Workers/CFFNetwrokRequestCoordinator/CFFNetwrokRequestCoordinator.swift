@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@_exported import RewardzCommonComponents
 
 public struct FetchedFeedModel{
     public var fetchedRawFeeds : [String : Any]?

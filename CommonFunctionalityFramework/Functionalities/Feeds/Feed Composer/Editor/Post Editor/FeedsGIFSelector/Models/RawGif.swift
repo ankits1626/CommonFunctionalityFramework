@@ -12,7 +12,7 @@ import CoreData
 public struct RawGif : RawObjectProtocol{
     private var rawGif : [String : Any]
     private var gifSourceUrl : String?
-    init(input: [String : Any]) {
+    public init(input: [String : Any]) {
         self.rawGif = input
     }
     
@@ -21,7 +21,7 @@ public struct RawGif : RawObjectProtocol{
         rawGif = [String : Any]()
     }
     
-    init(managedObject: NSManagedObject) {
+    public init(managedObject: NSManagedObject) {
         self.rawGif = (managedObject as! ManagedGifs).rawGif as! [String : Any]
     }
     
@@ -55,7 +55,7 @@ public struct RawGif : RawObjectProtocol{
         return (((rawGif["media"] as? [[String : Any]])?.first?["tinygif"]) as? [String : Any])?["url"] as? String
     }
     
-    func getManagedObject() -> NSManagedObject {
+    public func getManagedObject() -> NSManagedObject {
         let managedGif : ManagedGifs!
         let fetchRequest : NSFetchRequest<ManagedGifs> = ManagedGifs.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "identifier = %d && identifier != -1", self.gifIdentifier)
