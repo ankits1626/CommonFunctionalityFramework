@@ -215,12 +215,14 @@
 		BE0399EF25A3106D00031610 /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399F125A3106D00031610 /* PollsActiveDaysTableViewCell.xib */; };
 		BE039A0425A310A700031610 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE039A0625A310A700031610 /* PostEditorViewController.xib */; };
 		BEA1BAB625AD5CA10021942A /* FeedTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA1BAB825AD5CA10021942A /* FeedTextTableViewCell.xib */; };
+		BEB6F00B2624666C00216A4F /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6F0092624666C00216A4F /* PintoTopConfirmationDrawer.swift */; };
+		BEB6F00C2624666C00216A4F /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB6F00A2624666C00216A4F /* PintoTopConfirmationDrawer.xib */; };
 		BED94819251C9FFC00EC96BD /* CommonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED94818251C9FFC00EC96BD /* CommonLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../skor-ios/MergedChanges/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../skor-ios/MergedChanges/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../../skor-ios/MergedChanges/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../../skor-ios/MergedChanges/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
 		980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollSubmitButtonCell.xib; sourceTree = "<group>"; };
 		980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCellCoordinator.swift; sourceTree = "<group>"; };
@@ -528,6 +530,8 @@
 		BEA1BAC625AD5CB00021942A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
 		BEA1BAC825AD5CB20021942A /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
 		BEA1BACA25AD5CB40021942A /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEB6F0092624666C00216A4F /* PintoTopConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintoTopConfirmationDrawer.swift; sourceTree = "<group>"; };
+		BEB6F00A2624666C00216A4F /* PintoTopConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PintoTopConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BED94818251C9FFC00EC96BD /* CommonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLoader.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1443,6 +1447,7 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				BEB6F00826245DE600216A4F /* PinToTopConfirmationDrawer */,
 				98D5E88F25314BE800813991 /* ReportAbuseConfirmationDrawer */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
 				983C4F862462F05800FDEB76 /* DeletePostConfirmationDrawer */,
@@ -1692,6 +1697,15 @@
 			path = Workers;
 			sourceTree = "<group>";
 		};
+		BEB6F00826245DE600216A4F /* PinToTopConfirmationDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				BEB6F0092624666C00216A4F /* PintoTopConfirmationDrawer.swift */,
+				BEB6F00A2624666C00216A4F /* PintoTopConfirmationDrawer.xib */,
+			);
+			path = PinToTopConfirmationDrawer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1796,6 +1810,7 @@
 				BE03995E25A2EBAF00031610 /* CFFMainCropperViewController.xib in Resources */,
 				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
 				987D0BB12583DA58001A0F07 /* ASMentionSelectorViewController.xib in Resources */,
+				BEB6F00C2624666C00216A4F /* PintoTopConfirmationDrawer.xib in Resources */,
 				980F563B245BFC680093AFE7 /* PollSubmitButtonCell.xib in Resources */,
 				98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */,
 				98C8C72824B2294A003F56FD /* FAGridView.xib in Resources */,
@@ -1927,6 +1942,7 @@
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
 				9868C0E12412430700B12321 /* UIView+XibSetup.swift in Sources */,
+				BEB6F00B2624666C00216A4F /* PintoTopConfirmationDrawer.swift in Sources */,
 				9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */,
 				9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,

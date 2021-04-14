@@ -299,6 +299,10 @@ extension FeedsDetailViewController : FeedsDelegate{
         }
     }
     
+    func pinToPost(feedIdentifier : Int64) {
+        print("<<<<<<Feed identifier-\(feedIdentifier)")
+    }
+    
     private func getLikeableComment(commentIdentifier: Int64) -> FeedComment?{
         let fetchRequest = NSFetchRequest<ManagedPostComment>(entityName: "ManagedPostComment")
         fetchRequest.predicate = NSPredicate (format: "commentId == %d", commentIdentifier)

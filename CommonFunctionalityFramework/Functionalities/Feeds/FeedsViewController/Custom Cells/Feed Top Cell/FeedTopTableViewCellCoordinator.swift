@@ -65,6 +65,13 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
             cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+            cell.pinPostButton?.handleControlEvent(
+                event: .touchUpInside, buttonActionBlock: {
+                    inputModel.delegate?.pinToPost(
+                        feedIdentifier: feed.feedIdentifier
+                    )
+                }
+            )
             cell.editFeedButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

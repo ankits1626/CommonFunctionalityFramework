@@ -30,6 +30,7 @@ protocol FeedsDelegate : class {
     func selectPollAnswer(feedIdentifier : Int64, pollOption: PollOption)
     func submitPollAnswer(feedIdentifier : Int64)
     func showAllClaps(feedIdentifier : Int64)
+    func pinToPost(feedIdentifier : Int64)
 }
 
 class FeedSectionFactory{

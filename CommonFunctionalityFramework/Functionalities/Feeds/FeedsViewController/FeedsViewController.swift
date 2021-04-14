@@ -259,7 +259,56 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
-    func toggleLikeForComment(commentIdentifier: Int64) {}
+    func toggleLikeForComment(commentIdentifier: Int64) {
+        
+    }
+    
+    func pinToPost(feedIdentifier : Int64) {
+        print("<<<<<<Feed identifier-\(feedIdentifier)")
+        showPintoPostConfirmation(feedIdentifier)
+    }
+    
+    private func showPintoPostConfirmation(_ feedIdentifier : Int64){
+        let deleteConfirmationDrawer = PintoTopConfirmationDrawer(
+            nibName: "PintoTopConfirmationDrawer",
+            bundle: Bundle(for: PintoTopConfirmationDrawer.self)
+        )
+        deleteConfirmationDrawer.themeManager = themeManager
+        deleteConfirmationDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
+        deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
+            print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")
+            if let unwrappedSelf = self{
+//                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier) { (result) in
+//                    switch result{
+//                    case .Success(result: _):
+//                        DispatchQueue.main.async {[weak self] in
+//                            if let feedItem = self?.getFeedItem(feedIdentifier: feedIdentifier){
+//                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+//                                    if let post = ((feedItem as? RawObjectProtocol)?.getManagedObject() as? ManagedPost){
+//                                        CFFCoreDataManager.sharedInstance.manager.deleteManagedObject(managedObject: post, context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext)
+//                                        CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+//                                            print("<<<<<<<<<<<<<poll deleted suceessfully")
+//                                            CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+//                                        }
+//                                    }
+//                                }
+//                                ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in}
+//                            }
+//                        }
+//                    case .SuccessWithNoResponseData:
+//                        fallthrough
+//                    case .Failure(error: _):
+//                        print("<<<<< Unable to delete post")
+//                    }
+//                }
+            }
+        }
+        do{
+            try deleteConfirmationDrawer.presentDrawer()
+        }catch {
+            
+        }
+    }
     
     func showAllClaps(feedIdentifier: Int64) {
         print("show all claps for \(feedIdentifier)")
