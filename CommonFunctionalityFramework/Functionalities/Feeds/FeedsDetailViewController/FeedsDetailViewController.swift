@@ -301,7 +301,38 @@ extension FeedsDetailViewController : FeedsDelegate{
     
     func pinToPost(feedIdentifier : Int64) {
         print("<<<<<<Feed identifier-\(feedIdentifier)")
+        showPintoPostConfirmation(feedIdentifier)
     }
+    
+    private func showPintoPostConfirmation(_ feedIdentifier : Int64){
+            let pinPostDrawer = PintoTopConfirmationDrawer(
+                nibName: "PintoTopConfirmationDrawer",
+                bundle: Bundle(for: PintoTopConfirmationDrawer.self)
+            )
+            pinPostDrawer.themeManager = themeManager
+            pinPostDrawer.targetFeed = targetFeedItem
+            pinPostDrawer.confirmedCompletion = {postFrequency in
+                print(postFrequency)
+    //            ReportAbuseWorker(networkRequestCoordinator: self.requestCoordinator).reportAbusePost(feedIdentifier, notes: postFrequency) { (result) in
+    //                DispatchQueue.main.async {
+    //                    switch result{
+    //                    case .Success(_):
+    //                        ErrorDisplayer.showError(errorMsg: "Reported successfully.".localized) { (_) in}
+    //                    case .SuccessWithNoResponseData:
+    //                        fallthrough
+    //                    case .Failure(_):
+    //                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.".localized) { (_) in}
+    //                    }
+    //                }
+    //
+    //            }
+            }
+            do{
+                try pinPostDrawer.presentDrawer()
+            }catch {
+                
+            }
+        }
     
     private func getLikeableComment(commentIdentifier: Int64) -> FeedComment?{
         let fetchRequest = NSFetchRequest<ManagedPostComment>(entityName: "ManagedPostComment")

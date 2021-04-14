@@ -12,8 +12,10 @@
             <connections>
                 <outlet property="cancelButton" destination="mx0-Rd-dyy" id="sKm-pZ-c4R"/>
                 <outlet property="closeLabel" destination="1di-dQ-sfS" id="OPQ-PO-LXY"/>
-                <outlet property="deleteButton" destination="ejB-Od-f3K" id="xoa-dj-Rk7"/>
+                <outlet property="confirmedButton" destination="ejB-Od-f3K" id="vaa-mJ-ovd"/>
                 <outlet property="messageLabel" destination="p98-tb-pDk" id="3Kj-xc-nWa"/>
+                <outlet property="postFrequency" destination="5eD-3n-4md" id="jZd-5f-ggW"/>
+                <outlet property="selectPinPostFrequency" destination="X8E-lb-cnW" id="xYy-m0-Wxe"/>
                 <outlet property="titleLabel" destination="iRp-S8-VVW" id="3d5-hu-5bp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -91,8 +93,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7s-aW-Ie5" userLabel="can container">
                             <rect key="frame" x="0.0" y="30" width="414" height="44"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="can" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Dm-8bp">
-                                    <rect key="frame" x="189.5" y="0.0" width="35" height="44"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirmationPinIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Dm-8bp">
+                                    <rect key="frame" x="187" y="0.0" width="40" height="44"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -121,7 +123,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DZ-mp-EeS" userLabel="Message Conatiner">
-                            <rect key="frame" x="0.0" y="104" width="414" height="80"/>
+                            <rect key="frame" x="0.0" y="104" width="414" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vv" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p98-tb-pDk">
                                     <rect key="frame" x="15" y="10" width="384" height="18"/>
@@ -134,19 +136,57 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="p98-tb-pDk" secondAttribute="trailing" constant="15" id="MyL-Ny-jZq"/>
                                 <constraint firstItem="p98-tb-pDk" firstAttribute="leading" secondItem="7DZ-mp-EeS" secondAttribute="leading" constant="15" id="c98-c2-CXN"/>
-                                <constraint firstAttribute="height" constant="80" id="orG-k7-GRw"/>
+                                <constraint firstAttribute="height" constant="60" id="orG-k7-GRw"/>
                                 <constraint firstItem="p98-tb-pDk" firstAttribute="top" secondItem="7DZ-mp-EeS" secondAttribute="top" constant="10" id="yQa-m6-wbX"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnV-Es-coj" userLabel="seperator">
-                            <rect key="frame" x="0.0" y="184" width="414" height="34"/>
+                            <rect key="frame" x="0.0" y="164" width="414" height="56"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eD-3n-4md">
+                                    <rect key="frame" x="30" y="8" width="354" height="40"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8E-lb-cnW">
+                                            <rect key="frame" x="8" y="0.0" width="346" height="40"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                            <state key="normal" title="1 week">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="pinPostFrequncyButtonPressedWithSender:" destination="-1" eventType="touchUpInside" id="zYE-f6-Ojq"/>
+                                            </connections>
+                                        </button>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="GgV-MC-PA9">
+                                            <rect key="frame" x="314" y="7" width="40" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="Cyd-E6-uA5"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="GgV-MC-PA9" firstAttribute="top" secondItem="5eD-3n-4md" secondAttribute="top" constant="7" id="0pW-D1-47O"/>
+                                        <constraint firstAttribute="bottom" secondItem="GgV-MC-PA9" secondAttribute="bottom" constant="7" id="6k1-0K-aDj"/>
+                                        <constraint firstItem="X8E-lb-cnW" firstAttribute="leading" secondItem="5eD-3n-4md" secondAttribute="leading" constant="8" id="6py-8a-wHg"/>
+                                        <constraint firstAttribute="trailing" secondItem="GgV-MC-PA9" secondAttribute="trailing" id="80v-pZ-IEI"/>
+                                        <constraint firstAttribute="trailing" secondItem="X8E-lb-cnW" secondAttribute="trailing" id="8Is-Zb-lXU"/>
+                                        <constraint firstItem="X8E-lb-cnW" firstAttribute="top" secondItem="5eD-3n-4md" secondAttribute="top" id="FOi-mS-5ar"/>
+                                        <constraint firstAttribute="bottom" secondItem="X8E-lb-cnW" secondAttribute="bottom" id="Gsi-k8-sPJ"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="34" id="Py6-Ge-fdN"/>
+                                <constraint firstAttribute="bottom" secondItem="5eD-3n-4md" secondAttribute="bottom" constant="8" id="0Bl-Vt-vCP"/>
+                                <constraint firstItem="5eD-3n-4md" firstAttribute="leading" secondItem="HnV-Es-coj" secondAttribute="leading" constant="30" id="IA4-YC-Oxo"/>
+                                <constraint firstAttribute="trailing" secondItem="5eD-3n-4md" secondAttribute="trailing" constant="30" id="Mfv-OY-wK3"/>
+                                <constraint firstAttribute="height" constant="56" id="Py6-Ge-fdN"/>
+                                <constraint firstItem="5eD-3n-4md" firstAttribute="top" secondItem="HnV-Es-coj" secondAttribute="top" constant="8" id="hdc-32-ss3"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWE-HM-cbt" userLabel="Done Button Container">
-                            <rect key="frame" x="0.0" y="218" width="414" height="40"/>
+                            <rect key="frame" x="0.0" y="220" width="414" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejB-Od-f3K">
                                     <rect key="frame" x="74.5" y="0.0" width="265" height="40"/>
@@ -156,7 +196,7 @@
                                     </constraints>
                                     <state key="normal" title="DELETE"/>
                                     <connections>
-                                        <action selector="deleteButtonPressed" destination="-1" eventType="touchUpInside" id="BDr-g7-UiC"/>
+                                        <action selector="confirmedButtonPressed" destination="-1" eventType="touchUpInside" id="j3X-Md-QjG"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -168,14 +208,14 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nse-cu-xyh" userLabel="seperator">
-                            <rect key="frame" x="0.0" y="258" width="414" height="12"/>
+                            <rect key="frame" x="0.0" y="260" width="414" height="12"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="12" id="gNs-FR-aQ4"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sff-My-PLZ" userLabel="Done Button Container">
-                            <rect key="frame" x="0.0" y="270" width="414" height="40"/>
+                            <rect key="frame" x="0.0" y="272" width="414" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mx0-Rd-dyy">
                                     <rect key="frame" x="74.5" y="0.0" width="265" height="40"/>
@@ -197,7 +237,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEz-QJ-bR9">
-                            <rect key="frame" x="0.0" y="310" width="414" height="63"/>
+                            <rect key="frame" x="0.0" y="312" width="414" height="61"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                     </subviews>
@@ -216,7 +256,8 @@
         </view>
     </objects>
     <resources>
-        <image name="can" width="35" height="44"/>
         <image name="close_black" width="9" height="9"/>
+        <image name="confirmationPinIcon" width="40" height="40"/>
+        <image name="dropdown" width="60.5" height="60.5"/>
     </resources>
 </document>

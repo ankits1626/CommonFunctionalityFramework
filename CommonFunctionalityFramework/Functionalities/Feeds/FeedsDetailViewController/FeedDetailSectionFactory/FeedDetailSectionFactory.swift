@@ -116,7 +116,8 @@ class FeedDetailSectionFactory {
         let cell = getCellCoordinator(indexPath).getCell(FeedCellDequeueModel(
             targetIndexpath: indexPath,
             targetTableView: tableView,
-            datasource: feedDataSource
+            datasource: feedDataSource,
+            isFeedDetailPage: true
             )
         )
         cell.backgroundColor = .clear
@@ -136,7 +137,8 @@ class FeedDetailSectionFactory {
                 mediaFetcher: mediaFetcher,
                 delegate: feedDetailDelegate,
                 selectedoptionMapper: selectedOptionMapper,
-                themeManager: themeManager
+                themeManager: themeManager,
+                isFeedDetailPage: true
             )
         )
     }

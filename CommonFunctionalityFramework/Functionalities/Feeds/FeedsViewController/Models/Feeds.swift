@@ -35,9 +35,15 @@ protocol FeedsItemProtocol : Likeable {
     func isFeedDeleteAllowed() -> Bool
     func isFeedReportAbuseAllowed() -> Bool
     func isActionsAllowed() -> Bool
+    func isPinToPost() -> Bool
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
+    
+    func isPinToPost() -> Bool {
+        return true
+    }
+    
     func shouldShowDetail() -> Bool {
         return true
 //        if let unwrappedPoll = getPoll(){

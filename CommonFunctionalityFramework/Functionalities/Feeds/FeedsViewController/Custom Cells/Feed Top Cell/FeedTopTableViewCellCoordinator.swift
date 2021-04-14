@@ -12,6 +12,7 @@ struct FeedCellDequeueModel {
     var targetIndexpath : IndexPath
     var targetTableView : UITableView
     var datasource: FeedsDatasource
+    var isFeedDetailPage : Bool
 }
 
 struct FeedCellLoadDataModel {
@@ -23,6 +24,7 @@ struct FeedCellLoadDataModel {
     var delegate : FeedsDelegate?
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
+    var isFeedDetailPage : Bool
 }
 
 struct FeedCellGetHeightModel {
@@ -61,8 +63,13 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.text = feed.getfeedCreationDate()
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
-            cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-            cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                cell.containerView?.addBorders(edges: [.top, .left, .right], color: .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
+                cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
+            }
             cell.containerView?.clipsToBounds = true
             cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             cell.pinPostButton?.handleControlEvent(

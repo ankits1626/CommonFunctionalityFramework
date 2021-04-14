@@ -60,7 +60,11 @@ class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
                     )
                 }
             })
-            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.addBorders(edges: [.left, .right], color: .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            }
             cell.readMorebutton?.titleLabel?.attributedText = NSAttributedString(string: "Read More".localized,attributes: [NSAttributedString.Key.underlineStyle : 1])
             if inputModel.datasource.showShowFullfeedDescription(){
                 cell.readMorebutton?.isHidden = true

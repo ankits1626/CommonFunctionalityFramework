@@ -26,7 +26,12 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else{
                 cell.feedImageView?.image = nil
             }
-            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.addBorders(edges: [.left, .right], color: .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            }
+            
             cell.imageTapButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

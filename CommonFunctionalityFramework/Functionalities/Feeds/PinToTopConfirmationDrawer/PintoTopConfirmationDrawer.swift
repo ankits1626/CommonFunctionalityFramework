@@ -12,24 +12,33 @@ class PintoTopConfirmationDrawer: UIViewController {
     @IBOutlet private weak var closeLabel : UILabel?
     @IBOutlet private weak var titleLabel : UILabel?
     @IBOutlet private weak var messageLabel : UILabel?
-    @IBOutlet private weak var deleteButton : UIButton?
+    @IBOutlet private weak var confirmedButton : UIButton?
     @IBOutlet private weak var cancelButton : UIButton?
+    @IBOutlet private weak var postFrequency : UIView?
     weak var themeManager: CFFThemeManagerProtocol?
-    
+    @IBOutlet private weak var selectPinPostFrequency : UIButton?
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
-    var deletePressedCompletion :(() -> Void)?
+    var confirmedCompletion : ((_ selectedFrequency : String) -> Void)?
     var targetFeed : FeedsItemProtocol?
+    var isAlreadyPinned : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        postFrequency?.addBorders(edges: [.all], color: .gray)
     }
     
     private func setup(){
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
-        titleLabel?.text = "Make Priority".localized
-        messageLabel?.text = "This will appear on top of users feed.Any earilerpriority feed would be unpinned. Are you sure?".localized
+        if isAlreadyPinned {
+            titleLabel?.text = "Make Priority".localized
+            messageLabel?.text = "Making this post as pinned will remove the older pinned post. Are you sure you want to proceed?".localized
+        }else{
+            titleLabel?.text = "Make Priority".localized
+            messageLabel?.text = "Do you want to make this post a priority and pin on top?".localized
+        }
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
         messageLabel?.font = .Caption2
@@ -38,14 +47,14 @@ class PintoTopConfirmationDrawer: UIViewController {
     }
     
     private func configureConfirmButton(){
-        deleteButton?.setTitle("CONFIRM".localized, for: .normal)
-        deleteButton?.titleLabel?.font = .Button
-        deleteButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
-        deleteButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
+        confirmedButton?.setTitle("CONFIRM".localized, for: .normal)
+        confirmedButton?.titleLabel?.font = .Button
+        confirmedButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
+        confirmedButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
         if let unwrappedThemeManager = themeManager{
-            deleteButton?.curvedBorderedControl(borderColor: unwrappedThemeManager.getControlActiveColor(), borderWidth: 1.0)
+            confirmedButton?.curvedBorderedControl(borderColor: unwrappedThemeManager.getControlActiveColor(), borderWidth: 1.0)
         }else{
-            deleteButton?.curvedBorderedControl()
+            confirmedButton?.curvedBorderedControl()
         }
     }
     
@@ -77,12 +86,46 @@ class PintoTopConfirmationDrawer: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func deleteButtonPressed(){
-        if let unwrappedCompletion = deletePressedCompletion{
+    @IBAction private func confirmedButtonPressed(){
+        if let unwrappedCompletion = confirmedCompletion{
             dismiss(animated: true) {
-                unwrappedCompletion()
+                unwrappedCompletion(self.selectPinPostFrequency?.titleLabel?.text ?? "")
             }
         }
+    }
+    
+    @IBAction private func pinPostFrequncyButtonPressed(sender : UIButton){
+        var options = [FloatingMenuOption]()
+        options.append(
+            FloatingMenuOption(title: "1 day", action: {
+                self.setFrequencyText(value: "1 day")
+            }
+            )
+        )
+        options.append(
+            FloatingMenuOption(title: "1 week".localized, action: {
+                self.setFrequencyText(value: "1 week")
+            }
+            )
+        )
+        options.append(
+            FloatingMenuOption(title: "1 month".localized, action: {
+                self.setFrequencyText(value: "1 month")
+            }
+            )
+        )
+        
+        options.append(
+            FloatingMenuOption(title: "Always".localized, action: {
+                self.setFrequencyText(value: "Always")
+            }
+            )
+        )
+        FloatingMenuOptions(options: options).showPopover(sourceView: sender)
+    }
+    
+    func setFrequencyText(value : String) {
+        self.selectPinPostFrequency?.setTitle(value, for: .normal)
     }
 }
 

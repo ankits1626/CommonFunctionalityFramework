@@ -22,7 +22,11 @@ class PollBottomTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
         if let cell  = inputModel.targetCell as? PollBottomTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
-            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.addBorders(edges: [.left, .right], color: .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            }
             cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
             cell.messageLabel?.textColor = .black
             cell.messageLabel?.font = .Highlighter1

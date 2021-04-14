@@ -267,44 +267,32 @@ extension FeedsViewController : FeedsDelegate{
         print("<<<<<<Feed identifier-\(feedIdentifier)")
         showPintoPostConfirmation(feedIdentifier)
     }
-    
+        
     private func showPintoPostConfirmation(_ feedIdentifier : Int64){
-        let deleteConfirmationDrawer = PintoTopConfirmationDrawer(
+        let pinPostDrawer = PintoTopConfirmationDrawer(
             nibName: "PintoTopConfirmationDrawer",
             bundle: Bundle(for: PintoTopConfirmationDrawer.self)
         )
-        deleteConfirmationDrawer.themeManager = themeManager
-        deleteConfirmationDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
-        deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
-            print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")
-            if let unwrappedSelf = self{
-//                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier) { (result) in
+        pinPostDrawer.themeManager = themeManager
+        pinPostDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
+        pinPostDrawer.confirmedCompletion = {postFrequency in
+            print(postFrequency)
+//            ReportAbuseWorker(networkRequestCoordinator: self.requestCoordinator).reportAbusePost(feedIdentifier, notes: postFrequency) { (result) in
+//                DispatchQueue.main.async {
 //                    switch result{
-//                    case .Success(result: _):
-//                        DispatchQueue.main.async {[weak self] in
-//                            if let feedItem = self?.getFeedItem(feedIdentifier: feedIdentifier){
-//                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
-//                                    if let post = ((feedItem as? RawObjectProtocol)?.getManagedObject() as? ManagedPost){
-//                                        CFFCoreDataManager.sharedInstance.manager.deleteManagedObject(managedObject: post, context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext)
-//                                        CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
-//                                            print("<<<<<<<<<<<<<poll deleted suceessfully")
-//                                            CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
-//                                        }
-//                                    }
-//                                }
-//                                ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in}
-//                            }
-//                        }
+//                    case .Success(_):
+//                        ErrorDisplayer.showError(errorMsg: "Reported successfully.".localized) { (_) in}
 //                    case .SuccessWithNoResponseData:
 //                        fallthrough
-//                    case .Failure(error: _):
-//                        print("<<<<< Unable to delete post")
+//                    case .Failure(_):
+//                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.".localized) { (_) in}
 //                    }
 //                }
-            }
+//
+//            }
         }
         do{
-            try deleteConfirmationDrawer.presentDrawer()
+            try pinPostDrawer.presentDrawer()
         }catch {
             
         }

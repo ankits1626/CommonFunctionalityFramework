@@ -107,8 +107,14 @@ class FeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedGifTableViewCell{
+            let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.removeButton?.isHidden = true
             cell.imageTapButton?.backgroundColor = .clear
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.addBorders(edges: [.left, .right], color: .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            }
         }
     }
     
