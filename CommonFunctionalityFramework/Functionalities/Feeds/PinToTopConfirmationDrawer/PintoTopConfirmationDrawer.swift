@@ -16,20 +16,63 @@ class PintoTopConfirmationDrawer: UIViewController {
     @IBOutlet private weak var cancelButton : UIButton?
     @IBOutlet private weak var postFrequency : UIView?
     weak var themeManager: CFFThemeManagerProtocol?
-    @IBOutlet private weak var selectPinPostFrequency : UIButton?
+    @IBOutlet private weak var frequencyLabel : UILabel!
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var confirmedCompletion : ((_ selectedFrequency : String) -> Void)?
     var targetFeed : FeedsItemProtocol?
     var isAlreadyPinned : Bool = false
+    let dropDown = ItemsDropDown()
+    var dropDownRowHeight: CGFloat = 40
+    var frquencyModelArr: [PostPinDropDownValue] = [PostPinDropDownValue]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateFrequencyModelArray()
         setup()
+        setUpGestures()
         postFrequency?.addBorders(edges: [.all], color: .gray)
+    }
+    
+    private func populateFrequencyModelArray(){
+        let frequency1 = PostPinDropDownValue(frequencyName: "1 day", frequencyID: 1)
+        let frequency2 = PostPinDropDownValue(frequencyName: "1 week", frequencyID: 2)
+        let frequency3 = PostPinDropDownValue(frequencyName: "1 month", frequencyID: 3)
+        let frequency4 = PostPinDropDownValue(frequencyName: "Always", frequencyID: 4)
+        self.frquencyModelArr.append(frequency1)
+        self.frquencyModelArr.append(frequency2)
+        self.frquencyModelArr.append(frequency3)
+        self.frquencyModelArr.append(frequency4)
+    }
+    
+    func setUpGestures(){
+        self.frequencyLabel.isUserInteractionEnabled = true
+        let labelTapGesture = UITapGestureRecognizer(target: self, action: #selector(frequencyLabelTapped))
+        self.frequencyLabel.addGestureRecognizer(labelTapGesture)
+    }
+    
+    @objc func frequencyLabelTapped(){
+        self.dropDown.showDropDown(height: self.dropDownRowHeight * 4)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Call this in viewDidAppear to get correct frame values
+        setUpDropDown()
+    }
+    
+    func setUpDropDown(){
+        dropDown.makeDropDownIdentifier = "DROP_DOWN_NEW"
+        dropDown.cellReusableIdentifier = "dropDownCell"
+        dropDown.makeDropDownDataSourceProtocol = self
+        dropDown.setUpDropDown(viewPositionReference: (CGRect(x: self.postFrequency!.frame.origin.x, y: self.postFrequency!.frame.origin.y - 40, width: self.postFrequency!.frame.width, height: self.postFrequency!.frame.height)), offset: 2)
+        dropDown.nib = UINib(nibName: "DropDownTableViewCell", bundle: Bundle(for: DropDownTableViewCell.self))
+        dropDown.setRowHeight(height: self.dropDownRowHeight)
+        self.view.addSubview(dropDown)
     }
     
     private func setup(){
         view.clipsToBounds = true
+        self.frequencyLabel.text = "1 week"
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
         if isAlreadyPinned {
@@ -73,7 +116,7 @@ class PintoTopConfirmationDrawer: UIViewController {
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: 320)
+            slideInTransitioningDelegate.direction = .bottom(height: 360)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
@@ -89,43 +132,32 @@ class PintoTopConfirmationDrawer: UIViewController {
     @IBAction private func confirmedButtonPressed(){
         if let unwrappedCompletion = confirmedCompletion{
             dismiss(animated: true) {
-                unwrappedCompletion(self.selectPinPostFrequency?.titleLabel?.text ?? "")
+                unwrappedCompletion(self.frequencyLabel.text ?? "")
             }
         }
     }
-    
-    @IBAction private func pinPostFrequncyButtonPressed(sender : UIButton){
-        var options = [FloatingMenuOption]()
-        options.append(
-            FloatingMenuOption(title: "1 day", action: {
-                self.setFrequencyText(value: "1 day")
-            }
-            )
-        )
-        options.append(
-            FloatingMenuOption(title: "1 week".localized, action: {
-                self.setFrequencyText(value: "1 week")
-            }
-            )
-        )
-        options.append(
-            FloatingMenuOption(title: "1 month".localized, action: {
-                self.setFrequencyText(value: "1 month")
-            }
-            )
-        )
-        
-        options.append(
-            FloatingMenuOption(title: "Always".localized, action: {
-                self.setFrequencyText(value: "Always")
-            }
-            )
-        )
-        FloatingMenuOptions(options: options).showPopover(sourceView: sender)
-    }
-    
-    func setFrequencyText(value : String) {
-        self.selectPinPostFrequency?.setTitle(value, for: .normal)
-    }
 }
 
+struct PostPinDropDownValue {
+    var frequencyName: String
+    var frequencyID: Int
+}
+
+extension PintoTopConfirmationDrawer: MakeDropDownDataSourceProtocol{
+    func getDataToDropDown(cell: UITableViewCell, indexPos: Int, makeDropDownIdentifier: String) {
+        if makeDropDownIdentifier == "DROP_DOWN_NEW"{
+            let customCell = cell as! DropDownTableViewCell
+            customCell.frequncyNameLabel.text = self.frquencyModelArr[indexPos].frequencyName
+        }
+    }
+    
+    func numberOfRows(makeDropDownIdentifier: String) -> Int {
+        return self.frquencyModelArr.count
+    }
+    
+    func selectItemInDropDown(indexPos: Int, makeDropDownIdentifier: String) {
+        self.frequencyLabel.text = self.frquencyModelArr[indexPos].frequencyName
+        self.dropDown.hideDropDown()
+    }
+    
+}

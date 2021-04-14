@@ -277,6 +277,7 @@ extension FeedsViewController : FeedsDelegate{
         pinPostDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
         pinPostDrawer.confirmedCompletion = {postFrequency in
             print(postFrequency)
+            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
 //            ReportAbuseWorker(networkRequestCoordinator: self.requestCoordinator).reportAbusePost(feedIdentifier, notes: postFrequency) { (result) in
 //                DispatchQueue.main.async {
 //                    switch result{

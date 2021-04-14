@@ -13,9 +13,9 @@
                 <outlet property="cancelButton" destination="mx0-Rd-dyy" id="sKm-pZ-c4R"/>
                 <outlet property="closeLabel" destination="1di-dQ-sfS" id="OPQ-PO-LXY"/>
                 <outlet property="confirmedButton" destination="ejB-Od-f3K" id="vaa-mJ-ovd"/>
+                <outlet property="frequencyLabel" destination="uhB-4H-iIj" id="uCx-th-LrN"/>
                 <outlet property="messageLabel" destination="p98-tb-pDk" id="3Kj-xc-nWa"/>
                 <outlet property="postFrequency" destination="5eD-3n-4md" id="jZd-5f-ggW"/>
-                <outlet property="selectPinPostFrequency" destination="X8E-lb-cnW" id="xYy-m0-Wxe"/>
                 <outlet property="titleLabel" destination="iRp-S8-VVW" id="3d5-hu-5bp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -146,33 +146,28 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eD-3n-4md">
                                     <rect key="frame" x="30" y="8" width="354" height="40"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8E-lb-cnW">
-                                            <rect key="frame" x="8" y="0.0" width="346" height="40"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                            <state key="normal" title="1 week">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="pinPostFrequncyButtonPressedWithSender:" destination="-1" eventType="touchUpInside" id="zYE-f6-Ojq"/>
-                                            </connections>
-                                        </button>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="GgV-MC-PA9">
                                             <rect key="frame" x="314" y="7" width="40" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Cyd-E6-uA5"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhB-4H-iIj">
+                                            <rect key="frame" x="8" y="0.0" width="346" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="GgV-MC-PA9" firstAttribute="top" secondItem="5eD-3n-4md" secondAttribute="top" constant="7" id="0pW-D1-47O"/>
                                         <constraint firstAttribute="bottom" secondItem="GgV-MC-PA9" secondAttribute="bottom" constant="7" id="6k1-0K-aDj"/>
-                                        <constraint firstItem="X8E-lb-cnW" firstAttribute="leading" secondItem="5eD-3n-4md" secondAttribute="leading" constant="8" id="6py-8a-wHg"/>
                                         <constraint firstAttribute="trailing" secondItem="GgV-MC-PA9" secondAttribute="trailing" id="80v-pZ-IEI"/>
-                                        <constraint firstAttribute="trailing" secondItem="X8E-lb-cnW" secondAttribute="trailing" id="8Is-Zb-lXU"/>
-                                        <constraint firstItem="X8E-lb-cnW" firstAttribute="top" secondItem="5eD-3n-4md" secondAttribute="top" id="FOi-mS-5ar"/>
-                                        <constraint firstAttribute="bottom" secondItem="X8E-lb-cnW" secondAttribute="bottom" id="Gsi-k8-sPJ"/>
+                                        <constraint firstItem="uhB-4H-iIj" firstAttribute="leading" secondItem="5eD-3n-4md" secondAttribute="leading" constant="8" id="SXy-19-vTn"/>
+                                        <constraint firstItem="uhB-4H-iIj" firstAttribute="top" secondItem="5eD-3n-4md" secondAttribute="top" id="WBU-xR-BZV"/>
+                                        <constraint firstAttribute="bottom" secondItem="uhB-4H-iIj" secondAttribute="bottom" id="ZQl-aF-zNV"/>
+                                        <constraint firstAttribute="trailing" secondItem="uhB-4H-iIj" secondAttribute="trailing" id="f9x-eP-2kz"/>
                                     </constraints>
                                 </view>
                             </subviews>

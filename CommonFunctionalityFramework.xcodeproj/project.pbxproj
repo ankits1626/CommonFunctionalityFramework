@@ -214,6 +214,9 @@
 		BE0399DA25A3104A00031610 /* FeedsGIFSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399DC25A3104A00031610 /* FeedsGIFSelectorViewController.xib */; };
 		BE0399EF25A3106D00031610 /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0399F125A3106D00031610 /* PollsActiveDaysTableViewCell.xib */; };
 		BE039A0425A310A700031610 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE039A0625A310A700031610 /* PostEditorViewController.xib */; };
+		BE9261C82627017C0012E290 /* ItemsDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9261C72627017C0012E290 /* ItemsDropDown.swift */; };
+		BE9261CB262702250012E290 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9261C9262702250012E290 /* DropDownTableViewCell.swift */; };
+		BE9261CC262702250012E290 /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE9261CA262702250012E290 /* DropDownTableViewCell.xib */; };
 		BEA1BAB625AD5CA10021942A /* FeedTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA1BAB825AD5CA10021942A /* FeedTextTableViewCell.xib */; };
 		BEB6F00B2624666C00216A4F /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6F0092624666C00216A4F /* PintoTopConfirmationDrawer.swift */; };
 		BEB6F00C2624666C00216A4F /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB6F00A2624666C00216A4F /* PintoTopConfirmationDrawer.xib */; };
@@ -520,6 +523,9 @@
 		BE039A1425A310B900031610 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
 		BE039A1625A310BA00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
 		BE039A1825A310BC00031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BE9261C72627017C0012E290 /* ItemsDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
+		BE9261C9262702250012E290 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
+		BE9261CA262702250012E290 /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
 		BEA1BAB725AD5CA10021942A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedTextTableViewCell.xib; sourceTree = "<group>"; };
 		BEA1BABA25AD5CA30021942A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
 		BEA1BABC25AD5CA50021942A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedTextTableViewCell.strings"; sourceTree = "<group>"; };
@@ -1420,6 +1426,7 @@
 		98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
 			isa = PBXGroup;
 			children = (
+				BE9261C62627014A0012E290 /* DropDown */,
 				9872653E244DEC3D00CD4530 /* RawRepresentable */,
 				987264AB244DD47300CD4530 /* CoreData */,
 				98B02FC3241A772300CB8690 /* Reusable Components */,
@@ -1697,6 +1704,16 @@
 			path = Workers;
 			sourceTree = "<group>";
 		};
+		BE9261C62627014A0012E290 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				BE9261C72627017C0012E290 /* ItemsDropDown.swift */,
+				BE9261C9262702250012E290 /* DropDownTableViewCell.swift */,
+				BE9261CA262702250012E290 /* DropDownTableViewCell.xib */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
 		BEB6F00826245DE600216A4F /* PinToTopConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1822,6 +1839,7 @@
 				98BC8A0F241A1775007C175D /* FeedEditorTitleTableViewCell.xib in Resources */,
 				98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */,
 				9868C1002419EB2D00B12321 /* FeedsComposerDrawer.xib in Resources */,
+				BE9261CC262702250012E290 /* DropDownTableViewCell.xib in Resources */,
 				9868C0BA2412100B00B12321 /* MediaItemCollectionViewCell.xib in Resources */,
 				98B02FBC241A50DA00CB8690 /* GroupCell.xib in Resources */,
 				987226812461806E00809D7A /* PollOptionsVotedTableViewCell.xib in Resources */,
@@ -1950,6 +1968,7 @@
 				98AC087624ECAF6400E6F965 /* CFFThemeManagerProtocol.swift in Sources */,
 				987D0BB32583DA58001A0F07 /* MockUserListProvider.swift in Sources */,
 				98722683246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift in Sources */,
+				BE9261CB262702250012E290 /* DropDownTableViewCell.swift in Sources */,
 				987D0BA92583DA58001A0F07 /* ASMention+Extensions.swift in Sources */,
 				9811DD59241B618A003B91FD /* FloatingMenuOptions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
@@ -1962,6 +1981,7 @@
 				9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
 				9868C10B2419F37C00B12321 /* SlideInPresentationController.swift in Sources */,
+				BE9261C82627017C0012E290 /* ItemsDropDown.swift in Sources */,
 				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,
 				9811DD52241AC5E5003B91FD /* UIDevice+Extension.swift in Sources */,
 				98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */,
