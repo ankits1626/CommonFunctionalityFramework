@@ -299,33 +299,35 @@ extension FeedsDetailViewController : FeedsDelegate{
         }
     }
     
-    func pinToPost(feedIdentifier : Int64) {
+    func pinToPost(feedIdentifier : Int64, isAlreadyPinned: Bool) {
         print("<<<<<<Feed identifier-\(feedIdentifier)")
-        showPintoPostConfirmation(feedIdentifier)
+        showPintoPostConfirmation(feedIdentifier, isAlreadyPinned: isAlreadyPinned)
     }
     
-    private func showPintoPostConfirmation(_ feedIdentifier : Int64){
+    private func showPintoPostConfirmation(_ feedIdentifier : Int64, isAlreadyPinned: Bool){
             let pinPostDrawer = PintoTopConfirmationDrawer(
                 nibName: "PintoTopConfirmationDrawer",
                 bundle: Bundle(for: PintoTopConfirmationDrawer.self)
             )
             pinPostDrawer.themeManager = themeManager
+        pinPostDrawer.isAlreadyPinned = isAlreadyPinned
             pinPostDrawer.targetFeed = targetFeedItem
             pinPostDrawer.confirmedCompletion = {postFrequency in
-                print(postFrequency)
-    //            ReportAbuseWorker(networkRequestCoordinator: self.requestCoordinator).reportAbusePost(feedIdentifier, notes: postFrequency) { (result) in
-    //                DispatchQueue.main.async {
-    //                    switch result{
-    //                    case .Success(_):
-    //                        ErrorDisplayer.showError(errorMsg: "Reported successfully.".localized) { (_) in}
-    //                    case .SuccessWithNoResponseData:
-    //                        fallthrough
-    //                    case .Failure(_):
-    //                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.".localized) { (_) in}
-    //                    }
-    //                }
-    //
-    //            }
+                PostPinWorker(networkRequestCoordinator: self.requestCoordinator).postPin(feedIdentifier, frequency: postFrequency) { (result) in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .Success(_):
+                            ErrorDisplayer.showError(errorMsg: "Pinned successfully", okActionHandler: { (_) in
+                                NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
+                                self.navigationController?.popViewController(animated: true)
+                            })
+                        case .SuccessWithNoResponseData:
+                            fallthrough
+                        case .Failure(_):
+                            ErrorDisplayer.showError(errorMsg: "Failed to pin post, please try again.".localized) { (_) in}
+                        }
+                    }
+                }
             }
             do{
                 try pinPostDrawer.presentDrawer()

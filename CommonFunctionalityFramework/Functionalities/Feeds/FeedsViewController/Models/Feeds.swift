@@ -41,7 +41,7 @@ protocol FeedsItemProtocol : Likeable {
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func isPinToPost() -> Bool {
-        return true
+        return isPriority
     }
     
     func shouldShowDetail() -> Bool {

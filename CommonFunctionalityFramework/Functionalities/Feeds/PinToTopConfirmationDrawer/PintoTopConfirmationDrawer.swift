@@ -132,7 +132,7 @@ class PintoTopConfirmationDrawer: UIViewController {
     @IBAction private func confirmedButtonPressed(){
         if let unwrappedCompletion = confirmedCompletion{
             dismiss(animated: true) {
-                unwrappedCompletion(self.frequencyLabel.text ?? "")
+                unwrappedCompletion(self.frequencyLabel.text ?? "1 week")
             }
         }
     }

@@ -70,12 +70,20 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                 cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
                 cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             }
+            cell.pinPostButton?.setImage(
+                UIImage(
+                    named: feed.isPinToPost() ? "coloredPinPostIcon" : "pinPostIcon",
+                    in: Bundle(for: FeedTopTableViewCell.self),
+                    compatibleWith: nil),
+                for: .normal
+            )
             cell.containerView?.clipsToBounds = true
             cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             cell.pinPostButton?.handleControlEvent(
                 event: .touchUpInside, buttonActionBlock: {
                     inputModel.delegate?.pinToPost(
-                        feedIdentifier: feed.feedIdentifier
+                        feedIdentifier: feed.feedIdentifier,
+                        isAlreadyPinned: feed.isPinToPost()
                     )
                 }
             )

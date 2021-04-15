@@ -220,6 +220,7 @@
 		BEA1BAB625AD5CA10021942A /* FeedTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA1BAB825AD5CA10021942A /* FeedTextTableViewCell.xib */; };
 		BEB6F00B2624666C00216A4F /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6F0092624666C00216A4F /* PintoTopConfirmationDrawer.swift */; };
 		BEB6F00C2624666C00216A4F /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB6F00A2624666C00216A4F /* PintoTopConfirmationDrawer.xib */; };
+		BED86CA5262801CD008F2EB9 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED86CA4262801CD008F2EB9 /* PostPinWorker.swift */; };
 		BED94819251C9FFC00EC96BD /* CommonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED94818251C9FFC00EC96BD /* CommonLoader.swift */; };
 /* End PBXBuildFile section */
 
@@ -538,6 +539,7 @@
 		BEA1BACA25AD5CB40021942A /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
 		BEB6F0092624666C00216A4F /* PintoTopConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintoTopConfirmationDrawer.swift; sourceTree = "<group>"; };
 		BEB6F00A2624666C00216A4F /* PintoTopConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PintoTopConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BED86CA4262801CD008F2EB9 /* PostPinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPinWorker.swift; sourceTree = "<group>"; };
 		BED94818251C9FFC00EC96BD /* CommonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLoader.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1717,10 +1719,19 @@
 		BEB6F00826245DE600216A4F /* PinToTopConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
+				BED86CA3262801AD008F2EB9 /* Worker */,
 				BEB6F0092624666C00216A4F /* PintoTopConfirmationDrawer.swift */,
 				BEB6F00A2624666C00216A4F /* PintoTopConfirmationDrawer.xib */,
 			);
 			path = PinToTopConfirmationDrawer;
+			sourceTree = "<group>";
+		};
+		BED86CA3262801AD008F2EB9 /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				BED86CA4262801CD008F2EB9 /* PostPinWorker.swift */,
+			);
+			path = Worker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1962,6 +1973,7 @@
 				9868C0E12412430700B12321 /* UIView+XibSetup.swift in Sources */,
 				BEB6F00B2624666C00216A4F /* PintoTopConfirmationDrawer.swift in Sources */,
 				9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */,
+				BED86CA5262801CD008F2EB9 /* PostPinWorker.swift in Sources */,
 				9811DD1D241AB3B2003B91FD /* UnauthorizedHandler.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
