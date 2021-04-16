@@ -77,6 +77,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                     compatibleWith: nil),
                 for: .normal
             )
+            cell.pinPostButton?.isHidden = !feed.isLoggedUserAdmin()
             cell.containerView?.clipsToBounds = true
             cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             cell.pinPostButton?.handleControlEvent(

@@ -36,12 +36,17 @@ protocol FeedsItemProtocol : Likeable {
     func isFeedReportAbuseAllowed() -> Bool
     func isActionsAllowed() -> Bool
     func isPinToPost() -> Bool
+    func isLoggedUserAdmin() -> Bool
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func isPinToPost() -> Bool {
         return isPriority
+    }
+    
+    func isLoggedUserAdmin() -> Bool {
+        return isAdminUser
     }
     
     func shouldShowDetail() -> Bool {
@@ -69,6 +74,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private var isLikedByMe : Bool
     private var numberOfComments : Int64
     private let isPriority : Bool
+    private let isAdminUser : Bool
     
     init(input : [String : Any]){
         self.rawFeedDictionary = input
@@ -76,6 +82,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         numberOfLikes = rawFeedDictionary["appreciation_count"] as? Int64 ?? 0
         numberOfComments = rawFeedDictionary["comments_count"] as? Int64 ?? 0
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
+        isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
     }
     
     init(managedObject : NSManagedObject){
@@ -84,6 +91,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         self.numberOfLikes = (managedObject as! ManagedPost).numberOfLikes
         numberOfComments = (managedObject as! ManagedPost).numberOfComments
         isPriority = (managedObject as! ManagedPost).isPriority
+        isAdminUser = (managedObject as! ManagedPost).isAdmin
     }
     
     @discardableResult func getManagedObject() -> NSManagedObject{
@@ -108,6 +116,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         managedPost.numberOfLikes = numberOfLikes
         managedPost.numberOfComments = numberOfComments
         managedPost.isPriority = isPriority
+        managedPost.isAdmin = isAdminUser
         return managedPost
     }
     

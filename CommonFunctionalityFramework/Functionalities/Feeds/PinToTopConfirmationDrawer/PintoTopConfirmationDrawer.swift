@@ -18,12 +18,13 @@ class PintoTopConfirmationDrawer: UIViewController {
     weak var themeManager: CFFThemeManagerProtocol?
     @IBOutlet private weak var frequencyLabel : UILabel!
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
-    var confirmedCompletion : ((_ selectedFrequency : String) -> Void)?
+    var confirmedCompletion : ((_ selectedFrequency : Int) -> Void)?
     var targetFeed : FeedsItemProtocol?
     var isAlreadyPinned : Bool = false
     let dropDown = ItemsDropDown()
     var dropDownRowHeight: CGFloat = 40
     var frquencyModelArr: [PostPinDropDownValue] = [PostPinDropDownValue]()
+    var selectedFrequencyValue : Int = 7
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,9 @@ class PintoTopConfirmationDrawer: UIViewController {
     
     private func populateFrequencyModelArray(){
         let frequency1 = PostPinDropDownValue(frequencyName: "1 day", frequencyID: 1)
-        let frequency2 = PostPinDropDownValue(frequencyName: "1 week", frequencyID: 2)
-        let frequency3 = PostPinDropDownValue(frequencyName: "1 month", frequencyID: 3)
-        let frequency4 = PostPinDropDownValue(frequencyName: "Always", frequencyID: 4)
+        let frequency2 = PostPinDropDownValue(frequencyName: "1 week", frequencyID: 7)
+        let frequency3 = PostPinDropDownValue(frequencyName: "1 month", frequencyID: 30)
+        let frequency4 = PostPinDropDownValue(frequencyName: "Always", frequencyID: 0)
         self.frquencyModelArr.append(frequency1)
         self.frquencyModelArr.append(frequency2)
         self.frquencyModelArr.append(frequency3)
@@ -132,7 +133,7 @@ class PintoTopConfirmationDrawer: UIViewController {
     @IBAction private func confirmedButtonPressed(){
         if let unwrappedCompletion = confirmedCompletion{
             dismiss(animated: true) {
-                unwrappedCompletion(self.frequencyLabel.text ?? "1 week")
+                unwrappedCompletion(self.selectedFrequencyValue)
             }
         }
     }
@@ -157,6 +158,7 @@ extension PintoTopConfirmationDrawer: MakeDropDownDataSourceProtocol{
     
     func selectItemInDropDown(indexPos: Int, makeDropDownIdentifier: String) {
         self.frequencyLabel.text = self.frquencyModelArr[indexPos].frequencyName
+        self.selectedFrequencyValue = self.frquencyModelArr[indexPos].frequencyID
         self.dropDown.hideDropDown()
     }
     

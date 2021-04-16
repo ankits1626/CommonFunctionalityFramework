@@ -16,7 +16,7 @@ class PostPinWorker  {
     init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func postPin(_ postId: Int64, frequency: String?, completionHandler: @escaping PinPostWorkerResultHandler) {
+    func postPin(_ postId: Int64, frequency: Int?, completionHandler: @escaping PinPostWorkerResultHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: PinPostRequestGenerator(_feedIdentifier: postId, _selectedFrequency: frequency, networkRequestCoordinator: networkRequestCoordinator),
@@ -35,8 +35,8 @@ class PinPostRequestGenerator: APIRequestGeneratorProtocol  {
     var requestBuilder: APIRequestBuilderProtocol
     private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
     var feedIdentifier : Int64
-    var selectedFrequency: String?
-    init(_feedIdentifier: Int64, _selectedFrequency: String?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    var selectedFrequency: Int?
+    init(_feedIdentifier: Int64, _selectedFrequency: Int?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
         self.feedIdentifier = _feedIdentifier
         self.selectedFrequency = _selectedFrequency
         self.networkRequestCoordinator = networkRequestCoordinator
@@ -49,7 +49,10 @@ class PinPostRequestGenerator: APIRequestGeneratorProtocol  {
                 let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
                     url: URL(string: baseUrl + "feeds/api/posts/pinned_post/"),
                     method: .POST,
-                    httpBodyDict: ["post_id" : self.feedIdentifier]
+                    httpBodyDict: [
+                        "post_id" : self.feedIdentifier,
+                        "prior_till" : self.selectedFrequency == 0 ? nil : self.selectedFrequency ?? nil
+                    ]
                 )
                 return req
             }

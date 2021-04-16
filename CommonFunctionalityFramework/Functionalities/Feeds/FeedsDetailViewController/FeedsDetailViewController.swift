@@ -317,7 +317,7 @@ extension FeedsDetailViewController : FeedsDelegate{
                     DispatchQueue.main.async {
                         switch result{
                         case .Success(_):
-                            ErrorDisplayer.showError(errorMsg: "Pinned successfully", okActionHandler: { (_) in
+                            ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Pinned removed successfully" : "Pinned added successfully", okActionHandler: { (_) in
                                 NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                 self.navigationController?.popViewController(animated: true)
                             })
