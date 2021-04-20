@@ -14,6 +14,7 @@
                 <outlet property="closeLabel" destination="1di-dQ-sfS" id="OPQ-PO-LXY"/>
                 <outlet property="confirmedButton" destination="ejB-Od-f3K" id="vaa-mJ-ovd"/>
                 <outlet property="frequencyLabel" destination="uhB-4H-iIj" id="uCx-th-LrN"/>
+                <outlet property="frequencyView" destination="HnV-Es-coj" id="Zzt-ZK-MUj"/>
                 <outlet property="messageLabel" destination="p98-tb-pDk" id="3Kj-xc-nWa"/>
                 <outlet property="postFrequency" destination="5eD-3n-4md" id="jZd-5f-ggW"/>
                 <outlet property="titleLabel" destination="iRp-S8-VVW" id="3d5-hu-5bp"/>
@@ -106,10 +107,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPb-ly-1h2" userLabel="Title Container">
-                            <rect key="frame" x="0.0" y="74" width="414" height="30"/>
+                            <rect key="frame" x="0.0" y="74" width="414" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Poll" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRp-S8-VVW">
-                                    <rect key="frame" x="164.5" y="9.5" width="85.5" height="20.5"/>
+                                    <rect key="frame" x="164.5" y="39.5" width="85.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -118,12 +119,12 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="iRp-S8-VVW" secondAttribute="bottom" id="7ng-b4-dic"/>
-                                <constraint firstAttribute="height" constant="30" id="Kca-jL-m4K"/>
+                                <constraint firstAttribute="height" constant="60" id="Kca-jL-m4K"/>
                                 <constraint firstItem="iRp-S8-VVW" firstAttribute="centerX" secondItem="qPb-ly-1h2" secondAttribute="centerX" id="Ukh-aY-1Ke"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DZ-mp-EeS" userLabel="Message Conatiner">
-                            <rect key="frame" x="0.0" y="104" width="414" height="60"/>
+                            <rect key="frame" x="0.0" y="134" width="414" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="vv" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p98-tb-pDk">
                                     <rect key="frame" x="15" y="10" width="384" height="18"/>
@@ -136,7 +137,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="p98-tb-pDk" secondAttribute="trailing" constant="15" id="MyL-Ny-jZq"/>
                                 <constraint firstItem="p98-tb-pDk" firstAttribute="leading" secondItem="7DZ-mp-EeS" secondAttribute="leading" constant="15" id="c98-c2-CXN"/>
-                                <constraint firstAttribute="height" constant="60" id="orG-k7-GRw"/>
+                                <constraint firstAttribute="height" constant="30" id="orG-k7-GRw"/>
                                 <constraint firstItem="p98-tb-pDk" firstAttribute="top" secondItem="7DZ-mp-EeS" secondAttribute="top" constant="10" id="yQa-m6-wbX"/>
                             </constraints>
                         </view>

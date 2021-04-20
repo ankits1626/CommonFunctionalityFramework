@@ -15,6 +15,7 @@ class PintoTopConfirmationDrawer: UIViewController {
     @IBOutlet private weak var confirmedButton : UIButton?
     @IBOutlet private weak var cancelButton : UIButton?
     @IBOutlet private weak var postFrequency : UIView?
+    @IBOutlet private weak var frequencyView : UIView?
     weak var themeManager: CFFThemeManagerProtocol?
     @IBOutlet private weak var frequencyLabel : UILabel!
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
@@ -77,11 +78,13 @@ class PintoTopConfirmationDrawer: UIViewController {
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
         if isAlreadyPinned {
-            titleLabel?.text = "Make Priority".localized
-            messageLabel?.text = "Making this post as pinned will remove the older pinned post. Are you sure you want to proceed?".localized
+            titleLabel?.text = "Unpin the post".localized
+            frequencyView?.alpha = 0
+            messageLabel?.text = "".localized
         }else{
-            titleLabel?.text = "Make Priority".localized
-            messageLabel?.text = "Do you want to make this post a priority and pin on top?".localized
+            titleLabel?.text = "Pin this post to top".localized
+            frequencyView?.alpha = 1
+            messageLabel?.text = "".localized
         }
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
