@@ -240,10 +240,10 @@ class SessionSecurityManager : NSObject, URLSessionDelegate {
             completionHandler(.cancelAuthenticationChallenge, nil);
             return
         }
-        let localKeys = ["4Zh8KOjv022VMgvYZh9R08dD5bKu+98gLnBoXpu3TwU=",
-                         "RkhWTcfJAQN/YxOR12VkPo+PhmIoSfWd/JVkg44einY=",
-                         "x4QzPSC810K5/cMjb05Qm4k3Bw5zBn4lTdO/nEW/Td4=",
-                         "vRU+17BDT2iGsXvOi76E7TQMcTLXAqj0+jGPdW7L1vM="]
+        let localKeys = ["47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+                         "83cWakwMeZJYVKBUj1sAb6uyThrnGbq99waoeBZff1g=",
+                         "fbT/gH90IH3fKlj7VF3NXnZlEawBvbxM9pBsnsVjcaI=",
+                         "gRapsZTRzcmiMJZGJ3HImt/WzSORwmdo8PNZUK/2Dag="]
 
         if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0),
            let serverPublicKey = publicKey(for: serverCertificate),
