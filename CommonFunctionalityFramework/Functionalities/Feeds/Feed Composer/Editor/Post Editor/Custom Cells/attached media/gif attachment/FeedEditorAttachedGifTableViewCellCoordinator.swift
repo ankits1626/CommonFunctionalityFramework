@@ -111,7 +111,7 @@ class FeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
             cell.removeButton?.isHidden = true
             cell.imageTapButton?.backgroundColor = .clear
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: .pinToPostCellBorderColor)
+                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
                 cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }

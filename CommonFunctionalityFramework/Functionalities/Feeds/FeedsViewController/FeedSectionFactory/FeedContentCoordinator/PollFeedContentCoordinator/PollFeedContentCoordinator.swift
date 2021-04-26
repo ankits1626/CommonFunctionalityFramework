@@ -84,7 +84,8 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             targetIndexpath: inputModel.targetIndexpath,
             targetTableView: targetTableView!,
             datasource: feedsDataSource,
-            isFeedDetailPage: false
+            isFeedDetailPage: false,
+            themeManager: themeManager
             )
         )
     }

@@ -39,7 +39,7 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             borderWidth: BorderWidths.standardBorderWidth
             )
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: .pinToPostCellBorderColor)
+                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
                 cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }

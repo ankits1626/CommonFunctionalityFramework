@@ -39,7 +39,7 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: .pinToPostCellBorderColor)
+                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
                 cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }

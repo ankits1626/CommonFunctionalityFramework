@@ -13,6 +13,7 @@ struct FeedCellDequeueModel {
     var targetTableView : UITableView
     var datasource: FeedsDatasource
     var isFeedDetailPage : Bool
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 struct FeedCellLoadDataModel {
@@ -65,7 +66,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
                 cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
-                cell.containerView?.addBorders(edges: [.top, .left, .right], color: .pinToPostCellBorderColor)
+                cell.containerView?.addBorders(edges: [.top, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
                 cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
                 cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)

@@ -117,7 +117,8 @@ class FeedDetailSectionFactory {
             targetIndexpath: indexPath,
             targetTableView: tableView,
             datasource: feedDataSource,
-            isFeedDetailPage: true
+            isFeedDetailPage: true,
+            themeManager: themeManager
             )
         )
         cell.backgroundColor = .clear

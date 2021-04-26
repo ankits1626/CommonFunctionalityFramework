@@ -31,7 +31,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.clapsCountLabel?.textColor = UIColor.getSubTitleTextColor()
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
                 cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 0)
-                cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .pinToPostCellBorderColor)
+                cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
                 cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
                 cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
