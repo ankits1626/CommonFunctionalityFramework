@@ -26,8 +26,8 @@ class PollBottomTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                 cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
                 cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
             }
-            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
             cell.messageLabel?.textColor = .black
             cell.messageLabel?.font = .Highlighter1
             cell.messageLabel?.text = feed.getPoll()?.getPollInfo()
