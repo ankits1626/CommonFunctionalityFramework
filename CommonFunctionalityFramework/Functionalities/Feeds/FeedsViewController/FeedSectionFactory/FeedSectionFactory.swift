@@ -19,6 +19,7 @@ protocol FeedsDatasource {
     func getClappedByUsers() -> [ClappedByUser]?
     func getCommentProvider() -> FeedsDetailCommentsProviderProtocol?
     func showShowFullfeedDescription() -> Bool
+    func shouldShowMenuOptionForFeed() -> Bool
 }
 
 protocol FeedsDelegate : class {

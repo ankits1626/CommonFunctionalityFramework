@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="cameraContainerViewView" destination="G6G-U9-vTq" id="PI6-lW-BIo"/>
+                <outlet property="composeBarContainerHeightConstraint" destination="Lg8-3Z-SpY" id="xYa-xI-idB"/>
                 <outlet property="composeLabel" destination="IWd-8n-oPd" id="v2t-wF-ycy"/>
                 <outlet property="feedsTable" destination="VdA-C0-ggV" id="E70-6f-TtD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,7 +27,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Bnc-tH-YUH">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfi-FN-T3m" userLabel="top bar">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfi-FN-T3m" userLabel="top bar">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iel-A5-eoz">
@@ -61,7 +63,7 @@
                                                                     <rect key="frame" x="40" y="0.0" width="286" height="37"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWd-8n-oPd">
-                                                                            <rect key="frame" x="0.0" y="8.5" width="42" height="20.5"/>
+                                                                            <rect key="frame" x="0.0" y="8.5" width="41.5" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -86,7 +88,7 @@
                                                         <constraint firstItem="Ghy-aY-beu" firstAttribute="top" secondItem="mDI-8V-Dd4" secondAttribute="top" id="qdL-y7-5P4"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kui-lY-C81">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kui-lY-C81">
                                                     <rect key="frame" x="0.0" y="0.0" width="351" height="44"/>
                                                     <connections>
                                                         <action selector="openFeedComposerSelectionDrawer" destination="-1" eventType="touchUpInside" id="Vor-gz-3uH"/>
@@ -114,14 +116,14 @@
                                                             <rect key="frame" x="9.5" y="7.5" width="18" height="22"/>
                                                             <state key="normal" image="camera"/>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkg-vJ-1ja">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkg-vJ-1ja">
                                                             <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
                                                             <connections>
                                                                 <action selector="openImagePickerToComposePost" destination="-1" eventType="touchUpInside" id="T7C-cH-rXc"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="dkg-vJ-1ja" firstAttribute="leading" secondItem="G6G-U9-vTq" secondAttribute="leading" id="7pz-KR-6pc"/>
                                                         <constraint firstItem="dkg-vJ-1ja" firstAttribute="top" secondItem="G6G-U9-vTq" secondAttribute="top" id="Cci-Kq-AJy"/>
@@ -174,6 +176,7 @@
                     </subviews>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bnc-tH-YUH" secondAttribute="trailing" id="C0W-k3-JS4"/>
@@ -181,12 +184,14 @@
                 <constraint firstItem="Bnc-tH-YUH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QlB-cL-RAb"/>
                 <constraint firstItem="Bnc-tH-YUH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Xaj-Lc-nGd"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="94"/>
         </view>
     </objects>
     <resources>
-        <image name="camera" width="18" height="16"/>
+        <image name="camera" width="18" height="14"/>
         <image name="compose" width="17" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

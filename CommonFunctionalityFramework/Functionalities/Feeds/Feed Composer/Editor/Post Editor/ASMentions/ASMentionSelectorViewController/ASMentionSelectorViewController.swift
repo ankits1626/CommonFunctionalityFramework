@@ -17,7 +17,7 @@ class ASMentionSelectorViewController: UIViewController {
     
     var completion : UserPickerCompletionBlock?
     weak var pickerDelegate : TagUserPickerDelegate?
-    var networkRequestCoordinator : CFFNetwrokRequestCoordinatorProtocol!
+    var networkRequestCoordinator : CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher: CFFMediaCoordinatorProtocol?
     var isAddedToParent = false
     private lazy var listFetcher: TagUserListProvider = {

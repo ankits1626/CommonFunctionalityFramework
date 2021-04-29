@@ -25,8 +25,8 @@ typealias PostLikeListFetcherHandler = (APICallResult<FetchedLikesModel>) -> Voi
 class PostLikeListFetcher  {
     typealias ResultType = FetchedLikesModel
     var commonAPICall : CommonAPICall<PostLikeListFetchDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func fetchLikeList(feedIdentifier: Int64, nextPageUrl : String?,completionHandler: @escaping PostLikeListFetcherHandler) {
@@ -50,10 +50,10 @@ class PostLikeListFetcher  {
 class PostLikeListFetchRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var nextPageUrl : String?
     var feedIdentifier : Int64
-    init(feedIdentifier: Int64, nextPageUrl : String?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init(feedIdentifier: Int64, nextPageUrl : String?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
         self.nextPageUrl = nextPageUrl
         self.networkRequestCoordinator = networkRequestCoordinator

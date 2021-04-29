@@ -22,8 +22,8 @@ struct PostbaleComment {
 class FeedCommentPostWorker  {
     typealias ResultType = [String : Any]
     var commonAPICall : CommonAPICall<FeedCommentPostDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func postComment(comment:PostbaleComment, completionHandler: @escaping PostPublisherHandler) {
@@ -46,12 +46,12 @@ class FeedCommentPostWorker  {
 class FeedCommentPosRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private var comment:PostbaleComment
     private lazy var feedPostRequestBodyGenerator : PostRequestBodyGenerator = {
         return PostRequestBodyGenerator()
     }()
-    init( comment:PostbaleComment, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init( comment:PostbaleComment, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.comment = comment
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())

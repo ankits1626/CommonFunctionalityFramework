@@ -13,8 +13,8 @@ typealias PostDeleteWorkerResultHandler = (APICallResult<Any?>) -> Void
 class PostDeleteWorker  {
     typealias ResultType = Any?
     var commonAPICall : CommonAPICall<PostDeleteDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func deletePost(_ feedIdentifier: Int64,completionHandler: @escaping PostDeleteWorkerResultHandler) {
@@ -34,9 +34,9 @@ class PostDeleteWorker  {
 class PostDeleteRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var feedIdentifier : Int64
-    init( feedIdentifier: Int64, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init( feedIdentifier: Int64, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
