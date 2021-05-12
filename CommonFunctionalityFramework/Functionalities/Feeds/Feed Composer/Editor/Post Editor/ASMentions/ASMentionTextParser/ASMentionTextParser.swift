@@ -19,7 +19,7 @@ class ASMentionTextParser{
                 let sub = part.components(separatedBy: "<tag>")
                 for s in sub{
                     if s.contains("pk"){
-                        let mention = ASMention(s, startPosition: presentableString.count)
+                        let mention = ASMention(s, startPosition: presentableString.utf16.count)
                         mentions.append(mention)
                         presentableString.append(mention.displayName)
                     }else{

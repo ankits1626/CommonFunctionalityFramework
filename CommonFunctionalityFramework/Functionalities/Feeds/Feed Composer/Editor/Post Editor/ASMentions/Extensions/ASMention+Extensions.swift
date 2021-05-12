@@ -23,7 +23,7 @@ extension UITextView{
 
 extension String {
     func index(from: Int) -> Index {
-        return self.index(startIndex, offsetBy: from)
+        return self.utf16.index(utf16.startIndex, offsetBy: from)
     }
 
     func substring(from: Int) -> String {

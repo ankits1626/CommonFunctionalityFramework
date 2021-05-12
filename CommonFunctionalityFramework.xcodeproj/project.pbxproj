@@ -1779,6 +1779,7 @@
 				TargetAttributes = {
 					98B90DDE240CACD90013E9D2 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -2396,6 +2397,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2412,6 +2414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rewardz.-CommonFunctionalityFramework.CommonFunctionalityFramework";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2421,6 +2424,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

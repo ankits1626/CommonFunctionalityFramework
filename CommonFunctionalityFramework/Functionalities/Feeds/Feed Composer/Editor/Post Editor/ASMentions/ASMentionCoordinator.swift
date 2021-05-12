@@ -76,8 +76,8 @@ class ASMentionCoordinator: NSObject{
                 return a.range.location < b.range.location
             })
             mentions?.forEach({ (aMention) in
-                let start = text.index(text.startIndex , offsetBy: aMention.range.location + offsetAfterMentionUpdate)
-                let end = text.index(start, offsetBy: aMention.range.length)
+                let start = text.utf16.index(text.utf16.startIndex , offsetBy: aMention.range.location + offsetAfterMentionUpdate)
+                let end = text.utf16.index(start, offsetBy: aMention.range.length)
                 let postableTag = aMention.getPostableMention()
                 offsetAfterMentionUpdate = offsetAfterMentionUpdate +  postableTag.count - aMention.range.length
                 text.replaceSubrange(start..<end, with: postableTag)
@@ -130,8 +130,8 @@ extension ASMentionCoordinator : UITextViewDelegate{
                 min(startRange.location, range.location) ,
                 max((endRange.location - startRange.location ) + endRange.length, range.length)
             )
-            let start = textView.text.index(val.startIndex, offsetBy: updateRange.location)
-            let end = textView.text.index(start, offsetBy: updateRange.length)
+            let start = textView.text.utf16.index(val.utf16.startIndex, offsetBy: updateRange.location)
+            let end = textView.text.utf16.index(start, offsetBy: updateRange.length)
            
             textView.text.replaceSubrange(start..<end, with: text)
             handleTextUpdate(textView: textView, range: updateRange, text: text)
@@ -201,8 +201,8 @@ extension ASMentionCoordinator : TagUserPickerDelegate{
                let lastTag = substring.lastTagOccurence("@"),
                let val = self.targetTextview?.text{
                 print("<<<<<<<<<<< update started after user selection >>>>>>>>>>>>>>>>")
-                let start = val.index(val.startIndex, offsetBy: lastTag.tagRange.location)
-                let end = val.index(start, offsetBy: lastTag.tagRange.length)
+                let start = val.utf16.index(val.utf16.startIndex, offsetBy: lastTag.tagRange.location)
+                let end = val.utf16.index(start, offsetBy: lastTag.tagRange.length)
                 self.targetTextview!.text.replaceSubrange(start..<end, with: user.displayName)
                 let mention = ASMention(user.getTagMarkup(), startPosition: lastTag.tagRange.location)
                 ASMentionStore.shared.updateStorAfterNewMention(mention, offset: lastTag.tag.count)
@@ -215,3 +215,4 @@ extension ASMentionCoordinator : TagUserPickerDelegate{
         
     }
 }
+
