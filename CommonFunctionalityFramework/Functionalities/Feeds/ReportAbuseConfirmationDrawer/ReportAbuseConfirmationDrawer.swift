@@ -16,6 +16,7 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     @IBOutlet private weak var cancelButton : UIButton?
     weak var themeManager: CFFThemeManagerProtocol?
     @IBOutlet private weak var descriptionText : KMPlaceholderTextView?
+    var bottomSafeArea : CGFloat!
     
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var confirmPressedCompletion :((_ notes: String?) -> Void)?
@@ -71,7 +72,12 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: 380)
+            if #available(iOS 11.0, *) {
+                bottomSafeArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+            }else{
+                bottomSafeArea = 0.0
+            }
+            slideInTransitioningDelegate.direction = .bottom(height: 380 + bottomSafeArea)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
