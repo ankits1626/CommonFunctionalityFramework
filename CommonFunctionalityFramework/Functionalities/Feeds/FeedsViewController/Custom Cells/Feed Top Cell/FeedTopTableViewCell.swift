@@ -8,12 +8,12 @@
 
 import UIKit
 
-class FeedTopTableViewCell: UITableViewCell {
+class FeedTopTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var profileImage : UIImageView?
     @IBOutlet weak var userName : UILabel?
     @IBOutlet weak var departmentName : UILabel?
     @IBOutlet weak var dateLabel : UILabel?
-    @IBOutlet weak var editFeedButton : UIButton?
+    @IBOutlet weak var editFeedButton : BlockButton?
     @IBOutlet weak var containerView : UIView?
     override func awakeFromNib() {
         super.awakeFromNib()

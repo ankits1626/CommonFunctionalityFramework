@@ -8,16 +8,20 @@
 
 import Foundation
 
-struct ClappedByUser  {
-    private let rawClappedByUser : [String : Any]
+struct ClappedByUser : FeedBaseUser  {
+    var rawUserDictionary: [String : Any]
+    
     init(_ rawClappedByUser : [String : Any]) {
-        self.rawClappedByUser = rawClappedByUser
+        self.rawUserDictionary = rawClappedByUser
     }
     
-    func getUserName() -> String?{
-        return nil
-    }
-    func gerProfilePictureImageEndpoint() -> String?{
-        return ""
-    }
+//    func getUserName() -> String?{
+//        return "Test"
+//    }
+//    func getDepartmentName() -> String? {
+//        return "Test Department"
+//    }
+//    func gerProfilePictureImageEndpoint() -> String?{
+//        return "Test"
+//    }
 }

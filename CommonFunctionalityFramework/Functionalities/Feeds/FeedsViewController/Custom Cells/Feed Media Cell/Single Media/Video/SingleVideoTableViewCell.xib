@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                                 </constraints>
                                 <state key="normal" title="Play" image="playIcon"/>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3P-CW-dNK" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3P-CW-dNK" customClass="BlockButton" customModule="RewardzCommonComponents">
                                 <rect key="frame" x="254" y="5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="L9e-Qy-gRb"/>
@@ -40,7 +40,6 @@
                                 <state key="normal" image="closeIcon"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.98823529409999999" green="0.79607843140000001" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Nnl-bg-nJK" firstAttribute="centerX" secondItem="cMC-EN-Igx" secondAttribute="centerX" id="8zj-MA-3kJ"/>
                             <constraint firstItem="bHT-LX-dbW" firstAttribute="top" secondItem="cMC-EN-Igx" secondAttribute="top" id="B8r-tX-LK8"/>
@@ -71,7 +70,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="closeIcon" width="12" height="12"/>
+        <image name="closeIcon" width="16" height="16"/>
         <image name="playIcon" width="22" height="22"/>
     </resources>
 </document>

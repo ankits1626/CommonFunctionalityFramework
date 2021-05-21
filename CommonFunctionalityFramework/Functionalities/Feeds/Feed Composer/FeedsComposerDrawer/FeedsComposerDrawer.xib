@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qta-ZO-s1H">
-                    <rect key="frame" x="0.0" y="44" width="414" height="272"/>
+                    <rect key="frame" x="0.0" y="84" width="414" height="232"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckl-GN-6jv">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="90.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yu6-tC-mHP">
-                                    <rect key="frame" x="54" y="24.5" width="306" height="42"/>
+                                    <rect key="frame" x="54" y="37" width="306" height="42"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="42" id="EgO-5T-vxh"/>
                                     </constraints>
@@ -44,10 +44,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e25-4y-5wJ">
-                            <rect key="frame" x="0.0" y="90.5" width="414" height="91"/>
+                            <rect key="frame" x="0.0" y="116" width="414" height="116"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJ7-bR-yYO">
-                                    <rect key="frame" x="54" y="30.5" width="306" height="30"/>
+                                    <rect key="frame" x="54" y="37" width="306" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="684-FX-oD1"/>
+                                    </constraints>
                                     <state key="normal" title="Button"/>
                                     <connections>
                                         <action selector="createPoll" destination="-1" eventType="touchUpInside" id="ACW-1c-PUb"/>
@@ -55,24 +58,21 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="tJ7-bR-yYO" firstAttribute="leading" secondItem="e25-4y-5wJ" secondAttribute="leading" constant="54" id="SdF-Xx-vQq"/>
-                                <constraint firstItem="tJ7-bR-yYO" firstAttribute="centerY" secondItem="e25-4y-5wJ" secondAttribute="centerY" id="hQ8-bp-EUY"/>
-                                <constraint firstAttribute="trailing" secondItem="tJ7-bR-yYO" secondAttribute="trailing" constant="54" id="hpn-H3-eLw"/>
+                                <constraint firstItem="tJ7-bR-yYO" firstAttribute="centerY" secondItem="e25-4y-5wJ" secondAttribute="centerY" id="smD-Qb-GeV"/>
                             </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jza-eR-Vo7">
-                            <rect key="frame" x="0.0" y="181.5" width="414" height="90.5"/>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="tJ7-bR-yYO" firstAttribute="width" secondItem="yu6-tC-mHP" secondAttribute="height" multiplier="51:7" id="Tg0-SO-2Ob"/>
+                        <constraint firstItem="tJ7-bR-yYO" firstAttribute="centerX" secondItem="yu6-tC-mHP" secondAttribute="centerX" id="3FT-VR-yaa"/>
+                        <constraint firstItem="tJ7-bR-yYO" firstAttribute="width" secondItem="yu6-tC-mHP" secondAttribute="width" id="8bq-YY-0mF"/>
+                        <constraint firstItem="tJ7-bR-yYO" firstAttribute="leading" secondItem="yu6-tC-mHP" secondAttribute="leading" id="jvX-hI-Ujj"/>
                     </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Qta-ZO-s1H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="80g-QH-RHZ"/>
-                <constraint firstItem="Qta-ZO-s1H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cu4-6c-itf"/>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="cu4-6c-itf"/>
                 <constraint firstItem="Qta-ZO-s1H" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="hF2-gH-xlu"/>
                 <constraint firstItem="Qta-ZO-s1H" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yGy-oj-cz5"/>
             </constraints>

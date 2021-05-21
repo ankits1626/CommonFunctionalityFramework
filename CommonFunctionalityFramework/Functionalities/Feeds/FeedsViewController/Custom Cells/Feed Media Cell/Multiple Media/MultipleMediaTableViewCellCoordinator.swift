@@ -16,23 +16,28 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     private var cachedMediCollectionCoordinators = [IndexPath : FeedsMediaCollectionCoordinator]()
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-        switch feed.getMediaCountState() {
-            
-        case .None:
-            return 0
-        case .OneMediaItemPresent(_):
-            return 0
-        case .TwoMediaItemPresent:
-            return 122
-        case .MoreThanTwoMediItemPresent:
-            return 89
+        if feed.hasOnlyMedia(){
+            return 114
+        }else{
+            switch feed.getMediaCountState() {
+                
+            case .None:
+                return 0
+            case .OneMediaItemPresent(_):
+                return 0
+            case .TwoMediaItemPresent:
+                return 122
+            case .MoreThanTwoMediItemPresent:
+                return 89
+            }
         }
+        
     }
     
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }
@@ -45,7 +50,8 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
                 InitFeedsMediaCollectionCoordinatorModel(
                     feedsDatasource: inputModel.datasource,
                     feedItemIndex: inputModel.targetIndexpath.section,
-                    mediaFetcher: inputModel.mediaFetcher
+                    mediaFetcher: inputModel.mediaFetcher,
+                    delegate: inputModel.delegate
                 )
             )
             cachedMediCollectionCoordinators[inputModel.targetIndexpath] = coordinator

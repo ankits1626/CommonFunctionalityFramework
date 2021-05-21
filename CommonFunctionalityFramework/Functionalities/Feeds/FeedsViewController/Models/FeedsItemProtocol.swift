@@ -8,17 +8,13 @@
 
 import UIKit
 
-enum FeedMediaItemType{
-    case Image
-    case Video
-}
 
-protocol FeedMediaItemProtocol {
-    func getMediaType() -> FeedMediaItemType
-    func getCoverImageUrl() -> String?
-}
 
-struct FeedVideoItem :  FeedMediaItemProtocol{
+struct FeedVideoItem :  MediaItemProtocol{
+    func getRemoteId() -> Int {
+        return rawVideo["id"] as! Int
+    }
+    
     private let rawVideo : [String : Any]
     init(_ rawVideo : [String : Any]) {
         self.rawVideo = rawVideo
@@ -33,7 +29,11 @@ struct FeedVideoItem :  FeedMediaItemProtocol{
     }
 }
 
-struct FeedImageItem :  FeedMediaItemProtocol{
+struct FeedImageItem :  MediaItemProtocol{
+    func getRemoteId() -> Int {
+        return rawImage["id"] as! Int
+    }
+    
     private let rawImage : [String : Any]
     init(_ rawImage : [String : Any]) {
         self.rawImage = rawImage
@@ -47,32 +47,12 @@ struct FeedImageItem :  FeedMediaItemProtocol{
     }
 }
 
-protocol FeedsItemProtocol {
-    init(_ rawfeedItem : [String:Any])
-    func getUserImageUrl() -> URL?
-    func getUserName() -> String?
-    func getDepartmentName() -> String?
-    func getfeedCreationDate() -> String?
-    func getIsEditActionAllowedOnFeedItem() -> Bool
-    func getFeedTitle() -> String?
-    func getFeedDescription() -> String?
-    func getMediaList() -> [FeedMediaItemProtocol]?
-    func isClappedByMe() -> Bool
-    func getNumberOfClaps() -> String
-    func getNumberOfComments() -> String
-    func getPollState() -> PollState
-    func getMediaCountState() -> MediaCountState
-    func getFeedType() -> FeedType
+enum FeedType : Int{
+    case Poll = 2
+    case Post = 1
 }
 
-enum FeedType{
-    case Poll
-    case Post
-}
 
-enum PollState {
-    case NotAvailable
-}
 
 enum MediaCountState {
     case None

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,10 +21,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMw-Jx-vGc">
                         <rect key="frame" x="16" y="0.0" width="288" height="217"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHg-3e-XyB" customClass="KMPlaceholderTextView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                <rect key="frame" x="15" y="12" width="258" height="193"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHg-3e-XyB" customClass="KMPlaceholderTextView" customModule="RewardzCommonComponents">
+                                <rect key="frame" x="15" y="12" width="228" height="193"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
@@ -34,23 +35,31 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yh6-0N-xb4" userLabel="seperator">
-                                <rect key="frame" x="15" y="215" width="258" height="2"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="15" y="215" width="258" height="1"/>
+                                <color key="backgroundColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="RaQ-3q-Cmg"/>
+                                    <constraint firstAttribute="height" constant="1" id="RaQ-3q-Cmg"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viW-H9-TlB">
+                                <rect key="frame" x="251" y="98" width="21" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hHg-3e-XyB" firstAttribute="leading" secondItem="UMw-Jx-vGc" secondAttribute="leading" constant="15" id="1Zo-qU-Vsv"/>
+                            <constraint firstItem="viW-H9-TlB" firstAttribute="leading" secondItem="hHg-3e-XyB" secondAttribute="trailing" constant="8" id="7wq-T1-f8S"/>
                             <constraint firstItem="Yh6-0N-xb4" firstAttribute="top" secondItem="hHg-3e-XyB" secondAttribute="bottom" constant="10" id="AVg-K6-pdc"/>
                             <constraint firstAttribute="trailing" secondItem="Yh6-0N-xb4" secondAttribute="trailing" constant="15" id="DIR-bk-uSY"/>
                             <constraint firstItem="Yh6-0N-xb4" firstAttribute="leading" secondItem="UMw-Jx-vGc" secondAttribute="leading" constant="15" id="MOH-JS-qSS"/>
                             <constraint firstAttribute="bottom" secondItem="hHg-3e-XyB" secondAttribute="bottom" constant="12" id="MXu-ze-MpD"/>
-                            <constraint firstAttribute="trailing" secondItem="hHg-3e-XyB" secondAttribute="trailing" constant="15" id="YCc-oB-pIu"/>
+                            <constraint firstAttribute="trailing" secondItem="viW-H9-TlB" secondAttribute="trailing" constant="16" id="a3z-PK-mML"/>
                             <constraint firstItem="hHg-3e-XyB" firstAttribute="top" secondItem="UMw-Jx-vGc" secondAttribute="top" constant="12" id="bBX-CF-aRo"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="bwX-0f-Vyu"/>
+                            <constraint firstItem="viW-H9-TlB" firstAttribute="centerY" secondItem="UMw-Jx-vGc" secondAttribute="centerY" id="nZQ-8y-q5V"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -64,9 +73,23 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerView" destination="UMw-Jx-vGc" id="GwB-Fw-qsY"/>
+                <outlet property="maxCharacterLabel" destination="viW-H9-TlB" id="uaO-Ro-MMW"/>
                 <outlet property="titleText" destination="hHg-3e-XyB" id="eIv-vG-E5B"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="141.62946428571428"/>
+            <point key="canvasLocation" x="-143.47826086956522" y="141.62946428571428"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="hHg-3e-XyB">
+            <size key="intrinsicContentSize" width="10" height="33"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

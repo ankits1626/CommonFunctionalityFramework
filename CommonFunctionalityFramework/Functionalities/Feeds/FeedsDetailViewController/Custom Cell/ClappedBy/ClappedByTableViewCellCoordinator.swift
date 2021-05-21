@@ -14,12 +14,39 @@ class ClappedByTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 91
+        return 50
     }
     
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
-
+        if let cell  = inputModel.targetCell as? ClappedByTableViewCell{
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            cell.seeAllButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate?.showLikedByUsersList()
+            })
+            cell.clappedByUsers?.forEach({ (aView) in
+                aView.isHidden = true
+                aView.curvedCornerControl()
+            })
+            if let clappedUsers = inputModel.datasource.getClappedByUsers(){
+                let firstFiveUsers = clappedUsers.prefix(8)
+                for (index, clappedByUser) in firstFiveUsers.enumerated() {
+                    if let imageView = cell.clappedByUsers?.get(index: index){
+                        if let profileImage = clappedByUser.getAuthorProfileImageUrl(){
+                            imageView.isHidden = false
+                            inputModel.mediaFetcher.fetchImageAndLoad(
+                                imageView,
+                                imageEndPoint: profileImage)
+                        }else{
+                            imageView.isHidden = true
+                            imageView.image = nil
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }

@@ -11,13 +11,13 @@ import UIKit
 
 class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCoordinatorProtocol{
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
-        return 122
+        return inputModel.postImageMapper?.getMediaCount(inputModel.datasource.getTargetPost()) == 1 ? 273 : 122
     }
     
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
             cell.selectionStyle = .none
-            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.curvedCornerControl()
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
@@ -31,7 +31,8 @@ class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCo
         cachedMediCollectionCoordinator.removedLocalMedia(index: inputModel.targetIndex)
     }
         
-    private var cachedMediCollectionCoordinator  : FeedEditorLocalMediaCollectionCoordinator!//= [IndexPath : FeedEditorLocalMediaCollectionCoordinator]()
+    private var cachedMediCollectionCoordinator  : FeedEditorLocalMediaCollectionCoordinator!
+    
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
         switch feed.getMediaCountState() {
@@ -39,7 +40,7 @@ class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCo
         case .None:
             return 0
         case .OneMediaItemPresent(_):
-            return 0
+            return 205
         case .TwoMediaItemPresent:
             return 122
         case .MoreThanTwoMediItemPresent:
@@ -55,7 +56,9 @@ class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCo
                 InitFeedEditorLocalMediaCollectionCoordinatorModel(
                     datasource: inputModel.datasource,
                     mediaManager: inputModel.localMediaManager,
-                    delegate: inputModel.delegate!)
+                    delegate: inputModel.delegate!,
+                    postImageMapper: inputModel.postImageMapper
+                )
             )
             
             cachedMediCollectionCoordinator = coordinator

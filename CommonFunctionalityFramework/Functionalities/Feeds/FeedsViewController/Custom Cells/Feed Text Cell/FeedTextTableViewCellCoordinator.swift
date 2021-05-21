@@ -8,7 +8,8 @@
 
 import UIKit
 
-class FeedTextTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+
+class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
     var cellType: FeedCellTypeProtocol{
         return FeedTextTableViewCellType()
     }
@@ -21,16 +22,51 @@ class FeedTextTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             if inputModel.datasource.showShowFullfeedDescription(){
                 cell.feedText?.numberOfLines = 0
+                cell.feedText?.lineBreakMode = NSLineBreakMode.byClipping
             }
-            cell.feedText?.text = feed.getFeedDescription()
+            cell.feedText?.enabledTypes  = [.url]
+            if let unwrappedText = feed.getFeedDescription(){
+                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
+                //cell.feedText?.text = model?.displayableDescription.string
+                 ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                    cell.feedText?.text = nil
+                    cell.feedText?.attributedText = attr
+                })
+            }else{
+                cell.feedText?.text = feed.getFeedDescription()
+            }
+            //cell.feedText?.text = feed.getFeedDescription()
+            cell.feedText?.URLColor = .urlColor
             cell.feedText?.font = UIFont.Body1
-            cell.feedText?.textColor = UIColor.getTitleTextColor()
-            cell.containerView?.addBorders(edges: [.left, .right], color: UIColor.getGeneralBorderColor())
+            
+            //cell.feedText?.textColor = UIColor.getTitleTextColor()
+            cell.feedText?.handleMentionTap({ (mention) in
+                print("tapped on  \(mention)")
+            })
+            cell.feedText?.handleURLTap({ (targetUrl) in
+                print("<<<<<<<< open \(targetUrl)")
+                if !targetUrl.absoluteString.hasPrefix("http"),
+                    let modifiedUrl = URL(string: "http://\(targetUrl.absoluteString)"){
+                    UIApplication.shared.open(
+                        modifiedUrl,
+                        options: [:],
+                        completionHandler: nil
+                    )
+                }else{
+                    UIApplication.shared.open(
+                        targetUrl,
+                        options: [:],
+                        completionHandler: nil
+                    )
+                }
+            })
+            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             if inputModel.datasource.showShowFullfeedDescription(){
                 cell.readMorebutton?.isHidden = true
             }else{
                cell.readMorebutton?.isHidden = !(cell.feedText?.isTruncated ?? false)
             }
+            cell.readMorebutton?.isUserInteractionEnabled = false
         }
         return targetCell
     }

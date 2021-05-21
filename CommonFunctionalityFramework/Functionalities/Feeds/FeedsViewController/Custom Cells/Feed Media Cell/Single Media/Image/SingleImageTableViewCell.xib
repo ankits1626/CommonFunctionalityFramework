@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="KGk-i7-Jjw" customClass="SingleImageTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="215" id="KGk-i7-Jjw" customClass="SingleImageTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="215"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+                <rect key="frame" x="0.0" y="0.0" width="321" height="215"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6XA-k5-rU7">
-                        <rect key="frame" x="16" y="0.0" width="288" height="108"/>
+                        <rect key="frame" x="16" y="0.0" width="289" height="215"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Vc-OZ-Ctj">
-                                <rect key="frame" x="0.0" y="0.0" width="288" height="108"/>
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="199"/>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSR-2c-ZbH" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                <rect key="frame" x="261" y="5" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra7-Lh-5Wn" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="199"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSR-2c-ZbH" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                <rect key="frame" x="262" y="5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="1Th-8V-I2U"/>
                                     <constraint firstAttribute="height" constant="22" id="cvr-e2-pkP"/>
@@ -32,13 +35,16 @@
                                 <state key="normal" image="closeIcon"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.98823529409999999" green="0.79607843140000001" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="4Vc-OZ-Ctj" secondAttribute="bottom" id="diY-Nb-M5m"/>
+                            <constraint firstItem="ra7-Lh-5Wn" firstAttribute="width" secondItem="4Vc-OZ-Ctj" secondAttribute="width" id="212-Q4-iQO"/>
+                            <constraint firstItem="ra7-Lh-5Wn" firstAttribute="height" secondItem="4Vc-OZ-Ctj" secondAttribute="height" id="W3A-PP-9P4"/>
+                            <constraint firstAttribute="bottom" secondItem="4Vc-OZ-Ctj" secondAttribute="bottom" constant="16" id="diY-Nb-M5m"/>
                             <constraint firstAttribute="trailing" secondItem="RSR-2c-ZbH" secondAttribute="trailing" constant="5" id="hac-fn-mJL"/>
                             <constraint firstItem="RSR-2c-ZbH" firstAttribute="top" secondItem="6XA-k5-rU7" secondAttribute="top" constant="5" id="htd-bU-tnw"/>
                             <constraint firstItem="4Vc-OZ-Ctj" firstAttribute="leading" secondItem="6XA-k5-rU7" secondAttribute="leading" id="lFM-GK-pi3"/>
+                            <constraint firstItem="ra7-Lh-5Wn" firstAttribute="centerY" secondItem="4Vc-OZ-Ctj" secondAttribute="centerY" id="mQf-8j-v3Z"/>
                             <constraint firstAttribute="trailing" secondItem="4Vc-OZ-Ctj" secondAttribute="trailing" id="o3n-1T-NpZ"/>
+                            <constraint firstItem="ra7-Lh-5Wn" firstAttribute="centerX" secondItem="4Vc-OZ-Ctj" secondAttribute="centerX" id="oKY-v8-59S"/>
                             <constraint firstItem="4Vc-OZ-Ctj" firstAttribute="top" secondItem="6XA-k5-rU7" secondAttribute="top" id="z4V-cm-p1E"/>
                         </constraints>
                     </view>
@@ -54,12 +60,13 @@
             <connections>
                 <outlet property="containerView" destination="6XA-k5-rU7" id="FN8-D7-8PT"/>
                 <outlet property="feedImageView" destination="4Vc-OZ-Ctj" id="Obf-kn-Pci"/>
+                <outlet property="imageTapButton" destination="ra7-Lh-5Wn" id="OPf-mF-UYX"/>
                 <outlet property="removeButton" destination="RSR-2c-ZbH" id="tEK-3z-7iK"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="107.8125"/>
+            <point key="canvasLocation" x="138.40579710144928" y="143.63839285714286"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="closeIcon" width="12" height="12"/>
+        <image name="closeIcon" width="16" height="16"/>
     </resources>
 </document>

@@ -16,9 +16,13 @@ struct FeedCellDequeueModel {
 
 struct FeedCellLoadDataModel {
     var targetIndexpath : IndexPath
+    var targetTableView: UITableView?
     var targetCell : UITableViewCell
     var datasource: FeedsDatasource
     var mediaFetcher: CFFMediaCoordinatorProtocol
+    var delegate : FeedsDelegate?
+    weak var selectedoptionMapper : SelectedPollAnswerMapper?
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 struct FeedCellGetHeightModel {
@@ -42,7 +46,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 70
+        return 80
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
@@ -57,10 +61,28 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.text = feed.getfeedCreationDate()
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
-            cell.containerView?.roundCorners(corners: [UIRectCorner.topRight, UIRectCorner.topLeft], radius: AppliedCornerRadius.standardCornerRadius)
-            cell.containerView?.addBorders(edges: [.top, .left, .right], color: UIColor.getGeneralBorderColor())
+            cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
+            cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.clipsToBounds = true
-            //cell.containerView?.layer.borderWidth = 1.0
+            if !inputModel.datasource.shouldShowMenuOptionForFeed(){
+                cell.editFeedButton?.isHidden = true
+            }else{
+                cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+            }
+            
+            cell.editFeedButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate?.showFeedEditOptions(
+                        targetView: cell.editFeedButton,
+                        feedIdentifier: feed.feedIdentifier
+                    )
+            })
+            if let profileImageEndpoint = feed.getUserImageUrl(){
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+            }else{
+                cell.profileImage?.image = nil
+            }
         }
     }
     

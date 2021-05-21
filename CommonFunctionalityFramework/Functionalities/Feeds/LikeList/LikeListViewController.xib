@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LikeListViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <connections>
+                <outlet property="clapsTableView" destination="YRh-Kq-Due" id="95K-JK-jer"/>
+                <outlet property="view" destination="yhj-Ur-oUU" id="37l-1p-cgv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="yhj-Ur-oUU">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZY-NB-kzN" userLabel="clap list">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YRh-Kq-Due">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="DED-hv-WZz"/>
+                                <outlet property="delegate" destination="-1" id="EwO-Rr-V3d"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="YRh-Kq-Due" firstAttribute="top" secondItem="cZY-NB-kzN" secondAttribute="top" id="59q-yx-bnS"/>
+                        <constraint firstAttribute="trailing" secondItem="YRh-Kq-Due" secondAttribute="trailing" id="Oel-IL-khx"/>
+                        <constraint firstAttribute="bottom" secondItem="YRh-Kq-Due" secondAttribute="bottom" id="TIC-Lb-LBq"/>
+                        <constraint firstItem="YRh-Kq-Due" firstAttribute="leading" secondItem="cZY-NB-kzN" secondAttribute="leading" id="wSr-Ig-F3K"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="cZY-NB-kzN" firstAttribute="top" secondItem="yId-rH-QEs" secondAttribute="top" id="2h7-JH-etb"/>
+                <constraint firstItem="cZY-NB-kzN" firstAttribute="leading" secondItem="yId-rH-QEs" secondAttribute="leading" id="Lpj-Lz-a5g"/>
+                <constraint firstItem="cZY-NB-kzN" firstAttribute="leading" secondItem="yId-rH-QEs" secondAttribute="leading" id="Sd5-ei-zOf"/>
+                <constraint firstItem="cZY-NB-kzN" firstAttribute="trailing" secondItem="yId-rH-QEs" secondAttribute="trailing" id="Xu9-Wq-h3u"/>
+                <constraint firstItem="yId-rH-QEs" firstAttribute="bottom" secondItem="cZY-NB-kzN" secondAttribute="bottom" id="cnA-4G-S41"/>
+                <constraint firstItem="yId-rH-QEs" firstAttribute="trailing" secondItem="cZY-NB-kzN" secondAttribute="trailing" id="h4z-ND-Vyp"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="yId-rH-QEs"/>
+            <point key="canvasLocation" x="326" y="-105"/>
+        </view>
+    </objects>
+</document>

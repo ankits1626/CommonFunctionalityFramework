@@ -9,31 +9,38 @@
 import Foundation
 
 class FeedComposerCoordinator {
-    let feedCoordinatorDeleagate: FeedsCoordinatorDelegate
-    
-    init(delegate : FeedsCoordinatorDelegate) {
-        self.feedCoordinatorDeleagate = delegate
+    let feedCoordinatorDelegate: FeedsCoordinatorDelegate
+     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    weak var mediaFetcher : CFFMediaCoordinatorProtocol?
+    private var selectedAssets : [LocalSelectedMediaItem]?
+    weak var themeManager: CFFThemeManagerProtocol?
+    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?) {
+        self.feedCoordinatorDelegate = delegate
+        self.requestCoordinator = requestCoordinator
+        self.mediaFetcher = mediaFetcher
+        self.selectedAssets = selectedAssets
+        self.themeManager = themeManager
     }
     
     func showFeedItemEditor(type : FeedType) {
-        switch type {
-        case .Poll:
-            showPollEditor()
-        case .Post:
-            showPostEditor()
-        }
-    }
-    private func showPostEditor() {
-        let postEditor = PostEditorViewController(nibName: "PostEditorViewController", bundle: Bundle(for: PostEditorViewController.self))
-        feedCoordinatorDeleagate.showComposer(_composer: postEditor) { (topBarModel) in
-            postEditor.containerTopBarModel = topBarModel
-        }
+        openEditor(nil, type: type)
     }
     
-    private func showPollEditor(){
-        let pollEditor = PollEditorViewController(nibName: "PollEditorViewController", bundle: Bundle(for: PollEditorViewController.self))
-        feedCoordinatorDeleagate.showComposer(_composer: pollEditor) { (topBarModel) in
-            pollEditor.containerTopBarModel = topBarModel
+    func editPost(feed : FeedsItemProtocol) {
+        openEditor(feed, type: feed.getFeedType())
+    }
+    
+    private func openEditor(_ feed : FeedsItemProtocol?, type : FeedType){
+        let postEditor = PostEditorViewController(
+            postType: type,
+            requestCoordinator: requestCoordinator,
+            post: feed?.getEditablePost(),
+            mediaFetcher: mediaFetcher,
+            selectedAssets: selectedAssets,
+            themeManager : themeManager
+        )
+        feedCoordinatorDelegate.showComposer(_composer: postEditor) { (topBarModel) in
+            postEditor.containerTopBarModel = topBarModel
         }
     }
 }

@@ -8,12 +8,15 @@
 
 import UIKit
 
-class FeedBottomTableViewCell: UITableViewCell {
-    @IBOutlet weak var clapsButton : UIButton?
+class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
+    @IBOutlet weak var clapsButton : BlockButton?
+    @IBOutlet weak var showAllClapsButton : BlockButton?
     @IBOutlet weak var clapsCountLabel : UILabel?
+    @IBOutlet weak var clapIndicator : UIImageView?
     @IBOutlet weak var commentsButton : UIButton?
     @IBOutlet weak var commentsCountLabel : UILabel?
     @IBOutlet weak var containerView : UIView?
+    @IBOutlet weak var seperator : UIView?
     
     override func awakeFromNib() {
         super.awakeFromNib()

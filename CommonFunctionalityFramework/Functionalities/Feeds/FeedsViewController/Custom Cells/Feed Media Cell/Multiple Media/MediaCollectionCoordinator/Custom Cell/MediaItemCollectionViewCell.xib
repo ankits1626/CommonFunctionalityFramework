@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,9 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="141" height="103"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IqL-qd-OfY">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IqL-qd-OfY">
                         <rect key="frame" x="0.0" y="0.0" width="141" height="103"/>
-                        <color key="backgroundColor" red="0.98823529409999999" green="0.79607843140000001" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1G-eS-MZD" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                         <rect key="frame" x="59.5" y="40.5" width="22" height="22"/>
@@ -29,6 +28,10 @@
                         </constraints>
                         <state key="normal" image="playIcon"/>
                     </button>
+                    <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0q-Vq-SMU">
+                        <rect key="frame" x="0.0" y="0.0" width="141" height="103"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqU-wg-i9e" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                         <rect key="frame" x="116" y="5" width="20" height="20"/>
                         <constraints>
@@ -42,16 +45,21 @@
             <constraints>
                 <constraint firstItem="IqL-qd-OfY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2kz-x6-Oxa"/>
                 <constraint firstAttribute="bottom" secondItem="IqL-qd-OfY" secondAttribute="bottom" id="FnZ-QV-Rk2"/>
+                <constraint firstAttribute="trailing" secondItem="a0q-Vq-SMU" secondAttribute="trailing" id="NLE-Rb-0MI"/>
                 <constraint firstItem="IqL-qd-OfY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="UjA-ew-LGC"/>
                 <constraint firstItem="L1G-eS-MZD" firstAttribute="centerX" secondItem="IqL-qd-OfY" secondAttribute="centerX" id="Wm7-NF-bUX"/>
                 <constraint firstAttribute="trailing" secondItem="IqL-qd-OfY" secondAttribute="trailing" id="XpU-PO-Njp"/>
                 <constraint firstItem="yqU-wg-i9e" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="bT0-8p-Ygb"/>
                 <constraint firstAttribute="trailing" secondItem="yqU-wg-i9e" secondAttribute="trailing" constant="5" id="gZd-SA-dZs"/>
+                <constraint firstItem="a0q-Vq-SMU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nNd-27-NLu"/>
                 <constraint firstItem="L1G-eS-MZD" firstAttribute="centerY" secondItem="IqL-qd-OfY" secondAttribute="centerY" id="rl7-SP-Gkf"/>
+                <constraint firstItem="a0q-Vq-SMU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="weE-Fi-9HA"/>
+                <constraint firstAttribute="bottom" secondItem="a0q-Vq-SMU" secondAttribute="bottom" id="wzX-8e-TeH"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="141" height="103"/>
             <connections>
+                <outlet property="editTransparentView" destination="a0q-Vq-SMU" id="Mzs-W8-KrB"/>
                 <outlet property="mediaCoverImageView" destination="IqL-qd-OfY" id="Jy2-8R-ciz"/>
                 <outlet property="playButton" destination="L1G-eS-MZD" id="R73-Xr-2HN"/>
                 <outlet property="removeButton" destination="yqU-wg-i9e" id="DQe-Pq-JA2"/>

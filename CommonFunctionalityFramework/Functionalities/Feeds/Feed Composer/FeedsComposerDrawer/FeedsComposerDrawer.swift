@@ -22,7 +22,9 @@ class FeedsComposerDrawer: UIViewController {
     @IBOutlet private weak var createPollButton : UIButton?
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
-    
+    var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
+    weak var mediaFetcher : CFFMediaCoordinatorProtocol?
+    weak var themeManager: CFFThemeManagerProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -69,7 +71,10 @@ extension FeedsComposerDrawer{
     
     private func dismissAndShowEditor(type: FeedType){
         dismiss(animated: true) {
-            FeedComposerCoordinator(delegate: self.feedCoordinatorDeleagate).showFeedItemEditor(type: type)
+            FeedComposerCoordinator(
+                delegate: self.feedCoordinatorDeleagate,
+                requestCoordinator: self.requestCoordinator,
+                mediaFetcher: self.mediaFetcher, selectedAssets: nil, themeManager: self.themeManager).showFeedItemEditor(type: type)
         }
     }
     

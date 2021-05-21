@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ClappedByTableViewCell: UITableViewCell {
-
+class ClappedByTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
+    @IBOutlet weak var containerView : UIView?
+    @IBOutlet var clappedByUsers : [UIImageView]?
+    @IBOutlet weak var seeAllButton : BlockButton?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
