@@ -102,7 +102,7 @@ class FeedsViewController: UIViewController {
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
         nextPageUrl: lastFetchedFeeds?.nextPageUrl) {[weak self] (result) in
             DispatchQueue.main.async {
-                self?.feedsTable?.loadControl?.endLoading()
+                self?.feedsTable?.loadCFFControl?.endLoading()
                 switch result{
                 case .Success(let result):
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
@@ -140,7 +140,7 @@ class FeedsViewController: UIViewController {
             }
         }
         DispatchQueue.main.async {[weak self] in
-            self?.feedsTable?.loadControl?.endLoading()
+            self?.feedsTable?.loadCFFControl?.endLoading()
             self?.refreshControl.endRefreshing()
             self?.feedsTable?.reloadData()
         }
@@ -173,9 +173,9 @@ class FeedsViewController: UIViewController {
         feedsTable?.estimatedRowHeight = 500
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
-        feedsTable?.loadControl = UILoadControl(target: self, action: #selector(loadFeeds))
-        feedsTable?.loadControl?.tintColor = .gray
-        feedsTable?.loadControl?.heightLimit = 100.0
+        feedsTable?.loadCFFControl = CFFLoadControl(target: self, action: #selector(loadFeeds))
+        feedsTable?.loadCFFControl?.tintColor = .gray
+        feedsTable?.loadCFFControl?.heightLimit = 100.0
     }
 }
 
@@ -260,7 +260,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.loadControl?.update()
+        scrollView.loadCFFControl?.update()
     }
 }
 

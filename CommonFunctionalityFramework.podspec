@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "CommonFunctionalityFramework"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "CommonFunctionalityFramework"
 
   spec.description  = <<-DESC

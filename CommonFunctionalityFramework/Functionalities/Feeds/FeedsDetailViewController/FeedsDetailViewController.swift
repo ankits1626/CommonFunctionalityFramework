@@ -82,8 +82,8 @@ class FeedsDetailViewController: UIViewController {
         feedDetailTableView?.dataSource = self
         feedDetailTableView?.delegate = self
         feedDetailTableView?.reloadData()
-        feedDetailTableView?.loadControl = UILoadControl(target: self, action: #selector(fetchComments))
-        feedDetailTableView?.loadControl?.heightLimit = 100.0
+        feedDetailTableView?.loadCFFControl = CFFLoadControl(target: self, action: #selector(fetchComments))
+        feedDetailTableView?.loadCFFControl?.heightLimit = 100.0
     }
     
     private func initializeFRC() {
@@ -127,7 +127,7 @@ class FeedsDetailViewController: UIViewController {
                 case .Success(let result):
                     DispatchQueue.main.async {[weak self] in
                         self?.lastFetchedComments = result
-                        self?.feedDetailTableView?.loadControl?.endLoading()
+                        self?.feedDetailTableView?.loadCFFControl?.endLoading()
                     }
                     CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                         if let comments = result.fetchedComments{
@@ -269,11 +269,11 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.loadControl?.update()
+        scrollView.loadCFFControl?.update()
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollView.loadControl?.update()
+        scrollView.loadCFFControl?.update()
     }
 }
 

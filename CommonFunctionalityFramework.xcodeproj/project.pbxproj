@@ -156,7 +156,7 @@
 		98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */; };
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
-		98F62692265787C50086B818 /* UILoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* UILoadControl.swift */; };
+		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -315,7 +315,7 @@
 		98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequestBodyGenerator.swift; sourceTree = "<group>"; };
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
-		98F62691265787C50086B818 /* UILoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadControl.swift; sourceTree = "<group>"; };
+		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1170,7 +1170,7 @@
 		98F62690265787BC0086B818 /* UILoadControl */ = {
 			isa = PBXGroup;
 			children = (
-				98F62691265787C50086B818 /* UILoadControl.swift */,
+				98F62691265787C50086B818 /* CFFLoadControl.swift */,
 			);
 			path = UILoadControl;
 			sourceTree = "<group>";
@@ -1317,7 +1317,7 @@
 			files = (
 				98722671246176E700809D7A /* ManagedPostComment+CoreDataClass.swift in Sources */,
 				98722672246176E700809D7A /* ManagedPost+CoreDataClass.swift in Sources */,
-				98F62692265787C50086B818 /* UILoadControl.swift in Sources */,
+				98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */,
 				98D5E89225314C0F00813991 /* ReportAbuseConfirmationDrawer.swift in Sources */,
 				987226702461769400809D7A /* ManagedPost+CoreDataProperties.swift in Sources */,
 				9872266E246173B500809D7A /* ManagedPostComment+CoreDataProperties.swift in Sources */,

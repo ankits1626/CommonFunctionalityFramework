@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-public class UILoadControl: UIControl {
+public class CFFLoadControl: UIControl {
     
     fileprivate var activityIndicatorView: UIActivityIndicatorView!
     private var originalDelegate: UIScrollViewDelegate?
@@ -69,13 +69,13 @@ public class UILoadControl: UIControl {
     }
 }
 
-extension UILoadControl {
+extension CFFLoadControl {
     
     /*
      Initilize the control
      */
     fileprivate func initialize(){
-        self.addTarget(self, action: #selector(UILoadControl.didValueChange(sender:)), for: .valueChanged)
+        self.addTarget(self, action: #selector(CFFLoadControl.didValueChange(sender:)), for: .valueChanged)
         setupActivityIndicator()
     }
     
@@ -171,21 +171,21 @@ extension UIScrollView {
     
     private struct AssociatedKeys {
         static var delegate: UIScrollViewDelegate?
-        static var loadControl: UILoadControl?
+        static var loadControl: CFFLoadControl?
         fileprivate static var loadControlView: UIView?
     }
     
     /*
      UILoadControl object
      */
-    public var loadControl: UILoadControl? {
+    public var loadCFFControl: CFFLoadControl? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.loadControl) as? UILoadControl
+            return objc_getAssociatedObject(self, &AssociatedKeys.loadControl) as? CFFLoadControl
         }
         
         set {
             if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.loadControl, newValue as UILoadControl?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &AssociatedKeys.loadControl, newValue as CFFLoadControl?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 self.updateLoadControl()
             }
         }
@@ -194,7 +194,7 @@ extension UIScrollView {
     /*
      UILoadControl view containers
      */
-    fileprivate var loadControlView: UIView? {
+    fileprivate var loadCFFControlView: UIView? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.loadControlView) as? UIView
         }
@@ -214,7 +214,7 @@ extension UIScrollView {
     }
     
     fileprivate func updateLoadControl() {
-        guard let loadControl = self.loadControl else {
+        guard let loadControl = self.loadCFFControl else {
             return
         }
         
@@ -223,13 +223,13 @@ extension UIScrollView {
     }
     
     
-    fileprivate func setupLoadControlViewWithControl(control: UILoadControl) {
+    fileprivate func setupLoadControlViewWithControl(control: CFFLoadControl) {
         
-        guard let loadControlView = self.loadControlView else {
-            self.loadControlView = UIView()
-            self.loadControlView?.clipsToBounds = true
-            self.loadControlView?.addSubview(control)
-            return addSubview(self.loadControlView!)
+        guard let loadControlView = self.loadCFFControlView else {
+            self.loadCFFControlView = UIView()
+            self.loadCFFControlView?.clipsToBounds = true
+            self.loadCFFControlView?.addSubview(control)
+            return addSubview(self.loadCFFControlView!)
         }
         
         if loadControlView.subviews.contains(control) {
