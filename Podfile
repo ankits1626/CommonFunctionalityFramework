@@ -6,7 +6,7 @@ target 'CommonFunctionalityFramework' do
   use_frameworks!
 	pod 'KUIPopOver', '= 1.1.2'
   pod 'SimpleCheckbox'
-  pod 'UILoadControl', :git => 'https://github.com/ankits1626/UILoadControl', :branch => 'master'
+#  pod 'UILoadControl', :git => 'https://github.com/ankits1626/UILoadControl', :branch => 'master'
   pod 'ActiveLabel', :git => 'https://github.com/ankits1626/ActiveLabel.swift', :branch => 'CFF_Customizations'
   pod 'Loaf'
   pod 'FLAnimatedImage', '~> 1.0'

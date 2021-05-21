@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "CommonFunctionalityFramework"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "CommonFunctionalityFramework"
 
   spec.description  = <<-DESC
@@ -20,7 +20,6 @@ Common Functionality framework for flab and cerra
   spec.dependency 'RewardzCommonComponents'
   spec.dependency 'KUIPopOver', '= 1.1.2'
   spec.dependency 'SimpleCheckbox'
-  spec.dependency 'UILoadControl'
   spec.dependency 'ActiveLabel'
   spec.dependency 'Loaf'
   spec.dependency 'FLAnimatedImage', '~> 1.0'

@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import UILoadControl
 
 class FeedsViewController: UIViewController {
     @IBOutlet private weak var composeBarContainerHeightConstraint : NSLayoutConstraint?
@@ -341,7 +340,7 @@ extension FeedsViewController : FeedsDelegate{
                     }
                 case .SuccessWithNoResponseData:
                     fallthrough
-                case .Failure(error: let _):
+                case .Failure(error: _):
                     print("<<<<<<<<<< like/unlike call completed \(result)")
                 }
                 
@@ -354,7 +353,7 @@ extension FeedsViewController : FeedsDelegate{
         fetchRequest.predicate = NSPredicate (format: "postId == %d", feedIdentifier)
         do{
             let filterfilteredFeeds = try CFFCoreDataManager.sharedInstance.manager.mainQueueContext.fetch(fetchRequest)
-            return filterfilteredFeeds.first?.getRawObject() as! FeedsItemProtocol
+            return filterfilteredFeeds.first?.getRawObject() as? FeedsItemProtocol
         }catch{
             return nil
         }

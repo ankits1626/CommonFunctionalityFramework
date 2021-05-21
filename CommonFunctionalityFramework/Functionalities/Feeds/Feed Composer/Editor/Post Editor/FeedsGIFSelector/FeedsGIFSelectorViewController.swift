@@ -266,7 +266,6 @@ extension FeedsGIFSelectorViewController : NSFetchedResultsControllerDelegate{
        public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?){
            
            if type == NSFetchedResultsChangeType.insert {
-               print("Insert Object: \(newIndexPath)")
                if (gifCollection?.numberOfSections)! > 0 {
                    if gifCollection?.numberOfItems( inSection: newIndexPath!.section ) == 0 {
                        self.shouldReloadCollectionView = true
@@ -284,7 +283,6 @@ extension FeedsGIFSelectorViewController : NSFetchedResultsControllerDelegate{
                }
            }
            else if type == NSFetchedResultsChangeType.update {
-               print("Update Object: \(indexPath) to \(newIndexPath)")
                blockOperations.append(
                    BlockOperation(block: { [weak self] in
                        if let this = self {
@@ -294,7 +292,6 @@ extension FeedsGIFSelectorViewController : NSFetchedResultsControllerDelegate{
                )
            }
            else if type == NSFetchedResultsChangeType.move {
-               print("Move Object: \(indexPath) to \(newIndexPath)")
                blockOperations.append(
                    BlockOperation(block: { [weak self] in
                        if let this = self {
@@ -305,7 +302,6 @@ extension FeedsGIFSelectorViewController : NSFetchedResultsControllerDelegate{
                )
            }
            else if type == NSFetchedResultsChangeType.delete {
-               print("Delete Object: \(indexPath)")
                if gifCollection?.numberOfItems( inSection: indexPath!.section ) == 1 {
                    self.shouldReloadCollectionView = true
                } else {

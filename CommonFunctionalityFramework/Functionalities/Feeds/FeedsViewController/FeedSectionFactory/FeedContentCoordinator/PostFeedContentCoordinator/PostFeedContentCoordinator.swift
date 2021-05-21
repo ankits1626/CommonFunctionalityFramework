@@ -119,7 +119,6 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     }
     
     func registerTableViewToRespectiveCellType(cellType: FeedCellTypeProtocol, tableView: UITableView?) {
-        print("<<<<<<<<<<<<<<<< registering tableview for \(cellType.cellIdentifier), \(cellType.cellNib)")
         tableView?.register(
             cellType.cellNib,
             forCellReuseIdentifier: cellType.cellIdentifier

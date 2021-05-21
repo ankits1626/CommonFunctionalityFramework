@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import UILoadControl
 
 enum FeedDetailSection : Int {
     case FeedInfo = 0
@@ -143,7 +142,7 @@ class FeedsDetailViewController: UIViewController {
                     
                 case .SuccessWithNoResponseData:
                     fallthrough
-                case .Failure(let _):
+                case .Failure( _):
                     print("unable to fetch comments")
                 }
             }
@@ -297,7 +296,7 @@ extension FeedsDetailViewController : FeedsDelegate{
                     }
                 case .SuccessWithNoResponseData:
                     fallthrough
-                case .Failure(error: let _):
+                case .Failure(error: _):
                     print("<<<<<<<<<< like/unlike call completed \(result)")
                 }
             }
@@ -379,7 +378,7 @@ extension FeedsDetailViewController : FeedsDelegate{
                 }
             case .SuccessWithNoResponseData:
                 fallthrough
-            case .Failure(error: let _):
+            case .Failure(error: _):
                 print("<<<<<<<<<< like/unlike call completed \(result)")
             }
             

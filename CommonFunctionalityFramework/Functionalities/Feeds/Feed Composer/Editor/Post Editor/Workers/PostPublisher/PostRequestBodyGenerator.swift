@@ -22,11 +22,11 @@ class PostRequestBodyGenerator {
             body.append("\(valueToSend)\r\n".data(using: String.Encoding.utf8)!)
         }
         if let localUrls = post.postableLocalMediaUrls{
-            for (index, file) in localUrls.enumerated() {
+            for (_, file) in localUrls.enumerated() {
                 body.append(boundary)
                 var partContent: Data? = nil
                 var partFilename: String? = nil
-                var partMimetype: String? = nil
+                let partMimetype: String? = nil
                 partFilename = file.lastPathComponent
                 if let URLContent = try? Data(contentsOf: file) {
                     partContent = URLContent

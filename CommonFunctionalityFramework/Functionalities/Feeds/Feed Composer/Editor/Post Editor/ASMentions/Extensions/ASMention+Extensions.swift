@@ -76,7 +76,7 @@ extension String{
     func lastTagOccurence(_ sb : String) -> LastTagOccurence? {
         if let position =  self.rangeOfCharacter(from: CharacterSet(charactersIn: sb), options: .backwards, range: nil){
             let l = position.nsRange(in: self).location
-            let sub = substring(from: position.lowerBound)
+            let sub = String(self[position.lowerBound...])// substring(from: position.lowerBound)
             return LastTagOccurence(tag: sub, tagRange: NSMakeRange(l, sub.count))
         }else{
             return nil

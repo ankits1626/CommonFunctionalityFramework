@@ -30,7 +30,7 @@ class FeedEditorAttachedGifTableViewCellCoordinator :  PostEditorCellCoordinator
                 let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string:rawGif)!)) { (data, _, _) in
                   DispatchQueue.main.async {
                     cell.imageLoader?.stopAnimating()
-                    if let unwrappeData = data as? NSData{
+                    if let unwrappeData = data as NSData?{
                         CFFGifCacheManager.sharedInstance.gifCache.setObject(unwrappeData, forKey: rawGif as NSString)
                         inputModel.targetTableView.reloadRows(at: [inputModel.targetIndexpath], with: .none)
                     }

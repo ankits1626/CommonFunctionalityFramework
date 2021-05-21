@@ -50,8 +50,6 @@ class FeedOrderManager {
             context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext
             ).fetchedObjects?.first
         
-        print("<<<<<<<<<< last priority feed = %@", (lastPriorityFeed?.getRawObject() as? RawFeed)?.getFeedTitle())
-        
         priorityFetchRequest.predicate = NSPredicate(format: "postId != -1")
         sort = NSSortDescriptor(key: "createdTimeStamp", ascending: true)
         priorityFetchRequest.sortDescriptors = [sort]
@@ -60,8 +58,6 @@ class FeedOrderManager {
         fetchRequest: priorityFetchRequest,
         context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext
         ).fetchedObjects?.first
-        
-        print("<<<<<<<<<< last priority feed = %@", (firstFeed?.getRawObject() as? RawFeed)?.getFeedTitle())
         var creationDate = NSDate().timeIntervalSinceNow
         if let unwrappedFirstFeed = firstFeed{
             creationDate = unwrappedFirstFeed.createdTimeStamp.timeIntervalSinceNow

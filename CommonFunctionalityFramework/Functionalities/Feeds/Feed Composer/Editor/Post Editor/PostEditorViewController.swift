@@ -306,7 +306,6 @@ class PostEditorViewController: UIViewController {
                 }
                 else{
                     self.createButton?.isUserInteractionEnabled  = true
-                    print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
                 }
             }
         }catch let error{
