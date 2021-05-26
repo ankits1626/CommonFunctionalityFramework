@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "CommonFunctionalityFramework"
-  spec.version      = "0.0.3"
+  spec.version      = "0.0.4"
   spec.summary      = "CommonFunctionalityFramework"
 
   spec.description  = <<-DESC
@@ -16,7 +16,10 @@ Common Functionality framework for flab and cerra
   spec.swift_version = "4.2"
 
   spec.source        = { :git => "https://github.com/ankits1626/CommonFunctionalityFramework.git", :branch => "master", :tag => spec.version.to_s }
-  spec.source_files  = "CommonFunctionalityFramework/**/*.{h,m,swift}"
+  spec.source_files  = "CommonFunctionalityFramework/**/*.{h,m,swift}", 'CommonFunctionalityFramework/**/*.xcdatamodeld'
+spec.resources = "CommonFunctionalityFramework/**/*.{xib,png,jpg,jpeg,storyboard}", "*.xcassets", 'CommonFunctionalityFramework/**/*.xcdatamodeld'
+spec.resource_bundles = {'CommonFunctionalityFramework' => ['CommonFunctionalityFramework/**/*.xcdatamodeld']}
+spec.framework    = 'CoreData'
   spec.dependency 'RewardzCommonComponents'
   spec.dependency 'KUIPopOver', '= 1.1.2'
   spec.dependency 'SimpleCheckbox'
