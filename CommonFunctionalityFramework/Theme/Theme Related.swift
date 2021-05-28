@@ -119,6 +119,10 @@ extension UIColor{
     static var feedCellBorderColor : UIColor {
         return .clear
     }
+
+    static var pinToPostCellBorderColor : UIColor {
+         return .red
+     }
     
     static var unVotedPollOptionBorderColor : UIColor {
         return UIColor(red: 195/255.0, green: 193/255.0, blue: 193/255.0, alpha: 1.0)

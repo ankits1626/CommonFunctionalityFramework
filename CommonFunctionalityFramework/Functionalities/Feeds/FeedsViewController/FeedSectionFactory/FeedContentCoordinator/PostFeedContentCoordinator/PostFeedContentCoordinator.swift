@@ -83,8 +83,10 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         return getCellCoordinator(indexPath: inputModel.targetIndexpath).getCell(FeedCellDequeueModel(
             targetIndexpath: inputModel.targetIndexpath,
             targetTableView: targetTableView!,
-            datasource: feedsDataSource
-            )
+            datasource: feedsDataSource,
+            isFeedDetailPage: false,
+            themeManager: themeManager
+        )
         )
     }
     
@@ -98,7 +100,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 mediaFetcher: mediaFetcher,
                 delegate: inputModel.delegate,
                 selectedoptionMapper: inputModel.selectedoptionMapper,
-                themeManager: themeManager
+                themeManager: themeManager,
+                isFeedDetailPage: false
             )
         )
     }

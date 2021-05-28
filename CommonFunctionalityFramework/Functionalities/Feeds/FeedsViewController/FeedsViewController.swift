@@ -267,6 +267,42 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 extension FeedsViewController : FeedsDelegate{
     func toggleLikeForComment(commentIdentifier: Int64) {}
     
+    func pinToPost(feedIdentifier : Int64, isAlreadyPinned: Bool) {
+        print("<<<<<<Feed identifier-\(feedIdentifier)")
+        showPintoPostConfirmation(feedIdentifier, isAlreadyPinned: isAlreadyPinned)
+    }
+    
+    private func showPintoPostConfirmation(_ feedIdentifier : Int64, isAlreadyPinned: Bool){
+        let pinPostDrawer = PintoTopConfirmationDrawer(
+            nibName: "PintoTopConfirmationDrawer",
+            bundle: Bundle(for: PintoTopConfirmationDrawer.self)
+        )
+        pinPostDrawer.themeManager = themeManager
+        pinPostDrawer.isAlreadyPinned = isAlreadyPinned
+        pinPostDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
+        pinPostDrawer.confirmedCompletion = {postFrequency in
+            PostPinWorker(networkRequestCoordinator: self.requestCoordinator).postPin(feedIdentifier, frequency: postFrequency) { (result) in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .Success(_):
+                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Post is unpinned successfully" : "Post is pinned successfully", okActionHandler: { (_) in
+                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
+                        })
+                    case .SuccessWithNoResponseData:
+                        fallthrough
+                    case .Failure(_):
+                        ErrorDisplayer.showError(errorMsg: "Failed to pin post, please try again.".localized) { (_) in}
+                    }
+                }
+            }
+        }
+        do{
+            try pinPostDrawer.presentDrawer()
+        }catch {
+            
+        }
+    }
+    
     func showAllClaps(feedIdentifier: Int64) {
         print("show all claps for \(feedIdentifier)")
         let likeListVC = LikeListViewController(

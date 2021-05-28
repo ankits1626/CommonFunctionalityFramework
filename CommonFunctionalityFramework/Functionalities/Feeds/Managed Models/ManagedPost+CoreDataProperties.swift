@@ -25,7 +25,7 @@ extension ManagedPost {
     @NSManaged public var numberOfComments: Int64
     @NSManaged public var pollUpdatedTrigger: NSDate
     @NSManaged public var isPriority: Bool
-    
+    @NSManaged public var isAdmin: Bool
 }
 
 // MARK: Generated accessors for comments

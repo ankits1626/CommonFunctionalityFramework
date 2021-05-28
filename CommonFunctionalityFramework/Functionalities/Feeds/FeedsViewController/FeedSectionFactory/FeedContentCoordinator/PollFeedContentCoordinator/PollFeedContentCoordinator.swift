@@ -83,7 +83,9 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         return getCellCoordinator(indexPath: inputModel.targetIndexpath).getCell(FeedCellDequeueModel(
             targetIndexpath: inputModel.targetIndexpath,
             targetTableView: targetTableView!,
-            datasource: feedsDataSource
+            datasource: feedsDataSource,
+            isFeedDetailPage: false,
+            themeManager: themeManager
             )
         )
     }
@@ -98,7 +100,8 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 mediaFetcher: mediaFetcher,
                 delegate: inputModel.delegate,
                 selectedoptionMapper: inputModel.selectedoptionMapper,
-                themeManager: inputModel.themeManager
+                themeManager: inputModel.themeManager,
+                isFeedDetailPage: false
             )
         )
     }

@@ -38,7 +38,11 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             borderColor: .unVotedPollOptionBorderColor,
             borderWidth: BorderWidths.standardBorderWidth
             )
-            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            }
             cell.myOptionIndicator?.isHidden = !(feedOption?.hasVoted ?? false)
 
             cell.percentageVote?.text = "\(feedOption?.getPercentage() ?? 0) %"
