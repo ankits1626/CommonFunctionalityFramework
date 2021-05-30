@@ -27,7 +27,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLf-0t-9wT" userLabel="profile Image container">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="211"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-ni-OTg">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-ni-OTg">
                                                 <rect key="frame" x="12" y="0.0" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="6iA-da-coB"/>
@@ -158,7 +158,7 @@
                                                                     <constraint firstAttribute="width" constant="22" id="wHX-8H-bWS"/>
                                                                 </constraints>
                                                             </button>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparent_comment_like" translatesAutoresizingMaskIntoConstraints="NO" id="twI-4l-XTn">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_transparent_comment_like" translatesAutoresizingMaskIntoConstraints="NO" id="twI-4l-XTn">
                                                                 <rect key="frame" x="13.5" y="4" width="19" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="19" id="xlH-Kh-eNh"/>
@@ -284,8 +284,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="dummyProfile" width="30" height="30"/>
-        <image name="transparent_comment_like" width="32" height="32"/>
+        <image name="cff_dummyProfile" width="30" height="30"/>
+        <image name="cff_transparent_comment_like" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

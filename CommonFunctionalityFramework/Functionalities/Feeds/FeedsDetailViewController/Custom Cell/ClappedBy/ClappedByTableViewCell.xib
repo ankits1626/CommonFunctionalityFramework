@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +27,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGj-ER-phE">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="tsB-kz-xWk">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="tsB-kz-xWk">
                                                 <rect key="frame" x="8" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="e9M-kQ-Kvc"/>
@@ -34,7 +35,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="tsB-kz-xWk" firstAttribute="centerY" secondItem="TGj-ER-phE" secondAttribute="centerY" id="rYd-JK-79Q"/>
                                             <constraint firstItem="tsB-kz-xWk" firstAttribute="centerX" secondItem="TGj-ER-phE" secondAttribute="centerX" id="yFk-3H-ZLy"/>
@@ -43,7 +44,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ii5-MK-YMs">
                                         <rect key="frame" x="46" y="0.0" width="46.5" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="mld-LA-uaP">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="mld-LA-uaP">
                                                 <rect key="frame" x="8.5" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="0AB-cz-ccf"/>
@@ -51,7 +52,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="mld-LA-uaP" firstAttribute="centerX" secondItem="Ii5-MK-YMs" secondAttribute="centerX" id="Cej-PB-rj4"/>
                                             <constraint firstItem="mld-LA-uaP" firstAttribute="centerY" secondItem="Ii5-MK-YMs" secondAttribute="centerY" id="Pwg-DF-S3p"/>
@@ -60,7 +61,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNH-6z-SlL">
                                         <rect key="frame" x="92.5" y="0.0" width="46" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="cuL-7o-4Zq">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="cuL-7o-4Zq">
                                                 <rect key="frame" x="8" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="FNM-S6-Nkb"/>
@@ -68,7 +69,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="cuL-7o-4Zq" firstAttribute="centerX" secondItem="bNH-6z-SlL" secondAttribute="centerX" id="2eJ-uV-2Xt"/>
                                             <constraint firstItem="cuL-7o-4Zq" firstAttribute="centerY" secondItem="bNH-6z-SlL" secondAttribute="centerY" id="FDx-aL-eDa"/>
@@ -77,7 +78,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQG-iY-2Pi">
                                         <rect key="frame" x="138.5" y="0.0" width="46.5" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="bCl-Jn-xla">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="bCl-Jn-xla">
                                                 <rect key="frame" x="8.5" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="G6n-AM-9TM"/>
@@ -85,7 +86,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="bCl-Jn-xla" firstAttribute="centerY" secondItem="NQG-iY-2Pi" secondAttribute="centerY" id="ZXf-ch-Cc9"/>
                                             <constraint firstItem="bCl-Jn-xla" firstAttribute="centerX" secondItem="NQG-iY-2Pi" secondAttribute="centerX" id="dtL-Dv-m4I"/>
@@ -94,7 +95,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5e-NF-4Zi">
                                         <rect key="frame" x="185" y="0.0" width="46" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="fmD-70-EWG">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="fmD-70-EWG">
                                                 <rect key="frame" x="8" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="28C-Ab-FpX"/>
@@ -102,7 +103,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="fmD-70-EWG" firstAttribute="centerY" secondItem="u5e-NF-4Zi" secondAttribute="centerY" id="8IZ-fP-lJx"/>
                                             <constraint firstItem="fmD-70-EWG" firstAttribute="centerX" secondItem="u5e-NF-4Zi" secondAttribute="centerX" id="f8r-ZM-LFf"/>
@@ -111,7 +112,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3D-Nq-h5s">
                                         <rect key="frame" x="231" y="0.0" width="46.5" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="AGO-Er-acZ">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="AGO-Er-acZ">
                                                 <rect key="frame" x="8" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JKf-kE-bzl"/>
@@ -119,7 +120,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="AGO-Er-acZ" firstAttribute="centerY" secondItem="s3D-Nq-h5s" secondAttribute="centerY" id="Cxb-GK-MTH"/>
                                             <constraint firstItem="AGO-Er-acZ" firstAttribute="centerX" secondItem="s3D-Nq-h5s" secondAttribute="centerX" id="Lbr-MV-u4I"/>
@@ -128,7 +129,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmJ-t2-LY7">
                                         <rect key="frame" x="277.5" y="0.0" width="46" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="5HO-vV-Yjd">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="5HO-vV-Yjd">
                                                 <rect key="frame" x="8" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="u4H-Vb-Wdf"/>
@@ -136,7 +137,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="5HO-vV-Yjd" firstAttribute="centerX" secondItem="qmJ-t2-LY7" secondAttribute="centerX" id="Iq6-HI-xz6"/>
                                             <constraint firstItem="5HO-vV-Yjd" firstAttribute="centerY" secondItem="qmJ-t2-LY7" secondAttribute="centerY" id="yQu-Va-VtQ"/>
@@ -145,7 +146,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF0-i9-G3m">
                                         <rect key="frame" x="323.5" y="0.0" width="46.5" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="ZhL-dn-oha">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="ZhL-dn-oha">
                                                 <rect key="frame" x="8" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="iOl-9v-zTs"/>
@@ -153,7 +154,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="ZhL-dn-oha" firstAttribute="centerX" secondItem="BF0-i9-G3m" secondAttribute="centerX" id="2iM-LC-MtS"/>
                                             <constraint firstItem="ZhL-dn-oha" firstAttribute="centerY" secondItem="BF0-i9-G3m" secondAttribute="centerY" id="VQ1-98-Dm9"/>
@@ -162,7 +163,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrf-1A-UBr">
                                         <rect key="frame" x="370" y="0.0" width="46" height="50"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="sYQ-W6-4qf">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="sYQ-W6-4qf">
                                                 <rect key="frame" x="8" y="10" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Bxb-O7-1VE"/>
@@ -170,7 +171,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="sYQ-W6-4qf" firstAttribute="centerY" secondItem="wrf-1A-UBr" secondAttribute="centerY" id="hGx-Hs-1dR"/>
                                             <constraint firstItem="sYQ-W6-4qf" firstAttribute="centerX" secondItem="wrf-1A-UBr" secondAttribute="centerX" id="usv-ge-bZ3"/>
@@ -179,7 +180,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Fkp-ri-wiy" secondAttribute="trailing" id="6Uf-Vw-Iaj"/>
                             <constraint firstItem="Fkp-ri-wiy" firstAttribute="leading" secondItem="XIw-SQ-kQ2" secondAttribute="leading" constant="12" id="SdM-00-dox"/>
@@ -195,8 +196,8 @@
                     <constraint firstItem="XIw-SQ-kQ2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fcB-cd-Ie5"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="containerView" destination="XIw-SQ-kQ2" id="mOw-Ay-yqv"/>
                 <outletCollection property="clappedByUsers" destination="tsB-kz-xWk" collectionClass="NSMutableArray" id="Red-VR-6Z0"/>
@@ -213,6 +214,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="dummyProfile" width="30" height="30"/>
+        <image name="cff_dummyProfile" width="30" height="30"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

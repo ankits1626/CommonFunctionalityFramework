@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="width" constant="22" id="1Th-8V-I2U"/>
                                     <constraint firstAttribute="height" constant="22" id="cvr-e2-pkP"/>
                                 </constraints>
-                                <state key="normal" image="closeIcon"/>
+                                <state key="normal" image="cff_closeIcon"/>
                             </button>
                         </subviews>
                         <constraints>
@@ -67,6 +67,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="closeIcon" width="16" height="16"/>
+        <image name="cff_closeIcon" width="16" height="16"/>
     </resources>
 </document>

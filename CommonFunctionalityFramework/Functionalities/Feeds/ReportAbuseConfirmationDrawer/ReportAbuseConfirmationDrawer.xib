@@ -44,7 +44,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbl-A3-jOj" userLabel="can container">
                             <rect key="frame" x="0.0" y="24" width="414" height="40"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="risk" translatesAutoresizingMaskIntoConstraints="NO" id="NgS-Bx-GJt">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_risk" translatesAutoresizingMaskIntoConstraints="NO" id="NgS-Bx-GJt">
                                     <rect key="frame" x="184" y="0.0" width="46" height="40"/>
                                 </imageView>
                             </subviews>
@@ -245,7 +245,7 @@
         </view>
     </objects>
     <resources>
-        <image name="risk" width="46" height="41"/>
+        <image name="cff_risk" width="46" height="41"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -38,7 +38,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else{
                 cell.clapsButton?.setImage(
                     UIImage(
-                        named: feed.isClappedByMe() ? "clapHands" : "clapHandsNotClappedByMe",
+                        named: feed.isClappedByMe() ? "cff_clapHands" : "cff_clapHandsNotClappedByMe",
                         in: Bundle(for: FeedBottomTableViewCell.self),
                         compatibleWith: nil),
                     for: .normal

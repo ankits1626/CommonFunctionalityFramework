@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,11 +36,11 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tly-Jc-Pzs">
                                             <rect key="frame" x="0.0" y="0.0" width="20" height="30"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close_black" translatesAutoresizingMaskIntoConstraints="NO" id="Wxp-iy-Iib">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_close_black" translatesAutoresizingMaskIntoConstraints="NO" id="Wxp-iy-Iib">
                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="30"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Wxp-iy-Iib" secondAttribute="bottom" id="5ci-W3-O1Z"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wxp-iy-Iib" secondAttribute="trailing" id="dbq-aq-TVS"/>
@@ -52,13 +53,13 @@
                                             <rect key="frame" x="20" y="0.0" width="80" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1di-dQ-sfS">
-                                                    <rect key="frame" x="0.0" y="5" width="43.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="5" width="43" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="1di-dQ-sfS" firstAttribute="leading" secondItem="qNU-db-zIO" secondAttribute="leading" id="Qrm-Gc-TR1"/>
                                             </constraints>
@@ -70,7 +71,7 @@
                                         <constraint firstAttribute="height" constant="30" id="ptG-ot-JcQ"/>
                                     </constraints>
                                 </stackView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDh-It-oI8">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDh-It-oI8">
                                     <rect key="frame" x="341" y="0.0" width="46" height="30"/>
                                     <connections>
                                         <action selector="closeDrawer" destination="-1" eventType="touchUpInside" id="ZeP-HK-Pep"/>
@@ -95,7 +96,7 @@
                                     <rect key="frame" x="189.5" y="0.0" width="35" height="44"/>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="IhE-Dm-8bp" secondAttribute="bottom" id="Fu3-PG-vna"/>
                                 <constraint firstItem="IhE-Dm-8bp" firstAttribute="centerX" secondItem="Y7s-aW-Ie5" secondAttribute="centerX" id="Qjc-Y7-spe"/>
@@ -148,7 +149,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWE-HM-cbt" userLabel="Done Button Container">
                             <rect key="frame" x="0.0" y="218" width="414" height="40"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejB-Od-f3K">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejB-Od-f3K">
                                     <rect key="frame" x="74.5" y="0.0" width="265" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="I4d-oG-qyw"/>
@@ -177,7 +178,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sff-My-PLZ" userLabel="Done Button Container">
                             <rect key="frame" x="0.0" y="270" width="414" height="40"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mx0-Rd-dyy">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mx0-Rd-dyy">
                                     <rect key="frame" x="74.5" y="0.0" width="265" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="52d-6z-E2J"/>
@@ -198,12 +199,13 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEz-QJ-bR9">
                             <rect key="frame" x="0.0" y="310" width="414" height="63"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Jcd-lr-xMW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Lrz-4a-CAJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Jcd-lr-xMW" secondAttribute="trailing" id="SjT-ul-whV"/>
@@ -211,12 +213,14 @@
                 <constraint firstItem="Jcd-lr-xMW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yvo-ts-TlG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="134.78260869565219" y="-402.79017857142856"/>
         </view>
     </objects>
     <resources>
         <image name="can" width="35" height="44"/>
-        <image name="close_black" width="9" height="9"/>
+        <image name="cff_close_black" width="9" height="9"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

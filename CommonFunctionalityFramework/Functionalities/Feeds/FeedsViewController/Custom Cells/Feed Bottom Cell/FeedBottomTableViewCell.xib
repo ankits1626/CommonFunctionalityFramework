@@ -50,7 +50,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                                                 <color key="tintColor" systemColor="systemTealColor"/>
                                                                             </button>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparent_post_clap" translatesAutoresizingMaskIntoConstraints="NO" id="8DR-mA-vI7">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_transparent_post_clap" translatesAutoresizingMaskIntoConstraints="NO" id="8DR-mA-vI7">
                                                                                 <rect key="frame" x="12" y="12" width="20" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="20" id="1No-T7-MzD"/>
@@ -114,7 +114,7 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GU4-MR-yLj">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="147" height="44"/>
-                                                                                <state key="normal" image="comment"/>
+                                                                                <state key="normal" image="cff_comment"/>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -189,8 +189,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="comment" width="18" height="18"/>
-        <image name="transparent_post_clap" width="32" height="32"/>
+        <image name="cff_comment" width="18" height="18"/>
+        <image name="cff_transparent_post_clap" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
