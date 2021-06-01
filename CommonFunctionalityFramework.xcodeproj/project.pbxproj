@@ -528,6 +528,17 @@
 		BE9261C72627017C0012E290 /* ItemsDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
 		BE9261C9262702250012E290 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		BE9261CA262702250012E290 /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
+		BE964D802666763D00CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/CFFMainCropperViewController.strings; sourceTree = "<group>"; };
+		BE964D812666763D00CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/CFFImageCropperViewController.strings; sourceTree = "<group>"; };
+		BE964D822666763E00CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
+		BE964D832666763E00CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/AssetGridViewController.strings; sourceTree = "<group>"; };
+		BE964D842666763F00CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/GroupsViewController.strings; sourceTree = "<group>"; };
+		BE964D852666764100CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE964D862666764200CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE964D872666764300CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BE964D882666764300CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BE964D892666764400CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BE964D8A2666764400CDFC81 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
 		BEA1BAB725AD5CA10021942A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedTextTableViewCell.xib; sourceTree = "<group>"; };
 		BEA1BABA25AD5CA30021942A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
 		BEA1BABC25AD5CA50021942A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedTextTableViewCell.strings"; sourceTree = "<group>"; };
@@ -1797,6 +1808,7 @@
 				id,
 				"zh-Hant",
 				vi,
+				ms,
 			);
 			mainGroup = 98B90DD5240CACD90013E9D2;
 			productRefGroup = 98B90DE0240CACD90013E9D2 /* Products */;
@@ -2089,6 +2101,7 @@
 				BE03997025A2EC5F00031610 /* id */,
 				BE03997325A2EC6A00031610 /* zh-Hant */,
 				BE03997625A2EC7200031610 /* vi */,
+				BE964D832666763E00CDFC81 /* ms */,
 			);
 			name = AssetGridViewController.xib;
 			sourceTree = "<group>";
@@ -2112,6 +2125,7 @@
 				BE03997125A2EC5F00031610 /* id */,
 				BE03997425A2EC6A00031610 /* zh-Hant */,
 				BE03997725A2EC7200031610 /* vi */,
+				BE964D842666763F00CDFC81 /* ms */,
 			);
 			name = GroupsViewController.xib;
 			sourceTree = "<group>";
@@ -2129,6 +2143,7 @@
 				BE03996F25A2EC5F00031610 /* id */,
 				BE03997225A2EC6A00031610 /* zh-Hant */,
 				BE03997525A2EC7100031610 /* vi */,
+				BE964D802666763D00CDFC81 /* ms */,
 			);
 			name = CFFMainCropperViewController.xib;
 			sourceTree = "<group>";
@@ -2146,6 +2161,7 @@
 				BE03999625A30F7000031610 /* ko */,
 				BE03999825A30F7100031610 /* th */,
 				BE03999A25A30F7300031610 /* vi */,
+				BE964D812666763D00CDFC81 /* ms */,
 			);
 			name = CFFImageCropperViewController.xib;
 			sourceTree = "<group>";
@@ -2163,6 +2179,7 @@
 				BE0399AB25A30F8E00031610 /* ko */,
 				BE0399AD25A30F9000031610 /* th */,
 				BE0399AF25A30F9200031610 /* vi */,
+				BE964D822666763E00CDFC81 /* ms */,
 			);
 			name = CFFMediaBrowserViewController.xib;
 			sourceTree = "<group>";
@@ -2180,6 +2197,7 @@
 				BE0399C225A30FEA00031610 /* th */,
 				BE0399C425A30FEC00031610 /* vi */,
 				BE3A6F06266640F6001CC281 /* en */,
+				BE964D852666764100CDFC81 /* ms */,
 			);
 			name = ReportAbuseConfirmationDrawer.xib;
 			sourceTree = "<group>";
@@ -2197,6 +2215,7 @@
 				BE0399D525A3100700031610 /* ko */,
 				BE0399D725A3100B00031610 /* th */,
 				BE0399D925A3100C00031610 /* vi */,
+				BE964D862666764200CDFC81 /* ms */,
 			);
 			name = DeletePostConfirmationDrawer.xib;
 			sourceTree = "<group>";
@@ -2214,6 +2233,7 @@
 				BE0399EA25A3105B00031610 /* ko */,
 				BE0399EC25A3105D00031610 /* th */,
 				BE0399EE25A3105F00031610 /* vi */,
+				BE964D872666764300CDFC81 /* ms */,
 			);
 			name = FeedsGIFSelectorViewController.xib;
 			sourceTree = "<group>";
@@ -2231,6 +2251,7 @@
 				BE0399FF25A3107A00031610 /* ko */,
 				BE039A0125A3107C00031610 /* th */,
 				BE039A0325A3107E00031610 /* vi */,
+				BE964D882666764300CDFC81 /* ms */,
 			);
 			name = PollsActiveDaysTableViewCell.xib;
 			sourceTree = "<group>";
@@ -2248,6 +2269,7 @@
 				BE039A1425A310B900031610 /* ko */,
 				BE039A1625A310BA00031610 /* th */,
 				BE039A1825A310BC00031610 /* vi */,
+				BE964D892666764400CDFC81 /* ms */,
 			);
 			name = PostEditorViewController.xib;
 			sourceTree = "<group>";
@@ -2265,6 +2287,7 @@
 				BEA1BAC625AD5CB00021942A /* ko */,
 				BEA1BAC825AD5CB20021942A /* th */,
 				BEA1BACA25AD5CB40021942A /* vi */,
+				BE964D8A2666764400CDFC81 /* ms */,
 			);
 			name = FeedTextTableViewCell.xib;
 			sourceTree = "<group>";
