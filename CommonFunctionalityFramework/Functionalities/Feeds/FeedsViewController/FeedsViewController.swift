@@ -288,7 +288,7 @@ extension FeedsViewController : FeedsDelegate{
                 DispatchQueue.main.async {
                     switch result{
                     case .Success(_):
-                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Post is unpinned successfully" : "Post is pinned successfully", okActionHandler: { (_) in
+                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Post is unpinned successfully".localized : "Post is pinned successfully".localized, okActionHandler: { (_) in
                           NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                         })
                     case .SuccessWithNoResponseData:
