@@ -475,7 +475,6 @@
 		BE0399AD25A30F9000031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
 		BE0399AF25A30F9200031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/CFFMediaBrowserViewController.strings; sourceTree = "<group>"; };
 		BE0399B125A30FD700031610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
-		BE0399B425A30FDC00031610 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BE0399B625A30FDD00031610 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ReportAbuseConfirmationDrawer.strings"; sourceTree = "<group>"; };
 		BE0399B825A30FDF00031610 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ReportAbuseConfirmationDrawer.strings"; sourceTree = "<group>"; };
 		BE0399BA25A30FE000031610 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
@@ -525,6 +524,7 @@
 		BE039A1625A310BA00031610 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
 		BE039A1825A310BC00031610 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
 		BE31816E2629948500D21145 /* CommonFunctionalityModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		BE3A6F06266640F6001CC281 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BE9261C72627017C0012E290 /* ItemsDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
 		BE9261C9262702250012E290 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		BE9261CA262702250012E290 /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
@@ -2171,7 +2171,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE0399B125A30FD700031610 /* Base */,
-				BE0399B425A30FDC00031610 /* en */,
 				BE0399B625A30FDD00031610 /* zh-Hans */,
 				BE0399B825A30FDF00031610 /* zh-Hant */,
 				BE0399BA25A30FE000031610 /* hi */,
@@ -2180,6 +2179,7 @@
 				BE0399C025A30FE800031610 /* ko */,
 				BE0399C225A30FEA00031610 /* th */,
 				BE0399C425A30FEC00031610 /* vi */,
+				BE3A6F06266640F6001CC281 /* en */,
 			);
 			name = ReportAbuseConfirmationDrawer.xib;
 			sourceTree = "<group>";

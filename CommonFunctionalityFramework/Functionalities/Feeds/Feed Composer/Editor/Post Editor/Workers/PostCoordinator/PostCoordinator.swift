@@ -19,17 +19,17 @@ class PostCoordinatorError {
     static let PollNotReadyToBePosted = NSError(
            domain: "com.rewardz.EventDetailCellTypeError",
            code: 1,
-           userInfo: [NSLocalizedDescriptionKey: "Cannot create an empty Poll."]
+        userInfo: [NSLocalizedDescriptionKey: "Cannot create an empty Poll.".localized]
        )
     static let PollWithLessThan2ValidOptionsNotReadyToBePosted = NSError(
         domain: "com.rewardz.EventDetailCellTypeError",
         code: 1,
-        userInfo: [NSLocalizedDescriptionKey: "Cannot create a poll with less than 2 valid options."]
+        userInfo: [NSLocalizedDescriptionKey: "Cannot create a poll with less than 2 valid options.".localized]
     )
     static let PostNotReadyToBePosted = NSError(
         domain: "com.rewardz.EventDetailCellTypeError",
         code: 1,
-        userInfo: [NSLocalizedDescriptionKey: "Cannot create an empty Post."]
+        userInfo: [NSLocalizedDescriptionKey: "Cannot create an empty Post.".localized]
     )
 }
 

@@ -16,7 +16,7 @@ struct FloatingMenuOption {
 
 class FloatingMenuOptions: UIViewController, KUIPopOverUsable {
     var contentSize: CGSize {
-        return CGSize(width: 150, height: max(24, 24 * options.count))
+        return CGSize(width: 160, height: max(24, 24 * options.count))
     }
     var popOverBackgroundColor: UIColor?{
         return .white
@@ -66,7 +66,7 @@ extension FloatingMenuOptions : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FloatingMenuOptionTableViewCell") as! FloatingMenuOptionTableViewCell
         cell.optionTile?.text = options[indexPath.row].title
-        cell.optionTile?.font = UIFont.Button
+        cell.optionTile?.font = UIFont.FloatingButton
         if indexPath.row == (options.count - 1){
             cell.separatorInset = UIEdgeInsets(top: 0, left: view.bounds.width, bottom: 0, right: 0)
         }
