@@ -36,10 +36,10 @@ class PintoTopConfirmationDrawer: UIViewController {
     }
     
     private func populateFrequencyModelArray(){
-        let frequency1 = PostPinDropDownValue(frequencyName: "1 day", frequencyID: 1)
-        let frequency2 = PostPinDropDownValue(frequencyName: "1 week", frequencyID: 7)
-        let frequency3 = PostPinDropDownValue(frequencyName: "1 month", frequencyID: 30)
-        let frequency4 = PostPinDropDownValue(frequencyName: "Always", frequencyID: 0)
+        let frequency1 = PostPinDropDownValue(frequencyName: "1 day".localized, frequencyID: 1)
+        let frequency2 = PostPinDropDownValue(frequencyName: "1 week".localized, frequencyID: 7)
+        let frequency3 = PostPinDropDownValue(frequencyName: "1 month".localized, frequencyID: 30)
+        let frequency4 = PostPinDropDownValue(frequencyName: "Always".localized, frequencyID: 0)
         self.frquencyModelArr.append(frequency1)
         self.frquencyModelArr.append(frequency2)
         self.frquencyModelArr.append(frequency3)
@@ -74,7 +74,7 @@ class PintoTopConfirmationDrawer: UIViewController {
     
     private func setup(){
         view.clipsToBounds = true
-        self.frequencyLabel.text = "1 week"
+        self.frequencyLabel.text = "1 week".localized
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
         if isAlreadyPinned {
