@@ -49,6 +49,10 @@ class ASMentionCoordinator: NSObject{
         }
     }
     
+    public func clearMentionsTextView() {
+        ASMentionStore.shared.clearAllMentions()
+    }
+    
     private func configureTextView(){
         targetTextview?.autocorrectionType = .no
         targetTextview?.autocapitalizationType = .none
