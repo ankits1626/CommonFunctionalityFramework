@@ -13,9 +13,9 @@ typealias FeedFetcherHandler = (APICallResult<FetchedFeedModel>) -> Void
 class FeedFetcher  {
     typealias ResultType = FetchedFeedModel
     var commonAPICall : CommonAPICall<FeedFetchDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     
@@ -57,11 +57,11 @@ class FeedFetcher  {
 class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private var nextPageUrl : String?
     private var feedID : Int?
     
-    init( feedID: Int?, nextPageUrl : String?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init( feedID: Int?, nextPageUrl : String?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
          self.feedID = feedID
         self.nextPageUrl = nextPageUrl
         self.networkRequestCoordinator = networkRequestCoordinator

@@ -13,10 +13,10 @@ typealias PollAnswerSubmitterHandler = (APICallResult<RawFeed>) -> Void
 class PollAnswerSubmitter  {
     typealias ResultType = RawFeed
     var commonAPICall : CommonAPICall<PollAnswerSubmitDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private let feedIdentifier : Int64
     private let answer: PollOption
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol, feedIdentifier : Int64, answer: PollOption) {
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, feedIdentifier : Int64, answer: PollOption) {
         self.networkRequestCoordinator = networkRequestCoordinator
         self.feedIdentifier = feedIdentifier
         self.answer = answer
@@ -42,10 +42,10 @@ class PollAnswerSubmitter  {
 class PollAnswerSubmitRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var feedIdentifier : Int64
     var answer: PollOption
-    init( feedIdentifier : Int64, answer: PollOption, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init( feedIdentifier : Int64, answer: PollOption, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
         self.answer = answer
         self.networkRequestCoordinator = networkRequestCoordinator

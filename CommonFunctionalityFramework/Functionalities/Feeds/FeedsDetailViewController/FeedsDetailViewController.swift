@@ -19,16 +19,19 @@ protocol FeedsDetailCommentsProviderProtocol{
     func getNumberOfComments() -> Int
     func getComment(_ index : Int) -> FeedComment?
 }
-class FeedsDetailViewController: UIViewController {
-    var feedFetcher: CFFNetwrokRequestCoordinatorProtocol!
+class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate {
+
+    var feedFetcher: CFFNetworkRequestCoordinatorProtocol!
+    private var tagPicker : ASMentionSelectorViewController?
     @IBOutlet weak var commentBarView : ASChatBarview?
     @IBOutlet weak var feedDetailTableView : UITableView?
     var targetFeedItem : FeedsItemProtocol!
     var clappedByUsers : [ClappedByUser]?
-    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
+    var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     weak var themeManager: CFFThemeManagerProtocol?
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
@@ -48,6 +51,7 @@ class FeedsDetailViewController: UIViewController {
         super.viewDidLoad()
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
+            ASMentionCoordinator.shared.delegate = self
             self?.setup()
         }
     }
@@ -119,6 +123,47 @@ class FeedsDetailViewController: UIViewController {
         fetchComments()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addTagPicker()
+    }
+    
+    private func addTagPicker(){
+        if tagPicker == nil{
+            tagPicker = ASMentionSelectorViewController(nibName: "ASMentionSelectorViewController", bundle: Bundle(for: ASMentionSelectorViewController.self))
+            tagPicker?.networkRequestCoordinator = requestCoordinator
+        }
+        tagPicker?.mediaFetcher = mediaFetcher
+    }
+    
+    func showUserListForTagging(searckKey : String, textView: UITextView, pickerDelegate : TagUserPickerDelegate?){
+        tagPicker?.pickerDelegate = pickerDelegate
+        if
+            let confirmedTextViewCursorPosition = textView.selectedTextRange?.end {
+            let caretPosition = textView.caretRect(for: confirmedTextViewCursorPosition)
+            let textViewActualPosition = textView.convert(caretPosition, to: view)
+            tagPicker?.searchForUser(
+                searckKey,
+                displayRect: textViewActualPosition,
+                parent: self,
+                shouldSearchOnlyDepartment: false
+            )
+        }
+    }
+    
+    func updateTagPickerFrame(_ textView: UITextView?) {
+        if
+            let confirmedTextViewCursorPosition = textView?.selectedTextRange?.end,
+            let caretPosition = textView?.caretRect(for: confirmedTextViewCursorPosition),
+            let textViewActualPosition = textView?.convert(caretPosition, to: view){
+            tagPicker?.updateFrameOfPicker(textViewActualPosition)
+        }
+    }
+    
+    func dismissUserListForTagging(completion :(() -> Void)){
+        tagPicker?.dismissTagSelector(completion)
+    }
+    
     @objc private func fetchComments(){
         FeedCommentsFetcher(networkRequestCoordinator: requestCoordinator).fetchComments(
         feedId: targetFeedItem.feedIdentifier, nextpageUrl: lastFetchedComments?.nextPageUrl) { (result) in
@@ -185,6 +230,26 @@ class FeedsDetailViewController: UIViewController {
         }
     }
     
+    func reloadTextViewContainingRow(indexpath: IndexPath) {
+    }
+    
+    func updatePostTitle(title: String?) {
+    }
+    
+    func updatePostDescription(decription: String?) {
+    }
+    
+    func removeSelectedMedia(index: Int, mediaSection: EditableMediaSection) {
+    }
+    
+    func removeAttachedGif() {
+    }
+    
+    func savePostOption(index: Int, option: String?) {
+    }
+    
+    func activeDaysForPollChanged(_ days: Int) {
+    }
 }
 
 extension FeedsDetailViewController : FeedsDetailCommentsProviderProtocol{
@@ -204,6 +269,10 @@ extension FeedsDetailViewController : FeedsDetailCommentsProviderProtocol{
 }
 
 extension FeedsDetailViewController : FeedsDatasource{
+    func shouldShowMenuOptionForFeed() -> Bool {
+        return mainAppCoordinator?.isUserAllowedToPostFeed() ?? true
+    }
+    
     func getCommentProvider() -> FeedsDetailCommentsProviderProtocol? {
         return self
     }
@@ -580,13 +649,14 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
             FeedCommentPostWorker(networkRequestCoordinator: requestCoordinator).postComment(
                 comment: PostbaleComment(
                     feedId: targetFeedItem.feedIdentifier,
-                    commentText: message)) { (result) in
+                    commentText: chatBar.taggedMessaged)) { (result) in
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
                                 CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {[weak self] in
                                     let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
                                     post.numberOfComments =  post.numberOfComments + 1
+                                    ASMentionCoordinator.shared.clearMentionsTextView()
                                     self?.targetFeedItem = post.getRawObject() as! RawFeed
                                     let _ = FeedComment(input: result).getManagedObject() as! ManagedPostComment
                                     CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {

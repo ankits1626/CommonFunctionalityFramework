@@ -10,11 +10,11 @@ import Foundation
 
 class FeedComposerCoordinator {
     let feedCoordinatorDelegate: FeedsCoordinatorDelegate
-     var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     private var selectedAssets : [LocalSelectedMediaItem]?
     weak var themeManager: CFFThemeManagerProtocol?
-    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetwrokRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?) {
+    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?) {
         self.feedCoordinatorDelegate = delegate
         self.requestCoordinator = requestCoordinator
         self.mediaFetcher = mediaFetcher

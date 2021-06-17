@@ -12,8 +12,8 @@ typealias PinPostWorkerResultHandler = (APICallResult<Any?>) -> Void
 class PostPinWorker  {
     typealias ResultType = Any?
     var commonAPICall : CommonAPICall<ReportAbuseDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func postPin(_ postId: Int64, frequency: Int?, completionHandler: @escaping PinPostWorkerResultHandler) {
@@ -33,10 +33,10 @@ class PostPinWorker  {
 class PinPostRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var feedIdentifier : Int64
     var selectedFrequency: Int?
-    init(_feedIdentifier: Int64, _selectedFrequency: Int?, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init(_feedIdentifier: Int64, _selectedFrequency: Int?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = _feedIdentifier
         self.selectedFrequency = _selectedFrequency
         self.networkRequestCoordinator = networkRequestCoordinator

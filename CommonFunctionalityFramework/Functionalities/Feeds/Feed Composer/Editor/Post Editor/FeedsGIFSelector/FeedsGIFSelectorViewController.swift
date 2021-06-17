@@ -26,7 +26,7 @@ class FeedsGIFSelectorViewController: UIViewController {
     private var isFetchingNextPage = false
     private var gifDownloadTasks = [URLSessionDataTask]()
     
-    var requestCoordinator: CFFNetwrokRequestCoordinatorProtocol!
+    var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher: CFFMediaCoordinatorProtocol?
     weak var feedsGIFSelectorDelegate : FeedsGIFSelectorDelegate?
         

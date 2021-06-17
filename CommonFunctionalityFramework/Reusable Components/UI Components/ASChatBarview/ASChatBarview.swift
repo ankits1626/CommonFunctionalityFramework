@@ -27,13 +27,15 @@ class ASChatBarview : UIView {
     @IBOutlet weak var container : UIView?
     @IBOutlet weak var attachImageButton : UIButton?
     @IBOutlet weak var sendButton : UIButton?
-    @IBOutlet weak var messageTextView : UITextView?
+    @IBOutlet weak var messageTextView : KMPlaceholderTextView?
     @IBOutlet private weak var placeholderLabel : UILabel?
     @IBOutlet weak var delegate : ASChatBarViewDelegate?
+    var tagPicker : ASMentionSelectorViewController?
     @IBOutlet private weak var heightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainer : UIView?
     @IBOutlet private weak var leftContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainerWidthConstraint : NSLayoutConstraint?
+    var taggedMessaged : String = ""
     override var backgroundColor: UIColor?{
         didSet{
             container?.backgroundColor = backgroundColor
@@ -94,6 +96,7 @@ class ASChatBarview : UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         commonSetup()
+        setupCoordinator(messageTextView)
     }
 
     private func registerForKeyboardNotifications(){
@@ -152,9 +155,17 @@ class ASChatBarview : UIView {
             }
         }
     }
+    
+    private func setupCoordinator(_ targetTextView: UITextView?){
+        targetTextView?.delegate = ASMentionCoordinator.shared
+        ASMentionCoordinator.shared.loadInitialText(targetTextView: targetTextView)
+        ASMentionCoordinator.shared.textUpdateListener = self
+    }
+    
+    
 
     @objc private func handleKeyboardAppearance(notification: NSNotification) {
-        superview?.addGestureRecognizer(tap)
+//        superview?.addGestureRecognizer(tap)
         guard let userInfo = notification.userInfo else {return}
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
@@ -269,5 +280,10 @@ extension ASChatBarview{
 extension ASChatBarview{
     func clearChatBar() {
     
+    }
+}
+extension ASChatBarview : ASMentionCoordinatortextUpdateListener{
+    func textUpdated() {
+        taggedMessaged = ASMentionCoordinator.shared.getPostableTaggedText() ?? ""
     }
 }

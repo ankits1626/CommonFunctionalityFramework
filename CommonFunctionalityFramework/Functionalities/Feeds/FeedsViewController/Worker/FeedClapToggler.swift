@@ -22,8 +22,8 @@ typealias FeedClapTogglerResultHandler = (APICallResult<LikeToggleResult>) -> Vo
 class FeedClapToggler  {
     typealias ResultType = LikeToggleResult
     var commonAPICall : CommonAPICall<FeedClapTogglerDataParser>?
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
-    init(networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func toggleLike(_ input : Likeable,completionHandler: @escaping FeedClapTogglerResultHandler) {
@@ -43,9 +43,9 @@ class FeedClapToggler  {
 class FeedClapTogglerRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    private let networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol
+    private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var likeableElement : Likeable
-    init( likeableElement : Likeable, networkRequestCoordinator: CFFNetwrokRequestCoordinatorProtocol) {
+    init( likeableElement : Likeable, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.likeableElement = likeableElement
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())

@@ -225,8 +225,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../../Flab/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../../Flab/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../../skor-ios/LatestMerged/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../../skor-ios/LatestMerged/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
 		980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollSubmitButtonCell.xib; sourceTree = "<group>"; };
 		980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCellCoordinator.swift; sourceTree = "<group>"; };
@@ -1790,6 +1790,7 @@
 				TargetAttributes = {
 					98B90DDE240CACD90013E9D2 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -2419,6 +2420,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -2435,6 +2437,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rewardz.-CommonFunctionalityFramework.CommonFunctionalityFramework";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2444,6 +2447,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
