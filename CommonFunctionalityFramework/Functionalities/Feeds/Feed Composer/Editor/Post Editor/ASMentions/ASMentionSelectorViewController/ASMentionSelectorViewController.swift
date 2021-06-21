@@ -118,10 +118,9 @@ class ASMentionSelectorViewController: UIViewController {
         let keyboardHeight = KeyboardService.shared.measuredSize
         let convertedRect = cursorRectRect
         let delta : CGFloat =  20
-        let pickerHeight = CGFloat(min(120, 40*(users?.count ?? 1)))
+        let pickerHeight = CGFloat(120)
         let viewY = convertedRect.origin.y + pickerHeight + delta + 44
         let keyboardY = keyboardHeight.origin.y
-        print("\(viewY) --- \(keyboardY)")
         var y_cord = convertedRect
         var x = convertedRect.origin.x
         if (x + 200) > UIScreen.main.bounds.width{
