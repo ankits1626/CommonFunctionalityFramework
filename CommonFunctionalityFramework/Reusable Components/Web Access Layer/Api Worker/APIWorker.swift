@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Security
+import CommonCrypto
 
 public enum HTTPMethod: String {
     case DELETE = "DELETE"
@@ -126,6 +128,7 @@ public class CommonAPICall<P: DataParserProtocol> : CommonAPIProtocol {
     var apiRequestProvider: APIRequestGeneratorProtocol
     var dataParser: P
     var logouthandler : LogoutResponseHandler
+    private let sessionSecurityManager = SessionSecurityManager()
     
     public init(apiRequestProvider: APIRequestGeneratorProtocol, dataParser: P, logouthandler : LogoutResponseHandler) {
         self.apiRequestProvider = apiRequestProvider
@@ -138,8 +141,9 @@ public class CommonAPICall<P: DataParserProtocol> : CommonAPIProtocol {
     }
 
     public func callAPI(completionHandler: @escaping (APICallResult<P.ResultType>) -> Void)  {
+        let session = URLSession(configuration: .ephemeral, delegate: sessionSecurityManager, delegateQueue: nil)
         if let urlRequest = apiRequestProvider.apiRequest{
-            let apiTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            let apiTask = session.dataTask(with: urlRequest) { (data, response, error) in
                 let apiCallResult : APICallResult<P.ResultType>!
                 if let unwrappedError = error{
                     apiCallResult = APICallResult.Failure(error: APIError.Others(unwrappedError.localizedDescription))
@@ -232,3 +236,70 @@ extension Int {
         return false
     }
 }
+class SessionSecurityManager : NSObject, URLSessionDelegate {
+     private let rsa2048Asn1Header:[UInt8] = [
+         0x30, 0x82, 0x01, 0x22, 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86,
+         0xf7, 0x0d, 0x01, 0x01, 0x01, 0x05, 0x00, 0x03, 0x82, 0x01, 0x0f, 0x00
+     ]
+
+     private func sha256(data : Data) -> String {
+         var keyWithHeader = Data(rsa2048Asn1Header)
+         keyWithHeader.append(data)
+         var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+
+         keyWithHeader.withUnsafeBytes {
+             _ = CC_SHA256($0, CC_LONG(keyWithHeader.count), &hash)
+         }
+
+
+         return Data(hash).base64EncodedString()
+     }
+
+     private func publicKey(for certificate: SecCertificate) -> SecKey? {
+         if #available(iOS 12.0, *) {
+             return SecCertificateCopyKey(certificate)
+         } else if #available(iOS 10.3, *) {
+             return SecCertificateCopyPublicKey(certificate)
+         } else {
+             var possibleTrust: SecTrust?
+             SecTrustCreateWithCertificates(certificate, SecPolicyCreateBasicX509(), &possibleTrust)
+             guard let trust = possibleTrust else { return nil }
+             var result: SecTrustResultType = .unspecified
+             SecTrustEvaluate(trust, &result)
+             return SecTrustCopyPublicKey(trust)
+         }
+     }
+
+     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+
+         guard let serverTrust = challenge.protectionSpace.serverTrust else {
+             completionHandler(.cancelAuthenticationChallenge, nil);
+             return
+         }
+         let localKeys = ["4Zh8KOjv022VMgvYZh9R08dD5bKu+98gLnBoXpu3TwU=",
+                          "RkhWTcfJAQN/YxOR12VkPo+PhmIoSfWd/JVkg44einY=",
+                          "x4QzPSC810K5/cMjb05Qm4k3Bw5zBn4lTdO/nEW/Td4=",
+                          "vRU+17BDT2iGsXvOi76E7TQMcTLXAqj0+jGPdW7L1vM=",
+                          "mW+dy9xh3o2O3zPRL7fYyw8QIaI5VjgwyM0EUwGrUiA="]
+
+         if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0),
+            let serverPublicKey = publicKey(for: serverCertificate),
+            let serverPublicKeyData = SecKeyCopyExternalRepresentation(serverPublicKey, nil ){
+             let data:Data = serverPublicKeyData as Data
+             // Server Hash key
+             let serverHashKey = sha256(data: data)
+             // Local Hash Key
+             if (localKeys.contains(serverHashKey)) {
+                 // Success! This is our server
+                 print("Public key pinning is successfully completed")
+                 completionHandler(.useCredential, URLCredential(trust:serverTrust))
+                 return
+             }else{
+                 completionHandler(.cancelAuthenticationChallenge, nil)
+             }
+         }else{
+             completionHandler(.cancelAuthenticationChallenge, nil)
+         }
+     }
+
+ }
