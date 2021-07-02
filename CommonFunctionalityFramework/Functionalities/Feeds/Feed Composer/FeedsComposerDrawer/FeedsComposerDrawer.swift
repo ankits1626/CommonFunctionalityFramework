@@ -58,6 +58,9 @@ class FeedsComposerDrawer: UIViewController {
         }
     }
     
+    func opnPostViewController() throws{
+        dismissAndShowEditor(type: .Post)
+    }
 }
 
 extension FeedsComposerDrawer{

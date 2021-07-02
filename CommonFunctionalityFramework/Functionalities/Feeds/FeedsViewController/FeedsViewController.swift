@@ -189,7 +189,10 @@ extension FeedsViewController{
         drawer.mediaFetcher = mediaFetcher
         drawer.themeManager = themeManager
         do{
-            try drawer.presentDrawer()
+            if let fetchedFeeds = lastFetchedFeeds?.fetchedRawFeeds?["results"] as? [[String : Any]]{
+                let isAdminUser = (fetchedFeeds[0] as NSDictionary).object(forKey: "is_admin") as? Bool ?? false
+                isAdminUser ? try drawer.presentDrawer() : try drawer.opnPostViewController()
+            }
         }catch let error{
             print("show error")
             ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
