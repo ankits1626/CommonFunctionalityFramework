@@ -105,11 +105,6 @@ class PostEditorViewController: UIViewController {
         ASMentionCoordinator.shared.targetTextview?.text = ""
         ASMentionCoordinator.shared.clearMentionsTextView()
         ASMentionCoordinator.shared.textUpdateListener = nil
-        NotificationCenter.default.post(name: .didUpdateTargetTextView, object: nil)
-    }
-    
-    deinit {
-        print("ViewController deinit")
     }
     
     private func setup(){

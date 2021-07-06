@@ -15,9 +15,6 @@ class ASChatBarError {
         userInfo: [NSLocalizedDescriptionKey: "Height constraint is not set for chat bar."]
     )
 }
-extension Notification.Name{
-    static let didUpdateTargetTextView = Notification.Name("didUpdateTargetTextView")
-}
 @objc protocol ASChatBarViewDelegate : class {
     func finishedPresentingOverKeyboard()
     func addAttachmentButtonPressed()
@@ -114,13 +111,6 @@ class ASChatBarview : UIView {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(setTargetTextView),
-            name: NSNotification.Name.didUpdateTargetTextView,
-            object: nil
-        )
     }
 
     private func registerForTextChangeNotification(){
@@ -138,7 +128,7 @@ class ASChatBarview : UIView {
         registerForTextChangeNotification()
     }
     
-    @objc private func setTargetTextView(notification: NSNotification) {
+    func registerTextView() {
         if ASMentionCoordinator.shared.targetTextview == nil{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 self.setupCoordinator(self.messageTextView)
@@ -150,6 +140,7 @@ class ASChatBarview : UIView {
     private let maxNumberOflines = 4
 
     @objc private func textChanged(){
+        registerTextView()
         if let txtview = messageTextView{
             placeholderLabel?.isHidden = !txtview.text.isEmpty
             attachImageButton?.isEnabled = !txtview.text.isEmpty
