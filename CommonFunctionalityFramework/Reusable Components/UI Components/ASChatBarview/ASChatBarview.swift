@@ -15,7 +15,9 @@ class ASChatBarError {
         userInfo: [NSLocalizedDescriptionKey: "Height constraint is not set for chat bar."]
     )
 }
-
+extension Notification.Name{
+    static let didUpdateTargetTextView = Notification.Name("didUpdateTargetTextView")
+}
 @objc protocol ASChatBarViewDelegate : class {
     func finishedPresentingOverKeyboard()
     func addAttachmentButtonPressed()
@@ -112,6 +114,13 @@ class ASChatBarview : UIView {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(setTargetTextView),
+            name: NSNotification.Name.didUpdateTargetTextView,
+            object: nil
+        )
     }
 
     private func registerForTextChangeNotification(){
@@ -127,6 +136,14 @@ class ASChatBarview : UIView {
         xibSetup()
         registerForKeyboardNotifications()
         registerForTextChangeNotification()
+    }
+    
+    @objc private func setTargetTextView(notification: NSNotification) {
+        if ASMentionCoordinator.shared.targetTextview == nil{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                self.setupCoordinator(self.messageTextView)
+            })
+        }
     }
 
     private var previousnumberOfLines : Int!
@@ -163,7 +180,6 @@ class ASChatBarview : UIView {
     }
     
     
-
     @objc private func handleKeyboardAppearance(notification: NSNotification) {
 //        superview?.addGestureRecognizer(tap)
         guard let userInfo = notification.userInfo else {return}

@@ -126,6 +126,8 @@ class ASMentionSelectorViewController: UIViewController {
         if (x + 200) > UIScreen.main.bounds.width{
             x = UIScreen.main.bounds.width - 210
         }
+        let difference = (keyboardHeight.height - convertedRect.origin.y)
+        let extraSpace = difference < 120 ? convertedRect.origin.y - 113  : convertedRect.origin.y + delta
         if viewY > keyboardY{
             y_cord = CGRect(
                 x: x,
@@ -135,7 +137,7 @@ class ASMentionSelectorViewController: UIViewController {
         }else{
             y_cord = CGRect(
                 x: x,
-                y: convertedRect.origin.y + delta ,
+                y: extraSpace ,
                 width: 200,
                 height: pickerHeight
             )

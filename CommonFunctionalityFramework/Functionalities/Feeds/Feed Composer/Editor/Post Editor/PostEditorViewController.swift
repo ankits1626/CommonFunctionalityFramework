@@ -95,6 +95,23 @@ class PostEditorViewController: UIViewController {
         setup()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        clearTagDelegation()
+    }
+    
+    func clearTagDelegation() {
+        ASMentionCoordinator.shared.delegate = nil
+        ASMentionCoordinator.shared.loadInitialText(targetTextView: nil)
+        ASMentionCoordinator.shared.targetTextview?.text = ""
+        ASMentionCoordinator.shared.clearMentionsTextView()
+        ASMentionCoordinator.shared.textUpdateListener = nil
+        NotificationCenter.default.post(name: .didUpdateTargetTextView, object: nil)
+    }
+    
+    deinit {
+        print("ViewController deinit")
+    }
+    
     private func setup(){
         tableBackgroundContainer?.curvedCornerControl()
         view.backgroundColor = .viewBackgroundColor

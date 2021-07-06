@@ -49,11 +49,6 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        clearAnyExistingFeedsData {[weak self] in
-            self?.initializeFRC()
-            ASMentionCoordinator.shared.delegate = self
-            self?.setup()
-        }
     }
     
     private func setup(){
@@ -120,7 +115,14 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchComments()
+        clearAnyExistingFeedsData {[weak self] in
+            ASMentionCoordinator.shared.delegate = self
+            self?.initializeFRC()
+            self?.setup()
+            self?.fetchComments()
+            ASChatBarview().setNeedsDisplay()
+            ASChatBarview().layoutIfNeeded()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
