@@ -10,6 +10,7 @@ import UIKit
 
 public protocol CFFMainAppInformationCoordinator : class {
     func isUserAllowedToPostFeed() -> Bool
+    func isUserAllowedToCreatePoll() -> Bool 
 }
 
 
