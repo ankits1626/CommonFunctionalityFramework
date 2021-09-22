@@ -83,7 +83,9 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         return getCellCoordinator(indexPath: inputModel.targetIndexpath).getCell(FeedCellDequeueModel(
             targetIndexpath: inputModel.targetIndexpath,
             targetTableView: targetTableView!,
-            datasource: feedsDataSource
+            datasource: feedsDataSource,
+            isFeedDetailPage: false,
+            themeManager: themeManager
             )
         )
     }
@@ -98,7 +100,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 mediaFetcher: mediaFetcher,
                 delegate: inputModel.delegate,
                 selectedoptionMapper: inputModel.selectedoptionMapper,
-                themeManager: themeManager
+                themeManager: themeManager,
+                isFeedDetailPage: false
             )
         )
     }
@@ -119,6 +122,7 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     }
     
     func registerTableViewToRespectiveCellType(cellType: FeedCellTypeProtocol, tableView: UITableView?) {
+        print("<<<<<<<<<<<<<<<< registering tableview for \(cellType.cellIdentifier), \(cellType.cellNib)")
         tableView?.register(
             cellType.cellNib,
             forCellReuseIdentifier: cellType.cellIdentifier

@@ -158,6 +158,12 @@
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
+		BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */; };
+		BEAAD1FF26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD1FD26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib */; };
+		BEAAD20426FB03060069C5C1 /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD20126FB03060069C5C1 /* DropDownTableViewCell.xib */; };
+		BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */; };
+		BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */; };
+		BEAAD20926FB03CB0069C5C1 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -316,6 +322,13 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintoTopConfirmationDrawer.swift; sourceTree = "<group>"; };
+		BEAAD1FD26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PintoTopConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BEAAD20126FB03060069C5C1 /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
+		BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
+		BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinWorker.swift; sourceTree = "<group>"; };
+		BEAAD20A26FB04B40069C5C1 /* CommonFunctionalityModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -956,6 +969,7 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */,
 				98D5E88F25314BE800813991 /* ReportAbuseConfirmationDrawer */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
 				983C4F862462F05800FDEB76 /* DeletePostConfirmationDrawer */,
@@ -1175,6 +1189,35 @@
 			path = UILoadControl;
 			sourceTree = "<group>";
 		};
+		BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				BEAAD20726FB03B50069C5C1 /* Worker */,
+				BEAAD20026FB02F10069C5C1 /* DropDown */,
+				BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */,
+				BEAAD1FD26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib */,
+			);
+			path = PinToTopConfirmationDrawer;
+			sourceTree = "<group>";
+		};
+		BEAAD20026FB02F10069C5C1 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */,
+				BEAAD20126FB03060069C5C1 /* DropDownTableViewCell.xib */,
+				BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		BEAAD20726FB03B50069C5C1 /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1257,12 +1300,14 @@
 				98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */,
 				983C4F8A2462F08000FDEB76 /* DeletePostConfirmationDrawer.xib in Resources */,
 				9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */,
+				BEAAD1FF26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib in Resources */,
 				9873D63924BAC0180041504C /* FeedGifTableViewCell.xib in Resources */,
 				9873D61924B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib in Resources */,
 				9868C08E2410B56100B12321 /* FeedsDetailViewController.xib in Resources */,
 				9873D61E24B6C26D0041504C /* FeedsGIFSelectorViewController.xib in Resources */,
 				9868C01B240F78E500B12321 /* FeedTextTableViewCell.xib in Resources */,
 				980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */,
+				BEAAD20426FB03060069C5C1 /* DropDownTableViewCell.xib in Resources */,
 				9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */,
 				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
 				987D0BB12583DA58001A0F07 /* ASMentionSelectorViewController.xib in Resources */,
@@ -1347,6 +1392,7 @@
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
 				9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */,
 				987D0BB22583DA58001A0F07 /* KeyboardService.swift in Sources */,
+				BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */,
 				9873D62224B6C5C00041504C /* GifCollectionViewCell.swift in Sources */,
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
@@ -1387,6 +1433,7 @@
 				98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */,
 				9868C045240F9D6C00B12321 /* MultipleMediaTableViewCellCoordinator.swift in Sources */,
 				980F5645245C1D300093AFE7 /* PollBottomTableViewCell.swift in Sources */,
+				BEAAD20926FB03CB0069C5C1 /* PostPinWorker.swift in Sources */,
 				9868C0F9241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift in Sources */,
 				9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */,
 				98575A3F2532BBC1007644FE /* ReportAbuseWorker.swift in Sources */,
@@ -1399,9 +1446,11 @@
 				98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */,
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
+				BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
+				BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */,
 				9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				987D0BA72583DA58001A0F07 /* ASMentionStore.swift in Sources */,
@@ -1633,9 +1682,10 @@
 		9876834926143D6A00B597B0 /* CommonFunctionalityModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				BEAAD20A26FB04B40069C5C1 /* CommonFunctionalityModel 2.xcdatamodel */,
 				9876834A26143D6A00B597B0 /* CommonFunctionalityModel.xcdatamodel */,
 			);
-			currentVersion = 9876834A26143D6A00B597B0 /* CommonFunctionalityModel.xcdatamodel */;
+			currentVersion = BEAAD20A26FB04B40069C5C1 /* CommonFunctionalityModel 2.xcdatamodel */;
 			path = CommonFunctionalityModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

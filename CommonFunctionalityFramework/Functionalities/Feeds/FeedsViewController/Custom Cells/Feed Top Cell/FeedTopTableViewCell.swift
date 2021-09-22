@@ -15,6 +15,8 @@ class FeedTopTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var dateLabel : UILabel?
     @IBOutlet weak var editFeedButton : BlockButton?
     @IBOutlet weak var containerView : UIView?
+    @IBOutlet weak var pinPostButton : BlockButton?
+    @IBOutlet weak var pinPostWidthConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

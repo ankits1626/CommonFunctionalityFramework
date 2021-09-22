@@ -35,9 +35,20 @@ protocol FeedsItemProtocol : Likeable {
     func isFeedDeleteAllowed() -> Bool
     func isFeedReportAbuseAllowed() -> Bool
     func isActionsAllowed() -> Bool
+    func isPinToPost() -> Bool
+    func isLoggedUserAdmin() -> Bool
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
+    
+    func isPinToPost() -> Bool {
+        return isPriority
+    }
+    
+    func isLoggedUserAdmin() -> Bool {
+        return isAdminUser
+    }
+    
     func shouldShowDetail() -> Bool {
         return true
 //        if let unwrappedPoll = getPoll(){
@@ -63,24 +74,27 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private var isLikedByMe : Bool
     private var numberOfComments : Int64
     private let isPriority : Bool
+    private let isAdminUser : Bool
     
-    public init(input : [String : Any]){
+    init(input : [String : Any]){
         self.rawFeedDictionary = input
         isLikedByMe = rawFeedDictionary["has_appreciated"] as? Bool ?? false
         numberOfLikes = rawFeedDictionary["appreciation_count"] as? Int64 ?? 0
         numberOfComments = rawFeedDictionary["comments_count"] as? Int64 ?? 0
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
+        isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
     }
     
-    public init(managedObject : NSManagedObject){
+    init(managedObject : NSManagedObject){
         self.rawFeedDictionary = (managedObject as! ManagedPost).postRawDictionary as! [String : Any]
         self.isLikedByMe = (managedObject as! ManagedPost).isLikedByMe
         self.numberOfLikes = (managedObject as! ManagedPost).numberOfLikes
         numberOfComments = (managedObject as! ManagedPost).numberOfComments
         isPriority = (managedObject as! ManagedPost).isPriority
+        isAdminUser = (managedObject as! ManagedPost).isAdmin
     }
     
-    @discardableResult public func getManagedObject() -> NSManagedObject{
+    @discardableResult func getManagedObject() -> NSManagedObject{
         let managedPost : ManagedPost!
         let fetchRequest : NSFetchRequest<ManagedPost> = ManagedPost.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "postId = %d && postId != -1", self.feedIdentifier)
@@ -102,6 +116,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         managedPost.numberOfLikes = numberOfLikes
         managedPost.numberOfComments = numberOfComments
         managedPost.isPriority = isPriority
+        managedPost.isAdmin = isAdminUser
         return managedPost
     }
     
@@ -276,11 +291,11 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getNumberOfClaps() -> String {
         let claps = numberOfLikes
-        return "\(claps) Clap".appending(claps == 1 ? "" : "s")
+        return "\(claps) \("Clap".localized)".appending(claps == 1 ? "" : "s".localized)
     }
     
     func getNumberOfComments() -> String {
-        return "\(numberOfComments) Comment".appending(numberOfComments == 1 ? "" : "s")
+        return "\(numberOfComments) \("Comment".localized)".appending(numberOfComments == 1 ? "" : "s".localized)
     }
     
     func hasOnlyMedia() -> Bool {

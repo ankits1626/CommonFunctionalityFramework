@@ -12,6 +12,8 @@ struct FeedCellDequeueModel {
     var targetIndexpath : IndexPath
     var targetTableView : UITableView
     var datasource: FeedsDatasource
+    var isFeedDetailPage : Bool
+    weak var themeManager: CFFThemeManagerProtocol?
 }
 
 struct FeedCellLoadDataModel {
@@ -23,6 +25,7 @@ struct FeedCellLoadDataModel {
     var delegate : FeedsDelegate?
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
+    var isFeedDetailPage : Bool
 }
 
 struct FeedCellGetHeightModel {
@@ -61,15 +64,35 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.text = feed.getfeedCreationDate()
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
-            cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-            cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                cell.containerView?.addBorders(edges: [.top, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
+                cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
+            }
+            cell.pinPostButton?.setImage(
+                UIImage(
+                    named: feed.isPinToPost() ? "coloredPinPostIcon" : "pinPostIcon",
+                    in: Bundle(for: FeedTopTableViewCell.self),
+                    compatibleWith: nil),
+                for: .normal
+            )
+            cell.pinPostButton?.isHidden = !feed.isLoggedUserAdmin()
             cell.containerView?.clipsToBounds = true
-            if !inputModel.datasource.shouldShowMenuOptionForFeed(){
+             if !inputModel.datasource.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true
             }else{
                 cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             }
-            
+            cell.pinPostButton?.handleControlEvent(
+                event: .touchUpInside, buttonActionBlock: {
+                    inputModel.delegate?.pinToPost(
+                        feedIdentifier: feed.feedIdentifier,
+                        isAlreadyPinned: feed.isPinToPost()
+                    )
+                }
+            )
             cell.editFeedButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

@@ -107,7 +107,7 @@ class FeedsViewController: UIViewController {
                 case .Success(let result):
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
                 case .SuccessWithNoResponseData:
-                    ErrorDisplayer.showError(errorMsg: "No record Found") { (_) in}
+                    ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
                 case .Failure(let error):
                     ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
                 }
@@ -161,7 +161,7 @@ class FeedsViewController: UIViewController {
         whatsInYourMindView?.backgroundColor = UIColor.grayBackGroundColor()
         cameraContainerViewView?.curvedCornerControl()
         cameraContainerViewView?.backgroundColor = UIColor.grayBackGroundColor()
-        composeLabel?.text = "Whats on your mind"
+        composeLabel?.text = "Whats on your mind".localized
         composeLabel?.font = .Highlighter1
         composeLabel?.textColor = .getSubTitleTextColor()
     }
@@ -188,7 +188,12 @@ extension FeedsViewController{
         drawer.mediaFetcher = mediaFetcher
         drawer.themeManager = themeManager
         do{
-            try drawer.presentDrawer()
+            if let unwrappedCanUserCreatePost = self.mainAppCoordinator?.isUserAllowedToCreatePoll(),
+               unwrappedCanUserCreatePost == false{
+                try drawer.opnPostViewController()
+            }else{
+                try drawer.presentDrawer()
+            }
         }catch let error{
             print("show error")
             ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
@@ -265,7 +270,45 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
-    func toggleLikeForComment(commentIdentifier: Int64) {}
+    func toggleLikeForComment(commentIdentifier: Int64) {
+        
+    }
+    
+    func pinToPost(feedIdentifier : Int64, isAlreadyPinned: Bool) {
+        print("<<<<<<Feed identifier-\(feedIdentifier)")
+        showPintoPostConfirmation(feedIdentifier, isAlreadyPinned: isAlreadyPinned)
+    }
+        
+    private func showPintoPostConfirmation(_ feedIdentifier : Int64, isAlreadyPinned: Bool){
+        let pinPostDrawer = PintoTopConfirmationDrawer(
+            nibName: "PintoTopConfirmationDrawer",
+            bundle: Bundle(for: PintoTopConfirmationDrawer.self)
+        )
+        pinPostDrawer.themeManager = themeManager
+        pinPostDrawer.isAlreadyPinned = isAlreadyPinned
+        pinPostDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
+        pinPostDrawer.confirmedCompletion = {postFrequency in
+            PostPinWorker(networkRequestCoordinator: self.requestCoordinator).postPin(feedIdentifier, frequency: postFrequency) { (result) in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .Success(_):
+                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Post is unpinned successfully".localized : "Post is pinned successfully".localized, okActionHandler: { (_) in
+                          NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
+                        })
+                    case .SuccessWithNoResponseData:
+                        fallthrough
+                    case .Failure(_):
+                        ErrorDisplayer.showError(errorMsg: "Failed to pin post, please try again.".localized) { (_) in}
+                    }
+                }
+            }
+        }
+        do{
+            try pinPostDrawer.presentDrawer()
+        }catch {
+            
+        }
+    }
     
     func showAllClaps(feedIdentifier: Int64) {
         print("show all claps for \(feedIdentifier)")
@@ -276,7 +319,7 @@ extension FeedsViewController : FeedsDelegate{
         )
         feedCoordinatorDelegate.showPostLikeList(likeListVC, presentationOption: .Navigate) { (topBarModel) in
             likeListVC.containerTopBarModel = topBarModel
-        } 
+        }
     }
     
     func submitPollAnswer(feedIdentifier : Int64){
@@ -304,7 +347,7 @@ extension FeedsViewController : FeedsDelegate{
                 
             }
         }else{
-            ErrorDisplayer.showError(errorMsg: "Please select an option.") { (_) in
+            ErrorDisplayer.showError(errorMsg: "Please select an option.".localized) { (_) in
                 
             }
         }
@@ -340,7 +383,7 @@ extension FeedsViewController : FeedsDelegate{
                     }
                 case .SuccessWithNoResponseData:
                     fallthrough
-                case .Failure(error: _):
+                case .Failure(error: let _):
                     print("<<<<<<<<<< like/unlike call completed \(result)")
                 }
                 
@@ -353,7 +396,7 @@ extension FeedsViewController : FeedsDelegate{
         fetchRequest.predicate = NSPredicate (format: "postId == %d", feedIdentifier)
         do{
             let filterfilteredFeeds = try CFFCoreDataManager.sharedInstance.manager.mainQueueContext.fetch(fetchRequest)
-            return filterfilteredFeeds.first?.getRawObject() as? FeedsItemProtocol
+            return filterfilteredFeeds.first?.getRawObject() as! FeedsItemProtocol
         }catch{
             return nil
         }
@@ -382,7 +425,7 @@ extension FeedsViewController : FeedsDelegate{
             if feed.getFeedType() == .Post,
             feed.isFeedEditAllowed(){
                 options.append(
-                    FloatingMenuOption(title: "EDIT", action: {
+                    FloatingMenuOption(title: "EDIT".localized, action: {
                         print("Edit post - \(feedIdentifier)")
                         self.openFeedEditor(feed)
                     }
@@ -390,7 +433,7 @@ extension FeedsViewController : FeedsDelegate{
                 )
             }
             if feed.isFeedDeleteAllowed(){
-                options.append( FloatingMenuOption(title: "DELETE", action: {[weak self] in
+                options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
                     print("Delete post- \(feedIdentifier)")
                     self?.showDeletePostConfirmation(feedIdentifier)
                     }
@@ -398,7 +441,7 @@ extension FeedsViewController : FeedsDelegate{
                 )
             }
             if feed.isFeedReportAbuseAllowed(){
-                options.append( FloatingMenuOption(title: "REPORT ABUSE", action: {[weak self] in
+                options.append( FloatingMenuOption(title: "REPORT ABUSE".localized, action: {[weak self] in
                     print("report abuse- \(feedIdentifier)")
                     self?.showReportAbuseConfirmation(feedIdentifier)
                     }
@@ -443,7 +486,7 @@ extension FeedsViewController : FeedsDelegate{
                                         }
                                     }
                                 }
-                                 ErrorDisplayer.showError(errorMsg: "Deleted successfully.") { (_) in}
+                                ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in}
                             }
                         }
                     case .SuccessWithNoResponseData:
@@ -474,11 +517,11 @@ extension FeedsViewController : FeedsDelegate{
                 DispatchQueue.main.async {
                     switch result{
                     case .Success(_):
-                        ErrorDisplayer.showError(errorMsg: "Reported successfully.") { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Reported successfully.".localized) { (_) in}
                     case .SuccessWithNoResponseData:
                         fallthrough
                     case .Failure(_):
-                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.") { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.".localized) { (_) in}
                     }
                 }
                 

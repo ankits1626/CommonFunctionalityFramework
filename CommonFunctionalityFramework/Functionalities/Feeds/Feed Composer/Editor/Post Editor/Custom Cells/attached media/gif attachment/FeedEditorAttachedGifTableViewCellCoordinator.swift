@@ -30,7 +30,7 @@ class FeedEditorAttachedGifTableViewCellCoordinator :  PostEditorCellCoordinator
                 let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string:rawGif)!)) { (data, _, _) in
                   DispatchQueue.main.async {
                     cell.imageLoader?.stopAnimating()
-                    if let unwrappeData = data as NSData?{
+                    if let unwrappeData = data as? NSData{
                         CFFGifCacheManager.sharedInstance.gifCache.setObject(unwrappeData, forKey: rawGif as NSString)
                         inputModel.targetTableView.reloadRows(at: [inputModel.targetIndexpath], with: .none)
                     }
@@ -107,8 +107,14 @@ class FeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedGifTableViewCell{
+            let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.removeButton?.isHidden = true
             cell.imageTapButton?.backgroundColor = .clear
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            }
         }
     }
     

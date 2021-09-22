@@ -29,8 +29,13 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             cell.clapsCountLabel?.text = feed.getNumberOfClaps()
             cell.clapsCountLabel?.font = UIFont.Caption1
             cell.clapsCountLabel?.textColor = UIColor.getSubTitleTextColor()
-            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
-            cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 0)
+                cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: AppliedCornerRadius.standardCornerRadius)
+                cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
+            }
             if let unwrappedThemeManager = inputModel.themeManager{
                 cell.clapIndicator?.backgroundColor = feed.isClappedByMe() ? unwrappedThemeManager.getControlActiveColor() : .controlInactiveColor
                 
@@ -38,7 +43,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else{
                 cell.clapsButton?.setImage(
                     UIImage(
-                        named: feed.isClappedByMe() ? "cff_clapHands" : "cff_clapHandsNotClappedByMe",
+                        named: feed.isClappedByMe() ? "clapHands" : "clapHandsNotClappedByMe",
                         in: Bundle(for: FeedBottomTableViewCell.self),
                         compatibleWith: nil),
                     for: .normal
