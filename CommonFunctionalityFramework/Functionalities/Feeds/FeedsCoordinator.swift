@@ -10,6 +10,7 @@ import UIKit
 
 public protocol CFFMainAppInformationCoordinator : class {
     func isUserAllowedToPostFeed() -> Bool
+    func isUserAllowedToCreatePoll() -> Bool
 }
 
 
@@ -33,7 +34,7 @@ public protocol FeedsCoordinatorDelegate {
     func showFeedDetail(_ detailViewController : UIViewController)
     func removeFeedDetail()
     func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
-    func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void)) 
+    func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
 }
 
 public class FeedsCoordinator {

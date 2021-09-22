@@ -95,6 +95,18 @@ class PostEditorViewController: UIViewController {
         setup()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        clearTagDelegation()
+    }
+    
+    func clearTagDelegation() {
+        ASMentionCoordinator.shared.delegate = nil
+        ASMentionCoordinator.shared.loadInitialText(targetTextView: nil)
+        ASMentionCoordinator.shared.targetTextview?.text = ""
+        ASMentionCoordinator.shared.clearMentionsTextView()
+        ASMentionCoordinator.shared.textUpdateListener = nil
+    }
+    
     private func setup(){
         tableBackgroundContainer?.curvedCornerControl()
         view.backgroundColor = .viewBackgroundColor
@@ -135,7 +147,7 @@ class PostEditorViewController: UIViewController {
             self.postCoordinator.updatePostWithSameDepartment(isChecked)
         }
         
-        postWithSameDepartmentMessage?.text = "Post to my department only"
+        postWithSameDepartmentMessage?.text = "Post to my department only".localized
         postWithSameDepartmentMessage?.font = .Highlighter2
         
     }
@@ -153,9 +165,9 @@ class PostEditorViewController: UIViewController {
     private func setupCreateButton(){
         switch postType {
         case .Poll:
-            createButton?.setTitle("CREATE POLL", for: .normal)
+            createButton?.setTitle("CREATE POLL".localized, for: .normal)
         case .Post:
-            createButton?.setTitle("POST", for: .normal)
+            createButton?.setTitle("POST".localized, for: .normal)
         }
         createButton?.titleLabel?.font = UIFont.Button
         createButton?.titleLabel?.tintColor = .buttonTextColor
@@ -166,10 +178,10 @@ class PostEditorViewController: UIViewController {
     private func setupContainerTopbar(){
         switch postType {
         case .Poll:
-            containerTopBarModel?.title?.text = "CREATE POLL"
+            containerTopBarModel?.title?.text = "CREATE POLL".localized
             containerTopBarModel?.cameraButton?.isHidden = true
         case .Post:
-            containerTopBarModel?.title?.text = editablePost?.remotePostId == nil ? "CREATE POST" :  "EDIT POST"
+            containerTopBarModel?.title?.text = editablePost?.remotePostId == nil ? "CREATE POST".localized :  "EDIT POST".localized
             containerTopBarModel?.cameraButton?.setImage(
                 UIImage(named: "cff_camera", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
                 for: .normal
@@ -293,11 +305,11 @@ class PostEditorViewController: UIViewController {
                                 })
                                 
                             case .SuccessWithNoResponseData:
-                                ErrorDisplayer.showError(errorMsg: "Unable to post.") { (_) in
+                                ErrorDisplayer.showError(errorMsg: "Unable to post.".localized) { (_) in
 
                                 }
                             case .Failure(let error):
-                                ErrorDisplayer.showError(errorMsg: "Unable to post due to \(error.displayableErrorMessage())") { (_) in
+                                ErrorDisplayer.showError(errorMsg: "\("Unable to post due to".localized) \(error.displayableErrorMessage())") { (_) in
 
                                 }
                             }
@@ -306,6 +318,7 @@ class PostEditorViewController: UIViewController {
                 }
                 else{
                     self.createButton?.isUserInteractionEnabled  = true
+                    print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
                 }
             }
         }catch let error{

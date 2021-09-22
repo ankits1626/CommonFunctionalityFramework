@@ -75,7 +75,7 @@ class GifFetchRequestGenerator: APIRequestGeneratorProtocol  {
                 initialUrl = "https://api.tenor.com/v1/search?q=\(unwrappedSearchKey)&key=LIVDSRZULELA&limit=20"
                 if let encodedUrl = initialUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
                    initialUrl = encodedUrl
-                }else{
+                }else{  
                     return nil
                 }
             }
