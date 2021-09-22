@@ -25,7 +25,7 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
             cell.descriptionText?.textContainer.maximumNumberOfLines = 1
             cell.descriptionText?.delegate = self
             cell.descriptionText?.tag = inputModel.targetIndexpath.row
-            cell.descriptionText?.placeholder = targetIndexPath.row > 1 ? "Choice \(targetIndexPath.row + 1) (Optional)" : "Choice \(targetIndexPath.row + 1)"
+            cell.descriptionText?.placeholder = targetIndexPath.row > 1 ? " \("Choice".localized) \(targetIndexPath.row + 1) \("(Optional)".localized)" : "\("Choice".localized) \(targetIndexPath.row + 1)"
             cell.descriptionText?.tag = targetIndexPath.item
             cell.descriptionText?.placeholderFont = .Body2
             cell.descriptionText?.placeholderColor = UIColor.getPlaceholderTextColor()
@@ -40,7 +40,7 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
     private func updateMaxCharacterlabel(cell: FeedEditorPollOptionTableViewCell){
         let length = cell.descriptionText?.text.count ?? 0
         if length == 0{
-            cell.maxCharacterLabel?.text = "(Max \(MAX_CHARACTER_LENGTH) Char)"
+            cell.maxCharacterLabel?.text = "(\("Max".localized) \(MAX_CHARACTER_LENGTH) \("Char".localized))"
         }else{
             cell.maxCharacterLabel?.text = "\(MAX_CHARACTER_LENGTH - length)"
         }

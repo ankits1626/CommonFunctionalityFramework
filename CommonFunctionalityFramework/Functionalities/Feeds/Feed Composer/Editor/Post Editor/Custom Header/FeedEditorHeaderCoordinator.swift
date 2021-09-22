@@ -31,7 +31,7 @@ class FeedEditorHeaderCoordinator {
             )
             header?.headerTitleLabel?.font = UIFont.Highlighter1
             header?.headerTitleLabel?.textColor = .stepperInactiveColor
-            header?.headerTitleLabel?.text = "PHOTOS"
+            header?.headerTitleLabel?.text = "PHOTOS".localized
             header?.headerSecondaryTitleLabel?.isHidden = true
             //configureHeader(ConfigureHeaderInput(view: header, section: input.section))
             return header

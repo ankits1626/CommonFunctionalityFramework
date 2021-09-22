@@ -185,12 +185,12 @@ class PostCoordinator {
     func getPostSuccessMessage() -> String {
         switch currentPost.postType {
         case .Poll:
-            return "Poll successfully created."
+            return "Poll successfully created.".localized
         case .Post:
             if currentPost.remotePostId == nil{
-                return "Post successfully created."
+                return "Post successfully created.".localized
             }else{
-                return "Post edited successfully."
+                return "Post edited successfully.".localized
             }
         }
     }
