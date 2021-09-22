@@ -9,47 +9,35 @@
 /* Begin PBXBuildFile section */
 		980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 980D121E2614295F00995F41 /* RewardzCommonComponents.framework */; };
 		980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */; };
-		980F563B245BFC680093AFE7 /* PollSubmitButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */; };
 		980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */; };
 		980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F563E245C03920093AFE7 /* FeedAuthor.swift */; };
 		980F5641245C03AB0093AFE7 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5640245C03AB0093AFE7 /* Poll.swift */; };
 		980F5645245C1D300093AFE7 /* PollBottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5643245C1D300093AFE7 /* PollBottomTableViewCell.swift */; };
-		980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980F5644245C1D300093AFE7 /* PollBottomTableViewCell.xib */; };
 		980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5647245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift */; };
 		980F564A245C51B30093AFE7 /* PollAnswerSubmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5649245C51B30093AFE7 /* PollAnswerSubmitter.swift */; };
 		9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */; };
 		9811DD02241A885F003B91FD /* PostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD01241A885F003B91FD /* PostCoordinator.swift */; };
 		9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9811DD54241AC860003B91FD /* FeedFetcher.swift */; };
 		9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */; };
-		981912102459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */; };
 		981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */; };
 		9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */; };
 		9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */; };
 		9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830E848246323A100FEFC0F /* PostLikeListFetcher.swift */; };
 		9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9830E84D246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift */; };
 		983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500EC2419FDA0009084D4 /* PostEditorViewController.swift */; };
-		983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983500ED2419FDA0009084D4 /* PostEditorViewController.xib */; };
 		983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983500F5241A0041009084D4 /* EditorContainerProtocol.swift */; };
 		983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */; };
-		983C4F8A2462F08000FDEB76 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */; };
 		983C4F8D2462F09E00FDEB76 /* PostDeleteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983C4F8C2462F09E00FDEB76 /* PostDeleteWorker.swift */; };
 		98575A3F2532BBC1007644FE /* ReportAbuseWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98575A3E2532BBC1007644FE /* ReportAbuseWorker.swift */; };
 		9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */; };
 		9868C000240F585900B12321 /* Feeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868BFFF240F585900B12321 /* Feeds.swift */; };
 		9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C010240F778100B12321 /* FeedTopTableViewCell.swift */; };
-		9868C013240F778100B12321 /* FeedTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C011240F778100B12321 /* FeedTopTableViewCell.xib */; };
 		9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C014240F786600B12321 /* FeedTitleTableViewCell.swift */; };
-		9868C017240F786600B12321 /* FeedTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C015240F786600B12321 /* FeedTitleTableViewCell.xib */; };
 		9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C018240F78E500B12321 /* FeedTextTableViewCell.swift */; };
-		9868C01B240F78E500B12321 /* FeedTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C019240F78E500B12321 /* FeedTextTableViewCell.xib */; };
 		9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C025240F799200B12321 /* SingleImageTableViewCell.swift */; };
-		9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C026240F799200B12321 /* SingleImageTableViewCell.xib */; };
 		9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C029240F79E800B12321 /* SingleVideoTableViewCell.swift */; };
-		9868C02C240F79E800B12321 /* SingleVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C02A240F79E800B12321 /* SingleVideoTableViewCell.xib */; };
 		9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C02D240F7A1500B12321 /* MultipleMediaTableViewCell.swift */; };
-		9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C02E240F7A1500B12321 /* MultipleMediaTableViewCell.xib */; };
 		9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C031240F7A3C00B12321 /* FeedBottomTableViewCell.swift */; };
-		9868C034240F7A3C00B12321 /* FeedBottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C032240F7A3C00B12321 /* FeedBottomTableViewCell.xib */; };
 		9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C03A240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift */; };
 		9868C03D240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C03C240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift */; };
 		9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C03E240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift */; };
@@ -63,19 +51,15 @@
 		9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0812410B13A00B12321 /* DummyFeedProvider.swift */; };
 		9868C0842410B48D00B12321 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0832410B48D00B12321 /* Media.xcassets */; };
 		9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C08B2410B56100B12321 /* FeedsDetailViewController.swift */; };
-		9868C08E2410B56100B12321 /* FeedsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C08C2410B56100B12321 /* FeedsDetailViewController.xib */; };
 		9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0B4241205D400B12321 /* FeedsMediaCollectionCoordinator.swift */; };
 		9868C0E724125ACC00B12321 /* FeedDetailSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0E624125ACC00B12321 /* FeedDetailSectionFactory.swift */; };
 		9868C0EA24125E1900B12321 /* ClappedByUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0E924125E1900B12321 /* ClappedByUser.swift */; };
 		9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0EB24125E2900B12321 /* FeedComment.swift */; };
 		9868C0F22419488000B12321 /* FeedCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0F02419488000B12321 /* FeedCommentTableViewCell.swift */; };
-		9868C0F32419488000B12321 /* FeedCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0F12419488000B12321 /* FeedCommentTableViewCell.xib */; };
 		9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0F42419489300B12321 /* ClappedByTableViewCell.swift */; };
-		9868C0F72419489300B12321 /* ClappedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0F52419489300B12321 /* ClappedByTableViewCell.xib */; };
 		9868C0F9241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0F8241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift */; };
 		9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0FA241948C800B12321 /* ClappedByTableViewCellCoordinator.swift */; };
 		9868C0FF2419EB2D00B12321 /* FeedsComposerDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0FD2419EB2D00B12321 /* FeedsComposerDrawer.swift */; };
-		9868C1002419EB2D00B12321 /* FeedsComposerDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0FE2419EB2D00B12321 /* FeedsComposerDrawer.xib */; };
 		9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */; };
 		986B9737258DDD1B006EBDA9 /* ASTaggedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986B9736258DDD1B006EBDA9 /* ASTaggedUser.swift */; };
 		9872266824616BBE00809D7A /* ManagedPost+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266224616BBE00809D7A /* ManagedPost+RawRepresentable.swift */; };
@@ -86,16 +70,12 @@
 		98722672246176E700809D7A /* ManagedPost+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872266724616BBE00809D7A /* ManagedPost+CoreDataClass.swift */; };
 		98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98722673246179B800809D7A /* SelectedPollAnswerMapper.swift */; };
 		987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872267E2461806E00809D7A /* PollOptionsVotedTableViewCell.swift */; };
-		987226812461806E00809D7A /* PollOptionsVotedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9872267F2461806E00809D7A /* PollOptionsVotedTableViewCell.xib */; };
 		98722683246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98722682246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift */; };
 		98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98726545245044C100CD4530 /* FeedClapToggler.swift */; };
 		9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */; };
 		9873D61824B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D61624B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift */; };
-		9873D61924B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D61724B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib */; };
 		9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */; };
-		9873D61E24B6C26D0041504C /* FeedsGIFSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */; };
 		9873D62224B6C5C00041504C /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62024B6C5C00041504C /* GifCollectionViewCell.swift */; };
-		9873D62324B6C5C00041504C /* GifCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D62124B6C5C00041504C /* GifCollectionViewCell.xib */; };
 		9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62424B808850041504C /* ManagedGifs+CoreDataProperties.swift */; };
 		9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62524B808850041504C /* ManagedGifs+CoreDataClass.swift */; };
 		9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62824B808A40041504C /* ManagedGifs+RawRepresentable.swift */; };
@@ -103,7 +83,6 @@
 		9873D62F24B80CBE0041504C /* GifFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D62E24B80CBE0041504C /* GifFetcher.swift */; };
 		9873D63524BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D63424BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift */; };
 		9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D63624BAC0180041504C /* FeedGifTableViewCell.swift */; };
-		9873D63924BAC0180041504C /* FeedGifTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9873D63724BAC0180041504C /* FeedGifTableViewCell.xib */; };
 		9873D63C24BAC1200041504C /* CFFGifCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D63B24BAC1200041504C /* CFFGifCacheManager.swift */; };
 		9873D63F24C09C830041504C /* FeedDescriptionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873D63E24C09C830041504C /* FeedDescriptionParser.swift */; };
 		9876834C26143D6A00B597B0 /* CFFCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9876834826143D6A00B597B0 /* CFFCoreDataManager.swift */; };
@@ -115,20 +94,15 @@
 		987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B992583DA58001A0F07 /* ASMentionTextParser.swift */; };
 		987D0BAE2583DA58001A0F07 /* ASMentionSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B9D2583DA58001A0F07 /* ASMentionSelectorViewController.swift */; };
 		987D0BAF2583DA58001A0F07 /* TagUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0B9F2583DA58001A0F07 /* TagUserTableViewCell.swift */; };
-		987D0BB02583DA58001A0F07 /* TagUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 987D0BA02583DA58001A0F07 /* TagUserTableViewCell.xib */; };
-		987D0BB12583DA58001A0F07 /* ASMentionSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 987D0BA12583DA58001A0F07 /* ASMentionSelectorViewController.xib */; };
 		987D0BB22583DA58001A0F07 /* KeyboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0BA32583DA58001A0F07 /* KeyboardService.swift */; };
 		987D0BB32583DA58001A0F07 /* MockUserListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0BA42583DA58001A0F07 /* MockUserListProvider.swift */; };
 		987D0BB42583DA58001A0F07 /* ASMentionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D0BA62583DA58001A0F07 /* ASMentionPresenter.swift */; };
 		98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B02FC1241A663700CB8690 /* EditablePost.swift */; };
 		98B90DE4240CACD90013E9D2 /* CommonFunctionalityFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E07240CAD010013E9D2 /* FeedsViewController.swift */; };
-		98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B90E08240CAD010013E9D2 /* FeedsViewController.xib */; };
 		98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */; };
 		98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A0C241A1775007C175D /* FeedEditorTitleTableViewCell.swift */; };
-		98BC8A0F241A1775007C175D /* FeedEditorTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BC8A0D241A1775007C175D /* FeedEditorTitleTableViewCell.xib */; };
 		98BC8A14241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A12241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift */; };
-		98BC8A15241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BC8A13241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib */; };
 		98BC8A1E241A19DE007C175D /* PostEditorCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A1D241A19DE007C175D /* PostEditorCellFactory.swift */; };
 		98BC8A20241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A1F241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift */; };
 		98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC8A21241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift */; };
@@ -137,22 +111,16 @@
 		98C6489D241B87A3006689E9 /* PostFeedContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6489C241B87A3006689E9 /* PostFeedContentCoordinator.swift */; };
 		98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C6489F241B87D3006689E9 /* PollFeedContentCoordinator.swift */; };
 		98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648A2241B88F5006689E9 /* PollOptionsTableViewCell.swift */; };
-		98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648A3241B88F5006689E9 /* PollOptionsTableViewCell.xib */; };
 		98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648A7241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift */; };
 		98C648B3241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648B1241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift */; };
-		98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648B2241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib */; };
 		98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648B5241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift */; };
 		98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648B8241BC952006689E9 /* PostPublisher.swift */; };
 		98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */; };
-		98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */; };
 		98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */; };
 		98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FAB2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift */; };
 		98CC2FB02425C4C400E8F9E0 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */; };
-		98CC2FB12425C4C400E8F9E0 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */; };
 		98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */; };
-		98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */; };
 		98D5E89225314C0F00813991 /* ReportAbuseConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D5E89025314C0F00813991 /* ReportAbuseConfirmationDrawer.swift */; };
-		98D5E89325314C0F00813991 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98D5E89125314C0F00813991 /* ReportAbuseConfirmationDrawer.xib */; };
 		98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */; };
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
@@ -160,10 +128,42 @@
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 		BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */; };
 		BEAAD1FF26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD1FD26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib */; };
-		BEAAD20426FB03060069C5C1 /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD20126FB03060069C5C1 /* DropDownTableViewCell.xib */; };
 		BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */; };
 		BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */; };
 		BEAAD20926FB03CB0069C5C1 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */; };
+		BEAAD20B26FB25DF0069C5C1 /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD20D26FB25DF0069C5C1 /* DropDownTableViewCell.xib */; };
+		BEAAD22226FB25FB0069C5C1 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD22426FB25FB0069C5C1 /* ReportAbuseConfirmationDrawer.xib */; };
+		BEAAD23926FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD23B26FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib */; };
+		BEAAD25026FB261D0069C5C1 /* LikedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD25226FB261D0069C5C1 /* LikedByTableViewCell.xib */; };
+		BEAAD26726FB26300069C5C1 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD26926FB26300069C5C1 /* LikeListViewController.xib */; };
+		BEAAD27E26FB26490069C5C1 /* ASMentionSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD28026FB26490069C5C1 /* ASMentionSelectorViewController.xib */; };
+		BEAAD29526FB26640069C5C1 /* TagUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD29726FB26640069C5C1 /* TagUserTableViewCell.xib */; };
+		BEAAD2AC26FB267E0069C5C1 /* GifCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD2AE26FB267E0069C5C1 /* GifCollectionViewCell.xib */; };
+		BEAAD2C326FB268B0069C5C1 /* FeedsGIFSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD2C526FB268B0069C5C1 /* FeedsGIFSelectorViewController.xib */; };
+		BEAAD2DA26FB26A00069C5C1 /* FeedAttachmentOptionsDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD2DC26FB26A00069C5C1 /* FeedAttachmentOptionsDrawerViewController.xib */; };
+		BEAAD2F126FB26AF0069C5C1 /* PollsActiveDaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD2F326FB26AF0069C5C1 /* PollsActiveDaysTableViewCell.xib */; };
+		BEAAD30826FB26BD0069C5C1 /* FeedEditorPollOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD30A26FB26BD0069C5C1 /* FeedEditorPollOptionTableViewCell.xib */; };
+		BEAAD31F26FB26C90069C5C1 /* FeedGifTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD32126FB26C90069C5C1 /* FeedGifTableViewCell.xib */; };
+		BEAAD33626FB26D40069C5C1 /* FeedEditorDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD33826FB26D40069C5C1 /* FeedEditorDescriptionTableViewCell.xib */; };
+		BEAAD34D26FB26E10069C5C1 /* FeedEditorTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD34F26FB26E10069C5C1 /* FeedEditorTitleTableViewCell.xib */; };
+		BEAAD36426FB26EC0069C5C1 /* PostEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD36626FB26EC0069C5C1 /* PostEditorViewController.xib */; };
+		BEAAD37B26FB26FE0069C5C1 /* FeedsComposerDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD37D26FB26FE0069C5C1 /* FeedsComposerDrawer.xib */; };
+		BEAAD39226FB270C0069C5C1 /* FeedDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD39426FB270C0069C5C1 /* FeedDetailHeader.xib */; };
+		BEAAD3A926FB27190069C5C1 /* FeedCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD3AB26FB27190069C5C1 /* FeedCommentTableViewCell.xib */; };
+		BEAAD3C026FB27280069C5C1 /* ClappedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD3C226FB27280069C5C1 /* ClappedByTableViewCell.xib */; };
+		BEAAD3D726FB27410069C5C1 /* FeedsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD3D926FB27410069C5C1 /* FeedsDetailViewController.xib */; };
+		BEAAD3EE26FB27560069C5C1 /* PollOptionsVotedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD3F026FB27560069C5C1 /* PollOptionsVotedTableViewCell.xib */; };
+		BEAAD40526FB27640069C5C1 /* PollBottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD40726FB27640069C5C1 /* PollBottomTableViewCell.xib */; };
+		BEAAD41C26FB276F0069C5C1 /* PollSubmitButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD41E26FB276F0069C5C1 /* PollSubmitButtonCell.xib */; };
+		BEAAD43326FB277B0069C5C1 /* PollOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD43526FB277B0069C5C1 /* PollOptionsTableViewCell.xib */; };
+		BEAAD44A26FB27870069C5C1 /* FeedBottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD44C26FB27870069C5C1 /* FeedBottomTableViewCell.xib */; };
+		BEAAD46126FB27950069C5C1 /* MultipleMediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD46326FB27950069C5C1 /* MultipleMediaTableViewCell.xib */; };
+		BEAAD47826FB27A10069C5C1 /* SingleVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD47A26FB27A10069C5C1 /* SingleVideoTableViewCell.xib */; };
+		BEAAD48F26FB27AD0069C5C1 /* SingleImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD49126FB27AD0069C5C1 /* SingleImageTableViewCell.xib */; };
+		BEAAD4A626FB27B90069C5C1 /* FeedTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD4A826FB27B90069C5C1 /* FeedTextTableViewCell.xib */; };
+		BEAAD4BD26FB27C40069C5C1 /* FeedTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD4BF26FB27C40069C5C1 /* FeedTitleTableViewCell.xib */; };
+		BEAAD4D426FB27D10069C5C1 /* FeedTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD4D626FB27D10069C5C1 /* FeedTopTableViewCell.xib */; };
+		BEAAD4EB26FB27DE0069C5C1 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD4ED26FB27DE0069C5C1 /* FeedsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,47 +172,35 @@
 		980D12192614285E00995F41 /* Pods_RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980D121E2614295F00995F41 /* RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
-		980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollSubmitButtonCell.xib; sourceTree = "<group>"; };
 		980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCellCoordinator.swift; sourceTree = "<group>"; };
 		980F563E245C03920093AFE7 /* FeedAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAuthor.swift; sourceTree = "<group>"; };
 		980F5640245C03AB0093AFE7 /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
 		980F5643245C1D300093AFE7 /* PollBottomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollBottomTableViewCell.swift; sourceTree = "<group>"; };
-		980F5644245C1D300093AFE7 /* PollBottomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollBottomTableViewCell.xib; sourceTree = "<group>"; };
 		980F5647245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollBottomTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		980F5649245C51B30093AFE7 /* PollAnswerSubmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollAnswerSubmitter.swift; sourceTree = "<group>"; };
 		9811DCFE241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorLocalMediaCollectionCoordinator.swift; sourceTree = "<group>"; };
 		9811DD01241A885F003B91FD /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
 		9811DD54241AC860003B91FD /* FeedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetcher.swift; sourceTree = "<group>"; };
 		9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsActiveDaysTableViewCell.swift; sourceTree = "<group>"; };
-		9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollsActiveDaysTableViewCell.xib; sourceTree = "<group>"; };
 		981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsActiveDaysTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentPostWorker.swift; sourceTree = "<group>"; };
 		9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsFetcher.swift; sourceTree = "<group>"; };
 		9830E848246323A100FEFC0F /* PostLikeListFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLikeListFetcher.swift; sourceTree = "<group>"; };
 		9830E84D246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorHeaderCoordinator.swift; sourceTree = "<group>"; };
 		983500EC2419FDA0009084D4 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
-		983500ED2419FDA0009084D4 /* PostEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostEditorViewController.xib; sourceTree = "<group>"; };
 		983500F5241A0041009084D4 /* EditorContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorContainerProtocol.swift; sourceTree = "<group>"; };
 		983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostConfirmationDrawer.swift; sourceTree = "<group>"; };
-		983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
 		983C4F8C2462F09E00FDEB76 /* PostDeleteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDeleteWorker.swift; sourceTree = "<group>"; };
 		98575A3E2532BBC1007644FE /* ReportAbuseWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseWorker.swift; sourceTree = "<group>"; };
 		9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsItemProtocol.swift; sourceTree = "<group>"; };
 		9868BFFF240F585900B12321 /* Feeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeds.swift; sourceTree = "<group>"; };
 		9868C010240F778100B12321 /* FeedTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTopTableViewCell.swift; sourceTree = "<group>"; };
-		9868C011240F778100B12321 /* FeedTopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTopTableViewCell.xib; sourceTree = "<group>"; };
 		9868C014240F786600B12321 /* FeedTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTitleTableViewCell.swift; sourceTree = "<group>"; };
-		9868C015240F786600B12321 /* FeedTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTitleTableViewCell.xib; sourceTree = "<group>"; };
 		9868C018240F78E500B12321 /* FeedTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTextTableViewCell.swift; sourceTree = "<group>"; };
-		9868C019240F78E500B12321 /* FeedTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTextTableViewCell.xib; sourceTree = "<group>"; };
 		9868C025240F799200B12321 /* SingleImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageTableViewCell.swift; sourceTree = "<group>"; };
-		9868C026240F799200B12321 /* SingleImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleImageTableViewCell.xib; sourceTree = "<group>"; };
 		9868C029240F79E800B12321 /* SingleVideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVideoTableViewCell.swift; sourceTree = "<group>"; };
-		9868C02A240F79E800B12321 /* SingleVideoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleVideoTableViewCell.xib; sourceTree = "<group>"; };
 		9868C02D240F7A1500B12321 /* MultipleMediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleMediaTableViewCell.swift; sourceTree = "<group>"; };
-		9868C02E240F7A1500B12321 /* MultipleMediaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleMediaTableViewCell.xib; sourceTree = "<group>"; };
 		9868C031240F7A3C00B12321 /* FeedBottomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBottomTableViewCell.swift; sourceTree = "<group>"; };
-		9868C032240F7A3C00B12321 /* FeedBottomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedBottomTableViewCell.xib; sourceTree = "<group>"; };
 		9868C03A240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTopTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9868C03C240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTitleTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9868C03E240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTextTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -226,19 +214,15 @@
 		9868C0812410B13A00B12321 /* DummyFeedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyFeedProvider.swift; sourceTree = "<group>"; };
 		9868C0832410B48D00B12321 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		9868C08B2410B56100B12321 /* FeedsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsDetailViewController.swift; sourceTree = "<group>"; };
-		9868C08C2410B56100B12321 /* FeedsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsDetailViewController.xib; sourceTree = "<group>"; };
 		9868C0B4241205D400B12321 /* FeedsMediaCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsMediaCollectionCoordinator.swift; sourceTree = "<group>"; };
 		9868C0E624125ACC00B12321 /* FeedDetailSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailSectionFactory.swift; sourceTree = "<group>"; };
 		9868C0E924125E1900B12321 /* ClappedByUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClappedByUser.swift; sourceTree = "<group>"; };
 		9868C0EB24125E2900B12321 /* FeedComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedComment.swift; sourceTree = "<group>"; };
 		9868C0F02419488000B12321 /* FeedCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentTableViewCell.swift; sourceTree = "<group>"; };
-		9868C0F12419488000B12321 /* FeedCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCommentTableViewCell.xib; sourceTree = "<group>"; };
 		9868C0F42419489300B12321 /* ClappedByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClappedByTableViewCell.swift; sourceTree = "<group>"; };
-		9868C0F52419489300B12321 /* ClappedByTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClappedByTableViewCell.xib; sourceTree = "<group>"; };
 		9868C0F8241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9868C0FA241948C800B12321 /* ClappedByTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClappedByTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9868C0FD2419EB2D00B12321 /* FeedsComposerDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsComposerDrawer.swift; sourceTree = "<group>"; };
-		9868C0FE2419EB2D00B12321 /* FeedsComposerDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsComposerDrawer.xib; sourceTree = "<group>"; };
 		9868C10F2419F95500B12321 /* FeedComposerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedComposerCoordinator.swift; sourceTree = "<group>"; };
 		986B9736258DDD1B006EBDA9 /* ASTaggedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTaggedUser.swift; sourceTree = "<group>"; };
 		9872266224616BBE00809D7A /* ManagedPost+RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+RawRepresentable.swift"; sourceTree = "<group>"; };
@@ -249,16 +233,12 @@
 		9872266724616BBE00809D7A /* ManagedPost+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedPost+CoreDataClass.swift"; sourceTree = "<group>"; };
 		98722673246179B800809D7A /* SelectedPollAnswerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPollAnswerMapper.swift; sourceTree = "<group>"; };
 		9872267E2461806E00809D7A /* PollOptionsVotedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsVotedTableViewCell.swift; sourceTree = "<group>"; };
-		9872267F2461806E00809D7A /* PollOptionsVotedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollOptionsVotedTableViewCell.xib; sourceTree = "<group>"; };
 		98722682246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsVotedTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		98726545245044C100CD4530 /* FeedClapToggler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedClapToggler.swift; sourceTree = "<group>"; };
 		9872654C2456C08E00CD4530 /* EditablePostMediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditablePostMediaRepository.swift; sourceTree = "<group>"; };
 		9873D61624B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAttachmentOptionsDrawerViewController.swift; sourceTree = "<group>"; };
-		9873D61724B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedAttachmentOptionsDrawerViewController.xib; sourceTree = "<group>"; };
 		9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsGIFSelectorViewController.swift; sourceTree = "<group>"; };
-		9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsGIFSelectorViewController.xib; sourceTree = "<group>"; };
 		9873D62024B6C5C00041504C /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
-		9873D62124B6C5C00041504C /* GifCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCollectionViewCell.xib; sourceTree = "<group>"; };
 		9873D62424B808850041504C /* ManagedGifs+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedGifs+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9873D62524B808850041504C /* ManagedGifs+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedGifs+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9873D62824B808A40041504C /* ManagedGifs+RawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedGifs+RawRepresentable.swift"; sourceTree = "<group>"; };
@@ -266,7 +246,6 @@
 		9873D62E24B80CBE0041504C /* GifFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifFetcher.swift; sourceTree = "<group>"; };
 		9873D63424BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorAttachedGifTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		9873D63624BAC0180041504C /* FeedGifTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGifTableViewCell.swift; sourceTree = "<group>"; };
-		9873D63724BAC0180041504C /* FeedGifTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedGifTableViewCell.xib; sourceTree = "<group>"; };
 		9873D63B24BAC1200041504C /* CFFGifCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFGifCacheManager.swift; sourceTree = "<group>"; };
 		9873D63E24C09C830041504C /* FeedDescriptionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDescriptionParser.swift; sourceTree = "<group>"; };
 		9876834826143D6A00B597B0 /* CFFCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFFCoreDataManager.swift; sourceTree = "<group>"; };
@@ -278,8 +257,6 @@
 		987D0B992583DA58001A0F07 /* ASMentionTextParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionTextParser.swift; sourceTree = "<group>"; };
 		987D0B9D2583DA58001A0F07 /* ASMentionSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionSelectorViewController.swift; sourceTree = "<group>"; };
 		987D0B9F2583DA58001A0F07 /* TagUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagUserTableViewCell.swift; sourceTree = "<group>"; };
-		987D0BA02583DA58001A0F07 /* TagUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagUserTableViewCell.xib; sourceTree = "<group>"; };
-		987D0BA12583DA58001A0F07 /* ASMentionSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASMentionSelectorViewController.xib; sourceTree = "<group>"; };
 		987D0BA32583DA58001A0F07 /* KeyboardService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardService.swift; sourceTree = "<group>"; };
 		987D0BA42583DA58001A0F07 /* MockUserListProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUserListProvider.swift; sourceTree = "<group>"; };
 		987D0BA62583DA58001A0F07 /* ASMentionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASMentionPresenter.swift; sourceTree = "<group>"; };
@@ -288,12 +265,9 @@
 		98B90DE2240CACD90013E9D2 /* CommonFunctionalityFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonFunctionalityFramework.h; sourceTree = "<group>"; };
 		98B90DE3240CACD90013E9D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98B90E07240CAD010013E9D2 /* FeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
-		98B90E08240CAD010013E9D2 /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
 		98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsCoordinator.swift; sourceTree = "<group>"; };
 		98BC8A0C241A1775007C175D /* FeedEditorTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorTitleTableViewCell.swift; sourceTree = "<group>"; };
-		98BC8A0D241A1775007C175D /* FeedEditorTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedEditorTitleTableViewCell.xib; sourceTree = "<group>"; };
 		98BC8A12241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorDescriptionTableViewCell.swift; sourceTree = "<group>"; };
-		98BC8A13241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedEditorDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		98BC8A1D241A19DE007C175D /* PostEditorCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorCellFactory.swift; sourceTree = "<group>"; };
 		98BC8A1F241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorTitleTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		98BC8A21241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorDescriptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -302,33 +276,389 @@
 		98C6489C241B87A3006689E9 /* PostFeedContentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedContentCoordinator.swift; sourceTree = "<group>"; };
 		98C6489F241B87D3006689E9 /* PollFeedContentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollFeedContentCoordinator.swift; sourceTree = "<group>"; };
 		98C648A2241B88F5006689E9 /* PollOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsTableViewCell.swift; sourceTree = "<group>"; };
-		98C648A3241B88F5006689E9 /* PollOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollOptionsTableViewCell.xib; sourceTree = "<group>"; };
 		98C648A7241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollOptionsTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		98C648B1241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorPollOptionTableViewCell.swift; sourceTree = "<group>"; };
-		98C648B2241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedEditorPollOptionTableViewCell.xib; sourceTree = "<group>"; };
 		98C648B5241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditorPollOptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		98C648B8241BC952006689E9 /* PostPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPublisher.swift; sourceTree = "<group>"; };
 		98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeader.swift; sourceTree = "<group>"; };
-		98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedDetailHeader.xib; sourceTree = "<group>"; };
 		98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeaderCoordinator.swift; sourceTree = "<group>"; };
 		98CC2FAB2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFeedSectionProvider.swift; sourceTree = "<group>"; };
 		98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListViewController.swift; sourceTree = "<group>"; };
-		98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
 		98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedByTableViewCell.swift; sourceTree = "<group>"; };
-		98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikedByTableViewCell.xib; sourceTree = "<group>"; };
 		98D5E89025314C0F00813991 /* ReportAbuseConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseConfirmationDrawer.swift; sourceTree = "<group>"; };
-		98D5E89125314C0F00813991 /* ReportAbuseConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
 		98DF76D624338A7500B9B8A1 /* PostRequestBodyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequestBodyGenerator.swift; sourceTree = "<group>"; };
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
 		BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintoTopConfirmationDrawer.swift; sourceTree = "<group>"; };
 		BEAAD1FD26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PintoTopConfirmationDrawer.xib; sourceTree = "<group>"; };
-		BEAAD20126FB03060069C5C1 /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
 		BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
 		BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinWorker.swift; sourceTree = "<group>"; };
 		BEAAD20A26FB04B40069C5C1 /* CommonFunctionalityModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		BEAAD20C26FB25DF0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DropDownTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD20F26FB25E10069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DropDownTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD21126FB25E20069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DropDownTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD21326FB25E50069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DropDownTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD21526FB25E60069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/DropDownTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD21726FB25E70069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/DropDownTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD21926FB25E80069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DropDownTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD21B26FB25E90069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DropDownTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD21D26FB25EA0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/DropDownTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD21F26FB25EB0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/DropDownTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD22126FB25EC0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/DropDownTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD22326FB25FB0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BEAAD22626FB25FD0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD22826FB25FD0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ReportAbuseConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BEAAD22A26FB25FE0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ReportAbuseConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BEAAD22C26FB25FF0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD22E26FB25FF0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD23026FB26000069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD23226FB26000069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD23426FB26010069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD23626FB26010069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD23826FB26020069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD23A26FB260A0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BEAAD23D26FB260C0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD23F26FB260D0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DeletePostConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BEAAD24126FB260D0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DeletePostConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BEAAD24326FB260E0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD24526FB260E0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD24726FB260F0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD24926FB260F0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD24B26FB26100069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD24D26FB26160069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD24F26FB26170069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEAAD25126FB261D0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LikedByTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD25426FB261F0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD25626FB26200069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LikedByTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD25826FB26200069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LikedByTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD25A26FB26210069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD25C26FB26230069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD25E26FB26240069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD26026FB26250069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD26226FB26260069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD26426FB26270069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD26626FB26280069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD26826FB26300069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LikeListViewController.xib; sourceTree = "<group>"; };
+		BEAAD26B26FB26350069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LikeListViewController.strings; sourceTree = "<group>"; };
+		BEAAD26D26FB26370069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LikeListViewController.strings"; sourceTree = "<group>"; };
+		BEAAD26F26FB26390069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LikeListViewController.strings"; sourceTree = "<group>"; };
+		BEAAD27126FB263A0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/LikeListViewController.strings; sourceTree = "<group>"; };
+		BEAAD27326FB263B0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LikeListViewController.strings; sourceTree = "<group>"; };
+		BEAAD27526FB263C0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LikeListViewController.strings; sourceTree = "<group>"; };
+		BEAAD27726FB263D0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LikeListViewController.strings; sourceTree = "<group>"; };
+		BEAAD27926FB263E0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/LikeListViewController.strings; sourceTree = "<group>"; };
+		BEAAD27B26FB263F0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/LikeListViewController.strings; sourceTree = "<group>"; };
+		BEAAD27D26FB26400069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LikeListViewController.strings; sourceTree = "<group>"; };
+		BEAAD27F26FB26490069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ASMentionSelectorViewController.xib; sourceTree = "<group>"; };
+		BEAAD28226FB26530069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ASMentionSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD28426FB26550069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ASMentionSelectorViewController.strings"; sourceTree = "<group>"; };
+		BEAAD28626FB26560069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ASMentionSelectorViewController.strings"; sourceTree = "<group>"; };
+		BEAAD28826FB26570069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/ASMentionSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD28A26FB26580069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/ASMentionSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD28C26FB26590069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ASMentionSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD28E26FB265A0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ASMentionSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD29026FB265B0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/ASMentionSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD29226FB265C0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/ASMentionSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD29426FB265D0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ASMentionSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD29626FB26640069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TagUserTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD29926FB26660069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TagUserTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD29B26FB266B0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TagUserTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD29D26FB266C0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TagUserTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD29F26FB266D0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/TagUserTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2A126FB266E0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/TagUserTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2A326FB266F0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TagUserTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2A526FB266F0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/TagUserTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2A726FB26700069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/TagUserTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2A926FB26710069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/TagUserTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2AB26FB26720069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/TagUserTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2AD26FB267E0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GifCollectionViewCell.xib; sourceTree = "<group>"; };
+		BEAAD2B026FB26800069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GifCollectionViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2B226FB26800069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GifCollectionViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD2B426FB26810069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/GifCollectionViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD2B626FB26810069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/GifCollectionViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2B826FB26820069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/GifCollectionViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2BA26FB26820069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/GifCollectionViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2BC26FB26830069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/GifCollectionViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2BE26FB26830069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/GifCollectionViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2C026FB26840069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/GifCollectionViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2C226FB26840069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/GifCollectionViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2C426FB268B0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedsGIFSelectorViewController.xib; sourceTree = "<group>"; };
+		BEAAD2C726FB268F0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD2C926FB26910069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedsGIFSelectorViewController.strings"; sourceTree = "<group>"; };
+		BEAAD2CB26FB26920069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedsGIFSelectorViewController.strings"; sourceTree = "<group>"; };
+		BEAAD2CD26FB26940069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD2CF26FB26950069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD2D126FB26960069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD2D326FB26970069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD2D526FB26980069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD2D726FB26990069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD2D926FB269A0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedsGIFSelectorViewController.strings; sourceTree = "<group>"; };
+		BEAAD2DB26FB26A00069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedAttachmentOptionsDrawerViewController.xib; sourceTree = "<group>"; };
+		BEAAD2DE26FB26A20069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedAttachmentOptionsDrawerViewController.strings; sourceTree = "<group>"; };
+		BEAAD2E026FB26A30069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedAttachmentOptionsDrawerViewController.strings"; sourceTree = "<group>"; };
+		BEAAD2E226FB26A40069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedAttachmentOptionsDrawerViewController.strings"; sourceTree = "<group>"; };
+		BEAAD2E426FB26A50069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedAttachmentOptionsDrawerViewController.strings; sourceTree = "<group>"; };
+		BEAAD2E626FB26A60069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedAttachmentOptionsDrawerViewController.strings; sourceTree = "<group>"; };
+		BEAAD2E826FB26A70069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedAttachmentOptionsDrawerViewController.strings; sourceTree = "<group>"; };
+		BEAAD2EA26FB26A70069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedAttachmentOptionsDrawerViewController.strings; sourceTree = "<group>"; };
+		BEAAD2EC26FB26A80069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedAttachmentOptionsDrawerViewController.strings; sourceTree = "<group>"; };
+		BEAAD2EE26FB26A90069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedAttachmentOptionsDrawerViewController.strings; sourceTree = "<group>"; };
+		BEAAD2F026FB26AA0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedAttachmentOptionsDrawerViewController.strings; sourceTree = "<group>"; };
+		BEAAD2F226FB26AF0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PollsActiveDaysTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD2F526FB26B10069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2F726FB26B20069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PollsActiveDaysTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD2F926FB26B20069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PollsActiveDaysTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD2FB26FB26B30069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2FD26FB26B40069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD2FF26FB26B40069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD30126FB26B50069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD30326FB26B50069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD30526FB26B70069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD30726FB26B80069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PollsActiveDaysTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD30926FB26BD0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedEditorPollOptionTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD30C26FB26BE0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedEditorPollOptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD30E26FB26BF0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedEditorPollOptionTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD31026FB26BF0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedEditorPollOptionTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD31226FB26C00069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedEditorPollOptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD31426FB26C10069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedEditorPollOptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD31626FB26C10069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedEditorPollOptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD31826FB26C30069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedEditorPollOptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD31A26FB26C30069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedEditorPollOptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD31C26FB26C40069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedEditorPollOptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD31E26FB26C40069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedEditorPollOptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD32026FB26C90069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedGifTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD32326FB26CA0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedGifTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD32526FB26CB0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedGifTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD32726FB26CB0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedGifTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD32926FB26CC0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedGifTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD32B26FB26CD0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedGifTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD32D26FB26CD0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedGifTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD32F26FB26CE0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedGifTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD33126FB26CE0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedGifTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD33326FB26CF0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedGifTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD33526FB26CF0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedGifTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD33726FB26D40069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedEditorDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD33A26FB26D60069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedEditorDescriptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD33C26FB26D60069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedEditorDescriptionTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD33E26FB26D70069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedEditorDescriptionTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD34026FB26D70069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedEditorDescriptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD34226FB26D80069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedEditorDescriptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD34426FB26D80069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedEditorDescriptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD34626FB26D90069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedEditorDescriptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD34826FB26DA0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedEditorDescriptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD34A26FB26DA0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedEditorDescriptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD34C26FB26DC0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedEditorDescriptionTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD34E26FB26E10069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedEditorTitleTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD35126FB26E20069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedEditorTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD35326FB26E30069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedEditorTitleTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD35526FB26E30069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedEditorTitleTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD35726FB26E40069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedEditorTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD35926FB26E40069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedEditorTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD35B26FB26E50069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedEditorTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD35D26FB26E50069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedEditorTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD35F26FB26E60069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedEditorTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD36126FB26E60069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedEditorTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD36326FB26E60069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedEditorTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD36526FB26EC0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PostEditorViewController.xib; sourceTree = "<group>"; };
+		BEAAD36826FB26F00069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEAAD36A26FB26F10069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PostEditorViewController.strings"; sourceTree = "<group>"; };
+		BEAAD36C26FB26F20069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PostEditorViewController.strings"; sourceTree = "<group>"; };
+		BEAAD36E26FB26F30069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEAAD37026FB26F40069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEAAD37226FB26F60069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEAAD37426FB26F60069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEAAD37626FB26F70069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEAAD37826FB26F80069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEAAD37A26FB26F90069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PostEditorViewController.strings; sourceTree = "<group>"; };
+		BEAAD37C26FB26FE0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedsComposerDrawer.xib; sourceTree = "<group>"; };
+		BEAAD37F26FB27000069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedsComposerDrawer.strings; sourceTree = "<group>"; };
+		BEAAD38126FB27010069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedsComposerDrawer.strings"; sourceTree = "<group>"; };
+		BEAAD38326FB27010069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedsComposerDrawer.strings"; sourceTree = "<group>"; };
+		BEAAD38526FB27020069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedsComposerDrawer.strings; sourceTree = "<group>"; };
+		BEAAD38726FB27020069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedsComposerDrawer.strings; sourceTree = "<group>"; };
+		BEAAD38926FB27030069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedsComposerDrawer.strings; sourceTree = "<group>"; };
+		BEAAD38B26FB27040069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedsComposerDrawer.strings; sourceTree = "<group>"; };
+		BEAAD38D26FB27040069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedsComposerDrawer.strings; sourceTree = "<group>"; };
+		BEAAD38F26FB27050069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedsComposerDrawer.strings; sourceTree = "<group>"; };
+		BEAAD39126FB27060069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedsComposerDrawer.strings; sourceTree = "<group>"; };
+		BEAAD39326FB270C0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedDetailHeader.xib; sourceTree = "<group>"; };
+		BEAAD39626FB270D0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedDetailHeader.strings; sourceTree = "<group>"; };
+		BEAAD39826FB270E0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedDetailHeader.strings"; sourceTree = "<group>"; };
+		BEAAD39A26FB270F0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedDetailHeader.strings"; sourceTree = "<group>"; };
+		BEAAD39C26FB270F0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedDetailHeader.strings; sourceTree = "<group>"; };
+		BEAAD39E26FB27100069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedDetailHeader.strings; sourceTree = "<group>"; };
+		BEAAD3A026FB27100069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedDetailHeader.strings; sourceTree = "<group>"; };
+		BEAAD3A226FB27110069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedDetailHeader.strings; sourceTree = "<group>"; };
+		BEAAD3A426FB27120069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedDetailHeader.strings; sourceTree = "<group>"; };
+		BEAAD3A626FB27120069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedDetailHeader.strings; sourceTree = "<group>"; };
+		BEAAD3A826FB27130069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedDetailHeader.strings; sourceTree = "<group>"; };
+		BEAAD3AA26FB27190069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedCommentTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD3AD26FB271D0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedCommentTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3AF26FB271E0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedCommentTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD3B126FB271E0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedCommentTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD3B326FB271F0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedCommentTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3B526FB271F0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedCommentTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3B726FB27200069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedCommentTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3B926FB27200069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedCommentTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3BB26FB27210069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedCommentTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3BD26FB27210069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedCommentTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3BF26FB27220069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedCommentTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3C126FB27280069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ClappedByTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD3C426FB272A0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ClappedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3C626FB272B0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ClappedByTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD3C826FB272B0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ClappedByTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD3CA26FB272B0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/ClappedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3CC26FB272C0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/ClappedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3CE26FB272D0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ClappedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3D026FB272D0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ClappedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3D226FB272E0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/ClappedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3D426FB272E0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/ClappedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3D626FB272F0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ClappedByTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3D826FB27410069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedsDetailViewController.xib; sourceTree = "<group>"; };
+		BEAAD3DB26FB27440069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedsDetailViewController.strings; sourceTree = "<group>"; };
+		BEAAD3DD26FB27450069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedsDetailViewController.strings"; sourceTree = "<group>"; };
+		BEAAD3DF26FB27460069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedsDetailViewController.strings"; sourceTree = "<group>"; };
+		BEAAD3E126FB27470069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedsDetailViewController.strings; sourceTree = "<group>"; };
+		BEAAD3E326FB27480069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedsDetailViewController.strings; sourceTree = "<group>"; };
+		BEAAD3E526FB27490069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedsDetailViewController.strings; sourceTree = "<group>"; };
+		BEAAD3E726FB274A0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedsDetailViewController.strings; sourceTree = "<group>"; };
+		BEAAD3E926FB274B0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedsDetailViewController.strings; sourceTree = "<group>"; };
+		BEAAD3EB26FB274B0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedsDetailViewController.strings; sourceTree = "<group>"; };
+		BEAAD3ED26FB274C0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedsDetailViewController.strings; sourceTree = "<group>"; };
+		BEAAD3EF26FB27560069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PollOptionsVotedTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD3F226FB27580069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PollOptionsVotedTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3F426FB27590069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PollOptionsVotedTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD3F626FB275A0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PollOptionsVotedTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD3F826FB275A0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/PollOptionsVotedTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3FA26FB275B0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/PollOptionsVotedTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3FC26FB275C0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PollOptionsVotedTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD3FE26FB275D0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PollOptionsVotedTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD40026FB275D0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PollOptionsVotedTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD40226FB275E0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PollOptionsVotedTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD40426FB275F0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PollOptionsVotedTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD40626FB27640069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PollBottomTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD40926FB27660069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PollBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD40B26FB27660069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PollBottomTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD40D26FB27670069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PollBottomTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD40F26FB27670069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/PollBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD41126FB27680069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/PollBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD41326FB27680069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PollBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD41526FB27690069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PollBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD41726FB27690069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PollBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD41926FB276A0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PollBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD41B26FB276A0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PollBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD41D26FB276F0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PollSubmitButtonCell.xib; sourceTree = "<group>"; };
+		BEAAD42026FB27710069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PollSubmitButtonCell.strings; sourceTree = "<group>"; };
+		BEAAD42226FB27710069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PollSubmitButtonCell.strings"; sourceTree = "<group>"; };
+		BEAAD42426FB27720069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PollSubmitButtonCell.strings"; sourceTree = "<group>"; };
+		BEAAD42626FB27720069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/PollSubmitButtonCell.strings; sourceTree = "<group>"; };
+		BEAAD42826FB27730069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/PollSubmitButtonCell.strings; sourceTree = "<group>"; };
+		BEAAD42A26FB27730069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PollSubmitButtonCell.strings; sourceTree = "<group>"; };
+		BEAAD42C26FB27740069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PollSubmitButtonCell.strings; sourceTree = "<group>"; };
+		BEAAD42E26FB27740069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PollSubmitButtonCell.strings; sourceTree = "<group>"; };
+		BEAAD43026FB27740069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PollSubmitButtonCell.strings; sourceTree = "<group>"; };
+		BEAAD43226FB27760069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PollSubmitButtonCell.strings; sourceTree = "<group>"; };
+		BEAAD43426FB277B0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PollOptionsTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD43726FB277D0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PollOptionsTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD43926FB277D0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PollOptionsTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD43B26FB277E0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PollOptionsTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD43D26FB277E0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/PollOptionsTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD43F26FB277F0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/PollOptionsTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD44126FB277F0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PollOptionsTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD44326FB27800069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/PollOptionsTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD44526FB27800069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PollOptionsTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD44726FB27810069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PollOptionsTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD44926FB27810069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PollOptionsTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD44B26FB27870069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedBottomTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD44E26FB27890069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD45026FB278A0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedBottomTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD45226FB278A0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedBottomTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD45426FB278B0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD45626FB278B0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD45826FB278C0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD45A26FB278C0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD45C26FB278E0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD45E26FB278F0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD46026FB278F0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedBottomTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD46226FB27950069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultipleMediaTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD46526FB27970069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MultipleMediaTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD46726FB27970069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MultipleMediaTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD46926FB27980069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MultipleMediaTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD46B26FB27980069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/MultipleMediaTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD46D26FB27980069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/MultipleMediaTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD46F26FB27990069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MultipleMediaTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD47126FB27990069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MultipleMediaTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD47326FB279A0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/MultipleMediaTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD47526FB279A0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/MultipleMediaTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD47726FB279B0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/MultipleMediaTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD47926FB27A10069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SingleVideoTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD47C26FB27A30069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SingleVideoTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD47E26FB27A30069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SingleVideoTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD48026FB27A40069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SingleVideoTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD48226FB27A40069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/SingleVideoTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD48426FB27A50069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/SingleVideoTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD48626FB27A50069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SingleVideoTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD48826FB27A60069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SingleVideoTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD48A26FB27A60069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/SingleVideoTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD48C26FB27A70069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SingleVideoTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD48E26FB27A80069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/SingleVideoTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD49026FB27AD0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SingleImageTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD49326FB27AE0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SingleImageTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD49526FB27AF0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SingleImageTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD49726FB27B00069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SingleImageTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD49926FB27B00069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/SingleImageTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD49B26FB27B10069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/SingleImageTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD49D26FB27B10069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SingleImageTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD49F26FB27B10069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SingleImageTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4A126FB27B20069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/SingleImageTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4A326FB27B20069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/SingleImageTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4A526FB27B30069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/SingleImageTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4A726FB27B90069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedTextTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD4AA26FB27BA0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4AC26FB27BB0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedTextTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD4AE26FB27BB0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedTextTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD4B026FB27BC0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4B226FB27BC0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4B426FB27BD0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4B626FB27BE0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4B826FB27BE0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4BA26FB27BF0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4BC26FB27BF0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedTextTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4BE26FB27C40069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedTitleTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD4C126FB27C60069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4C326FB27C70069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedTitleTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD4C526FB27C80069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedTitleTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD4C726FB27C80069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4C926FB27C80069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4CB26FB27C90069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4CD26FB27CA0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4CF26FB27CA0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4D126FB27CB0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4D326FB27CB0069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedTitleTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4D526FB27D10069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedTopTableViewCell.xib; sourceTree = "<group>"; };
+		BEAAD4D826FB27D30069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedTopTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4DA26FB27D30069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedTopTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD4DC26FB27D40069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedTopTableViewCell.strings"; sourceTree = "<group>"; };
+		BEAAD4DE26FB27D40069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedTopTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4E026FB27D50069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedTopTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4E226FB27D50069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedTopTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4E426FB27D60069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedTopTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4E626FB27D60069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedTopTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4E826FB27D70069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedTopTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4EA26FB27D70069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedTopTableViewCell.strings; sourceTree = "<group>"; };
+		BEAAD4EC26FB27DE0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedsViewController.xib; sourceTree = "<group>"; };
+		BEAAD4EF26FB27E20069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FeedsViewController.strings; sourceTree = "<group>"; };
+		BEAAD4F126FB27E30069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FeedsViewController.strings"; sourceTree = "<group>"; };
+		BEAAD4F326FB27E50069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/FeedsViewController.strings"; sourceTree = "<group>"; };
+		BEAAD4F526FB27E50069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/FeedsViewController.strings; sourceTree = "<group>"; };
+		BEAAD4F726FB27E60069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/FeedsViewController.strings; sourceTree = "<group>"; };
+		BEAAD4F926FB27E70069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/FeedsViewController.strings; sourceTree = "<group>"; };
+		BEAAD4FB26FB27E80069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FeedsViewController.strings; sourceTree = "<group>"; };
+		BEAAD4FD26FB27E80069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/FeedsViewController.strings; sourceTree = "<group>"; };
+		BEAAD4FF26FB27E90069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/FeedsViewController.strings; sourceTree = "<group>"; };
+		BEAAD50126FB27E90069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FeedsViewController.strings; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -369,7 +699,7 @@
 			isa = PBXGroup;
 			children = (
 				980F5643245C1D300093AFE7 /* PollBottomTableViewCell.swift */,
-				980F5644245C1D300093AFE7 /* PollBottomTableViewCell.xib */,
+				BEAAD40726FB27640069C5C1 /* PollBottomTableViewCell.xib */,
 				980F5647245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift */,
 			);
 			path = PollBottomCell;
@@ -400,7 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				9819120D2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift */,
-				9819120E2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib */,
+				BEAAD2F326FB26AF0069C5C1 /* PollsActiveDaysTableViewCell.xib */,
 				981912112459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift */,
 			);
 			path = "Polls Active Days";
@@ -451,7 +781,7 @@
 				98BC8A1C241A19C9007C175D /* PostEditorCellFactory */,
 				98BC8A0B241A171E007C175D /* Custom Cells */,
 				983500EC2419FDA0009084D4 /* PostEditorViewController.swift */,
-				983500ED2419FDA0009084D4 /* PostEditorViewController.xib */,
+				BEAAD36626FB26EC0069C5C1 /* PostEditorViewController.xib */,
 			);
 			path = "Post Editor";
 			sourceTree = "<group>";
@@ -468,7 +798,7 @@
 			isa = PBXGroup;
 			children = (
 				983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */,
-				983C4F882462F08000FDEB76 /* DeletePostConfirmationDrawer.xib */,
+				BEAAD23B26FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib */,
 			);
 			path = DeletePostConfirmationDrawer;
 			sourceTree = "<group>";
@@ -496,7 +826,7 @@
 			isa = PBXGroup;
 			children = (
 				9868C010240F778100B12321 /* FeedTopTableViewCell.swift */,
-				9868C011240F778100B12321 /* FeedTopTableViewCell.xib */,
+				BEAAD4D626FB27D10069C5C1 /* FeedTopTableViewCell.xib */,
 				9868C03A240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift */,
 			);
 			path = "Feed Top Cell";
@@ -506,7 +836,7 @@
 			isa = PBXGroup;
 			children = (
 				9868C014240F786600B12321 /* FeedTitleTableViewCell.swift */,
-				9868C015240F786600B12321 /* FeedTitleTableViewCell.xib */,
+				BEAAD4BF26FB27C40069C5C1 /* FeedTitleTableViewCell.xib */,
 				9868C03C240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift */,
 			);
 			path = "Feed Title Cell";
@@ -517,7 +847,7 @@
 			children = (
 				9868C018240F78E500B12321 /* FeedTextTableViewCell.swift */,
 				9868C03E240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift */,
-				9868C019240F78E500B12321 /* FeedTextTableViewCell.xib */,
+				BEAAD4A826FB27B90069C5C1 /* FeedTextTableViewCell.xib */,
 			);
 			path = "Feed Text Cell";
 			sourceTree = "<group>";
@@ -536,7 +866,7 @@
 			children = (
 				9868C031240F7A3C00B12321 /* FeedBottomTableViewCell.swift */,
 				9868C046240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift */,
-				9868C032240F7A3C00B12321 /* FeedBottomTableViewCell.xib */,
+				BEAAD44C26FB27870069C5C1 /* FeedBottomTableViewCell.xib */,
 			);
 			path = "Feed Bottom Cell";
 			sourceTree = "<group>";
@@ -567,7 +897,7 @@
 				9868C0B3241205B400B12321 /* MediaCollectionCoordinator */,
 				9868C02D240F7A1500B12321 /* MultipleMediaTableViewCell.swift */,
 				9868C044240F9D6C00B12321 /* MultipleMediaTableViewCellCoordinator.swift */,
-				9868C02E240F7A1500B12321 /* MultipleMediaTableViewCell.xib */,
+				BEAAD46326FB27950069C5C1 /* MultipleMediaTableViewCell.xib */,
 			);
 			path = "Multiple Media";
 			sourceTree = "<group>";
@@ -577,7 +907,7 @@
 			children = (
 				9868C025240F799200B12321 /* SingleImageTableViewCell.swift */,
 				9868C040240F9D3900B12321 /* SingleImageTableViewCellCoordinator.swift */,
-				9868C026240F799200B12321 /* SingleImageTableViewCell.xib */,
+				BEAAD49126FB27AD0069C5C1 /* SingleImageTableViewCell.xib */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -587,7 +917,7 @@
 			children = (
 				9868C029240F79E800B12321 /* SingleVideoTableViewCell.swift */,
 				9868C042240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift */,
-				9868C02A240F79E800B12321 /* SingleVideoTableViewCell.xib */,
+				BEAAD47A26FB27A10069C5C1 /* SingleVideoTableViewCell.xib */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -637,7 +967,7 @@
 				9868C0E824125E0F00B12321 /* models */,
 				9868C0E524125AB900B12321 /* FeedDetailSectionFactory */,
 				9868C08B2410B56100B12321 /* FeedsDetailViewController.swift */,
-				9868C08C2410B56100B12321 /* FeedsDetailViewController.xib */,
+				BEAAD3D926FB27410069C5C1 /* FeedsDetailViewController.xib */,
 			);
 			path = FeedsDetailViewController;
 			sourceTree = "<group>";
@@ -680,7 +1010,7 @@
 			isa = PBXGroup;
 			children = (
 				9868C0F42419489300B12321 /* ClappedByTableViewCell.swift */,
-				9868C0F52419489300B12321 /* ClappedByTableViewCell.xib */,
+				BEAAD3C226FB27280069C5C1 /* ClappedByTableViewCell.xib */,
 				9868C0FA241948C800B12321 /* ClappedByTableViewCellCoordinator.swift */,
 			);
 			path = ClappedBy;
@@ -690,7 +1020,7 @@
 			isa = PBXGroup;
 			children = (
 				9868C0F02419488000B12321 /* FeedCommentTableViewCell.swift */,
-				9868C0F12419488000B12321 /* FeedCommentTableViewCell.xib */,
+				BEAAD3AB26FB27190069C5C1 /* FeedCommentTableViewCell.xib */,
 				9868C0F8241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift */,
 			);
 			path = FeedComment;
@@ -700,7 +1030,7 @@
 			isa = PBXGroup;
 			children = (
 				9868C0FD2419EB2D00B12321 /* FeedsComposerDrawer.swift */,
-				9868C0FE2419EB2D00B12321 /* FeedsComposerDrawer.xib */,
+				BEAAD37D26FB26FE0069C5C1 /* FeedsComposerDrawer.xib */,
 			);
 			path = FeedsComposerDrawer;
 			sourceTree = "<group>";
@@ -744,7 +1074,7 @@
 			isa = PBXGroup;
 			children = (
 				9872267E2461806E00809D7A /* PollOptionsVotedTableViewCell.swift */,
-				9872267F2461806E00809D7A /* PollOptionsVotedTableViewCell.xib */,
+				BEAAD3F026FB27560069C5C1 /* PollOptionsVotedTableViewCell.xib */,
 				98722682246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift */,
 			);
 			path = PollOptionsVotedCell;
@@ -754,7 +1084,7 @@
 			isa = PBXGroup;
 			children = (
 				9873D61624B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift */,
-				9873D61724B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib */,
+				BEAAD2DC26FB26A00069C5C1 /* FeedAttachmentOptionsDrawerViewController.xib */,
 			);
 			path = FeedAttachmentOptionsDrawer;
 			sourceTree = "<group>";
@@ -766,7 +1096,7 @@
 				9873D62A24B808D10041504C /* Models */,
 				9873D61F24B6C5830041504C /* CustomCell */,
 				9873D61B24B6C26D0041504C /* FeedsGIFSelectorViewController.swift */,
-				9873D61C24B6C26D0041504C /* FeedsGIFSelectorViewController.xib */,
+				BEAAD2C526FB268B0069C5C1 /* FeedsGIFSelectorViewController.xib */,
 			);
 			path = FeedsGIFSelector;
 			sourceTree = "<group>";
@@ -775,7 +1105,7 @@
 			isa = PBXGroup;
 			children = (
 				9873D62024B6C5C00041504C /* GifCollectionViewCell.swift */,
-				9873D62124B6C5C00041504C /* GifCollectionViewCell.xib */,
+				BEAAD2AE26FB267E0069C5C1 /* GifCollectionViewCell.xib */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -801,7 +1131,7 @@
 			children = (
 				9873D63424BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift */,
 				9873D63624BAC0180041504C /* FeedGifTableViewCell.swift */,
-				9873D63724BAC0180041504C /* FeedGifTableViewCell.xib */,
+				BEAAD32126FB26C90069C5C1 /* FeedGifTableViewCell.xib */,
 			);
 			path = "gif attachment";
 			sourceTree = "<group>";
@@ -873,7 +1203,7 @@
 			isa = PBXGroup;
 			children = (
 				98BF39D1258999B400498C85 /* models */,
-				987D0BA12583DA58001A0F07 /* ASMentionSelectorViewController.xib */,
+				BEAAD28026FB26490069C5C1 /* ASMentionSelectorViewController.xib */,
 				987D0B9D2583DA58001A0F07 /* ASMentionSelectorViewController.swift */,
 				987D0B9E2583DA58001A0F07 /* custom cell */,
 				987D0BA22583DA58001A0F07 /* worker */,
@@ -885,7 +1215,7 @@
 			isa = PBXGroup;
 			children = (
 				987D0B9F2583DA58001A0F07 /* TagUserTableViewCell.swift */,
-				987D0BA02583DA58001A0F07 /* TagUserTableViewCell.xib */,
+				BEAAD29726FB26640069C5C1 /* TagUserTableViewCell.xib */,
 			);
 			path = "custom cell";
 			sourceTree = "<group>";
@@ -991,7 +1321,7 @@
 				9868BFFE240F584500B12321 /* Models */,
 				98B90DED240CAD010013E9D2 /* Custom Cells */,
 				98B90E07240CAD010013E9D2 /* FeedsViewController.swift */,
-				98B90E08240CAD010013E9D2 /* FeedsViewController.xib */,
+				BEAAD4ED26FB27DE0069C5C1 /* FeedsViewController.xib */,
 			);
 			path = FeedsViewController;
 			sourceTree = "<group>";
@@ -1025,7 +1355,7 @@
 			isa = PBXGroup;
 			children = (
 				98BC8A0C241A1775007C175D /* FeedEditorTitleTableViewCell.swift */,
-				98BC8A0D241A1775007C175D /* FeedEditorTitleTableViewCell.xib */,
+				BEAAD34F26FB26E10069C5C1 /* FeedEditorTitleTableViewCell.xib */,
 				98BC8A1F241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift */,
 			);
 			path = title;
@@ -1035,7 +1365,7 @@
 			isa = PBXGroup;
 			children = (
 				98BC8A12241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift */,
-				98BC8A13241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib */,
+				BEAAD33826FB26D40069C5C1 /* FeedEditorDescriptionTableViewCell.xib */,
 				98BC8A21241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift */,
 			);
 			path = description;
@@ -1087,7 +1417,7 @@
 			children = (
 				98C648A2241B88F5006689E9 /* PollOptionsTableViewCell.swift */,
 				98C648A7241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift */,
-				98C648A3241B88F5006689E9 /* PollOptionsTableViewCell.xib */,
+				BEAAD43526FB277B0069C5C1 /* PollOptionsTableViewCell.xib */,
 			);
 			path = PollOptionsCell;
 			sourceTree = "<group>";
@@ -1096,7 +1426,7 @@
 			isa = PBXGroup;
 			children = (
 				980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */,
-				980F5639245BFC680093AFE7 /* PollSubmitButtonCell.xib */,
+				BEAAD41E26FB276F0069C5C1 /* PollSubmitButtonCell.xib */,
 				980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */,
 			);
 			path = PollSubmitButtonCell;
@@ -1106,7 +1436,7 @@
 			isa = PBXGroup;
 			children = (
 				98C648B1241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift */,
-				98C648B2241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib */,
+				BEAAD30A26FB26BD0069C5C1 /* FeedEditorPollOptionTableViewCell.xib */,
 				98C648B5241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift */,
 			);
 			path = EditablePollOptions;
@@ -1125,7 +1455,7 @@
 			isa = PBXGroup;
 			children = (
 				98C648BB241F8C99006689E9 /* FeedDetailHeader.swift */,
-				98C648BD241F8CAD006689E9 /* FeedDetailHeader.xib */,
+				BEAAD39426FB270C0069C5C1 /* FeedDetailHeader.xib */,
 				98C648BF241F9008006689E9 /* FeedDetailHeaderCoordinator.swift */,
 			);
 			path = "Custom Header";
@@ -1145,7 +1475,7 @@
 				9830E8472463231200FEFC0F /* Worker */,
 				98CC2FB22425C6C400E8F9E0 /* Custom Cell */,
 				98CC2FAE2425C4C400E8F9E0 /* LikeListViewController.swift */,
-				98CC2FAF2425C4C400E8F9E0 /* LikeListViewController.xib */,
+				BEAAD26926FB26300069C5C1 /* LikeListViewController.xib */,
 			);
 			path = LikeList;
 			sourceTree = "<group>";
@@ -1154,7 +1484,7 @@
 			isa = PBXGroup;
 			children = (
 				98CC2FD52425C86600E8F9E0 /* LikedByTableViewCell.swift */,
-				98CC2FD62425C86600E8F9E0 /* LikedByTableViewCell.xib */,
+				BEAAD25226FB261D0069C5C1 /* LikedByTableViewCell.xib */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -1164,7 +1494,7 @@
 			children = (
 				98575A3D2532BB9F007644FE /* Worker */,
 				98D5E89025314C0F00813991 /* ReportAbuseConfirmationDrawer.swift */,
-				98D5E89125314C0F00813991 /* ReportAbuseConfirmationDrawer.xib */,
+				BEAAD22426FB25FB0069C5C1 /* ReportAbuseConfirmationDrawer.xib */,
 			);
 			path = ReportAbuseConfirmationDrawer;
 			sourceTree = "<group>";
@@ -1204,7 +1534,7 @@
 			isa = PBXGroup;
 			children = (
 				BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */,
-				BEAAD20126FB03060069C5C1 /* DropDownTableViewCell.xib */,
+				BEAAD20D26FB25DF0069C5C1 /* DropDownTableViewCell.xib */,
 				BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */,
 			);
 			path = DropDown;
@@ -1274,6 +1604,13 @@
 				Base,
 				"zh-Hans",
 				th,
+				ko,
+				"zh-Hant",
+				hi,
+				id,
+				ja,
+				ms,
+				vi,
 			);
 			mainGroup = 98B90DD5240CACD90013E9D2;
 			productRefGroup = 98B90DE0240CACD90013E9D2 /* Products */;
@@ -1290,41 +1627,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9868C013240F778100B12321 /* FeedTopTableViewCell.xib in Resources */,
-				9868C0F72419489300B12321 /* ClappedByTableViewCell.xib in Resources */,
-				98CC2FB12425C4C400E8F9E0 /* LikeListViewController.xib in Resources */,
-				9868C02C240F79E800B12321 /* SingleVideoTableViewCell.xib in Resources */,
-				98D5E89325314C0F00813991 /* ReportAbuseConfirmationDrawer.xib in Resources */,
-				9868C034240F7A3C00B12321 /* FeedBottomTableViewCell.xib in Resources */,
-				981912102459B5BD0078A2FF /* PollsActiveDaysTableViewCell.xib in Resources */,
-				98C648BE241F8CAD006689E9 /* FeedDetailHeader.xib in Resources */,
-				983C4F8A2462F08000FDEB76 /* DeletePostConfirmationDrawer.xib in Resources */,
-				9868C028240F799200B12321 /* SingleImageTableViewCell.xib in Resources */,
+				BEAAD4D426FB27D10069C5C1 /* FeedTopTableViewCell.xib in Resources */,
+				BEAAD3C026FB27280069C5C1 /* ClappedByTableViewCell.xib in Resources */,
+				BEAAD26726FB26300069C5C1 /* LikeListViewController.xib in Resources */,
+				BEAAD47826FB27A10069C5C1 /* SingleVideoTableViewCell.xib in Resources */,
+				BEAAD22226FB25FB0069C5C1 /* ReportAbuseConfirmationDrawer.xib in Resources */,
+				BEAAD44A26FB27870069C5C1 /* FeedBottomTableViewCell.xib in Resources */,
+				BEAAD2F126FB26AF0069C5C1 /* PollsActiveDaysTableViewCell.xib in Resources */,
+				BEAAD39226FB270C0069C5C1 /* FeedDetailHeader.xib in Resources */,
+				BEAAD23926FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib in Resources */,
+				BEAAD48F26FB27AD0069C5C1 /* SingleImageTableViewCell.xib in Resources */,
 				BEAAD1FF26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.xib in Resources */,
-				9873D63924BAC0180041504C /* FeedGifTableViewCell.xib in Resources */,
-				9873D61924B63A410041504C /* FeedAttachmentOptionsDrawerViewController.xib in Resources */,
-				9868C08E2410B56100B12321 /* FeedsDetailViewController.xib in Resources */,
-				9873D61E24B6C26D0041504C /* FeedsGIFSelectorViewController.xib in Resources */,
-				9868C01B240F78E500B12321 /* FeedTextTableViewCell.xib in Resources */,
-				980F5646245C1D300093AFE7 /* PollBottomTableViewCell.xib in Resources */,
-				BEAAD20426FB03060069C5C1 /* DropDownTableViewCell.xib in Resources */,
-				9868C030240F7A1500B12321 /* MultipleMediaTableViewCell.xib in Resources */,
-				98B90E1B240CAD010013E9D2 /* FeedsViewController.xib in Resources */,
-				987D0BB12583DA58001A0F07 /* ASMentionSelectorViewController.xib in Resources */,
-				980F563B245BFC680093AFE7 /* PollSubmitButtonCell.xib in Resources */,
-				98CC2FD82425C86600E8F9E0 /* LikedByTableViewCell.xib in Resources */,
+				BEAAD31F26FB26C90069C5C1 /* FeedGifTableViewCell.xib in Resources */,
+				BEAAD2DA26FB26A00069C5C1 /* FeedAttachmentOptionsDrawerViewController.xib in Resources */,
+				BEAAD3D726FB27410069C5C1 /* FeedsDetailViewController.xib in Resources */,
+				BEAAD2C326FB268B0069C5C1 /* FeedsGIFSelectorViewController.xib in Resources */,
+				BEAAD4A626FB27B90069C5C1 /* FeedTextTableViewCell.xib in Resources */,
+				BEAAD40526FB27640069C5C1 /* PollBottomTableViewCell.xib in Resources */,
+				BEAAD20B26FB25DF0069C5C1 /* DropDownTableViewCell.xib in Resources */,
+				BEAAD46126FB27950069C5C1 /* MultipleMediaTableViewCell.xib in Resources */,
+				BEAAD4EB26FB27DE0069C5C1 /* FeedsViewController.xib in Resources */,
+				BEAAD27E26FB26490069C5C1 /* ASMentionSelectorViewController.xib in Resources */,
+				BEAAD41C26FB276F0069C5C1 /* PollSubmitButtonCell.xib in Resources */,
+				BEAAD25026FB261D0069C5C1 /* LikedByTableViewCell.xib in Resources */,
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
-				9868C017240F786600B12321 /* FeedTitleTableViewCell.xib in Resources */,
-				98BC8A0F241A1775007C175D /* FeedEditorTitleTableViewCell.xib in Resources */,
-				98C648A5241B88F5006689E9 /* PollOptionsTableViewCell.xib in Resources */,
-				9868C1002419EB2D00B12321 /* FeedsComposerDrawer.xib in Resources */,
-				987226812461806E00809D7A /* PollOptionsVotedTableViewCell.xib in Resources */,
-				9873D62324B6C5C00041504C /* GifCollectionViewCell.xib in Resources */,
-				9868C0F32419488000B12321 /* FeedCommentTableViewCell.xib in Resources */,
-				98C648B4241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
-				987D0BB02583DA58001A0F07 /* TagUserTableViewCell.xib in Resources */,
-				983500EF2419FDA0009084D4 /* PostEditorViewController.xib in Resources */,
-				98BC8A15241A1797007C175D /* FeedEditorDescriptionTableViewCell.xib in Resources */,
+				BEAAD4BD26FB27C40069C5C1 /* FeedTitleTableViewCell.xib in Resources */,
+				BEAAD34D26FB26E10069C5C1 /* FeedEditorTitleTableViewCell.xib in Resources */,
+				BEAAD43326FB277B0069C5C1 /* PollOptionsTableViewCell.xib in Resources */,
+				BEAAD37B26FB26FE0069C5C1 /* FeedsComposerDrawer.xib in Resources */,
+				BEAAD3EE26FB27560069C5C1 /* PollOptionsVotedTableViewCell.xib in Resources */,
+				BEAAD2AC26FB267E0069C5C1 /* GifCollectionViewCell.xib in Resources */,
+				BEAAD3A926FB27190069C5C1 /* FeedCommentTableViewCell.xib in Resources */,
+				BEAAD30826FB26BD0069C5C1 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
+				BEAAD29526FB26640069C5C1 /* TagUserTableViewCell.xib in Resources */,
+				BEAAD36426FB26EC0069C5C1 /* PostEditorViewController.xib in Resources */,
+				BEAAD33626FB26D40069C5C1 /* FeedEditorDescriptionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,6 +1820,603 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BEAAD20D26FB25DF0069C5C1 /* DropDownTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD20C26FB25DF0069C5C1 /* Base */,
+				BEAAD20F26FB25E10069C5C1 /* en */,
+				BEAAD21126FB25E20069C5C1 /* zh-Hans */,
+				BEAAD21326FB25E50069C5C1 /* zh-Hant */,
+				BEAAD21526FB25E60069C5C1 /* hi */,
+				BEAAD21726FB25E70069C5C1 /* id */,
+				BEAAD21926FB25E80069C5C1 /* ja */,
+				BEAAD21B26FB25E90069C5C1 /* ko */,
+				BEAAD21D26FB25EA0069C5C1 /* ms */,
+				BEAAD21F26FB25EB0069C5C1 /* th */,
+				BEAAD22126FB25EC0069C5C1 /* vi */,
+			);
+			name = DropDownTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD22426FB25FB0069C5C1 /* ReportAbuseConfirmationDrawer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD22326FB25FB0069C5C1 /* Base */,
+				BEAAD22626FB25FD0069C5C1 /* en */,
+				BEAAD22826FB25FD0069C5C1 /* zh-Hans */,
+				BEAAD22A26FB25FE0069C5C1 /* zh-Hant */,
+				BEAAD22C26FB25FF0069C5C1 /* hi */,
+				BEAAD22E26FB25FF0069C5C1 /* id */,
+				BEAAD23026FB26000069C5C1 /* ja */,
+				BEAAD23226FB26000069C5C1 /* ko */,
+				BEAAD23426FB26010069C5C1 /* ms */,
+				BEAAD23626FB26010069C5C1 /* th */,
+				BEAAD23826FB26020069C5C1 /* vi */,
+			);
+			name = ReportAbuseConfirmationDrawer.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD23B26FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD23A26FB260A0069C5C1 /* Base */,
+				BEAAD23D26FB260C0069C5C1 /* en */,
+				BEAAD23F26FB260D0069C5C1 /* zh-Hans */,
+				BEAAD24126FB260D0069C5C1 /* zh-Hant */,
+				BEAAD24326FB260E0069C5C1 /* hi */,
+				BEAAD24526FB260E0069C5C1 /* id */,
+				BEAAD24726FB260F0069C5C1 /* ja */,
+				BEAAD24926FB260F0069C5C1 /* ko */,
+				BEAAD24B26FB26100069C5C1 /* ms */,
+				BEAAD24D26FB26160069C5C1 /* th */,
+				BEAAD24F26FB26170069C5C1 /* vi */,
+			);
+			name = DeletePostConfirmationDrawer.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD25226FB261D0069C5C1 /* LikedByTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD25126FB261D0069C5C1 /* Base */,
+				BEAAD25426FB261F0069C5C1 /* en */,
+				BEAAD25626FB26200069C5C1 /* zh-Hans */,
+				BEAAD25826FB26200069C5C1 /* zh-Hant */,
+				BEAAD25A26FB26210069C5C1 /* hi */,
+				BEAAD25C26FB26230069C5C1 /* id */,
+				BEAAD25E26FB26240069C5C1 /* ja */,
+				BEAAD26026FB26250069C5C1 /* ko */,
+				BEAAD26226FB26260069C5C1 /* ms */,
+				BEAAD26426FB26270069C5C1 /* th */,
+				BEAAD26626FB26280069C5C1 /* vi */,
+			);
+			name = LikedByTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD26926FB26300069C5C1 /* LikeListViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD26826FB26300069C5C1 /* Base */,
+				BEAAD26B26FB26350069C5C1 /* en */,
+				BEAAD26D26FB26370069C5C1 /* zh-Hans */,
+				BEAAD26F26FB26390069C5C1 /* zh-Hant */,
+				BEAAD27126FB263A0069C5C1 /* hi */,
+				BEAAD27326FB263B0069C5C1 /* id */,
+				BEAAD27526FB263C0069C5C1 /* ja */,
+				BEAAD27726FB263D0069C5C1 /* ko */,
+				BEAAD27926FB263E0069C5C1 /* ms */,
+				BEAAD27B26FB263F0069C5C1 /* th */,
+				BEAAD27D26FB26400069C5C1 /* vi */,
+			);
+			name = LikeListViewController.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD28026FB26490069C5C1 /* ASMentionSelectorViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD27F26FB26490069C5C1 /* Base */,
+				BEAAD28226FB26530069C5C1 /* en */,
+				BEAAD28426FB26550069C5C1 /* zh-Hans */,
+				BEAAD28626FB26560069C5C1 /* zh-Hant */,
+				BEAAD28826FB26570069C5C1 /* hi */,
+				BEAAD28A26FB26580069C5C1 /* id */,
+				BEAAD28C26FB26590069C5C1 /* ja */,
+				BEAAD28E26FB265A0069C5C1 /* ko */,
+				BEAAD29026FB265B0069C5C1 /* ms */,
+				BEAAD29226FB265C0069C5C1 /* th */,
+				BEAAD29426FB265D0069C5C1 /* vi */,
+			);
+			name = ASMentionSelectorViewController.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD29726FB26640069C5C1 /* TagUserTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD29626FB26640069C5C1 /* Base */,
+				BEAAD29926FB26660069C5C1 /* en */,
+				BEAAD29B26FB266B0069C5C1 /* zh-Hans */,
+				BEAAD29D26FB266C0069C5C1 /* zh-Hant */,
+				BEAAD29F26FB266D0069C5C1 /* hi */,
+				BEAAD2A126FB266E0069C5C1 /* id */,
+				BEAAD2A326FB266F0069C5C1 /* ja */,
+				BEAAD2A526FB266F0069C5C1 /* ko */,
+				BEAAD2A726FB26700069C5C1 /* ms */,
+				BEAAD2A926FB26710069C5C1 /* th */,
+				BEAAD2AB26FB26720069C5C1 /* vi */,
+			);
+			name = TagUserTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD2AE26FB267E0069C5C1 /* GifCollectionViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD2AD26FB267E0069C5C1 /* Base */,
+				BEAAD2B026FB26800069C5C1 /* en */,
+				BEAAD2B226FB26800069C5C1 /* zh-Hans */,
+				BEAAD2B426FB26810069C5C1 /* zh-Hant */,
+				BEAAD2B626FB26810069C5C1 /* hi */,
+				BEAAD2B826FB26820069C5C1 /* id */,
+				BEAAD2BA26FB26820069C5C1 /* ja */,
+				BEAAD2BC26FB26830069C5C1 /* ko */,
+				BEAAD2BE26FB26830069C5C1 /* ms */,
+				BEAAD2C026FB26840069C5C1 /* th */,
+				BEAAD2C226FB26840069C5C1 /* vi */,
+			);
+			name = GifCollectionViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD2C526FB268B0069C5C1 /* FeedsGIFSelectorViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD2C426FB268B0069C5C1 /* Base */,
+				BEAAD2C726FB268F0069C5C1 /* en */,
+				BEAAD2C926FB26910069C5C1 /* zh-Hans */,
+				BEAAD2CB26FB26920069C5C1 /* zh-Hant */,
+				BEAAD2CD26FB26940069C5C1 /* hi */,
+				BEAAD2CF26FB26950069C5C1 /* id */,
+				BEAAD2D126FB26960069C5C1 /* ja */,
+				BEAAD2D326FB26970069C5C1 /* ko */,
+				BEAAD2D526FB26980069C5C1 /* ms */,
+				BEAAD2D726FB26990069C5C1 /* th */,
+				BEAAD2D926FB269A0069C5C1 /* vi */,
+			);
+			name = FeedsGIFSelectorViewController.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD2DC26FB26A00069C5C1 /* FeedAttachmentOptionsDrawerViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD2DB26FB26A00069C5C1 /* Base */,
+				BEAAD2DE26FB26A20069C5C1 /* en */,
+				BEAAD2E026FB26A30069C5C1 /* zh-Hans */,
+				BEAAD2E226FB26A40069C5C1 /* zh-Hant */,
+				BEAAD2E426FB26A50069C5C1 /* hi */,
+				BEAAD2E626FB26A60069C5C1 /* id */,
+				BEAAD2E826FB26A70069C5C1 /* ja */,
+				BEAAD2EA26FB26A70069C5C1 /* ko */,
+				BEAAD2EC26FB26A80069C5C1 /* ms */,
+				BEAAD2EE26FB26A90069C5C1 /* th */,
+				BEAAD2F026FB26AA0069C5C1 /* vi */,
+			);
+			name = FeedAttachmentOptionsDrawerViewController.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD2F326FB26AF0069C5C1 /* PollsActiveDaysTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD2F226FB26AF0069C5C1 /* Base */,
+				BEAAD2F526FB26B10069C5C1 /* en */,
+				BEAAD2F726FB26B20069C5C1 /* zh-Hans */,
+				BEAAD2F926FB26B20069C5C1 /* zh-Hant */,
+				BEAAD2FB26FB26B30069C5C1 /* hi */,
+				BEAAD2FD26FB26B40069C5C1 /* id */,
+				BEAAD2FF26FB26B40069C5C1 /* ja */,
+				BEAAD30126FB26B50069C5C1 /* ko */,
+				BEAAD30326FB26B50069C5C1 /* ms */,
+				BEAAD30526FB26B70069C5C1 /* th */,
+				BEAAD30726FB26B80069C5C1 /* vi */,
+			);
+			name = PollsActiveDaysTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD30A26FB26BD0069C5C1 /* FeedEditorPollOptionTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD30926FB26BD0069C5C1 /* Base */,
+				BEAAD30C26FB26BE0069C5C1 /* en */,
+				BEAAD30E26FB26BF0069C5C1 /* zh-Hans */,
+				BEAAD31026FB26BF0069C5C1 /* zh-Hant */,
+				BEAAD31226FB26C00069C5C1 /* hi */,
+				BEAAD31426FB26C10069C5C1 /* id */,
+				BEAAD31626FB26C10069C5C1 /* ja */,
+				BEAAD31826FB26C30069C5C1 /* ko */,
+				BEAAD31A26FB26C30069C5C1 /* ms */,
+				BEAAD31C26FB26C40069C5C1 /* th */,
+				BEAAD31E26FB26C40069C5C1 /* vi */,
+			);
+			name = FeedEditorPollOptionTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD32126FB26C90069C5C1 /* FeedGifTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD32026FB26C90069C5C1 /* Base */,
+				BEAAD32326FB26CA0069C5C1 /* en */,
+				BEAAD32526FB26CB0069C5C1 /* zh-Hans */,
+				BEAAD32726FB26CB0069C5C1 /* zh-Hant */,
+				BEAAD32926FB26CC0069C5C1 /* hi */,
+				BEAAD32B26FB26CD0069C5C1 /* id */,
+				BEAAD32D26FB26CD0069C5C1 /* ja */,
+				BEAAD32F26FB26CE0069C5C1 /* ko */,
+				BEAAD33126FB26CE0069C5C1 /* ms */,
+				BEAAD33326FB26CF0069C5C1 /* th */,
+				BEAAD33526FB26CF0069C5C1 /* vi */,
+			);
+			name = FeedGifTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD33826FB26D40069C5C1 /* FeedEditorDescriptionTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD33726FB26D40069C5C1 /* Base */,
+				BEAAD33A26FB26D60069C5C1 /* en */,
+				BEAAD33C26FB26D60069C5C1 /* zh-Hans */,
+				BEAAD33E26FB26D70069C5C1 /* zh-Hant */,
+				BEAAD34026FB26D70069C5C1 /* hi */,
+				BEAAD34226FB26D80069C5C1 /* id */,
+				BEAAD34426FB26D80069C5C1 /* ja */,
+				BEAAD34626FB26D90069C5C1 /* ko */,
+				BEAAD34826FB26DA0069C5C1 /* ms */,
+				BEAAD34A26FB26DA0069C5C1 /* th */,
+				BEAAD34C26FB26DC0069C5C1 /* vi */,
+			);
+			name = FeedEditorDescriptionTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD34F26FB26E10069C5C1 /* FeedEditorTitleTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD34E26FB26E10069C5C1 /* Base */,
+				BEAAD35126FB26E20069C5C1 /* en */,
+				BEAAD35326FB26E30069C5C1 /* zh-Hans */,
+				BEAAD35526FB26E30069C5C1 /* zh-Hant */,
+				BEAAD35726FB26E40069C5C1 /* hi */,
+				BEAAD35926FB26E40069C5C1 /* id */,
+				BEAAD35B26FB26E50069C5C1 /* ja */,
+				BEAAD35D26FB26E50069C5C1 /* ko */,
+				BEAAD35F26FB26E60069C5C1 /* ms */,
+				BEAAD36126FB26E60069C5C1 /* th */,
+				BEAAD36326FB26E60069C5C1 /* vi */,
+			);
+			name = FeedEditorTitleTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD36626FB26EC0069C5C1 /* PostEditorViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD36526FB26EC0069C5C1 /* Base */,
+				BEAAD36826FB26F00069C5C1 /* en */,
+				BEAAD36A26FB26F10069C5C1 /* zh-Hans */,
+				BEAAD36C26FB26F20069C5C1 /* zh-Hant */,
+				BEAAD36E26FB26F30069C5C1 /* hi */,
+				BEAAD37026FB26F40069C5C1 /* id */,
+				BEAAD37226FB26F60069C5C1 /* ja */,
+				BEAAD37426FB26F60069C5C1 /* ko */,
+				BEAAD37626FB26F70069C5C1 /* ms */,
+				BEAAD37826FB26F80069C5C1 /* th */,
+				BEAAD37A26FB26F90069C5C1 /* vi */,
+			);
+			name = PostEditorViewController.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD37D26FB26FE0069C5C1 /* FeedsComposerDrawer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD37C26FB26FE0069C5C1 /* Base */,
+				BEAAD37F26FB27000069C5C1 /* en */,
+				BEAAD38126FB27010069C5C1 /* zh-Hans */,
+				BEAAD38326FB27010069C5C1 /* zh-Hant */,
+				BEAAD38526FB27020069C5C1 /* hi */,
+				BEAAD38726FB27020069C5C1 /* id */,
+				BEAAD38926FB27030069C5C1 /* ja */,
+				BEAAD38B26FB27040069C5C1 /* ko */,
+				BEAAD38D26FB27040069C5C1 /* ms */,
+				BEAAD38F26FB27050069C5C1 /* th */,
+				BEAAD39126FB27060069C5C1 /* vi */,
+			);
+			name = FeedsComposerDrawer.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD39426FB270C0069C5C1 /* FeedDetailHeader.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD39326FB270C0069C5C1 /* Base */,
+				BEAAD39626FB270D0069C5C1 /* en */,
+				BEAAD39826FB270E0069C5C1 /* zh-Hans */,
+				BEAAD39A26FB270F0069C5C1 /* zh-Hant */,
+				BEAAD39C26FB270F0069C5C1 /* hi */,
+				BEAAD39E26FB27100069C5C1 /* id */,
+				BEAAD3A026FB27100069C5C1 /* ja */,
+				BEAAD3A226FB27110069C5C1 /* ko */,
+				BEAAD3A426FB27120069C5C1 /* ms */,
+				BEAAD3A626FB27120069C5C1 /* th */,
+				BEAAD3A826FB27130069C5C1 /* vi */,
+			);
+			name = FeedDetailHeader.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD3AB26FB27190069C5C1 /* FeedCommentTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD3AA26FB27190069C5C1 /* Base */,
+				BEAAD3AD26FB271D0069C5C1 /* en */,
+				BEAAD3AF26FB271E0069C5C1 /* zh-Hans */,
+				BEAAD3B126FB271E0069C5C1 /* zh-Hant */,
+				BEAAD3B326FB271F0069C5C1 /* hi */,
+				BEAAD3B526FB271F0069C5C1 /* id */,
+				BEAAD3B726FB27200069C5C1 /* ja */,
+				BEAAD3B926FB27200069C5C1 /* ko */,
+				BEAAD3BB26FB27210069C5C1 /* ms */,
+				BEAAD3BD26FB27210069C5C1 /* th */,
+				BEAAD3BF26FB27220069C5C1 /* vi */,
+			);
+			name = FeedCommentTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD3C226FB27280069C5C1 /* ClappedByTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD3C126FB27280069C5C1 /* Base */,
+				BEAAD3C426FB272A0069C5C1 /* en */,
+				BEAAD3C626FB272B0069C5C1 /* zh-Hans */,
+				BEAAD3C826FB272B0069C5C1 /* zh-Hant */,
+				BEAAD3CA26FB272B0069C5C1 /* hi */,
+				BEAAD3CC26FB272C0069C5C1 /* id */,
+				BEAAD3CE26FB272D0069C5C1 /* ja */,
+				BEAAD3D026FB272D0069C5C1 /* ko */,
+				BEAAD3D226FB272E0069C5C1 /* ms */,
+				BEAAD3D426FB272E0069C5C1 /* th */,
+				BEAAD3D626FB272F0069C5C1 /* vi */,
+			);
+			name = ClappedByTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD3D926FB27410069C5C1 /* FeedsDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD3D826FB27410069C5C1 /* Base */,
+				BEAAD3DB26FB27440069C5C1 /* en */,
+				BEAAD3DD26FB27450069C5C1 /* zh-Hans */,
+				BEAAD3DF26FB27460069C5C1 /* zh-Hant */,
+				BEAAD3E126FB27470069C5C1 /* hi */,
+				BEAAD3E326FB27480069C5C1 /* id */,
+				BEAAD3E526FB27490069C5C1 /* ja */,
+				BEAAD3E726FB274A0069C5C1 /* ko */,
+				BEAAD3E926FB274B0069C5C1 /* ms */,
+				BEAAD3EB26FB274B0069C5C1 /* th */,
+				BEAAD3ED26FB274C0069C5C1 /* vi */,
+			);
+			name = FeedsDetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD3F026FB27560069C5C1 /* PollOptionsVotedTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD3EF26FB27560069C5C1 /* Base */,
+				BEAAD3F226FB27580069C5C1 /* en */,
+				BEAAD3F426FB27590069C5C1 /* zh-Hans */,
+				BEAAD3F626FB275A0069C5C1 /* zh-Hant */,
+				BEAAD3F826FB275A0069C5C1 /* hi */,
+				BEAAD3FA26FB275B0069C5C1 /* id */,
+				BEAAD3FC26FB275C0069C5C1 /* ja */,
+				BEAAD3FE26FB275D0069C5C1 /* ko */,
+				BEAAD40026FB275D0069C5C1 /* ms */,
+				BEAAD40226FB275E0069C5C1 /* th */,
+				BEAAD40426FB275F0069C5C1 /* vi */,
+			);
+			name = PollOptionsVotedTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD40726FB27640069C5C1 /* PollBottomTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD40626FB27640069C5C1 /* Base */,
+				BEAAD40926FB27660069C5C1 /* en */,
+				BEAAD40B26FB27660069C5C1 /* zh-Hans */,
+				BEAAD40D26FB27670069C5C1 /* zh-Hant */,
+				BEAAD40F26FB27670069C5C1 /* hi */,
+				BEAAD41126FB27680069C5C1 /* id */,
+				BEAAD41326FB27680069C5C1 /* ja */,
+				BEAAD41526FB27690069C5C1 /* ko */,
+				BEAAD41726FB27690069C5C1 /* ms */,
+				BEAAD41926FB276A0069C5C1 /* vi */,
+				BEAAD41B26FB276A0069C5C1 /* th */,
+			);
+			name = PollBottomTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD41E26FB276F0069C5C1 /* PollSubmitButtonCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD41D26FB276F0069C5C1 /* Base */,
+				BEAAD42026FB27710069C5C1 /* en */,
+				BEAAD42226FB27710069C5C1 /* zh-Hans */,
+				BEAAD42426FB27720069C5C1 /* zh-Hant */,
+				BEAAD42626FB27720069C5C1 /* hi */,
+				BEAAD42826FB27730069C5C1 /* id */,
+				BEAAD42A26FB27730069C5C1 /* ja */,
+				BEAAD42C26FB27740069C5C1 /* ko */,
+				BEAAD42E26FB27740069C5C1 /* ms */,
+				BEAAD43026FB27740069C5C1 /* th */,
+				BEAAD43226FB27760069C5C1 /* vi */,
+			);
+			name = PollSubmitButtonCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD43526FB277B0069C5C1 /* PollOptionsTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD43426FB277B0069C5C1 /* Base */,
+				BEAAD43726FB277D0069C5C1 /* en */,
+				BEAAD43926FB277D0069C5C1 /* zh-Hans */,
+				BEAAD43B26FB277E0069C5C1 /* zh-Hant */,
+				BEAAD43D26FB277E0069C5C1 /* hi */,
+				BEAAD43F26FB277F0069C5C1 /* id */,
+				BEAAD44126FB277F0069C5C1 /* ja */,
+				BEAAD44326FB27800069C5C1 /* ko */,
+				BEAAD44526FB27800069C5C1 /* ms */,
+				BEAAD44726FB27810069C5C1 /* th */,
+				BEAAD44926FB27810069C5C1 /* vi */,
+			);
+			name = PollOptionsTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD44C26FB27870069C5C1 /* FeedBottomTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD44B26FB27870069C5C1 /* Base */,
+				BEAAD44E26FB27890069C5C1 /* en */,
+				BEAAD45026FB278A0069C5C1 /* zh-Hans */,
+				BEAAD45226FB278A0069C5C1 /* zh-Hant */,
+				BEAAD45426FB278B0069C5C1 /* hi */,
+				BEAAD45626FB278B0069C5C1 /* id */,
+				BEAAD45826FB278C0069C5C1 /* ja */,
+				BEAAD45A26FB278C0069C5C1 /* ko */,
+				BEAAD45C26FB278E0069C5C1 /* ms */,
+				BEAAD45E26FB278F0069C5C1 /* vi */,
+				BEAAD46026FB278F0069C5C1 /* th */,
+			);
+			name = FeedBottomTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD46326FB27950069C5C1 /* MultipleMediaTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD46226FB27950069C5C1 /* Base */,
+				BEAAD46526FB27970069C5C1 /* en */,
+				BEAAD46726FB27970069C5C1 /* zh-Hans */,
+				BEAAD46926FB27980069C5C1 /* zh-Hant */,
+				BEAAD46B26FB27980069C5C1 /* hi */,
+				BEAAD46D26FB27980069C5C1 /* id */,
+				BEAAD46F26FB27990069C5C1 /* ja */,
+				BEAAD47126FB27990069C5C1 /* ko */,
+				BEAAD47326FB279A0069C5C1 /* ms */,
+				BEAAD47526FB279A0069C5C1 /* th */,
+				BEAAD47726FB279B0069C5C1 /* vi */,
+			);
+			name = MultipleMediaTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD47A26FB27A10069C5C1 /* SingleVideoTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD47926FB27A10069C5C1 /* Base */,
+				BEAAD47C26FB27A30069C5C1 /* en */,
+				BEAAD47E26FB27A30069C5C1 /* zh-Hans */,
+				BEAAD48026FB27A40069C5C1 /* zh-Hant */,
+				BEAAD48226FB27A40069C5C1 /* hi */,
+				BEAAD48426FB27A50069C5C1 /* id */,
+				BEAAD48626FB27A50069C5C1 /* ja */,
+				BEAAD48826FB27A60069C5C1 /* ko */,
+				BEAAD48A26FB27A60069C5C1 /* ms */,
+				BEAAD48C26FB27A70069C5C1 /* th */,
+				BEAAD48E26FB27A80069C5C1 /* vi */,
+			);
+			name = SingleVideoTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD49126FB27AD0069C5C1 /* SingleImageTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD49026FB27AD0069C5C1 /* Base */,
+				BEAAD49326FB27AE0069C5C1 /* en */,
+				BEAAD49526FB27AF0069C5C1 /* zh-Hans */,
+				BEAAD49726FB27B00069C5C1 /* zh-Hant */,
+				BEAAD49926FB27B00069C5C1 /* hi */,
+				BEAAD49B26FB27B10069C5C1 /* id */,
+				BEAAD49D26FB27B10069C5C1 /* ja */,
+				BEAAD49F26FB27B10069C5C1 /* ko */,
+				BEAAD4A126FB27B20069C5C1 /* ms */,
+				BEAAD4A326FB27B20069C5C1 /* th */,
+				BEAAD4A526FB27B30069C5C1 /* vi */,
+			);
+			name = SingleImageTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD4A826FB27B90069C5C1 /* FeedTextTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD4A726FB27B90069C5C1 /* Base */,
+				BEAAD4AA26FB27BA0069C5C1 /* en */,
+				BEAAD4AC26FB27BB0069C5C1 /* zh-Hans */,
+				BEAAD4AE26FB27BB0069C5C1 /* zh-Hant */,
+				BEAAD4B026FB27BC0069C5C1 /* hi */,
+				BEAAD4B226FB27BC0069C5C1 /* ja */,
+				BEAAD4B426FB27BD0069C5C1 /* id */,
+				BEAAD4B626FB27BE0069C5C1 /* ko */,
+				BEAAD4B826FB27BE0069C5C1 /* ms */,
+				BEAAD4BA26FB27BF0069C5C1 /* th */,
+				BEAAD4BC26FB27BF0069C5C1 /* vi */,
+			);
+			name = FeedTextTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD4BF26FB27C40069C5C1 /* FeedTitleTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD4BE26FB27C40069C5C1 /* Base */,
+				BEAAD4C126FB27C60069C5C1 /* en */,
+				BEAAD4C326FB27C70069C5C1 /* zh-Hans */,
+				BEAAD4C526FB27C80069C5C1 /* zh-Hant */,
+				BEAAD4C726FB27C80069C5C1 /* hi */,
+				BEAAD4C926FB27C80069C5C1 /* id */,
+				BEAAD4CB26FB27C90069C5C1 /* ja */,
+				BEAAD4CD26FB27CA0069C5C1 /* ko */,
+				BEAAD4CF26FB27CA0069C5C1 /* ms */,
+				BEAAD4D126FB27CB0069C5C1 /* th */,
+				BEAAD4D326FB27CB0069C5C1 /* vi */,
+			);
+			name = FeedTitleTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD4D626FB27D10069C5C1 /* FeedTopTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD4D526FB27D10069C5C1 /* Base */,
+				BEAAD4D826FB27D30069C5C1 /* en */,
+				BEAAD4DA26FB27D30069C5C1 /* zh-Hans */,
+				BEAAD4DC26FB27D40069C5C1 /* zh-Hant */,
+				BEAAD4DE26FB27D40069C5C1 /* hi */,
+				BEAAD4E026FB27D50069C5C1 /* id */,
+				BEAAD4E226FB27D50069C5C1 /* ja */,
+				BEAAD4E426FB27D60069C5C1 /* ko */,
+				BEAAD4E626FB27D60069C5C1 /* ms */,
+				BEAAD4E826FB27D70069C5C1 /* th */,
+				BEAAD4EA26FB27D70069C5C1 /* vi */,
+			);
+			name = FeedTopTableViewCell.xib;
+			sourceTree = "<group>";
+		};
+		BEAAD4ED26FB27DE0069C5C1 /* FeedsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEAAD4EC26FB27DE0069C5C1 /* Base */,
+				BEAAD4EF26FB27E20069C5C1 /* en */,
+				BEAAD4F126FB27E30069C5C1 /* zh-Hans */,
+				BEAAD4F326FB27E50069C5C1 /* zh-Hant */,
+				BEAAD4F526FB27E50069C5C1 /* hi */,
+				BEAAD4F726FB27E60069C5C1 /* id */,
+				BEAAD4F926FB27E70069C5C1 /* ja */,
+				BEAAD4FB26FB27E80069C5C1 /* ko */,
+				BEAAD4FD26FB27E80069C5C1 /* ms */,
+				BEAAD4FF26FB27E90069C5C1 /* th */,
+				BEAAD50126FB27E90069C5C1 /* vi */,
+			);
+			name = FeedsViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		98B90DE5240CACD90013E9D2 /* Debug */ = {
