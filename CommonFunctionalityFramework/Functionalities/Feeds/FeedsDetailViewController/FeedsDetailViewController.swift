@@ -80,8 +80,8 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         feedDetailTableView?.dataSource = self
         feedDetailTableView?.delegate = self
         feedDetailTableView?.reloadData()
-        feedDetailTableView?.loadControl = CFFLoadControl(target: self, action: #selector(fetchComments))
-        feedDetailTableView?.loadControl?.heightLimit = 100.0
+        feedDetailTableView?.loadCFFControl = CFFLoadControl(target: self, action: #selector(fetchComments))
+        feedDetailTableView?.loadCFFControl?.heightLimit = 100.0
     }
     
     private func initializeFRC() {
@@ -335,11 +335,11 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.loadControl?.update()
+        scrollView.loadCFFControl?.update()
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollView.loadControl?.update()
+        scrollView.loadCFFControl?.update()
     }
 }
 
