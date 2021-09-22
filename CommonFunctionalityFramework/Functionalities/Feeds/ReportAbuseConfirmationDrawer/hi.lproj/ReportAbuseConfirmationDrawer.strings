@@ -3,13 +3,13 @@
 "2tg-KH-0Q9.text" = "vv";
 
 /* Class = "UIButton"; normalTitle = "DELETE"; ObjectID = "5EX-kw-a6r"; */
-"5EX-kw-a6r.normalTitle" = "DELETE";
+"5EX-kw-a6r.normalTitle" = "हटाएँ";
 
 /* Class = "UIButton"; normalTitle = "DELETE"; ObjectID = "Ajt-vO-zXr"; */
-"Ajt-vO-zXr.normalTitle" = "DELETE";
+"Ajt-vO-zXr.normalTitle" = "हटाएँ";
 
 /* Class = "UILabel"; text = "Delete Poll"; ObjectID = "v3b-p5-ePv"; */
-"v3b-p5-ePv.text" = "Delete Poll";
+"v3b-p5-ePv.text" = "पोल हटाओ";
 
 /* Class = "UILabel"; text = "COMMENTS"; ObjectID = "vEh-JK-FaP"; */
-"vEh-JK-FaP.text" = "COMMENTS";
+"vEh-JK-FaP.text" = "टिप्पणियाँ";

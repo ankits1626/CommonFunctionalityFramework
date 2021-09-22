@@ -6,10 +6,13 @@
 "ejB-Od-f3K.normalTitle" = "ลบ";
 
 /* Class = "UILabel"; text = "Delete Poll"; ObjectID = "iRp-S8-VVW"; */
-"iRp-S8-VVW.text" = "Delete Poll";
+"iRp-S8-VVW.text" = "ลบการสำรวจความคิดเห็น";
 
 /* Class = "UIButton"; normalTitle = "DELETE"; ObjectID = "mx0-Rd-dyy"; */
 "mx0-Rd-dyy.normalTitle" = "ลบ";
 
 /* Class = "UILabel"; text = "vv"; ObjectID = "p98-tb-pDk"; */
 "p98-tb-pDk.text" = "vv";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uhB-4H-iIj"; */
+"uhB-4H-iIj.text" = "Label";
