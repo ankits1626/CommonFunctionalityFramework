@@ -95,7 +95,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7s-aW-Ie5" userLabel="can container">
                             <rect key="frame" x="0.0" y="30" width="414" height="44"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirmationPinIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Dm-8bp">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_confirmationPinIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IhE-Dm-8bp">
                                     <rect key="frame" x="187" y="0.0" width="40" height="44"/>
                                 </imageView>
                             </subviews>
@@ -148,7 +148,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eD-3n-4md">
                                     <rect key="frame" x="30" y="8" width="354" height="40"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="GgV-MC-PA9">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="GgV-MC-PA9">
                                             <rect key="frame" x="314" y="7" width="40" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Cyd-E6-uA5"/>
@@ -253,9 +253,9 @@
         </view>
     </objects>
     <resources>
+        <image name="cff_confirmationPinIcon" width="40" height="40"/>
+        <image name="cff_dropdown" width="60.5" height="60.5"/>
         <image name="close_black" width="9" height="9"/>
-        <image name="confirmationPinIcon" width="40" height="40"/>
-        <image name="dropdown" width="60.5" height="60.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

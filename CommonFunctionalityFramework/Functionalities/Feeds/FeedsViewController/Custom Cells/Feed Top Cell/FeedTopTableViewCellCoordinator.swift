@@ -73,7 +73,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             }
             cell.pinPostButton?.setImage(
                 UIImage(
-                    named: feed.isPinToPost() ? "coloredPinPostIcon" : "pinPostIcon",
+                    named: feed.isPinToPost() ? "cff_coloredPinPostIcon" : "cff_pinPostIcon",
                     in: Bundle(for: FeedTopTableViewCell.self),
                     compatibleWith: nil),
                 for: .normal
