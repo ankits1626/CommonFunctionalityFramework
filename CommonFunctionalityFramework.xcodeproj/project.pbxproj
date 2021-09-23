@@ -166,6 +166,8 @@
 		BEAAD50226FB2BFB0069C5C1 /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD50426FB2BFB0069C5C1 /* PintoTopConfirmationDrawer.xib */; };
 		BEEF543826FC927E00327205 /* ASChatBarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543626FC927E00327205 /* ASChatBarview.swift */; };
 		BEEF543926FC927E00327205 /* ASChatBarview.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEF543726FC927E00327205 /* ASChatBarview.xib */; };
+		BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */; };
+		BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543B26FC978400327205 /* UIView+XibSetup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -673,6 +675,8 @@
 		BEAAD51826FB2C410069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEEF543626FC927E00327205 /* ASChatBarview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASChatBarview.swift; sourceTree = "<group>"; };
 		BEEF543726FC927E00327205 /* ASChatBarview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASChatBarview.xib; sourceTree = "<group>"; };
+		BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+NumberOfLines.swift"; sourceTree = "<group>"; };
+		BEEF543B26FC978400327205 /* UIView+XibSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XibSetup.swift"; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1170,6 +1174,8 @@
 		987D0B8F2583DA58001A0F07 /* ASMentions */ = {
 			isa = PBXGroup;
 			children = (
+				BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */,
+				BEEF543B26FC978400327205 /* UIView+XibSetup.swift */,
 				BEEF543626FC927E00327205 /* ASChatBarview.swift */,
 				BEEF543726FC927E00327205 /* ASChatBarview.xib */,
 				987D0B922583DA58001A0F07 /* ASMentionCoordinator.swift */,
@@ -1720,6 +1726,7 @@
 				98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */,
 				98D5E89225314C0F00813991 /* ReportAbuseConfirmationDrawer.swift in Sources */,
 				987226702461769400809D7A /* ManagedPost+CoreDataProperties.swift in Sources */,
+				BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */,
 				9872266E246173B500809D7A /* ManagedPostComment+CoreDataProperties.swift in Sources */,
 				980F564A245C51B30093AFE7 /* PollAnswerSubmitter.swift in Sources */,
 				9868C04E240FE2F200B12321 /* FeedSectionFactory.swift in Sources */,
@@ -1804,6 +1811,7 @@
 				BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
+				BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */,
 				9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */,
