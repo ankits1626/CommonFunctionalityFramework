@@ -164,6 +164,8 @@
 		BEAAD4D426FB27D10069C5C1 /* FeedTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD4D626FB27D10069C5C1 /* FeedTopTableViewCell.xib */; };
 		BEAAD4EB26FB27DE0069C5C1 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD4ED26FB27DE0069C5C1 /* FeedsViewController.xib */; };
 		BEAAD50226FB2BFB0069C5C1 /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD50426FB2BFB0069C5C1 /* PintoTopConfirmationDrawer.xib */; };
+		BEEF543826FC927E00327205 /* ASChatBarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543626FC927E00327205 /* ASChatBarview.swift */; };
+		BEEF543926FC927E00327205 /* ASChatBarview.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEF543726FC927E00327205 /* ASChatBarview.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -669,6 +671,8 @@
 		BEAAD51426FB2C3E0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD51626FB2C3F0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD51826FB2C410069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEEF543626FC927E00327205 /* ASChatBarview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASChatBarview.swift; sourceTree = "<group>"; };
+		BEEF543726FC927E00327205 /* ASChatBarview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASChatBarview.xib; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1166,6 +1170,8 @@
 		987D0B8F2583DA58001A0F07 /* ASMentions */ = {
 			isa = PBXGroup;
 			children = (
+				BEEF543626FC927E00327205 /* ASChatBarview.swift */,
+				BEEF543726FC927E00327205 /* ASChatBarview.xib */,
 				987D0B922583DA58001A0F07 /* ASMentionCoordinator.swift */,
 				987D0B9C2583DA58001A0F07 /* ASMentionSelectorViewController */,
 				987D0B902583DA58001A0F07 /* ASMentionStore */,
@@ -1671,6 +1677,7 @@
 				BEAAD30826FB26BD0069C5C1 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
 				BEAAD29526FB26640069C5C1 /* TagUserTableViewCell.xib in Resources */,
 				BEAAD36426FB26EC0069C5C1 /* PostEditorViewController.xib in Resources */,
+				BEEF543926FC927E00327205 /* ASChatBarview.xib in Resources */,
 				BEAAD33626FB26D40069C5C1 /* FeedEditorDescriptionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1709,6 +1716,7 @@
 			files = (
 				98722671246176E700809D7A /* ManagedPostComment+CoreDataClass.swift in Sources */,
 				98722672246176E700809D7A /* ManagedPost+CoreDataClass.swift in Sources */,
+				BEEF543826FC927E00327205 /* ASChatBarview.swift in Sources */,
 				98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */,
 				98D5E89225314C0F00813991 /* ReportAbuseConfirmationDrawer.swift in Sources */,
 				987226702461769400809D7A /* ManagedPost+CoreDataProperties.swift in Sources */,
