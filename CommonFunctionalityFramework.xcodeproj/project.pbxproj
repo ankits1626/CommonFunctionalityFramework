@@ -322,16 +322,6 @@
 		BEAAD23626FB26010069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD23826FB26020069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD23A26FB260A0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
-		BEAAD23D26FB260C0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
-		BEAAD23F26FB260D0069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DeletePostConfirmationDrawer.strings"; sourceTree = "<group>"; };
-		BEAAD24126FB260D0069C5C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DeletePostConfirmationDrawer.strings"; sourceTree = "<group>"; };
-		BEAAD24326FB260E0069C5C1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
-		BEAAD24526FB260E0069C5C1 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
-		BEAAD24726FB260F0069C5C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
-		BEAAD24926FB260F0069C5C1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
-		BEAAD24B26FB26100069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
-		BEAAD24D26FB26160069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
-		BEAAD24F26FB26170069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD25126FB261D0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LikedByTableViewCell.xib; sourceTree = "<group>"; };
 		BEAAD25426FB261F0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
 		BEAAD25626FB26200069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LikedByTableViewCell.strings"; sourceTree = "<group>"; };
@@ -1888,16 +1878,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BEAAD23A26FB260A0069C5C1 /* Base */,
-				BEAAD23D26FB260C0069C5C1 /* en */,
-				BEAAD23F26FB260D0069C5C1 /* zh-Hans */,
-				BEAAD24126FB260D0069C5C1 /* zh-Hant */,
-				BEAAD24326FB260E0069C5C1 /* hi */,
-				BEAAD24526FB260E0069C5C1 /* id */,
-				BEAAD24726FB260F0069C5C1 /* ja */,
-				BEAAD24926FB260F0069C5C1 /* ko */,
-				BEAAD24B26FB26100069C5C1 /* ms */,
-				BEAAD24D26FB26160069C5C1 /* th */,
-				BEAAD24F26FB26170069C5C1 /* vi */,
 			);
 			name = DeletePostConfirmationDrawer.xib;
 			sourceTree = "<group>";
