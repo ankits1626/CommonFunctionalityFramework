@@ -132,7 +132,6 @@
 		BEAAD20926FB03CB0069C5C1 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */; };
 		BEAAD20B26FB25DF0069C5C1 /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD20D26FB25DF0069C5C1 /* DropDownTableViewCell.xib */; };
 		BEAAD22226FB25FB0069C5C1 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD22426FB25FB0069C5C1 /* ReportAbuseConfirmationDrawer.xib */; };
-		BEAAD23926FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD23B26FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib */; };
 		BEAAD25026FB261D0069C5C1 /* LikedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD25226FB261D0069C5C1 /* LikedByTableViewCell.xib */; };
 		BEAAD26726FB26300069C5C1 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD26926FB26300069C5C1 /* LikeListViewController.xib */; };
 		BEAAD27E26FB26490069C5C1 /* ASMentionSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD28026FB26490069C5C1 /* ASMentionSelectorViewController.xib */; };
@@ -164,6 +163,7 @@
 		BEAAD4D426FB27D10069C5C1 /* FeedTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD4D626FB27D10069C5C1 /* FeedTopTableViewCell.xib */; };
 		BEAAD4EB26FB27DE0069C5C1 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD4ED26FB27DE0069C5C1 /* FeedsViewController.xib */; };
 		BEAAD50226FB2BFB0069C5C1 /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAAD50426FB2BFB0069C5C1 /* PintoTopConfirmationDrawer.xib */; };
+		BEC2B24D26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B24C26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib */; };
 		BEEF543826FC927E00327205 /* ASChatBarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543626FC927E00327205 /* ASChatBarview.swift */; };
 		BEEF543926FC927E00327205 /* ASChatBarview.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEF543726FC927E00327205 /* ASChatBarview.xib */; };
 		BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */; };
@@ -321,7 +321,6 @@
 		BEAAD23426FB26010069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD23626FB26010069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD23826FB26020069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
-		BEAAD23A26FB260A0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEAAD25126FB261D0069C5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LikedByTableViewCell.xib; sourceTree = "<group>"; };
 		BEAAD25426FB261F0069C5C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LikedByTableViewCell.strings; sourceTree = "<group>"; };
 		BEAAD25626FB26200069C5C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LikedByTableViewCell.strings"; sourceTree = "<group>"; };
@@ -663,6 +662,7 @@
 		BEAAD51426FB2C3E0069C5C1 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD51626FB2C3F0069C5C1 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BEAAD51826FB2C410069C5C1 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BEC2B24C26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEEF543626FC927E00327205 /* ASChatBarview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASChatBarview.swift; sourceTree = "<group>"; };
 		BEEF543726FC927E00327205 /* ASChatBarview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASChatBarview.xib; sourceTree = "<group>"; };
 		BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+NumberOfLines.swift"; sourceTree = "<group>"; };
@@ -805,8 +805,8 @@
 		983C4F862462F05800FDEB76 /* DeletePostConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
+				BEC2B24C26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib */,
 				983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */,
-				BEAAD23B26FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib */,
 			);
 			path = DeletePostConfirmationDrawer;
 			sourceTree = "<group>";
@@ -1643,11 +1643,11 @@
 				BEAAD3C026FB27280069C5C1 /* ClappedByTableViewCell.xib in Resources */,
 				BEAAD26726FB26300069C5C1 /* LikeListViewController.xib in Resources */,
 				BEAAD47826FB27A10069C5C1 /* SingleVideoTableViewCell.xib in Resources */,
+				BEC2B24D26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib in Resources */,
 				BEAAD22226FB25FB0069C5C1 /* ReportAbuseConfirmationDrawer.xib in Resources */,
 				BEAAD44A26FB27870069C5C1 /* FeedBottomTableViewCell.xib in Resources */,
 				BEAAD2F126FB26AF0069C5C1 /* PollsActiveDaysTableViewCell.xib in Resources */,
 				BEAAD39226FB270C0069C5C1 /* FeedDetailHeader.xib in Resources */,
-				BEAAD23926FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib in Resources */,
 				BEAAD48F26FB27AD0069C5C1 /* SingleImageTableViewCell.xib in Resources */,
 				BEAAD50226FB2BFB0069C5C1 /* PintoTopConfirmationDrawer.xib in Resources */,
 				BEAAD31F26FB26C90069C5C1 /* FeedGifTableViewCell.xib in Resources */,
@@ -1872,14 +1872,6 @@
 				BEAAD23826FB26020069C5C1 /* vi */,
 			);
 			name = ReportAbuseConfirmationDrawer.xib;
-			sourceTree = "<group>";
-		};
-		BEAAD23B26FB260A0069C5C1 /* DeletePostConfirmationDrawer.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BEAAD23A26FB260A0069C5C1 /* Base */,
-			);
-			name = DeletePostConfirmationDrawer.xib;
 			sourceTree = "<group>";
 		};
 		BEAAD25226FB261D0069C5C1 /* LikedByTableViewCell.xib */ = {
