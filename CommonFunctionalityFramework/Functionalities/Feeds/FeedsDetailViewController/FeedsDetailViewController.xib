@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-ys-vy9" customClass="ASChatBarview" customModule="RewardzCommonComponents">
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="qH3-ys-vy9" customClass="ASChatBarview" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
