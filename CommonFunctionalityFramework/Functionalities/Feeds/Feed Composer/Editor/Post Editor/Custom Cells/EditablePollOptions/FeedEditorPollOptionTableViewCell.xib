@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTx-5b-btQ">
                         <rect key="frame" x="16" y="0.0" width="288" height="188"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoK-1I-uqu" customClass="KMPlaceholderTextView" customModule="RewardzCommonComponents">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoK-1I-uqu" customClass="KMPlaceholderTextView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                 <rect key="frame" x="15" y="12" width="258" height="164"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>

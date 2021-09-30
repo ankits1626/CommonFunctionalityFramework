@@ -117,7 +117,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTe-fM-6Bt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="156"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fr-xa-Gon" customClass="KMPlaceholderTextView" customModule="RewardzCommonComponents">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fr-xa-Gon" customClass="KMPlaceholderTextView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                                     <rect key="frame" x="50" y="7" width="311" height="40"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
