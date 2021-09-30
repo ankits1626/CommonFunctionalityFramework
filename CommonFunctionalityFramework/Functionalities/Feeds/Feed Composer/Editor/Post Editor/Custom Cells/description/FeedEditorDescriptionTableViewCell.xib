@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezA-hU-WYK">
                         <rect key="frame" x="16" y="0.0" width="288" height="188"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivz-tI-KGT" customClass="KMPlaceholderTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivz-tI-KGT" customClass="KMPlaceholderTextView" customModule="RewardzCommonComponents">
                                 <rect key="frame" x="15" y="12" width="258" height="164"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -60,6 +60,11 @@
             <point key="canvasLocation" x="137.68115942028987" y="131.91964285714286"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="ivz-tI-KGT">
+            <size key="intrinsicContentSize" width="10" height="33"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
