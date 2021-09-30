@@ -11,7 +11,7 @@ target 'CommonFunctionalityFramework' do
   pod 'Loaf'
   pod 'FLAnimatedImage', '~> 1.0'
   #pod 'SDWebImageFLPlugin'
-pod 'RewardzCommonComponents'
+  pod 'RewardzCommonComponents', :git => 'https://github.com/ankits1626/RewardzCommonComponents.git', :branch => 'removedLocalization'
   # Pods for CommonFunctionalityFramework
 
 end

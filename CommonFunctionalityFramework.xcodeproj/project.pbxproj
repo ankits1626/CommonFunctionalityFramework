@@ -126,6 +126,7 @@
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
+		BE73649C2705E99F002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649B2705E99F002FC49E /* KMPlaceholderTextView.swift */; };
 		BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */; };
 		BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */; };
 		BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */; };
@@ -294,6 +295,7 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		BE73649B2705E99F002FC49E /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintoTopConfirmationDrawer.swift; sourceTree = "<group>"; };
 		BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
@@ -980,6 +982,7 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				BE73649A2705E98F002FC49E /* KMPlaceholderTextView */,
 				BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */,
 				98D5E88F25314BE800813991 /* ReportAbuseConfirmationDrawer */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
@@ -1199,6 +1202,14 @@
 				98F62691265787C50086B818 /* CFFLoadControl.swift */,
 			);
 			path = UILoadControl;
+			sourceTree = "<group>";
+		};
+		BE73649A2705E98F002FC49E /* KMPlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				BE73649B2705E99F002FC49E /* KMPlaceholderTextView.swift */,
+			);
+			path = KMPlaceholderTextView;
 			sourceTree = "<group>";
 		};
 		BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */ = {
@@ -1435,6 +1446,7 @@
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				987D0BAB2583DA58001A0F07 /* ASMentionText.swift in Sources */,
+				BE73649C2705E99F002FC49E /* KMPlaceholderTextView.swift in Sources */,
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
 				9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */,
