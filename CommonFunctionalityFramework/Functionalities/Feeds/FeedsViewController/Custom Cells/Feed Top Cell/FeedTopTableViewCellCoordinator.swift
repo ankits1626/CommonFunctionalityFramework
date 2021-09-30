@@ -110,3 +110,15 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
     }
     
 }
+public class BlockButton: UIButton {
+    private var _actionBlock : (() -> Void)?
+    public func handleControlEvent(event:UIControl.Event, buttonActionBlock:(() -> Void)?)  {
+        _actionBlock = buttonActionBlock
+        self.removeTarget(nil, action: nil, for: event)
+        self.addTarget(self, action: #selector(callActionBlock(sender:)), for: event)
+    }
+    
+    @objc func callActionBlock(sender:BlockButton)  {
+        _actionBlock!()
+    }
+}
