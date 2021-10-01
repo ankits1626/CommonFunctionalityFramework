@@ -126,6 +126,7 @@
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
+		BE059F262707184400CD5C05 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE059F282707184400CD5C05 /* DeletePostConfirmationDrawer.xib */; };
 		BE2E717127070F7300E7ED5B /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2E717327070F7300E7ED5B /* PintoTopConfirmationDrawer.xib */; };
 		BE2E71882707170400E7ED5B /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2E718A2707170400E7ED5B /* ReportAbuseConfirmationDrawer.xib */; };
 		BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */; };
@@ -133,7 +134,6 @@
 		BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */; };
 		BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */; };
 		BEAAD20926FB03CB0069C5C1 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */; };
-		BEC2B24D26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B24C26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib */; };
 		BEC2B24F26FD9573008417C3 /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B24E26FD9573008417C3 /* DropDownTableViewCell.xib */; };
 		BEC2B25326FD97C8008417C3 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B25226FD97C7008417C3 /* FeedsViewController.xib */; };
 		BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B25426FD982D008417C3 /* FeedTopTableViewCell.xib */; };
@@ -295,6 +295,17 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		BE059F272707184400CD5C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BE059F2A2707184800CD5C05 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE059F2C2707184900CD5C05 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DeletePostConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BE059F2E2707184B00CD5C05 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/DeletePostConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BE059F302707184C00CD5C05 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE059F322707184D00CD5C05 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE059F342707184E00CD5C05 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE059F362707184F00CD5C05 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE059F382707185000CD5C05 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE059F3A2707185000CD5C05 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE059F3C2707185100CD5C05 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/DeletePostConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BE2E717227070F7300E7ED5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PintoTopConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BE2E717527070F7800E7ED5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BE2E717727070F7900E7ED5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PintoTopConfirmationDrawer.strings"; sourceTree = "<group>"; };
@@ -323,7 +334,6 @@
 		BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
 		BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinWorker.swift; sourceTree = "<group>"; };
 		BEAAD20A26FB04B40069C5C1 /* CommonFunctionalityModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 2.xcdatamodel"; sourceTree = "<group>"; };
-		BEC2B24C26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEC2B24E26FD9573008417C3 /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
 		BEC2B25226FD97C7008417C3 /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
 		BEC2B25426FD982D008417C3 /* FeedTopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedTopTableViewCell.xib; sourceTree = "<group>"; };
@@ -496,8 +506,8 @@
 		983C4F862462F05800FDEB76 /* DeletePostConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
-				BEC2B24C26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib */,
 				983C4F872462F08000FDEB76 /* DeletePostConfirmationDrawer.swift */,
+				BE059F282707184400CD5C05 /* DeletePostConfirmationDrawer.xib */,
 			);
 			path = DeletePostConfirmationDrawer;
 			sourceTree = "<group>";
@@ -1336,7 +1346,7 @@
 				BEC2B25926FD98D8008417C3 /* FeedTextTableViewCell.xib in Resources */,
 				BEC2B26F26FD9CE0008417C3 /* LikeListViewController.xib in Resources */,
 				BE2E71882707170400E7ED5B /* ReportAbuseConfirmationDrawer.xib in Resources */,
-				BEC2B24D26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib in Resources */,
+				BE059F262707184400CD5C05 /* DeletePostConfirmationDrawer.xib in Resources */,
 				BEC2B27B26FD9F4D008417C3 /* PollsActiveDaysTableViewCell.xib in Resources */,
 				BEC2B26D26FD9C27008417C3 /* LikedByTableViewCell.xib in Resources */,
 				BEC2B27F26FD9FD1008417C3 /* FeedGifTableViewCell.xib in Resources */,
@@ -1532,6 +1542,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		BE059F282707184400CD5C05 /* DeletePostConfirmationDrawer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE059F272707184400CD5C05 /* Base */,
+				BE059F2A2707184800CD5C05 /* en */,
+				BE059F2C2707184900CD5C05 /* zh-Hans */,
+				BE059F2E2707184B00CD5C05 /* zh-Hant */,
+				BE059F302707184C00CD5C05 /* hi */,
+				BE059F322707184D00CD5C05 /* id */,
+				BE059F342707184E00CD5C05 /* ja */,
+				BE059F362707184F00CD5C05 /* ko */,
+				BE059F382707185000CD5C05 /* ms */,
+				BE059F3A2707185000CD5C05 /* th */,
+				BE059F3C2707185100CD5C05 /* vi */,
+			);
+			name = DeletePostConfirmationDrawer.xib;
+			sourceTree = "<group>";
+		};
 		BE2E717327070F7300E7ED5B /* PintoTopConfirmationDrawer.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
