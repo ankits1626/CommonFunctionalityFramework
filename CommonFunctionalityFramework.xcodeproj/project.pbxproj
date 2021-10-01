@@ -127,6 +127,7 @@
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
 		BE2E717127070F7300E7ED5B /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2E717327070F7300E7ED5B /* PintoTopConfirmationDrawer.xib */; };
+		BE2E71882707170400E7ED5B /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2E718A2707170400E7ED5B /* ReportAbuseConfirmationDrawer.xib */; };
 		BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */; };
 		BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */; };
 		BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */; };
@@ -146,7 +147,6 @@
 		BEC2B26526FD9A4D008417C3 /* PollBottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B26426FD9A4D008417C3 /* PollBottomTableViewCell.xib */; };
 		BEC2B26726FD9A81008417C3 /* PollSubmitButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B26626FD9A81008417C3 /* PollSubmitButtonCell.xib */; };
 		BEC2B26926FD9AB6008417C3 /* PollOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B26826FD9AB6008417C3 /* PollOptionsTableViewCell.xib */; };
-		BEC2B26B26FD9BCB008417C3 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B26A26FD9BCB008417C3 /* ReportAbuseConfirmationDrawer.xib */; };
 		BEC2B26D26FD9C27008417C3 /* LikedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B26C26FD9C27008417C3 /* LikedByTableViewCell.xib */; };
 		BEC2B26F26FD9CE0008417C3 /* LikeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B26E26FD9CE0008417C3 /* LikeListViewController.xib */; };
 		BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B27026FD9D66008417C3 /* ASMentionSelectorViewController.xib */; };
@@ -306,6 +306,17 @@
 		BE2E718327070F7E00E7ED5B /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BE2E718527070F7F00E7ED5B /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BE2E718727070F7F00E7ED5B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/PintoTopConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE2E71892707170400E7ED5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BE2E718C2707170800E7ED5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE2E718E2707170A00E7ED5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ReportAbuseConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BE2E71902707170D00E7ED5B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ReportAbuseConfirmationDrawer.strings"; sourceTree = "<group>"; };
+		BE2E71922707170E00E7ED5B /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE2E71942707170F00E7ED5B /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE2E71962707170F00E7ED5B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE2E71982707171000E7ED5B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE2E719A2707171100E7ED5B /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE2E719C2707171200E7ED5B /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
+		BE2E719E2707171200E7ED5B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ReportAbuseConfirmationDrawer.strings; sourceTree = "<group>"; };
 		BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintoTopConfirmationDrawer.swift; sourceTree = "<group>"; };
 		BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
@@ -326,7 +337,6 @@
 		BEC2B26426FD9A4D008417C3 /* PollBottomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PollBottomTableViewCell.xib; sourceTree = "<group>"; };
 		BEC2B26626FD9A81008417C3 /* PollSubmitButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PollSubmitButtonCell.xib; sourceTree = "<group>"; };
 		BEC2B26826FD9AB6008417C3 /* PollOptionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PollOptionsTableViewCell.xib; sourceTree = "<group>"; };
-		BEC2B26A26FD9BCB008417C3 /* ReportAbuseConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEC2B26C26FD9C27008417C3 /* LikedByTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikedByTableViewCell.xib; sourceTree = "<group>"; };
 		BEC2B26E26FD9CE0008417C3 /* LikeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LikeListViewController.xib; sourceTree = "<group>"; };
 		BEC2B27026FD9D66008417C3 /* ASMentionSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASMentionSelectorViewController.xib; sourceTree = "<group>"; };
@@ -1187,9 +1197,9 @@
 		98D5E88F25314BE800813991 /* ReportAbuseConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
-				BEC2B26A26FD9BCB008417C3 /* ReportAbuseConfirmationDrawer.xib */,
 				98575A3D2532BB9F007644FE /* Worker */,
 				98D5E89025314C0F00813991 /* ReportAbuseConfirmationDrawer.swift */,
+				BE2E718A2707170400E7ED5B /* ReportAbuseConfirmationDrawer.xib */,
 			);
 			path = ReportAbuseConfirmationDrawer;
 			sourceTree = "<group>";
@@ -1325,7 +1335,7 @@
 				BEC2B25D26FD996F008417C3 /* SingleVideoTableViewCell.xib in Resources */,
 				BEC2B25926FD98D8008417C3 /* FeedTextTableViewCell.xib in Resources */,
 				BEC2B26F26FD9CE0008417C3 /* LikeListViewController.xib in Resources */,
-				BEC2B26B26FD9BCB008417C3 /* ReportAbuseConfirmationDrawer.xib in Resources */,
+				BE2E71882707170400E7ED5B /* ReportAbuseConfirmationDrawer.xib in Resources */,
 				BEC2B24D26FD93AD008417C3 /* DeletePostConfirmationDrawer.xib in Resources */,
 				BEC2B27B26FD9F4D008417C3 /* PollsActiveDaysTableViewCell.xib in Resources */,
 				BEC2B26D26FD9C27008417C3 /* LikedByTableViewCell.xib in Resources */,
@@ -1538,6 +1548,24 @@
 				BE2E718727070F7F00E7ED5B /* vi */,
 			);
 			name = PintoTopConfirmationDrawer.xib;
+			sourceTree = "<group>";
+		};
+		BE2E718A2707170400E7ED5B /* ReportAbuseConfirmationDrawer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE2E71892707170400E7ED5B /* Base */,
+				BE2E718C2707170800E7ED5B /* en */,
+				BE2E718E2707170A00E7ED5B /* zh-Hans */,
+				BE2E71902707170D00E7ED5B /* zh-Hant */,
+				BE2E71922707170E00E7ED5B /* hi */,
+				BE2E71942707170F00E7ED5B /* id */,
+				BE2E71962707170F00E7ED5B /* ja */,
+				BE2E71982707171000E7ED5B /* ko */,
+				BE2E719A2707171100E7ED5B /* ms */,
+				BE2E719C2707171200E7ED5B /* th */,
+				BE2E719E2707171200E7ED5B /* vi */,
+			);
+			name = ReportAbuseConfirmationDrawer.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
