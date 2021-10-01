@@ -129,6 +129,7 @@ class PostEditorViewController: UIViewController {
         }
         messageGuidenceContainer?.curvedCornerControl()
         messageGuidenceContainer?.backgroundColor = .guidenceViewBackgroundColor
+        guidenceMessage?.text = "Only s3 & s4 messages can be shared on this platform".localized
         guidenceMessage?.font = .Body1
     }
     
