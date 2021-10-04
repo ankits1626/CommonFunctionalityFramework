@@ -77,6 +77,7 @@ class PintoTopConfirmationDrawer: UIViewController {
         self.frequencyLabel.text = "1 week".localized
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
+        closeLabel?.text = "Close".localized
         if isAlreadyPinned {
             titleLabel?.text = "Unpin the post".localized
             frequencyView?.alpha = 0

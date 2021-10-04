@@ -36,6 +36,7 @@ class DeletePostConfirmationDrawer: UIViewController {
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
+        closeLabel?.text = "Close".localized
         if let type = targetFeed?.getFeedType() {
             switch type {
             case .Poll:
