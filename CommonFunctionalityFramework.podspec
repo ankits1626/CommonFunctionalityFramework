@@ -16,8 +16,8 @@ Common Functionality framework for flab and cerra
   spec.swift_version = "4.2"
 
   spec.source        = { :git => "https://github.com/ankits1626/CommonFunctionalityFramework.git", :branch => "sk/removedLocalization"}
-   spec.source_files  = "CommonFunctionalityFramework/**/*.{h,m,swift}", 'CommonFunctionalityFramework/**/*.xcdatamodeld','CommonFunctionalityFramework/*.lproj/*.strings', 'CommonFunctionalityFramework/**/*.lproj/*.strings',"CommonFunctionalityFramework/**/*.{xib,storyboard}", 'CommonFunctionalityFramework/**/*.xcdatamodeld'
-spec.resources = "CommonFunctionalityFramework/**/*.{png,jpg,jpeg}", "*.xcassets"
+     spec.source_files  = "CommonFunctionalityFramework/**/*.{h,m,swift}", 'CommonFunctionalityFramework/**/*.xcdatamodeld'
+spec.resources = "CommonFunctionalityFramework/**/*.{xib,png,jpg,jpeg,storyboard}", "*.xcassets", 'CommonFunctionalityFramework/**/*.xcdatamodeld'
 spec.resource_bundles = {'CommonFunctionalityFramework' => ['CommonFunctionalityFramework/**/*.xcdatamodeld']}
 spec.framework    = 'CoreData'
   spec.dependency 'RewardzCommonComponents'
