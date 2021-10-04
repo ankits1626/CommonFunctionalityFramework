@@ -15,8 +15,8 @@ Common Functionality framework for flab and cerra
   spec.ios.deployment_target = "11.0"
   spec.swift_version = "4.2"
 
-  spec.source        = { :git => "https://github.com/ankits1626/CommonFunctionalityFramework.git", :branch => "addedASChatView"}
-  spec.source_files  = "CommonFunctionalityFramework/**/*.{h,m,swift}", 'CommonFunctionalityFramework/**/*.xcdatamodeld','CommonFunctionalityFramework/*.lproj/*.strings', 'CommonFunctionalityFramework/**/*.lproj/*.strings',"CommonFunctionalityFramework/**/*.{xib,storyboard}", 'CommonFunctionalityFramework/**/*.xcdatamodeld'
+  spec.source        = { :git => "https://github.com/ankits1626/CommonFunctionalityFramework.git", :branch => "sk/removedLocalization"}
+   spec.source_files  = "CommonFunctionalityFramework/**/*.{h,m,swift}", 'CommonFunctionalityFramework/**/*.xcdatamodeld','CommonFunctionalityFramework/*.lproj/*.strings', 'CommonFunctionalityFramework/**/*.lproj/*.strings',"CommonFunctionalityFramework/**/*.{xib,storyboard}", 'CommonFunctionalityFramework/**/*.xcdatamodeld'
 spec.resources = "CommonFunctionalityFramework/**/*.{png,jpg,jpeg}", "*.xcassets"
 spec.resource_bundles = {'CommonFunctionalityFramework' => ['CommonFunctionalityFramework/**/*.xcdatamodeld']}
 spec.framework    = 'CoreData'
