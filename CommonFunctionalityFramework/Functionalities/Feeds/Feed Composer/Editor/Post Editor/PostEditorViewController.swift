@@ -184,11 +184,11 @@ class PostEditorViewController: UIViewController {
         case .Post:
             containerTopBarModel?.title?.text = editablePost?.remotePostId == nil ? "CREATE POST".localized :  "EDIT POST".localized
             containerTopBarModel?.cameraButton?.setImage(
-                UIImage(named: "camera", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
+                UIImage(named: "cff_camera", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
                 for: .normal
             )
             containerTopBarModel?.attachPDFButton?.setImage(
-               UIImage(named: "attachmentIcon", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
+               UIImage(named: "cff_attachmentIcon", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),
                for: .normal)
             containerTopBarModel?.attachPDFButton?.isHidden = false
             containerTopBarModel?.cameraButton?.tintColor = .black

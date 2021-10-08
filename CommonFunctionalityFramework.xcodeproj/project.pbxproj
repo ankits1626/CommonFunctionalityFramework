@@ -130,10 +130,10 @@
 		BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */; };
 		BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */; };
 		BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */; };
-		BEAAD20926FB03CB0069C5C1 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */; };
 		BEAE357E270ABD6400E95DF9 /* DeletePostConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAE357D270ABD6400E95DF9 /* DeletePostConfirmationDrawer.xib */; };
 		BEAE3580270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAE357F270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib */; };
 		BEAE3582270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAE3581270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib */; };
+		BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE3584270AC06D00E95DF9 /* PostPinWorker.swift */; };
 		BEC2B24F26FD9573008417C3 /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B24E26FD9573008417C3 /* DropDownTableViewCell.xib */; };
 		BEC2B25326FD97C8008417C3 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B25226FD97C7008417C3 /* FeedsViewController.xib */; };
 		BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B25426FD982D008417C3 /* FeedTopTableViewCell.xib */; };
@@ -299,11 +299,11 @@
 		BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintoTopConfirmationDrawer.swift; sourceTree = "<group>"; };
 		BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
-		BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinWorker.swift; sourceTree = "<group>"; };
 		BEAAD20A26FB04B40069C5C1 /* CommonFunctionalityModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		BEAE357D270ABD6400E95DF9 /* DeletePostConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeletePostConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEAE357F270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEAE3581270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PintoTopConfirmationDrawer.xib; sourceTree = "<group>"; };
+		BEAE3584270AC06D00E95DF9 /* PostPinWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinWorker.swift; sourceTree = "<group>"; };
 		BEC2B24E26FD9573008417C3 /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
 		BEC2B25226FD97C7008417C3 /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
 		BEC2B25426FD982D008417C3 /* FeedTopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedTopTableViewCell.xib; sourceTree = "<group>"; };
@@ -1207,7 +1207,7 @@
 		BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
-				BEAAD20726FB03B50069C5C1 /* Worker */,
+				BEAE3583270AC05400E95DF9 /* PinWorker */,
 				BEAAD20026FB02F10069C5C1 /* DropDown */,
 				BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */,
 				BEAE3581270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib */,
@@ -1225,12 +1225,12 @@
 			path = DropDown;
 			sourceTree = "<group>";
 		};
-		BEAAD20726FB03B50069C5C1 /* Worker */ = {
+		BEAE3583270AC05400E95DF9 /* PinWorker */ = {
 			isa = PBXGroup;
 			children = (
-				BEAAD20826FB03CB0069C5C1 /* PostPinWorker.swift */,
+				BEAE3584270AC06D00E95DF9 /* PostPinWorker.swift */,
 			);
-			path = Worker;
+			path = PinWorker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1408,6 +1408,7 @@
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
+				BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */,
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
@@ -1459,7 +1460,6 @@
 				98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */,
 				9868C045240F9D6C00B12321 /* MultipleMediaTableViewCellCoordinator.swift in Sources */,
 				980F5645245C1D300093AFE7 /* PollBottomTableViewCell.swift in Sources */,
-				BEAAD20926FB03CB0069C5C1 /* PostPinWorker.swift in Sources */,
 				9868C0F9241948B500B12321 /* FeedCommentTableViewCellCoordinator.swift in Sources */,
 				9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */,
 				98575A3F2532BBC1007644FE /* ReportAbuseWorker.swift in Sources */,
