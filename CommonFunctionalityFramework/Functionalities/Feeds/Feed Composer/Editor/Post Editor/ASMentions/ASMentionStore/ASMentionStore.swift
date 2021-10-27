@@ -21,7 +21,11 @@ class ASMentionStore {
     }
     
     func clearAllMentions() {
-        mentions.removeAll()
+        if mentions != nil {
+            mentions.removeAll()
+        }else{
+            print("****Mention is nil")
+        }
     }
     
     func updateStoreAfterTextDeletion(_ deletionRange: NSRange) {
