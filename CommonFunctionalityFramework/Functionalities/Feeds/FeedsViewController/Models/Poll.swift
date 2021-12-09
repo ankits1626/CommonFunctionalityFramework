@@ -83,13 +83,13 @@ struct Poll {
     func getPollInfo() -> String? {
         var pollInfos = [String]()
         if let totalVotes = rawPoll["total_votes"] as? Int64{
-            pollInfos.append("\(totalVotes) vote\(totalVotes == 1 ? "" : "s")")
+            pollInfos.append("\(totalVotes) \("vote".localized)\(totalVotes == 1 ? "" : "s".localized)")
         }
         if !isPollActive(){
             pollInfos.append("Final Result")
         }
         if let pollRemainingTime = rawPoll["poll_remaining_time"] as? String{
-            pollInfos.append("\(pollRemainingTime) left")
+            pollInfos.append("\(pollRemainingTime) \("left".localized)")
         }
         return pollInfos.joined(separator:  " . ")
     }
@@ -98,4 +98,18 @@ struct Poll {
         return rawPoll["id"] as? Int64 ?? -1
     }
     
+}
+extension String {
+    func firstCharacterUpperCase() -> String {
+        return self.capitalizingFirstLetter()
+    }
+    private func capitalizingFirstLetter() -> String {
+        let first = String(prefix(1)).capitalized
+        let other = String(dropFirst())
+        return first + other
+    }
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
 }
