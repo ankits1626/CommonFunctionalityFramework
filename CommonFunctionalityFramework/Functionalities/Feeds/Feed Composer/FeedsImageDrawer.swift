@@ -62,11 +62,15 @@ class FeedsImageDrawer: UIViewController {
 
 extension FeedsImageDrawer{
     @IBAction func openCamera(){
-        delegate?.selectedImageType(isCamera: true)
+        dismiss(animated: true) {
+            self.delegate?.selectedImageType(isCamera: true)
+        }
     }
     
     @IBAction func openGallery(){
-        delegate?.selectedImageType(isCamera: false)
+        dismiss(animated: true) {
+            self.delegate?.selectedImageType(isCamera: false)
+        }
     }
     
     private func dismissAndShowEditor(type: FeedType){

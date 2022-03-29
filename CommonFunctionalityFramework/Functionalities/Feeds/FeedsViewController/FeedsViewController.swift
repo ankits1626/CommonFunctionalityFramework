@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import Photos
 
-class FeedsViewController: UIViewController {
+class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet private weak var composeBarContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var composeLabel : UILabel?
     @IBOutlet private weak var feedsTable : UITableView?
@@ -202,11 +203,79 @@ extension FeedsViewController{
     }
     
     @IBAction func openImagePickerToComposePost(){
-        PhotosPermissionChecker().checkPermissions {[weak self] in
-            self?.showImagePicker()
+        let drawer = FeedsImageDrawer(nibName: "FeedsImageDrawer", bundle: Bundle(for: FeedsImageDrawer.self))
+        drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
+        drawer.requestCoordinator = requestCoordinator
+        drawer.mediaFetcher = mediaFetcher
+        drawer.themeManager = themeManager
+        drawer.delegate = self
+        do{
+            try drawer.presentDrawer()
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
         }
     }
     
+    func openCameraInput(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        switch authStatus {
+        case .authorized:
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+            break
+        case .denied:
+            self.alertPromptToAllowCameraAccessViaSettings()
+            break
+        default:
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+            break
+        }
+    }
+    
+    func alertPromptToAllowCameraAccessViaSettings() {
+        DispatchQueue.main.async {
+            let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")as? String ?? ""
+            let alert = UIAlertController(title: "\"\(String(describing: appName))\" Would Like To Access the Camera/Gallery", message: "Please grant permission", preferredStyle: .alert )
+            alert.addAction(UIAlertAction(title: "Open Settings", style: .cancel) { alert in
+                if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSettingsURL)
+                }
+            })
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var placeholderAsset: PHObjectPlaceholder? = nil
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        PHPhotoLibrary.shared().performChanges({
+            let newAssetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+            placeholderAsset = newAssetRequest.placeholderForCreatedAsset
+        }, completionHandler: { [weak self] (sucess, error) in
+            DispatchQueue.main.async {
+                if sucess, let `self` = self, let identifier = placeholderAsset?.localIdentifier {
+                    guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject else { return }
+                    AssetGridViewController.presentCameraPickerStack(presentationModel: CameraPickerPresentationModel(localMediaManager: LocalMediaManager(), selectedAssets: nil, assetSelectionCompletion: { (selectedMediaItems) in
+                        FeedComposerCoordinator(
+                            delegate: self.feedCoordinatorDelegate,
+                            requestCoordinator: self.requestCoordinator,
+                            mediaFetcher: self.mediaFetcher,
+                            selectedAssets: selectedMediaItems,
+                            themeManager: self.themeManager
+                        ).showFeedItemEditor(type: .Post)
+                    }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: self.themeManager, _identifier: asset.localIdentifier, _mediaType: asset.mediaType, _asset: asset))
+                }
+            }
+        })
+        dismiss(animated: true, completion: nil)
+    }
     private func showImagePicker(){
         AssetGridViewController.presentMediaPickerStack(
             presentationModel: MediaPickerPresentationModel(
@@ -624,4 +693,16 @@ extension FeedsViewController:  NSFetchedResultsControllerDelegate {
         feedsTable?.endUpdates()
     }
 }
-
+extension FeedsViewController:  FeedsImageDelegate {
+    func selectedImageType(isCamera : Bool) {
+        if isCamera {
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.openCameraInput()
+            }
+        }else{
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.showImagePicker()
+            }
+        }
+    }
+}
