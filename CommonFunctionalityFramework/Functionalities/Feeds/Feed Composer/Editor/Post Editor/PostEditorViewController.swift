@@ -311,6 +311,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                 }
             }
         })
+        self.dismiss(animated: true, completion: nil)
     }
     private func showImagePicker(){
         AssetGridViewController.presentMediaPickerStack(
