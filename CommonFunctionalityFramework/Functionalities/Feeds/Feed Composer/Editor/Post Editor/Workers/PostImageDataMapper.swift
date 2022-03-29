@@ -90,7 +90,12 @@ class PostImageDataMapper {
                 options.deliveryMode = .highQualityFormat
                 PHImageManager.default().requestImage(for: object as PHAsset, targetSize: PHImageManagerMaximumSize, contentMode: contentMode, options: options) {
                     image, info in
-                    images.append(image!)
+                    if let unwrapped = image {
+                        images.append(unwrapped)
+                    }else{
+                        print("Issue on image")
+                    }
+                    
                 }
             })
             var imageURLs = [URL]()

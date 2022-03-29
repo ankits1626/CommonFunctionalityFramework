@@ -9,12 +9,13 @@
 import UIKit
 import SimpleCheckbox
 import CoreData
+import Photos
 
 extension Notification.Name{
     static let didUpdatedPosts = Notification.Name("didUpdatedPosts")
 }
 
-class PostEditorViewController: UIViewController {
+class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     weak var themeManager: CFFThemeManagerProtocol?
     var containerTopBarModel : EditorContainerModel?{
         didSet{
@@ -217,7 +218,7 @@ class PostEditorViewController: UIViewController {
             try drawer.presentDrawer()
             drawer.attachPhotosButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
                 drawer.dismiss(animated: true) {
-                    self?.initiateMediaAttachment()
+                    self?.initiateGalleryAttachment()
                 }
             })
             drawer.attachGifButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
@@ -250,10 +251,67 @@ class PostEditorViewController: UIViewController {
     
     @objc private func initiateMediaAttachment(){
         PhotosPermissionChecker().checkPermissions {[weak self] in
+            self?.openCameraInput()
+        }
+    }
+    
+    @objc private func initiateGalleryAttachment(){
+        PhotosPermissionChecker().checkPermissions {[weak self] in
             self?.showImagePicker()
         }
     }
     
+    func openCameraInput(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        switch authStatus {
+        case .authorized:
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+            break
+        case .denied:
+            self.alertPromptToAllowCameraAccessViaSettings()
+            break
+        default:
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+            break
+        }
+    }
+    
+    func alertPromptToAllowCameraAccessViaSettings() {
+        DispatchQueue.main.async {
+            let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")as? String ?? ""
+            let alert = UIAlertController(title: "\"\(String(describing: appName))\" Would Like To Access the Camera/Gallery", message: "Please grant permission", preferredStyle: .alert )
+            alert.addAction(UIAlertAction(title: "Open Settings", style: .cancel) { alert in
+                if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSettingsURL)
+                }
+            })
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var placeholderAsset: PHObjectPlaceholder? = nil
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        PHPhotoLibrary.shared().performChanges({
+            let newAssetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+            placeholderAsset = newAssetRequest.placeholderForCreatedAsset
+        }, completionHandler: { [weak self] (sucess, error) in
+            DispatchQueue.main.async {
+                if sucess, let `self` = self, let identifier = placeholderAsset?.localIdentifier {
+                    guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject else { return }
+                    AssetGridViewController.presentCameraPickerStack(presentationModel: CameraPickerPresentationModel(localMediaManager: self.localMediaManager, selectedAssets: self.postCoordinator.getCurrentPost().selectedMediaItems, assetSelectionCompletion: { (selectedMediaItems) in
+                        self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
+                    }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: self.themeManager, _identifier: asset.localIdentifier, _mediaType: asset.mediaType, _asset: asset))
+                }
+            }
+        })
+    }
     private func showImagePicker(){
         AssetGridViewController.presentMediaPickerStack(
             presentationModel: MediaPickerPresentationModel(
