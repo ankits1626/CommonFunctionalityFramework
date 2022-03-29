@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsImageDrawer" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraButton" destination="yu6-tC-mHP" id="GKy-9d-7iQ"/>
+                <outlet property="galleryButton" destination="tJ7-bR-yYO" id="yrL-1W-4Xc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="316"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qta-ZO-s1H">
+                    <rect key="frame" x="0.0" y="84" width="414" height="232"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckl-GN-6jv">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yu6-tC-mHP">
+                                    <rect key="frame" x="54" y="37" width="306" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="EgO-5T-vxh"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="openCamera" destination="-1" eventType="touchUpInside" id="3OJ-Bw-det"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="yu6-tC-mHP" firstAttribute="leading" secondItem="ckl-GN-6jv" secondAttribute="leading" constant="54" id="Hut-yt-fmO"/>
+                                <constraint firstAttribute="trailing" secondItem="yu6-tC-mHP" secondAttribute="trailing" constant="54" id="XZf-Sl-BU8"/>
+                                <constraint firstItem="yu6-tC-mHP" firstAttribute="centerY" secondItem="ckl-GN-6jv" secondAttribute="centerY" id="haf-ps-4t4"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e25-4y-5wJ">
+                            <rect key="frame" x="0.0" y="116" width="414" height="116"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJ7-bR-yYO">
+                                    <rect key="frame" x="54" y="37" width="306" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="684-FX-oD1"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="openGallery" destination="-1" eventType="touchUpInside" id="7RI-Jk-4Bk"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="tJ7-bR-yYO" firstAttribute="centerY" secondItem="e25-4y-5wJ" secondAttribute="centerY" id="smD-Qb-GeV"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="tJ7-bR-yYO" firstAttribute="centerX" secondItem="yu6-tC-mHP" secondAttribute="centerX" id="3FT-VR-yaa"/>
+                        <constraint firstItem="tJ7-bR-yYO" firstAttribute="width" secondItem="yu6-tC-mHP" secondAttribute="width" id="8bq-YY-0mF"/>
+                        <constraint firstItem="tJ7-bR-yYO" firstAttribute="leading" secondItem="yu6-tC-mHP" secondAttribute="leading" id="jvX-hI-Ujj"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="80g-QH-RHZ"/>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="cu4-6c-itf"/>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="hF2-gH-xlu"/>
+                <constraint firstItem="Qta-ZO-s1H" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yGy-oj-cz5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="123.21428571428571"/>
+        </view>
+    </objects>
+</document>
