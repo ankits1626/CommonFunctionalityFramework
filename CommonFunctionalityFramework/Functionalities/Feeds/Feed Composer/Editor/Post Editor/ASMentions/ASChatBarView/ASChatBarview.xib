@@ -93,7 +93,7 @@
                                 <constraint firstAttribute="width" constant="30" id="na6-H6-wfI"/>
                                 <constraint firstAttribute="height" constant="30" id="zye-B3-5tW"/>
                             </constraints>
-                            <state key="normal" image="cff_chatBarSend"/>
+                            <state key="normal" image="cff_chatsendButton"/>
                             <connections>
                                 <action selector="rightButtonTapped" destination="-1" eventType="touchUpInside" id="Gw9-W8-oHG"/>
                             </connections>
@@ -140,10 +140,6 @@
         </designable>
     </designables>
     <resources>
-        <image name="cff_attachmentIcon" width="20" height="20"/>
-        <image name="cff_chatBarSend" width="37" height="31"/>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="cff_chatsendButton" width="37" height="31"/>
     </resources>
 </document>
