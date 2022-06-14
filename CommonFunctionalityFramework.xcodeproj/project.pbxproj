@@ -393,7 +393,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */,
 				980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
