@@ -29,7 +29,7 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
         if let cell  = inputModel.targetCell as? CommonAppreciationSubjectTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.feedText?.enabledTypes  = [.mention, .hashtag, .url, .email]
-            cell.feedText?.attributedText = NSAttributedString(string: "Good looking BOUS FEEDS support@rewardz.sg #rewardz #suyesh")
+            cell.feedText?.attributedText = NSAttributedString(string: "Thank you for yoursupport@rewardz.sg #rewardz #suyesh")
             cell.feedText?.numberOfLines = 3
 //            cell.userName?.text = feed.getUserName()
 //            cell.userName?.font = UIFont.Body2
