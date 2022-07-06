@@ -313,8 +313,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     }
     
     func getNumberOfClaps() -> String {
-        let claps = numberOfLikes
-        return "\(claps) \("Clap".localized)".appending(claps == 1 ? "" : "s".localized)
+        return "Like"
     }
     
     func getNumberOfComments() -> String {

@@ -61,9 +61,16 @@
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tHE-m1-AwV">
+                                <rect key="frame" x="86" y="4" width="116" height="26"/>
+                                <color key="pageIndicatorTintColor" red="0.67058825489999996" green="0.6784313917" blue="0.74901962280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="currentPageIndicatorTintColor" red="0.1333333333" green="0.16078431369999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="tHE-m1-AwV" firstAttribute="centerY" secondItem="68p-9Z-dEE" secondAttribute="centerY" id="2vH-rf-pfe"/>
+                            <constraint firstItem="tHE-m1-AwV" firstAttribute="centerX" secondItem="68p-9Z-dEE" secondAttribute="centerX" id="B0x-Dk-hvL"/>
                             <constraint firstItem="pem-Dz-69b" firstAttribute="leading" secondItem="A3Z-Xo-NkM" secondAttribute="trailing" constant="8" id="K8V-Z1-7Lb"/>
                             <constraint firstAttribute="trailing" secondItem="8kL-us-t49" secondAttribute="trailing" id="REE-4u-fK3"/>
                             <constraint firstItem="pem-Dz-69b" firstAttribute="centerY" secondItem="A3Z-Xo-NkM" secondAttribute="centerY" id="Wk3-jh-D0I"/>
