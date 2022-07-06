@@ -19,7 +19,9 @@ class AppreciationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol
             CommonFeedsTopTableViewCellType().cellIdentifier : CommonFeedTopTableViewCellCoordinator(),
             CommonAppreciationSubjectTableViewCellType().cellIdentifier : CommonAppreciationSubjectTableViewCellCoordinator(),
             CommonLikesSectionTableViewCellType().cellIdentifier : LikesSectionTableViewCellCoordinator(),
-            CommonPressLikeButtonTableViewCellType().cellIdentifier : CommonLikesTableViewCellCoordinator()
+            ImageViewTableViewCellType().cellIdentifier : ImageViewSectionTableViewCellCoordinator(),
+            CommonPressLikeButtonTableViewCellType().cellIdentifier : CommonLikesTableViewCellCoordinator(),
+            CommonOutastandingImageTableViewCellType().cellIdentifier : OutsandingImageTableViewCellCoordinator()
         ]
     }()
 
@@ -43,8 +45,10 @@ class AppreciationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol
         var rows = [CommonFeedCellTypeProtocol] ()
         rows.append(CommonFeedsTopTableViewCellType())
         rows.append(CommonAppreciationSubjectTableViewCellType())
+       // rows.append(ImageViewTableViewCellType())
         rows.append(CommonLikesSectionTableViewCellType())
         rows.append(CommonPressLikeButtonTableViewCellType())
+       // rows.append(CommonOutastandingImageTableViewCellType())
         
 //        if feed.getFeedTitle() != nil {
 //            rows.append(FeedTitleTableViewCellType())
