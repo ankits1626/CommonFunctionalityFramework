@@ -18,6 +18,7 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
         return [
             CommonFeedsTopTableViewCellType().cellIdentifier : CommonFeedTopTableViewCellCoordinator(),
             CommonAppreciationSubjectTableViewCellType().cellIdentifier : CommonAppreciationSubjectTableViewCellCoordinator(),
+            CommonFeedDescriptionTableViewCellType().cellIdentifier : CommonFeedDescriptionTableViewCellCoordinator(),
             CommonLikesSectionTableViewCellType().cellIdentifier : LikesSectionTableViewCellCoordinator(),
             ImageViewTableViewCellType().cellIdentifier : ImageViewSectionTableViewCellCoordinator(),
             CommonPressLikeButtonTableViewCellType().cellIdentifier : CommonLikesTableViewCellCoordinator(),
@@ -43,11 +44,29 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
     func getRowsToRepresentAFeed(feedIndex : Int) -> [CommonFeedCellTypeProtocol] {
         let feed = feedsDataSource.getFeedItem(feedIndex)
         var rows = [CommonFeedCellTypeProtocol] ()
-        rows.append(CommonFeedsTopTableViewCellType())
-        rows.append(CommonAppreciationSubjectTableViewCellType())
-        //rows.append(ImageViewTableViewCellType())
-        rows.append(CommonLikesSectionTableViewCellType())
-        rows.append(CommonPressLikeButtonTableViewCellType())
+        
+        if feedIndex == 0 {
+            rows.append(CommonFeedsTopTableViewCellType())
+            rows.append(CommonAppreciationSubjectTableViewCellType())
+           // rows.append(ImageViewTableViewCellType())
+            rows.append(CommonLikesSectionTableViewCellType())
+            rows.append(CommonPressLikeButtonTableViewCellType())
+        }else if feedIndex == 1 {
+            rows.append(CommonFeedsTopTableViewCellType())
+            rows.append(CommonOutastandingImageTableViewCellType())
+            
+        }else {
+            rows.append(CommonFeedsTopTableViewCellType())
+            rows.append(CommonAppreciationSubjectTableViewCellType())
+           // rows.append(ImageViewTableViewCellType())
+            rows.append(CommonLikesSectionTableViewCellType())
+            //rows.append(CommonPressLikeButtonTableViewCellType())
+        }
+//        rows.append(CommonFeedsTopTableViewCellType())
+//        rows.append(CommonAppreciationSubjectTableViewCellType())
+//        //rows.append(ImageViewTableViewCellType())
+//        rows.append(CommonLikesSectionTableViewCellType())
+//        rows.append(CommonPressLikeButtonTableViewCellType())
         //rows.append(CommonOutastandingImageTableViewCellType())
 //        if feed.getFeedTitle() != nil {
 //            rows.append(FeedTitleTableViewCellType())
