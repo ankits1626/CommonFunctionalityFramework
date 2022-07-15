@@ -22,7 +22,9 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
             CommonLikesSectionTableViewCellType().cellIdentifier : LikesSectionTableViewCellCoordinator(),
             ImageViewTableViewCellType().cellIdentifier : ImageViewSectionTableViewCellCoordinator(),
             CommonPressLikeButtonTableViewCellType().cellIdentifier : CommonLikesTableViewCellCoordinator(),
-            CommonOutastandingImageTableViewCellType().cellIdentifier : OutsandingImageTableViewCellCoordinator()
+            CommonOutastandingImageTableViewCellType().cellIdentifier : OutsandingImageTableViewCellCoordinator(),
+            BOUSFeedGrayDividerCellType().cellIdentifier :
+                BOUSGrayDividerCoordinator()
         ]
     }()
 
@@ -45,23 +47,39 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
         let feed = feedsDataSource.getFeedItem(feedIndex)
         var rows = [CommonFeedCellTypeProtocol] ()
         
-        if feedIndex == 0 {
-            rows.append(CommonFeedsTopTableViewCellType())
-            rows.append(CommonAppreciationSubjectTableViewCellType())
-           // rows.append(ImageViewTableViewCellType())
-            rows.append(CommonLikesSectionTableViewCellType())
-            rows.append(CommonPressLikeButtonTableViewCellType())
-        }else if feedIndex == 1 {
+        print(feed.getPostType())
+        
+        if feed.getPostType() == .Nomination {
             rows.append(CommonFeedsTopTableViewCellType())
             rows.append(CommonOutastandingImageTableViewCellType())
-            
+            rows.append(CommonLikesSectionTableViewCellType())
+            rows.append(CommonPressLikeButtonTableViewCellType())
+            rows.append(BOUSFeedGrayDividerCellType())
         }else {
             rows.append(CommonFeedsTopTableViewCellType())
             rows.append(CommonAppreciationSubjectTableViewCellType())
            // rows.append(ImageViewTableViewCellType())
             rows.append(CommonLikesSectionTableViewCellType())
-            //rows.append(CommonPressLikeButtonTableViewCellType())
+            rows.append(CommonPressLikeButtonTableViewCellType())
+            rows.append(BOUSFeedGrayDividerCellType())
         }
+//        if feedIndex == 0 {
+//            rows.append(CommonFeedsTopTableViewCellType())
+//            rows.append(CommonAppreciationSubjectTableViewCellType())
+//           // rows.append(ImageViewTableViewCellType())
+//            rows.append(CommonLikesSectionTableViewCellType())
+//            rows.append(CommonPressLikeButtonTableViewCellType())
+//        }else if feedIndex == 1 {
+//            rows.append(CommonFeedsTopTableViewCellType())
+//            rows.append(CommonOutastandingImageTableViewCellType())
+//
+//        }else {
+//            rows.append(CommonFeedsTopTableViewCellType())
+//            rows.append(CommonAppreciationSubjectTableViewCellType())
+//           // rows.append(ImageViewTableViewCellType())
+//            rows.append(CommonLikesSectionTableViewCellType())
+//            //rows.append(CommonPressLikeButtonTableViewCellType())
+//        }
 //        rows.append(CommonFeedsTopTableViewCellType())
 //        rows.append(CommonAppreciationSubjectTableViewCellType())
 //        //rows.append(ImageViewTableViewCellType())

@@ -123,7 +123,7 @@ class FeedDetailSectionFactory {
         )
         cell.backgroundColor = .clear
         if let containerdCell = cell as? FeedsCustomCellProtcol{
-            containerdCell.containerView?.backgroundColor = .white
+          //  containerdCell.containerView?.backgroundColor = .white
         }
         return cell
     }
@@ -200,25 +200,25 @@ extension FeedDetailSectionFactory{
         var map = [FeedDetailSection :  [FeedCellTypeProtocol]]()
         var rows = [FeedCellTypeProtocol] ()
         rows.append(FeedTopTableViewCellType())
-        if feed!.getFeedTitle() != nil {
+        //if feed!.getFeedTitle() != nil {
             rows.append(FeedTitleTableViewCellType())
-        }
+        //}
 //        if feed!.getFeedDescription() != nil{
 //            rows.append(FeedTextTableViewCellType())
 //        }
-        if
-            let unwrappedFeed = feed{
-            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
-                feedId: unwrappedFeed.feedIdentifier,
-                description: unwrappedFeed.getFeedDescription())
-            if model?.displayableDescription.string != nil{
-                if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
-                            !disaplyableDescription.isEmpty{
-                //        if feed.getFeedDescription() != nil{
-                            rows.append(FeedTextTableViewCellType())
-                        }
-            }
-        }
+//        if
+//            let unwrappedFeed = feed{
+//            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+//                feedId: unwrappedFeed.feedIdentifier,
+//                description: unwrappedFeed.getFeedDescription())
+//            if model?.displayableDescription.string != nil{
+//                if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+//                            !disaplyableDescription.isEmpty{
+//                //        if feed.getFeedDescription() != nil{
+//                            //rows.append(FeedTextTableViewCellType())
+//                        }
+//            }
+//        }
         
         switch feed!.getMediaCountState() {
         case .None:
@@ -247,23 +247,23 @@ extension FeedDetailSectionFactory{
             }
         }
         
-        if let poll = feed?.getPoll(){
-            if poll.isPollActive() && !poll.hasUserVoted(){
-                poll.getPollOptions().forEach { (_) in
-                    rows.append(PollOptionsTableViewCellType())
-                }
-                rows.append(PollSubmitButtonCellType())
-            }else{
-                poll.getPollOptions().forEach { (_) in
-                    rows.append(PollOptionsVotedTableViewCellType())
-                }
-                
-            }
-//            poll.getPollOptions().forEach { (_) in
-//                rows.append(PollOptionsVotedTableViewCellType())
+//        if let poll = feed?.getPoll(){
+//            if poll.isPollActive() && !poll.hasUserVoted(){
+//                poll.getPollOptions().forEach { (_) in
+//                    rows.append(PollOptionsTableViewCellType())
+//                }
+//                rows.append(PollSubmitButtonCellType())
+//            }else{
+//                poll.getPollOptions().forEach { (_) in
+//                    rows.append(PollOptionsVotedTableViewCellType())
+//                }
+//
 //            }
-            rows.append(PollBottomTableViewCelType())
-        }
+////            poll.getPollOptions().forEach { (_) in
+////                rows.append(PollOptionsVotedTableViewCellType())
+////            }
+//            rows.append(PollBottomTableViewCelType())
+//        }
         rows.append(FeedBottomTableViewCellType())
         isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)
         map[.FeedInfo] = rows

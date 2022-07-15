@@ -78,7 +78,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                     compatibleWith: nil),
                 for: .normal
             )
-            cell.pinPostButton?.isHidden = !feed.isLoggedUserAdmin()
+            cell.pinPostButton?.isHidden = true
             cell.containerView?.clipsToBounds = true
              if !inputModel.datasource!.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true
@@ -104,6 +104,23 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                 })
             }
             
+            cell.editFeedButton?.isHidden = true
+            cell.pinPostButton?.handleControlEvent(
+                event: .touchUpInside, buttonActionBlock: {
+                    inputModel.delegate?.pinToPost(
+                        feedIdentifier: feed.feedIdentifier,
+                        isAlreadyPinned: feed.isPinToPost()
+                    )
+                }
+            )
+            cell.editFeedButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate?.showFeedEditOptions(
+                        targetView: cell.editFeedButton,
+                        feedIdentifier: feed.feedIdentifier
+                    )
+            })
             if let profileImageEndpoint = feed.getUserImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
             }else{

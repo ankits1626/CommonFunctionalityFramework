@@ -10,6 +10,12 @@ import UIKit
 
 class CommonOutastandingImageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var awardImg: UIImageView!
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var awardTitle: UILabel!
+    @IBOutlet weak var awardSubTitle: UILabel!
+    @IBOutlet weak var awardDescription: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

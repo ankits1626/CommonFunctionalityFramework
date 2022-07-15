@@ -31,9 +31,20 @@
 		0F6021B928741C4F00D852BD /* CommentLikeWithCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6021B828741C4F00D852BD /* CommentLikeWithCountCell.xib */; };
 		0F6021BB28741C7100D852BD /* CommentLikeWithCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6021BA28741C7100D852BD /* CommentLikeWithCountCell.swift */; };
 		0F6021BD28741C8000D852BD /* CommentLikeWithCountCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6021BC28741C8000D852BD /* CommentLikeWithCountCellCoordinator.swift */; };
+		0F60221F287E72CC00D852BD /* BOUSApprovalsListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F60221E287E72CC00D852BD /* BOUSApprovalsListingViewController.swift */; };
+		0F602221287E7EDC00D852BD /* BOUSApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602220287E7EDB00D852BD /* BOUSApprovalDetailViewController.swift */; };
+		0F602223287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */; };
 		0FEB520E286C2BCA00BA8ACF /* ImageViewSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEB520D286C2BCA00BA8ACF /* ImageViewSectionCell.xib */; };
 		0FEB5210286C2C0B00BA8ACF /* ImageViewSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB520F286C2C0B00BA8ACF /* ImageViewSectionCell.swift */; };
 		0FEB5212286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB5211286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift */; };
+		0FED7EEF287EB21800D490BB /* BOUSApproveRejectPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7EEE287EB21800D490BB /* BOUSApproveRejectPopViewController.swift */; };
+		0FED7EF3287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7EF2287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift */; };
+		0FED7EF5287F013100D490BB /* BOUSApprovalsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7EF4287F013100D490BB /* BOUSApprovalsModel.swift */; };
+		0FED7EF7287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7EF6287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift */; };
+		0FED7EFA287FD06900D490BB /* BOUSBagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7EF9287FD06900D490BB /* BOUSBagesModel.swift */; };
+		0FED7EFD288042F300D490BB /* BOUSFeedGrayDivider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */; };
+		0FED7EFF2880430100D490BB /* BOUSFeedGrayDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */; };
+		0FED7F012880438600D490BB /* BOUSGrayDividerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */; };
 		980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 980D121E2614295F00995F41 /* RewardzCommonComponents.framework */; };
 		980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */; };
 		980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */; };
@@ -280,9 +291,20 @@
 		0F6021B828741C4F00D852BD /* CommentLikeWithCountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentLikeWithCountCell.xib; sourceTree = "<group>"; };
 		0F6021BA28741C7100D852BD /* CommentLikeWithCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentLikeWithCountCell.swift; sourceTree = "<group>"; };
 		0F6021BC28741C8000D852BD /* CommentLikeWithCountCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentLikeWithCountCellCoordinator.swift; sourceTree = "<group>"; };
+		0F60221E287E72CC00D852BD /* BOUSApprovalsListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalsListingViewController.swift; sourceTree = "<group>"; };
+		0F602220287E7EDB00D852BD /* BOUSApprovalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalDetailViewController.swift; sourceTree = "<group>"; };
+		0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardLevelProgressViewController.swift; sourceTree = "<group>"; };
 		0FEB520D286C2BCA00BA8ACF /* ImageViewSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewSectionCell.xib; sourceTree = "<group>"; };
 		0FEB520F286C2C0B00BA8ACF /* ImageViewSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSectionCell.swift; sourceTree = "<group>"; };
 		0FEB5211286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSectionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		0FED7EEE287EB21800D490BB /* BOUSApproveRejectPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApproveRejectPopViewController.swift; sourceTree = "<group>"; };
+		0FED7EF2287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGetApprovalsListWorker.swift; sourceTree = "<group>"; };
+		0FED7EF4287F013100D490BB /* BOUSApprovalsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalsModel.swift; sourceTree = "<group>"; };
+		0FED7EF6287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalsListTableViewCell.swift; sourceTree = "<group>"; };
+		0FED7EF9287FD06900D490BB /* BOUSBagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSBagesModel.swift; sourceTree = "<group>"; };
+		0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BOUSFeedGrayDivider.xib; sourceTree = "<group>"; };
+		0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSFeedGrayDivider.swift; sourceTree = "<group>"; };
+		0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGrayDividerCoordinator.swift; sourceTree = "<group>"; };
 		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../CommonFunctionalityFramework/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980D12192614285E00995F41 /* Pods_RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980D121E2614295F00995F41 /* RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -616,6 +638,47 @@
 				0FEB5211286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift */,
 			);
 			path = ImageViewSection;
+			sourceTree = "<group>";
+		};
+		0FED7EF0287EEAA500D490BB /* ApprovalsTab */ = {
+			isa = PBXGroup;
+			children = (
+				0FED7EF8287FD05300D490BB /* Model */,
+				0FED7EF1287EEADD00D490BB /* Worker */,
+				0F60221E287E72CC00D852BD /* BOUSApprovalsListingViewController.swift */,
+				0F602220287E7EDB00D852BD /* BOUSApprovalDetailViewController.swift */,
+				0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */,
+				0FED7EEE287EB21800D490BB /* BOUSApproveRejectPopViewController.swift */,
+				0FED7EF4287F013100D490BB /* BOUSApprovalsModel.swift */,
+				0FED7EF6287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift */,
+			);
+			path = ApprovalsTab;
+			sourceTree = "<group>";
+		};
+		0FED7EF1287EEADD00D490BB /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				0FED7EF2287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		0FED7EF8287FD05300D490BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0FED7EF9287FD06900D490BB /* BOUSBagesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0FED7EFB288042D500D490BB /* GrayDivider */ = {
+			isa = PBXGroup;
+			children = (
+				0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */,
+				0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */,
+				0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */,
+			);
+			path = GrayDivider;
 			sourceTree = "<group>";
 		};
 		57B81525CA26AD644923325C /* Frameworks */ = {
@@ -1492,6 +1555,7 @@
 		BE94C312282170F800E323E1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0FED7EFB288042D500D490BB /* GrayDivider */,
 				0F6021AF287415C600D852BD /* CommentCell */,
 				0F6021A82874152A00D852BD /* ReactionCell */,
 				0F6021A12874146100D852BD /* FeedDescription */,
@@ -1559,6 +1623,7 @@
 		BEF402162820120F001B9D7E /* CommonFeeeds */ = {
 			isa = PBXGroup;
 			children = (
+				0FED7EF0287EEAA500D490BB /* ApprovalsTab */,
 				BE94C312282170F800E323E1 /* Cells */,
 				BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */,
 				BE94C30628212E4600E323E1 /* CommonFeedsViewController.swift */,
@@ -1681,6 +1746,7 @@
 				BEC2B28126FDA010008417C3 /* FeedEditorDescriptionTableViewCell.xib in Resources */,
 				BCCF647528EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.xib in Resources */,
 				BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */,
+				0FED7EFD288042F300D490BB /* BOUSFeedGrayDivider.xib in Resources */,
 				BEC2B28926FDA1B4008417C3 /* FeedDetailHeader.xib in Resources */,
 				0FEB520E286C2BCA00BA8ACF /* ImageViewSectionCell.xib in Resources */,
 				BEC2B26726FD9A81008417C3 /* PollSubmitButtonCell.xib in Resources */,
@@ -1793,6 +1859,7 @@
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
 				BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */,
+				0FED7F012880438600D490BB /* BOUSGrayDividerCoordinator.swift in Sources */,
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				BC37F298288945D50075E7CB /* FeedOrganisation.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
@@ -1811,13 +1878,16 @@
 				BC37F29E288947140075E7CB /* FeedOrganisationListManager.swift in Sources */,
 				0F6021B52874164200D852BD /* CommentsTableViewCellCoordinator.swift in Sources */,
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
+				0FED7EFA287FD06900D490BB /* BOUSBagesModel.swift in Sources */,
 				0F6021AC2874158F00D852BD /* ReactionsListTableViewCell.swift in Sources */,
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
+				0F602223287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift in Sources */,
 				9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */,
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
 				98BF39CC2588D11100498C85 /* TagUserListProvider.swift in Sources */,
 				9876834C26143D6A00B597B0 /* CFFCoreDataManager.swift in Sources */,
+				0FED7EF5287F013100D490BB /* BOUSApprovalsModel.swift in Sources */,
 				9872266824616BBE00809D7A /* ManagedPost+RawRepresentable.swift in Sources */,
 				980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */,
 				987D0BB42583DA58001A0F07 /* ASMentionPresenter.swift in Sources */,
@@ -1831,6 +1901,7 @@
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				BC37F29C288947020075E7CB /* FeedOrganisationDataManager.swift in Sources */,
 				987D0BAB2583DA58001A0F07 /* ASMentionText.swift in Sources */,
+				0FED7EF3287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift in Sources */,
 				BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */,
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
@@ -1844,6 +1915,7 @@
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
 				BCE14D36290CFEEB008806EA /* PostPreviewSectionFactory.swift in Sources */,
+				0F602221287E7EDC00D852BD /* BOUSApprovalDetailViewController.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
 				987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */,
@@ -1866,6 +1938,7 @@
 				BE94C30828212E4600E323E1 /* CommonFeedsViewController.swift in Sources */,
 				9868C027240F799200B12321 /* SingleImageTableViewCell.swift in Sources */,
 				0F60219428716B7900D852BD /* CommonNominationSelectAllCellCoordinator.swift in Sources */,
+				0FED7EFF2880430100D490BB /* BOUSFeedGrayDivider.swift in Sources */,
 				0F6021BD28741C8000D852BD /* CommentLikeWithCountCellCoordinator.swift in Sources */,
 				98575A3F2532BBC1007644FE /* ReportAbuseWorker.swift in Sources */,
 				98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */,
@@ -1882,6 +1955,7 @@
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */,
 				BCCF646828EC1A9F0033AF2C /* AttachmentHandler.swift in Sources */,
+				0F60221F287E72CC00D852BD /* BOUSApprovalsListingViewController.swift in Sources */,
 				BE500D8828229E2D00423E5A /* CommonLikesTableViewCellCoordinator.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
@@ -1907,6 +1981,7 @@
 				9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */,
 				98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */,
 				9873D62F24B80CBE0041504C /* GifFetcher.swift in Sources */,
+				0FED7EF7287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift in Sources */,
 				BE94C30F2821417800E323E1 /* AppreciationFeedContentCoordinator.swift in Sources */,
 				9868C03D240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift in Sources */,
 				9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */,
@@ -1923,6 +1998,7 @@
 				BCE14D4629139C72008806EA /* PostPreviewHeaderCoordinator.swift in Sources */,
 				BEF4021828201248001B9D7E /* CommonFeedsCoordinator.swift in Sources */,
 				980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */,
+				0FED7EEF287EB21800D490BB /* BOUSApproveRejectPopViewController.swift in Sources */,
 				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
 				BCCF645F28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,

@@ -15,13 +15,15 @@ public struct GetCommonFeedsViewModel{
     var feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    var selectedTabType : String
     
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?){
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
         self.themeManager = themeManager
         self.mainAppCoordinator = mainAppCoordinator
+        self.selectedTabType = selectedTabType
     }
 }
 
@@ -44,11 +46,25 @@ public class CommonFeedsCoordinator {
         feedsVc.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
         feedsVc.themeManager = inputModel.themeManager
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
+        feedsVc.selectedTapType = inputModel.selectedTabType
         return feedsVc
     }
     
+    public func getApprovalsView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
+        
+        let storyboardName = "CommonFeeds"
+        let storyboardBundle =  Bundle(for: CommonFeedsViewController.self)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: storyboardBundle)
+        let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
+        feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
+        return feedsVc
+
+    }
+    
+  
+    
     public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
-        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId) { (result) in
+        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId, feedType: "given") { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(let result):

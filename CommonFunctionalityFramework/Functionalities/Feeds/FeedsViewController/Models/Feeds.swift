@@ -37,6 +37,9 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func isActionsAllowed() -> Bool
     func isPinToPost() -> Bool
     func isLoggedUserAdmin() -> Bool
+    func getStrengthData() -> NSDictionary
+    func getPostType() -> FeedPostType
+    func getBadgesData() -> NSDictionary
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -47,6 +50,52 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func isLoggedUserAdmin() -> Bool {
         return isAdminUser
+    }
+    
+    func getStrengthData() -> NSDictionary {
+        var dataDic = NSDictionary()
+
+        var strengthName = ""
+        var strengthIcon = ""
+        var strengthMessage = ""
+        var badgeBackgroundColor = ""
+
+        if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
+            if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
+                strengthName = userStengthDic["name"] as! String
+                strengthMessage = userStengthDic["message"] as! String
+                strengthIcon = userStengthDic["icon"] as! String
+                badgeBackgroundColor = userStengthDic["background_color"] as! String
+                dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+
+            }
+        }else if let userStengthDic = rawFeedDictionary["user_strength"] as? NSDictionary {
+            strengthName = userStengthDic["name"] as! String
+            strengthMessage = userStengthDic["message"] as! String
+            strengthIcon = userStengthDic["icon"] as! String
+            badgeBackgroundColor = userStengthDic["background_color"] as! String
+            dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+        }
+
+        return dataDic
+    }
+    
+    func getBadgesData() -> NSDictionary {
+        var dataDic = NSDictionary()
+        var badgeName = ""
+        var badgeIcon = ""
+        var badgeBackgroundColor = ""
+        
+        if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
+            if let badgesDic = userStrength["badges"] as? NSDictionary {
+                badgeName = badgesDic["name"] as! String
+                badgeIcon = badgesDic["icon"] as! String
+                badgeBackgroundColor = badgesDic["background_color"] as! String
+                dataDic = ["badgeName" : badgeName, "badgeIcon" : badgeIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+            }
+        }
+        
+        return dataDic
     }
     
     func shouldShowDetail() -> Bool {
@@ -222,6 +271,19 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             return pollType
         }else{
             return .Post
+        }
+    }
+    
+    func getPostType() -> FeedPostType {
+        if let type = rawFeedDictionary["post_type"] as? Int,
+            let pollType = FeedPostType(rawValue: type){
+            if type == 6 {
+                return .Appreciation
+            }else {
+                return .Nomination
+            }
+        }else{
+            return .Appreciation
         }
     }
     
