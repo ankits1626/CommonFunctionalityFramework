@@ -12,7 +12,7 @@ class CommonFeedDescriptionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var feedText : UILabel?
     @IBOutlet weak var readMorebutton : UIButton?
-    @IBOutlet weak var appreciationSubjectTxt: UITextView!
+    @IBOutlet weak var appreciationSubjectTxt: UILabel!
     @IBOutlet weak var appreciationSubject : UILabel?
     @IBOutlet weak var containerView : UIView?
 

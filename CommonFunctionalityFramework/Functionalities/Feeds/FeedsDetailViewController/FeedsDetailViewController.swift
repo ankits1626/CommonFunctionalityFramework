@@ -48,12 +48,14 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
     }
     
     private func setup(){
         view.backgroundColor = .viewBackgroundColor
         setupTableView()
-        setupCommentBar()
+        //setupCommentBar()
         fetchClappedByUsers()
         observeChangesToPost()
     }

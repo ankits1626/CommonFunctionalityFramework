@@ -24,42 +24,48 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
         for: inputModel.targetIndexpath)
         if let cell  = targetCell as? FeedTitleTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            cell.feedTitle?.enabledTypes  = [.url]
-            let attributes : [NSAttributedString.Key: Any] = [
-                .font : UIFont.Title1,
-                .foregroundColor : UIColor.getTitleTextColor()
-            ]
-            if let title = feed.getFeedTitle(){
-                cell.feedTitle?.attributedText = NSAttributedString(
-                    string: title,
-                    attributes: attributes
-                )
-            }else{
-                cell.feedTitle?.attributedText = nil
-            }
-            cell.feedTitle?.URLColor = .urlColor
-            cell.feedTitle?.handleURLTap({ (targetUrl) in
-                print("<<<<<<<< open \(targetUrl)")
-                if !targetUrl.absoluteString.hasPrefix("http"),
-                    let modifiedUrl = URL(string: "http://\(targetUrl.absoluteString)"){
-                    UIApplication.shared.open(
-                        modifiedUrl,
-                        options: [:],
-                        completionHandler: nil
-                    )
-                }else{
-                    UIApplication.shared.open(
-                        targetUrl,
-                        options: [:],
-                        completionHandler: nil
-                    )
-                }
-            })
-            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
-            }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-            }
+            //cell.feedText?.enabledTypes  = [.url]
+//            let attributes : [NSAttributedString.Key: Any] = [
+//                .font : UIFont.Title1,
+//                .foregroundColor : UIColor.getTitleTextColor()
+//            ]
+//            if let title = feed.getFeedTitle(){
+//                cell.feedText?.attributedText = NSAttributedString(
+//                    string: title,
+//                    attributes: nil
+//                )
+//            }else{
+//                cell.feedText?.attributedText = nil
+//            }
+            
+            let feedTitle = feed.getStrengthData()
+            cell.feedText?.text = feedTitle["strengthMessage"] as! String
+            cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
+            //inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
+            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
+            //cell.feedTitle?.URLColor = .urlColor
+//            cell.feedTitle?.handleURLTap({ (targetUrl) in
+//                print("<<<<<<<< open \(targetUrl)")
+//                if !targetUrl.absoluteString.hasPrefix("http"),
+//                    let modifiedUrl = URL(string: "http://\(targetUrl.absoluteString)"){
+//                    UIApplication.shared.open(
+//                        modifiedUrl,
+//                        options: [:],
+//                        completionHandler: nil
+//                    )
+//                }else{
+//                    UIApplication.shared.open(
+//                        targetUrl,
+//                        options: [:],
+//                        completionHandler: nil
+//                    )
+//                }
+//            })
+//            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+//                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+//            }else{
+//                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+//            }
         }
         return targetCell
     }
@@ -68,14 +74,14 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedTitleTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            cell.feedTitle?.text = feed.getFeedTitle()
-            cell.feedTitle?.font = UIFont.Title1
-            cell.feedTitle?.textColor = UIColor.getTitleTextColor()
-            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
-            }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-            }
+ //           cell.feedText?.text = feed.getFeedTitle()
+//            cell.feedTitle?.font = UIFont.Title1
+//            cell.feedTitle?.textColor = UIColor.getTitleTextColor()
+//            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+//                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+//            }else{
+//                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+//            }
         }
     }
     

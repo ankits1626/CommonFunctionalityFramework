@@ -18,7 +18,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var feedCoordinatorDelegate: FeedsCommonCoordinatorDelegate!
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
-    
+    var selectedTapType = ""
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
             feedsDatasource: self,
@@ -54,6 +54,11 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
             self?.setup()
             self?.loadFeeds()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "showMenuButton"), object: nil)
     }
     
     private func registerForPostUpdateNotifications(){
@@ -97,7 +102,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     
     @objc private func loadFeeds(){
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-        nextPageUrl: lastFetchedFeeds?.nextPageUrl) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTapType) {[weak self] (result) in
             DispatchQueue.main.async {
                 self?.feedsTable?.loadCFFControl?.endLoading()
                 switch result{
@@ -186,17 +191,17 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if getFeedItem(indexPath.section).shouldShowDetail(){
-//            let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
-//            feedDetailVC.themeManager = themeManager
-//            feedDetailVC.mainAppCoordinator = mainAppCoordinator
-//            feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
-//            feedDetailVC.mediaFetcher = mediaFetcher
-//            feedDetailVC.requestCoordinator = requestCoordinator
-//            feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
-//            feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
-//            feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
-//        }
+        if getFeedItem(indexPath.section).shouldShowDetail(){
+            let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+            feedDetailVC.themeManager = themeManager
+            feedDetailVC.mainAppCoordinator = mainAppCoordinator
+            feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
+            feedDetailVC.mediaFetcher = mediaFetcher
+            feedDetailVC.requestCoordinator = requestCoordinator
+            //feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate as! FeedsCoordinatorDelegate
+            feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
+            feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -37,11 +37,18 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hSr-nG-30V">
                                                 <rect key="frame" x="0.0" y="0.0" width="397" height="44"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Md-7a-YEM" userLabel="Claps Container">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQI-Li-8PT" customClass="ReactionButton" customModule="Reactions">
                                                         <rect key="frame" x="0.0" y="0.0" width="198.5" height="44"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <connections>
+                                                            <action selector="facebookButtonReactionTouchedUpAction:" destination="eGz-uI-bVt" eventType="valueChanged" id="xR7-Ax-GgW"/>
+                                                        </connections>
+                                                    </view>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Md-7a-YEM" userLabel="Claps Container">
+                                                        <rect key="frame" x="198.5" y="0.0" width="44" height="44"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVB-sd-XHQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="198.5" height="44"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MiO-Cx-TzY">
                                                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -70,7 +77,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eig-Rv-xpn">
-                                                                        <rect key="frame" x="44" y="0.0" width="154.5" height="44"/>
+                                                                        <rect key="frame" x="44" y="0.0" width="0.0" height="44"/>
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cF-qw-ohN" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                                                                 <rect key="frame" x="6" y="7" width="30" height="30"/>
@@ -182,6 +189,7 @@
                 <outlet property="commentsButton" destination="GU4-MR-yLj" id="OPo-wU-1TO"/>
                 <outlet property="commentsCountLabel" destination="hCD-Xn-VEy" id="pWO-hM-09j"/>
                 <outlet property="containerView" destination="U2b-wS-JUv" id="WyP-fd-QXT"/>
+                <outlet property="reactionView" destination="rQI-Li-8PT" id="d0p-cg-qb6"/>
                 <outlet property="seperator" destination="lxC-72-VQr" id="6iw-KE-GlA"/>
                 <outlet property="showAllClapsButton" destination="6cF-qw-ohN" id="iuV-lr-YfT"/>
             </connections>

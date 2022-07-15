@@ -65,7 +65,7 @@
                                                                                 <rect key="frame" x="0.0" y="15" width="275" height="49"/>
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zg-Lz-1f4" userLabel="Name Container">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="16.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="24.5"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzG-tc-n0A">
                                                                                                 <rect key="frame" x="9" y="0.0" width="32" height="15.5"/>
@@ -80,8 +80,8 @@
                                                                                             <constraint firstItem="IzG-tc-n0A" firstAttribute="leading" secondItem="2zg-Lz-1f4" secondAttribute="leading" constant="9" id="sfa-0R-16o"/>
                                                                                         </constraints>
                                                                                     </view>
-                                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuU-VV-oEv" userLabel="Department Conatiner">
-                                                                                        <rect key="frame" x="0.0" y="16.5" width="275" height="16"/>
+                                                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UuU-VV-oEv" userLabel="Department Conatiner">
+                                                                                        <rect key="frame" x="0.0" y="24.5" width="275" height="0.0"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Slv-B1-VLm">
                                                                                                 <rect key="frame" x="9" y="0.0" width="41.5" height="20.5"/>
@@ -96,7 +96,7 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-13-abe" userLabel="Date Container">
-                                                                                        <rect key="frame" x="0.0" y="32.5" width="275" height="16.5"/>
+                                                                                        <rect key="frame" x="0.0" y="24.5" width="275" height="24.5"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co2-pN-oUt">
                                                                                                 <rect key="frame" x="9" y="0.0" width="41.5" height="20.5"/>

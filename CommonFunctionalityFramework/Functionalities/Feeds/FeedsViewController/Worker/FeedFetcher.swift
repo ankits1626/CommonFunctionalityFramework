@@ -19,12 +19,12 @@ class FeedFetcher  {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     
-    func fetchFeeds(nextPageUrl : String?,completionHandler: @escaping FeedFetcherHandler) {
+    func fetchFeeds(nextPageUrl : String?, feedType: String?, completionHandler: @escaping FeedFetcherHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: FeedFetchRequestGenerator(
                     feedID: nil,
-                    nextPageUrl: nextPageUrl,
+                    nextPageUrl: nextPageUrl, feedType: feedType,
                     networkRequestCoordinator: networkRequestCoordinator
                 ),
                 dataParser: FeedFetchDataParser(),
@@ -36,12 +36,12 @@ class FeedFetcher  {
         })
     }
     
-    func fetchFeedDetail(_ feedID: Int, completionHandler: @escaping FeedFetcherHandler){
+    func fetchFeedDetail(_ feedID: Int,feedType: String, completionHandler: @escaping FeedFetcherHandler){
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: FeedFetchRequestGenerator(
                     feedID: feedID,
-                    nextPageUrl: nil,
+                    nextPageUrl: nil, feedType: feedType,
                     networkRequestCoordinator: networkRequestCoordinator
                 ),
                 dataParser: FeedFetchDataParser(),
@@ -60,10 +60,12 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     private var nextPageUrl : String?
     private var feedID : Int?
+    private var feedType : String?
     
-    init( feedID: Int?, nextPageUrl : String?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    init( feedID: Int?, nextPageUrl : String?, feedType: String?,networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
          self.feedID = feedID
         self.nextPageUrl = nextPageUrl
+        self.feedType = feedType
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
@@ -87,7 +89,7 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
             }else{
                 if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                     let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                        url: URL(string: baseUrl + "feeds/api/posts/"),
+                        url: URL(string: baseUrl + "feeds/api/user_feed/?feed=\(feedType!)"),
                         method: .GET,
                         httpBodyDict: nil
                     )
