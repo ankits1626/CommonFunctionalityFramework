@@ -76,7 +76,7 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
             if let unwrappedFeedId = feedID{
                 if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                     let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                        url: URL(string: baseUrl + "feeds/api/posts/\(unwrappedFeedId)/"),
+                        url: URL(string: baseUrl + "feeds/api/user_feed/\(unwrappedFeedId)/"),
                         method: .GET,
                         httpBodyDict: nil
                     )
