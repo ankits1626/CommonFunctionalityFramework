@@ -56,10 +56,6 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "showMenuButton"), object: nil)
-    }
     
     private func registerForPostUpdateNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(refreshFeeds), name: NSNotification.Name.didUpdatedPosts, object: nil)
