@@ -55,7 +55,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     private func setup(){
         view.backgroundColor = .viewBackgroundColor
         setupTableView()
-        //setupCommentBar()
+        setupCommentBar()
         fetchClappedByUsers()
         observeChangesToPost()
     }
