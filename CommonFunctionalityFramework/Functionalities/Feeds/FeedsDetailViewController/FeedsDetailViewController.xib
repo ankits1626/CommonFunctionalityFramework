@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsDetailViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
+                <outlet property="commentBarView" destination="2ae-UC-IJ0" id="tfW-2R-YUf"/>
                 <outlet property="feedDetailTableView" destination="qEs-Ux-26W" id="BTC-fK-62e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,87 +25,35 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="608"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixP-xJ-dOk">
-                    <rect key="frame" x="0.0" y="616" width="375" height="51"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhO-Xb-k1v">
-                            <rect key="frame" x="0.0" y="0.0" width="317" height="51"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_points-2" translatesAutoresizingMaskIntoConstraints="NO" id="z5p-kX-Ujj">
-                                    <rect key="frame" x="9" y="8" width="36" height="36"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="36" id="QVB-vs-hjT"/>
-                                        <constraint firstAttribute="height" constant="36" id="lma-CK-P9J"/>
-                                    </constraints>
-                                </imageView>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add your comments here…" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EmO-Js-Ptg">
-                                    <rect key="frame" x="56" y="8" width="256" height="35"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="EmO-Js-Ptg" secondAttribute="trailing" constant="5" id="0rG-b5-9oY"/>
-                                <constraint firstAttribute="bottom" secondItem="EmO-Js-Ptg" secondAttribute="bottom" constant="8" id="Sp9-ft-h5b"/>
-                                <constraint firstItem="z5p-kX-Ujj" firstAttribute="top" secondItem="zhO-Xb-k1v" secondAttribute="top" constant="8" id="d0n-vj-h6p"/>
-                                <constraint firstAttribute="height" constant="51" id="hpT-5j-uRf"/>
-                                <constraint firstItem="z5p-kX-Ujj" firstAttribute="leading" secondItem="zhO-Xb-k1v" secondAttribute="leading" constant="9" id="p6r-aD-Klx"/>
-                                <constraint firstItem="EmO-Js-Ptg" firstAttribute="leading" secondItem="z5p-kX-Ujj" secondAttribute="trailing" constant="11" id="uhY-vk-djf"/>
-                                <constraint firstItem="EmO-Js-Ptg" firstAttribute="top" secondItem="zhO-Xb-k1v" secondAttribute="top" constant="8" id="z3L-NX-mIV"/>
-                            </constraints>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuK-hw-D0K">
-                            <rect key="frame" x="327" y="1" width="48" height="48"/>
-                            <color key="backgroundColor" red="0.1333333333" green="0.16078431369999999" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="48" id="ucy-hV-xnb"/>
-                                <constraint firstAttribute="height" constant="48" id="wCd-li-c8W"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="brand_br-telegram" title=" "/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="8"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                    </subviews>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="2ae-UC-IJ0" customClass="ASChatBarview" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="LuK-hw-D0K" firstAttribute="leading" secondItem="zhO-Xb-k1v" secondAttribute="trailing" constant="10" id="cmc-tl-QvT"/>
-                        <constraint firstItem="zhO-Xb-k1v" firstAttribute="top" secondItem="ixP-xJ-dOk" secondAttribute="top" id="e0h-UB-hUc"/>
-                        <constraint firstItem="LuK-hw-D0K" firstAttribute="top" secondItem="ixP-xJ-dOk" secondAttribute="top" constant="1" id="fTB-8a-Oe0"/>
-                        <constraint firstAttribute="bottom" secondItem="zhO-Xb-k1v" secondAttribute="bottom" id="g1o-nH-3Vi"/>
-                        <constraint firstAttribute="height" constant="51" id="oYM-7O-AaQ"/>
-                        <constraint firstAttribute="trailing" secondItem="LuK-hw-D0K" secondAttribute="trailing" id="qVG-JB-UDV"/>
-                        <constraint firstItem="zhO-Xb-k1v" firstAttribute="leading" secondItem="ixP-xJ-dOk" secondAttribute="leading" id="zn1-KJ-QDA"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="DFw-ei-8EN"/>
                     </constraints>
                     <connections>
-                        <outlet property="bottomConstraint" destination="BQ6-Lh-0tZ" id="LJr-z0-Qm1"/>
-                        <outlet property="delegate" destination="-1" id="BER-6n-gij"/>
-                        <outlet property="heightConstraint" destination="sf8-l0-Hsu" id="iPU-07-ubc"/>
+                        <outlet property="bottomConstraint" destination="f4O-1v-URe" id="o8g-z8-z4J"/>
+                        <outlet property="delegate" destination="-1" id="LEp-3w-kPS"/>
+                        <outlet property="heightConstraint" destination="DFw-ei-8EN" id="ZGv-vq-JC2"/>
                     </connections>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="ixP-xJ-dOk" firstAttribute="top" secondItem="qEs-Ux-26W" secondAttribute="bottom" constant="8" symbolic="YES" id="2KU-KS-qCd"/>
-                <constraint firstItem="ixP-xJ-dOk" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="6yh-F4-Mhw"/>
-                <constraint firstItem="ixP-xJ-dOk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7ui-A3-NP5"/>
+                <constraint firstItem="2ae-UC-IJ0" firstAttribute="top" secondItem="qEs-Ux-26W" secondAttribute="bottom" constant="15" id="AZ3-hc-SQB"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GgV-Zv-dOh"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ohw-wb-spi"/>
-                <constraint firstItem="ixP-xJ-dOk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Q3i-H3-QO8"/>
+                <constraint firstItem="2ae-UC-IJ0" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="W0q-la-B2H"/>
+                <constraint firstItem="2ae-UC-IJ0" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="f4O-1v-URe"/>
+                <constraint firstItem="2ae-UC-IJ0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fT3-Re-CUh"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="m0i-C6-8qb"/>
             </constraints>
             <point key="canvasLocation" x="138.40000000000001" y="93.103448275862078"/>
         </view>
     </objects>
     <resources>
-        <image name="brand_br-telegram" width="24" height="24"/>
-        <image name="icon_points-2" width="36" height="23"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

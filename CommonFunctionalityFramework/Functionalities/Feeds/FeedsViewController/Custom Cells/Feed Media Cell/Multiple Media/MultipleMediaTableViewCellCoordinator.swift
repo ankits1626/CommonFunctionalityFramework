@@ -26,7 +26,7 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             case .OneMediaItemPresent(_):
                 return 0
             case .TwoMediaItemPresent:
-                return 122
+                return 136
             case .MoreThanTwoMediItemPresent:
                 return 89
             }
@@ -43,6 +43,9 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else{
                 cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
+            let feedTitle = feed.getStrengthData()
+            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
+            
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }

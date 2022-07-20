@@ -165,7 +165,7 @@
     </objects>
     <designables>
         <designable name="ppk-96-Eon">
-            <size key="intrinsicContentSize" width="1064" height="21"/>
+            <size key="intrinsicContentSize" width="1064" height="20.5"/>
         </designable>
     </designables>
     <resources>

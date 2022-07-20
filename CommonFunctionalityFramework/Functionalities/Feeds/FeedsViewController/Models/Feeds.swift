@@ -62,19 +62,21 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
 
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
-                strengthName = userStengthDic["name"] as! String
-                strengthMessage = userStengthDic["message"] as! String
-                strengthIcon = userStengthDic["icon"] as! String
-                badgeBackgroundColor = userStengthDic["background_color"] as! String
-                dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor]
-
+                if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
+                    strengthMessage = userStengthDic["message"] as! String
+                   // strengthIcon = userStengthDic["icon"] as! String
+                    badgeBackgroundColor = userStengthDic["background_color"] as! String
+                    dataDic = ["strengthName" : userName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+                }else {
+                    if let userStengthDic = rawFeedDictionary["user_strength"] as? NSDictionary {
+                        strengthName = userStengthDic["name"] as! String
+                        strengthMessage = userStengthDic["message"] as! String
+                        strengthIcon = userStengthDic["icon"] as! String
+                        badgeBackgroundColor = userStengthDic["background_color"] as! String
+                        dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+                    }
+                }
             }
-        }else if let userStengthDic = rawFeedDictionary["user_strength"] as? NSDictionary {
-            strengthName = userStengthDic["name"] as! String
-            strengthMessage = userStengthDic["message"] as! String
-            strengthIcon = userStengthDic["icon"] as! String
-            badgeBackgroundColor = userStengthDic["background_color"] as! String
-            dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor]
         }
 
         return dataDic
