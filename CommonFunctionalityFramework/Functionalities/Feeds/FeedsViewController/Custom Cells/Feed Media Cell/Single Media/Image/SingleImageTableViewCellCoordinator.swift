@@ -14,7 +14,7 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 273
+        return 102
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
@@ -26,11 +26,13 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else{
                 cell.feedImageView?.image = nil
             }
-            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
-            }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-            }
+//            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+//                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+//            }else{
+//                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+//            }
+            let feedTitle = feed.getStrengthData()
+            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
             
             cell.imageTapButton?.handleControlEvent(
                 event: .touchUpInside,

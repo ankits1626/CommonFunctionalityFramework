@@ -28,16 +28,22 @@
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="211"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-ni-OTg">
-                                                <rect key="frame" x="12" y="0.0" width="22" height="22"/>
+                                                <rect key="frame" x="4" y="0.0" width="36" height="36"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="6iA-da-coB"/>
-                                                    <constraint firstAttribute="width" constant="22" id="he2-P5-653"/>
+                                                    <constraint firstAttribute="height" constant="36" id="6iA-da-coB"/>
+                                                    <constraint firstAttribute="width" constant="36" id="he2-P5-653"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="a3E-ni-OTg" firstAttribute="top" secondItem="ZLf-0t-9wT" secondAttribute="top" id="2Sv-SM-zo6"/>
-                                            <constraint firstItem="a3E-ni-OTg" firstAttribute="leading" secondItem="ZLf-0t-9wT" secondAttribute="leading" constant="12" id="mKi-7B-Vz3"/>
+                                            <constraint firstItem="a3E-ni-OTg" firstAttribute="leading" secondItem="ZLf-0t-9wT" secondAttribute="leading" constant="4" id="mKi-7B-Vz3"/>
                                             <constraint firstAttribute="width" constant="44" id="yNS-WU-wYr"/>
                                         </constraints>
                                     </view>
@@ -60,10 +66,10 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="27"/>
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYd-lI-7Bk">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="215" height="27"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="27"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyG-uD-yj5">
-                                                                                                <rect key="frame" x="12" y="6" width="198" height="20.5"/>
+                                                                                                <rect key="frame" x="12" y="6" width="298" height="20.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
@@ -75,8 +81,8 @@
                                                                                             <constraint firstItem="dyG-uD-yj5" firstAttribute="top" secondItem="hYd-lI-7Bk" secondAttribute="top" constant="6" id="Uw3-sR-9Qj"/>
                                                                                         </constraints>
                                                                                     </view>
-                                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-LR-tVi">
-                                                                                        <rect key="frame" x="215" y="0.0" width="100" height="27"/>
+                                                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-LR-tVi">
+                                                                                        <rect key="frame" x="315" y="0.0" width="100" height="27"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAQ-YM-8lV">
                                                                                                 <rect key="frame" x="5" y="6" width="75" height="20.5"/>
@@ -174,7 +180,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDf-1m-ZAm">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="8" height="20"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="●" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CL-vd-cj4">
+                                                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="●" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CL-vd-cj4">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="8" height="20"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="4"/>
                                                                                         <nil key="textColor"/>
@@ -194,7 +200,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiR-co-0jo">
                                                                                 <rect key="frame" x="8" y="0.0" width="263" height="20"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-PF-EZv">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-PF-EZv">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="263" height="20"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
@@ -283,6 +289,11 @@
             <point key="canvasLocation" x="-18.115942028985508" y="70.982142857142847"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="CzA-vt-fmv">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="cff_dummyProfile" width="30" height="30"/>
         <image name="cff_transparent_comment_like" width="32" height="32"/>
