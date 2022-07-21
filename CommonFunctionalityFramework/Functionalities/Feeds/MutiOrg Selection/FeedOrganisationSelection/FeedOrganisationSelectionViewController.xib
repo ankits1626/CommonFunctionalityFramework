@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedOrganisationSelectionViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <connections>
+                <outlet property="proceedButton" destination="RKN-Ux-twZ" id="r1q-y5-au5"/>
+                <outlet property="proceedButtonContainerHeight" destination="2fd-9D-9DF" id="fQr-SD-264"/>
+                <outlet property="searchTextField" destination="P1D-d2-dQR" id="jlg-pa-1Bc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XKt-A7-ob0">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wbL-ut-GKN">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sta-55-gku" userLabel="search bar container">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="   test🔍 Search by name or email" textAlignment="natural" minimumFontSize="17" background="SearchBarImage" translatesAutoresizingMaskIntoConstraints="NO" id="P1D-d2-dQR">
+                                            <rect key="frame" x="16" y="10" width="382" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="mE1-b6-vbU"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="P1D-d2-dQR" firstAttribute="leading" secondItem="Sta-55-gku" secondAttribute="leading" constant="16" id="LLo-vm-iUF"/>
+                                        <constraint firstAttribute="height" constant="70" id="afs-vb-x8J"/>
+                                        <constraint firstItem="P1D-d2-dQR" firstAttribute="centerY" secondItem="Sta-55-gku" secondAttribute="centerY" id="eXe-tN-Aou"/>
+                                        <constraint firstAttribute="trailing" secondItem="P1D-d2-dQR" secondAttribute="trailing" constant="16" id="fAH-aA-W1e"/>
+                                    </constraints>
+                                </view>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="53" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YQX-bP-eea">
+                                    <rect key="frame" x="0.0" y="70" width="414" height="774"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </tableView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnp-ug-4bl">
+                                    <rect key="frame" x="0.0" y="844" width="414" height="52"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKN-Ux-twZ">
+                                            <rect key="frame" x="15" y="4" width="384" height="44"/>
+                                            <color key="backgroundColor" red="1" green="0.54117647059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+                                            <state key="normal" title="PROCEED">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="52" id="2fd-9D-9DF"/>
+                                        <constraint firstAttribute="trailing" secondItem="RKN-Ux-twZ" secondAttribute="trailing" constant="15" id="2gB-Jd-vbL"/>
+                                        <constraint firstItem="RKN-Ux-twZ" firstAttribute="top" secondItem="vnp-ug-4bl" secondAttribute="top" constant="4" id="CqS-Iz-U8o"/>
+                                        <constraint firstAttribute="bottom" secondItem="RKN-Ux-twZ" secondAttribute="bottom" constant="4" id="Ik4-Pt-KFh"/>
+                                        <constraint firstItem="RKN-Ux-twZ" firstAttribute="leading" secondItem="vnp-ug-4bl" secondAttribute="leading" constant="15" id="KUd-4U-bu9"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="XKt-A7-ob0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0Fn-6W-LRQ"/>
+                <constraint firstItem="XKt-A7-ob0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X6d-bB-Khr"/>
+                <constraint firstAttribute="bottom" secondItem="XKt-A7-ob0" secondAttribute="bottom" id="f5l-eZ-OJu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XKt-A7-ob0" secondAttribute="trailing" id="hYZ-tT-w6h"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="132" y="106"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="SearchBarImage" width="303" height="31"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

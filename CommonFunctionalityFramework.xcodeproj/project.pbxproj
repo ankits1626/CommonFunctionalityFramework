@@ -125,6 +125,8 @@
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
+		BCA04B1D2887F982009457AB /* FeedOrganisationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */; };
+		BCA04B1E2887F982009457AB /* FeedOrganisationSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */; };
 		BE54420D27F30BFF00CBF6D9 /* FeedsImageDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */; };
 		BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */; };
 		BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */; };
@@ -296,6 +298,8 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationSelectionViewController.swift; sourceTree = "<group>"; };
+		BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedOrganisationSelectionViewController.xib; sourceTree = "<group>"; };
 		BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsImageDrawer.swift; sourceTree = "<group>"; };
 		BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsImageDrawer.xib; sourceTree = "<group>"; };
 		BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -977,6 +981,7 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				BCA04B142887B4B7009457AB /* MutiOrg Selection */,
 				BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */,
 				98D5E88F25314BE800813991 /* ReportAbuseConfirmationDrawer */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
@@ -1207,6 +1212,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BCA04B142887B4B7009457AB /* MutiOrg Selection */ = {
+			isa = PBXGroup;
+			children = (
+				BCA04B162887B4F4009457AB /* FeedDepartmentSelection */,
+				BCA04B152887B4DE009457AB /* FeedOrganisationSelection */,
+			);
+			path = "MutiOrg Selection";
+			sourceTree = "<group>";
+		};
+		BCA04B152887B4DE009457AB /* FeedOrganisationSelection */ = {
+			isa = PBXGroup;
+			children = (
+				BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */,
+				BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */,
+			);
+			path = FeedOrganisationSelection;
+			sourceTree = "<group>";
+		};
+		BCA04B162887B4F4009457AB /* FeedDepartmentSelection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FeedDepartmentSelection;
+			sourceTree = "<group>";
+		};
 		BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1338,6 +1368,7 @@
 				BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */,
 				BEC2B28726FDA153008417C3 /* FeedsComposerDrawer.xib in Resources */,
 				BEC2B25726FD989D008417C3 /* FeedTitleTableViewCell.xib in Resources */,
+				BCA04B1E2887F982009457AB /* FeedOrganisationSelectionViewController.xib in Resources */,
 				BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */,
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
 				BEC2B25326FD97C8008417C3 /* FeedsViewController.xib in Resources */,
@@ -1416,6 +1447,7 @@
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
+				BCA04B1D2887F982009457AB /* FeedOrganisationSelectionViewController.swift in Sources */,
 				9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */,
 				987D0BA82583DA58001A0F07 /* ASMentionCoordinator.swift in Sources */,
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,

@@ -183,6 +183,29 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
 extension FeedsViewController{
     
     @IBAction func openFeedComposerSelectionDrawer(){
+        /**
+         so instead of opening the drawer right away we have to check if multi-org post is enabled
+         github refernce: https://github.com/rewardz/skor-ios/issues/318
+         design reference: https://zpl.io/Am6YQNP
+         */
+        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
+            triggerMutiOrgPath()
+        }else{
+            continueWithFeedCreation()
+        }
+        
+    }
+    
+    private func triggerMutiOrgPath(){
+        let orgPicker = FeedOrganisationSelectionViewController(
+            FeedOrganisationSelectionInitModel(requestCoordinator: requestCoordinator)
+        )
+        feedCoordinatorDelegate.showMultiOrgPicker(orgPicker, presentationOption: .Navigate) { topBarModel in
+            orgPicker.containerTopBarModel = topBarModel
+        }
+    }
+    
+    private func continueWithFeedCreation(){
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator

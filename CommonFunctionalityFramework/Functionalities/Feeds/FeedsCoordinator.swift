@@ -8,9 +8,10 @@
 
 import UIKit
 
-public protocol CFFMainAppInformationCoordinator : class {
+public protocol CFFMainAppInformationCoordinator : AnyObject {
     func isUserAllowedToPostFeed() -> Bool
     func isUserAllowedToCreatePoll() -> Bool
+    func isMultiOrgPostEnabled() -> Bool
 }
 
 
@@ -35,6 +36,7 @@ public protocol FeedsCoordinatorDelegate {
     func removeFeedDetail()
     func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
     func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
+    func showMultiOrgPicker(_ orgPicker : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
 }
 
 public class FeedsCoordinator {
