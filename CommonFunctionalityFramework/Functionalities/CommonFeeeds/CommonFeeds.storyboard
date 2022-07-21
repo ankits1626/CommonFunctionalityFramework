@@ -640,7 +640,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="697"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="310" id="w1x-hI-asq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="310" id="w1x-hI-asq" customClass="BOUSApprovalHeaderTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="310"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w1x-hI-asq" id="ghb-2b-9x0">
@@ -651,11 +651,11 @@
                                                     <rect key="frame" x="20" y="5" width="36" height="36"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXR-hK-v6P">
-                                                            <rect key="frame" x="7" y="7" width="22" height="22"/>
-                                                            <state key="normal" image="icon_back_white-2"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                            <state key="normal" image="icon_back_white"/>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.2290067375" green="0.2600655556" blue="0.50499862429999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="NXR-hK-v6P" firstAttribute="centerY" secondItem="Mpu-cU-e41" secondAttribute="centerY" id="2Wu-hs-o5u"/>
                                                         <constraint firstAttribute="height" constant="36" id="8wb-LT-o7c"/>
@@ -669,8 +669,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton nominated by Micah Jones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkJ-w7-6HP">
-                                                    <rect key="frame" x="49" y="177" width="316" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton nominated by Micah Jones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lkJ-w7-6HP">
+                                                    <rect key="frame" x="20" y="177" width="374" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="chb-rz-sEP"/>
                                                     </constraints>
@@ -763,8 +763,8 @@
                                                     </constraints>
                                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="4"/>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great Communication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCU-1a-jql">
-                                                    <rect key="frame" x="98" y="72" width="219" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great Communication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCU-1a-jql">
+                                                    <rect key="frame" x="20" y="72" width="374" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="7Gp-b4-XIv"/>
                                                     </constraints>
@@ -784,7 +784,7 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.98039287330000002" green="0.952940762" blue="0.92156928780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wCU-1a-jql" secondAttribute="trailing" constant="77" id="3er-kQ-h6P"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wCU-1a-jql" secondAttribute="trailing" id="3er-kQ-h6P"/>
                                                 <constraint firstAttribute="trailing" secondItem="6bs-lq-fo6" secondAttribute="trailing" constant="169" id="4Kj-yo-C3G"/>
                                                 <constraint firstAttribute="trailing" secondItem="XXr-Ea-KjJ" secondAttribute="trailing" constant="166" id="ArH-oh-rtX"/>
                                                 <constraint firstItem="Mpu-cU-e41" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leading" constant="20" symbolic="YES" id="DTv-wq-gh6"/>
@@ -793,36 +793,52 @@
                                                 <constraint firstItem="XXr-Ea-KjJ" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leading" constant="167" id="NpO-ox-6rL"/>
                                                 <constraint firstItem="Mpu-cU-e41" firstAttribute="top" secondItem="ghb-2b-9x0" secondAttribute="top" constant="5" id="OWW-RB-6UM"/>
                                                 <constraint firstItem="XXr-Ea-KjJ" firstAttribute="top" secondItem="6bs-lq-fo6" secondAttribute="bottom" constant="13" id="QrB-tO-MZv"/>
-                                                <constraint firstItem="wCU-1a-jql" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leadingMargin" constant="78" id="Tkw-pJ-zem"/>
+                                                <constraint firstItem="wCU-1a-jql" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leadingMargin" id="Tkw-pJ-zem"/>
                                                 <constraint firstItem="lkJ-w7-6HP" firstAttribute="top" secondItem="EUG-gf-20c" secondAttribute="bottom" constant="13" id="Tro-KD-CGa"/>
-                                                <constraint firstItem="lkJ-w7-6HP" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leading" constant="49" id="Uex-ES-gCa"/>
+                                                <constraint firstItem="lkJ-w7-6HP" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leading" constant="20" id="Uex-ES-gCa"/>
                                                 <constraint firstItem="6bs-lq-fo6" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leading" constant="170" id="dWT-o7-9fp"/>
-                                                <constraint firstAttribute="trailing" secondItem="lkJ-w7-6HP" secondAttribute="trailing" constant="49" id="hjC-To-I2H"/>
+                                                <constraint firstAttribute="trailing" secondItem="lkJ-w7-6HP" secondAttribute="trailing" constant="20" id="hjC-To-I2H"/>
                                                 <constraint firstItem="EUG-gf-20c" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leading" constant="75" id="rBA-OQ-fMm"/>
                                                 <constraint firstItem="wCU-1a-jql" firstAttribute="top" secondItem="ghb-2b-9x0" secondAttribute="topMargin" constant="61" id="tEZ-2I-S2s"/>
                                                 <constraint firstItem="6bs-lq-fo6" firstAttribute="top" secondItem="lkJ-w7-6HP" secondAttribute="bottom" constant="8" id="vIG-Fw-agX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accessLevelTapped" destination="XXr-Ea-KjJ" id="cxt-W3-GC0"/>
+                                            <outlet property="backBtn" destination="NXR-hK-v6P" id="McM-3s-RJ0"/>
+                                            <outlet property="dateLbl" destination="6bs-lq-fo6" id="Hpk-R4-FCW"/>
+                                            <outlet property="leftImg" destination="nXW-bM-WBI" id="jeM-la-5cQ"/>
+                                            <outlet property="nominatedBy" destination="lkJ-w7-6HP" id="2ya-0G-od7"/>
+                                            <outlet property="rightImg" destination="meT-Z3-rlq" id="fga-ii-ZvO"/>
+                                            <outlet property="titleLbl" destination="wCU-1a-jql" id="qFO-t5-xVf"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" rowHeight="86" id="P2X-wj-0pC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell2" rowHeight="86" id="P2X-wj-0pC" customClass="BOUSApprovalDescriptionTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="354.5" width="414" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P2X-wj-0pC" id="MmK-UV-7hn">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgg-eN-g5z">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgg-eN-g5z">
                                                     <rect key="frame" x="20" y="11" width="374" height="58"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <string key="text">Thank you for taking the time to work with me to create some terrefic, meaningfull dashboards from the data we have been gathering concerning implementations. </string>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Bgg-eN-g5z" secondAttribute="bottom" constant="17" id="8VV-O0-EGC"/>
+                                                <constraint firstItem="Bgg-eN-g5z" firstAttribute="top" secondItem="MmK-UV-7hn" secondAttribute="top" constant="11" id="SrW-9V-4d7"/>
+                                                <constraint firstItem="Bgg-eN-g5z" firstAttribute="leading" secondItem="MmK-UV-7hn" secondAttribute="leading" constant="20" id="Wow-PF-jgS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bgg-eN-g5z" secondAttribute="trailing" constant="20" id="inD-PX-cAB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLbl" destination="Bgg-eN-g5z" id="4HO-no-6sC"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell3" rowHeight="87" id="xM9-re-KPd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell3" rowHeight="87" id="xM9-re-KPd" customClass="BOUSApprovalAwardLevelTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="440.5" width="414" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xM9-re-KPd" id="Dxi-VH-9fe">
@@ -839,7 +855,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="j0C-1s-eek">
-                                                    <rect key="frame" x="20" y="48.5" width="166.5" height="24"/>
+                                                    <rect key="frame" x="20" y="48.5" width="186.5" height="24"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9sn-b3-G3v">
                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -860,13 +876,11 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RQy-9e-sAY">
-                                                            <rect key="frame" x="142.5" y="0.0" width="24" height="24"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="1N7-KX-eb4"/>
-                                                                <constraint firstAttribute="width" constant="24" id="OEl-Dl-RHN"/>
-                                                            </constraints>
-                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ioj-ca-qvu">
+                                                            <rect key="frame" x="142.5" y="0.0" width="44" height="24"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="design_so-pencil-2" title=" "/>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="HSU-Lt-akW"/>
@@ -880,33 +894,50 @@
                                                 <constraint firstItem="001-pq-vAS" firstAttribute="leading" secondItem="Dxi-VH-9fe" secondAttribute="leading" constant="20" id="rYz-AK-CXj"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="awardType" destination="6IN-8Y-EfW" id="lDp-bd-dMO"/>
+                                            <outlet property="leftImg" destination="9sn-b3-G3v" id="IiT-uW-59g"/>
+                                            <outlet property="ptsLbl" destination="udu-lt-UsW" id="fzk-TG-6ia"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell4" rowHeight="109" id="2qg-Bz-tio">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell4" rowHeight="109" id="2qg-Bz-tio" customClass="BOUSApprovalMessageTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="527.5" width="414" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2qg-Bz-tio" id="ndG-L5-bgt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message to Approver" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTT-jO-67H">
-                                                    <rect key="frame" x="20" y="11" width="150" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message to Approver" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTT-jO-67H">
+                                                    <rect key="frame" x="20" y="11" width="149.5" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="Ccd-Ee-nLc"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJM-QL-Oue">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJM-QL-Oue">
                                                     <rect key="frame" x="20" y="40" width="374" height="58"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <string key="text">Great work on the recent project. Their brilliant problem-solving skills helped us to reach our targets much more quickly. We are fortunate to have an innovator like him amongst us. His work will bring a lot of insights into solving our next problem.</string>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="oJM-QL-Oue" secondAttribute="bottom" constant="11" id="25v-80-43f"/>
+                                                <constraint firstItem="wTT-jO-67H" firstAttribute="top" secondItem="ndG-L5-bgt" secondAttribute="top" constant="11" id="77X-c9-HPD"/>
+                                                <constraint firstAttribute="trailing" secondItem="oJM-QL-Oue" secondAttribute="trailing" constant="20" id="Oa8-6y-WJq"/>
+                                                <constraint firstItem="wTT-jO-67H" firstAttribute="leading" secondItem="ndG-L5-bgt" secondAttribute="leading" constant="20" id="iaP-TZ-4Y3"/>
+                                                <constraint firstItem="oJM-QL-Oue" firstAttribute="leading" secondItem="ndG-L5-bgt" secondAttribute="leading" constant="20" id="w2V-Vt-ylc"/>
+                                                <constraint firstItem="oJM-QL-Oue" firstAttribute="top" secondItem="wTT-jO-67H" secondAttribute="bottom" constant="12" id="wxL-Ab-sGq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageDescription" destination="oJM-QL-Oue" id="LQZ-uV-Jfk"/>
+                                            <outlet property="messageLbl" destination="wTT-jO-67H" id="AAv-7L-WuT"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell5" rowHeight="44" id="adf-O8-yn8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell5" rowHeight="44" id="adf-O8-yn8">
                                         <rect key="frame" x="0.0" y="636.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="adf-O8-yn8" id="zrV-PZ-iLk">
@@ -1021,7 +1052,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hR-uD-3GE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7207" y="78"/>
+            <point key="canvasLocation" x="7205.7971014492759" y="77.678571428571431"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Bza-ZV-0aQ">
@@ -1560,7 +1591,7 @@ nominations?</string>
                                 <rect key="frame" x="0.0" y="50" width="414" height="751"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="252" id="dGN-kg-wrm" customClass="BOUSApprovalsListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="252" id="dGN-kg-wrm" customClass="BOUSApprovalsListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dGN-kg-wrm" id="SxB-cq-WJx">
@@ -1574,7 +1605,7 @@ nominations?</string>
                                                         <constraint firstAttribute="height" constant="36" id="HmZ-TC-NJB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton nominated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUr-Dg-sqv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton nominated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="sUr-Dg-sqv">
                                                     <rect key="frame" x="64" y="6" width="196" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="RWa-OO-HVd"/>
@@ -1618,7 +1649,7 @@ nominations?</string>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="79U-nJ-b2k">
                                                     <rect key="frame" x="20" y="198" width="134.5" height="24"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WdJ-Q9-QzT">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_points-2" translatesAutoresizingMaskIntoConstraints="NO" id="WdJ-Q9-QzT">
                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="eh5-oK-cFQ"/>
@@ -1707,6 +1738,7 @@ nominations?</string>
                                             <outlet property="timeRemaining" destination="Pfa-Zr-YDa" id="eXZ-8w-vrd"/>
                                             <outlet property="userStrengthDescription" destination="Cmd-GB-5es" id="P5A-oK-U7w"/>
                                             <outlet property="userStrengthTitle" destination="lXT-TM-qM5" id="Zkw-E5-Cco"/>
+                                            <outlet property="usrImg" destination="yWA-IK-0fU" id="v6c-hl-uao"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2266,7 +2298,9 @@ nominations?</string>
         <image name="brand_br-telegram" width="24" height="24"/>
         <image name="cff_dummyProfile" width="30" height="30"/>
         <image name="design_so-pencil" width="22" height="22"/>
+        <image name="design_so-pencil-2" width="16" height="16"/>
         <image name="firstDot" width="11.5" height="38"/>
+        <image name="icon_back_white" width="36" height="36"/>
         <image name="icon_back_white-2" width="22" height="22"/>
         <image name="icon_checkbox_unselected" width="24" height="24"/>
         <image name="icon_comment_gray" width="24" height="24"/>
