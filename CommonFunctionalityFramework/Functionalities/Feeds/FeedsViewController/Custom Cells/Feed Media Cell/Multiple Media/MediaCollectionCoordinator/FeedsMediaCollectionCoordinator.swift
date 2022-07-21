@@ -17,6 +17,8 @@ struct InitFeedsMediaCollectionCoordinatorModel {
 
 class FeedsMediaCollectionCoordinator : NSObject {
     let input : InitFeedsMediaCollectionCoordinatorModel
+    var mediaCollectionView : UICollectionView?
+    var currentPage : Int = 0
     init(_ input : InitFeedsMediaCollectionCoordinatorModel) {
         self.input = input
     }
@@ -32,17 +34,20 @@ class FeedsMediaCollectionCoordinator : NSObject {
     }
 }
 
-extension FeedsMediaCollectionCoordinator : UICollectionViewDataSource, UICollectionViewDelegate{
+extension FeedsMediaCollectionCoordinator : UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        mediaCollectionView = collectionView
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "MediaItemCollectionViewCell",
         for: indexPath) as! MediaItemCollectionViewCell
         let mediaItemUrl = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?[indexPath.row].getCoverImageUrl()
         input.mediaFetcher.fetchImageAndLoad(cell.mediaCoverImageView, imageEndPoint: mediaItemUrl ?? "")
         cell.mediaCoverImageView?.curvedCornerControl()
+        cell.pageControl?.numberOfPages = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?.count ?? 0
+        cell.pageControl?.currentPage = self.currentPage
         if let mediaType = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?[indexPath.row].getMediaType(),
         mediaType == .Video{
              cell.playButton?.isHidden = false
@@ -58,13 +63,21 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDataSource, UICollec
             scrollToItemIndex: indexPath.item
         )
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        guard let pageWidth = self.mediaCollectionView?.frame.size.width else {
+            return print("pageWidth not found") }
+        currentPage = Int((self.mediaCollectionView?.contentOffset.x)! / pageWidth)
+        print(Int((self.mediaCollectionView?.contentOffset.x)! / pageWidth))
+    }
 }
 
 extension FeedsMediaCollectionCoordinator : UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let feedItem = input.feedsDatasource.getFeedItem(input.feedItemIndex)
         if feedItem.hasOnlyMedia(){
-            return CGSize(width: 120, height: 90)
+            return CGSize(width: collectionView.frame.width, height: 90)
         }else{
             switch feedItem.getMediaCountState() {
             case .None:
@@ -72,9 +85,9 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDelegateFlowLayout{
             case .OneMediaItemPresent(_):
                 return CGSize.zero
             case .TwoMediaItemPresent:
-                return CGSize(width: 120, height: 90)
+                return CGSize(width: collectionView.frame.width, height: 136)
             case .MoreThanTwoMediItemPresent:
-                return CGSize(width: 83, height: 57)
+                return CGSize(width: collectionView.frame.width, height: 136)
             }
         }
     }
