@@ -59,10 +59,11 @@ public class CommonFeedsCoordinator {
     public func getApprovalsView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
         
         let storyboardName = "CommonFeeds"
-        let storyboardBundle =  Bundle(for: CommonFeedsViewController.self)
+        let storyboardBundle =  Bundle(for: BOUSNominationViewController.self)
         let storyboard = UIStoryboard(name: storyboardName, bundle: storyboardBundle)
-        let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
+        let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSNominationViewController") as! BOUSNominationViewController
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
+        feedsVc.statusType = inputModel.selectedTabType
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         return feedsVc
 

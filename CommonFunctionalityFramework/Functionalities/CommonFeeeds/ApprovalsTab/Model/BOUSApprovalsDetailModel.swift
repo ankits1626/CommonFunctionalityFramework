@@ -45,7 +45,7 @@ struct nominationKey : Decodable {
 struct badge : Decodable {
     let name: String
     let icon : String
-    let points : String
+    let award_points : String
 }
 
 struct user : Decodable {

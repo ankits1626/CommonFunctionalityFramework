@@ -12,15 +12,33 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     
     @IBOutlet weak var approvalTxt: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var approveButton : UIButton?
+    @IBOutlet weak var rejectButton : UIButton?
+    @IBOutlet weak var messageContainerView : UIView?
+    @IBOutlet weak var approveButtonConstraints : NSLayoutConstraint?
+    @IBOutlet weak var rejectButtonConstraints : NSLayoutConstraint?
+    @IBOutlet weak var messageContainerViewConstraints : NSLayoutConstraint?
+    
     var selectedNominationId = Int()
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var loader = MFLoader()
     var jsonDataValues : BOUSApprovalsDetailData!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
+    var isComingFromNominationPage : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         loadApprovalsData()
+    }
+    
+    func setupView() {
+        approveButton?.isHidden = isComingFromNominationPage
+        rejectButton?.isHidden = isComingFromNominationPage
+        messageContainerView?.isHidden = isComingFromNominationPage
+        approveButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
+        rejectButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
+        messageContainerViewConstraints?.constant = isComingFromNominationPage ? 0 : 51
     }
     
     func loadApprovalsData(){
@@ -90,7 +108,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! BOUSApprovalAwardLevelTableViewCell
             if jsonDataValues != nil {
                 cell.awardType.text = jsonDataValues.nomination.badges.name
-                cell.ptsLbl.text = jsonDataValues.nomination.badges.points
+                cell.ptsLbl.text = jsonDataValues.nomination.badges.award_points
                 mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: jsonDataValues.nomination.badges.icon ?? "")
             }
             return cell
