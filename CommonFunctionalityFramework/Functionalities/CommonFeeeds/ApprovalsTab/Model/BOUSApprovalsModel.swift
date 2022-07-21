@@ -30,12 +30,13 @@ struct nomination : Decodable {
     let badges : badges
     let user_strength : user_strength
     let nominated_team_member : nominated_teamMember
+    let nom_status : String
 }
 
 struct badges : Decodable {
     let name: String
     let icon : String
-    let points : String
+    let award_points : String
 }
 
 struct user_strength : Decodable {
