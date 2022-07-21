@@ -90,8 +90,9 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) Points"
         cell.timeRemaining.text = "\(dataValue.nomination.nom_status)"
         cell.timeRemaining.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 6.0)
-        cell.timeRemaining.backgroundColor = Rgbconverter.HexToColor("#FFA412", alpha: 0.1)
-        cell.timeRemaining.textColor = Rgbconverter.HexToColor("#FFA412", alpha: 1.0)
+        cell.timeRemaining.backgroundColor = Rgbconverter.HexToColor(dataValue.nomination.nom_status_color, alpha: 0.1)
+        cell.timeRemaining.textColor = Rgbconverter.HexToColor(dataValue.nomination.nom_status_color, alpha: 1.0)
+        cell.usrImg.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         return cell
         
     }
@@ -117,9 +118,9 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
     }
     
     func getCreationDate(jsonData : BOUSApprovalDataResponseValues) -> String? {
-        if !jsonData.time_left.isEmpty{
+        if !jsonData.nomination.created.isEmpty{
             let dateInFormate = jsonData.time_left.getdateFromStringFrom(dateFormat: "yyyy-MM-dd")
-            return "\(dateInFormate.day) \(dateInFormate.monthName.prefix(3))"
+            return "\(dateInFormate.monthName) \(dateInFormate.day)"
         }else{
             return ""
         }
