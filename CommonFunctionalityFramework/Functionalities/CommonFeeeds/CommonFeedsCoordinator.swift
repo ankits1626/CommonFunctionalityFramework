@@ -50,6 +50,12 @@ public class CommonFeedsCoordinator {
         return feedsVc
     }
     
+    public func getNominationView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
+        let storyBoard : UIStoryboard = UIStoryboard(name: "CommonFeeds", bundle:nil)
+        let nominationViewController = storyBoard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
+        return nominationViewController
+    }
+    
     public func getApprovalsView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
         
         let storyboardName = "CommonFeeds"
