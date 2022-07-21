@@ -10,6 +10,7 @@ import UIKit
 
 class BOUSApprovalsListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var usrImg: UIImageView!
     @IBOutlet weak var timeRemaining: UILabel!
     @IBOutlet weak var userStrengthDescription: UILabel!
     @IBOutlet weak var userStrengthTitle: UILabel!
@@ -19,7 +20,7 @@ class BOUSApprovalsListTableViewCell: UITableViewCell {
     @IBOutlet weak var awardThumbnail: UIImageView!
     @IBOutlet weak var awardType: UILabel!
     @IBOutlet weak var awardPoints: UILabel!
-    
+    var mediaFetcher: CFFMediaCoordinatorProtocol!
     
     override func awakeFromNib() {
         super.awakeFromNib()
