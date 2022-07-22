@@ -1,17 +1,15 @@
 //
-//  CommonLikesSectionTableViewCell.swift
+//  BOUSReactionsScrollListTableViewCell.swift
 //  CommonFunctionalityFramework
 //
-//  Created by Suyesh Kandpal on 04/05/22.
+//  Created by Puneeeth on 22/07/22.
 //  Copyright © 2022 Rewardz. All rights reserved.
 //
 
 import UIKit
 
-class CommonLikesSectionTableViewCell: UITableViewCell {
+class BOUSReactionsScrollListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var reactionCountBtn: BlockButton!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,13 +23,14 @@ class CommonLikesSectionTableViewCell: UITableViewCell {
     
 }
 
-class CommonLikesSectionTableViewCellType : CommonFeedCellTypeProtocol{
-   
+class BOUSReactionScrollListTableViewCellType : FeedCellTypeProtocol{
+    
     var cellIdentifier: String{
-        return "CommonLikesSectionTableViewCell"
+        return "BOUSReactionsScrollListTableViewCell"
     }
     
     var cellNib: UINib?{
-        return UINib(nibName: "CommonLikesSectionTableViewCell", bundle: Bundle(for: CommonLikesSectionTableViewCell.self))
+        return UINib(nibName: "BOUSReactionsScrollListTableViewCell", bundle: Bundle(for: BOUSReactionsScrollListTableViewCell.self))
     }
 }
+

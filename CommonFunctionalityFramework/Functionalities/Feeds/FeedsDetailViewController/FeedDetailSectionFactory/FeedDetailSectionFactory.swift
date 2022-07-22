@@ -41,7 +41,9 @@ class FeedDetailSectionFactory {
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
             FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
-            FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator()
+            FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator(),
+            FeedDetailOutstandingTableViewCellType().cellIdentifier :
+                BOUSDetailFeedOutstandingTableViewCellCoordinator()
         ]
     }()
     
@@ -201,7 +203,12 @@ extension FeedDetailSectionFactory{
         var rows = [FeedCellTypeProtocol] ()
         rows.append(FeedTopTableViewCellType())
         //if feed!.getFeedTitle() != nil {
+        
+        if feed!.getPostType() == .Nomination {
+            rows.append(FeedDetailOutstandingTableViewCellType())
+        }else {
             rows.append(FeedTitleTableViewCellType())
+        }
         //}
 //        if feed!.getFeedDescription() != nil{
 //            rows.append(FeedTextTableViewCellType())

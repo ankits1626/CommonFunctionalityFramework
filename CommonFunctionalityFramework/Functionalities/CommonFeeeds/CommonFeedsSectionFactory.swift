@@ -29,6 +29,8 @@ protocol CommonFeedsDelegate : class {
     func submitPollAnswer(feedIdentifier : Int64)
     func showAllClaps(feedIdentifier : Int64)
     func pinToPost(feedIdentifier : Int64, isAlreadyPinned : Bool)
+    func showPostReactions(feedIdentifier : Int64)
+    func postReaction(feedId: Int64, reactionType: String)
 }
 
 class CommonFeedsSectionFactory{

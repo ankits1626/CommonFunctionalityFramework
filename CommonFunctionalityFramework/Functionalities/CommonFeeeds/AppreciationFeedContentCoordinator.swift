@@ -21,7 +21,8 @@ class AppreciationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol
             CommonLikesSectionTableViewCellType().cellIdentifier : LikesSectionTableViewCellCoordinator(),
             ImageViewTableViewCellType().cellIdentifier : ImageViewSectionTableViewCellCoordinator(),
             CommonPressLikeButtonTableViewCellType().cellIdentifier : CommonLikesTableViewCellCoordinator(),
-            CommonOutastandingImageTableViewCellType().cellIdentifier : OutsandingImageTableViewCellCoordinator()
+            CommonOutastandingImageTableViewCellType().cellIdentifier : OutsandingImageTableViewCellCoordinator(),
+            BOUSSingleImageTableViewCellType().cellIdentifier : BOUSSingleImageTableViewCellCoordinator()
         ]
     }()
 

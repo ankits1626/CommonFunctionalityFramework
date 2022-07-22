@@ -40,9 +40,6 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQI-Li-8PT" customClass="ReactionButton" customModule="Reactions">
                                                         <rect key="frame" x="0.0" y="0.0" width="198.5" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <connections>
-                                                            <action selector="facebookButtonReactionTouchedUpAction:" destination="eGz-uI-bVt" eventType="valueChanged" id="xR7-Ax-GgW"/>
-                                                        </connections>
                                                     </view>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Md-7a-YEM" userLabel="Claps Container">
                                                         <rect key="frame" x="198.5" y="0.0" width="44" height="44"/>
