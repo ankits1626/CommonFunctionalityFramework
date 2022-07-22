@@ -16,7 +16,7 @@ class BOUSReactionPostWorker  {
     init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func postReaction(postId: Int, reactionType: String, completionHandler: @escaping BOUSReactionPostWorkerResultHandler) {
+    func postReaction(postId: Int, reactionType: Int, completionHandler: @escaping BOUSReactionPostWorkerResultHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: BOUSReactionPostWorkerRequestGenerator(feedIdentifier: postId, reactionType: reactionType, networkRequestCoordinator: networkRequestCoordinator),
@@ -35,9 +35,9 @@ class BOUSReactionPostWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     var requestBuilder: APIRequestBuilderProtocol
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var feedIdentifier : Int
-    var reactionType : String
+    var reactionType : Int
     
-    init(feedIdentifier: Int, reactionType: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    init(feedIdentifier: Int, reactionType: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
         self.reactionType = reactionType
         self.networkRequestCoordinator = networkRequestCoordinator
@@ -48,7 +48,7 @@ class BOUSReactionPostWorkerRequestGenerator: APIRequestGeneratorProtocol  {
         get{
             if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                 let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: baseUrl + "feeds/api/posts/1454/appreciate/"),
+                    url: URL(string: baseUrl + "feeds/api/posts/\(feedIdentifier)/appreciate/"),
                     method: .POST,
                     httpBodyDict: [
                         "type" : 0

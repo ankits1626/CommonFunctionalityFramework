@@ -84,7 +84,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         cell.nominatedBy.text = "by \(dataValue.nomination.nominator_name)"
         cell.nominatedDate.text = "\(dataValue.nomination.created)"
         cell.timeRemaining.text = "\(dataValue.time_left)"
-        cell.awardPoints.text = "\(dataValue.nomination.badges.points)"
+        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points)"
         cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
         cell.userStrengthDescription.text = "\(dataValue.nomination.user_strength.message)"
         mediaFetcher.fetchImageAndLoad(cell.awardThumbnail, imageEndPoint: dataValue.nomination.badges.icon ?? "")

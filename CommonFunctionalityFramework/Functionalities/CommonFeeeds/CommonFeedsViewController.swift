@@ -232,11 +232,26 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     }
     
     func postReaction(feedId: Int64, reactionType: String) {
-        BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: reactionType){ (result) in
+        var reactionId = Int()
+        if reactionType == "Like" {
+            reactionId = 0
+        }else if reactionType == "Love" {
+            reactionId = 3
+        }else if reactionType == "Clap" {
+            reactionId = 6
+        }else if reactionType == "Celebrate" {
+            reactionId = 1
+        }else if reactionType == "Support" {
+            reactionId = 2
+        }else {
+            reactionId = 1
+        }
+        
+        BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: reactionId){ (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(_):
-                    
+                    break
                 case .SuccessWithNoResponseData:
                     fallthrough
                 case .Failure(_):

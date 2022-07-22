@@ -119,6 +119,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     }
     
     func getUserReactionType() -> Int? {
+        print("reaction \( rawFeedDictionary["user_reaction_type"] as? Int)")
         return rawFeedDictionary["user_reaction_type"] as? Int
     }
     
