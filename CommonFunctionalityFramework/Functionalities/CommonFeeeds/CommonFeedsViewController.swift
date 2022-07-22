@@ -45,7 +45,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     
     private var frc : NSFetchedResultsController<ManagedPost>?
     private var pollAnswerSubmitter : PollAnswerSubmitter?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForPostUpdateNotifications()
@@ -99,18 +99,18 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     @objc private func loadFeeds(){
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
             nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTapType) {[weak self] (result) in
-            DispatchQueue.main.async {
-                self?.feedsTable?.loadCFFControl?.endLoading()
-                switch result{
-                case .Success(let result):
-                    self?.handleFetchedFeedsResult(fetchedfeeds: result)
-                case .SuccessWithNoResponseData:
-                    ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
-                case .Failure(let error):
-                    ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                DispatchQueue.main.async {
+                    self?.feedsTable?.loadCFFControl?.endLoading()
+                    switch result{
+                    case .Success(let result):
+                        self?.handleFetchedFeedsResult(fetchedfeeds: result)
+                    case .SuccessWithNoResponseData:
+                        ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
+                    case .Failure(let error):
+                        ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                    }
                 }
             }
-        }
     }
     
     private func handleFetchedFeedsResult (fetchedfeeds : FetchedFeedModel){
@@ -206,6 +206,8 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension CommonFeedsViewController : CommonFeedsDelegate{
+   
+    
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
         //
     }
@@ -217,94 +219,135 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     func pinToPost(feedIdentifier : Int64, isAlreadyPinned: Bool) {
         //
     }
+    
+    func showPostReactions(feedIdentifier : Int64) {
+        let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
+        let controller = storyboard.instantiateViewController(withIdentifier: "BOUSReactionsListViewController") as! BOUSReactionsListViewController
+        controller.postId = Int(feedIdentifier)
+        controller.requestCoordinator = requestCoordinator
+        controller.mediaFetcher = mediaFetcher
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func postReaction(feedId: Int64, reactionType: String) {
+        var reactionId = Int()
+        if reactionType == "Like" {
+            reactionId = 0
+        }else if reactionType == "Love" {
+            reactionId = 3
+        }else if reactionType == "Clap" {
+            reactionId = 6
+        }else if reactionType == "Celebrate" {
+            reactionId = 1
+        }else if reactionType == "Support" {
+            reactionId = 2
+        }else {
+            reactionId = 1
+        }
         
+        BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: reactionId){ (result) in
+            DispatchQueue.main.async {
+                switch result{
+                case .Success(_):
+                    break
+                case .SuccessWithNoResponseData:
+                    fallthrough
+                case .Failure(_):
+                    ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+                }
+            }
+        }
+    }
+    
     private func showPintoPostConfirmation(_ feedIdentifier : Int64, isAlreadyPinned: Bool){
-//        let pinPostDrawer = PintoTopConfirmationDrawer(
-//            nibName: "PintoTopConfirmationDrawer",
-//            bundle: Bundle(for: PintoTopConfirmationDrawer.self)
-//        )
-//        pinPostDrawer.themeManager = themeManager
-//        pinPostDrawer.isAlreadyPinned = isAlreadyPinned
-//        pinPostDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
-//        pinPostDrawer.confirmedCompletion = {postFrequency in
-//            PostPinWorker(networkRequestCoordinator: self.requestCoordinator).postPin(feedIdentifier, frequency: postFrequency) { (result) in
-//                DispatchQueue.main.async {
-//                    switch result{
-//                    case .Success(_):
-//                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Post is unpinned successfully".localized : "Post is pinned successfully".localized, okActionHandler: { (_) in
-//                          NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
-//                        })
-//                    case .SuccessWithNoResponseData:
-//                        fallthrough
-//                    case .Failure(_):
-//                        ErrorDisplayer.showError(errorMsg: "Failed to pin post, please try again.".localized) { (_) in}
-//                    }
-//                }
-//            }
-//        }
-//        do{
-//            try pinPostDrawer.presentDrawer()
-//        }catch {
-//
-//        }
+        //        let pinPostDrawer = PintoTopConfirmationDrawer(
+        //            nibName: "PintoTopConfirmationDrawer",
+        //            bundle: Bundle(for: PintoTopConfirmationDrawer.self)
+        //        )
+        //        pinPostDrawer.themeManager = themeManager
+        //        pinPostDrawer.isAlreadyPinned = isAlreadyPinned
+        //        pinPostDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
+        //        pinPostDrawer.confirmedCompletion = {postFrequency in
+        //            PostPinWorker(networkRequestCoordinator: self.requestCoordinator).postPin(feedIdentifier, frequency: postFrequency) { (result) in
+        //                DispatchQueue.main.async {
+        //                    switch result{
+        //                    case .Success(_):
+        //                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Post is unpinned successfully".localized : "Post is pinned successfully".localized, okActionHandler: { (_) in
+        //                          NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
+        //                        })
+        //                    case .SuccessWithNoResponseData:
+        //                        fallthrough
+        //                    case .Failure(_):
+        //                        ErrorDisplayer.showError(errorMsg: "Failed to pin post, please try again.".localized) { (_) in}
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        do{
+        //            try pinPostDrawer.presentDrawer()
+        //        }catch {
+        //
+        //        }
     }
     
     func showAllClaps(feedIdentifier: Int64) {
-//        print("show all claps for \(feedIdentifier)")
-//        let likeListVC = LikeListViewController(
-//            feedIdentifier: feedIdentifier,
-//            requestCoordinator: requestCoordinator,
-//            mediaFetcher: mediaFetcher
-//        )
-//        feedCoordinatorDelegate.showPostLikeList(likeListVC, presentationOption: .Navigate) { (topBarModel) in
-//            likeListVC.containerTopBarModel = topBarModel
-//        }
+        //        print("show all claps for \(feedIdentifier)")
+        //        let likeListVC = LikeListViewController(
+        //            feedIdentifier: feedIdentifier,
+        //            requestCoordinator: requestCoordinator,
+        //            mediaFetcher: mediaFetcher
+        //        )
+        //        feedCoordinatorDelegate.showPostLikeList(likeListVC, presentationOption: .Navigate) { (topBarModel) in
+        //            likeListVC.containerTopBarModel = topBarModel
+        //        }
     }
     
     func submitPollAnswer(feedIdentifier : Int64){
         print("post answer")
-//        if let selectedOption = pollSelectedAnswerMapper.getSelectedOption(feedIdentifier: feedIdentifier){
-//            PollAnswerSubmitter(networkRequestCoordinator: requestCoordinator, feedIdentifier: feedIdentifier, answer: selectedOption).submitAnswer { (result) in
-//                switch result{
-//                case .Success(result: let result):
-//                    print("<<<<<<<< update raw poll after answer submission")
-//                    DispatchQueue.main.async {[weak self] in
-//                        self?.pollSelectedAnswerMapper.removeSelectedOptionAfterAnswerIsPosted(feedIdentifier: feedIdentifier)
-//                    }
-//                    CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
-//                        let _ = result.getManagedObject() as! ManagedPost
-//                        CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
-//                            CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
-//                        }
-//                    }
-//
-//                case .SuccessWithNoResponseData:
-//                    fallthrough
-//                case .Failure(error: _):
-//                    print("<<<<<<<<<< like/unlike call completed \(result)")
-//                }
-//
-//            }
-//        }else{
-//            ErrorDisplayer.showError(errorMsg: "Please select an option.".localized) { (_) in
-//
-//            }
-//        }
+        //        if let selectedOption = pollSelectedAnswerMapper.getSelectedOption(feedIdentifier: feedIdentifier){
+        //            PollAnswerSubmitter(networkRequestCoordinator: requestCoordinator, feedIdentifier: feedIdentifier, answer: selectedOption).submitAnswer { (result) in
+        //                switch result{
+        //                case .Success(result: let result):
+        //                    print("<<<<<<<< update raw poll after answer submission")
+        //                    DispatchQueue.main.async {[weak self] in
+        //                        self?.pollSelectedAnswerMapper.removeSelectedOptionAfterAnswerIsPosted(feedIdentifier: feedIdentifier)
+        //                    }
+        //                    CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+        //                        let _ = result.getManagedObject() as! ManagedPost
+        //                        CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+        //                            CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+        //                        }
+        //                    }
+        //
+        //                case .SuccessWithNoResponseData:
+        //                    fallthrough
+        //                case .Failure(error: _):
+        //                    print("<<<<<<<<<< like/unlike call completed \(result)")
+        //                }
+        //
+        //            }
+        //        }else{
+        //            ErrorDisplayer.showError(errorMsg: "Please select an option.".localized) { (_) in
+        //
+        //            }
+        //        }
     }
     
     func selectPollAnswer(feedIdentifier : Int64, pollOption: PollOption){
         print("select answer for feed \(feedIdentifier), answer : \(pollOption.getNewtowrkPostableAnswer())")
-//        pollSelectedAnswerMapper.toggleOptionSelection(pollId: feedIdentifier, selectedOption: pollOption)
-//        //reload cells
-//        if let feedItem = getFeedItem(feedIdentifier: feedIdentifier){
-//            CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
-//                let post = ((feedItem as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
-//                post?.pollUpdatedTrigger = NSDate()
-//                CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
-//                    CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
-//                }
-//            }
-//        }
+        //        pollSelectedAnswerMapper.toggleOptionSelection(pollId: feedIdentifier, selectedOption: pollOption)
+        //        //reload cells
+        //        if let feedItem = getFeedItem(feedIdentifier: feedIdentifier){
+        //            CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+        //                let post = ((feedItem as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
+        //                post?.pollUpdatedTrigger = NSDate()
+        //                CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+        //                    CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+        //                }
+        //            }
+        //        }
     }
     
     func toggleClapForPost(feedIdentifier: Int64) {
@@ -343,7 +386,7 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     
     func showMediaBrowser(feedIdentifier: Int64, scrollToItemIndex: Int) {
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier),
-            let mediaItems = feed.getMediaList(){
+           let mediaItems = feed.getMediaList(){
             let mediaBrowser = CFFMediaBrowserViewController(
                 mediaList: mediaItems,
                 mediaFetcher: mediaFetcher,

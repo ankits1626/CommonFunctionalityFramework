@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Reactions
 
 class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
-    
+    var reactionBtn : ReactionButton?
     var cellType: CommonFeedCellTypeProtocol{
         return CommonPressLikeButtonTableViewCellType()
     }
@@ -18,10 +19,13 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
         return 59
     }
     
+    private var inputModel : CommonFeedCellLoadDataModel? = nil
+    
     
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? CommonPressLikeButtonTableViewCell{
+            self.inputModel = inputModel
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.seperator?.backgroundColor = .seperatorColor
             cell.commentsCountLabel?.text = feed.getNumberOfComments()
@@ -53,7 +57,38 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             cell.showAllClapsButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
                 inputModel.delegate?.showAllClaps(feedIdentifier: feed.feedIdentifier)
             })
+            
+            if feed.getUserReactionType() == 0 {
+                cell.reactionView.reaction  = Reaction.facebook.like
+            }else if feed.getUserReactionType() == 3 {
+                cell.reactionView.reaction  = Reaction.facebook.love
+            }else if feed.getUserReactionType() == 6 {
+                cell.reactionView.reaction  = Reaction.facebook.haha
+            }else if feed.getUserReactionType() == 1 {
+                cell.reactionView.reaction  = Reaction.facebook.wow
+            }else if feed.getUserReactionType() == 2 {
+                cell.reactionView.reaction  = Reaction.facebook.sad
+            }
+            
+            cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .touchUpInside)
+            cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .valueChanged)
+            cell.reactionView.tag = inputModel.targetIndexpath.section
+            self.reactionBtn = cell.reactionView
         }
+    }
+    
+    @objc func facebookButtonReactionTouchedUpAction(_ sender: AnyObject) {
+        if reactionBtn?.isSelected == false {
+            reactionBtn?.reaction   = Reaction.facebook.like
+        }
+        
+        if let feed = inputModel?.datasource.getFeedItem(sender.tag) {
+            print(feed.feedIdentifier)
+            print(reactionBtn?.reaction.id)
+            
+            inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: (reactionBtn?.reaction.id)!)
+        }
+
     }
     
 }
