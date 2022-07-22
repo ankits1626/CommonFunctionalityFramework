@@ -2555,6 +2555,7 @@ nominations?</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emptyViewContainer" destination="fPh-wQ-I18" id="QWn-GF-62q"/>
                         <outlet property="selectAllBtn" destination="1RB-IN-77C" id="ryJ-Tv-jYk"/>
                         <outlet property="tableView" destination="U20-AJ-RTB" id="IVK-zz-xyg"/>
                     </connections>
