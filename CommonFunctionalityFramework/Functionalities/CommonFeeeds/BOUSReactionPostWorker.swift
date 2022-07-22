@@ -48,9 +48,11 @@ class BOUSReactionPostWorkerRequestGenerator: APIRequestGeneratorProtocol  {
         get{
             if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                 let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: baseUrl + "feeds/api/posts/1454/appreciate/?type=0"),
+                    url: URL(string: baseUrl + "feeds/api/posts/1454/appreciate/"),
                     method: .POST,
-                    httpBodyDict: nil
+                    httpBodyDict: [
+                        "type" : 0
+                    ]
                 )
                 return req
             }

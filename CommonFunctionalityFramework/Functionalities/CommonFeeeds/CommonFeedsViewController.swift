@@ -236,7 +236,7 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
             DispatchQueue.main.async {
                 switch result{
                 case .Success(_):
-                    fallthrough
+                    
                 case .SuccessWithNoResponseData:
                     fallthrough
                 case .Failure(_):
