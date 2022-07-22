@@ -215,6 +215,8 @@
 		BE54420D27F30BFF00CBF6D9 /* FeedsImageDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */; };
 		BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */; };
 		BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */; };
+		BE7C9AFF288AD0CA00E7CAE4 /* NoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C9AFD288AD0CA00E7CAE4 /* NoEntryViewController.swift */; };
+		BE7C9B00288AD0CA00E7CAE4 /* NoEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7C9AFE288AD0CA00E7CAE4 /* NoEntryViewController.xib */; };
 		BE94C30828212E4600E323E1 /* CommonFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE94C30628212E4600E323E1 /* CommonFeedsViewController.swift */; };
 		BE94C30928212E4600E323E1 /* CommonFeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE94C30728212E4600E323E1 /* CommonFeedsViewController.xib */; };
 		BE94C30B28213F7D00E323E1 /* CommonFeedsSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE94C30A28213F7C00E323E1 /* CommonFeedsSectionFactory.swift */; };
@@ -485,6 +487,8 @@
 		BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsImageDrawer.swift; sourceTree = "<group>"; };
 		BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsImageDrawer.xib; sourceTree = "<group>"; };
 		BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
+		BE7C9AFD288AD0CA00E7CAE4 /* NoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEntryViewController.swift; sourceTree = "<group>"; };
+		BE7C9AFE288AD0CA00E7CAE4 /* NoEntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoEntryViewController.xib; sourceTree = "<group>"; };
 		BE94C30628212E4600E323E1 /* CommonFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedsViewController.swift; sourceTree = "<group>"; };
 		BE94C30728212E4600E323E1 /* CommonFeedsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonFeedsViewController.xib; sourceTree = "<group>"; };
 		BE94C30A28213F7C00E323E1 /* CommonFeedsSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedsSectionFactory.swift; sourceTree = "<group>"; };
@@ -1584,6 +1588,8 @@
 			children = (
 				BE514A1728894A19002EA271 /* BOUSNominationViewController.swift */,
 				BE514A1928894BB4002EA271 /* GetBOUSNominationWorker.swift */,
+				BE7C9AFD288AD0CA00E7CAE4 /* NoEntryViewController.swift */,
+				BE7C9AFE288AD0CA00E7CAE4 /* NoEntryViewController.xib */,
 			);
 			path = Nomination;
 			sourceTree = "<group>";
@@ -1816,6 +1822,7 @@
 				BEC2B26926FD9AB6008417C3 /* PollOptionsTableViewCell.xib in Resources */,
 				BE500D8D2822ACCD00423E5A /* CommonNominationTableViewCell.xib in Resources */,
 				BEC2B28D26FDA254008417C3 /* ClappedByTableViewCell.xib in Resources */,
+				BE7C9B00288AD0CA00E7CAE4 /* NoEntryViewController.xib in Resources */,
 				BEC2B27326FD9DBD008417C3 /* TagUserTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1959,6 +1966,7 @@
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
 				987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */,
+				BE7C9AFF288AD0CA00E7CAE4 /* NoEntryViewController.swift in Sources */,
 				987D0BAF2583DA58001A0F07 /* TagUserTableViewCell.swift in Sources */,
 				BC788DD228995E7E004C612F /* FeedsOrganisationFetcher.swift in Sources */,
 				BC37F2A628894F580075E7CB /* FeedOrgaisationTableViewHeader.swift in Sources */,

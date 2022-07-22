@@ -18,6 +18,13 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
     var loader = MFLoader()
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var statusType : String = ""
+    @IBOutlet weak var emptyViewContainer : UIView?
+    lazy private var emptyResultView: NoEntryViewController = {
+        return NoEntryViewController(
+            nibName: "NoEntryViewController",
+            bundle: Bundle(for: NoEntryViewController.self)
+        )
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +38,6 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
                 self.view.removeBluerLoader()
                 switch result{
                 case .Success(result: let response):
-                    if let dataValue = response["results"] as? NSArray {
-                        print(dataValue)
-                    }
                     do {
                         let data = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
                         self.constructData(data: data)
@@ -54,6 +58,17 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
             let decoder = JSONDecoder()
             let jsonData = try decoder.decode(BOUSApprovalData.self, from: data)
              jsonDataValues =  jsonData.results
+            if jsonDataValues.count == 0 {
+                var emptyMessage : String!
+                emptyMessage = "Opps! You dont have any nomination in \(statusType)."
+                self.emptyResultView.showEmptyMessageView(
+                    message: emptyMessage,
+                    parentView: self.emptyViewContainer!,
+                    parentViewController: self
+                )
+            }else{
+                self.emptyResultView.hideEmptyMessageView()
+            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
