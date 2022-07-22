@@ -24,7 +24,8 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
             CommonPressLikeButtonTableViewCellType().cellIdentifier : CommonLikesTableViewCellCoordinator(),
             CommonOutastandingImageTableViewCellType().cellIdentifier : OutsandingImageTableViewCellCoordinator(),
             BOUSFeedGrayDividerCellType().cellIdentifier :
-                BOUSGrayDividerCoordinator()
+                BOUSGrayDividerCoordinator(),
+            BOUSSingleImageTableViewCellType().cellIdentifier : BOUSSingleImageTableViewCellCoordinator()
         ]
     }()
 
@@ -59,10 +60,27 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
             rows.append(CommonFeedsTopTableViewCellType())
             rows.append(CommonAppreciationSubjectTableViewCellType())
            // rows.append(ImageViewTableViewCellType())
+            switch feed.getMediaCountState() {
+            case .None:
+                break
+            case .OneMediaItemPresent(let mediaType):
+                switch mediaType {
+                case .Image:
+                    rows.append(BOUSSingleImageTableViewCellType())
+                case .Video:
+                    rows.append(BOUSSingleImageTableViewCellType())
+                }
+            case .TwoMediaItemPresent:
+                fallthrough
+            case .MoreThanTwoMediItemPresent:
+                rows.append(BOUSSingleImageTableViewCellType())
+            }
             rows.append(CommonLikesSectionTableViewCellType())
             rows.append(CommonPressLikeButtonTableViewCellType())
             rows.append(BOUSFeedGrayDividerCellType())
         }
+        
+       
 //        if feedIndex == 0 {
 //            rows.append(CommonFeedsTopTableViewCellType())
 //            rows.append(CommonAppreciationSubjectTableViewCellType())

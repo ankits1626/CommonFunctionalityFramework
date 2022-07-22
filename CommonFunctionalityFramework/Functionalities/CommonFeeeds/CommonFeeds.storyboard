@@ -21,10 +21,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Reactions List View Controller-->
         <scene sceneID="lBJ-3Y-948">
             <objects>
-                <viewController id="tcN-sr-djk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BOUSReactionsListViewController" id="tcN-sr-djk" customClass="BOUSReactionsListViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Orc-br-GFt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,6 +38,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81V-Of-W2E">
                                                 <rect key="frame" x="7" y="7" width="22" height="22"/>
                                                 <state key="normal" image="icon_back_white-2"/>
+                                                <connections>
+                                                    <action selector="backPressed:" destination="tcN-sr-djk" eventType="touchUpInside" id="AFk-xv-xqe"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.2290067375" green="0.2600655556" blue="0.50499862429999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -78,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="225" width="414" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="67" id="66R-jE-mdY" customClass="BOUSUserListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="67" id="66R-jE-mdY" customClass="BOUSReactionListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="66R-jE-mdY" id="2v1-7O-ZJe">
@@ -139,13 +142,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="checkBoxBtn" destination="FAt-qg-ezb" id="2mR-HK-9OO"/>
-                                            <outlet property="userImg" destination="maL-op-Pug" id="y09-5c-U2z"/>
-                                            <outlet property="userInfo" destination="ZuO-QO-GmZ" id="Epo-fu-F6E"/>
-                                            <outlet property="userName" destination="l6X-8o-G8W" id="JN5-zC-6De"/>
+                                            <outlet property="userImg" destination="maL-op-Pug" id="fh6-wk-hBL"/>
+                                            <outlet property="userInfo" destination="ZuO-QO-GmZ" id="eBf-XW-gO1"/>
+                                            <outlet property="userName" destination="l6X-8o-G8W" id="cVl-4K-qrp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tcN-sr-djk" id="mgO-id-NN4"/>
+                                    <outlet property="delegate" destination="tcN-sr-djk" id="wmx-7l-cZa"/>
+                                </connections>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TMF-nx-dWd">
                                 <rect key="frame" x="0.0" y="155" width="414" height="62"/>
@@ -160,7 +166,7 @@
                                     <inset key="sectionInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="d8K-Md-vvB" customClass="BOUSEcardCategoryListCollectionViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="d8K-Md-vvB" customClass="BOUSReactionsCategoryCollectionViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                         <rect key="frame" x="16" y="0.0" width="126" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="imM-TN-dnm">
@@ -170,8 +176,11 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zqi-uj-EMU">
                                                     <rect key="frame" x="32" y="14" width="63" height="23"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_points-2" translatesAutoresizingMaskIntoConstraints="NO" id="upp-6V-YXb">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="design_so-pencil-2" translatesAutoresizingMaskIntoConstraints="NO" id="upp-6V-YXb">
                                                             <rect key="frame" x="0.0" y="0.0" width="36" height="23"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="36" id="sVo-bS-leR"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2Q-UP-ah5">
                                                             <rect key="frame" x="44" y="0.0" width="19" height="23"/>
@@ -180,6 +189,15 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="upp-6V-YXb" firstAttribute="leading" secondItem="zqi-uj-EMU" secondAttribute="leading" id="2GZ-T4-9yK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="upp-6V-YXb" secondAttribute="bottom" id="9EE-7B-gF1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="y2Q-UP-ah5" secondAttribute="bottom" id="Hap-cY-eVh"/>
+                                                        <constraint firstItem="y2Q-UP-ah5" firstAttribute="leading" secondItem="upp-6V-YXb" secondAttribute="trailing" constant="8" symbolic="YES" id="bdI-bb-SS1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="y2Q-UP-ah5" secondAttribute="trailing" id="dMz-vx-ZtH"/>
+                                                        <constraint firstItem="upp-6V-YXb" firstAttribute="top" secondItem="zqi-uj-EMU" secondAttribute="top" id="exv-ae-L4a"/>
+                                                        <constraint firstItem="y2Q-UP-ah5" firstAttribute="top" secondItem="zqi-uj-EMU" secondAttribute="top" id="rRG-fK-y8B"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -192,10 +210,15 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="126" height="50"/>
                                         <connections>
-                                            <outlet property="TxtLbl" destination="y2Q-UP-ah5" id="s3W-Aq-Tzt"/>
+                                            <outlet property="TxtLbl" destination="y2Q-UP-ah5" id="66l-XY-saA"/>
+                                            <outlet property="leftImg" destination="upp-6V-YXb" id="Khc-N7-D9j"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="tcN-sr-djk" id="S5n-dX-iML"/>
+                                    <outlet property="delegate" destination="tcN-sr-djk" id="uv3-A0-gsY"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0S9-7y-ET7"/>
@@ -213,6 +236,10 @@
                             <constraint firstItem="oXg-7D-fOG" firstAttribute="leading" secondItem="0S9-7y-ET7" secondAttribute="leading" id="yXm-KF-YqP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="TMF-nx-dWd" id="SjM-oI-DbQ"/>
+                        <outlet property="tableView" destination="oXg-7D-fOG" id="glp-DM-lEa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DM3-kr-7Uj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -994,7 +1021,7 @@
                                     <action selector="appovalTapped:" destination="xyF-ck-DHD" eventType="touchUpInside" id="0QM-kt-a9F"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vwz-dJ-L4J">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vwz-dJ-L4J">
                                 <rect key="frame" x="25" y="705" width="364" height="51"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_points-2" translatesAutoresizingMaskIntoConstraints="NO" id="RbD-WJ-BV3">
@@ -1054,10 +1081,10 @@
             </objects>
             <point key="canvasLocation" x="7205.7971014492759" y="77.678571428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--Approve And Reject Nomination View Controller-->
         <scene sceneID="Bza-ZV-0aQ">
             <objects>
-                <viewController id="v7D-qj-CBn" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BOUSApproveAndRejectNominationViewController" id="v7D-qj-CBn" customClass="BOUSApproveAndRejectNominationViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="EQo-wM-fJB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1085,13 +1112,6 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-bS-qoE">
-                                        <rect key="frame" x="164" y="34" width="87" height="88"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="88" id="Hrc-dd-wDs"/>
-                                            <constraint firstAttribute="width" constant="87" id="i6Z-pf-ec4"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wpg-1B-H9Q">
                                         <rect key="frame" x="178" y="143" width="58" height="22"/>
                                         <constraints>
@@ -1142,6 +1162,9 @@ nominations?</string>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="yesPressed:" destination="v7D-qj-CBn" eventType="touchUpInside" id="24v-Ad-2Vw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uQ-3z-5NM">
                                         <rect key="frame" x="25" y="432" width="364" height="48"/>
@@ -1159,7 +1182,17 @@ nominations?</string>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="noPressed:" destination="v7D-qj-CBn" eventType="touchUpInside" id="IJM-ki-81S"/>
+                                        </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_approve" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-bS-qoE">
+                                        <rect key="frame" x="171" y="37" width="72" height="72"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="72" id="Hrc-dd-wDs"/>
+                                            <constraint firstAttribute="width" constant="72" id="i6Z-pf-ec4"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -1172,19 +1205,19 @@ nominations?</string>
                                     <constraint firstItem="geF-ex-1yL" firstAttribute="top" secondItem="von-Bt-EjB" secondAttribute="top" constant="8" id="KG9-Ul-fgQ"/>
                                     <constraint firstItem="geF-ex-1yL" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="167" id="Lpu-MP-xZB"/>
                                     <constraint firstAttribute="trailing" secondItem="5uQ-3z-5NM" secondAttribute="trailing" constant="25" id="QVJ-id-vgY"/>
-                                    <constraint firstAttribute="trailing" secondItem="n2q-bS-qoE" secondAttribute="trailing" constant="163" id="Qug-Mm-Q5f"/>
+                                    <constraint firstAttribute="trailing" secondItem="n2q-bS-qoE" secondAttribute="trailing" constant="171" id="Qug-Mm-Q5f"/>
                                     <constraint firstAttribute="trailing" secondItem="Wpg-1B-H9Q" secondAttribute="trailing" constant="178" id="RdG-la-bO5"/>
                                     <constraint firstItem="sKw-NM-Abb" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="66" id="SLc-NY-dfg"/>
-                                    <constraint firstItem="n2q-bS-qoE" firstAttribute="top" secondItem="geF-ex-1yL" secondAttribute="bottom" constant="21" id="TSn-7a-MbI"/>
+                                    <constraint firstItem="n2q-bS-qoE" firstAttribute="top" secondItem="geF-ex-1yL" secondAttribute="bottom" constant="24" id="TSn-7a-MbI"/>
                                     <constraint firstItem="fUL-w0-RAf" firstAttribute="top" secondItem="7xT-yk-cca" secondAttribute="bottom" constant="18" id="UZU-qy-SuE"/>
                                     <constraint firstAttribute="trailing" secondItem="sKw-NM-Abb" secondAttribute="trailing" constant="65" id="ccD-TE-ncz"/>
                                     <constraint firstItem="7xT-yk-cca" firstAttribute="top" secondItem="sKw-NM-Abb" secondAttribute="bottom" constant="16" id="f5w-19-Hqu"/>
-                                    <constraint firstItem="n2q-bS-qoE" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="164" id="iTD-g9-W8c"/>
+                                    <constraint firstItem="n2q-bS-qoE" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="171" id="iTD-g9-W8c"/>
                                     <constraint firstItem="5uQ-3z-5NM" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="25" id="jl7-zL-GBL"/>
                                     <constraint firstItem="7xT-yk-cca" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="26" id="pKk-wx-6h4"/>
                                     <constraint firstItem="fUL-w0-RAf" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="25" id="pQP-Wf-RbH"/>
                                     <constraint firstAttribute="trailing" secondItem="fUL-w0-RAf" secondAttribute="trailing" constant="25" id="vPO-ht-VeH"/>
-                                    <constraint firstItem="Wpg-1B-H9Q" firstAttribute="top" secondItem="n2q-bS-qoE" secondAttribute="bottom" constant="21" id="vh3-jv-eWS"/>
+                                    <constraint firstItem="Wpg-1B-H9Q" firstAttribute="top" secondItem="n2q-bS-qoE" secondAttribute="bottom" constant="34" id="vh3-jv-eWS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1200,6 +1233,17 @@ nominations?</string>
                             <constraint firstAttribute="bottom" secondItem="xG5-ap-CbI" secondAttribute="bottom" id="pJ9-on-CEc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="blurImg" destination="xG5-ap-CbI" id="eWe-wk-0hU"/>
+                        <outlet property="holderViewHeightConstraint" destination="DrM-Co-6KO" id="GaR-V6-PIz"/>
+                        <outlet property="imageType" destination="n2q-bS-qoE" id="IOP-GK-SZN"/>
+                        <outlet property="noBtn" destination="5uQ-3z-5NM" id="gj9-7b-acG"/>
+                        <outlet property="nominationDescription" destination="sKw-NM-Abb" id="uj1-As-EZr"/>
+                        <outlet property="nominationType" destination="Wpg-1B-H9Q" id="J6n-sF-YlT"/>
+                        <outlet property="rejectText" destination="7xT-yk-cca" id="4Pc-fL-7ys"/>
+                        <outlet property="textViewHeightConstraint" destination="wDE-js-jMX" id="z13-eh-309"/>
+                        <outlet property="yesBtn" destination="fUL-w0-RAf" id="C5E-5u-trU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPZ-tZ-7to" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1588,7 +1632,7 @@ nominations?</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="252" estimatedRowHeight="233" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RPH-MX-MG8">
-                                <rect key="frame" x="0.0" y="50" width="414" height="751"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="386"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="252" id="dGN-kg-wrm" customClass="BOUSApprovalsListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
@@ -1748,7 +1792,7 @@ nominations?</string>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQG-bB-FzX">
-                                <rect key="frame" x="0.0" y="809" width="414" height="39"/>
+                                <rect key="frame" x="0.0" y="460" width="414" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Duy-0Q-h8n">
                                         <rect key="frame" x="8" y="6" width="143" height="27"/>
@@ -1776,11 +1820,11 @@ nominations?</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RPH-MX-MG8" firstAttribute="top" secondItem="afB-Bc-znF" secondAttribute="bottom" constant="3" id="3Ka-Lq-GBD"/>
+                            <constraint firstItem="AQG-bB-FzX" firstAttribute="top" secondItem="RPH-MX-MG8" secondAttribute="bottom" constant="24" id="7xe-Ct-qVM"/>
                             <constraint firstItem="RPH-MX-MG8" firstAttribute="leading" secondItem="fLc-jY-Qn4" secondAttribute="leading" id="Ezg-wq-bfM"/>
                             <constraint firstItem="RPH-MX-MG8" firstAttribute="trailing" secondItem="fLc-jY-Qn4" secondAttribute="trailing" id="Fjy-Xl-cCf"/>
                             <constraint firstItem="AQG-bB-FzX" firstAttribute="leading" secondItem="fLc-jY-Qn4" secondAttribute="leading" id="G2K-tH-Mp4"/>
-                            <constraint firstAttribute="bottom" secondItem="RPH-MX-MG8" secondAttribute="bottom" constant="95" id="TSt-5A-jlM"/>
-                            <constraint firstItem="fLc-jY-Qn4" firstAttribute="bottom" secondItem="AQG-bB-FzX" secondAttribute="bottom" constant="14" id="dRc-2a-wjQ"/>
+                            <constraint firstItem="fLc-jY-Qn4" firstAttribute="bottom" secondItem="AQG-bB-FzX" secondAttribute="bottom" constant="363" id="dRc-2a-wjQ"/>
                             <constraint firstItem="afB-Bc-znF" firstAttribute="trailing" secondItem="fLc-jY-Qn4" secondAttribute="trailing" id="ewO-ft-wde"/>
                             <constraint firstItem="AQG-bB-FzX" firstAttribute="trailing" secondItem="fLc-jY-Qn4" secondAttribute="trailing" id="rvj-7J-bjp"/>
                             <constraint firstItem="afB-Bc-znF" firstAttribute="leading" secondItem="fLc-jY-Qn4" secondAttribute="leading" id="t7p-OD-JBp"/>
@@ -2300,6 +2344,7 @@ nominations?</string>
         <image name="design_so-pencil" width="22" height="22"/>
         <image name="design_so-pencil-2" width="16" height="16"/>
         <image name="firstDot" width="11.5" height="38"/>
+        <image name="icon_approve" width="72" height="72"/>
         <image name="icon_back_white" width="36" height="36"/>
         <image name="icon_back_white-2" width="22" height="22"/>
         <image name="icon_checkbox_unselected" width="24" height="24"/>

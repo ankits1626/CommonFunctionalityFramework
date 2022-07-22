@@ -40,6 +40,7 @@ protocol FeedsItemProtocol : Likeable {
     func getStrengthData() -> NSDictionary
     func getPostType() -> FeedPostType
     func getBadgesData() -> NSDictionary
+    func getUserReactionType() -> Int?
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -115,6 +116,10 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }else{
             return nil
         }
+    }
+    
+    func getUserReactionType() -> Int? {
+        return rawFeedDictionary["user_reaction_type"] as? Int
     }
     
     func getLikeToggleUrl(_ baseUrl : String) -> URL {

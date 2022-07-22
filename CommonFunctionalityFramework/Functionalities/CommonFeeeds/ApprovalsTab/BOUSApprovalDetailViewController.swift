@@ -145,9 +145,10 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     
     @IBAction func appovalTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
-        let vc = storyboard.instantiateViewController(withIdentifier: "BOUSAwardLevelProgressViewController") as! BOUSAwardLevelProgressViewController
-        //self.navigationController?.pushViewController(controller, animated: true)
-        
+        let vc = storyboard.instantiateViewController(withIdentifier: "BOUSApproveAndRejectNominationViewController") as! BOUSApproveAndRejectNominationViewController
+        vc.requestCoordinator = requestCoordinator
+        vc.postId = jsonDataValues.nomination.id
+        vc.isNominationApproved = true
         vc.modalPresentationStyle = .overCurrentContext
         var topViewController = UIApplication.shared.keyWindow?.rootViewController
         while topViewController?.presentedViewController != nil
@@ -159,9 +160,10 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     
     @IBAction func rejectTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
-        let vc = storyboard.instantiateViewController(withIdentifier: "BOUSAwardLevelProgressViewController") as! BOUSAwardLevelProgressViewController
-        //self.navigationController?.pushViewController(controller, animated: true)
-        
+        let vc = storyboard.instantiateViewController(withIdentifier: "BOUSApproveAndRejectNominationViewController") as! BOUSApproveAndRejectNominationViewController
+        vc.requestCoordinator = requestCoordinator
+        vc.postId = jsonDataValues.nomination.id
+        vc.isNominationApproved = false
         vc.modalPresentationStyle = .overCurrentContext
         var topViewController = UIApplication.shared.keyWindow?.rootViewController
         while topViewController?.presentedViewController != nil

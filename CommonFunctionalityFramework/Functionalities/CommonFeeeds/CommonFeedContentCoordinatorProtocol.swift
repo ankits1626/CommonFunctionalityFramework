@@ -35,6 +35,7 @@ struct CommonFeedContentConfigureCellModel {
     var delegate : CommonFeedsDelegate
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
+    weak var networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol?
 }
 
 protocol CommonFeedContentCoordinatorProtocol {
@@ -53,6 +54,7 @@ struct CommonFeedCellDequeueModel {
     var datasource: CommonFeedsDatasource
     var isFeedDetailPage : Bool
     weak var themeManager: CFFThemeManagerProtocol?
+    weak var networkRequestCoordinator : CFFNetworkRequestCoordinatorProtocol?
 }
 
 struct CommonFeedCellLoadDataModel {
@@ -65,6 +67,7 @@ struct CommonFeedCellLoadDataModel {
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
     var isFeedDetailPage : Bool
+    weak var networkRequestCoordinator : CFFNetworkRequestCoordinatorProtocol?
 }
 
 struct CommonFeedCellGetHeightModel {

@@ -47,7 +47,7 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDataSource, UICollec
         input.mediaFetcher.fetchImageAndLoad(cell.mediaCoverImageView, imageEndPoint: mediaItemUrl ?? "")
         cell.mediaCoverImageView?.curvedCornerControl()
         cell.pageControl?.numberOfPages = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?.count ?? 0
-        cell.pageControl?.currentPage = self.currentPage
+        cell.pageControl?.currentPage = currentPage
         if let mediaType = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?[indexPath.row].getMediaType(),
         mediaType == .Video{
              cell.playButton?.isHidden = false

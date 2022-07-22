@@ -1,17 +1,15 @@
 //
-//  CommonLikesSectionTableViewCell.swift
+//  BOUSMultipleImageTableViewCell.swift
 //  CommonFunctionalityFramework
 //
-//  Created by Suyesh Kandpal on 04/05/22.
+//  Created by Puneeeth on 21/07/22.
 //  Copyright © 2022 Rewardz. All rights reserved.
 //
 
 import UIKit
 
-class CommonLikesSectionTableViewCell: UITableViewCell {
+class BOUSMultipleImageTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var reactionCountBtn: BlockButton!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,13 +23,14 @@ class CommonLikesSectionTableViewCell: UITableViewCell {
     
 }
 
-class CommonLikesSectionTableViewCellType : CommonFeedCellTypeProtocol{
-   
+
+class BOUSMultipleImageTableViewCellType : CommonFeedCellTypeProtocol{
+    
     var cellIdentifier: String{
-        return "CommonLikesSectionTableViewCell"
+        return "BOUSMultipleImageTableViewCell"
     }
     
     var cellNib: UINib?{
-        return UINib(nibName: "CommonLikesSectionTableViewCell", bundle: Bundle(for: CommonLikesSectionTableViewCell.self))
+        return UINib(nibName: "BOUSMultipleImageTableViewCell", bundle: Bundle(for: BOUSMultipleImageTableViewCell.self))
     }
 }
