@@ -29,12 +29,26 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
         if let cell  = inputModel.targetCell as? CommonFeedsTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.userName?.text = feed.getUserName()
+            
             if let profileImageEndpoint = feed.getUserImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
             }else{
                 cell.profileImage?.image = nil
             }
             cell.dateLabel?.text = feed.getfeedCreationDate()
+             if !inputModel.datasource.shouldShowMenuOptionForFeed(){
+                cell.editFeedButton?.isHidden = true
+            }else{
+                cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+            }
+            cell.editFeedButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate?.showFeedEditOptions(
+                        targetView: cell.editFeedButton,
+                        feedIdentifier: feed.feedIdentifier
+                    )
+            })
         }
     }
     

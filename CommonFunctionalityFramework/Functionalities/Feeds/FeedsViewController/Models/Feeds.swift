@@ -25,6 +25,7 @@ protocol FeedsItemProtocol : Likeable {
     func getNumberOfComments() -> String
     func getPollState() -> PollState
     func getMediaCountState() -> MediaCountState
+    func getGiphy() -> String?
     func getFeedType() -> FeedType
     //func getPollOptions() -> [PollOption]?
     func getEditablePost() -> EditablePostProtocol
@@ -41,6 +42,7 @@ protocol FeedsItemProtocol : Likeable {
     func getPostType() -> FeedPostType
     func getBadgesData() -> NSDictionary
     func getUserReactionType() -> Int?
+    func getReactionsData() -> NSArray?
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -60,21 +62,23 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         var strengthIcon = ""
         var strengthMessage = ""
         var badgeBackgroundColor = ""
-
+        var points = ""
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
                     strengthMessage = userStengthDic["message"] as! String
                    // strengthIcon = userStengthDic["icon"] as! String
                     badgeBackgroundColor = userStengthDic["background_color"] as! String
-                    dataDic = ["strengthName" : userName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+                    points = "\(userStengthDic["points"] as! Int)"
+                    dataDic = ["strengthName" : userName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points]
                 }else {
                     if let userStengthDic = rawFeedDictionary["user_strength"] as? NSDictionary {
                         strengthName = userStengthDic["name"] as! String
                         strengthMessage = userStengthDic["message"] as! String
                         strengthIcon = userStengthDic["icon"] as! String
                         badgeBackgroundColor = userStengthDic["background_color"] as! String
-                        dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+                        points = "\(userStengthDic["points"] as! Int)"
+                        dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points]
                     }
                 }
             }
@@ -116,6 +120,14 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }else{
             return nil
         }
+    }
+    
+    func getReactionsData() -> NSArray? {
+        if let images = rawFeedDictionary["reaction_type"] as? NSArray{
+                return images
+        }
+        
+        return nil
     }
     
     func getUserReactionType() -> Int? {
@@ -248,6 +260,10 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }else{
             return .None
         }
+    }
+    
+    func getGiphy() -> String?  {
+        return  rawFeedDictionary["gif"] as? String
     }
     
     func getFeedType() -> FeedType {

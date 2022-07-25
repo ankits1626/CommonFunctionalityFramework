@@ -66,6 +66,18 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
 //            }else{
 //                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
 //            }
+            
+            if let mediaItem = feed.getMediaList()?.first,
+                let _ = mediaItem.getCoverImageUrl(){
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+            }else if let gifItem = feed.getGiphy() {
+                if !gifItem.isEmpty {
+                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                }
+            }else {
+                cell.containerView?.layer.masksToBounds = true
+                cell.containerView?.layer.cornerRadius = 8
+            }
         }
         return targetCell
     }
@@ -82,6 +94,24 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
 //            }else{
 //                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
 //            }
+            let feedTitle = feed.getStrengthData()
+            cell.feedText?.text = feedTitle["strengthMessage"] as! String
+            cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
+            cell.pointBtn.setTitle(feedTitle["points"] as! String, for: .normal)
+            inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
+            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
+            
+            if let mediaItem = feed.getMediaList()?.first,
+                let _ = mediaItem.getCoverImageUrl(){
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+            }else if let gifItem = feed.getGiphy() {
+                if !gifItem.isEmpty {
+                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                }
+            }else {
+                cell.containerView?.layer.masksToBounds = true
+                cell.containerView?.layer.cornerRadius = 8
+            }
         }
     }
     

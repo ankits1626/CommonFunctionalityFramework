@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2b-wS-JUv">
-                        <rect key="frame" x="16" y="0.0" width="397" height="115"/>
+                        <rect key="frame" x="22" y="0.0" width="397" height="115"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-72-VQr">
                                 <rect key="frame" x="6" y="0.0" width="385" height="1"/>
@@ -173,9 +173,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="U2b-wS-JUv" firstAttribute="top" secondItem="Zwh-Rb-Pkf" secondAttribute="top" id="5jh-zy-Aa8"/>
-                    <constraint firstItem="U2b-wS-JUv" firstAttribute="leading" secondItem="Zwh-Rb-Pkf" secondAttribute="leading" constant="16" id="Z3N-ph-eUx"/>
+                    <constraint firstItem="U2b-wS-JUv" firstAttribute="leading" secondItem="Zwh-Rb-Pkf" secondAttribute="leading" constant="22" id="Z3N-ph-eUx"/>
                     <constraint firstAttribute="bottom" secondItem="U2b-wS-JUv" secondAttribute="bottom" constant="10" id="aBK-hS-lfo"/>
-                    <constraint firstAttribute="trailing" secondItem="U2b-wS-JUv" secondAttribute="trailing" constant="16" id="uEe-XD-G7L"/>
+                    <constraint firstAttribute="trailing" secondItem="U2b-wS-JUv" secondAttribute="trailing" constant="10" id="uEe-XD-G7L"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="JeQ-pV-PTn"/>

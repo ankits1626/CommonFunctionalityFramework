@@ -30,6 +30,8 @@
 		0F32908F288A536C008BF09D /* BOUSReactionsScrollListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F32908D288A536C008BF09D /* BOUSReactionsScrollListTableViewCell.swift */; };
 		0F329090288A536C008BF09D /* BOUSReactionsScrollListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F32908E288A536C008BF09D /* BOUSReactionsScrollListTableViewCell.xib */; };
 		0F329092288A537D008BF09D /* BOUSReactionScrollListCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F329091288A537D008BF09D /* BOUSReactionScrollListCellCoordinator.swift */; };
+		0F32909C288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F32909B288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift */; };
+		0F32909D288E3EB6008BF09D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0832410B48D00B12321 /* Media.xcassets */; };
 		0F602181286EB7A700D852BD /* CommonFeeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F602180286EB7A700D852BD /* CommonFeeds.storyboard */; };
 		0F602184286EBB8800D852BD /* BOUSCommonBlurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602182286EBB8800D852BD /* BOUSCommonBlurViewController.swift */; };
 		0F602185286EBB8800D852BD /* BOUSFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602183286EBB8800D852BD /* BOUSFeedDetailViewController.swift */; };
@@ -112,7 +114,6 @@
 		9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0502410086600B12321 /* FeedContentCoordinatorProtocol.swift */; };
 		9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C05B2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift */; };
 		9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0812410B13A00B12321 /* DummyFeedProvider.swift */; };
-		9868C0842410B48D00B12321 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0832410B48D00B12321 /* Media.xcassets */; };
 		9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C08B2410B56100B12321 /* FeedsDetailViewController.swift */; };
 		9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0B4241205D400B12321 /* FeedsMediaCollectionCoordinator.swift */; };
 		9868C0E724125ACC00B12321 /* FeedDetailSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868C0E624125ACC00B12321 /* FeedDetailSectionFactory.swift */; };
@@ -285,6 +286,7 @@
 		0F32908D288A536C008BF09D /* BOUSReactionsScrollListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSReactionsScrollListTableViewCell.swift; sourceTree = "<group>"; };
 		0F32908E288A536C008BF09D /* BOUSReactionsScrollListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BOUSReactionsScrollListTableViewCell.xib; sourceTree = "<group>"; };
 		0F329091288A537D008BF09D /* BOUSReactionScrollListCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSReactionScrollListCellCoordinator.swift; sourceTree = "<group>"; };
+		0F32909B288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSCommonFeedsMediaCollectionCoordinator.swift; sourceTree = "<group>"; };
 		0F602180286EB7A700D852BD /* CommonFeeds.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommonFeeds.storyboard; sourceTree = "<group>"; };
 		0F602182286EBB8800D852BD /* BOUSCommonBlurViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOUSCommonBlurViewController.swift; sourceTree = "<group>"; };
 		0F602183286EBB8800D852BD /* BOUSFeedDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOUSFeedDetailViewController.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				0F32908028897B1B008BF09D /* BOUSMultipleImageTableViewCell.xib */,
 				0F32907F28897B1B008BF09D /* BOUSMultipleImageTableViewCell.swift */,
 				0F32908328897B2F008BF09D /* BOUSMultipleImageTableViewCellCoordinator.swift */,
+				0F32909B288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift */,
 			);
 			path = ListingMultipleImage;
 			sourceTree = "<group>";
@@ -1841,7 +1844,6 @@
 				BE500D8628229B5500423E5A /* CommonPressLikeButtonTableViewCell.xib in Resources */,
 				BEC2B25726FD989D008417C3 /* FeedTitleTableViewCell.xib in Resources */,
 				BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */,
-				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
 				0F602181286EB7A700D852BD /* CommonFeeds.storyboard in Resources */,
 				BEC2B25326FD97C8008417C3 /* FeedsViewController.xib in Resources */,
 				0F60219028716B3400D852BD /* CommonNominationSelectAllCell.xib in Resources */,
@@ -1859,6 +1861,7 @@
 				BEEF543926FC927E00327205 /* ASChatBarview.xib in Resources */,
 				BEC2B26926FD9AB6008417C3 /* PollOptionsTableViewCell.xib in Resources */,
 				BE500D8D2822ACCD00423E5A /* CommonNominationTableViewCell.xib in Resources */,
+				0F32909D288E3EB6008BF09D /* Media.xcassets in Resources */,
 				BEC2B28D26FDA254008417C3 /* ClappedByTableViewCell.xib in Resources */,
 				BE7C9B00288AD0CA00E7CAE4 /* NoEntryViewController.xib in Resources */,
 				BEC2B27326FD9DBD008417C3 /* TagUserTableViewCell.xib in Resources */,
@@ -1964,6 +1967,7 @@
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
 				0F602223287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift in Sources */,
+				0F32909C288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift in Sources */,
 				9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */,
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
 				98BF39CC2588D11100498C85 /* TagUserListProvider.swift in Sources */,

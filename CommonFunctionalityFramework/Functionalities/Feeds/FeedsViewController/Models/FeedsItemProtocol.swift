@@ -27,6 +27,10 @@ struct FeedVideoItem :  MediaItemProtocol{
         
         return rawVideo["display_img_url"] as? String
     }
+    
+    func getGiphy() -> String? {
+        return ""
+    }
 }
 
 struct FeedImageItem :  MediaItemProtocol{
@@ -44,6 +48,9 @@ struct FeedImageItem :  MediaItemProtocol{
     }
     func getCoverImageUrl() -> String?{
         return rawImage["display_img_url"] as? String
+    }
+    func getGiphy() -> String? {
+        return rawImage["gif"] as? String
     }
 }
 

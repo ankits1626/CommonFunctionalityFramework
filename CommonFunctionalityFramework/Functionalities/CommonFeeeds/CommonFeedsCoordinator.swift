@@ -69,8 +69,19 @@ public class CommonFeedsCoordinator {
 
     }
     
-  
-    
+    public func getApprovalsViewFromFeeds(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
+        let storyboardName = "CommonFeeds"
+        let storyboardBundle =  Bundle(for: BOUSNominationViewController.self)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: storyboardBundle)
+        let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSNominationViewController") as! BOUSNominationViewController
+        feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
+        feedsVc.isFromFeeds = true
+        feedsVc.statusType = inputModel.selectedTabType
+        feedsVc.mediaFetcher = inputModel.mediaCoordinator
+        return feedsVc
+
+    }
+
     public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
         FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId, feedType: "given") { (result) in
             DispatchQueue.main.async {

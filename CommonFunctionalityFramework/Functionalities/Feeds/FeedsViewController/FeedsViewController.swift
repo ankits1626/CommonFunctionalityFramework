@@ -339,6 +339,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showPostReactions() {
+        
+    }
+    
     func toggleLikeForComment(commentIdentifier: Int64) {
         
     }

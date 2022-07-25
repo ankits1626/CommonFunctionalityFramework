@@ -408,6 +408,17 @@ extension FeedsDetailViewController : FeedsDelegate{
             }
         }
     
+    func showPostReactions() {
+        let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
+        let controller = storyboard.instantiateViewController(withIdentifier: "BOUSReactionsListViewController") as! BOUSReactionsListViewController
+        controller.postId = Int(targetFeedItem.feedIdentifier)
+        controller.requestCoordinator = requestCoordinator
+        controller.mediaFetcher = mediaFetcher
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     private func getLikeableComment(commentIdentifier: Int64) -> FeedComment?{
         let fetchRequest = NSFetchRequest<ManagedPostComment>(entityName: "ManagedPostComment")
         fetchRequest.predicate = NSPredicate (format: "commentId == %d", commentIdentifier)
@@ -523,14 +534,8 @@ extension FeedsDetailViewController : FeedsDelegate{
             )
         }
         if targetFeedItem.isFeedReportAbuseAllowed(){
-            options.append( FloatingMenuOption(title: "REPORT ABUSE".localized, action: {[weak self] in
-                print("report abuse- \(feedIdentifier)")
-                self?.showReportAbuseConfirmation(feedIdentifier)
-                }
-                )
-            )
+            self.showReportAbuseConfirmation(feedIdentifier)
         }
-        FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
     }
     
     private func openFeedEditor(_ feed : FeedsItemProtocol){

@@ -12,7 +12,7 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
 
     
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
-        return 102
+        return 140
     }
     
     var cellType: CommonFeedCellTypeProtocol{
@@ -25,6 +25,12 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
             if let mediaItem = feed.getMediaList()?.first,
                 let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: mediaItemEndpoint)
+            }else if let gifItem = feed.getGiphy() {
+                if !gifItem.isEmpty {
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: URL(string: gifItem))
+                }else {
+                    cell.feedImageView?.image = nil
+                }
             }else{
                 cell.feedImageView?.image = nil
             }
@@ -44,6 +50,8 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
                         scrollToItemIndex: 0
                     )
             })
+            
+            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 0)
         }
     }
     

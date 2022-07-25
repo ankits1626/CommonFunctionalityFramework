@@ -85,7 +85,6 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             }else{
                 cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             }
-            cell.editFeedButton?.isHidden = true
             cell.pinPostButton?.handleControlEvent(
                 event: .touchUpInside, buttonActionBlock: {
                     inputModel.delegate?.pinToPost(

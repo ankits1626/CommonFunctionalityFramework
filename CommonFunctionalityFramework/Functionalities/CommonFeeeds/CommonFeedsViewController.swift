@@ -206,10 +206,40 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension CommonFeedsViewController : CommonFeedsDelegate{
-   
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
-        //
+        print("show edit option")
+        if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
+            var options = [FloatingMenuOption]()
+            if feed.getFeedType() == .Post,
+            feed.isFeedEditAllowed(){
+                options.append(
+                    FloatingMenuOption(title: "EDIT".localized, action: {
+                        print("Edit post - \(feedIdentifier)")
+                        //self.openFeedEditor(feed)
+                    }
+                    )
+                )
+            }
+            if feed.isFeedDeleteAllowed(){
+                options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
+                    print("Delete post- \(feedIdentifier)")
+                    self?.showDeletePostConfirmation(feedIdentifier)
+                    }
+                    )
+                )
+            }
+            if feed.isFeedReportAbuseAllowed(){
+                self.showReportAbuseConfirmation(feedIdentifier)
+//                options.append( FloatingMenuOption(title: "REPORT ABUSE".localized, action: {[weak self] in
+//                    print("report abuse- \(feedIdentifier)")
+//                    self?.showReportAbuseConfirmation(feedIdentifier)
+//                    }
+//                    )
+//                )
+            }
+          //  FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
+        }
     }
     
     func toggleLikeForComment(commentIdentifier: Int64) {

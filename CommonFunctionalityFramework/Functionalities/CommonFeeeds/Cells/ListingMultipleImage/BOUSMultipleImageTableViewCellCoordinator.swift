@@ -11,17 +11,17 @@ import UIKit
 class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
 
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
-        return 102
+        return 140
     }
     
     var cellType: CommonFeedCellTypeProtocol{
         return BOUSMultipleImageTableViewCellType()
     }
     
-    private var cachedMediCollectionCoordinators = [IndexPath : FeedsMediaCollectionCoordinator]()
+    private var cachedMediCollectionCoordinators = [IndexPath : CommonFeedsMediaCollectionCoordinator]()
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
-        if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
+        if let cell  = inputModel.targetCell as? BOUSMultipleImageTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
                 cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
@@ -31,25 +31,26 @@ class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProt
             let feedTitle = feed.getStrengthData()
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
             
-           // getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
+            getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }
     
-//    private func getMediaCoordinator(_ inputModel: CommonFeedCellLoadDataModel) -> FeedsMediaCollectionCoordinator{
-//        if let mediaCoordinator = cachedMediCollectionCoordinators[inputModel.targetIndexpath]{
-//            return mediaCoordinator
-//        }else{
-//            let coordinator = FeedsMediaCollectionCoordinator(
-//                InitFeedsMediaCollectionCoordinatorModel(
-//                    feedsDatasource: inputModel.datasource,
-//                    feedItemIndex: inputModel.targetIndexpath.section,
-//                    mediaFetcher: inputModel.mediaFetcher,
-//                    delegate: inputModel.delegate
-//                )
-//            )
-//            cachedMediCollectionCoordinators[inputModel.targetIndexpath] = coordinator
-//            return coordinator
-//        }
-//    }
+    private func getMediaCoordinator(_ inputModel: CommonFeedCellLoadDataModel) -> CommonFeedsMediaCollectionCoordinator{
+        if let mediaCoordinator = cachedMediCollectionCoordinators[inputModel.targetIndexpath]{
+            return mediaCoordinator
+        }else{
+            let coordinator = CommonFeedsMediaCollectionCoordinator(
+                InitCommonFeedsMediaCollectionCoordinatorModel(
+                    feedsDatasource: inputModel.datasource,
+                    feedItemIndex: inputModel.targetIndexpath.section,
+                    mediaFetcher: inputModel.mediaFetcher,
+                    delegate: inputModel.delegate
+                )
+            )
+            
+            cachedMediCollectionCoordinators[inputModel.targetIndexpath] = coordinator
+            return coordinator
+        }
+    }
     
 }

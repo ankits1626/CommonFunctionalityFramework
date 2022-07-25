@@ -17,7 +17,7 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
         if feed.hasOnlyMedia(){
-            return 114
+            return 140
         }else{
             switch feed.getMediaCountState() {
                 
@@ -26,9 +26,9 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             case .OneMediaItemPresent(_):
                 return 0
             case .TwoMediaItemPresent:
-                return 136
+                return 140
             case .MoreThanTwoMediItemPresent:
-                return 89
+                return 140
             }
         }
         

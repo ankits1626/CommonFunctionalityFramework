@@ -25,7 +25,8 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
             CommonOutastandingImageTableViewCellType().cellIdentifier : OutsandingImageTableViewCellCoordinator(),
             BOUSFeedGrayDividerCellType().cellIdentifier :
                 BOUSGrayDividerCoordinator(),
-            BOUSSingleImageTableViewCellType().cellIdentifier : BOUSSingleImageTableViewCellCoordinator()
+            BOUSSingleImageTableViewCellType().cellIdentifier : BOUSSingleImageTableViewCellCoordinator(),
+            BOUSMultipleImageTableViewCellType().cellIdentifier : BOUSMultipleImageTableViewCellCoordinator()
         ]
     }()
 
@@ -73,8 +74,15 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
             case .TwoMediaItemPresent:
                 fallthrough
             case .MoreThanTwoMediItemPresent:
-                rows.append(BOUSSingleImageTableViewCellType())
+                rows.append(BOUSMultipleImageTableViewCellType())
             }
+            
+            if let gif = feed.getGiphy() {
+                if !gif.isEmpty {
+                    rows.append(BOUSSingleImageTableViewCellType())
+                }
+            }
+            
             rows.append(CommonLikesSectionTableViewCellType())
             rows.append(CommonPressLikeButtonTableViewCellType())
             rows.append(BOUSFeedGrayDividerCellType())

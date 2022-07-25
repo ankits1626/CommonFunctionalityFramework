@@ -129,12 +129,6 @@
                             <constraint firstItem="re4-pr-fCE" firstAttribute="top" secondItem="sut-WH-FP7" secondAttribute="top" id="Umo-Y3-EBu"/>
                             <constraint firstAttribute="trailing" secondItem="obe-BZ-5dx" secondAttribute="trailing" constant="63" id="oPi-5d-Zhi"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="8"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
@@ -158,7 +152,7 @@
     </objects>
     <designables>
         <designable name="zg6-5E-NpO">
-            <size key="intrinsicContentSize" width="1064" height="21"/>
+            <size key="intrinsicContentSize" width="1064" height="20.5"/>
         </designable>
     </designables>
     <resources>

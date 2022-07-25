@@ -10,7 +10,10 @@ import UIKit
 
 class CommonLikesSectionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var reactionImg1: UIButton!
+    @IBOutlet weak var reactionImg2: UIButton!
     @IBOutlet weak var reactionCountBtn: BlockButton!
+    @IBOutlet weak var commentsLbl: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

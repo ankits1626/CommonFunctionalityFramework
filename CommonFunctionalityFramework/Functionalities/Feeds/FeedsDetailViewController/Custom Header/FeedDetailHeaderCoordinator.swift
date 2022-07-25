@@ -67,14 +67,14 @@ class FeedDetailHeaderCoordinator {
     }
     
     private func configureClapsHeader(_ view : FeedDetailHeader?){
-        view?.headerTitleLabel?.text = "Claps".localized
+        view?.headerTitleLabel?.text = "Reactions".localized
         view?.headerActionButton?.setTitle("SEE ALL".localized, for: .normal)
         view?.headerActionButton?.setTitleColor(themeManager?.getControlActiveColor() ?? .bottomButtonTextColor, for: .normal)
         view?.headerActionButton?.titleLabel?.font = .Highlighter1
-        view?.headerActionButton?.isHidden = false
+        view?.headerActionButton?.isHidden = true
         view?.headerSecondaryTitleLabel?.text = nil
         view?.headerActionButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
-            self?.delegate?.showLikedByUsersList()
+            self?.delegate?.showPostReactions()
         })
     }
     
@@ -85,7 +85,7 @@ class FeedDetailHeaderCoordinator {
         case .ClapsSection:
             if let clappedByUsers = feedDataSource.getClappedByUsers(),
             !clappedByUsers.isEmpty{
-                 return 0
+                 return 40
             }
             
         case .Comments:
