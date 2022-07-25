@@ -27,6 +27,7 @@ protocol FeedsDatasource : AnyObject {
 protocol FeedsDelegate : AnyObject {
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
     func showLikedByUsersList()
+    func showPostReactions()
     func showMediaBrowser(feedIdentifier : Int64,scrollToItemIndex: Int)
     func toggleClapForPost(feedIdentifier : Int64)
     func toggleLikeForComment(commentIdentifier : Int64)

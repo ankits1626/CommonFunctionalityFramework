@@ -244,6 +244,13 @@ extension FeedDetailSectionFactory{
         case .MoreThanTwoMediItemPresent:
             rows.append(MultipleMediaTableViewCellType())
         }
+        
+        if let gif = feed!.getGiphy() {
+            if !gif.isEmpty {
+                rows.append(SingleImageTableViewCellType())
+            }
+        }
+        
         if
             let unwrappedFeed = feed{
             let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(

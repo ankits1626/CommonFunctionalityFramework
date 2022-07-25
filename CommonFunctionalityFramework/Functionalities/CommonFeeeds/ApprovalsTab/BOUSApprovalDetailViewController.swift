@@ -25,6 +25,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     var jsonDataValues : BOUSApprovalsDetailData!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var isComingFromNominationPage : Bool = false
+    var isFromFeeds = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +34,23 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     }
     
     func setupView() {
-        approveButton?.isHidden = isComingFromNominationPage
-        rejectButton?.isHidden = isComingFromNominationPage
-        messageContainerView?.isHidden = isComingFromNominationPage
-        approveButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
-        rejectButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
-        messageContainerViewConstraints?.constant = isComingFromNominationPage ? 0 : 51
+       
+        if isFromFeeds {
+            approveButtonConstraints?.constant =  48
+            rejectButtonConstraints?.constant = 48
+            approveButton?.isHidden = false
+            rejectButton?.isHidden = false
+           // messageContainerViewConstraints?.constant = isComingFromNominationPage ? 0 : 51
+        }else {
+            approveButton?.isHidden = isComingFromNominationPage
+            rejectButton?.isHidden = isComingFromNominationPage
+            messageContainerView?.isHidden = isComingFromNominationPage
+            approveButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
+            rejectButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
+            messageContainerViewConstraints?.constant = isComingFromNominationPage ? 0 : 51
+        }
+        
+        
     }
     
     func loadApprovalsData(){

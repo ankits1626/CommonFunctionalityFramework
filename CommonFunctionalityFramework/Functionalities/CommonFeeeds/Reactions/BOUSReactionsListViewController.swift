@@ -78,7 +78,7 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
 //            cell.leftImg.isHidden = true
 //        }else {
             let dataValues = collectionViewArrayHolder[indexPath.row]
-
+            print(dataValues)
             if dataValues.reaction_type == 7 {
                 cell.leftImg.isHidden = true
                 cell.TxtLbl.text = "All \(dataValues.reaction_count)"
@@ -86,15 +86,15 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
                 cell.TxtLbl.text = "\(dataValues.reaction_count)"
                 cell.leftImg.isHidden = false
                 if dataValues.reaction_type == 0 {
-                    cell.leftImg.image = UIImage(named: "like")
+                    cell.leftImg.image = UIImage(named: "React_like")
                 }else if dataValues.reaction_type == 1 {
-                    cell.leftImg.image = UIImage(named: "love")
+                    cell.leftImg.image = UIImage(named: "React_love")
                 }else if dataValues.reaction_type == 2 {
-                    cell.leftImg.image = UIImage(named: "clap")
+                    cell.leftImg.image = UIImage(named: "React_clap")
                 }else if dataValues.reaction_type == 3 {
-                    cell.leftImg.image = UIImage(named: "support")
+                    cell.leftImg.image = UIImage(named: "React_support")
                 }else if dataValues.reaction_type == 4 {
-                    cell.leftImg.image = UIImage(named: "celebrate")
+                    cell.leftImg.image = UIImage(named: "React_celebrate")
                 }
             }
     

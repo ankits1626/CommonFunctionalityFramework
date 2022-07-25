@@ -23,6 +23,7 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
     var isNominationApproved = false
     @IBOutlet weak var holderViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var rejectText: UITextView!
+    var multipleNomination = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
             self.nominationDescription.text = "Are you sure you want to approve this nomination?"
         }else {
             self.nominationType.text = "Reject"
-            self.imageType.image = UIImage(named: "icon_reject")
+            self.imageType.image = UIImage(named: "cff_tick1")
             self.nominationDescription.text = "Are you sure you want to reject this nomination?"
         }
     }
@@ -47,15 +48,15 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
     }
     
     @IBAction func yesPressed(_ sender: Any) {
-        postToServer()
+        postToServer(approvalStatus: isNominationApproved)
     }
     
     @IBAction func noPressed(_ sender: Any) {
-        
+        postToServer(approvalStatus: false)
     }
     
-    func postToServer() {
-        BOUSNominationAppoveRejectWorker(networkRequestCoordinator: self.requestCoordinator).postnomination(postId: 423, message: "", approvalStatus: true) { (result) in
+    func postToServer(approvalStatus: Bool) {
+        BOUSNominationAppoveRejectWorker(networkRequestCoordinator: self.requestCoordinator).postnomination(postId: postId, multipleNominations: multipleNomination, message: "", approvalStatus: approvalStatus) { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(_):

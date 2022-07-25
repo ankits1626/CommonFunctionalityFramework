@@ -29,13 +29,6 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     private func setup(){
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-        closeLabel?.font = .Caption1
-        titleLabel?.text = "Report Abuse".localized
-        messageLabel?.text = "If you have any concerns regarding the feed please share below.".localized
-        titleLabel?.font = .Title1
-        titleLabel?.font = .Title1
-        messageLabel?.font = .Body3
-        commentsLabel?.font = .Highlighter1
         configureConfirmButton()
         configureCancelButton()
         descriptionText?.placeholder = "Please type in your concerns".localized
@@ -46,7 +39,7 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     
     private func configureConfirmButton(){
         confirmButton?.isEnabled = false
-        confirmButton?.setTitle("CONFIRM".localized, for: .normal)
+        confirmButton?.setTitle("Report".localized, for: .normal)
         confirmButton?.titleLabel?.font = .Button
         confirmButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
         confirmButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
@@ -58,7 +51,7 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     }
     
     private func configureCancelButton(){
-        cancelButton?.setTitle("CANCEL".localized, for: .normal)
+        cancelButton?.setTitle("Cencel".localized, for: .normal)
         cancelButton?.titleLabel?.font = .Button
         cancelButton?.setTitleColor(.bottomDestructiveButtonTextColor, for: .normal)
         cancelButton?.backgroundColor = .bottomDestructiveBackgroundColor
@@ -77,7 +70,7 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
             }else{
                 bottomSafeArea = 0.0
             }
-            slideInTransitioningDelegate.direction = .bottom(height: 380 + bottomSafeArea)
+            slideInTransitioningDelegate.direction = .bottom(height: 510 + bottomSafeArea)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)

@@ -10,6 +10,10 @@ import UIKit
 
 class BOUSMultipleImageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var containerView: UIView!
+
+    @IBOutlet weak var mediaCollectionView: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

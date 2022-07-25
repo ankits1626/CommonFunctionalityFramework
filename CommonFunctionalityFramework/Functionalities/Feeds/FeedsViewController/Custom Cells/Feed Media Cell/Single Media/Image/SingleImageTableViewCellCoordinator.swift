@@ -14,7 +14,7 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 102
+        return 140
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
@@ -23,9 +23,16 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             if let mediaItem = feed.getMediaList()?.first,
                 let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: mediaItemEndpoint)
+            }else if let gifItem = feed.getGiphy() {
+                if !gifItem.isEmpty {
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: URL(string: gifItem))
+                }else {
+                    cell.feedImageView?.image = nil
+                }
             }else{
                 cell.feedImageView?.image = nil
             }
+            
 //            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
 //                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
 //            }else{

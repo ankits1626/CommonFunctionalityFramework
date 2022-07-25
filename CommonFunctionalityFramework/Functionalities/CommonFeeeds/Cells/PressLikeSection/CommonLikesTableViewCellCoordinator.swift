@@ -28,7 +28,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             self.inputModel = inputModel
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.seperator?.backgroundColor = .seperatorColor
-            cell.commentsCountLabel?.text = feed.getNumberOfComments()
+            cell.commentsCountLabel?.text = "Comment"
             cell.commentsCountLabel?.font = UIFont.Caption1
             cell.commentsCountLabel?.textColor = UIColor.getSubTitleTextColor()
             cell.clapsCountLabel?.text = feed.getNumberOfClaps()
@@ -68,6 +68,8 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                 cell.reactionView.reaction  = Reaction.facebook.wow
             }else if feed.getUserReactionType() == 4 {
                 cell.reactionView.reaction  = Reaction.facebook.sad
+            }else {
+                cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .red, icon: UIImage(named: "icon_like_gray")!)
             }
             
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .touchUpInside)
@@ -83,9 +85,6 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
         }
         
         if let feed = inputModel?.datasource.getFeedItem(sender.tag) {
-            print(feed.feedIdentifier)
-            print(reactionBtn?.reaction.id)
-            
             inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: (reactionBtn?.reaction.id)!)
         }
 
