@@ -37,7 +37,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             if let unwrappedThemeManager = inputModel.themeManager{
                 cell.clapIndicator?.backgroundColor = feed.isClappedByMe() ? unwrappedThemeManager.getControlActiveColor() : .controlInactiveColor
                 
-                cell.commentsButton?.setImage(unwrappedThemeManager.getThemeSpecificImage("feedComments"), for: .normal)
+                cell.commentsButton?.setImage(unwrappedThemeManager.getThemeSpecificImage("icon_comment_gray"), for: .normal)
             }else{
                 cell.clapsButton?.setImage(
                     UIImage(

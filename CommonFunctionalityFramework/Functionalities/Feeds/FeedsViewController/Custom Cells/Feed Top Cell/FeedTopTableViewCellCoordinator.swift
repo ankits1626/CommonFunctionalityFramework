@@ -56,12 +56,15 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
         if let cell  = inputModel.targetCell as? FeedTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.userName?.text = feed.getUserName()
+            if let nominatedName = feed.getNominatedByUserName() {
+                cell.appraacitedBy.text = "From \(nominatedName)"
+            }
             cell.userName?.font = UIFont.Body2
             cell.userName?.textColor = UIColor.getTitleTextColor()
             cell.departmentName?.text = feed.getDepartmentName()
             cell.departmentName?.font = UIFont.Caption1
             cell.departmentName?.textColor = UIColor.getSubTitleTextColor()
-            cell.dateLabel?.text = feed.getfeedCreationDate()
+            cell.dateLabel?.text = feed.getfeedCreationMonthYear()
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
@@ -83,6 +86,10 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
              if !inputModel.datasource.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true
             }else{
+                cell.editFeedButton?.layer.borderWidth = 1
+                cell.editFeedButton?.layer.masksToBounds = true
+                cell.editFeedButton?.layer.cornerRadius = 8
+                cell.editFeedButton?.layer.borderColor = #colorLiteral(red: 0.9294112921, green: 0.9411767125, blue: 0.9999989867, alpha: 1)
                 cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             }
             cell.pinPostButton?.handleControlEvent(

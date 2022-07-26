@@ -47,6 +47,7 @@ struct badge : Decodable {
     let name: String
     let icon : String
     let award_points : String
+    let background_color : String
 }
 
 struct user : Decodable {

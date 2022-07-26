@@ -22,20 +22,22 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
-        return 65
+        return 80
     }
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? CommonFeedsTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.userName?.text = feed.getUserName()
-            
+            if let nominatedName = feed.getNominatedByUserName() {
+                cell.appraacitedBy.text = "From \(nominatedName)"
+            }
             if let profileImageEndpoint = feed.getUserImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
             }else{
                 cell.profileImage?.image = nil
             }
-            cell.dateLabel?.text = feed.getfeedCreationDate()
+            cell.dateLabel?.text = feed.getfeedCreationMonthYear()
              if !inputModel.datasource.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true
             }else{

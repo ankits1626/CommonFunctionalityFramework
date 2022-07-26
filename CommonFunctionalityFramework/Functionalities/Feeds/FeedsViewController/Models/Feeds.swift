@@ -14,8 +14,10 @@ protocol FeedsItemProtocol : Likeable {
     var feedIdentifier : Int64{get}
     func getUserImageUrl() -> String?
     func getUserName() -> String?
+    func getNominatedByUserName() -> String?
     func getDepartmentName() -> String?
     func getfeedCreationDate() -> String?
+    func getfeedCreationMonthYear() -> String?
     func getIsEditActionAllowedOnFeedItem() -> Bool
     func getFeedTitle() -> String?
     func getFeedDescription() -> String?
@@ -321,6 +323,16 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return getFeedAuthor()?.getAuthorName()
     }
     
+    func getNominatedByUserName() -> String? {
+        var userName = ""
+        if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            userName = userDic["full_name"] as! String
+        }
+        
+        return userName
+    }
+    
+    
     func getDepartmentName() -> String? {
         return getFeedAuthor()?.getAuthorDepartmentName()
     }
@@ -329,6 +341,14 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         //hello
         if let rawDate = rawFeedDictionary["created_on"] as? String{
             return CommonFrameworkDateUtility.getDisplayedDateInFormatDMMMYYYY(input: rawDate, dateFormat: "yyyy-MM-dd") ?? ""
+        }
+        return rawFeedDictionary["created_on"] as? String
+    }
+    
+    func getfeedCreationMonthYear() -> String? {
+        //hello
+        if let rawDate = rawFeedDictionary["created_on"] as? String{
+            return CommonFrameworkDateUtility.getDisplayedDateInFormatMMMYYYY(input: rawDate, dateFormat: "yyyy-MM-dd") ?? ""
         }
         return rawFeedDictionary["created_on"] as? String
     }

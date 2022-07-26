@@ -51,12 +51,12 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     }
     
     private func configureCancelButton(){
-        cancelButton?.setTitle("Cencel".localized, for: .normal)
+        cancelButton?.setTitle("Cancel".localized, for: .normal)
         cancelButton?.titleLabel?.font = .Button
         cancelButton?.setTitleColor(.bottomDestructiveButtonTextColor, for: .normal)
         cancelButton?.backgroundColor = .bottomDestructiveBackgroundColor
         if let controlColor = themeManager?.getControlActiveColor(){
-            cancelButton?.curvedBorderedControl(borderColor: controlColor, borderWidth: 1.0)
+            //cancelButton?.curvedBorderedControl(borderColor: controlColor, borderWidth: 1.0)
             cancelButton?.setTitleColor(controlColor, for: .normal)
         }else{
             cancelButton?.curvedBorderedControl()
