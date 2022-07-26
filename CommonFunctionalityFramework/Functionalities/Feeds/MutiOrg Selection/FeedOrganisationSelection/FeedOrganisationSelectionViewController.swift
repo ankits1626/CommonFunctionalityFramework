@@ -29,10 +29,26 @@ class FeedOrganisationSelectionViewController: UIViewController {
     @IBOutlet private weak var proceedButton : UIButton?
     @IBOutlet private weak var proceedButtonContainerHeight : NSLayoutConstraint?
     @IBOutlet private weak var searchTextField: UITextField?
+    @IBOutlet private weak var organisationListTableView: UITableView?
     
     private func setupContainerTopbar(){
         containerTopBarModel?.title?.text = "Select Organisation".localized.uppercased()
     }
+    
+    private lazy var dataManager: FeedOrganisationDataManager = {
+        return FeedOrganisationDataManager(
+            FeedOrganisationDataManagerInitModel(requestCoordinator: initModel.requestCoordinator)
+        )
+    }()
+    
+    lazy var listManager: FeedOrganisationListManager = {
+        return FeedOrganisationListManager(
+            FeedOrganisationListManagerInitModel(
+                dataManager: dataManager,
+                tableView: organisationListTableView
+            )
+        )
+    }()
     
     init(_ initModel : FeedOrganisationSelectionInitModel) {
         self.initModel = initModel
@@ -40,7 +56,7 @@ class FeedOrganisationSelectionViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("FeedOrganisationSelectionViewController init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -50,10 +66,12 @@ class FeedOrganisationSelectionViewController: UIViewController {
 
 }
 
+
 extension FeedOrganisationSelectionViewController{
     private func setupOnViewDidLoad(){
         configureSearchBar()
         configureProceedButton()
+        askDataManagerToFetchData()
     }
     
     private func configureSearchBar(){
@@ -63,5 +81,15 @@ extension FeedOrganisationSelectionViewController{
     
     private func configureProceedButton(){
         
+    }
+    
+    private func askDataManagerToFetchData(){
+        dataManager.fetchFeedOrganisations {
+            DispatchQueue.main.async {[weak self] in
+                if let unwrappedSelf = self{
+                    unwrappedSelf.listManager.loadListAfterDataFetch()
+                }
+            }
+        }
     }
 }
