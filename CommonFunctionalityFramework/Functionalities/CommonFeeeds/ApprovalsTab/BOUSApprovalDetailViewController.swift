@@ -25,8 +25,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     var jsonDataValues : BOUSApprovalsDetailData!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var isComingFromNominationPage : Bool = false
-    var isFromFeeds = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -34,23 +33,17 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     }
     
     func setupView() {
-       
-        if isFromFeeds {
-            approveButtonConstraints?.constant =  48
-            rejectButtonConstraints?.constant = 48
-            approveButton?.isHidden = false
-            rejectButton?.isHidden = false
-           // messageContainerViewConstraints?.constant = isComingFromNominationPage ? 0 : 51
-        }else {
-            approveButton?.isHidden = isComingFromNominationPage
-            rejectButton?.isHidden = isComingFromNominationPage
-            messageContainerView?.isHidden = isComingFromNominationPage
-            approveButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
-            rejectButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
-            messageContainerViewConstraints?.constant = isComingFromNominationPage ? 0 : 51
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
         }
-        
-        
+        approveButton?.isHidden = isComingFromNominationPage
+        rejectButton?.isHidden = isComingFromNominationPage
+        messageContainerView?.isHidden = true
+        approveButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
+        rejectButtonConstraints?.constant = isComingFromNominationPage ? 0 :  48
+        messageContainerViewConstraints?.constant = isComingFromNominationPage ? 0 : 51
     }
     
     func loadApprovalsData(){
@@ -95,7 +88,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,10 +97,16 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             cell.backBtn?.addTarget (self, action: #selector(popVC(_:)), for: UIControl.Event.touchUpInside)
             if jsonDataValues != nil {
                 cell.titleLbl.text = jsonDataValues.user_strength.name
-                cell.nominatedBy.text = "\(jsonDataValues.nomination.nominated_team_member.full_name) nominated by \(jsonDataValues.created_by_user_info.full_name)"
-                cell.dateLbl.text = jsonDataValues.created_on
-                mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: jsonDataValues.nomination.nominated_team_member.profile_img ?? "")
-                mediaFetcher.fetchImageAndLoad(cell.rightImg, imageEndPoint: jsonDataValues.created_by_user_info.profile_img ?? "")
+                cell.leftName.text = "\(jsonDataValues.nomination.nominated_team_member.full_name)"
+                cell.rightName.text = "\(jsonDataValues.created_by_user_info.full_name)"
+                cell.dateLbl.text =  getCreationDate(jsonDate: jsonDataValues.created_on)
+                
+                cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color)
+                
+                if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String {
+                    // mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: leftImg)
+                }
+                //                mediaFetcher.fetchImageAndLoad(cell.rightImg, imageEndPoint: jsonDataValues.created_by_user_info.profile_img ?? "")
             }
             return cell
         }else if indexPath.row == 1 {
@@ -120,8 +119,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! BOUSApprovalAwardLevelTableViewCell
             if jsonDataValues != nil {
                 cell.awardType.text = jsonDataValues.nomination.badges.name
-                cell.ptsLbl.text = jsonDataValues.nomination.badges.award_points
-                mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: jsonDataValues.nomination.badges.icon ?? "")
+                cell.ptsLbl.text = "\(jsonDataValues.nomination.badges.award_points) Points"
+                //mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: jsonDataValues.nomination.badges.icon ?? "")
             }
             return cell
         }else if indexPath.row == 3 {
@@ -137,6 +136,14 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell5", for: indexPath)
             return cell
         }
+    }
+    
+    func getCreationDate(jsonDate: String) -> String? {
+        if !jsonDate.isEmpty{
+            let dateInFormate = jsonDate.getdateFromStringFrom(dateFormat: "yyyy-MM-dd")
+            return "\(dateInFormate.monthName) \(dateInFormate.day)"
+        }
+        return ""
     }
     
     @objc func popVC(_ sender: Any) {

@@ -61,13 +61,18 @@ class FeedDetailHeaderCoordinator {
     }
     
     private func configureCommentsHeader(_ view : FeedDetailHeader?){
-        view?.headerTitleLabel?.text = "Comments".localized
+        if let commentsCount =  feedDataSource.getCommentProvider()?.getNumberOfComments() {
+            view?.headerTitleLabel?.text = "\(commentsCount) Comments".localized
+        }
+        
         view?.headerActionButton?.isHidden = true
         view?.headerSecondaryTitleLabel?.text = nil
     }
     
     private func configureClapsHeader(_ view : FeedDetailHeader?){
-        view?.headerTitleLabel?.text = "Reactions".localized
+        if let reactionCount = feedDataSource.getClappedByUsers() {
+            view?.headerTitleLabel?.text = "\(reactionCount.count) Reaction".localized
+        }
         view?.headerActionButton?.setTitle("SEE ALL".localized, for: .normal)
         view?.headerActionButton?.setTitleColor(themeManager?.getControlActiveColor() ?? .bottomButtonTextColor, for: .normal)
         view?.headerActionButton?.titleLabel?.font = .Highlighter1
