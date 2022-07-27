@@ -123,7 +123,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 210
     }
     func getCreatorName(text : String , userName : String) -> NSAttributedString{
         let referenceText = text + " "
