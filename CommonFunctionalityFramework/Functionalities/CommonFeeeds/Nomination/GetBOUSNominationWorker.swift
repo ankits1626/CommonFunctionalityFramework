@@ -50,7 +50,7 @@ class GetBOUSNominationWorkerRequestGenerator: APIRequestGeneratorProtocol  {
         get{
             if nextUrl.isEmpty {
                 let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url:  self.urlBuilder.getURL(endpoint: "feeds/api/user_feed/?post_type=7&nom_status=\(statusType)", parameters: nil
+                    url:  self.urlBuilder.getURL(endpoint: "feeds/api/user_feed/?feed=my_nomination&post_type=7&nom_status=\(statusType)", parameters: nil
                     ),
                     method: .GET ,
                     httpBodyDict: nil

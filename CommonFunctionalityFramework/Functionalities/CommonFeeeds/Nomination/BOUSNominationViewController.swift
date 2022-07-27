@@ -100,7 +100,17 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         cell.nominatedUserName.attributedText =  getCreatorName(text: "For", userName: "\(dataValue.nomination.nominator_name)")
         cell.nominatedDate.text = getCreationDate(jsonData: dataValue)
         cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
-        cell.userStrengthDescription.text = "\(dataValue.nomination.user_strength.message)"
+        
+        
+        if let unwrappedText = dataValue.description as? String{
+            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: Int64(dataValue.id), description: unwrappedText)
+            ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                cell.userStrengthDescription?.text = nil
+                cell.userStrengthDescription?.attributedText = attr
+            })
+        }else{
+            cell.userStrengthDescription.text = dataValue.description
+        }
         cell.awardType.text = "\(dataValue.nomination.badges.name)"
         cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) Points"
         cell.timeRemaining.text = "\(dataValue.nomination.nom_status)"
@@ -113,7 +123,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 202
+        return UITableView.automaticDimension
     }
     func getCreatorName(text : String , userName : String) -> NSAttributedString{
         let referenceText = text + " "
