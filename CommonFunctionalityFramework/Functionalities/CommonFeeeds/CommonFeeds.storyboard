@@ -699,7 +699,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUG-gf-20c">
                                                     <rect key="frame" x="75" y="126" width="264" height="60"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_preview" translatesAutoresizingMaskIntoConstraints="NO" id="efw-F6-M3G">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_nomination_group" translatesAutoresizingMaskIntoConstraints="NO" id="efw-F6-M3G">
                                                             <rect key="frame" x="38.5" y="12" width="187" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="36" id="0Rs-yC-P2q"/>
@@ -2900,8 +2900,8 @@ nominations?</string>
         <image name="icon_comment_gray" width="24" height="24"/>
         <image name="icon_down_gray" width="8" height="5"/>
         <image name="icon_like_gray" width="24" height="24"/>
+        <image name="icon_nomination_group" width="187" height="36"/>
         <image name="icon_points-2" width="36" height="23"/>
-        <image name="icon_preview" width="187" height="36"/>
         <image name="icon_public" width="32" height="32"/>
         <image name="icon_reject" width="72" height="72"/>
         <image name="interface_close-lg" width="22" height="22"/>
