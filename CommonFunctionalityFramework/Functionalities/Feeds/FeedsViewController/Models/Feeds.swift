@@ -68,7 +68,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
-                    strengthMessage = userStengthDic["message"] as! String
+                    strengthMessage = rawFeedDictionary["description"] as! String
                    // strengthIcon = userStengthDic["icon"] as! String
                     badgeBackgroundColor = userStengthDic["background_color"] as! String
                     points = "\(userStengthDic["points"] as! Int)"
@@ -76,7 +76,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 }else {
                     if let userStengthDic = rawFeedDictionary["user_strength"] as? NSDictionary {
                         strengthName = userStengthDic["name"] as! String
-                        strengthMessage = userStengthDic["message"] as! String
+                        strengthMessage = rawFeedDictionary["description"] as! String
                         strengthIcon = userStengthDic["icon"] as! String
                         badgeBackgroundColor = userStengthDic["background_color"] as! String
                         points = "\(userStengthDic["points"] as! Int)"
