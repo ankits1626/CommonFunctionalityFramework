@@ -709,7 +709,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-NH-tNm">
                                                             <rect key="frame" x="35" y="3" width="54" height="54"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="nXW-bM-WBI">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="nXW-bM-WBI">
                                                                     <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -728,11 +728,17 @@
                                                                 <constraint firstAttribute="bottom" secondItem="nXW-bM-WBI" secondAttribute="bottom" id="jzW-xl-hax"/>
                                                                 <constraint firstItem="nXW-bM-WBI" firstAttribute="top" secondItem="QaM-NH-tNm" secondAttribute="top" id="opf-cl-xmX"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otD-i6-sOX">
                                                             <rect key="frame" x="175" y="3" width="54" height="54"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="meT-Z3-rlq">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="meT-Z3-rlq">
                                                                     <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -751,6 +757,12 @@
                                                                 <constraint firstAttribute="bottom" secondItem="meT-Z3-rlq" secondAttribute="bottom" id="h30-8l-mI0"/>
                                                                 <constraint firstAttribute="trailing" secondItem="meT-Z3-rlq" secondAttribute="trailing" id="riu-kr-B7C"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -764,8 +776,8 @@
                                                         <constraint firstItem="QaM-NH-tNm" firstAttribute="centerY" secondItem="efw-F6-M3G" secondAttribute="centerY" id="nbJ-eF-qrZ"/>
                                                     </constraints>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XXr-Ea-KjJ">
-                                                    <rect key="frame" x="167" y="257" width="81" height="24"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XXr-Ea-KjJ">
+                                                    <rect key="frame" x="166" y="257" width="83" height="24"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_public" translatesAutoresizingMaskIntoConstraints="NO" id="hdO-H4-TvR">
                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -775,13 +787,13 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veR-U7-DHX">
-                                                            <rect key="frame" x="28" y="0.0" width="35" height="24"/>
+                                                            <rect key="frame" x="29" y="0.0" width="35" height="24"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_down_gray" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-eH-aFa">
-                                                            <rect key="frame" x="67" y="0.0" width="10" height="24"/>
+                                                            <rect key="frame" x="69" y="0.0" width="10" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="10" id="as0-r4-LdB"/>
                                                             </constraints>
@@ -820,7 +832,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Fcn-fr-iXZ">
                                                     <rect key="frame" x="53" y="200" width="308" height="19.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Zdj-QN-eTs">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zdj-QN-eTs">
                                                             <rect key="frame" x="0.0" y="0.0" width="99.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
                                                             <nil key="textColor"/>
@@ -832,7 +844,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Micah Jones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lkJ-w7-6HP">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Micah Jones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lkJ-w7-6HP">
                                                             <rect key="frame" x="211" y="0.0" width="97" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
                                                             <nil key="textColor"/>
@@ -846,11 +858,10 @@
                                                 <constraint firstItem="6bs-lq-fo6" firstAttribute="top" secondItem="Fcn-fr-iXZ" secondAttribute="bottom" constant="8.5" id="1i7-zx-l0o"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wCU-1a-jql" secondAttribute="trailing" id="3er-kQ-h6P"/>
                                                 <constraint firstAttribute="trailing" secondItem="6bs-lq-fo6" secondAttribute="trailing" constant="87" id="4Kj-yo-C3G"/>
-                                                <constraint firstAttribute="trailing" secondItem="XXr-Ea-KjJ" secondAttribute="trailing" constant="166" id="ArH-oh-rtX"/>
                                                 <constraint firstItem="Mpu-cU-e41" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leading" constant="20" symbolic="YES" id="DTv-wq-gh6"/>
+                                                <constraint firstItem="XXr-Ea-KjJ" firstAttribute="centerX" secondItem="6bs-lq-fo6" secondAttribute="centerX" id="E5k-TM-2To"/>
                                                 <constraint firstItem="EUG-gf-20c" firstAttribute="top" secondItem="wCU-1a-jql" secondAttribute="bottom" constant="8" id="F21-IG-Jgp"/>
                                                 <constraint firstAttribute="trailing" secondItem="EUG-gf-20c" secondAttribute="trailing" constant="75" id="Jlf-Wn-ZWS"/>
-                                                <constraint firstItem="XXr-Ea-KjJ" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leading" constant="167" id="NpO-ox-6rL"/>
                                                 <constraint firstItem="Mpu-cU-e41" firstAttribute="top" secondItem="ghb-2b-9x0" secondAttribute="top" constant="38" id="OWW-RB-6UM"/>
                                                 <constraint firstItem="XXr-Ea-KjJ" firstAttribute="top" secondItem="6bs-lq-fo6" secondAttribute="bottom" constant="13" id="QrB-tO-MZv"/>
                                                 <constraint firstItem="wCU-1a-jql" firstAttribute="leading" secondItem="ghb-2b-9x0" secondAttribute="leadingMargin" id="Tkw-pJ-zem"/>
@@ -1642,12 +1653,12 @@ nominations?</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Approvals Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JN-Na-cFY">
-                                        <rect key="frame" x="21" y="12" width="221" height="21"/>
+                                        <rect key="frame" x="21" y="2" width="221" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="L0z-rE-2jz"/>
                                             <constraint firstAttribute="width" constant="221" id="wXK-Xs-R8y"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1663,7 +1674,7 @@ nominations?</string>
                                 <constraints>
                                     <constraint firstItem="6JN-Na-cFY" firstAttribute="leading" secondItem="afB-Bc-znF" secondAttribute="leading" constant="21" id="3Xy-gT-GNK"/>
                                     <constraint firstAttribute="height" constant="47" id="Fmy-MA-hBV"/>
-                                    <constraint firstItem="6JN-Na-cFY" firstAttribute="top" secondItem="afB-Bc-znF" secondAttribute="top" constant="12" id="Gqu-aZ-BRa"/>
+                                    <constraint firstItem="6JN-Na-cFY" firstAttribute="top" secondItem="afB-Bc-znF" secondAttribute="top" constant="2" id="Gqu-aZ-BRa"/>
                                     <constraint firstAttribute="bottom" secondItem="oLo-Bb-9Nh" secondAttribute="bottom" id="OqR-we-59T"/>
                                     <constraint firstAttribute="trailing" secondItem="oLo-Bb-9Nh" secondAttribute="trailing" id="mCZ-Kh-Vcy"/>
                                     <constraint firstItem="oLo-Bb-9Nh" firstAttribute="leading" secondItem="afB-Bc-znF" secondAttribute="leading" id="vB1-gV-IBa"/>
@@ -2810,12 +2821,12 @@ nominations?</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Approvals Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-DZ-At7">
-                                        <rect key="frame" x="21" y="12" width="221" height="21"/>
+                                        <rect key="frame" x="21" y="4" width="221" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="221" id="GYb-2t-agn"/>
                                             <constraint firstAttribute="height" constant="21" id="R35-j4-hvH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2830,7 +2841,7 @@ nominations?</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="8PA-T2-vfh" firstAttribute="leading" secondItem="G6b-e9-0mg" secondAttribute="leading" id="69u-Wx-SRM"/>
-                                    <constraint firstItem="BsK-DZ-At7" firstAttribute="top" secondItem="G6b-e9-0mg" secondAttribute="top" constant="12" id="DFC-uV-3ls"/>
+                                    <constraint firstItem="BsK-DZ-At7" firstAttribute="top" secondItem="G6b-e9-0mg" secondAttribute="top" constant="4" id="DFC-uV-3ls"/>
                                     <constraint firstAttribute="trailing" secondItem="8PA-T2-vfh" secondAttribute="trailing" id="FrV-yV-gMl"/>
                                     <constraint firstAttribute="bottom" secondItem="8PA-T2-vfh" secondAttribute="bottom" id="Jr0-u7-1B9"/>
                                     <constraint firstItem="BsK-DZ-At7" firstAttribute="leading" secondItem="G6b-e9-0mg" secondAttribute="leading" constant="21" id="Zgr-xp-784"/>

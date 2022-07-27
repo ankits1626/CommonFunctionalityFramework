@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PopToRootVc {
+    func popToVC()
+}
+
 class BOUSApproveAndRejectNominationViewController: UIViewController {
     @IBOutlet weak var blurImg: UIImageView!
     @IBOutlet weak var nominationType: UILabel!
@@ -24,6 +28,7 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
     @IBOutlet weak var holderViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var rejectText: UITextView!
     var multipleNomination = ""
+    var delegate : PopToRootVc?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +65,9 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result{
                 case .Success(_):
-                    self.dismiss(animated: true)
+                      self.dismiss(animated: true) {
+                          self.delegate?.popToVC()
+                      }
                 case .SuccessWithNoResponseData:
                     fallthrough
                 case .Failure(_):

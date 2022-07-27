@@ -27,7 +27,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var approvalsCountHolder: NSLayoutConstraint!
     @IBOutlet weak var selectAllViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var approvalsCountLbl: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         approvalsCountLbl.text = ""
@@ -96,45 +96,31 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         cell.awardType.text = "\(dataValue.nomination.badges.name)"
         cell.nominatedBy.text = "by \(dataValue.nomination.nominator_name)"
         cell.nominatedDate.text = getCreationDate(jsonData: dataValue)
-        cell.timeRemaining.text = "\(dataValue.time_left)"
-        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points)"
+        if dataValue.time_left.isEmpty {
+            cell.timeRemaining.isHidden = true
+        }else {
+            cell.timeRemaining.text = "\(dataValue.time_left)"
+        }
+        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) points"
         cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
         cell.userStrengthDescription.text = "\(dataValue.nomination.user_strength.message)"
-        
+        cell.usrImg.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         if isSelectedAll {
             if selectedDataArray[indexPath.row] == dataValue.nomination.id {
                 cell.usrImg.image = UIImage(named: "cff_tick1")
             }else {
-                // mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
+                mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
             }
         }else {
-            // mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
+             mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
         }
         
-        //        if !dataValue.nomination.nominated_team_member.profile_img.isEmpty{
-        //            mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img)
-        //        }else{
-        //            cell.usrImg.image = nil
-        //        }
-        //
-        //        if !dataValue.nomination.badges.icon.isEmpty{
-        //            mediaFetcher.fetchImageAndLoad(cell.awardThumbnail, imageEndPoint: dataValue.nomination.badges.icon)
-        //        }else{
-        //            cell.awardThumbnail.image = nil
-        //        }
-        //
-        
-        //  mediaFetcher.fetchImageAndLoad(cell.awardThumbnil, imageEndPoint: dataValue.nomination.badges.icon ?? "")
-        //        if isSelectedAll {
-        //            if selectedDataArray[indexPath.row] == dataValue.id {
-        //                cell.usrImg.image = UIImage(named: "cff_attachmentIcon")
-        //            }else {
-        //                mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
-        //            }
-        //        }else {
-        //            mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
-        //        }
-        
+        if !dataValue.nomination.badges.icon.isEmpty{
+            mediaFetcher.fetchImageAndLoad(cell.awardThumbnail, imageEndPoint: dataValue.nomination.badges.icon)
+        }else{
+            
+            cell.awardThumbnail.image = nil
+        }
         return cell
         
     }
@@ -152,7 +138,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         if isSelectedAll {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BOUSApprovalsListTableViewCell
             let dataValue = jsonDataValues[indexPath.row]
-            //   mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
+            mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
             
             if !selectedDataArray.contains(dataValue.id) {
                 self.selectedDataArray.insert(dataValue.id, at: indexPath.row)

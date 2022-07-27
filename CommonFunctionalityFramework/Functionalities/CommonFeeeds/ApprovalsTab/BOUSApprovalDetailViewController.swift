@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, PopToRootVc {
     
     @IBOutlet weak var approvalTxt: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -104,9 +104,9 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                 cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color)
                 
                 if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String {
-                    // mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: leftImg)
+                     mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: leftImg)
                 }
-                //                mediaFetcher.fetchImageAndLoad(cell.rightImg, imageEndPoint: jsonDataValues.created_by_user_info.profile_img ?? "")
+                mediaFetcher.fetchImageAndLoad(cell.rightImg, imageEndPoint: jsonDataValues.created_by_user_info.profile_img ?? "")
             }
             return cell
         }else if indexPath.row == 1 {
@@ -120,7 +120,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             if jsonDataValues != nil {
                 cell.awardType.text = jsonDataValues.nomination.badges.name
                 cell.ptsLbl.text = "\(jsonDataValues.nomination.badges.award_points) Points"
-                //mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: jsonDataValues.nomination.badges.icon ?? "")
+                mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: jsonDataValues.nomination.badges.icon ?? "")
             }
             return cell
         }else if indexPath.row == 3 {
@@ -186,6 +186,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = true
+        vc.delegate = self
         vc.modalPresentationStyle = .overCurrentContext
         var topViewController = UIApplication.shared.keyWindow?.rootViewController
         while topViewController?.presentedViewController != nil
@@ -201,6 +202,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = false
+        vc.delegate = self
         vc.modalPresentationStyle = .overCurrentContext
         var topViewController = UIApplication.shared.keyWindow?.rootViewController
         while topViewController?.presentedViewController != nil
@@ -208,6 +210,10 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             topViewController = topViewController?.presentedViewController
         }
         topViewController?.present(vc, animated: false, completion: nil)
+    }
+    
+    func popToVC() {
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     @IBAction func backTapped(_ sender: Any) {
