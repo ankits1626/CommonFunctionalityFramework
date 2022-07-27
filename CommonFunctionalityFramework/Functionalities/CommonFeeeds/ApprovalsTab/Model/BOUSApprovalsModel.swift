@@ -15,6 +15,7 @@ struct BOUSApprovalData: Decodable {
 struct BOUSApprovalDataResponseValues : Decodable {
     let id : Int
     let time_left : String
+    let description : String
     enum CodingValue : String, CodingKey { case nomination = "nomination" }
     let nomination : nomination
 }

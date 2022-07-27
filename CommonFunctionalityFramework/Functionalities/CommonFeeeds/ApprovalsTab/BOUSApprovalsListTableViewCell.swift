@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class BOUSApprovalsListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var usrImg: UIImageView!
     @IBOutlet weak var timeRemaining: UILabel!
-    @IBOutlet weak var userStrengthDescription: UILabel!
+    @IBOutlet weak var userStrengthDescription: ActiveLabel!
     @IBOutlet weak var userStrengthTitle: UILabel!
     @IBOutlet weak var nominatedDate: UILabel!
     @IBOutlet weak var nominatedBy: UILabel!
@@ -24,6 +25,8 @@ class BOUSApprovalsListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        userStrengthDescription.hashtagColor = .black
+        userStrengthDescription.mentionColor = .black
         // Initialization code
     }
 
