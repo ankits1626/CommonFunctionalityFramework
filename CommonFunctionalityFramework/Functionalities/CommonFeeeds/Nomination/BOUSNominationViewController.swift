@@ -97,7 +97,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         }
         
         
-        cell.nominatedUserName.attributedText =  getCreatorName(text: "For", userName: "\(dataValue.nomination.nominator_name)")
+        cell.nominatedUserName.attributedText =  getCreatorName(text: "For", userName: "\(dataValue.nomination.nominated_team_member.full_name)")
         cell.nominatedDate.text = getCreationDate(jsonData: dataValue)
         cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
         
