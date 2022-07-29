@@ -14,6 +14,7 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     var feedIdentifier : Int64{get}
     func getUserImageUrl() -> String?
     func getUserName() -> String?
+    func toUserName() -> String?
     func getNominatedByUserName() -> String?
     func getDepartmentName() -> String?
     func getfeedCreationDate() -> String?
@@ -25,6 +26,7 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func isClappedByMe() -> Bool
     func getNumberOfClaps() -> String
     func getNumberOfComments() -> String
+    func updateNumberOfComments() -> String
     func getPollState() -> PollState
     func getMediaCountState() -> MediaCountState
     func getGiphy() -> String?
@@ -345,6 +347,15 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return getFeedAuthor()?.getAuthorName()
     }
     
+    func toUserName() -> String? {
+        var userName = ""
+        if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            userName = userDic["full_name"] as! String
+        }
+        
+        return userName
+    }
+    
     func getNominatedByUserName() -> String? {
         var userName = ""
         if let userDic = rawFeedDictionary["user"] as? NSDictionary {
@@ -423,6 +434,10 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getNumberOfComments() -> String {
         return "\(numberOfComments) \("Comment".localized)".appending(numberOfComments == 1 ? "" : "s".localized)
+    }
+    
+    func updateNumberOfComments() -> String {
+        return "\(numberOfComments + 1) \("Comment".localized)".appending(numberOfComments == 1 ? "" : "s".localized)
     }
     
     func hasOnlyMedia() -> Bool {

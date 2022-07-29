@@ -10,6 +10,12 @@ import UIKit
 import Reactions
 
 class CommonPressLikeButtonTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
+    
+    @IBOutlet weak var reactionImg1: UIButton!
+    @IBOutlet weak var reactionImg2: UIButton!
+    @IBOutlet weak var reactionCountBtn: BlockButton!
+    @IBOutlet weak var commentsLbl: UIButton!
+    
     @IBOutlet weak var clapsButton : BlockButton?
     @IBOutlet weak var showAllClapsButton : BlockButton?
     @IBOutlet weak var clapsCountLabel : UILabel?

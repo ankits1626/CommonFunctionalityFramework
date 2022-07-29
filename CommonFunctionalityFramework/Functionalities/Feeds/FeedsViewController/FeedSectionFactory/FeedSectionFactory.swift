@@ -35,18 +35,21 @@ protocol FeedsDelegate : AnyObject {
     func submitPollAnswer(feedIdentifier : Int64)
     func showAllClaps(feedIdentifier : Int64)
     func pinToPost(feedIdentifier : Int64, isAlreadyPinned : Bool)
+    func postReaction(feedId: Int64, reactionType: String)
 }
 
 class FeedSectionFactory{
     private let  feedsDatasource : FeedsDatasource!
+    private var  selectedTab = ""
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private var cachedFeedContentCoordinator = [FeedType : FeedContentCoordinatorProtocol]()
     private weak var targetTableView : UITableView?
     private weak var selectedOptionMapper : SelectedPollAnswerMapper?
     private weak var themeManager: CFFThemeManagerProtocol?
     
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, selectedOptionMapper : SelectedPollAnswerMapper, themeManager: CFFThemeManagerProtocol?) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, selectedOptionMapper : SelectedPollAnswerMapper, themeManager: CFFThemeManagerProtocol?, selectedTab: String) {
         self.feedsDatasource = feedsDatasource
+        self.selectedTab = selectedTab
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
         self.selectedOptionMapper = selectedOptionMapper
@@ -111,14 +114,14 @@ class FeedSectionFactory{
                 feedsDatasource: feedsDatasource,
                 mediaFetcher: mediaFetcher,
                 tableview: targetTableView,
-                themeManager: themeManager
+                themeManager: themeManager, selectedTab: selectedTab
             )
         case .Post:
             return PostFeedContentCoordinator(
                 feedsDatasource: feedsDatasource,
                 mediaFetcher: mediaFetcher,
                 tableview: targetTableView,
-                themeManager: themeManager
+                themeManager: themeManager, selectedTab: selectedTab
             )
         
         }

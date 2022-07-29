@@ -69,14 +69,13 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             
             if let mediaItem = feed.getMediaList()?.first,
                 let _ = mediaItem.getCoverImageUrl(){
-                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
             }else if let gifItem = feed.getGiphy() {
                 if !gifItem.isEmpty {
-                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
                 }
             }else {
-                cell.containerView?.layer.masksToBounds = true
-                cell.containerView?.layer.cornerRadius = 8
+                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
             }
         }
         return targetCell
@@ -103,14 +102,13 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             
             if let mediaItem = feed.getMediaList()?.first,
                 let _ = mediaItem.getCoverImageUrl(){
-                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
             }else if let gifItem = feed.getGiphy() {
                 if !gifItem.isEmpty {
-                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
                 }
             }else {
-                cell.containerView?.layer.masksToBounds = true
-                cell.containerView?.layer.cornerRadius = 8
+                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
             }
         }
     }

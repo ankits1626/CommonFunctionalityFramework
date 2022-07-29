@@ -252,6 +252,7 @@
                 <outlet property="containerView" destination="9A6-5o-i10" id="Acv-KF-J5E"/>
                 <outlet property="dateLabel" destination="Zmm-nD-Zvv" id="vdL-lb-lRo"/>
                 <outlet property="departmentName" destination="Slv-B1-VLm" id="XO9-Dk-UAM"/>
+                <outlet property="dot" destination="Dt1-mP-gR1" id="KRc-fx-Fpp"/>
                 <outlet property="editFeedButton" destination="xkm-Xa-WUK" id="cDD-hN-7hN"/>
                 <outlet property="pinPostButton" destination="4yE-Oc-j8r" id="eBt-hn-JB2"/>
                 <outlet property="pinPostWidthConstraint" destination="XdJ-o4-BEs" id="p5D-cv-vfp"/>

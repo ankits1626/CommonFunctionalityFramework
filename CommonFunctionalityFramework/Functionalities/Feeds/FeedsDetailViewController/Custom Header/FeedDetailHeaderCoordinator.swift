@@ -62,7 +62,11 @@ class FeedDetailHeaderCoordinator {
     
     private func configureCommentsHeader(_ view : FeedDetailHeader?){
         if let commentsCount =  feedDataSource.getCommentProvider()?.getNumberOfComments() {
-            view?.headerTitleLabel?.text = "\(commentsCount) Comments".localized
+            if commentsCount > 1 {
+                view?.headerTitleLabel?.text = "\(commentsCount) Comments".localized
+            }else {
+                view?.headerTitleLabel?.text = "\(commentsCount) Comment".localized
+            }
         }
         
         view?.headerActionButton?.isHidden = true
@@ -71,7 +75,12 @@ class FeedDetailHeaderCoordinator {
     
     private func configureClapsHeader(_ view : FeedDetailHeader?){
         if let reactionCount = feedDataSource.getClappedByUsers() {
-            view?.headerTitleLabel?.text = "\(reactionCount.count) Reaction".localized
+            if reactionCount.count > 1 {
+                view?.headerTitleLabel?.text = "\(reactionCount.count) Reactions".localized
+            }else {
+                view?.headerTitleLabel?.text = "\(reactionCount.count) Reaction".localized
+            }
+            
         }
         view?.headerActionButton?.setTitle("SEE ALL".localized, for: .normal)
         view?.headerActionButton?.setTitleColor(themeManager?.getControlActiveColor() ?? .bottomButtonTextColor, for: .normal)
@@ -81,6 +90,7 @@ class FeedDetailHeaderCoordinator {
         view?.headerActionButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
             self?.delegate?.showPostReactions()
         })
+        
     }
     
     func getHeight(section: FeedDetailSection) -> CGFloat {

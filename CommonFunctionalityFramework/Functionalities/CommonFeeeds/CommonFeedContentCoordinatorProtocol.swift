@@ -67,6 +67,7 @@ struct CommonFeedCellLoadDataModel {
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
     var isFeedDetailPage : Bool
+    var selectedTab : String
     weak var networkRequestCoordinator : CFFNetworkRequestCoordinatorProtocol?
 }
 

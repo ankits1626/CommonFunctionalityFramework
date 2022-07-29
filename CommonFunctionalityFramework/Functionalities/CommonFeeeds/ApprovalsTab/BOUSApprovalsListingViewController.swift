@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, PopToRootVc {
     
     @IBOutlet weak var selectAllBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -27,12 +27,13 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var approvalsCountHolder: NSLayoutConstraint!
     @IBOutlet weak var selectAllViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var approvalsCountLbl: UILabel!
-
+    let currentWindow: UIWindow? = UIApplication.shared.keyWindow!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         approvalsCountLbl.text = ""
-        self.selectAllBtn.isHidden = false
-        self.selectAllView.isHidden = false
+        self.selectAllView.isHidden = true
         self.selectAllViewHeightConstraint.constant = 60
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
@@ -45,10 +46,10 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     }
     
     func loadApprovalsList(){
-        loader.showActivityIndicator(view)
+        loader.showActivityIndicator(self.currentWindow!)
         BOUSGetApprovalsListWorker(networkRequestCoordinator: requestCoordinator).getApprovalsList(searchString: "", nextUrl: "") { (result) in
             DispatchQueue.main.async {
-                self.loader.hideActivityIndicator(self.view)
+                self.loader.hideActivityIndicator(self.currentWindow!)
                 switch result{
                 case .Success(result: let response):
                     if let dataValue = response["results"] as? NSArray {
@@ -107,7 +108,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         cell.usrImg.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         if isSelectedAll {
             if selectedDataArray[indexPath.row] == dataValue.nomination.id {
-                cell.usrImg.image = UIImage(named: "cff_tick1")
+                cell.usrImg.image = UIImage(named: "dummyTick")
             }else {
                 mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
             }
@@ -136,18 +137,19 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isSelectedAll {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BOUSApprovalsListTableViewCell
-            let dataValue = jsonDataValues[indexPath.row]
-            mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
-            
-            if !selectedDataArray.contains(dataValue.id) {
-                self.selectedDataArray.insert(dataValue.id, at: indexPath.row)
-            }else {
-                self.selectedDataArray.remove(at: indexPath.row)
-            }
-            self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [indexPath], with: .automatic)
-            self.tableView.endUpdates()
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BOUSApprovalsListTableViewCell
+//            let dataValue = jsonDataValues[indexPath.row]
+//            mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
+//            if !selectedDataArray.contains(dataValue.nomination.id) {
+//                self.selectedDataArray.insert(dataValue.nomination.id, at: indexPath.row)
+//            }else {
+//                self.selectedDataArray.remove(at: indexPath.row)
+//            }
+//            self.approvalsCountLbl.text = "\(self.selectedDataArray.count) Approvals Selected"
+//
+//            self.tableView.beginUpdates()
+//            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+//            self.tableView.endUpdates()
         }else {
             let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
             let dataValue = jsonDataValues[indexPath.row]
@@ -184,6 +186,53 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
             self.isSelectedAll = true
             self.tableView.reloadData()
         }
-        
     }
+    
+    @IBAction func appovalTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
+        let vc = storyboard.instantiateViewController(withIdentifier: "BOUSApproveAndRejectNominationViewController") as! BOUSApproveAndRejectNominationViewController
+        vc.requestCoordinator = requestCoordinator
+        let commmaSeperatedId = (selectedDataArray.map{String($0)}).joined(separator: ",")
+        vc.multipleNomination = commmaSeperatedId
+        vc.postId = selectedDataArray.first as! Int
+        vc.isNominationApproved = true
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        var topViewController = UIApplication.shared.keyWindow?.rootViewController
+        while topViewController?.presentedViewController != nil
+        {
+            topViewController = topViewController?.presentedViewController
+        }
+        topViewController?.present(vc, animated: false, completion: nil)
+    }
+    
+    @IBAction func rejectTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
+        let vc = storyboard.instantiateViewController(withIdentifier: "BOUSApproveAndRejectNominationViewController") as! BOUSApproveAndRejectNominationViewController
+        vc.requestCoordinator = requestCoordinator
+        let commmaSeperatedId = (selectedDataArray.map{String($0)}).joined(separator: ",")
+        vc.delegate = self
+        vc.multipleNomination = commmaSeperatedId
+        vc.postId = selectedDataArray.first as! Int
+        vc.isNominationApproved = false
+        vc.modalPresentationStyle = .overCurrentContext
+        var topViewController = UIApplication.shared.keyWindow?.rootViewController
+        while topViewController?.presentedViewController != nil
+        {
+            topViewController = topViewController?.presentedViewController
+        }
+        topViewController?.present(vc, animated: false, completion: nil)
+    }
+    
+    func popToVC() {
+        self.isSelectedAll = false
+        self.selectAllViewHeightConstraint.constant = 60
+        self.approveBtn.isHidden = true
+        self.rejectButton.isHidden = true
+        self.approvalsCountLbl.text = "\(self.jsonDataValues.count) Approvals Pending"
+        self.selectAllBtn.setImage(UIImage(named: "dummyTick3"), for: .normal)
+        selectedDataArray.removeAll()
+        self.tableView.reloadData()
+    }
+    
 }

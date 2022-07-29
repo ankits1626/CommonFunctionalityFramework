@@ -18,21 +18,21 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var feedCoordinatorDelegate: FeedsCommonCoordinatorDelegate!
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
-    var selectedTapType = ""
+    var selectedTabType = ""
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
             feedsDatasource: self,
             mediaFetcher: mediaFetcher,
             targetTableView: feedsTable,
             selectedOptionMapper: pollSelectedAnswerMapper,
-            themeManager: themeManager
+            themeManager: themeManager, selectedTab: selectedTabType
         )
     }()
-    
+    let loader = MFLoader()
     lazy var pollSelectedAnswerMapper: SelectedPollAnswerMapper = {
         return SelectedPollAnswerMapper()
     }()
-    
+    let currentWindow: UIWindow? = UIApplication.shared.keyWindow!
     private var lastFetchedFeeds : FetchedFeedModel?
     
     private lazy var refreshControl : UIRefreshControl  = {
@@ -97,12 +97,19 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @objc private func loadFeeds(){
+        loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTapType) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType) {[weak self] (result) in
                 DispatchQueue.main.async {
+                    self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
                     case .Success(let result):
+                        let resultData = result.fetchedRawFeeds as! NSDictionary
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
+                            "show_approvals": resultData["show_approvals"], "approvals_count": resultData["approvals_count"]
+                        ])
+                        
                         self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     case .SuccessWithNoResponseData:
                         ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
@@ -193,6 +200,7 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
             feedDetailVC.mainAppCoordinator = mainAppCoordinator
             feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
             feedDetailVC.mediaFetcher = mediaFetcher
+            feedDetailVC.selectedTab = selectedTabType
             feedDetailVC.requestCoordinator = requestCoordinator
             //feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate as! FeedsCoordinatorDelegate
             feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper

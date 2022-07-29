@@ -18,6 +18,7 @@ class FeedTopTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var pinPostButton : BlockButton?
     @IBOutlet weak var pinPostWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var appraacitedBy: UILabel!
+    @IBOutlet weak var dot: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

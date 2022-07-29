@@ -291,7 +291,7 @@
     </objects>
     <designables>
         <designable name="CzA-vt-fmv">
-            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="42" height="21"/>
         </designable>
     </designables>
     <resources>

@@ -20,6 +20,7 @@ import UIKit
 
 class FeedDetailSectionFactory {
     let feedDataSource : FeedsDatasource
+    var selectedTab : String
     private weak var feedDetailDelegate: FeedsDelegate?
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var selectedOptionMapper : SelectedPollAnswerMapper?
@@ -52,8 +53,9 @@ class FeedDetailSectionFactory {
     }()
     
     
-    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?) {
+    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?, selectedTab : String) {
         self.feedDataSource = feedDataSource
+        self.selectedTab = selectedTab
         self.feedDetailDelegate = feedDetailDelegate
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
@@ -141,7 +143,7 @@ class FeedDetailSectionFactory {
                 delegate: feedDetailDelegate,
                 selectedoptionMapper: selectedOptionMapper,
                 themeManager: themeManager,
-                isFeedDetailPage: true
+                isFeedDetailPage: true, selectedTab: selectedTab
             )
         )
     }

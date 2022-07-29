@@ -31,6 +31,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     weak var themeManager: CFFThemeManagerProtocol?
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    var selectedTab = ""
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
@@ -39,7 +40,8 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
             mediaFetcher: mediaFetcher,
             targetTableView: feedDetailTableView,
             themeManager: themeManager,
-            selectedOptionMapper: pollSelectedAnswerMapper
+            selectedOptionMapper: pollSelectedAnswerMapper, selectedTab: selectedTab
+
         )
     }()
     var pollSelectedAnswerMapper: SelectedPollAnswerMapper?
@@ -53,7 +55,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     }
     
     private func setup(){
-        view.backgroundColor = .viewBackgroundColor
+        view.backgroundColor = .white
         setupTableView()
         setupCommentBar()
         fetchClappedByUsers()
@@ -73,6 +75,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         commentBarView?.placeholder = "Enter your comments here".localized
         commentBarView?.placeholderColor = .getPlaceholderTextColor()
         commentBarView?.placeholderFont = .Body1
+        commentBarView?.leftUserImg.image = UIImage(named: "")
     }
     
     private func setupTableView(){
@@ -206,7 +209,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
                 if let results = result.fetchedLikes?["results"] as? [[String : Any]]{
                     results.forEach { (aRawLike) in
                         if let userInfo = aRawLike["user_info"] as? [String : Any]{
-                            likeList.append(ClappedByUser(userInfo))
+                            likeList.append(ClappedByUser(userInfo, reactionType: aRawLike["reaction_type"] as! Int ))
                         }
                     }
                 }
@@ -374,6 +377,36 @@ extension FeedsDetailViewController : FeedsDelegate{
                     fallthrough
                 case .Failure(error: let _):
                     print("<<<<<<<<<< like/unlike call completed \(result)")
+                }
+            }
+        }
+    }
+    
+    func postReaction(feedId: Int64, reactionType: String) {
+        var reactionId = Int()
+        if reactionType == "Like" {
+            reactionId = 0
+        }else if reactionType == "Love" {
+            reactionId = 3
+        }else if reactionType == "Clap" {
+            reactionId = 6
+        }else if reactionType == "Celebrate" {
+            reactionId = 1
+        }else if reactionType == "Support" {
+            reactionId = 2
+        }else {
+            reactionId = 1
+        }
+        
+        BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: reactionId){ (result) in
+            DispatchQueue.main.async {
+                switch result{
+                case .Success(_):
+                    break
+                case .SuccessWithNoResponseData:
+                    fallthrough
+                case .Failure(_):
+                    ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
                 }
             }
         }

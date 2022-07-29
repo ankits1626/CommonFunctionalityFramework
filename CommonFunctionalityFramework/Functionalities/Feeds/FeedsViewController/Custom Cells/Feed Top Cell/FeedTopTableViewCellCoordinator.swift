@@ -26,6 +26,7 @@ struct FeedCellLoadDataModel {
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
     var isFeedDetailPage : Bool
+    var selectedTab : String
 }
 
 struct FeedCellGetHeightModel {
@@ -59,6 +60,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             if let nominatedName = feed.getNominatedByUserName() {
                 cell.appraacitedBy.text = "From \(nominatedName)"
             }
+            
             cell.userName?.font = UIFont.Body2
             cell.userName?.textColor = UIColor.getTitleTextColor()
             cell.departmentName?.text = feed.getDepartmentName()
