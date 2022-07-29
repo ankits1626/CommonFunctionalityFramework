@@ -30,7 +30,7 @@ class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProt
             }
             let feedTitle = feed.getStrengthData()
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
-            
+            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }

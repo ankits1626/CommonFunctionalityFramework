@@ -64,7 +64,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="57" id="46F-I5-5Bo"/>
                             </constraints>
-                            <string key="text">If you have any concerns regarding the post
+                            <string key="text">If you have any concerns regarding this feed
 Please share below</string>
                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                             <color key="textColor" red="0.67058777810000003" green="0.67843151089999998" blue="0.75294011829999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

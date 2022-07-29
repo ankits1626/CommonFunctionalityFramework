@@ -10,6 +10,7 @@ import UIKit
 
 class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     var feedsDataSource: FeedsDatasource!
+    var selectedTab = ""
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var themeManager: CFFThemeManagerProtocol?
     private weak var targetTableView : UITableView?
@@ -26,8 +27,9 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         ]
     }()
 
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedTab: String) {
         self.feedsDataSource = feedsDatasource
+        self.selectedTab = selectedTab
         self.mediaFetcher = mediaFetcher
         self.targetTableView = tableview
         self.themeManager = themeManager
@@ -101,7 +103,7 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 delegate: inputModel.delegate,
                 selectedoptionMapper: inputModel.selectedoptionMapper,
                 themeManager: themeManager,
-                isFeedDetailPage: false
+                isFeedDetailPage: false, selectedTab: selectedTab
             )
         )
     }

@@ -51,7 +51,8 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
                     )
             })
             
-            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 0)
+            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
+           
         }
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var curveHeader: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     var tableViewArrayHolder = [BOUSReactionListDataResponseValues]()
@@ -23,6 +24,9 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        curveHeader.clipsToBounds = true
+        curveHeader.layer.cornerRadius = 10
+        curveHeader.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         loadData(reaction: "")
     }
     
@@ -87,14 +91,14 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
                 cell.leftImg.isHidden = false
                 if dataValues.reaction_type == 0 {
                     cell.leftImg.image = UIImage(named: "React_like")
-                }else if dataValues.reaction_type == 1 {
-                    cell.leftImg.image = UIImage(named: "React_love")
-                }else if dataValues.reaction_type == 2 {
-                    cell.leftImg.image = UIImage(named: "React_clap")
                 }else if dataValues.reaction_type == 3 {
-                    cell.leftImg.image = UIImage(named: "React_support")
-                }else if dataValues.reaction_type == 4 {
+                    cell.leftImg.image = UIImage(named: "React_love")
+                }else if dataValues.reaction_type == 6 {
+                    cell.leftImg.image = UIImage(named: "React_clap")
+                }else if dataValues.reaction_type == 1 {
                     cell.leftImg.image = UIImage(named: "React_celebrate")
+                }else if dataValues.reaction_type == 2 {
+                    cell.leftImg.image = UIImage(named: "React_support")
                 }
             }
     
@@ -132,6 +136,18 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
         mediaFetcher.fetchImageAndLoad(cell.userImg, imageEndPoint: dataVal.user_info.profile_img ?? "")
         cell.userName.text = dataVal.user_info.full_name
         cell.userInfo.text = dataVal.user_info.departments[0].name
+        if dataVal.reaction_type == 0 {
+            cell.reactionType.image = UIImage(named: "icon_React_like")
+        }else if dataVal.reaction_type == 3 {
+            cell.reactionType.image = UIImage(named: "icon_React_love")
+        }else if dataVal.reaction_type == 6 {
+            cell.reactionType.image = UIImage(named: "icon_React_clap")
+        }else if dataVal.reaction_type == 1 {
+            cell.reactionType.image = UIImage(named: "icon_React_celebrate")
+        }else if dataVal.reaction_type == 2 {
+            cell.reactionType.image = UIImage(named: "icon_React_support")
+        }
+        
         return cell
     }
     
@@ -142,7 +158,7 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 147
+        return 77
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

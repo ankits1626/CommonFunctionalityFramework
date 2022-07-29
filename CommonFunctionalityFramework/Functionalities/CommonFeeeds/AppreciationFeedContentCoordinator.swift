@@ -14,6 +14,7 @@ class AppreciationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var targetTableView : UITableView?
     private weak var themeManager: CFFThemeManagerProtocol?
+    var selectedTab = ""
     lazy var cachedFeedCellCoordinators: [String : CommonFeedCellCoordinatorProtocol] = {
         return [
             CommonFeedsTopTableViewCellType().cellIdentifier : CommonFeedTopTableViewCellCoordinator(),
@@ -26,11 +27,12 @@ class AppreciationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol
         ]
     }()
 
-    init(feedsDatasource : CommonFeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?) {
+    init(feedsDatasource : CommonFeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedTab : String) {
         self.feedsDataSource = feedsDatasource
         self.mediaFetcher = mediaFetcher
         self.targetTableView = tableview
         self.themeManager = themeManager
+        self.selectedTab = selectedTab
         registerTableViewForAllPossibleCellTypes(tableview)
     }
     
@@ -47,7 +49,7 @@ class AppreciationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol
         rows.append(CommonFeedsTopTableViewCellType())
         rows.append(CommonAppreciationSubjectTableViewCellType())
        // rows.append(ImageViewTableViewCellType())
-        rows.append(CommonLikesSectionTableViewCellType())
+       // rows.append(CommonLikesSectionTableViewCellType())
         rows.append(CommonPressLikeButtonTableViewCellType())
        // rows.append(CommonOutastandingImageTableViewCellType())
         
@@ -107,7 +109,7 @@ class AppreciationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol
                 delegate: inputModel.delegate,
                 selectedoptionMapper: inputModel.selectedoptionMapper,
                 themeManager: inputModel.themeManager,
-                isFeedDetailPage: false
+                isFeedDetailPage: false, selectedTab: selectedTab ?? ""
             )
         )
     }

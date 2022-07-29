@@ -14,6 +14,7 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var targetTableView : UITableView?
     private weak var themeManager: CFFThemeManagerProtocol?
+    var selectedTab = ""
     lazy var cachedFeedCellCoordinators: [String : CommonFeedCellCoordinatorProtocol] = {
         return [
             CommonFeedsTopTableViewCellType().cellIdentifier : CommonFeedTopTableViewCellCoordinator(),
@@ -30,12 +31,13 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
         ]
     }()
 
-    init(feedsDatasource : CommonFeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?) {
+    init(feedsDatasource : CommonFeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedTab: String) {
         self.feedsDataSource = feedsDatasource
         self.mediaFetcher = mediaFetcher
         self.targetTableView = tableview
         self.themeManager = themeManager
         registerTableViewForAllPossibleCellTypes(tableview)
+        self.selectedTab = selectedTab
     }
     
     internal func registerTableViewForAllPossibleCellTypes(_ tableView : UITableView? ){
@@ -54,7 +56,7 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
         if feed.getPostType() == .Nomination {
             rows.append(CommonFeedsTopTableViewCellType())
             rows.append(CommonOutastandingImageTableViewCellType())
-            rows.append(CommonLikesSectionTableViewCellType())
+            //rows.append(CommonLikesSectionTableViewCellType())
             rows.append(CommonPressLikeButtonTableViewCellType())
             rows.append(BOUSFeedGrayDividerCellType())
         }else {
@@ -83,7 +85,7 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
                 }
             }
             
-            rows.append(CommonLikesSectionTableViewCellType())
+            //rows.append(CommonLikesSectionTableViewCellType())
             rows.append(CommonPressLikeButtonTableViewCellType())
             rows.append(BOUSFeedGrayDividerCellType())
         }
@@ -168,7 +170,7 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
                 delegate: inputModel.delegate,
                 selectedoptionMapper: inputModel.selectedoptionMapper,
                 themeManager: inputModel.themeManager,
-                isFeedDetailPage: false
+                isFeedDetailPage: false, selectedTab: selectedTab
             )
         )
     }

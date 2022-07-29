@@ -57,7 +57,7 @@ class LikeListViewController: UIViewController {
                     if let results = result.fetchedLikes?["results"] as? [[String : Any]]{
                         results.forEach { (aRawLike) in
                             if let userInfo = aRawLike["user_info"] as? [String : Any]{
-                                likeList.append(ClappedByUser(userInfo))
+                                likeList.append(ClappedByUser(userInfo, reactionType: aRawLike["reaction_type"] as! Int))
                             }
                         }
                     }

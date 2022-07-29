@@ -46,7 +46,7 @@ public class CommonFeedsCoordinator {
         feedsVc.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
         feedsVc.themeManager = inputModel.themeManager
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
-        feedsVc.selectedTapType = inputModel.selectedTabType
+        feedsVc.selectedTabType = inputModel.selectedTabType
         return feedsVc
     }
     

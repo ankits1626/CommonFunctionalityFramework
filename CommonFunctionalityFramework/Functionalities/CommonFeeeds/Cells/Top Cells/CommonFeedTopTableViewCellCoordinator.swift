@@ -28,17 +28,27 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? CommonFeedsTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            cell.userName?.text = feed.getUserName()
-            if let nominatedName = feed.getNominatedByUserName() {
-                cell.appraacitedBy.text = "From \(nominatedName)"
+            
+            if inputModel.selectedTab == "received" {
+                cell.userName?.text = feed.getUserName()
+                if let nominatedName = feed.getNominatedByUserName() {
+                    cell.appraacitedBy.text = "From \(nominatedName)"
+                }
+            }else {
+                if let toUserName = feed.toUserName() {
+                    cell.userName?.text = "To \(toUserName)"
+                    cell.appraacitedBy.isHidden = true
+                    cell.dot.isHidden = true
+                }
             }
+            
             if let profileImageEndpoint = feed.getUserImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
             }else{
                 cell.profileImage?.image = nil
             }
             cell.dateLabel?.text = feed.getfeedCreationMonthYear()
-             if !inputModel.datasource.shouldShowMenuOptionForFeed(){
+            if !inputModel.datasource.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true
             }else{
                 cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
@@ -50,7 +60,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                         targetView: cell.editFeedButton,
                         feedIdentifier: feed.feedIdentifier
                     )
-            })
+                })
         }
     }
     

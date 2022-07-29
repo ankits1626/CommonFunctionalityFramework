@@ -35,15 +35,6 @@ class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .touchUpInside)
-    }
-    
-    @IBAction func facebookButtonReactionTouchedUpAction(_ sender: AnyObject) {
-        print(reactionView.reaction.id)
-
-      if reactionView.isSelected == false {
-        reactionView.reaction   = Reaction.facebook.like
-      }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -51,7 +51,7 @@ class BOUSReactionPostWorkerRequestGenerator: APIRequestGeneratorProtocol  {
                     url: URL(string: baseUrl + "feeds/api/posts/\(feedIdentifier)/appreciate/"),
                     method: .POST,
                     httpBodyDict: [
-                        "type" : 0
+                        "type" : reactionType
                     ]
                 )
                 return req

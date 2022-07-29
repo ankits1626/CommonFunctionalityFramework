@@ -10,15 +10,23 @@ import UIKit
 
 class CommonOutastandingImageTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var awardImg: UIImageView!
-    @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var awardTitle: UILabel!
-    @IBOutlet weak var awardSubTitle: UILabel!
-    @IBOutlet weak var awardDescription: UILabel!
-    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var imageContainer : UIView?
+    @IBOutlet weak var nominationImageView : UIImageView?
+    @IBOutlet weak var badgeImageView : UIImageView?
+    @IBOutlet weak var nominationConatiner : UIView?
+    @IBOutlet weak var messageContainer : UIView?
+    
+    @IBOutlet weak var awardLabel : UILabel?
+    @IBOutlet weak var strengthLabel : UILabel?
+    @IBOutlet weak var nominationMessage : UILabel?
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        imageContainer?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+        messageContainer?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+        nominationConatiner?.clipsToBounds = true
+        nominationConatiner?.layer.cornerRadius = 8
+        nominationConatiner?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,5 +45,24 @@ class CommonOutastandingImageTableViewCellType : CommonFeedCellTypeProtocol{
     
     var cellNib: UINib?{
         return UINib(nibName: "CommonOutastandingImageTableViewCell", bundle: Bundle(for: CommonOutastandingImageTableViewCell.self))
+    }
+}
+
+
+public extension UIView {
+    func curvedUIBorderedControl(borderColor : UIColor = UIColor.getGeneralBorderColor(),borderWidth : CGFloat  = 1.0, cornerRadius : CGFloat = 8.0) {
+        self.layer.cornerRadius = cornerRadius
+        borderedUIControl(borderColor: borderColor, borderWidth: borderWidth)
+    }
+    
+    func borderedUIControl(borderColor : UIColor = UIColor.getGeneralBorderColor(), borderWidth : CGFloat  = 1.0 ) {
+        self.clipsToBounds = true
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = borderWidth
+    }
+    func addShadowToView() {
+        self.layer.shadowColor = Rgbconverter.HexToColor("#202970", alpha: 0.04).cgColor
+      self.layer.shadowOffset = CGSize(width: 1, height: 1)
+      self.layer.shadowOpacity = 1
     }
 }

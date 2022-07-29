@@ -37,18 +37,14 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
             
             if let mediaItem = feed.getMediaList()?.first,
                 let _ = mediaItem.getCoverImageUrl(){
-                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
             }else if let gifItem = feed.getGiphy() {
                 if !gifItem.isEmpty {
-                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
                 }
             }else {
-                cell.containerView?.layer.masksToBounds = true
-                cell.containerView?.layer.cornerRadius = 8
+                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
             }
-            
-            
-            
         }
     }
     
@@ -56,3 +52,11 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
 
 
 
+extension UIView {
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+}
