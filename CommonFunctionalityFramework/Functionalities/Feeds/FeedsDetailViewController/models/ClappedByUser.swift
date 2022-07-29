@@ -10,9 +10,11 @@ import Foundation
 
 struct ClappedByUser : FeedBaseUser  {
     var rawUserDictionary: [String : Any]
+    var reactionType : Int
     
-    init(_ rawClappedByUser : [String : Any]) {
+    init(_ rawClappedByUser : [String : Any], reactionType : Int) {
         self.rawUserDictionary = rawClappedByUser
+        self.reactionType = reactionType
     }
     
 //    func getUserName() -> String?{

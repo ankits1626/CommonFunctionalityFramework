@@ -26,6 +26,7 @@ public class ASChatBarview : UIView {
     @IBOutlet public weak var container : UIView?
     @IBOutlet public weak var attachImageButton : UIButton?
     @IBOutlet public weak var sendButton : UIButton?
+    @IBOutlet weak var leftUserImg: UIImageView!
     @IBOutlet public weak var messageTextView : KMPlaceholderTextView?
     @IBOutlet private weak var placeholderLabel : UILabel?
     @IBOutlet public weak var delegate : ASChatBarViewDelegate?

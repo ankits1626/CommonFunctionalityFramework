@@ -26,6 +26,7 @@ struct FeedCellLoadDataModel {
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
     var isFeedDetailPage : Bool
+    var selectedTab : String
 }
 
 struct FeedCellGetHeightModel {
@@ -55,10 +56,24 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            cell.userName?.text = feed.getUserName()
-            if let nominatedName = feed.getNominatedByUserName() {
-                cell.appraacitedBy.text = "From \(nominatedName)"
+//            cell.userName?.text = feed.getUserName()
+//            if let nominatedName = feed.getNominatedByUserName() {
+//                cell.appraacitedBy.text = "From \(nominatedName)"
+//            }
+            
+            if inputModel.selectedTab == "received" {
+                cell.userName?.text = feed.getUserName()
+                if let nominatedName = feed.getNominatedByUserName() {
+                    cell.appraacitedBy.text = "From \(nominatedName)"
+                }
+            }else {
+                if let toUserName = feed.toUserName() {
+                    cell.userName?.text = "To \(toUserName)"
+                    cell.appraacitedBy.isHidden = true
+                    cell.dot.isHidden = true
+                }
             }
+            
             cell.userName?.font = UIFont.Body2
             cell.userName?.textColor = UIColor.getTitleTextColor()
             cell.departmentName?.text = feed.getDepartmentName()

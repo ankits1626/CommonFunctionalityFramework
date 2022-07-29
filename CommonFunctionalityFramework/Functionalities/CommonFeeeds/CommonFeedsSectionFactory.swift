@@ -40,13 +40,15 @@ class CommonFeedsSectionFactory{
     private weak var targetTableView : UITableView?
     private weak var selectedOptionMapper : SelectedPollAnswerMapper?
     private weak var themeManager: CFFThemeManagerProtocol?
-    
-    init(feedsDatasource : CommonFeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, selectedOptionMapper : SelectedPollAnswerMapper, themeManager: CFFThemeManagerProtocol?) {
+    private var selectedTab : String?
+
+    init(feedsDatasource : CommonFeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, selectedOptionMapper : SelectedPollAnswerMapper, themeManager: CFFThemeManagerProtocol?, selectedTab: String) {
         self.feedsDatasource = feedsDatasource
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
         self.selectedOptionMapper = selectedOptionMapper
         self.themeManager = themeManager
+        self.selectedTab = selectedTab
     }
     
     func getNumberOfSections() -> Int {
@@ -107,14 +109,14 @@ class CommonFeedsSectionFactory{
                 feedsDatasource: feedsDatasource,
                 mediaFetcher: mediaFetcher,
                 tableview: targetTableView,
-                themeManager: themeManager
+                themeManager: themeManager, selectedTab: selectedTab ?? ""
             )
         case .Post:
             return NominationFeedContentCoordinator(
                 feedsDatasource: feedsDatasource,
                 mediaFetcher: mediaFetcher,
                 tableview: targetTableView,
-                themeManager: themeManager
+                themeManager: themeManager, selectedTab: selectedTab ?? ""
             )
         
         }

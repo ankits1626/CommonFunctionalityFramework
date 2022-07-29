@@ -31,11 +31,16 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             let feedNominationData = feed.getStrengthData()
             let bagesData = feed.getBadgesData()
-            cell.awardSubTitle?.text = feedNominationData["strengthName"] as! String
-            cell.awardDescription?.text =  feedNominationData["strengthMessage"] as! String
-            cell.awardTitle.text = bagesData["badgeName"] as! String
-            //cell.backView.backgroundColor = Rgbconverter.HexToColor(appCoordinator.getOrgBackgroundColor(), alpha: 1.0)
-            inputModel.mediaFetcher.fetchImageAndLoad(cell.awardImg, imageEndPoint:  bagesData["badgeIcon"] as! String)
+            cell.strengthLabel?.text = feedNominationData["strengthName"] as! String
+            cell.nominationMessage?.text =  feedNominationData["strengthMessage"] as! String
+            cell.awardLabel?.text = bagesData["badgeName"] as! String
+            cell.nominationImageView?.backgroundColor =  Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 1)
+            cell.imageContainer?.backgroundColor = Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 1)
+            cell.nominationConatiner?.backgroundColor = Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 0.2)
+            
+            
+            
+            inputModel.mediaFetcher.fetchImageAndLoad(cell.badgeImageView, imageEndPoint:  bagesData["badgeIcon"] as! String)
            
         }
     }

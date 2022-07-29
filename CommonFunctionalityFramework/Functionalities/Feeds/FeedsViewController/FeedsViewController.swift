@@ -16,7 +16,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     @IBOutlet private weak var feedsTable : UITableView?
     @IBOutlet private weak var whatsInYourMindView : UIView?
     @IBOutlet private weak var cameraContainerViewView : UIView?
-    
+    var selectedTab = ""
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
@@ -29,7 +29,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             mediaFetcher: mediaFetcher,
             targetTableView: feedsTable,
             selectedOptionMapper: pollSelectedAnswerMapper,
-            themeManager: themeManager
+            themeManager: themeManager, selectedTab: selectedTab
         )
     }()
     
@@ -339,6 +339,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func postReaction(feedId: Int64, reactionType: String) {
+        
+    }
+    
     func showPostReactions() {
         
     }

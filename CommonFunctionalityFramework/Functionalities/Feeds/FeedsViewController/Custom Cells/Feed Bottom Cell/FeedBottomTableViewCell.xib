@@ -23,6 +23,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="429" height="125"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJT-Dg-kPU">
+                        <rect key="frame" x="0.0" y="50" width="429" height="1"/>
+                        <color key="backgroundColor" red="0.92941129209999995" green="0.94117671250000001" blue="0.99999898669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ab7-sN-Ro4"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2b-wS-JUv">
                         <rect key="frame" x="16" y="0.0" width="397" height="115"/>
                         <subviews>
@@ -45,9 +52,6 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uxu-XT-ZbF" customClass="ReactionButton" customModule="Reactions">
                                                         <rect key="frame" x="0.0" y="0.0" width="198.5" height="44"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <action selector="facebookButtonReactionTouchedUpAction:" destination="eGz-uI-bVt" eventType="valueChanged" id="OWx-qE-zP4"/>
-                                                        </connections>
                                                     </view>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXK-18-cuK" userLabel="Claps Container">
                                                         <rect key="frame" x="198.5" y="0.0" width="44" height="44"/>
@@ -189,9 +193,12 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="sJT-Dg-kPU" firstAttribute="leading" secondItem="Zwh-Rb-Pkf" secondAttribute="leading" id="3hc-KJ-Gjo"/>
                     <constraint firstItem="U2b-wS-JUv" firstAttribute="top" secondItem="Zwh-Rb-Pkf" secondAttribute="top" id="5jh-zy-Aa8"/>
+                    <constraint firstItem="sJT-Dg-kPU" firstAttribute="top" secondItem="Zwh-Rb-Pkf" secondAttribute="top" constant="50" id="EPC-EX-wnj"/>
                     <constraint firstItem="U2b-wS-JUv" firstAttribute="leading" secondItem="Zwh-Rb-Pkf" secondAttribute="leading" constant="16" id="Z3N-ph-eUx"/>
                     <constraint firstAttribute="bottom" secondItem="U2b-wS-JUv" secondAttribute="bottom" constant="10" id="aBK-hS-lfo"/>
+                    <constraint firstAttribute="trailing" secondItem="sJT-Dg-kPU" secondAttribute="trailing" id="oTG-dz-09T"/>
                     <constraint firstAttribute="trailing" secondItem="U2b-wS-JUv" secondAttribute="trailing" constant="16" id="uEe-XD-G7L"/>
                 </constraints>
             </tableViewCellContentView>

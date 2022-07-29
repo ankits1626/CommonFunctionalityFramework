@@ -13,6 +13,7 @@ class BOUSReactionListTableViewCell: UITableViewCell {
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userInfo: UILabel!
+    @IBOutlet weak var reactionType: UIImageView!
     @IBOutlet weak var checkBoxBtn: UIButton!
     
     override func awakeFromNib() {
