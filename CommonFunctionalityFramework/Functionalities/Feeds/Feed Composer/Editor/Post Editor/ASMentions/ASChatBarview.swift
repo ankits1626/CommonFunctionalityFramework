@@ -100,18 +100,18 @@ public class ASChatBarview : UIView {
     }
 
     private func registerForKeyboardNotifications(){
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeyboardAppearance),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeyboardAppearance),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(handleKeyboardAppearance),
+//            name: UIResponder.keyboardWillShowNotification,
+//            object: nil
+//        )
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(handleKeyboardAppearance),
+//            name: UIResponder.keyboardWillHideNotification,
+//            object: nil
+//        )
     }
 
     private func registerForTextChangeNotification(){
