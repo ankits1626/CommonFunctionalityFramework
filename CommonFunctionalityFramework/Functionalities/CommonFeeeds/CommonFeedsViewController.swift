@@ -13,6 +13,7 @@ import Photos
 class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet private weak var feedsTable : UITableView?
     
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var feedCoordinatorDelegate: FeedsCommonCoordinatorDelegate!
@@ -97,11 +98,14 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @objc private func loadFeeds(){
-        loader.showActivityIndicator(self.currentWindow!)
+        self.activityLoader.isHidden = false
+        self.activityLoader.startAnimating()
+        //loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
             nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType) {[weak self] (result) in
                 DispatchQueue.main.async {
-                    self?.loader.hideActivityIndicator((self?.currentWindow!)!)
+                    self?.activityLoader.stopAnimating()
+                   // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
                     case .Success(let result):

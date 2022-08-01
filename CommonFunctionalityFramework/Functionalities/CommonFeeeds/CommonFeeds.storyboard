@@ -1257,7 +1257,7 @@ nominations?</string>
                                             <action selector="noPressed:" destination="v7D-qj-CBn" eventType="touchUpInside" id="IJM-ki-81S"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reject" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-bS-qoE">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_approve" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-bS-qoE">
                                         <rect key="frame" x="171" y="37" width="72" height="72"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="72" id="Hrc-dd-wDs"/>
@@ -2543,10 +2543,10 @@ nominations?</string>
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bug-LV-oSQ">
-                                                            <rect key="frame" x="60" y="41" width="64.5" height="16"/>
+                                                            <rect key="frame" x="60" y="41" width="68.5" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1h-7C-jLg">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="64.5" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="68.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -2741,22 +2741,22 @@ nominations?</string>
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="WyP-4E-k5G">
-                                                            <rect key="frame" x="60" y="31" width="178" height="16"/>
+                                                            <rect key="frame" x="60" y="31" width="186" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Jane Cooper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwr-EK-T1k">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="94" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="97.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dot" translatesAutoresizingMaskIntoConstraints="NO" id="nX8-uw-zRv">
-                                                                    <rect key="frame" x="97" y="0.0" width="8" height="16"/>
+                                                                    <rect key="frame" x="100.5" y="0.0" width="8" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="8" id="xfh-At-iI4"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jI0-h7-lcW">
-                                                                    <rect key="frame" x="108" y="0.0" width="70" height="16"/>
+                                                                    <rect key="frame" x="111.5" y="0.0" width="74.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -2917,11 +2917,16 @@ nominations?</string>
                                     <constraint firstAttribute="height" constant="47" id="aTp-Qx-oB8"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="dmb-Jb-fXA">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" systemColor="labelColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u16-G1-iZc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u16-G1-iZc" firstAttribute="bottom" secondItem="S5o-eW-nGn" secondAttribute="bottom" constant="14" id="0Et-oJ-asI"/>
+                            <constraint firstItem="dmb-Jb-fXA" firstAttribute="centerY" secondItem="7N3-co-SXW" secondAttribute="centerY" id="8yG-d4-rQd"/>
                             <constraint firstItem="u16-G1-iZc" firstAttribute="trailing" secondItem="wxE-g6-G2q" secondAttribute="trailing" id="CkZ-20-7PR"/>
                             <constraint firstItem="S5o-eW-nGn" firstAttribute="trailing" secondItem="u16-G1-iZc" secondAttribute="trailing" id="HsZ-Yl-0sM"/>
                             <constraint firstAttribute="trailing" secondItem="G6b-e9-0mg" secondAttribute="trailing" id="Kvc-2p-oxD"/>
@@ -2933,10 +2938,12 @@ nominations?</string>
                             <constraint firstItem="S5o-eW-nGn" firstAttribute="leading" secondItem="u16-G1-iZc" secondAttribute="leading" id="mrB-Rm-IOf"/>
                             <constraint firstItem="S5o-eW-nGn" firstAttribute="top" secondItem="wxE-g6-G2q" secondAttribute="bottom" id="nCJ-vN-2Jl"/>
                             <constraint firstItem="b9G-8K-325" firstAttribute="top" secondItem="7N3-co-SXW" secondAttribute="top" id="rsW-Nl-sxz"/>
+                            <constraint firstItem="dmb-Jb-fXA" firstAttribute="centerX" secondItem="7N3-co-SXW" secondAttribute="centerX" id="tET-Zu-eUk"/>
                             <constraint firstItem="b9G-8K-325" firstAttribute="leading" secondItem="u16-G1-iZc" secondAttribute="leading" id="vx0-4m-uGT"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityLoader" destination="dmb-Jb-fXA" id="shb-vl-iqg"/>
                         <outlet property="approvalView" destination="G6b-e9-0mg" id="pIk-2R-iwC"/>
                         <outlet property="approvalsCountHolder" destination="aTp-Qx-oB8" id="eIN-A3-0FH"/>
                         <outlet property="approvalsCountLbl" destination="BsK-DZ-At7" id="1mw-fL-SAc"/>
@@ -2956,10 +2963,10 @@ nominations?</string>
     </scenes>
     <designables>
         <designable name="6c4-PV-ghr">
-            <size key="intrinsicContentSize" width="946" height="16.5"/>
+            <size key="intrinsicContentSize" width="1003" height="17"/>
         </designable>
         <designable name="X0m-7V-LTP">
-            <size key="intrinsicContentSize" width="946" height="16.5"/>
+            <size key="intrinsicContentSize" width="1003" height="17"/>
         </designable>
     </designables>
     <resources>
@@ -2971,6 +2978,7 @@ nominations?</string>
         <image name="design_so-pencil-2" width="16" height="16"/>
         <image name="dummyTick3" width="14.5" height="12.5"/>
         <image name="firstDot" width="11.5" height="38"/>
+        <image name="icon_approve" width="72" height="72"/>
         <image name="icon_back_white" width="36" height="36"/>
         <image name="icon_back_white-2" width="22" height="22"/>
         <image name="icon_checkbox_unselected" width="24" height="24"/>
@@ -2980,7 +2988,6 @@ nominations?</string>
         <image name="icon_nomination_group" width="187" height="36"/>
         <image name="icon_points-2" width="36" height="23"/>
         <image name="icon_public" width="32" height="32"/>
-        <image name="icon_reject" width="72" height="72"/>
         <image name="interface_close-lg" width="22" height="22"/>
         <image name="no_user_image_profilepage" width="119" height="119"/>
         <image name="secondDot" width="11" height="89"/>
