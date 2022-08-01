@@ -48,6 +48,11 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDataSource, UICollec
         cell.mediaCoverImageView?.curvedCornerControl()
 //        cell.pageControl?.numberOfPages = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?.count ?? 0
 //        cell.pageControl?.currentPage = self.currentPage
+//        cell.mediaCoverImageView?.clipsToBounds = true
+//        cell.mediaCoverImageView?.layer.cornerRadius = 12
+//        cell.mediaCoverImageView?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        cell.pageControl?.numberOfPages = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?.count ?? 0
+        cell.pageControl?.currentPage = currentPage
         if let mediaType = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?[indexPath.row].getMediaType(),
         mediaType == .Video{
              cell.playButton?.isHidden = false
@@ -85,9 +90,9 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDelegateFlowLayout{
             case .OneMediaItemPresent(_):
                 return CGSize.zero
             case .TwoMediaItemPresent:
-                return CGSize(width: collectionView.frame.width, height: 136)
+                return CGSize(width: collectionView.frame.width, height: 156)
             case .MoreThanTwoMediItemPresent:
-                return CGSize(width: collectionView.frame.width, height: 136)
+                return CGSize(width: collectionView.frame.width, height: 156)
             }
         }
     }

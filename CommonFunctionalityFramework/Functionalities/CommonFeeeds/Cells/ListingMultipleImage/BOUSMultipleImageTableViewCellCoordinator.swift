@@ -8,10 +8,14 @@
 
 import UIKit
 
-class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
+class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol, MultipleImageFlowLayoutDelegate{
+    func currentPageSelected(currentPage: Int) {
+        print(currentPage)
+    }
+    
 
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
-        return 140
+        return 190
     }
     
     var cellType: CommonFeedCellTypeProtocol{
@@ -19,6 +23,7 @@ class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProt
     }
     
     private var cachedMediCollectionCoordinators = [IndexPath : CommonFeedsMediaCollectionCoordinator]()
+    var currentSwipePage : Int = 0
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? BOUSMultipleImageTableViewCell{
@@ -29,8 +34,12 @@ class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProt
                 cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             let feedTitle = feed.getStrengthData()
+            
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
-            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
+            cell.containerView.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+            cell.mediaCollectionView.decelerationRate = .fast
+            (cell.mediaCollectionView?.collectionViewLayout as! MultipleImageFlowLayout).pageCollectionLayoutDelegate = self
+
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }

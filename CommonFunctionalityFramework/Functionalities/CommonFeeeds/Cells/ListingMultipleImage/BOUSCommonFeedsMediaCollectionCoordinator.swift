@@ -45,9 +45,10 @@ extension CommonFeedsMediaCollectionCoordinator : UICollectionViewDataSource, UI
         for: indexPath) as! MediaItemCollectionViewCell
         let mediaItemUrl = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?[indexPath.row].getCoverImageUrl()
         input.mediaFetcher.fetchImageAndLoad(cell.mediaCoverImageView, imageEndPoint: mediaItemUrl ?? "")
-        cell.mediaCoverImageView?.curvedCornerControl()
+        cell.mediaCoverImageView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         cell.pageControl?.numberOfPages = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?.count ?? 0
-        cell.pageControl?.currentPage = currentPage
+        cell.pageControl?.currentPage = indexPath.row
+        cell.pageControl.currentPageIndicatorTintColor = .red
         if let mediaType = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?[indexPath.row].getMediaType(),
         mediaType == .Video{
              cell.playButton?.isHidden = false
@@ -85,9 +86,9 @@ extension CommonFeedsMediaCollectionCoordinator : UICollectionViewDelegateFlowLa
             case .OneMediaItemPresent(_):
                 return CGSize.zero
             case .TwoMediaItemPresent:
-                return CGSize(width: collectionView.frame.width, height: 136)
+                return CGSize(width: collectionView.frame.width, height: 176)
             case .MoreThanTwoMediItemPresent:
-                return CGSize(width: collectionView.frame.width, height: 136)
+                return CGSize(width: collectionView.frame.width, height: 176)
             }
         }
     }
