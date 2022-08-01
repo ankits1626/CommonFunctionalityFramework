@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RewardzCommonComponents
 
 public struct GetCommonFeedsViewModel{
     var networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
@@ -38,6 +39,7 @@ public protocol FeedsCommonCoordinatorDelegate {
 public class CommonFeedsCoordinator {
     
     public init(){}
+    var loader = MFLoader()
     
     public func getFeedsView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
         let feedsVc =  CommonFeedsViewController(nibName: "CommonFeedsViewController", bundle: Bundle(for: CommonFeedsViewController.self))
@@ -81,8 +83,10 @@ public class CommonFeedsCoordinator {
     }
 
     public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
+        self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId, feedType: "given") { (result) in
             DispatchQueue.main.async {
+                self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                 switch result{
                 case .Success(let result):
                     if let fetchedFeedDetail = result.fetchedRawFeeds {
