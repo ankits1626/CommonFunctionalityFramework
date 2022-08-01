@@ -66,22 +66,30 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         var strengthIcon = ""
         var strengthMessage = ""
         var badgeBackgroundColor = ""
-        var points = ""
+        var points = "0"
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
                     strengthMessage = rawFeedDictionary["description"] as! String
                    // strengthIcon = userStengthDic["icon"] as! String
                     badgeBackgroundColor = userStengthDic["background_color"] as! String
-                    points = "\(userStengthDic["points"] as! Int)"
+                    
+                    if let pts = rawFeedDictionary["points"] as? String {
+                        points = pts
+                    }
+                    
+                    
                     dataDic = ["strengthName" : userName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points]
                 }else {
                     if let userStengthDic = rawFeedDictionary["user_strength"] as? NSDictionary {
+                        if let pts = rawFeedDictionary["points"] as? String {
+                            points = pts
+                        }
+                        
                         strengthName = userStengthDic["name"] as! String
                         strengthMessage = rawFeedDictionary["description"] as! String
                         strengthIcon = userStengthDic["icon"] as! String
                         badgeBackgroundColor = userStengthDic["background_color"] as! String
-                        points = "\(userStengthDic["points"] as! Int)"
                         dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points]
                     }
                 }
@@ -416,7 +424,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             }
         }
         
-        if let images = rawFeedDictionary["images"] as? [[String : Any]]{
+        if let images = rawFeedDictionary["images_with_ecard"] as? [[String : Any]]{
             for anImage in images {
                 mediaElements.append(FeedImageItem(anImage))
             }
