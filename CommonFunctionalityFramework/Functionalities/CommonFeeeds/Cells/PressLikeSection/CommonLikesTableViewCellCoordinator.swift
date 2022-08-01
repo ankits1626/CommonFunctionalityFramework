@@ -164,7 +164,9 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                 if !isImage1 {
                     cell.reactionImg1.setImage(UIImage(named: getImageType), for: .normal)
                 }
-            }else if let isImage2 = image2 {
+            }
+            
+            if let isImage2 = image2 {
                 if !isImage2 {
                     cell.reactionImg2.setImage(UIImage(named: getImageType), for: .normal)
                 }

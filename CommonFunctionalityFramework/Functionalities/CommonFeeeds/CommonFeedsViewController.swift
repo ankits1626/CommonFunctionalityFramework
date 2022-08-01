@@ -106,9 +106,13 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                     switch result{
                     case .Success(let result):
                         let resultData = result.fetchedRawFeeds as! NSDictionary
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
-                            "show_approvals": resultData["show_approvals"], "approvals_count": resultData["approvals_count"]
-                        ])
+                        
+                        if self?.selectedTabType == "received" {
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
+                                "show_approvals": resultData["show_approvals"], "approvals_count": resultData["approvals_count"]
+                            ])
+                        }
+                       
                         
                         self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     case .SuccessWithNoResponseData:
@@ -242,33 +246,23 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     }
     
     func postReaction(feedId: Int64, reactionType: String) {
-        var reactionId = Int()
-        if reactionType == "Like" {
-            reactionId = 0
-        }else if reactionType == "Love" {
-            reactionId = 3
-        }else if reactionType == "Clap" {
-            reactionId = 6
-        }else if reactionType == "Celebrate" {
-            reactionId = 1
-        }else if reactionType == "Support" {
-            reactionId = 2
-        }else {
-            reactionId = 1
-        }
-        
-        BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: reactionId){ (result) in
-            DispatchQueue.main.async {
-                switch result{
-                case .Success(_):
-                    break
-                case .SuccessWithNoResponseData:
-                    fallthrough
-                case .Failure(_):
-                    ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+
+        if let reactionId = reactionType as? String{
+            BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: Int(reactionId)!){ (result) in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .Success(_):
+                        break
+                    case .SuccessWithNoResponseData:
+                        fallthrough
+                    case .Failure(_):
+                        ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+                    }
                 }
             }
+            
         }
+
     }
     
     private func showPintoPostConfirmation(_ feedIdentifier : Int64, isAlreadyPinned: Bool){

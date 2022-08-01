@@ -75,7 +75,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         commentBarView?.placeholder = "Enter your comments here".localized
         commentBarView?.placeholderColor = .getPlaceholderTextColor()
         commentBarView?.placeholderFont = .Body1
-        commentBarView?.leftUserImg.image = UIImage(named: "")
+//        commentBarView?.leftUserImg.image = UIImage(named: "")
     }
     
     private func setupTableView(){

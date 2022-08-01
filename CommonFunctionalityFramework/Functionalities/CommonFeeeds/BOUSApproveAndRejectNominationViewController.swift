@@ -39,11 +39,21 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
             self.nominationType.text = "Approve"
             holderViewHeightConstraint.constant = 400
             textViewHeightConstraint.constant = 0
-            self.nominationDescription.text = "Are you sure you want to approve this nomination?"
+            
+            if multipleNomination.count > 1 {
+                self.nominationDescription.text = "Are you sure you want to approve these nominations ?"
+            }else {
+                self.nominationDescription.text = "Are you sure you want to approve this nomination?"
+            }
         }else {
             self.nominationType.text = "Reject"
-            self.imageType.image = UIImage(named: "cff_tick1")
-            self.nominationDescription.text = "Are you sure you want to reject this nomination?"
+            self.imageType.image = UIImage(named: "icon_reject")
+            
+            if multipleNomination.count > 1 {
+                self.nominationDescription.text = "Are you sure you want to reject these nomination?"
+            }else {
+                self.nominationDescription.text = "Are you sure you want to reject this nomination?"
+            }
         }
     }
     
@@ -53,15 +63,26 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
     }
     
     @IBAction func yesPressed(_ sender: Any) {
-        postToServer(approvalStatus: isNominationApproved)
+        if !isNominationApproved && rejectText.text.isEmpty {
+            ErrorDisplayer.showError(errorMsg: "Please enter meesage for rejecting this nomination".localized) { (_) in}
+            return
+        }
+        
+        if isNominationApproved {
+            postToServer(approvalStatus: "yes", message: self.rejectText.text)
+        }else {
+            postToServer(approvalStatus: "no", message: self.rejectText.text)
+
+        }
+        
     }
     
     @IBAction func noPressed(_ sender: Any) {
-        postToServer(approvalStatus: false)
+        self.dismiss(animated: true)
     }
     
-    func postToServer(approvalStatus: Bool) {
-        BOUSNominationAppoveRejectWorker(networkRequestCoordinator: self.requestCoordinator).postnomination(postId: postId, multipleNominations: multipleNomination, message: "", approvalStatus: approvalStatus) { (result) in
+    func postToServer(approvalStatus: String, message: String?) {
+        BOUSNominationAppoveRejectWorker(networkRequestCoordinator: self.requestCoordinator).postnomination(postId: postId, multipleNominations: multipleNomination, message: message ?? "", approvalStatus: approvalStatus) { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(_):
