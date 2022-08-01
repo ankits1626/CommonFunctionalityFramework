@@ -30,7 +30,15 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.feedText?.numberOfLines = 3
             let feedTitle = feed.getStrengthData()
-            cell.feedText?.text = feedTitle["strengthMessage"] as! String
+            if let unwrappedText = feedTitle["strengthMessage"] as? String{
+                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
+                ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                    cell.feedText?.text = nil
+                    cell.feedText?.attributedText = attr
+                })
+            }else{
+                cell.feedText?.text = feedTitle["strengthMessage"] as? String ?? ""
+            }
             cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
