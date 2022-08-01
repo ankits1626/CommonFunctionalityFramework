@@ -27,7 +27,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var approvalsCountHolder: NSLayoutConstraint!
     @IBOutlet weak var selectAllViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var approvalsCountLbl: UILabel!
-    let currentWindow: UIWindow? = UIApplication.shared.keyWindow!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +47,11 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     }
     
     func loadApprovalsList(){
-        loader.showActivityIndicator(self.currentWindow!)
+        self.activityLoader.isHidden = false
+        self.activityLoader.startAnimating()
         BOUSGetApprovalsListWorker(networkRequestCoordinator: requestCoordinator).getApprovalsList(searchString: "", nextUrl: "") { (result) in
             DispatchQueue.main.async {
-                self.loader.hideActivityIndicator(self.currentWindow!)
+                self.activityLoader.stopAnimating()
                 switch result{
                 case .Success(result: let response):
                     if let dataValue = response["results"] as? NSArray {
