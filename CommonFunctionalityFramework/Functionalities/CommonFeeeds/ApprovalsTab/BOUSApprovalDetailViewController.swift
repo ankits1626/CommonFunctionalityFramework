@@ -107,7 +107,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                 cell.rightName.text = "\(jsonDataValues.created_by_user_info.full_name)"
                 cell.dateLbl.text =  getCreationDate(jsonDate: jsonDataValues.created_on)
                 
-                cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color)
+                cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color,alpha:  0.1)
                 
                 if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String {
                      mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: leftImg)
@@ -160,11 +160,11 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         if indexPath.row == 0 {
             return 300
         }else if indexPath.row == 1 {
-            return 89
+            return UITableView.automaticDimension
         }else if indexPath.row == 2 {
             return 82
         }else if indexPath.row == 3 {
-            return 152
+            return UITableView.automaticDimension
         }else {
             return 48
         }

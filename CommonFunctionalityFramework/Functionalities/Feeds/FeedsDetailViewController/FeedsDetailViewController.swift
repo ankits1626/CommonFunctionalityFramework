@@ -77,7 +77,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         commentBarView?.placeholderFont = .Body1
 //        commentBarView?.leftUserImg.image = UIImage(named: "")
     }
-    
+ 
     private func setupTableView(){
         feedDetailTableView?.tableFooterView = UIView(frame: CGRect.zero)
         feedDetailTableView?.rowHeight = UITableView.automaticDimension

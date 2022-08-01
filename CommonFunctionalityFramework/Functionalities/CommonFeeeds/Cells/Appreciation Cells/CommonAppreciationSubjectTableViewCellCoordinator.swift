@@ -28,10 +28,19 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? CommonAppreciationSubjectTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            cell.feedText?.numberOfLines = 3
             let feedTitle = feed.getStrengthData()
+            print(feedTitle["strengthMessage"] as! String)
+
             cell.feedText?.text = feedTitle["strengthMessage"] as! String
             cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
+            if let numberOfComments = cell.feedText {
+                if numberOfComments.maxNumberOfLines > 3 {
+                    cell.readMorebutton?.isHidden = false
+                }else {
+                    cell.readMorebutton?.isHidden = true
+                }
+            }
+            cell.feedText?.numberOfLines = 3
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
             
@@ -58,5 +67,15 @@ extension UIView {
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         layer.mask = mask
+    }
+}
+
+extension UILabel {
+    var maxNumberOfLines: Int {
+        let maxSize = CGSize(width: frame.size.width, height: CGFloat(MAXFLOAT))
+        let text = (self.text ?? "") as NSString
+        let textHeight = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil).height
+        let lineHeight = font.lineHeight
+        return Int(ceil(textHeight / lineHeight))
     }
 }
