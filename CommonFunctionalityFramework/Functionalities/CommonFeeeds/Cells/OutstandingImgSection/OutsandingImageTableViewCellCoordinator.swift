@@ -33,15 +33,17 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
             let bagesData = feed.getBadgesData()
             cell.strengthLabel?.text = feedNominationData["strengthName"] as! String
             cell.nominationMessage?.text =  feedNominationData["strengthMessage"] as! String
-            cell.awardLabel?.text = bagesData["badgeName"] as! String
-            cell.nominationImageView?.backgroundColor =  Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 1)
-            cell.imageContainer?.backgroundColor = Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 1)
-            cell.nominationConatiner?.backgroundColor = Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 0.2)
             
-            
-            
-            inputModel.mediaFetcher.fetchImageAndLoad(cell.badgeImageView, imageEndPoint:  bagesData["badgeIcon"] as! String)
-           
+            if let badgeData = bagesData as? NSDictionary {
+                if bagesData.count > 0 {
+                    cell.awardLabel?.text = badgeData["badgeName"] as! String
+                    cell.nominationImageView?.backgroundColor =  Rgbconverter.HexToColor(badgeData["badgeBackgroundColor"] as! String, alpha: 1)
+                    cell.imageContainer?.backgroundColor = Rgbconverter.HexToColor(badgeData["badgeBackgroundColor"] as! String, alpha: 1)
+                    cell.nominationConatiner?.backgroundColor = Rgbconverter.HexToColor(badgeData["badgeBackgroundColor"] as! String, alpha: 0.2)
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.badgeImageView, imageEndPoint:  badgeData["badgeIcon"] as! String)
+                }
+  
+            }
         }
     }
     

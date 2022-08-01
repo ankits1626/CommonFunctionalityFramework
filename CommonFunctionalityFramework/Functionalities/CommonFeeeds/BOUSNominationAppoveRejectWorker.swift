@@ -17,7 +17,7 @@ class BOUSNominationAppoveRejectWorker  {
     init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func postnomination(postId: Int, multipleNominations: String?, message: String?,approvalStatus: Bool, completionHandler: @escaping BOUSNominationAppoveRejectWorkerResultHandler) {
+    func postnomination(postId: Int, multipleNominations: String?, message: String?,approvalStatus: String, completionHandler: @escaping BOUSNominationAppoveRejectWorkerResultHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: BOUSNominationAppoveRejectRequestGenerator(feedIdentifier: postId, message: message, multipleNominations: multipleNominations, approvalStatus: approvalStatus, networkRequestCoordinator: networkRequestCoordinator),
@@ -37,9 +37,9 @@ class BOUSNominationAppoveRejectRequestGenerator: APIRequestGeneratorProtocol  {
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var feedIdentifier : Int
     var message: String?
-    var approvalStatus : Bool
+    var approvalStatus : String
     var multipleNominations: String?
-    init(feedIdentifier: Int, message: String?,multipleNominations: String?, approvalStatus: Bool, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    init(feedIdentifier: Int, message: String?,multipleNominations: String?, approvalStatus: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
         self.message = message
         self.approvalStatus = approvalStatus

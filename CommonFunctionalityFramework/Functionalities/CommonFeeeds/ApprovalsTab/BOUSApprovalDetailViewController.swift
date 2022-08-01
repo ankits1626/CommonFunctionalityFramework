@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol PopToApprovals {
+    func popToApprovalsAndReload()
+}
+
+
 class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, PopToRootVc {
     
     @IBOutlet weak var approvalTxt: UITextField!
@@ -25,7 +30,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     var jsonDataValues : BOUSApprovalsDetailData!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var isComingFromNominationPage : Bool = false
-    
+    var delegate : PopToApprovals?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -214,6 +220,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     
     func popToVC() {
         self.navigationController?.popToRootViewController(animated: false)
+        delegate?.popToApprovalsAndReload()
     }
     
     @IBAction func backTapped(_ sender: Any) {

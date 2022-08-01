@@ -96,7 +96,8 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             let feedTitle = feed.getStrengthData()
             cell.feedText?.text = feedTitle["strengthMessage"] as! String
             cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
-            cell.pointBtn.setTitle(feedTitle["points"] as! String, for: .normal)
+            cell.pointBtn.setTitle("\(feedTitle["points"] as! String) Points", for: .normal)
+            
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
             
