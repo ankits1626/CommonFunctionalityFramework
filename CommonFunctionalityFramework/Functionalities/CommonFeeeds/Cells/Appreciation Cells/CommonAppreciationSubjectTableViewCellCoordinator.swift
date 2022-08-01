@@ -29,9 +29,15 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
         if let cell  = inputModel.targetCell as? CommonAppreciationSubjectTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             let feedTitle = feed.getStrengthData()
-            print(feedTitle["strengthMessage"] as! String)
-
-            cell.feedText?.text = feedTitle["strengthMessage"] as! String
+            if let unwrappedText = feedTitle["strengthMessage"] as? String{
+                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
+                ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                    cell.feedText?.text = nil
+                    cell.feedText?.attributedText = attr
+                })
+            }else{
+                cell.feedText?.text = feedTitle["strengthMessage"] as? String ?? ""
+            }
             cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
             if let numberOfComments = cell.feedText {
                 if numberOfComments.maxNumberOfLines > 3 {
