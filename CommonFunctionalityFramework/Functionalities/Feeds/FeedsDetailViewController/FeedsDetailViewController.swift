@@ -547,28 +547,28 @@ extension FeedsDetailViewController : FeedsDelegate{
     }
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
-        var options = [FloatingMenuOption]()
-        if targetFeedItem.getFeedType() == .Post,
-            targetFeedItem.isFeedEditAllowed(){
-            options.append(
-                FloatingMenuOption(title: "EDIT".localized, action: {
-                    print("Edit post - \(feedIdentifier)")
-                    self.openFeedEditor(self.targetFeedItem)
-                }
-                )
-            )
-        }
-        if targetFeedItem.isFeedDeleteAllowed(){
-            options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
-                print("Delete post- \(feedIdentifier)")
-                self?.showDeletePostConfirmation(feedIdentifier)
-                }
-                )
-            )
-        }
-        if targetFeedItem.isFeedReportAbuseAllowed(){
+//        var options = [FloatingMenuOption]()
+//        if targetFeedItem.getFeedType() == .Post,
+//            targetFeedItem.isFeedEditAllowed(){
+//            options.append(
+//                FloatingMenuOption(title: "EDIT".localized, action: {
+//                    print("Edit post - \(feedIdentifier)")
+//                    self.openFeedEditor(self.targetFeedItem)
+//                }
+//                )
+//            )
+//        }
+//        if targetFeedItem.isFeedDeleteAllowed(){
+//            options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
+//                print("Delete post- \(feedIdentifier)")
+//                self?.showDeletePostConfirmation(feedIdentifier)
+//                }
+//                )
+//            )
+//        }
+      //  if targetFeedItem.isFeedReportAbuseAllowed(){
             self.showReportAbuseConfirmation(feedIdentifier)
-        }
+     //   }
     }
     
     private func openFeedEditor(_ feed : FeedsItemProtocol){
