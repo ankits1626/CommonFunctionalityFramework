@@ -155,6 +155,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private var numberOfComments : Int64
     private let isPriority : Bool
     private let isAdminUser : Bool
+    private let reactionType : Int64
     
     required public init(input : [String : Any]){
         self.rawFeedDictionary = input
@@ -163,6 +164,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         numberOfComments = rawFeedDictionary["comments_count"] as? Int64 ?? 0
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
+        reactionType = rawFeedDictionary["is_admin"] as? Int64 ?? 0
     }
     
     required public init(managedObject : NSManagedObject){
@@ -172,6 +174,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         numberOfComments = (managedObject as! ManagedPost).numberOfComments
         isPriority = (managedObject as! ManagedPost).isPriority
         isAdminUser = (managedObject as! ManagedPost).isAdmin
+        reactionType = (managedObject as! ManagedPost).messageType
     }
     
     @discardableResult public func getManagedObject() -> NSManagedObject{
@@ -197,6 +200,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         managedPost.numberOfComments = numberOfComments
         managedPost.isPriority = isPriority
         managedPost.isAdmin = isAdminUser
+        managedPost.messageType = reactionType
         return managedPost
     }
     

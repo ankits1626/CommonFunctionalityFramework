@@ -250,20 +250,33 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     }
     
     func postReaction(feedId: Int64, reactionType: String) {
-        BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: reactionType){ (result) in
-            DispatchQueue.main.async {
-                switch result{
-                case .Success(_):
-                    
-                case .SuccessWithNoResponseData:
-                    fallthrough
-                case .Failure(_):
-                    ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+        if let feed = getFeedItem(feedIdentifier: feedId){
+            if let reactionId = reactionType as? String{
+                BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: Int(reactionId)!){ (result) in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .Success(result: let result):
+                            CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                let post = ((feed as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
+                                post?.messageType = result.isLiked
+                                post?.numberOfLikes = result.totalLikeCount
+                                CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                    CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                }
+                            }
+                            
+                            break
+                        case .SuccessWithNoResponseData:
+                            fallthrough
+                        case .Failure(_):
+                            ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+                        }
+                    }
                 }
+                
             }
-            
         }
-
+        
     }
     
     private func showPintoPostConfirmation(_ feedIdentifier : Int64, isAlreadyPinned: Bool){

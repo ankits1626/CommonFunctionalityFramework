@@ -66,7 +66,7 @@ class BOUSReactionPostWorkerDataParser: DataParserProtocol {
     typealias ResultType = Any?
     
     func parseFetchedData(fetchedData: ExpectedRawDataType) -> APICallResult<ResultType> {
-        return .Success(result: nil)
+        return .Success(result: fetchedData)
     }
 }
 
