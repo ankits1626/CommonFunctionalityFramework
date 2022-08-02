@@ -23,6 +23,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     var reactionList: NSArray!
     var image1: Bool?
     var image2: Bool?
+    var reactionsCount : Int64!
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? CommonPressLikeButtonTableViewCell{
@@ -35,16 +36,17 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                 )
             })
             
+            reactionsCount = feed.getReactionCount()
             reactionList = feed.getReactionsData()
             if let reactionData = reactionList {
                 
-                if reactionData.count == 0 {
+                if reactionsCount == 0 {
                     cell.reactionImg1.isHidden = true
                     cell.reactionImg2.isHidden = true
                     cell.reactionCountBtn.isHidden = true
                     self.image1 = false
-                }else if reactionData.count > 0 {
-                    cell.reactionCountBtn.setTitle("\(reactionData.count)", for: .normal)
+                }else if reactionsCount > 0 {
+                    cell.reactionCountBtn.setTitle("\(reactionsCount!)", for: .normal)
                     cell.reactionCountBtn.isHidden = false
                     if let dict1 = reactionData[0] as?  NSDictionary {
                         if let image1 = dict1["reaction_type"] as? Int {
@@ -61,7 +63,8 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                     self.image1 = false
                 }
                 
-                if reactionData.count > 1 {
+                if reactionsCount > 1 {
+
                     if let dict2 = reactionData[1] as? NSDictionary {
                         if let image2 = dict2["reaction_type"] as? Int {
                             cell.reactionImg2.isHidden = false
@@ -111,6 +114,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                 inputModel.delegate?.showAllClaps(feedIdentifier: feed.feedIdentifier)
             })
             
+            print("Value - \(feed.getUserReactionType())")
             if feed.getUserReactionType() == 0 {
                 cell.reactionView.reaction  = Reaction.facebook.like
             }else if feed.getUserReactionType() == 1 {
@@ -124,6 +128,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             }else {
                 cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .red, icon: UIImage(named: "icon_like_gray")!)
             }
+            
             
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .touchUpInside)
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .valueChanged)
@@ -156,9 +161,10 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
         if let feed = inputModel?.datasource.getFeedItem(sender.tag) {
             let getReactionidType = getReactionIdFromString(reactionType: (reactionBtn?.reaction.id)!)
             inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: "\(getReactionidType)")
-            cell.reactionCountBtn.setTitle("\(reactionList.count + 1)", for: .normal)
-            cell.reactionImg1.isHidden = false
-            cell.reactionCountBtn.isHidden = false
+            
+           // cell.reactionCountBtn.setTitle("\(reactionsCount)", for: .normal)
+            //cell.reactionImg1.isHidden = false
+           // cell.reactionCountBtn.isHidden = false
             var getImageType = setReactionImageType(reactionType: Int(getReactionidType)!)
             if let isImage1 = image1 {
                 if !isImage1 {
@@ -170,7 +176,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                 if !isImage2 {
                     cell.reactionImg2.setImage(UIImage(named: getImageType), for: .normal)
                 }
-            } 
+            }
         }
     }
     

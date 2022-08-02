@@ -45,8 +45,9 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getStrengthData() -> NSDictionary
     func getPostType() -> FeedPostType
     func getBadgesData() -> NSDictionary
-    func getUserReactionType() -> Int?
+    func getUserReactionType() -> Int
     func getReactionsData() -> NSArray?
+    func getReactionCount() -> Int64
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -135,15 +136,23 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     }
     
     func getReactionsData() -> NSArray? {
-        if let images = rawFeedDictionary["reaction_type"] as? NSArray{
-                return images
-        }
-        
-        return nil
+//        if let images = rawFeedDictionary["reaction_type"] as? NSArray{
+//                return images
+//        }
+        return reactionTypeData
     }
     
-    func getUserReactionType() -> Int? {
-        return rawFeedDictionary["user_reaction_type"] as? Int
+    func getNumberOfLikesCount() -> Int64 {
+        print(rawFeedDictionary)
+        return 0
+    }
+    
+    func getReactionCount() -> Int64 {
+        return numberOfLikes
+    }
+    
+    func getUserReactionType() -> Int {
+        return Int(reactionType) ?? 0
     }
     
     func getLikeToggleUrl(_ baseUrl : String) -> URL {
@@ -156,15 +165,27 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private let isPriority : Bool
     private let isAdminUser : Bool
     private let reactionType : Int64
+    var reactionTypeData : NSArray
     
     required public init(input : [String : Any]){
         self.rawFeedDictionary = input
         isLikedByMe = rawFeedDictionary["has_appreciated"] as? Bool ?? false
-        numberOfLikes = rawFeedDictionary["appreciation_count"] as? Int64 ?? 0
         numberOfComments = rawFeedDictionary["comments_count"] as? Int64 ?? 0
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
         reactionType = rawFeedDictionary["messageType"] as? Int64 ?? 0
+        
+        if let likesCount = rawFeedDictionary["reaction_type"] as? NSArray{
+            numberOfLikes = Int64(likesCount.count)
+        }else {
+            numberOfLikes = 0
+        }
+        
+        if let reactionData = rawFeedDictionary["reaction_type"] as? NSArray{
+                reactionTypeData = reactionData
+        }else{
+            reactionTypeData = NSArray()
+        }
     }
     
     required public init(managedObject : NSManagedObject){
@@ -175,6 +196,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isPriority = (managedObject as! ManagedPost).isPriority
         isAdminUser = (managedObject as! ManagedPost).isAdmin
         reactionType = (managedObject as! ManagedPost).messageType
+        reactionTypeData = (managedObject as! ManagedPost).reactionTypesData as! NSArray
     }
     
     @discardableResult public func getManagedObject() -> NSManagedObject{
@@ -201,6 +223,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         managedPost.isPriority = isPriority
         managedPost.isAdmin = isAdminUser
         managedPost.messageType = reactionType
+        managedPost.reactionTypesData = reactionTypeData
         return managedPost
     }
     

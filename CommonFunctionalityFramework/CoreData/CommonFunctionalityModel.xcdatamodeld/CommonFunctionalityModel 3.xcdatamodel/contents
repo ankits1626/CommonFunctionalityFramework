@@ -16,6 +16,7 @@
         <attribute name="pollUpdatedTrigger" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="postId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="postRawDictionary" optional="YES" attributeType="Transformable"/>
+        <attribute name="reactionTypesData" optional="YES" attributeType="Transformable"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ManagedPostComment" inverseName="post" inverseEntity="ManagedPostComment"/>
     </entity>
     <entity name="ManagedPostComment" representedClassName="ManagedPostComment" syncable="YES">
@@ -28,7 +29,7 @@
     </entity>
     <elements>
         <element name="ManagedGifs" positionX="-324" positionY="117" width="128" height="88"/>
-        <element name="ManagedPost" positionX="-525.40234375" positionY="107.296875" width="128" height="194"/>
+        <element name="ManagedPost" positionX="-525.40234375" positionY="107.296875" width="128" height="209"/>
         <element name="ManagedPostComment" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>
