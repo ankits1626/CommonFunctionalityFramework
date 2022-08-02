@@ -76,7 +76,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNJ-eI-glJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNJ-eI-glJ" customClass="ActiveLabel" customModule="ActiveLabel">
                                 <rect key="frame" x="26" y="103" width="208" height="119"/>
                                 <string key="text">Thank you so much for putting in the extra time and energy required to save a project that appeared lost. Your efforts to keep the client's expectations in line with the project scope and motivate the team were invaluable. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

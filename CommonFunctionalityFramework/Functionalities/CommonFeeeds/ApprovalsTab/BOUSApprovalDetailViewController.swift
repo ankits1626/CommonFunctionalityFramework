@@ -109,10 +109,18 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                 
                 cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color,alpha:  0.1)
                 
-                if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String {
+                if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String, leftImg.count > 0 {
                      mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: leftImg)
+                }else{
+                    cell.leftImg.setImageForName(jsonDataValues.nomination.nominated_team_member.full_name, circular: false, textAttributes: nil)
                 }
-                mediaFetcher.fetchImageAndLoad(cell.rightImg, imageEndPoint: jsonDataValues.created_by_user_info.profile_img ?? "")
+                
+                if let rightImage = jsonDataValues.created_by_user_info.profile_img as? String, rightImage.count > 0 {
+                    mediaFetcher.fetchImageAndLoad(cell.rightImg, imageEndPoint: jsonDataValues.created_by_user_info.profile_img ?? "")
+                    
+                }else{
+                    cell.rightImg.setImageForName(jsonDataValues.created_by_user_info.full_name, circular: false, textAttributes: nil)
+                }
             }
             return cell
         }else if indexPath.row == 1 {
