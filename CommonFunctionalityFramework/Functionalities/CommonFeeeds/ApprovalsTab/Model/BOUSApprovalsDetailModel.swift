@@ -52,15 +52,15 @@ struct badge : Decodable {
 
 struct user : Decodable {
     let full_name: String
-    let profile_img : String
+    let profile_img : String?
 }
 
 struct nominated_team_member : Decodable {
     let full_name: String
-    let profile_img : String
+    let profile_img : String?
 }
 
 struct created_by_user_info : Decodable {
     let full_name: String
-    let profile_img : String
+    let profile_img : String?
 }

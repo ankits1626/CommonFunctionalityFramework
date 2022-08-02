@@ -43,14 +43,16 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol,Multi
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+//                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+               // cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             let feedTitle = feed.getStrengthData()
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
 
-            cell.containerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+            cell.containerView?.clipsToBounds = true
+            cell.containerView?.layer.cornerRadius = 8
+            cell.containerView?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.mediaCollectionView?.decelerationRate = .fast
             (cell.mediaCollectionView?.collectionViewLayout as! MultipleImageFlowLayout).pageCollectionLayoutDelegate = self
             cell.mediaCollectionView?.setContentOffset(CGPoint(x: 0, y: 0), animated: false)

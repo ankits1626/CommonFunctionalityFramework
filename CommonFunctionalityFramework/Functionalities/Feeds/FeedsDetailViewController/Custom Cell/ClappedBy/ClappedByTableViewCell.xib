@@ -269,7 +269,7 @@
                             <constraint firstAttribute="bottom" secondItem="Fkp-ri-wiy" secondAttribute="bottom" id="g1W-4a-yx7"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhA-Bm-V8p" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhA-Bm-V8p" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                         <rect key="frame" x="488" y="0.0" width="46" height="50"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
