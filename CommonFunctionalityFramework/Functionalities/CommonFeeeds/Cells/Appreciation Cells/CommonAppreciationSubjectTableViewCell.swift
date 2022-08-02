@@ -19,6 +19,7 @@ class CommonAppreciationSubjectTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        feedText?.hashtagColor = .black
         // Initialization code
     }
 
