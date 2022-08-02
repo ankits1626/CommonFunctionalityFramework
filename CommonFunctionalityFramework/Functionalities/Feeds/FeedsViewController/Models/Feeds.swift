@@ -164,7 +164,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         numberOfComments = rawFeedDictionary["comments_count"] as? Int64 ?? 0
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
-        reactionType = rawFeedDictionary["is_admin"] as? Int64 ?? 0
+        reactionType = rawFeedDictionary["messageType"] as? Int64 ?? 0
     }
     
     required public init(managedObject : NSManagedObject){

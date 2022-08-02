@@ -11,7 +11,7 @@ typealias BOUSReactionPostWorkerResultHandler = (APICallResult<Any?>) -> Void
 
 class BOUSReactionPostWorker  {
     typealias ResultType = Any?
-    var commonAPICall : CommonAPICall<ReportAbuseDataParser>?
+    var commonAPICall : CommonAPICall<BOUSReactionPostWorkerDataParser>?
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
@@ -20,7 +20,7 @@ class BOUSReactionPostWorker  {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: BOUSReactionPostWorkerRequestGenerator(feedIdentifier: postId, reactionType: reactionType, networkRequestCoordinator: networkRequestCoordinator),
-                dataParser: ReportAbuseDataParser(),
+                dataParser: BOUSReactionPostWorkerDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
             )
         }
