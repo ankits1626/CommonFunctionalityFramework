@@ -54,15 +54,18 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
                 )
             }
             
-            if feed.getUserReactionType() == 0 {
+            
+            let reactionType = feed.getUserReactionType()
+            print(reactionType)
+            if  reactionType == 0 {
                 cell.reactionView.reaction  = Reaction.facebook.like
-            }else if feed.getUserReactionType() == 3 {
+            }else if reactionType == 3 {
                 cell.reactionView.reaction  = Reaction.facebook.love
-            }else if feed.getUserReactionType() == 6 {
+            }else if reactionType == 6 {
                 cell.reactionView.reaction  = Reaction.facebook.haha
-            }else if feed.getUserReactionType() == 1 {
+            }else if reactionType == 1 {
                 cell.reactionView.reaction  = Reaction.facebook.wow
-            }else if feed.getUserReactionType() == 2 {
+            }else if reactionType == 2 {
                 cell.reactionView.reaction  = Reaction.facebook.sad
             }else {
                 cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .red, icon: UIImage(named: "icon_like_gray")!)
