@@ -87,7 +87,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         if !dataValue.nomination.nominated_team_member.profile_img.isEmpty{
             mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img)
         }else{
-            cell.usrImg.image = nil
+            cell.usrImg.setImageForName(dataValue.nomination.nominated_team_member.full_name, circular: false, textAttributes: nil)
         }
         
         if !dataValue.nomination.badges.icon.isEmpty{
