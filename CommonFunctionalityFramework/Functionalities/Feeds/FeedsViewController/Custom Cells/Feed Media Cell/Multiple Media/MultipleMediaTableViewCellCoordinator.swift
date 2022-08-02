@@ -8,7 +8,11 @@
 
 import UIKit
 
-class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol,MultipleImageFlowLayoutDelegate{
+    
+    func currentPageSelected(currentPage: Int) {
+        print(currentPage)
+    }
     var cellType: FeedCellTypeProtocol{
         return MultipleMediaTableViewCellType()
     }
@@ -17,7 +21,7 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
         if feed.hasOnlyMedia(){
-            return 140
+            return 190
         }else{
             switch feed.getMediaCountState() {
                 
@@ -26,9 +30,9 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             case .OneMediaItemPresent(_):
                 return 0
             case .TwoMediaItemPresent:
-                return 140
+                return 190
             case .MoreThanTwoMediItemPresent:
-                return 140
+                return 190
             }
         }
         
@@ -45,7 +49,12 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }
             let feedTitle = feed.getStrengthData()
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
-            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
+
+            cell.containerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+            cell.mediaCollectionView?.decelerationRate = .fast
+            (cell.mediaCollectionView?.collectionViewLayout as! MultipleImageFlowLayout).pageCollectionLayoutDelegate = self
+            
+            
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }
