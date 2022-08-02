@@ -40,7 +40,9 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
 //            }
             let feedTitle = feed.getStrengthData()
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
-            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
+            cell.containerView?.clipsToBounds = true
+            cell.containerView?.layer.cornerRadius = 8
+            cell.containerView?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.imageTapButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

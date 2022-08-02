@@ -39,6 +39,7 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
                 cell.feedText?.text = feedTitle["strengthMessage"] as? String ?? ""
             }
             cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
+            print(cell.feedText?.numberOfLines)
             if let numberOfComments = cell.feedText {
                 if numberOfComments.maxNumberOfLines > 3 {
                     cell.readMorebutton?.isHidden = false
@@ -46,6 +47,7 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
                     cell.readMorebutton?.isHidden = true
                 }
             }
+
             cell.feedText?.numberOfLines = 3
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
@@ -68,12 +70,12 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
 
 
 extension UIView {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
+//   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+//        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+//        let mask = CAShapeLayer()
+//        mask.path = path.cgPath
+//        layer.mask = mask
+//    }
 }
 
 extension UILabel {

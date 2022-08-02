@@ -32,7 +32,8 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var selectedTab = ""
-    
+    let loader = MFLoader()
+
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
             self,
@@ -189,9 +190,11 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     }
     
     @objc private func fetchComments(){
+        loader.showActivityIndicator(view)
         FeedCommentsFetcher(networkRequestCoordinator: requestCoordinator).fetchComments(
         feedId: targetFeedItem.feedIdentifier, nextpageUrl: lastFetchedComments?.nextPageUrl) { (result) in
             DispatchQueue.main.async {
+                self.loader.hideActivityIndicator(self.view)
                 switch result{
                 case .Success(let result):
                     DispatchQueue.main.async {[weak self] in
@@ -219,6 +222,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     }
     
     private func fetchClappedByUsers(){
+        loader.showActivityIndicator(view)
         PostLikeListFetcher(networkRequestCoordinator: requestCoordinator).fetchLikeList(
         feedIdentifier: targetFeedItem.feedIdentifier, nextPageUrl: nil) { (result) in
             switch result{
@@ -233,6 +237,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
                 }
                 
                 DispatchQueue.main.async {[weak self] in
+                    self?.loader.hideActivityIndicator((self?.view)!)
                     self?.clappedByUsers = likeList
                     self?.feedDetailTableView?.reloadData()
                 }
