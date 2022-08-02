@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RewardzCommonComponents
 
 struct InitFeedsMediaCollectionCoordinatorModel {
     let feedsDatasource : FeedsDatasource
@@ -49,7 +50,10 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDataSource, UICollec
 //        cell.mediaCoverImageView?.layer.cornerRadius = 12
 //        cell.mediaCoverImageView?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         cell.pageControl?.numberOfPages = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?.count ?? 0
-        cell.pageControl?.currentPage = currentPage
+        
+        cell.pageControl?.currentPage = indexPath.row
+        cell.pageControl.currentPageIndicatorTintColor = UIColor.getControlColor()
+        
         if let mediaType = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?[indexPath.row].getMediaType(),
         mediaType == .Video{
              cell.playButton?.isHidden = false
@@ -87,9 +91,9 @@ extension FeedsMediaCollectionCoordinator : UICollectionViewDelegateFlowLayout{
             case .OneMediaItemPresent(_):
                 return CGSize.zero
             case .TwoMediaItemPresent:
-                return CGSize(width: collectionView.frame.width, height: 156)
+                return CGSize(width: collectionView.frame.width, height: 176)
             case .MoreThanTwoMediItemPresent:
-                return CGSize(width: collectionView.frame.width, height: 156)
+                return CGSize(width: collectionView.frame.width, height: 176)
             }
         }
     }

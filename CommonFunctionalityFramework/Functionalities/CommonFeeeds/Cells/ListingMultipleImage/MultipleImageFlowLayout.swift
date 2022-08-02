@@ -33,7 +33,7 @@ class MultipleImageFlowLayout: UICollectionViewFlowLayout {
         else if (previousOffset < validCollection.contentOffset.x) && (velocity.x > 0) {
             currentPage = min(currentPage + 1, CGFloat(itemsCount - 1))
         }
-        let updatedOffset : CGFloat = (currentPage) * (UIScreen.main.bounds.size.width - 28)
+        let updatedOffset : CGFloat = (currentPage) * (UIScreen.main.bounds.size.width - 34)
         self.previousOffset = updatedOffset
         let updatedPoint = CGPoint(x: updatedOffset, y: proposedContentOffset.y)
         self.pageCollectionLayoutDelegate?.currentPageSelected(currentPage: Int(currentPage))

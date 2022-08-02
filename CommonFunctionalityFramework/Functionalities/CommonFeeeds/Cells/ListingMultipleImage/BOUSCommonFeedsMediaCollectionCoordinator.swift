@@ -48,7 +48,7 @@ extension CommonFeedsMediaCollectionCoordinator : UICollectionViewDataSource, UI
         cell.mediaCoverImageView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         cell.pageControl?.numberOfPages = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?.count ?? 0
         cell.pageControl?.currentPage = indexPath.row
-        cell.pageControl.currentPageIndicatorTintColor = .red
+        cell.pageControl?.currentPageIndicatorTintColor = UIColor.getControlColor()
         if let mediaType = input.feedsDatasource.getFeedItem(input.feedItemIndex).getMediaList()?[indexPath.row].getMediaType(),
         mediaType == .Video{
              cell.playButton?.isHidden = false
