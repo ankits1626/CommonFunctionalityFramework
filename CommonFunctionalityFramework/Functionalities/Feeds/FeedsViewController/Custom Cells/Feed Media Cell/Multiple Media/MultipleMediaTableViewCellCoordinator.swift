@@ -53,8 +53,7 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol,Multi
             cell.containerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
             cell.mediaCollectionView?.decelerationRate = .fast
             (cell.mediaCollectionView?.collectionViewLayout as! MultipleImageFlowLayout).pageCollectionLayoutDelegate = self
-            
-            
+            cell.mediaCollectionView?.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }
