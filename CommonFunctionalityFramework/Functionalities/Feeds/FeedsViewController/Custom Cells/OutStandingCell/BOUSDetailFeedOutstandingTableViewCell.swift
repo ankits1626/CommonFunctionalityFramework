@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
 
@@ -18,10 +19,11 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var awardLabel : UILabel?
     @IBOutlet weak var strengthLabel : UILabel?
-    @IBOutlet weak var nominationMessage : UILabel?
+    @IBOutlet weak var nominationMessage : ActiveLabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        nominationMessage?.hashtagColor = .black
         imageContainer?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         messageContainer?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         nominationConatiner?.clipsToBounds = true
