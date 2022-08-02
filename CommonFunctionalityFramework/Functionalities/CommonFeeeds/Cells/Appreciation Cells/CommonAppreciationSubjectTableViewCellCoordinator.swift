@@ -22,7 +22,7 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
     }
     
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
-        return UITableView.automaticDimension
+        return 132
     }
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
@@ -49,17 +49,23 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
             cell.feedText?.numberOfLines = 3
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
+//            cell.containerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+//
             
-            if let mediaItem = feed.getMediaList()?.first,
-                let _ = mediaItem.getCoverImageUrl(){
-                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
-            }else if let gifItem = feed.getGiphy() {
-                if !gifItem.isEmpty {
-                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
-                }
-            }else {
-                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
-            }
+            cell.containerView?.clipsToBounds = true
+            cell.containerView?.layer.cornerRadius = 8
+            cell.containerView?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            
+//            if let mediaItem = feed.getMediaList()?.first,
+//                let _ = mediaItem.getCoverImageUrl(){
+//                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
+//            }else if let gifItem = feed.getGiphy() {
+//                if !gifItem.isEmpty {
+//                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
+//                }
+//            }else {
+//                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
+//            }
         }
     }
     
@@ -68,12 +74,12 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
 
 
 extension UIView {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
+//   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+//        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+//        let mask = CAShapeLayer()
+//        mask.path = path.cgPath
+//        layer.mask = mask
+//    }
 }
 
 extension UILabel {

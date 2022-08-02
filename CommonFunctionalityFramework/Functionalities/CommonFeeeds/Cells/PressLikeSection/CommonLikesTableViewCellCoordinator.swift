@@ -149,9 +149,9 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     }
     
     @objc func facebookButtonReactionTouchedUpAction(_ sender: AnyObject) {
-        if reactionBtn?.isSelected == false {
-            reactionBtn?.reaction   = Reaction.facebook.like
-        }
+//        if reactionBtn?.isSelected == false {
+//            reactionBtn?.reaction   = Reaction.facebook.like
+//        }
         
         if let feed = inputModel?.datasource.getFeedItem(sender.tag) {
             let getReactionidType = getReactionIdFromString(reactionType: (reactionBtn?.reaction.id)!)
