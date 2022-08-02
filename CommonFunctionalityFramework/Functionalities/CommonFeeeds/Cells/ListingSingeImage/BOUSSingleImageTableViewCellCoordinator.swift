@@ -9,7 +9,7 @@
 import UIKit
 
 class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
-
+    
     
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
         return 140
@@ -23,7 +23,7 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
         if let cell  = inputModel.targetCell as? BOUSSingleImageTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             if let mediaItem = feed.getMediaList()?.first,
-                let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
+               let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: mediaItemEndpoint)
             }else if let gifItem = feed.getGiphy() {
                 if !gifItem.isEmpty {
@@ -34,11 +34,11 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
             }else{
                 cell.feedImageView?.image = nil
             }
-//            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-//                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
-//            }else{
-//                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-//            }
+            //            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+            //                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+            //            }else{
+            //                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            //            }
             let feedTitle = feed.getStrengthData()
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
             
@@ -49,10 +49,12 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
                         feedIdentifier: feed.feedIdentifier,
                         scrollToItemIndex: 0
                     )
-            })
+                })
             
-            cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
-           
+            cell.containerView?.clipsToBounds = true
+            cell.containerView?.layer.cornerRadius = 8
+            cell.containerView?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            
         }
     }
     
