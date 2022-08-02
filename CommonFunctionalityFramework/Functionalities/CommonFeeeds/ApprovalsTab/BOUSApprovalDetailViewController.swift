@@ -118,7 +118,15 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         }else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! BOUSApprovalDescriptionTableViewCell
             if jsonDataValues != nil {
-                cell.titleLbl.text = jsonDataValues.description
+                if let unwrappedText = jsonDataValues.description as? String{
+                    let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: Int64(jsonDataValues.nomination.id), description: unwrappedText)
+                    ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                        cell.titleLbl.text = nil
+                        cell.titleLbl.attributedText = attr
+                    })
+                }else{
+                    cell.titleLbl.text = jsonDataValues.description
+                }
             }
             return cell
         }else if indexPath.row == 2 {

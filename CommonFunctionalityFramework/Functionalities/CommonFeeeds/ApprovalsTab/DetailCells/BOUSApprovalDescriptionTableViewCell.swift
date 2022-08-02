@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class BOUSApprovalDescriptionTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var titleLbl: ActiveLabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleLbl.hashtagColor = .black
         // Initialization code
     }
 
