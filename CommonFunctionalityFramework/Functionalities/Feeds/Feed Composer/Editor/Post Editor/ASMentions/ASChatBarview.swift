@@ -36,6 +36,9 @@ public class ASChatBarview : UIView {
     @IBOutlet private weak var leftContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainerWidthConstraint : NSLayoutConstraint?
     var taggedMessaged : String = ""
+    var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
+    var mediaFetcher: CFFMediaCoordinatorProtocol!
+    weak var themeManager: CFFThemeManagerProtocol?
     public override var backgroundColor: UIColor?{
         didSet{
             container?.backgroundColor = backgroundColor
@@ -97,6 +100,14 @@ public class ASChatBarview : UIView {
         super.awakeFromNib()
         commonSetup()
         setupCoordinator(messageTextView)
+    }
+    
+    public func setupUserProfile() {
+        if let profileImageEndpoint = themeManager?.getLoggedInUserImage(), profileImageEndpoint.count > 0{
+            self.mediaFetcher.fetchImageAndLoad(self.leftUserImg, imageEndPoint: profileImageEndpoint)
+        }else{
+            self.leftUserImg.setImageForName(themeManager?.getLoggedInUserFullName() ?? "NN", circular: false, textAttributes: nil)
+        }
     }
 
     private func registerForKeyboardNotifications(){
