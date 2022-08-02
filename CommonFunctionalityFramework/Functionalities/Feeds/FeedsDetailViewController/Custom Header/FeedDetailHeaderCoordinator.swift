@@ -100,13 +100,13 @@ class FeedDetailHeaderCoordinator {
         case .ClapsSection:
             if let clappedByUsers = feedDataSource.getClappedByUsers(),
             !clappedByUsers.isEmpty{
-                 return 40
+                 return 30
             }
             
         case .Comments:
             if let comments = feedDataSource.getCommentProvider()?.getNumberOfComments(),
             comments != 0 {
-                return 40
+                return 30
             }
         }
         return 0
