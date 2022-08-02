@@ -258,8 +258,23 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
                         case .Success(result: let result):
                             CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                                 let post = ((feed as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
-                                post?.messageType = result.isLiked
-                                post?.numberOfLikes = result.totalLikeCount
+                                if let result =  result as? NSDictionary {
+                                    print(result)
+                                    if let dataVal = result["post_reactions"] as? NSArray {
+                                        post?.reactionTypesData =  dataVal
+                                        if dataVal.count > 0 {
+                                            if let dict = dataVal[0] as? NSDictionary {
+                                                if let reactionStatus = dict["reaction_type"] as? Int64 {
+                                                    post?.messageType = reactionStatus
+                                                    post?.numberOfLikes = Int64(dataVal.count)
+                                                }
+                                            }
+                                        }else {
+                                            post?.messageType = 0
+                                            post?.numberOfLikes = 0
+                                        }
+                                    }
+                                }
                                 CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                                     CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                                 }
