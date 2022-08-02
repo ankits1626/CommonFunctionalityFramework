@@ -144,6 +144,10 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getUserReactionType() -> Int? {
         print("reaction \( rawFeedDictionary["user_reaction_type"] as? Int)")
+        
+        return Int(reactionType)
+        
+        print(reactionType)
         return rawFeedDictionary["user_reaction_type"] as? Int
     }
     
@@ -165,7 +169,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         numberOfComments = rawFeedDictionary["comments_count"] as? Int64 ?? 0
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
-        reactionType = rawFeedDictionary["is_admin"] as? Int64 ?? 0
+        reactionType = rawFeedDictionary["messageType"] as? Int64 ?? 0
     }
     
     public init(managedObject : NSManagedObject){
