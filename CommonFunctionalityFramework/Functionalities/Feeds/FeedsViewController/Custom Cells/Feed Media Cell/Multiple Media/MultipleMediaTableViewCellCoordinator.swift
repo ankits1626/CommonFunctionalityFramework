@@ -55,8 +55,7 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol,Multi
             cell.containerView?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.mediaCollectionView?.decelerationRate = .fast
             (cell.mediaCollectionView?.collectionViewLayout as! MultipleImageFlowLayout).pageCollectionLayoutDelegate = self
-            
-            
+            cell.mediaCollectionView?.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }
