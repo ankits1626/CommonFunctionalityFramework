@@ -26,7 +26,15 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
             let feedNominationData = feed.getStrengthData()
             let bagesData = feed.getBadgesData()
             cell.strengthLabel?.text = feedNominationData["strengthName"] as! String
-            cell.nominationMessage?.text =  feedNominationData["strengthMessage"] as! String
+            if let unwrappedText = feedNominationData["strengthMessage"] as? String{
+                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
+                ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                    cell.nominationMessage?.text = nil
+                    cell.nominationMessage?.attributedText = attr
+                })
+            }else{
+                cell.nominationMessage?.text = feedNominationData["strengthMessage"] as? String ?? ""
+            }
             cell.awardLabel?.text = bagesData["badgeName"] as! String
             cell.nominationImageView?.backgroundColor =  Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 1)
             cell.imageContainer?.backgroundColor = Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 1)
