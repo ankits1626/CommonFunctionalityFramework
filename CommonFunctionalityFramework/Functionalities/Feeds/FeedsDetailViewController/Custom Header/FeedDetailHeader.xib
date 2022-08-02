@@ -19,13 +19,13 @@
                     <rect key="frame" x="16" y="0.0" width="382" height="61"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCH-DN-M52">
-                            <rect key="frame" x="12" y="11" width="42" height="21"/>
+                            <rect key="frame" x="12" y="5" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3C-p8-MJf">
-                            <rect key="frame" x="59" y="11" width="42" height="21"/>
+                            <rect key="frame" x="59" y="5" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                         <constraint firstAttribute="trailing" secondItem="Hqx-Y0-K8n" secondAttribute="trailing" constant="16" id="a2P-5a-JvV"/>
                         <constraint firstItem="u3C-p8-MJf" firstAttribute="centerY" secondItem="RCH-DN-M52" secondAttribute="centerY" id="bGt-FU-REt"/>
                         <constraint firstItem="u3C-p8-MJf" firstAttribute="leading" secondItem="RCH-DN-M52" secondAttribute="trailing" constant="5" id="rp7-aP-Osh"/>
-                        <constraint firstItem="RCH-DN-M52" firstAttribute="top" secondItem="QfA-JF-Dry" secondAttribute="top" constant="11" id="u3W-Mv-xDW"/>
+                        <constraint firstItem="RCH-DN-M52" firstAttribute="top" secondItem="QfA-JF-Dry" secondAttribute="top" constant="5" id="u3W-Mv-xDW"/>
                     </constraints>
                 </view>
             </subviews>

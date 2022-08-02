@@ -318,7 +318,7 @@
     </objects>
     <resources>
         <image name="cff_dummyProfile" width="30" height="30"/>
-        <image name="right_reaction_arrow" width="31.5" height="31.5"/>
+        <image name="right_reaction_arrow" width="46" height="46"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

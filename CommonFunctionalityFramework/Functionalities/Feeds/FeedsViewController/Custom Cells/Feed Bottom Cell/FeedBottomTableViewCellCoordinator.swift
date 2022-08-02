@@ -19,7 +19,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     private var inputModel : FeedCellLoadDataModel? = nil
     var feed : FeedsItemProtocol!
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 52
+        return 56
     }
 
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {

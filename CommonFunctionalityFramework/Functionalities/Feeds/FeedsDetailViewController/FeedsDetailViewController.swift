@@ -77,6 +77,19 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         commentBarView?.placeholderFont = .Body1
 //        commentBarView?.leftUserImg.image = UIImage(named: "")
     }
+    
+    func updateProfilePic()  {
+        let pic = ""
+           if !pic.isEmpty {
+//               commentBarView?.leftUserImg?.sd_setImage(
+//                   with: URL(string: getServiceURL() + getProfilePic()),
+//                  placeholderImage: nil,
+//                  completed: nil
+//              )
+           }else{
+              // commentBarView?.leftUserImg?.setImageForName(getfullName(), circular: false, textAttributes: nil)
+           }
+       }
  
     private func setupTableView(){
         feedDetailTableView?.tableFooterView = UIView(frame: CGRect.zero)
