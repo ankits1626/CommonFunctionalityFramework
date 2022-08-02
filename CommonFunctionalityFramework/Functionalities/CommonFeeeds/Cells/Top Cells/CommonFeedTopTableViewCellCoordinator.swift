@@ -45,7 +45,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
             if let profileImageEndpoint = feed.getUserImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
             }else{
-                cell.profileImage?.image = nil
+                cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
             }
             cell.dateLabel?.text = feed.getfeedCreationMonthYear()
             if !inputModel.datasource.shouldShowMenuOptionForFeed(){
