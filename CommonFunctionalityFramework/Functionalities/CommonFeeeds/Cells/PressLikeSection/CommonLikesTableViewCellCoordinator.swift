@@ -114,7 +114,6 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                 inputModel.delegate?.showAllClaps(feedIdentifier: feed.feedIdentifier)
             })
             
-            print("Value - \(feed.getUserReactionType())")
             if feed.getUserReactionType() == 0 {
                 cell.reactionView.reaction  = Reaction.facebook.like
             }else if feed.getUserReactionType() == 1 {
