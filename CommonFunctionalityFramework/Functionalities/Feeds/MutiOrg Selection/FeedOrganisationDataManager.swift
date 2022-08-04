@@ -12,9 +12,18 @@ struct FeedOrganisationDataManagerInitModel {
     weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
 }
 
+enum SelectionOperation{
+    case Selected
+    case DeSelected
+}
+
 class FeedOrganisationDataManager{
     private let initModel: FeedOrganisationDataManagerInitModel
     private var fetchedOrganisations = [FeedOrgnaisation]()
+    
+    private var selectedOrganisation = Set<Int>()
+    private var selectedDepartment = Set<IndexPath>()
+    
     init(_ initModel: FeedOrganisationDataManagerInitModel){
         self.initModel = initModel
     }
@@ -34,7 +43,6 @@ extension FeedOrganisationDataManager{
     
     private func handleOrganisationFetchResult(_ result: APICallResult<[FeedOrgnaisation]>) -> String?{
         switch result{
-            
         case .Success(result: let result):
             self.fetchedOrganisations = result
             return nil
@@ -49,6 +57,43 @@ extension FeedOrganisationDataManager{
 extension FeedOrganisationDataManager{
     func getOrganisations() -> [FeedOrgnaisation]{
         return fetchedOrganisations
+    }
+    
+    func toggleOrganisationSelection(_ orgIndex: Int){
+        if selectedOrganisation.contains(orgIndex){
+            selectedOrganisation.remove(orgIndex)
+            for (index , _) in fetchedOrganisations[orgIndex].departments.enumerated(){
+                selectedDepartment.remove(IndexPath(row: index, section: orgIndex))
+            }
+        }else{
+            selectedOrganisation.insert(orgIndex)
+            for (index , _) in fetchedOrganisations[orgIndex].departments.enumerated(){
+                selectedDepartment.insert(IndexPath(row: index, section: orgIndex))
+            }
+            
+        }
+    }
+    
+    func checkIfOrganisationIsSelected(_ orgIndex: Int) -> Bool{
+        return selectedOrganisation.contains(orgIndex)
+    }
+    
+    func checkIfDepartmentIsSelected(_ departmentIndexPath: IndexPath) -> Bool{
+        return selectedDepartment.contains(departmentIndexPath)
+    }
+    
+    func toggleDepartmentSelection(_ departmentIndexPath: IndexPath){
+        if selectedDepartment.contains(departmentIndexPath){
+            if selectedOrganisation.contains(departmentIndexPath.section){
+                print("<<<<< removed \(departmentIndexPath.section)")
+                selectedOrganisation.remove(departmentIndexPath.section)
+            }
+            print("<<<<< removed \(departmentIndexPath)")
+            selectedDepartment.remove(departmentIndexPath)
+            
+        }else{
+            selectedDepartment.insert(departmentIndexPath)
+        }
     }
     
 }

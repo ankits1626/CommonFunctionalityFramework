@@ -136,6 +136,21 @@ extension FeedOrganisationListManager{
             image ,
             for: .normal
         )
+        if let unwrappedDataManager = initModel.dataManager{
+            if (unwrappedDataManager.checkIfOrganisationIsSelected(section)){
+                header.checkBox.isChecked = true
+            }else{
+                header.checkBox.isChecked = false
+            }
+        }
+        
+        header.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
+            if let unwrappedSelf = self{
+                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)
+                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
+            }
+        }
+        
 
     }
     
@@ -155,6 +170,21 @@ extension FeedOrganisationListManager{
             cell.cellSeperator?.backgroundColor = .clear
         }else{
             cell.cellSeperator?.backgroundColor = .guidenceViewBackgroundColor
+        }
+        
+        if let unwrappedDataManager = initModel.dataManager{
+            if (unwrappedDataManager.checkIfDepartmentIsSelected(indexpath)){
+                cell.checkBox.isChecked = true
+            }else{
+                cell.checkBox.isChecked = false
+            }
+        }
+        
+        cell.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
+            if let unwrappedSelf = self{
+                unwrappedSelf.initModel.dataManager?.toggleDepartmentSelection(indexpath)
+                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: indexpath.section), with: .none)
+            }
         }
     
     }
