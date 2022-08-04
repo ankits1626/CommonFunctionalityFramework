@@ -133,6 +133,7 @@
 		BC37F2A328894EF20075E7CB /* FeedOrganisationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC37F2A128894EF20075E7CB /* FeedOrganisationTableViewCell.xib */; };
 		BC37F2A628894F580075E7CB /* FeedOrgaisationTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37F2A528894F580075E7CB /* FeedOrgaisationTableViewHeader.swift */; };
 		BC37F2A828894F620075E7CB /* FeedOrgaisationTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC37F2A728894F620075E7CB /* FeedOrgaisationTableViewHeader.xib */; };
+		BC788DD228995E7E004C612F /* FeedsOrganisationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC788DD128995E7E004C612F /* FeedsOrganisationFetcher.swift */; };
 		BCA04B1D2887F982009457AB /* FeedOrganisationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */; };
 		BCA04B1E2887F982009457AB /* FeedOrganisationSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */; };
 		BE54420D27F30BFF00CBF6D9 /* FeedsImageDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */; };
@@ -314,6 +315,7 @@
 		BC37F2A128894EF20075E7CB /* FeedOrganisationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedOrganisationTableViewCell.xib; sourceTree = "<group>"; };
 		BC37F2A528894F580075E7CB /* FeedOrgaisationTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrgaisationTableViewHeader.swift; sourceTree = "<group>"; };
 		BC37F2A728894F620075E7CB /* FeedOrgaisationTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedOrgaisationTableViewHeader.xib; sourceTree = "<group>"; };
+		BC788DD128995E7E004C612F /* FeedsOrganisationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsOrganisationFetcher.swift; sourceTree = "<group>"; };
 		BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationSelectionViewController.swift; sourceTree = "<group>"; };
 		BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedOrganisationSelectionViewController.xib; sourceTree = "<group>"; };
 		BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsImageDrawer.swift; sourceTree = "<group>"; };
@@ -1255,9 +1257,18 @@
 			path = "custom header";
 			sourceTree = "<group>";
 		};
+		BC788DD028995E4A004C612F /* FeedsOrganisationFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				BC788DD128995E7E004C612F /* FeedsOrganisationFetcher.swift */,
+			);
+			path = FeedsOrganisationFetcher;
+			sourceTree = "<group>";
+		};
 		BCA04B142887B4B7009457AB /* MutiOrg Selection */ = {
 			isa = PBXGroup;
 			children = (
+				BC788DD028995E4A004C612F /* FeedsOrganisationFetcher */,
 				BC37F2A428894F0C0075E7CB /* custom header */,
 				BC37F29F28894EC80075E7CB /* custom cell */,
 				BC37F296288945B80075E7CB /* Models */,
@@ -1543,6 +1554,7 @@
 				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
 				987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */,
 				987D0BAF2583DA58001A0F07 /* TagUserTableViewCell.swift in Sources */,
+				BC788DD228995E7E004C612F /* FeedsOrganisationFetcher.swift in Sources */,
 				BC37F2A628894F580075E7CB /* FeedOrgaisationTableViewHeader.swift in Sources */,
 				9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */,
 				BC37F29A288945E10075E7CB /* FeedDepartment.swift in Sources */,

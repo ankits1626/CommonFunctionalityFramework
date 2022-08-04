@@ -14,28 +14,41 @@ struct FeedOrganisationDataManagerInitModel {
 
 class FeedOrganisationDataManager{
     private let initModel: FeedOrganisationDataManagerInitModel
-    
+    private var fetchedOrganisations = [FeedOrgnaisation]()
     init(_ initModel: FeedOrganisationDataManagerInitModel){
         self.initModel = initModel
     }
     
     
-    func fetchFeedOrganisations(_ completion: ()-> Void){
-        /**
-         TODO: call the organisation fetch api and call the completion
-         */
-        completion()
+    func fetchFeedOrganisations(_ completion: @escaping (_ error: String?)-> Void){
+        FeedsOrganisationFetcher(networkRequestCoordinator: initModel.requestCoordinator!).fetchFeedOrganisations { [weak self] result in
+            DispatchQueue.main.async {
+                completion(self?.handleOrganisationFetchResult(result))
+                
+            }
+        }
+    }
+}
+
+extension FeedOrganisationDataManager{
+    
+    private func handleOrganisationFetchResult(_ result: APICallResult<[FeedOrgnaisation]>) -> String?{
+        switch result{
+            
+        case .Success(result: let result):
+            self.fetchedOrganisations = result
+            return nil
+        case .SuccessWithNoResponseData:
+            return "Unexpected response while fetching organisations"
+        case .Failure(error: let error):
+            return error.localizedDescription
+        }
     }
 }
 
 extension FeedOrganisationDataManager{
     func getOrganisations() -> [FeedOrgnaisation]{
-        return [
-            FeedOrgnaisation([String : Any]()),
-            FeedOrgnaisation([String : Any]()),
-            FeedOrgnaisation([String : Any]()),
-            FeedOrgnaisation([String : Any]())
-        ]
+        return fetchedOrganisations
     }
     
 }

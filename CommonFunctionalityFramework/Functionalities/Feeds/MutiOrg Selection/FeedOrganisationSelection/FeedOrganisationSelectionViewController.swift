@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RewardzCommonComponents
 
 
 struct FeedOrganisationSelectionInitModel{
@@ -84,9 +85,12 @@ extension FeedOrganisationSelectionViewController{
     }
     
     private func askDataManagerToFetchData(){
-        dataManager.fetchFeedOrganisations {
+        dataManager.fetchFeedOrganisations {error in
             DispatchQueue.main.async {[weak self] in
                 if let unwrappedSelf = self{
+                    if let unwrappedError = error{
+                        ErrorDisplayer.showError(errorMsg: unwrappedError) { _ in}
+                    }
                     unwrappedSelf.listManager.loadListAfterDataFetch()
                 }
             }

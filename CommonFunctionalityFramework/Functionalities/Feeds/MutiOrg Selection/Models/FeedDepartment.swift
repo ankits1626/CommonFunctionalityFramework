@@ -16,6 +16,6 @@ struct FeedDepartment{
     }
     
     func getDisplayName() -> String{
-        return "Test Department"
+        return rawFeedDepartment["name"] as? String ?? "No Name"
     }
 }

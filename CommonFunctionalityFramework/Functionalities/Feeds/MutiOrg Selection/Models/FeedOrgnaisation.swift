@@ -16,17 +16,17 @@ struct FeedOrgnaisation{
     }
     
     var displayName : String{
-        return "Test Org"
+        return rawFeedOrgansation["name"] as? String ?? "No name"
     }
     
     var departments : [FeedDepartment]{
-        return [
-            FeedDepartment([String : Any]()),
-            FeedDepartment([String : Any]()),
-            FeedDepartment([String : Any]()),
-            FeedDepartment([String : Any]()),
-            FeedDepartment([String : Any]()),
-        ]
+        var fetchedDapartments = [FeedDepartment]()
+        if let rawDepartments = rawFeedOrgansation["departments"] as? [[String : Any]]{
+            for rawDepartment in rawDepartments {
+                fetchedDapartments.append(FeedDepartment(rawDepartment))
+            }
+        }
+        return fetchedDapartments
     }
     
     
