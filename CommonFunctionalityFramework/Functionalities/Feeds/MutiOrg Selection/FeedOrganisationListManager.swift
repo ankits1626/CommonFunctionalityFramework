@@ -97,7 +97,7 @@ extension FeedOrganisationListManager : UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 55
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -122,6 +122,7 @@ extension FeedOrganisationListManager{
         let organisation = initModel.dataManager!.getOrganisations()[section]
         header.organisationLbl?.text = organisation.displayName
         header.organisationLbl?.font = .Body2
+        header.selectionDetailLbl?.font = .Body1
         header.organisationLbl?.textColor = .getTitleTextColor()
         header.headerContainer?.backgroundColor = .guidenceViewBackgroundColor
         header.headerContainer?.layer.cornerRadius = 4
@@ -150,6 +151,8 @@ extension FeedOrganisationListManager{
                 unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
             }
         }
+        
+        header.selectionDetailLbl?.text = initModel.dataManager?.getSelectionDetails(section)
         
 
     }

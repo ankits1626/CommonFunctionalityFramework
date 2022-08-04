@@ -95,5 +95,25 @@ extension FeedOrganisationDataManager{
             selectedDepartment.insert(departmentIndexPath)
         }
     }
-    
+ 
+    func getSelectionDetails(_ section: Int) -> String?{
+        if selectedOrganisation.contains(section){
+            return "All departments selected"
+        }else{
+            let filteredSelectedDepartments = selectedDepartment.filter({ indexpath in
+                return indexpath.section == section
+            })
+            if !filteredSelectedDepartments.isEmpty{
+                var retval : String?
+                if let firstDepartmentIndexpath = filteredSelectedDepartments.first{
+                    retval =  "\(fetchedOrganisations[section].departments[firstDepartmentIndexpath.row].getDisplayName())"
+                }
+                if filteredSelectedDepartments.count > 1{
+                    retval = retval! + " + \(filteredSelectedDepartments.count - 1) selected"
+                }
+                return retval
+            }
+        }
+        return nil
+    }
 }

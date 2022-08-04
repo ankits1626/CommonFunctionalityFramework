@@ -48,10 +48,18 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-I7-ri1">
+                                    <rect key="frame" x="19" y="61" width="31" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Gqe-fK-UZu" firstAttribute="leading" secondItem="45z-rU-JuC" secondAttribute="leading" constant="19" id="1nP-DH-7dV"/>
+                                <constraint firstItem="DS8-I7-ri1" firstAttribute="top" secondItem="Gqe-fK-UZu" secondAttribute="bottom" constant="5" id="3x9-xo-mM6"/>
+                                <constraint firstItem="DS8-I7-ri1" firstAttribute="leading" secondItem="Gqe-fK-UZu" secondAttribute="leading" id="LSf-Wf-qfX"/>
                                 <constraint firstItem="Gqe-fK-UZu" firstAttribute="centerY" secondItem="45z-rU-JuC" secondAttribute="centerY" id="zpP-nR-Wff"/>
                             </constraints>
                         </view>
@@ -113,6 +121,7 @@
                 <outlet property="expandCollapseBtn" destination="GCK-K3-AkQ" id="fcv-UZ-yxc"/>
                 <outlet property="headerContainer" destination="jXj-HO-tH4" id="66W-t9-RQP"/>
                 <outlet property="organisationLbl" destination="Gqe-fK-UZu" id="0g3-q4-41b"/>
+                <outlet property="selectionDetailLbl" destination="DS8-I7-ri1" id="Tkp-qd-n9T"/>
             </connections>
             <point key="canvasLocation" x="-26.086956521739133" y="-198.54910714285714"/>
         </view>
