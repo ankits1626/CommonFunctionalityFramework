@@ -8,11 +8,21 @@
 
 import Foundation
 
-struct FeedDepartment{
-    let rawFeedDepartment: [String : Any]
+class FeedDepartment: NSObject{
+    static func == (lhs: FeedDepartment, rhs: FeedDepartment) -> Bool {
+        return lhs.pk == rhs.pk
+    }
     
-    init(_ rawFeedDepartment: [String : Any]){
+    let rawFeedDepartment: [String : Any]
+    weak var parentOrganisation: FeedOrgnaisation!
+    
+    init(_ rawFeedDepartment: [String : Any], parentOrganisation: FeedOrgnaisation!){
         self.rawFeedDepartment = rawFeedDepartment
+        self.parentOrganisation = parentOrganisation
+    }
+    
+    var pk : Int{
+        return rawFeedDepartment["pk"] as! Int
     }
     
     func getDisplayName() -> String{

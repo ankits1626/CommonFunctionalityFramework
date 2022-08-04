@@ -138,7 +138,7 @@ extension FeedOrganisationListManager{
             for: .normal
         )
         if let unwrappedDataManager = initModel.dataManager{
-            if (unwrappedDataManager.checkIfOrganisationIsSelected(section)){
+            if (unwrappedDataManager.checkIfOrganisationIsSelected(organisation)){
                 header.checkBox.isChecked = true
             }else{
                 header.checkBox.isChecked = false
@@ -147,12 +147,17 @@ extension FeedOrganisationListManager{
         
         header.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
             if let unwrappedSelf = self{
-                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)
-                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
+                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(
+                    organisation,
+                    {
+                        unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
+                    })
+//                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)
+//                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
             }
         }
         
-        header.selectionDetailLbl?.text = initModel.dataManager?.getSelectionDetails(section)
+        header.selectionDetailLbl?.text = initModel.dataManager?.getSelectionDetails(organisation)
         
 
     }
@@ -176,7 +181,7 @@ extension FeedOrganisationListManager{
         }
         
         if let unwrappedDataManager = initModel.dataManager{
-            if (unwrappedDataManager.checkIfDepartmentIsSelected(indexpath)){
+            if (unwrappedDataManager.checkIfDepartmentIsSelected(department)){
                 cell.checkBox.isChecked = true
             }else{
                 cell.checkBox.isChecked = false
@@ -185,8 +190,12 @@ extension FeedOrganisationListManager{
         
         cell.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
             if let unwrappedSelf = self{
-                unwrappedSelf.initModel.dataManager?.toggleDepartmentSelection(indexpath)
-                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: indexpath.section), with: .none)
+                unwrappedSelf.initModel.dataManager?.toggleDepartmentSelection(
+                    department,
+                    {
+                        unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: indexpath.section), with: .none)
+                    })
+                
             }
         }
     

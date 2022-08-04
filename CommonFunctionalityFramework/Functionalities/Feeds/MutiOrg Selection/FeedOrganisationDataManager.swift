@@ -21,8 +21,8 @@ class FeedOrganisationDataManager{
     private let initModel: FeedOrganisationDataManagerInitModel
     private var fetchedOrganisations = [FeedOrgnaisation]()
     
-    private var selectedOrganisation = Set<Int>()
-    private var selectedDepartment = Set<IndexPath>()
+    private var selectedOrganisation = Set<FeedOrgnaisation>()
+    private var selectedDepartment = Set<FeedDepartment>()
     
     init(_ initModel: FeedOrganisationDataManagerInitModel){
         self.initModel = initModel
@@ -59,54 +59,66 @@ extension FeedOrganisationDataManager{
         return fetchedOrganisations
     }
     
-    func toggleOrganisationSelection(_ orgIndex: Int){
-        if selectedOrganisation.contains(orgIndex){
-            selectedOrganisation.remove(orgIndex)
-            for (index , _) in fetchedOrganisations[orgIndex].departments.enumerated(){
-                selectedDepartment.remove(IndexPath(row: index, section: orgIndex))
-            }
-        }else{
-            selectedOrganisation.insert(orgIndex)
-            for (index , _) in fetchedOrganisations[orgIndex].departments.enumerated(){
-                selectedDepartment.insert(IndexPath(row: index, section: orgIndex))
+    func toggleOrganisationSelection(_ organisation: FeedOrgnaisation, _ completion: ()-> Void){
+        if selectedOrganisation.contains(organisation){
+            selectedOrganisation.remove(organisation)
+            for deparment in organisation.departments {
+                selectedDepartment.remove(deparment)
             }
             
-        }
-    }
-    
-    func checkIfOrganisationIsSelected(_ orgIndex: Int) -> Bool{
-        return selectedOrganisation.contains(orgIndex)
-    }
-    
-    func checkIfDepartmentIsSelected(_ departmentIndexPath: IndexPath) -> Bool{
-        return selectedDepartment.contains(departmentIndexPath)
-    }
-    
-    func toggleDepartmentSelection(_ departmentIndexPath: IndexPath){
-        if selectedDepartment.contains(departmentIndexPath){
-            if selectedOrganisation.contains(departmentIndexPath.section){
-                print("<<<<< removed \(departmentIndexPath.section)")
-                selectedOrganisation.remove(departmentIndexPath.section)
-            }
-            print("<<<<< removed \(departmentIndexPath)")
-            selectedDepartment.remove(departmentIndexPath)
-            
         }else{
-            selectedDepartment.insert(departmentIndexPath)
+            selectedOrganisation.insert(organisation)
+            for deparment in organisation.departments {
+                selectedDepartment.insert(deparment)
+            }
         }
+        completion()
+    }
+    
+    func checkIfOrganisationIsSelected(_ organisation: FeedOrgnaisation) -> Bool{
+        return selectedOrganisation.contains(organisation)
+    }
+    
+    func checkIfDepartmentIsSelected(_ department: FeedDepartment) -> Bool{
+        return selectedDepartment.contains(department)
+    }
+    
+    func toggleDepartmentSelection(_ department: FeedDepartment, _ completion:()->Void){
+        if selectedDepartment.contains(department){
+            selectedDepartment.remove(department)
+            if let parentOrg = department.parentOrganisation,
+               selectedOrganisation.contains(parentOrg){
+                selectedOrganisation.remove(parentOrg)
+            }
+        }else{
+            selectedDepartment.insert(department)
+            var selectedDepartmentsFromSameOrgCount = 0
+            if let targetOrganisation = department.parentOrganisation{
+                for department in targetOrganisation.departments{
+                    if selectedDepartment.contains(department){
+                        selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
+                    }
+                }
+                if selectedDepartmentsFromSameOrgCount == targetOrganisation.departments.count{
+                    selectedOrganisation.insert(targetOrganisation)
+                }
+            }
+        }
+        completion()
     }
  
-    func getSelectionDetails(_ section: Int) -> String?{
-        if selectedOrganisation.contains(section){
+    func getSelectionDetails(_ organisation: FeedOrgnaisation) -> String?{
+        if selectedOrganisation.contains(organisation){
             return "All departments selected"
         }else{
-            let filteredSelectedDepartments = selectedDepartment.filter({ indexpath in
-                return indexpath.section == section
+            let selectedDepartments = selectedDepartment.filter{$0.parentOrganisation == organisation}
+            let filteredSelectedDepartments = selectedDepartment.filter({ department in
+                return department.parentOrganisation == organisation
             })
-            if !filteredSelectedDepartments.isEmpty{
+            if !selectedDepartments.isEmpty{
                 var retval : String?
-                if let firstDepartmentIndexpath = filteredSelectedDepartments.first{
-                    retval =  "\(fetchedOrganisations[section].departments[firstDepartmentIndexpath.row].getDisplayName())"
+                if let firstDepartment = filteredSelectedDepartments.first{
+                    retval =  "\(firstDepartment.getDisplayName())"
                 }
                 if filteredSelectedDepartments.count > 1{
                     retval = retval! + " + \(filteredSelectedDepartments.count - 1) selected"
