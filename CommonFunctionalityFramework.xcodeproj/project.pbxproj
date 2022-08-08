@@ -32,6 +32,7 @@
 		0F329092288A537D008BF09D /* BOUSReactionScrollListCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F329091288A537D008BF09D /* BOUSReactionScrollListCellCoordinator.swift */; };
 		0F32909C288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F32909B288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift */; };
 		0F32909D288E3EB6008BF09D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9868C0832410B48D00B12321 /* Media.xcassets */; };
+		0F5BF69F289AA90300920224 /* BOUSFeedsDotPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5BF69E289AA90300920224 /* BOUSFeedsDotPopUpViewController.swift */; };
 		0F602181286EB7A700D852BD /* CommonFeeds.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F602180286EB7A700D852BD /* CommonFeeds.storyboard */; };
 		0F602184286EBB8800D852BD /* BOUSCommonBlurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602182286EBB8800D852BD /* BOUSCommonBlurViewController.swift */; };
 		0F602185286EBB8800D852BD /* BOUSFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602183286EBB8800D852BD /* BOUSFeedDetailViewController.swift */; };
@@ -297,7 +298,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../BOUSFEED/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../CommonFunctionalityFramework/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
 		0F31325F2862D8470017B28C /* CommonOutastandingImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOutastandingImageTableViewCell.swift; sourceTree = "<group>"; };
 		0F3132602862D8470017B28C /* CommonOutastandingImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonOutastandingImageTableViewCell.xib; sourceTree = "<group>"; };
 		0F3132612862D8470017B28C /* OutsandingImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsandingImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -322,6 +323,7 @@
 		0F32908E288A536C008BF09D /* BOUSReactionsScrollListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BOUSReactionsScrollListTableViewCell.xib; sourceTree = "<group>"; };
 		0F329091288A537D008BF09D /* BOUSReactionScrollListCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSReactionScrollListCellCoordinator.swift; sourceTree = "<group>"; };
 		0F32909B288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSCommonFeedsMediaCollectionCoordinator.swift; sourceTree = "<group>"; };
+		0F5BF69E289AA90300920224 /* BOUSFeedsDotPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSFeedsDotPopUpViewController.swift; sourceTree = "<group>"; };
 		0F602180286EB7A700D852BD /* CommonFeeds.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommonFeeds.storyboard; sourceTree = "<group>"; };
 		0F602182286EBB8800D852BD /* BOUSCommonBlurViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOUSCommonBlurViewController.swift; sourceTree = "<group>"; };
 		0F602183286EBB8800D852BD /* BOUSFeedDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOUSFeedDetailViewController.swift; sourceTree = "<group>"; };
@@ -362,7 +364,7 @@
 		0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BOUSFeedGrayDivider.xib; sourceTree = "<group>"; };
 		0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSFeedGrayDivider.swift; sourceTree = "<group>"; };
 		0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGrayDividerCoordinator.swift; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../BOUSFEED/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../CommonFunctionalityFramework/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980D12192614285E00995F41 /* Pods_RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980D121E2614295F00995F41 /* RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
@@ -1785,6 +1787,7 @@
 				0F32908628898E01008BF09D /* BOUSApproveAndRejectNominationViewController.swift */,
 				0F32908828898F65008BF09D /* BOUSNominationAppoveRejectWorker.swift */,
 				0F32908A28899DDF008BF09D /* BOUSReactionPostWorker.swift */,
+				0F5BF69E289AA90300920224 /* BOUSFeedsDotPopUpViewController.swift */,
 			);
 			path = CommonFeeeds;
 			sourceTree = "<group>";
@@ -2141,6 +2144,7 @@
 				BCE14D32290C3F9C008806EA /* PostPreviewViewController.swift in Sources */,
 				BE500D8528229B5500423E5A /* CommonPressLikeButtonTableViewCell.swift in Sources */,
 				9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */,
+				0F5BF69F289AA90300920224 /* BOUSFeedsDotPopUpViewController.swift in Sources */,
 				0F94B75628890535003AC4C8 /* BOUSApprovalDescriptionTableViewCell.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				BCCF645828EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift in Sources */,

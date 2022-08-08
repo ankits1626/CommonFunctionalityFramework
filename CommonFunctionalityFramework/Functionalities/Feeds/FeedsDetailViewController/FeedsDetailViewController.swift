@@ -400,34 +400,38 @@ extension FeedsDetailViewController : FeedsDelegate{
         }
     }
     
-    func postReaction(feedId: Int64, reactionType: String) {
-        var reactionId = Int()
-        if reactionType == "Like" {
-            reactionId = 0
-        }else if reactionType == "Love" {
-            reactionId = 3
-        }else if reactionType == "Clap" {
-            reactionId = 6
-        }else if reactionType == "Celebrate" {
-            reactionId = 1
-        }else if reactionType == "Support" {
-            reactionId = 2
-        }else {
-            reactionId = 1
-        }
-        
-        BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: reactionId){ (result) in
-            DispatchQueue.main.async {
-                switch result{
-                case .Success(_):
-                    break
-                case .SuccessWithNoResponseData:
-                    fallthrough
-                case .Failure(_):
-                    ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+    func postReaction(feedId: Int64, reactionType: String){
+            if let reactionId = reactionType as? String{
+                BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: Int(reactionId)!){ [weak self] (result) in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .Success(result: let result):
+
+                            CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                                                            if let likesResult =  result as? NSDictionary {
+                                                                if let dataVal = likesResult["post_reactions"] as? NSArray {
+                                                                    post.reactionTypesData =  dataVal
+                                                                    post.messageType = Int64(likesResult.object(forKey: "reaction_type") as? Int ?? -1)
+                                                                    post.numberOfLikes = Int64(dataVal.count)
+                                                                }
+                                                            }
+                                                            CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                                                CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                                            }
+                                                        }
+                            
+                            break
+                        case .SuccessWithNoResponseData:
+                            fallthrough
+                        case .Failure(_):
+                            ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+                        }
+                    }
                 }
+                
             }
-        }
+        
     }
     
     func pinToPost(feedIdentifier : Int64, isAlreadyPinned: Bool) {

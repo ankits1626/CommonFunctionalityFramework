@@ -28,6 +28,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var selectAllViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var approvalsCountLbl: UILabel!
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    var searchText : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     func loadApprovalsList(){
         self.activityLoader.isHidden = false
         self.activityLoader.startAnimating()
-        BOUSGetApprovalsListWorker(networkRequestCoordinator: requestCoordinator).getApprovalsList(searchString: "", nextUrl: "") { (result) in
+        BOUSGetApprovalsListWorker(networkRequestCoordinator: requestCoordinator).getApprovalsList(searchString: searchText ?? "", nextUrl: "") { (result) in
             DispatchQueue.main.async {
                 self.activityLoader.stopAnimating()
                 switch result{
