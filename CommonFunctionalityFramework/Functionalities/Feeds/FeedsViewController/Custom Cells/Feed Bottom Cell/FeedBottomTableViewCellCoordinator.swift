@@ -24,7 +24,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
 
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedBottomTableViewCell{
-
+            self.inputModel = inputModel
             feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.seperator?.backgroundColor = .seperatorColor
             cell.commentsCountLabel?.text = feed.getNumberOfComments()
@@ -54,9 +54,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
                 )
             }
             
-            
             let reactionType = feed.getUserReactionType()
-            print(reactionType)
             if  reactionType == 0 {
                 cell.reactionView.reaction  = Reaction.facebook.like
             }else if reactionType == 3 {
@@ -68,7 +66,7 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else if reactionType == 2 {
                 cell.reactionView.reaction  = Reaction.facebook.sad
             }else {
-                cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .red, icon: UIImage(named: "icon_like_gray")!)
+                cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .gray, icon: UIImage(named: "icon_like_gray")!)
             }
             
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .touchUpInside)
@@ -88,11 +86,28 @@ class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     }
     
     @objc func facebookButtonReactionTouchedUpAction(_ sender: AnyObject) {
-        if reactionBtn?.isSelected == false {
-            reactionBtn?.reaction   = Reaction.facebook.like
-        }
+//        if reactionBtn?.isSelected == false {
+//            reactionBtn?.reaction   = Reaction.facebook.like
+//        }
         
-        inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: (reactionBtn?.reaction.id)!)
+        let getReactionidType = getReactionIdFromString(reactionType: (reactionBtn?.reaction.id)!)
+        inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: "\(getReactionidType)")
 
+    }
+    
+    func getReactionIdFromString(reactionType: String) -> String {
+        if reactionType == "Like" {
+            return "0"
+        }else if reactionType == "Love" {
+            return "3"
+        }else if reactionType == "Clap" {
+            return "6"
+        }else if reactionType == "Celebrate" {
+            return "1"
+        }else if reactionType == "Support" {
+            return "2"
+        }else {
+            return "0"
+        }
     }
 }

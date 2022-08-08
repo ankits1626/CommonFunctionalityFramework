@@ -20,6 +20,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var selectedTabType = ""
+    var searchText : String?
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
             feedsDatasource: self,
@@ -102,10 +103,10 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         self.activityLoader.startAnimating()
         //loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText) {[weak self] (result) in
                 DispatchQueue.main.async {
                     self?.activityLoader.stopAnimating()
-                   // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
+                    // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
                     case .Success(let result):
@@ -116,7 +117,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                                 "show_approvals": resultData["show_approvals"], "approvals_count": resultData["approvals_count"]
                             ])
                         }
-                       
+                        
                         
                         self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     case .SuccessWithNoResponseData:
@@ -258,21 +259,11 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
                         case .Success(result: let result):
                             CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                                 let post = ((feed as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
-                                if let result =  result as? NSDictionary {
-                                    print(result)
-                                    if let dataVal = result["post_reactions"] as? NSArray {
+                                if let likesResult =  result as? NSDictionary {
+                                    if let dataVal = likesResult["post_reactions"] as? NSArray {
                                         post?.reactionTypesData =  dataVal
-                                        if dataVal.count > 0 {
-                                            if let dict = dataVal[0] as? NSDictionary {
-                                                if let reactionStatus = dict["reaction_type"] as? Int64 {
-                                                    post?.messageType = reactionStatus
-                                                    post?.numberOfLikes = Int64(dataVal.count)
-                                                }
-                                            }
-                                        }else {
-                                            post?.messageType = 0
-                                            post?.numberOfLikes = 0
-                                        }
+                                        post?.messageType = Int64(likesResult.object(forKey: "reaction_type") as? Int ?? -1)
+                                        post?.numberOfLikes = Int64(dataVal.count)
                                     }
                                 }
                                 CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {

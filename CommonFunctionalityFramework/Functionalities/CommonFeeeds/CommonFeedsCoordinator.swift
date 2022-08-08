@@ -17,14 +17,16 @@ public struct GetCommonFeedsViewModel{
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var selectedTabType : String
+    var searchText : String?
     
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String){
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
         self.themeManager = themeManager
         self.mainAppCoordinator = mainAppCoordinator
         self.selectedTabType = selectedTabType
+        self.searchText = searchText
     }
 }
 
@@ -49,6 +51,7 @@ public class CommonFeedsCoordinator {
         feedsVc.themeManager = inputModel.themeManager
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.selectedTabType = inputModel.selectedTabType
+        feedsVc.searchText = inputModel.searchText
         return feedsVc
     }
     
@@ -78,6 +81,7 @@ public class CommonFeedsCoordinator {
         let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
+        feedsVc.searchText = inputModel.searchText
         return feedsVc
 
     }

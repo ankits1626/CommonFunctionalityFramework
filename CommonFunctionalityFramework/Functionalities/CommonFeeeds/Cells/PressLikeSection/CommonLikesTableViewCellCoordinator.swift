@@ -125,9 +125,8 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             }else if feed.getUserReactionType() == 2 {
                 cell.reactionView.reaction  = Reaction.facebook.sad
             }else {
-                cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .red, icon: UIImage(named: "icon_like_gray")!)
+                cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .gray, icon: UIImage(named: "icon_like_gray")!)
             }
-            
             
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .touchUpInside)
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .valueChanged)
