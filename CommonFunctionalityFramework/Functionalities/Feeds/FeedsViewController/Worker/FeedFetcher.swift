@@ -46,7 +46,7 @@ class FeedFetcher  {
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: FeedFetchRequestGenerator(
                     feedID: feedID,
-                    nextPageUrl: nil, feedType: feedType, searchText: "",
+                    nextPageUrl: nil, feedType: feedType, searchText: nil,
                     networkRequestCoordinator: networkRequestCoordinator,
                     _feedTypePk: feedTypePk,
                     _organisationPK: organisationPK,
@@ -142,7 +142,7 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     
     private func appendFeedType(_ baseEndpoint : String) -> String{
         if self.feedTypePk != 0 {
-            return "\(baseEndpoint)&type=\(self.feedTypePk)"
+            return "\(baseEndpoint)&post_type=\(self.feedTypePk)"
         }
         return baseEndpoint
     }
