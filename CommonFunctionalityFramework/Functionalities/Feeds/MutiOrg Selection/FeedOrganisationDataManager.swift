@@ -128,4 +128,8 @@ extension FeedOrganisationDataManager{
         }
         return nil
     }
+    
+    func checkIfAnyOrganisationOrDepartmentSelected() -> Bool {
+        return !selectedDepartment.isEmpty || !selectedOrganisation.isEmpty
+    }
 }

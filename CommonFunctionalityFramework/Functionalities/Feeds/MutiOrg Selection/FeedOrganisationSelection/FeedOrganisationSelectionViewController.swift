@@ -46,7 +46,10 @@ class FeedOrganisationSelectionViewController: UIViewController {
         return FeedOrganisationListManager(
             FeedOrganisationListManagerInitModel(
                 dataManager: dataManager,
-                tableView: organisationListTableView
+                tableView: organisationListTableView,
+                recordSelectedCompletion: { [weak self] in
+                    self?.configureProceedButton()
+                }
             )
         )
     }()
@@ -81,7 +84,7 @@ extension FeedOrganisationSelectionViewController{
     }
     
     private func configureProceedButton(){
-        
+        proceedButtonContainerHeight?.constant = dataManager.checkIfAnyOrganisationOrDepartmentSelected() ? 52 : 0
     }
     
     private func askDataManagerToFetchData(){

@@ -13,7 +13,9 @@ import RewardzCommonComponents
 struct FeedOrganisationListManagerInitModel {
     weak var dataManager: FeedOrganisationDataManager?
     weak var tableView: UITableView?
+    var recordSelectedCompletion : () -> Void
 }
+
 
 class FeedOrganisationListManager : NSObject{
     private let initModel: FeedOrganisationListManagerInitModel
@@ -151,6 +153,7 @@ extension FeedOrganisationListManager{
                     organisation,
                     {
                         unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
+                        unwrappedSelf.initModel.recordSelectedCompletion()
                     })
 //                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)
 //                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
@@ -194,6 +197,7 @@ extension FeedOrganisationListManager{
                     department,
                     {
                         unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: indexpath.section), with: .none)
+                        unwrappedSelf.initModel.recordSelectedCompletion()
                     })
                 
             }
