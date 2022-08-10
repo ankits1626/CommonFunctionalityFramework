@@ -51,7 +51,7 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             }else{
                 cell.feedText?.text = feedTitle["strengthMessage"] as? String ?? ""
             }
-            cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
+            cell.appreciationSubject?.text =  feedTitle["strengthName"] as? String ?? ""
             //inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
             cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
             //cell.feedTitle?.URLColor = .urlColor
