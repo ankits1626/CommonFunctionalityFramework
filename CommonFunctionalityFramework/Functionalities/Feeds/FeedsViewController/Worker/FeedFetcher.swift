@@ -120,7 +120,8 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
             else if let unwrappedNextPageUrl = nextPageUrl {
                 return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: unwrappedNextPageUrl), method: .GET, httpBodyDict: nil)
             }else{
-                var endPoints = "feeds/api/user_feed/?feed=\(feedType!)"
+                var endPoints = "feeds/api/user_feed/"
+                endPoints = appendFeedInputType(endPoints)
                 endPoints = appendFeedType(endPoints)
                 endPoints = appendFeedOrg(endPoints)
                 endPoints = appendFeedDepartment(endPoints)
@@ -140,37 +141,68 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
         }
     }
     
+    private func appendFeedInputType(_ baseEndpoint : String) -> String{
+        if !(self.feedType?.isEmpty ?? true) {
+            if baseEndpoint.contains("?") {
+                return "\(baseEndpoint)&feed=\(self.feedType!)"
+            }else{
+                return "\(baseEndpoint)?feed=\(self.feedType!)"
+            }
+        }
+        return baseEndpoint
+    }
+    
     private func appendFeedType(_ baseEndpoint : String) -> String{
         if self.feedTypePk != 0 {
-            return "\(baseEndpoint)&post_type=\(self.feedTypePk)"
+            if baseEndpoint.contains("?") {
+                return "\(baseEndpoint)&post_type=\(self.feedTypePk)"
+            }else{
+                return "\(baseEndpoint)?post_type=\(self.feedTypePk)"
+            }
         }
         return baseEndpoint
     }
     
     private func appendFeedOrg(_ baseEndpoint : String) -> String{
         if self.organisationPK != 0 {
-            return "\(baseEndpoint)&organization=\(self.organisationPK)"
+            if baseEndpoint.contains("?") {
+                return "\(baseEndpoint)&organization=\(self.organisationPK)"
+            }else{
+                return "\(baseEndpoint)?organization=\(self.organisationPK)"
+            }
         }
         return baseEndpoint
     }
     
     private func appendFeedDepartment(_ baseEndpoint : String) -> String{
         if self.departmentPK != 0 {
-            return "\(baseEndpoint)&department=\(self.departmentPK)"
+            if baseEndpoint.contains("?") {
+                return "\(baseEndpoint)&department=\(self.departmentPK)"
+            }else{
+                return "\(baseEndpoint)?department=\(self.departmentPK)"
+            }
         }
         return baseEndpoint
     }
     
     private func appendFeedDateRange(_ baseEndpoint : String) -> String{
         if self.dateRangePK != 0 {
-            return "\(baseEndpoint)&created_during=\(self.dateRangePK)"
+            if baseEndpoint.contains("?") {
+                return "\(baseEndpoint)&created_during=\(self.dateRangePK)"
+            }else{
+                return "\(baseEndpoint)?created_during=\(self.dateRangePK)"
+            }
         }
         return baseEndpoint
     }
     
     private func appendFeedCoreValue(_ baseEndpoint : String) -> String{
         if self.coreValuePk != 0 {
-            return "\(baseEndpoint)&user_strength=\(self.coreValuePk)"
+            if baseEndpoint.contains("?") {
+                return "\(baseEndpoint)&user_strength=\(self.coreValuePk)"
+            }else{
+                return "\(baseEndpoint)?user_strength=\(self.coreValuePk)"
+            }
         }
         return baseEndpoint
     }
