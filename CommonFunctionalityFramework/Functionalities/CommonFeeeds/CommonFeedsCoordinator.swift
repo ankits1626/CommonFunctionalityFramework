@@ -19,7 +19,13 @@ public struct GetCommonFeedsViewModel{
     var selectedTabType : String
     var searchText : String?
     
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?){
+    var feedTypePk : Int = 0
+    var organisationPK : Int = 0
+    var departmentPK : Int = 0
+    var dateRangePK : Int = 0
+    var coreValuePk : Int = 0
+    
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -27,6 +33,11 @@ public struct GetCommonFeedsViewModel{
         self.mainAppCoordinator = mainAppCoordinator
         self.selectedTabType = selectedTabType
         self.searchText = searchText
+        self.feedTypePk = _feedTypePk
+        self.organisationPK = _organisationPK
+        self.departmentPK = _departmentPK
+        self.dateRangePK = _dateRangePK
+        self.coreValuePk = _coreValuePk
     }
 }
 
@@ -52,6 +63,11 @@ public class CommonFeedsCoordinator {
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.selectedTabType = inputModel.selectedTabType
         feedsVc.searchText = inputModel.searchText
+        feedsVc.feedTypePk = inputModel.feedTypePk
+        feedsVc.organisationPK = inputModel.organisationPK
+        feedsVc.departmentPK = inputModel.departmentPK
+        feedsVc.dateRangePK = inputModel.dateRangePK
+        feedsVc.coreValuePk = inputModel.coreValuePk
         return feedsVc
     }
     

@@ -21,6 +21,13 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var selectedTabType = ""
     var searchText : String?
+    
+    var feedTypePk : Int = 0
+    var organisationPK : Int = 0
+    var departmentPK : Int = 0
+    var dateRangePK : Int = 0
+    var coreValuePk : Int = 0
+    
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
             feedsDatasource: self,
@@ -103,7 +110,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         self.activityLoader.startAnimating()
         //loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk) {[weak self] (result) in
                 DispatchQueue.main.async {
                     self?.activityLoader.stopAnimating()
                     // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
