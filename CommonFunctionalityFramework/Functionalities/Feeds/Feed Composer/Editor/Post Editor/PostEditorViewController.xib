@@ -15,6 +15,7 @@
                 <outlet property="guidenceMessage" destination="aIr-py-Ijk" id="KNW-CJ-zLk"/>
                 <outlet property="messageGuidenceContainer" destination="JbI-SE-oNC" id="3yd-bB-FSI"/>
                 <outlet property="messageGuidenceContainerHeightContraint" destination="w6U-FB-ItR" id="or5-hK-s5t"/>
+                <outlet property="parentTableView" destination="97L-aH-bcr" id="dfb-fN-6p2"/>
                 <outlet property="postEditorTable" destination="KdF-ud-HFa" id="Zh3-ec-kQF"/>
                 <outlet property="postToLabel" destination="Mud-s3-Dnh" id="yAC-7p-Rl8"/>
                 <outlet property="postWithSameDepartmentCheckBox" destination="uTj-u0-hou" id="GTB-P9-6fE"/>
@@ -34,31 +35,39 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97L-aH-bcr" userLabel="TableContainer">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="636"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="737"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aD1-7E-f6D" userLabel="Table Background">
-                                    <rect key="frame" x="16" y="0.0" width="382" height="636"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="737"/>
+                                    <subviews>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KdF-ud-HFa">
+                                            <rect key="frame" x="0.0" y="12" width="414" height="725"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableView>
+                                    </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="KdF-ud-HFa" firstAttribute="leading" secondItem="aD1-7E-f6D" secondAttribute="leading" id="5fW-va-Xpy"/>
+                                        <constraint firstAttribute="bottom" secondItem="KdF-ud-HFa" secondAttribute="bottom" id="7nX-jh-S1a"/>
+                                        <constraint firstItem="KdF-ud-HFa" firstAttribute="top" secondItem="aD1-7E-f6D" secondAttribute="top" constant="12" id="PWO-Je-Fa1"/>
+                                        <constraint firstAttribute="trailing" secondItem="KdF-ud-HFa" secondAttribute="trailing" id="fYN-U6-3QE"/>
+                                    </constraints>
                                 </view>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KdF-ud-HFa">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="636"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="KdF-ud-HFa" firstAttribute="leading" secondItem="97L-aH-bcr" secondAttribute="leading" id="47z-uY-NTE"/>
                                 <constraint firstAttribute="bottom" secondItem="aD1-7E-f6D" secondAttribute="bottom" id="7Ed-JA-soo"/>
-                                <constraint firstAttribute="trailing" secondItem="KdF-ud-HFa" secondAttribute="trailing" id="8S9-jy-OTX"/>
-                                <constraint firstAttribute="bottom" secondItem="KdF-ud-HFa" secondAttribute="bottom" id="FZZ-ys-yao"/>
-                                <constraint firstItem="aD1-7E-f6D" firstAttribute="leading" secondItem="97L-aH-bcr" secondAttribute="leading" constant="16" id="fVF-Mi-sjY"/>
+                                <constraint firstItem="aD1-7E-f6D" firstAttribute="leading" secondItem="97L-aH-bcr" secondAttribute="leading" id="fVF-Mi-sjY"/>
                                 <constraint firstItem="aD1-7E-f6D" firstAttribute="top" secondItem="97L-aH-bcr" secondAttribute="top" id="gNN-j6-zMm"/>
-                                <constraint firstAttribute="trailing" secondItem="aD1-7E-f6D" secondAttribute="trailing" constant="16" id="vXS-F9-Oic"/>
-                                <constraint firstItem="KdF-ud-HFa" firstAttribute="top" secondItem="97L-aH-bcr" secondAttribute="top" id="zXR-Gj-4ud"/>
+                                <constraint firstAttribute="trailing" secondItem="aD1-7E-f6D" secondAttribute="trailing" id="vXS-F9-Oic"/>
                             </constraints>
                         </view>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uz-i0-rpJ" userLabel="Message">
-                            <rect key="frame" x="0.0" y="636" width="414" height="40"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uz-i0-rpJ">
+                            <rect key="frame" x="0.0" y="737" width="414" height="40"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbI-SE-oNC">
                                     <rect key="frame" x="16" y="8" width="382" height="32"/>
@@ -191,10 +200,10 @@
                             <rect key="frame" x="0.0" y="777" width="414" height="75"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X8-KT-Qfy">
-                                    <rect key="frame" x="15" y="15" width="384" height="45"/>
+                                    <rect key="frame" x="15" y="13.5" width="384" height="48"/>
                                     <color key="backgroundColor" red="0.94117647059999998" green="0.36078431370000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="9Iz-Ik-LoE"/>
+                                        <constraint firstAttribute="height" constant="48" id="9Iz-Ik-LoE"/>
                                     </constraints>
                                     <state key="normal" title="Button">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -204,7 +213,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="75" id="6Xd-gv-eBu"/>
                                 <constraint firstAttribute="trailing" secondItem="4X8-KT-Qfy" secondAttribute="trailing" constant="15" id="NuW-MB-XzQ"/>
@@ -229,6 +238,9 @@
     </objects>
     <resources>
         <image name="cff_info" width="14" height="14"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

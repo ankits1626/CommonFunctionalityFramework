@@ -257,6 +257,22 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     func reloadTextViewContainingRow(indexpath: IndexPath) {
     }
     
+    func createdPostType(_ isEnabled: Bool?) {
+        
+    }
+    
+    func openPhotoLibrary() {
+        
+    }
+    
+    func openGif() {
+        
+    }
+    
+    func openECard() {
+        
+    }
+    
     func updatePostTitle(title: String?) {
     }
     

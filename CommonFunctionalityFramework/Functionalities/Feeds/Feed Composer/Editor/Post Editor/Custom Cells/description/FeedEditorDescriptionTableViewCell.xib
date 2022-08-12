@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezA-hU-WYK">
-                        <rect key="frame" x="16" y="0.0" width="288" height="188"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivz-tI-KGT" customClass="KMPlaceholderTextView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                 <rect key="frame" x="15" y="12" width="258" height="164"/>
@@ -28,16 +28,26 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="0.94117647059999998" green="0.36078431370000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.6705882352941176" green="0.67843137254901964" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Whats on your mind?"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bea-UR-IGQ" userLabel="seperator">
+                                <rect key="frame" x="16" y="186" width="288" height="1"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.94117647058823528" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="MLX-Oo-VKk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ivz-tI-KGT" secondAttribute="trailing" constant="15" id="BYP-9p-gFF"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="MhQ-IM-uO1"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="106" id="MhQ-IM-uO1"/>
+                            <constraint firstItem="bea-UR-IGQ" firstAttribute="leading" secondItem="ezA-hU-WYK" secondAttribute="leading" constant="16" id="NFA-BJ-3Vp"/>
+                            <constraint firstItem="bea-UR-IGQ" firstAttribute="top" secondItem="ivz-tI-KGT" secondAttribute="bottom" constant="10" id="PRO-s8-dbf"/>
+                            <constraint firstAttribute="trailing" secondItem="bea-UR-IGQ" secondAttribute="trailing" constant="16" id="Qlw-rc-7jm"/>
                             <constraint firstItem="ivz-tI-KGT" firstAttribute="leading" secondItem="ezA-hU-WYK" secondAttribute="leading" constant="15" id="S7R-9G-0Y6"/>
                             <constraint firstAttribute="bottom" secondItem="ivz-tI-KGT" secondAttribute="bottom" constant="12" id="ste-pM-rJH"/>
                             <constraint firstItem="ivz-tI-KGT" firstAttribute="top" secondItem="ezA-hU-WYK" secondAttribute="top" constant="12" id="x7d-FI-Kfy"/>
@@ -46,9 +56,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="ezA-hU-WYK" firstAttribute="top" secondItem="Vth-yI-PR3" secondAttribute="top" id="8g1-4P-Uk4"/>
-                    <constraint firstAttribute="trailing" secondItem="ezA-hU-WYK" secondAttribute="trailing" constant="16" id="QJn-Y7-J0x"/>
+                    <constraint firstAttribute="trailing" secondItem="ezA-hU-WYK" secondAttribute="trailing" id="QJn-Y7-J0x"/>
                     <constraint firstAttribute="bottom" secondItem="ezA-hU-WYK" secondAttribute="bottom" id="W8d-rW-ile"/>
-                    <constraint firstItem="ezA-hU-WYK" firstAttribute="leading" secondItem="Vth-yI-PR3" secondAttribute="leading" constant="16" id="Xyk-rm-gOv"/>
+                    <constraint firstItem="ezA-hU-WYK" firstAttribute="leading" secondItem="Vth-yI-PR3" secondAttribute="leading" id="Xyk-rm-gOv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="CrP-js-Qse"/>
