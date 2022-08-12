@@ -29,10 +29,9 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     
     @IBOutlet private weak var postEditorTable : UITableView?
     @IBOutlet private weak var createButton : UIButton?
-    @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
-    @IBOutlet private weak var postWithSameDepartmentMessage: UILabel?
     @IBOutlet private weak var postWithSameDepartmentContainer: UIView?
     @IBOutlet private weak var tableBackgroundContainer: UIView?
+    @IBOutlet private weak var parentTableView: UIView?
     @IBOutlet private weak var messageGuidenceContainer: UIView?
     @IBOutlet private weak var guidenceMessage: UILabel?
     @IBOutlet private weak var messageGuidenceContainerHeightContraint: NSLayoutConstraint?
@@ -108,18 +107,21 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         ASMentionCoordinator.shared.textUpdateListener = nil
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableBackgroundContainer?.roundCorners(corners: [.topLeft,.topRight], radius: 12)
+    }
+    
     private func setup(){
-        tableBackgroundContainer?.curvedCornerControl()
+        parentTableView?.backgroundColor = UIColor.getControlColor()
         view.backgroundColor = .viewBackgroundColor
         setupTableView()
         setupCreateButton()
-        setupPostWithDepartment()
         if let deferredLoad = deferredSelectedMediaLoad{
             deferredLoad()
         }
         postWithSameDepartmentContainer?.isHidden = editablePost?.remotePostId != nil
         setupMessageGuidenceContainer()
-        setupCheckbox()
     }
     
     private func setupMessageGuidenceContainer(){
@@ -133,27 +135,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         guidenceMessage?.text = "Only s3 & s4 messages can be shared on this platform".localized
         guidenceMessage?.font = .Body1
     }
-    
-    private func setupCheckbox(){
-        postWithSameDepartmentCheckBox?.uncheckedBorderColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
-        postWithSameDepartmentCheckBox?.checkmarkColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
-        postWithSameDepartmentCheckBox?.checkedBorderColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
-    }
-    
-    private func setupPostWithDepartment() {
-        postWithSameDepartmentCheckBox?.borderLineWidth = 1
-        postWithSameDepartmentCheckBox?.isEnabled = postCoordinator.isDepartmentSharedWithEditable()
-        postWithSameDepartmentCheckBox?.checkmarkStyle = .tick
-        postWithSameDepartmentCheckBox?.isChecked = postCoordinator.isPostWithSameDepartment()
-        postWithSameDepartmentCheckBox?.valueChanged = {(isChecked) in
-            self.postCoordinator.updatePostWithSameDepartment(isChecked)
-        }
-        
-        postWithSameDepartmentMessage?.text = "Post to my department only".localized
-        postWithSameDepartmentMessage?.font = .Highlighter2
-        
-    }
-    
+     
     private func setupTableView(){
         postEditorTable?.tableFooterView = UIView(frame: CGRect.zero)
         postEditorTable?.rowHeight = UITableView.automaticDimension
@@ -174,7 +156,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         createButton?.titleLabel?.font = UIFont.Button
         createButton?.titleLabel?.tintColor = .buttonTextColor
         createButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .buttonColor
-        createButton?.curvedCornerControl()
+        createButton?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
     }
     
     private func setupContainerTopbar(){
@@ -402,6 +384,22 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     }
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func openPhotoLibrary() {
+        self.initiateGalleryAttachment()
+    }
+    
+    func openGif() {
+        self.initiateGifAttachment()
+    }
+    
+    func openECard() {
+        //
+    }
+    
+    func createdPostType(_ isEnabled: Bool?) {
+        self.postCoordinator.updatePostWithSameDepartment(isEnabled ?? false)
+    }
+    
     
     func removeAttachedGif() {
         postCoordinator.removeAttachedGif()
