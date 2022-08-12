@@ -23,6 +23,10 @@ protocol PostEditorCellFactoryDelegate : class {
     func showUserListForTagging(searckKey : String, textView: UITextView, pickerDelegate : TagUserPickerDelegate?)
     func dismissUserListForTagging(completion :(() -> Void))
     func updateTagPickerFrame(_ textView: UITextView?)
+    func createdPostType(_ isEnabled: Bool?)
+    func openPhotoLibrary()
+    func openGif()
+    func openECard()
 }
 
 struct PostEditorCellDequeueModel {
@@ -79,6 +83,8 @@ struct InitPostEditorCellFactoryModel {
 enum PostEditorSection : Int {
     case Title = 0
     case Description
+    case AddMedia
+    case PostType
     case Media
     case AttachedGif
     case PollOptions
@@ -96,7 +102,9 @@ class PostEditorCellFactory {
             MultipleMediaTableViewCellType().cellIdentifier : FeedEditorAttachedMutipleMediaTableViewCellCoordinator(),
             FeedGifTableViewCellType().cellIdentifier : FeedEditorAttachedGifTableViewCellCoordinator(),
             FeedEditorPollOptionTableViewCellType().cellIdentifier : FeedEditorPollOptionTableViewCellCoordinator(),
-            PollsActiveDaysTableViewCellType().cellIdentifier : PollsActiveDaysTableViewCellCoordinator()
+            PollsActiveDaysTableViewCellType().cellIdentifier : PollsActiveDaysTableViewCellCoordinator(),
+            SelectPostMediaTableViewCellType().cellIdentifier : SelectMediaTableViewCellCoordinator(),
+            SelectPostTypeTableViewCellType().cellIdentifier : SelectPostTypeTableCellCordinator()
         ]
     }()
     
@@ -207,6 +215,7 @@ extension PostEditorCellFactory{
                 sections.append(.PollActiveForDays)
             case .Post:
                 sections.append(.Description)
+                
             }
         }
         
@@ -218,6 +227,16 @@ extension PostEditorCellFactory{
         if let shouldDisplayGifSection = input.datasource?.getTargetPost()?.isGifAttached(),
             shouldDisplayGifSection{
             sections.append(.AttachedGif)
+        }
+        
+        if let postType = input.datasource?.getTargetPost()?.postType{
+            switch postType {
+            case .Poll:
+                break
+            case .Post:
+                sections.append(.AddMedia)
+                sections.append(.PostType)
+            }
         }
         
         return sections
@@ -237,6 +256,10 @@ extension PostEditorCellFactory{
             return cachedCellCoordinators[PollsActiveDaysTableViewCellType().cellIdentifier]!
         case .AttachedGif:
             return cachedCellCoordinators[FeedGifTableViewCellType().cellIdentifier]!
+        case .AddMedia:
+            return cachedCellCoordinators[SelectPostMediaTableViewCellType().cellIdentifier]!
+        case .PostType:
+            return cachedCellCoordinators[SelectPostTypeTableViewCellType().cellIdentifier]!
         }
     }
 }
