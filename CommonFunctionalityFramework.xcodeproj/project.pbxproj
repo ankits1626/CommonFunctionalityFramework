@@ -224,6 +224,7 @@
 		BCE14D4D2913AFB5008806EA /* PostShareOptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D4C2913AFB5008806EA /* PostShareOptionTableViewCellCoordinator.swift */; };
 		BCE9964728A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9964628A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift */; };
 		98FAB63A247FAD6200AA4DCA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */; };
+		BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE202E9628A6788D0021E112 /* FeedEcard.storyboard */; };
 		BE2DDBC72898434F007E2FC0 /* MultipleImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2DDBC62898434E007E2FC0 /* MultipleImageFlowLayout.swift */; };
 		BE500D7E2822960600423E5A /* CommonLikesSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE500D7C2822960600423E5A /* CommonLikesSectionTableViewCell.swift */; };
 		BE500D7F2822960600423E5A /* CommonLikesSectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE500D7D2822960600423E5A /* CommonLikesSectionTableViewCell.xib */; };
@@ -243,6 +244,12 @@
 		BE66CCB628A659F700C7CE83 /* SelectPostTypeTableCellCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCB528A659F700C7CE83 /* SelectPostTypeTableCellCordinator.swift */; };
 		BE66CCB928A65A0800C7CE83 /* SelectPostTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCB728A65A0800C7CE83 /* SelectPostTypeTableViewCell.swift */; };
 		BE66CCBA28A65A0800C7CE83 /* SelectPostTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE66CCB828A65A0800C7CE83 /* SelectPostTypeTableViewCell.xib */; };
+		BE66CCBE28A66E4C00C7CE83 /* FeedEcardSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCBC28A66E4C00C7CE83 /* FeedEcardSelectViewController.swift */; };
+		BE66CCC128A6701400C7CE83 /* FeedsEcardListResponseValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCC028A6701400C7CE83 /* FeedsEcardListResponseValues.swift */; };
+		BE66CCC328A6718C00C7CE83 /* FeedEcardCategoryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCC228A6718C00C7CE83 /* FeedEcardCategoryWorker.swift */; };
+		BE66CCC528A672DE00C7CE83 /* GetFeedEcardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCC428A672DE00C7CE83 /* GetFeedEcardWorker.swift */; };
+		BE66CCC728A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCC628A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift */; };
+		BE66CCC928A6743E00C7CE83 /* FeedEcardListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCC828A6743E00C7CE83 /* FeedEcardListTableViewCell.swift */; };
 		BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */; };
 		BE7C9AFF288AD0CA00E7CAE4 /* NoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C9AFD288AD0CA00E7CAE4 /* NoEntryViewController.swift */; };
 		BE7C9B00288AD0CA00E7CAE4 /* NoEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7C9AFE288AD0CA00E7CAE4 /* NoEntryViewController.xib */; };
@@ -525,6 +532,7 @@
 		BCE14D492913AD7C008806EA /* PostShareOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostShareOptionTableViewCell.xib; sourceTree = "<group>"; };
 		BCE14D4C2913AFB5008806EA /* PostShareOptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShareOptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		BCE9964628A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationDepartmentSelectionModel.swift; sourceTree = "<group>"; };
+		BE202E9628A6788D0021E112 /* FeedEcard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedEcard.storyboard; sourceTree = "<group>"; };
 		BE2DDBC62898434E007E2FC0 /* MultipleImageFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImageFlowLayout.swift; sourceTree = "<group>"; };
 		BE3E63F92899411400271518 /* CommonFunctionalityModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		BE500D7C2822960600423E5A /* CommonLikesSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLikesSectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -545,6 +553,12 @@
 		BE66CCB528A659F700C7CE83 /* SelectPostTypeTableCellCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPostTypeTableCellCordinator.swift; sourceTree = "<group>"; };
 		BE66CCB728A65A0800C7CE83 /* SelectPostTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPostTypeTableViewCell.swift; sourceTree = "<group>"; };
 		BE66CCB828A65A0800C7CE83 /* SelectPostTypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectPostTypeTableViewCell.xib; sourceTree = "<group>"; };
+		BE66CCBC28A66E4C00C7CE83 /* FeedEcardSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEcardSelectViewController.swift; sourceTree = "<group>"; };
+		BE66CCC028A6701400C7CE83 /* FeedsEcardListResponseValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsEcardListResponseValues.swift; sourceTree = "<group>"; };
+		BE66CCC228A6718C00C7CE83 /* FeedEcardCategoryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEcardCategoryWorker.swift; sourceTree = "<group>"; };
+		BE66CCC428A672DE00C7CE83 /* GetFeedEcardWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedEcardWorker.swift; sourceTree = "<group>"; };
+		BE66CCC628A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEcardCategoryListCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE66CCC828A6743E00C7CE83 /* FeedEcardListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEcardListTableViewCell.swift; sourceTree = "<group>"; };
 		BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		BE7C9AFD288AD0CA00E7CAE4 /* NoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEntryViewController.swift; sourceTree = "<group>"; };
 		BE7C9AFE288AD0CA00E7CAE4 /* NoEntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoEntryViewController.xib; sourceTree = "<group>"; };
@@ -912,6 +926,7 @@
 			children = (
 				BCE14D2F290C3F6F008806EA /* Post Preview */,
 				BCE14D2C290BFE2E008806EA /* Editor Router */,
+				BE66CCBB28A66E2D00C7CE83 /* FeedEcardSelect */,
 				987D0B8F2583DA58001A0F07 /* ASMentions */,
 				9873D61A24B6C2590041504C /* FeedsGIFSelector */,
 				9873D61524B63A1B0041504C /* FeedAttachmentOptionsDrawer */,
@@ -1731,6 +1746,20 @@
 			path = SelectPostType;
 			sourceTree = "<group>";
 		};
+		BE66CCBB28A66E2D00C7CE83 /* FeedEcardSelect */ = {
+			isa = PBXGroup;
+			children = (
+				BE66CCBC28A66E4C00C7CE83 /* FeedEcardSelectViewController.swift */,
+				BE66CCC028A6701400C7CE83 /* FeedsEcardListResponseValues.swift */,
+				BE66CCC228A6718C00C7CE83 /* FeedEcardCategoryWorker.swift */,
+				BE66CCC428A672DE00C7CE83 /* GetFeedEcardWorker.swift */,
+				BE66CCC628A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift */,
+				BE66CCC828A6743E00C7CE83 /* FeedEcardListTableViewCell.swift */,
+				BE202E9628A6788D0021E112 /* FeedEcard.storyboard */,
+			);
+			path = FeedEcardSelect;
+			sourceTree = "<group>";
+		};
 		BE94C312282170F800E323E1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1963,6 +1992,7 @@
 				BC37F2A328894EF20075E7CB /* FeedOrganisationTableViewCell.xib in Resources */,
 				0F6021B928741C4F00D852BD /* CommentLikeWithCountCell.xib in Resources */,
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
+				BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */,
 				BE94C30928212E4600E323E1 /* CommonFeedsViewController.xib in Resources */,
 				BEC2B28326FDA04A008417C3 /* FeedEditorTitleTableViewCell.xib in Resources */,
 				BCCF646428EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib in Resources */,
@@ -2089,6 +2119,7 @@
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
 				0F602223287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift in Sources */,
 				0F32909C288D0F26008BF09D /* BOUSCommonFeedsMediaCollectionCoordinator.swift in Sources */,
+				BE66CCBE28A66E4C00C7CE83 /* FeedEcardSelectViewController.swift in Sources */,
 				9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */,
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
 				98BF39CC2588D11100498C85 /* TagUserListProvider.swift in Sources */,
@@ -2102,6 +2133,7 @@
 				9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */,
 				98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */,
 				987D0BAE2583DA58001A0F07 /* ASMentionSelectorViewController.swift in Sources */,
+				BE66CCC728A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift in Sources */,
 				987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */,
 				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
@@ -2163,6 +2195,7 @@
 				9873D61824B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift in Sources */,
 				9811DD02241A885F003B91FD /* PostCoordinator.swift in Sources */,
 				9868C0F22419488000B12321 /* FeedCommentTableViewCell.swift in Sources */,
+				BE66CCC328A6718C00C7CE83 /* FeedEcardCategoryWorker.swift in Sources */,
 				9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */,
 				0F32908928898F65008BF09D /* BOUSNominationAppoveRejectWorker.swift in Sources */,
 				98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */,
@@ -2172,6 +2205,7 @@
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */,
 				BCCF646828EC1A9F0033AF2C /* AttachmentHandler.swift in Sources */,
+				BE66CCC528A672DE00C7CE83 /* GetFeedEcardWorker.swift in Sources */,
 				0F60221F287E72CC00D852BD /* BOUSApprovalsListingViewController.swift in Sources */,
 				BE500D8828229E2D00423E5A /* CommonLikesTableViewCellCoordinator.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
@@ -2179,6 +2213,7 @@
 				0F6021A52874150800D852BD /* CommonFeedDescriptionTableViewCell.swift in Sources */,
 				0F32906D28896689008BF09D /* BOUSReactionListTableViewCell.swift in Sources */,
 				BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */,
+				BE66CCC128A6701400C7CE83 /* FeedsEcardListResponseValues.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */,
 				BCE14D32290C3F9C008806EA /* PostPreviewViewController.swift in Sources */,
@@ -2189,6 +2224,7 @@
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
 				BCCF645828EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift in Sources */,
 				987D0BA72583DA58001A0F07 /* ASMentionStore.swift in Sources */,
+				BE66CCC928A6743E00C7CE83 /* FeedEcardListTableViewCell.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */,
 				9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */,

@@ -546,7 +546,18 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     }
     
     func openECard() {
-        //
+        let storyboard = UIStoryboard(name: "FeedEcard",bundle: Bundle(for: FeedEcardSelectViewController.self))
+        let controller = storyboard.instantiateViewController(withIdentifier: "FeedEcardSelectViewController") as! FeedEcardSelectViewController
+        controller.delegate = self
+        controller.requestCoordinator = requestCoordinator
+        controller.mediaFetcher = mediaFetcher
+        do{
+            try controller.presentDrawer()
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
     }
     
     func createdPostType(_ isEnabled: Bool?) {
@@ -721,6 +732,11 @@ extension PostEditorViewController : PostPreviewViewEventListener{
     func postTriggered(_ completion: @escaping () -> Void) {
         self.postToNetwork(completion)
     }
-    
-    
+}
+
+extension  PostEditorViewController : DidTapOnEcard {
+    func selectedEcard(ecardData: EcardListResponseValues, selectedEcardPk: Int) {
+        print(ecardData)
+        print(selectedEcardPk)
+    }    
 }
