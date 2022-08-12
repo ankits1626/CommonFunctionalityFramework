@@ -27,13 +27,13 @@ class FeedsComposerDrawer: UIViewController {
     weak var themeManager: CFFThemeManagerProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+       // setup()
     }
     
     private func setup() {
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-        setupButtons()
+        //setupButtons()
     }
     
     private func setupButtons(){
@@ -49,7 +49,7 @@ class FeedsComposerDrawer: UIViewController {
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: 198.0)
+            slideInTransitioningDelegate.direction = .bottom(height: 228)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
