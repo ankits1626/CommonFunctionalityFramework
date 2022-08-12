@@ -104,9 +104,15 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
                 if let nextPage = nextPageUrl, !nextPage.isEmpty {
                     return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: nextPage), method: .GET, httpBodyDict: nil)
                 }else {
+                    var endPoints = url
+                    if feedType != "SearchFromHome" {
+                        endPoints = appendFeedInputType(endPoints) + "&search=\(searchedText)"
+                    }else {
+                        endPoints = "\(endPoints)?search=\(searchedText)"
+                    }
                     if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                         let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                            url: URL(string: baseUrl + "\(url)?search=\(searchedText)"),
+                            url: URL(string: baseUrl + endPoints),
                             method: .GET,
                             httpBodyDict: nil
                         )
