@@ -96,20 +96,28 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     
     var apiRequest: URLRequest?{
         get{
+            var url = "feeds/api/user_feed/"
+            if feedType == "SearchFromHome" {
+                url = "feeds/api/user_feed/organization_recognitions/"
+            }
             if let searchedText = searchText {
-                if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
-                    let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                        url: URL(string: baseUrl + "feeds/api/user_feed/?search=\(searchedText)"),
-                        method: .GET,
-                        httpBodyDict: nil
-                    )
-                    return req
+                if let nextPage = nextPageUrl, !nextPage.isEmpty {
+                    return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: nextPage), method: .GET, httpBodyDict: nil)
+                }else {
+                    if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                        let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                            url: URL(string: baseUrl + "\(url)?search=\(searchedText)"),
+                            method: .GET,
+                            httpBodyDict: nil
+                        )
+                        return req
+                    }
+                    return nil
                 }
-                return nil
             }else if let unwrappedFeedId = feedID{
                 if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                     let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                        url: URL(string: baseUrl + "feeds/api/user_feed/\(unwrappedFeedId)/"),
+                        url: URL(string: baseUrl + "\(url)\(unwrappedFeedId)/"),
                         method: .GET,
                         httpBodyDict: nil
                     )
@@ -120,8 +128,10 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
             else if let unwrappedNextPageUrl = nextPageUrl {
                 return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: unwrappedNextPageUrl), method: .GET, httpBodyDict: nil)
             }else{
-                var endPoints = "feeds/api/user_feed/"
-                endPoints = appendFeedInputType(endPoints)
+                var endPoints = url
+                if feedType != "SearchFromHome" {
+                    endPoints = appendFeedInputType(endPoints)
+                }
                 endPoints = appendFeedType(endPoints)
                 endPoints = appendFeedOrg(endPoints)
                 endPoints = appendFeedDepartment(endPoints)
