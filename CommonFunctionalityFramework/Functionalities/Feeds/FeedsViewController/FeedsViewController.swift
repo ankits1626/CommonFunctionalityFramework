@@ -16,6 +16,8 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     @IBOutlet private weak var feedsTable : UITableView?
     @IBOutlet private weak var whatsInYourMindView : UIView?
     @IBOutlet private weak var cameraContainerViewView : UIView?
+    @IBOutlet private weak var feedCreateView : UIView?
+    @IBOutlet private weak var feedCreateViewConstraints : NSLayoutConstraint?
     var selectedTab = ""
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
@@ -52,6 +54,9 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedCreateView?.layer.cornerRadius = (feedCreateView?.frame.size.width)!/2
+        feedCreateView?.clipsToBounds = true
+        feedCreateView?.backgroundColor = UIColor.getControlColor()
         registerForPostUpdateNotifications()
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
@@ -107,12 +112,21 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
                 switch result{
                 case .Success(let result):
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
+                    self?.handleaddButton(fetchedfeeds: result)
                 case .SuccessWithNoResponseData:
                     ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
                 case .Failure(let error):
                     ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
                 }
             }
+        }
+    }
+    
+    func handleaddButton(fetchedfeeds : FetchedFeedModel) {
+        if fetchedfeeds.fetchedRawFeeds?.count == 0 {
+            feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
+        }else if fetchedfeeds.fetchedRawFeeds?.count == 1 {
+            feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
         }
     }
     

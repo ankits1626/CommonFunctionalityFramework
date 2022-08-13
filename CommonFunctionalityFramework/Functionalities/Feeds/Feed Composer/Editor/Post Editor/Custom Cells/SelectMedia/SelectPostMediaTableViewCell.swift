@@ -14,6 +14,10 @@ class SelectPostMediaTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var gifButton : UIButton?
     @IBOutlet weak var imageButton : UIButton?
     
+    @IBOutlet weak var ecardButtonView : UIView?
+    @IBOutlet weak var gifButtonView : UIView?
+    @IBOutlet weak var imageButtonView : UIView?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 

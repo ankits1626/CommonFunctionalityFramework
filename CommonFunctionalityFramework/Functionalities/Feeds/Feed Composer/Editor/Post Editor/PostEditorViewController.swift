@@ -61,7 +61,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             localMediaManager: localMediaManager,
             targetTableView: postEditorTable,
             postImageMapper: imageMapper,
-            themeManager: themeManager
+            themeManager: themeManager,
+            mediaFetcher: mediaFetcher
             )
         )
     }()
@@ -319,7 +320,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         do{
             createButton?.isUserInteractionEnabled  = false
             try postCoordinator.checkIfPostReadyToPublish()
-            self.loader.showActivityIndicator(self.view)
+            self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
             PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
             self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
                  print("here")
@@ -330,7 +331,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                     PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
                     post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                         DispatchQueue.main.async {
-                            self?.loader.hideActivityIndicator(self?.view ?? UIView())
+                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                             self?.createButton?.isUserInteractionEnabled  = true
                             switch callResult{
                             case .Success(let rawFeed):
@@ -384,6 +385,10 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     }
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func removeAttachedECard() {
+        postCoordinator.removeAttachedECard()
+    }
+    
     func openPhotoLibrary() {
         self.initiateGalleryAttachment()
     }
@@ -518,8 +523,7 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
 }
 extension  PostEditorViewController : DidTapOnEcard {
     func selectedEcard(ecardData: EcardListResponseValues, selectedEcardPk: Int) {
-        print(ecardData)
-        print(selectedEcardPk)
+        postCoordinator.attachedEcardItems(_selectedECard: ecardData)
     }
     
     
