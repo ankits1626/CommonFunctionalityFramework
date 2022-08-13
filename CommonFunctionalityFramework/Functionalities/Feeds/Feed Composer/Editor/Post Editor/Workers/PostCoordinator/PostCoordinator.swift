@@ -11,6 +11,7 @@ import Foundation
 protocol PostObserver : AnyObject {
     func mediaAttachedToPost()
     func attachedMediaUpdated()
+    func attachedECardMediaUpdated()
     func allAttachedMediaRemovedFromPost()
     func removedAttachedMediaitemAtIndex(index : Int)
 }
@@ -75,11 +76,22 @@ class PostCoordinator {
         }
     }
     
+    func attachedEcardItems(_selectedECard : EcardListResponseValues) {
+        currentPost.attachedGif = nil
+        currentPost.selectedEcardMediaItems = _selectedECard
+        postObsever?.attachedECardMediaUpdated()
+    }
+    
     func attachGifItem(_ selectedGif: RawGif) {
         currentPost.selectedMediaItems = nil
+        currentPost.selectedEcardMediaItems = nil
         deleteAllRemoteAttachedMediaItems()
         currentPost.attachedGif = selectedGif
         postObsever?.allAttachedMediaRemovedFromPost()
+    }
+    
+    func removeAttachedECard() {
+        currentPost.selectedEcardMediaItems = nil
     }
     
     func removeAttachedGif() {

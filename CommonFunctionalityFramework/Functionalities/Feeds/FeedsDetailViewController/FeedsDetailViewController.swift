@@ -290,6 +290,9 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     
     func activeDaysForPollChanged(_ days: Int) {
     }
+    
+    func removeAttachedECard() {
+    }
 }
 
 extension FeedsDetailViewController : FeedsDetailCommentsProviderProtocol{

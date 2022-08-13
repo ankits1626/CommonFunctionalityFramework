@@ -27,12 +27,14 @@ protocol PostEditorCellFactoryDelegate : AnyObject {
     func openPhotoLibrary()
     func openGif()
     func openECard()
+    func removeAttachedECard()
 }
 
 struct PostEditorCellDequeueModel {
     var targetIndexpath : IndexPath
     var targetTableView : UITableView
     weak var datasource: PostEditorCellFactoryDatasource?
+    weak var mediaFetcher : CFFMediaCoordinatorProtocol!
 }
 
 struct PostEditorCellLoadDataModel {
@@ -44,6 +46,7 @@ struct PostEditorCellLoadDataModel {
     var localMediaManager : LocalMediaManager?
     var postImageMapper : EditablePostMediaRepository
     weak var themeManager: CFFThemeManagerProtocol?
+    weak var mediaFetcher : CFFMediaCoordinatorProtocol!
 }
 
 struct PostEditorRemoveAttachedMediaDataModel {
@@ -78,6 +81,7 @@ struct InitPostEditorCellFactoryModel {
     weak var targetTableView : UITableView?
     weak var postImageMapper : EditablePostMediaRepository?
     weak var themeManager: CFFThemeManagerProtocol?
+    weak var mediaFetcher : CFFMediaCoordinatorProtocol?
 }
 
 enum PostEditorSection : Int {
@@ -85,6 +89,7 @@ enum PostEditorSection : Int {
     case Description
     case AddMedia
     case PostType
+    case ECardMedia
     case Media
     case AttachedGif
     case PollOptions
@@ -104,7 +109,8 @@ class PostEditorCellFactory {
             FeedEditorPollOptionTableViewCellType().cellIdentifier : FeedEditorPollOptionTableViewCellCoordinator(),
             PollsActiveDaysTableViewCellType().cellIdentifier : PollsActiveDaysTableViewCellCoordinator(),
             SelectPostMediaTableViewCellType().cellIdentifier : SelectMediaTableViewCellCoordinator(),
-            SelectPostTypeTableViewCellType().cellIdentifier : SelectPostTypeTableCellCordinator()
+            SelectPostTypeTableViewCellType().cellIdentifier : SelectPostTypeTableCellCordinator(),
+            AddECardTableViewCellType().cellIdentifier : AddECardTypeTableCellCordinator()
         ]
     }()
     
@@ -158,7 +164,8 @@ class PostEditorCellFactory {
             PostEditorCellDequeueModel(
                 targetIndexpath: indexPath,
                 targetTableView: tableView,
-                datasource: input.datasource!
+                datasource: input.datasource!,
+                mediaFetcher: input.mediaFetcher
             )
         )
         cell.backgroundColor = .clear
@@ -178,7 +185,8 @@ class PostEditorCellFactory {
                 delegate: input.delegate,
                 localMediaManager: input.localMediaManager,
                 postImageMapper: input.postImageMapper!,
-                themeManager: input.themeManager
+                themeManager: input.themeManager,
+                mediaFetcher: input.mediaFetcher
             )
         )
     }
@@ -228,6 +236,11 @@ extension PostEditorCellFactory{
             }
         }
         
+        if let shouldDisplayECard = input.datasource?.getTargetPost()?.isECardAttached(),
+           shouldDisplayECard{
+            sections.append(.ECardMedia)
+        }
+        
         if let shouldDisplayMediaSection = input.postImageMapper?.shouldDisplayMediaSection(input.datasource?.getTargetPost()),
             shouldDisplayMediaSection{
             sections.append(.Media)
@@ -237,6 +250,7 @@ extension PostEditorCellFactory{
             shouldDisplayGifSection{
             sections.append(.AttachedGif)
         }
+        
         
         if let postType = input.datasource?.getTargetPost()?.postType{
             switch postType {
@@ -269,11 +283,17 @@ extension PostEditorCellFactory{
             return cachedCellCoordinators[SelectPostMediaTableViewCellType().cellIdentifier]!
         case .PostType:
             return cachedCellCoordinators[SelectPostTypeTableViewCellType().cellIdentifier]!
+        case .ECardMedia:
+            return cachedCellCoordinators[AddECardTableViewCellType().cellIdentifier]!
         }
     }
 }
 
 extension PostEditorCellFactory : PostObserver{
+    func attachedECardMediaUpdated() {
+        input.targetTableView?.reloadData()
+    }
+    
     func removedAttachedMediaitemAtIndex(index: Int) {
         if let coordinator = cachedCellCoordinators[MultipleMediaTableViewCellType().cellIdentifier ] as? FeedEditorAttachedMutipleMediaTableViewCellCoordinator{
             coordinator.removeSelectedMediItem(PostEditorRemoveAttachedMediaDataModel(targetIndex: index))
@@ -282,12 +302,12 @@ extension PostEditorCellFactory : PostObserver{
     
     func mediaAttachedToPost() {
         input.targetTableView?.reloadData()
-        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
+//        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
     }
     
     func attachedMediaUpdated() {
         input.targetTableView?.reloadSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
-        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
+//        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
     }
     
     func allAttachedMediaRemovedFromPost() {

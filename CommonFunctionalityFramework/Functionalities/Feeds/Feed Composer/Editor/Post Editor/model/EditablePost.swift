@@ -30,6 +30,8 @@ protocol EditablePostProtocol {
     func getCleanPollOptions() -> [String]?
     func isGifAttached() -> Bool
     func postSharedWith() -> (SharePostOption, FeedOrganisationDepartmentSelectionModel?)
+    var selectedEcardMediaItems : EcardListResponseValues? {set get}
+    func isECardAttached() -> Bool
 }
 
 
@@ -39,7 +41,14 @@ enum PostSharedChoice : Int {
     case CustomMultiOrgDepartment = 40
     
 }
-class EditablePost : EditablePostProtocol{
+struct EditablePost : EditablePostProtocol{
+    var selectedEcardMediaItems: EcardListResponseValues?
+    
+    
+    
+    func isECardAttached() -> Bool {
+        return selectedEcardMediaItems != nil
+    }
     
     func isGifAttached() -> Bool {
         return attachedGif != nil
