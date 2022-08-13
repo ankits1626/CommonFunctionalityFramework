@@ -235,6 +235,9 @@
 		BEAE3580270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAE357F270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib */; };
 		BEAE3582270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAE3581270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib */; };
 		BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE3584270AC06D00E95DF9 /* PostPinWorker.swift */; };
+		BEB0084428A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */; };
+		BEB0084728A76DF200E3F1B0 /* AddECardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */; };
+		BEB0084828A76DF200E3F1B0 /* AddECardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */; };
 		BEC2B24F26FD9573008417C3 /* DropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B24E26FD9573008417C3 /* DropDownTableViewCell.xib */; };
 		BEC2B25326FD97C8008417C3 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B25226FD97C7008417C3 /* FeedsViewController.xib */; };
 		BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B25426FD982D008417C3 /* FeedTopTableViewCell.xib */; };
@@ -277,7 +280,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../CommonFunctionalityFramework/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../BOUSFEED/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
 		0F31325F2862D8470017B28C /* CommonOutastandingImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOutastandingImageTableViewCell.swift; sourceTree = "<group>"; };
 		0F3132602862D8470017B28C /* CommonOutastandingImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonOutastandingImageTableViewCell.xib; sourceTree = "<group>"; };
 		0F3132612862D8470017B28C /* OutsandingImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsandingImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -343,7 +346,7 @@
 		0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BOUSFeedGrayDivider.xib; sourceTree = "<group>"; };
 		0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSFeedGrayDivider.swift; sourceTree = "<group>"; };
 		0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGrayDividerCoordinator.swift; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../CommonFunctionalityFramework/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../BOUSFEED/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980D12192614285E00995F41 /* Pods_RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980D121E2614295F00995F41 /* RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
@@ -512,6 +515,9 @@
 		BEAE357F270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEAE3581270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PintoTopConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEAE3584270AC06D00E95DF9 /* PostPinWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinWorker.swift; sourceTree = "<group>"; };
+		BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTypeTableCellCordinator.swift; sourceTree = "<group>"; };
+		BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTableViewCell.swift; sourceTree = "<group>"; };
+		BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddECardTableViewCell.xib; sourceTree = "<group>"; };
 		BEC2B24E26FD9573008417C3 /* DropDownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewCell.xib; sourceTree = "<group>"; };
 		BEC2B25226FD97C7008417C3 /* FeedsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
 		BEC2B25426FD982D008417C3 /* FeedTopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedTopTableViewCell.xib; sourceTree = "<group>"; };
@@ -1448,6 +1454,7 @@
 		98BC8A0B241A171E007C175D /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BEB0084228A76DAB00E3F1B0 /* AddECardType */,
 				BE66CCB428A659CE00C7CE83 /* SelectPostType */,
 				BE66CCAD28A653DA00C7CE83 /* SelectMedia */,
 				BEC2B28426FDA100008417C3 /* PostEditorViewController.xib */,
@@ -1763,6 +1770,16 @@
 			path = PinWorker;
 			sourceTree = "<group>";
 		};
+		BEB0084228A76DAB00E3F1B0 /* AddECardType */ = {
+			isa = PBXGroup;
+			children = (
+				BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */,
+				BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */,
+				BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */,
+			);
+			path = AddECardType;
+			sourceTree = "<group>";
+		};
 		BED3ADAB28227F99004F58AC /* Appreciation Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1924,6 +1941,7 @@
 				BED3ADAF28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib in Resources */,
 				BE500D7F2822960600423E5A /* CommonLikesSectionTableViewCell.xib in Resources */,
 				BEC2B27526FD9E5B008417C3 /* GifCollectionViewCell.xib in Resources */,
+				BEB0084828A76DF200E3F1B0 /* AddECardTableViewCell.xib in Resources */,
 				0F6021B928741C4F00D852BD /* CommentLikeWithCountCell.xib in Resources */,
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
 				BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */,
@@ -2002,6 +2020,7 @@
 				BE94C3112821418800E323E1 /* NominationFeedContentCoordinator.swift in Sources */,
 				986B9737258DDD1B006EBDA9 /* ASTaggedUser.swift in Sources */,
 				98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */,
+				BEB0084728A76DF200E3F1B0 /* AddECardTableViewCell.swift in Sources */,
 				9873D63F24C09C830041504C /* FeedDescriptionParser.swift in Sources */,
 				98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */,
 				BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */,
@@ -2149,6 +2168,7 @@
 				9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */,
 				98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */,
 				9873D62F24B80CBE0041504C /* GifFetcher.swift in Sources */,
+				BEB0084428A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift in Sources */,
 				0FED7EF7287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift in Sources */,
 				BE94C30F2821417800E323E1 /* AppreciationFeedContentCoordinator.swift in Sources */,
 				0F94B75A2889055B003AC4C8 /* BOUSApprovalMessageTableViewCell.swift in Sources */,
