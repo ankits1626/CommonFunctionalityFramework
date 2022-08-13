@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,12 +46,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXP-EP-I1k" userLabel="stepper contaier">
                                         <rect key="frame" x="0.0" y="24" width="288" height="72"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s97-Un-f2Q" customClass="Stepper" customModule="RewardzCommonComponents">
-                                                <rect key="frame" x="15" y="16" width="129" height="40"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Va-82-K0V" customClass="HorizontalScrollingOptions" customModule="RewardzCommonComponents">
+                                                <rect key="frame" x="8" y="16" width="280" height="40"/>
+                                                <color key="backgroundColor" red="0.35766759269999998" green="1" blue="0.40264896490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="AgV-1w-lQH"/>
+                                                </constraints>
+                                            </view>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s97-Un-f2Q" customClass="Stepper" customModule="RewardzCommonComponents">
+                                                <rect key="frame" x="55" y="7" width="129" height="1"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="129" id="UY3-95-2Fj"/>
-                                                    <constraint firstAttribute="height" constant="40" id="Uyb-Ty-8ih"/>
+                                                    <constraint firstAttribute="height" constant="1" id="Uyb-Ty-8ih"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="reading">
@@ -74,12 +81,15 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="s97-Un-f2Q" firstAttribute="centerY" secondItem="FXP-EP-I1k" secondAttribute="centerY" id="9A8-hQ-Bv4"/>
+                                            <constraint firstItem="4Va-82-K0V" firstAttribute="top" secondItem="FXP-EP-I1k" secondAttribute="top" constant="16" id="4NF-cB-oet"/>
+                                            <constraint firstItem="s97-Un-f2Q" firstAttribute="centerY" secondItem="FXP-EP-I1k" secondAttribute="centerY" constant="-28.5" id="9A8-hQ-Bv4"/>
+                                            <constraint firstItem="4Va-82-K0V" firstAttribute="leading" secondItem="FXP-EP-I1k" secondAttribute="leading" constant="8" id="j8g-VD-sKW"/>
+                                            <constraint firstAttribute="trailing" secondItem="4Va-82-K0V" secondAttribute="trailing" id="seE-AM-wKp"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="s97-Un-f2Q" firstAttribute="leading" secondItem="aQD-zE-Ruc" secondAttribute="leading" id="PEe-s8-Xtq"/>
+                                    <constraint firstItem="s97-Un-f2Q" firstAttribute="leading" secondItem="aQD-zE-Ruc" secondAttribute="leading" constant="40" id="PEe-s8-Xtq"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -92,7 +102,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="bYn-Y5-uTT" firstAttribute="leading" secondItem="Mvq-jZ-9l5" secondAttribute="leading" constant="16" id="Czt-xj-itY"/>
                     <constraint firstAttribute="bottom" secondItem="bYn-Y5-uTT" secondAttribute="bottom" id="S2H-wr-aUE"/>
@@ -105,6 +115,7 @@
                 <outlet property="activeDaysLabel" destination="aQD-zE-Ruc" id="v8x-kE-Osf"/>
                 <outlet property="activeDaysStepper" destination="s97-Un-f2Q" id="0vE-Oi-wsz"/>
                 <outlet property="containerView" destination="bYn-Y5-uTT" id="GFH-YD-Na0"/>
+                <outlet property="daysSelector" destination="4Va-82-K0V" id="ZHk-B5-Lti"/>
             </connections>
             <point key="canvasLocation" x="136.23188405797103" y="155.35714285714286"/>
         </tableViewCell>
