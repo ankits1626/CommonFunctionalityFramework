@@ -232,7 +232,7 @@ extension PostEditorCellFactory{
         if let postType = input.datasource?.getTargetPost()?.postType{
             switch postType {
             case .Poll:
-                break
+                sections.append(.PostType)
             case .Post:
                 sections.append(.AddMedia)
                 sections.append(.PostType)
