@@ -53,7 +53,7 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             }
             cell.appreciationSubject?.text =  feedTitle["strengthName"] as? String ?? ""
             //inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
-            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
+            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
             //cell.feedTitle?.URLColor = .urlColor
 //            cell.feedTitle?.handleURLTap({ (targetUrl) in
 //                print("<<<<<<<< open \(targetUrl)")
@@ -114,11 +114,11 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             }else{
                 cell.feedText?.text = feedTitle["strengthMessage"] as? String ?? ""
             }
-            cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
-            cell.pointBtn.setTitle("\(feedTitle["points"] as! String) Points", for: .normal)
+            cell.appreciationSubject?.text =  feedTitle["strengthName"] as? String ?? ""
+            cell.pointBtn.setTitle("\(feedTitle["points"] as? String ?? "") Points", for: .normal)
             
-            inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
-            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
+            inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as? String ?? "")
+            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
             
             if let mediaItem = feed.getMediaList()?.first,
                 let _ = mediaItem.getCoverImageUrl(){
