@@ -61,7 +61,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             localMediaManager: localMediaManager,
             targetTableView: postEditorTable,
             postImageMapper: imageMapper,
-            themeManager: themeManager
+            themeManager: themeManager,
+            mediaFetcher: mediaFetcher
             )
         )
     }()
@@ -384,6 +385,10 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     }
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func removeAttachedECard() {
+        postCoordinator.removeAttachedECard()
+    }
+    
     func openPhotoLibrary() {
         self.initiateGalleryAttachment()
     }
@@ -518,8 +523,7 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
 }
 extension  PostEditorViewController : DidTapOnEcard {
     func selectedEcard(ecardData: EcardListResponseValues, selectedEcardPk: Int) {
-        print(ecardData)
-        print(selectedEcardPk)
+        postCoordinator.attachedEcardItems(_selectedECard: ecardData)
     }
     
     
