@@ -38,7 +38,8 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
             }else{
                 cell.feedText?.text = feedTitle["strengthMessage"] as? String ?? ""
             }
-            cell.appreciationSubject?.text =  feedTitle["strengthName"] as! String
+            
+            cell.appreciationSubject?.text =  feedTitle["strengthName"] as? String ?? ""
             if let numberOfComments = cell.feedText {
                 if numberOfComments.maxNumberOfLines > 3 {
                     cell.readMorebutton?.isHidden = false
@@ -47,8 +48,8 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
                 }
             }
             cell.feedText?.numberOfLines = 3
-            inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
-            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as! String, alpha: 1.0)
+            inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as? String ?? "")
+            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
 //            cell.containerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
 //
             
