@@ -58,6 +58,8 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForPostUpdateNotifications()
+        self.feedsTable?.bounces = true
+        NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "TestScroll"), object: nil)
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
             self?.setup()
@@ -65,6 +67,15 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         }
     }
     
+    @objc func scrollTableView(notification: NSNotification) {
+        
+        if let paymentData = notification.object as? Dictionary<String, Any> {
+            if let paymentID = paymentData["isScrollable"] as? Bool {
+                print("paymentID ----- \(paymentID)")
+                self.feedsTable?.isScrollEnabled = paymentID
+            }
+        }
+    }
     
     private func registerForPostUpdateNotifications(){
         NotificationCenter.default.addObserver(self, selector: #selector(refreshFeeds), name: NSNotification.Name.didUpdatedPosts, object: nil)
