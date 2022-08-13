@@ -57,6 +57,7 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
         for: indexPath) as! MediaItemCollectionViewCell
         cell.removeButton?.isHidden = false
         cell.editTransparentView?.isHidden = false
+        cell.pageControl.isHidden = true
         cell.curvedCornerControl()
         cell.removeButton?.handleControlEvent(
             event: .touchUpInside,

@@ -293,12 +293,10 @@ extension PostEditorCellFactory : PostObserver{
     
     func mediaAttachedToPost() {
         input.targetTableView?.reloadData()
-//        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
     }
     
     func attachedMediaUpdated() {
-        input.targetTableView?.reloadSections(IndexSet(integer: PostEditorSection.Media.rawValue), with: .top)
-//        input.targetTableView?.scrollToRow(at: IndexPath(row: 0, section: PostEditorSection.Media.rawValue), at: UITableView.ScrollPosition.bottom, animated: true)
+        input.targetTableView?.reloadData()
     }
     
     func allAttachedMediaRemovedFromPost() {

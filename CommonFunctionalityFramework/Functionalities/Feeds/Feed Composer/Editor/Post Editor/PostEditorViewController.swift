@@ -320,7 +320,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         do{
             createButton?.isUserInteractionEnabled  = false
             try postCoordinator.checkIfPostReadyToPublish()
-            self.loader.showActivityIndicator(self.view)
+            self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
             PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
             self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
                  print("here")
@@ -331,7 +331,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                     PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
                     post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                         DispatchQueue.main.async {
-                            self?.loader.hideActivityIndicator(self?.view ?? UIView())
+                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                             self?.createButton?.isUserInteractionEnabled  = true
                             switch callResult{
                             case .Success(let rawFeed):
