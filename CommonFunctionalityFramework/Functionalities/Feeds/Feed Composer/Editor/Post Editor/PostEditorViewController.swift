@@ -393,7 +393,18 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     }
     
     func openECard() {
-        //
+        let storyboard = UIStoryboard(name: "FeedEcard",bundle: Bundle(for: FeedEcardSelectViewController.self))
+        let controller = storyboard.instantiateViewController(withIdentifier: "FeedEcardSelectViewController") as! FeedEcardSelectViewController
+        controller.delegate = self
+        controller.requestCoordinator = requestCoordinator
+        controller.mediaFetcher = mediaFetcher
+        do{
+            try controller.presentDrawer()
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
     }
     
     func createdPostType(_ isEnabled: Bool?) {
@@ -504,4 +515,12 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return cellFactory.getViewForHeaderInSection(section: section, tableView: tableView)
     }
+}
+extension  PostEditorViewController : DidTapOnEcard {
+    func selectedEcard(ecardData: EcardListResponseValues, selectedEcardPk: Int) {
+        print(ecardData)
+        print(selectedEcardPk)
+    }
+    
+    
 }
