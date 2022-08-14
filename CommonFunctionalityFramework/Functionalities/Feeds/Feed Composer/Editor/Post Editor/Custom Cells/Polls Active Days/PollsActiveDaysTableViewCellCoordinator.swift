@@ -11,10 +11,8 @@ import Loaf
 import RewardzCommonComponents
 
 class PollsActiveDaysTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol, DaySelectorHandlerDelegate {
-    func didFinishedSelection(selectedDay: Int) {
-        print(selectedDay)
-    }
     
+    weak var delegate : PostEditorCellFactoryDelegate?
     var cellType: FeedCellTypeProtocol = PollsActiveDaysTableViewCellType()
     weak var themeManager : CFFThemeManagerProtocol?
     
@@ -54,8 +52,10 @@ class PollsActiveDaysTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         return 118
     }
     
-    weak var delegate : PostEditorCellFactoryDelegate?
-    
+    func didFinishedSelection(selectedDay: Int) {
+        delegate?.activeDaysForPollChanged(selectedDay)
+    }
+
 }
 
 extension PollsActiveDaysTableViewCellCoordinator : StepperDelegate{

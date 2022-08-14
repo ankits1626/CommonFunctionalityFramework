@@ -28,6 +28,7 @@ protocol PostEditorCellFactoryDelegate : class {
     func openGif()
     func openECard()
     func removeAttachedECard()
+    func numberOfRowsIncrement(number: Int)
 }
 
 struct PostEditorCellDequeueModel {
@@ -143,9 +144,9 @@ class PostEditorCellFactory {
         return getAvailablePostEditorSections().count
     }
     
-    func numberOfRowsInSection(_ section : Int) -> Int {
+    func numberOfRowsInSection(_ section : Int, _ rows: Int) -> Int {
         if getCurrentSection(section) == .PollOptions{
-            return 4
+            return rows
         }
         return 1
     }
