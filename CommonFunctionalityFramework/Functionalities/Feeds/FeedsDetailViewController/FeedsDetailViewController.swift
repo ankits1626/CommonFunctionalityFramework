@@ -20,6 +20,7 @@ protocol FeedsDetailCommentsProviderProtocol{
 }
 class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate {
 
+
     var feedFetcher: CFFNetworkRequestCoordinatorProtocol!
     private var tagPicker : ASMentionSelectorViewController?
     @IBOutlet weak var commentBarView : ASChatBarview?
@@ -242,6 +243,10 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
                 print("<<<<<<< error while fetching like list")
             }
         }
+    }
+    
+    func numberOfRowsIncrement(number: Int) {
+        
     }
     
     @objc private func reloadPost(notification: NSNotification){
