@@ -21,6 +21,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYn-Y5-uTT">
                         <rect key="frame" x="16" y="0.0" width="288" height="128"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Nx-Ig-A7s" userLabel="seperator">
+                                <rect key="frame" x="0.0" y="11" width="288" height="1"/>
+                                <color key="backgroundColor" red="0.92941176469999998" green="0.94117647059999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="CcU-Xe-JrO"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ovX-S2-Q7Q">
                                 <rect key="frame" x="0.0" y="32" width="288" height="96"/>
                                 <subviews>
@@ -54,11 +61,11 @@
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s97-Un-f2Q" customClass="Stepper" customModule="RewardzCommonComponents">
-                                                <rect key="frame" x="55" y="7" width="129" height="1"/>
+                                                <rect key="frame" x="55" y="8" width="129" height="0.0"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="129" id="UY3-95-2Fj"/>
-                                                    <constraint firstAttribute="height" constant="1" id="Uyb-Ty-8ih"/>
+                                                    <constraint firstAttribute="height" id="Uyb-Ty-8ih"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="reading">
@@ -82,7 +89,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="4Va-82-K0V" firstAttribute="top" secondItem="FXP-EP-I1k" secondAttribute="top" constant="16" id="4NF-cB-oet"/>
-                                            <constraint firstItem="s97-Un-f2Q" firstAttribute="centerY" secondItem="FXP-EP-I1k" secondAttribute="centerY" constant="-28.5" id="9A8-hQ-Bv4"/>
+                                            <constraint firstItem="s97-Un-f2Q" firstAttribute="centerY" secondItem="FXP-EP-I1k" secondAttribute="centerY" constant="-28" id="9A8-hQ-Bv4"/>
                                             <constraint firstItem="4Va-82-K0V" firstAttribute="leading" secondItem="FXP-EP-I1k" secondAttribute="leading" constant="8" id="j8g-VD-sKW"/>
                                             <constraint firstAttribute="trailing" secondItem="4Va-82-K0V" secondAttribute="trailing" id="seE-AM-wKp"/>
                                         </constraints>
@@ -95,8 +102,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="4Nx-Ig-A7s" firstAttribute="top" secondItem="bYn-Y5-uTT" secondAttribute="top" constant="11" id="6AY-dy-DIc"/>
+                            <constraint firstAttribute="trailing" secondItem="4Nx-Ig-A7s" secondAttribute="trailing" id="Ncg-Ix-nWt"/>
                             <constraint firstAttribute="trailing" secondItem="ovX-S2-Q7Q" secondAttribute="trailing" id="Sjp-tb-h3E"/>
                             <constraint firstItem="ovX-S2-Q7Q" firstAttribute="top" secondItem="bYn-Y5-uTT" secondAttribute="top" constant="32" id="U2q-je-vh0"/>
+                            <constraint firstItem="4Nx-Ig-A7s" firstAttribute="leading" secondItem="bYn-Y5-uTT" secondAttribute="leading" id="bg0-8W-5zi"/>
                             <constraint firstItem="ovX-S2-Q7Q" firstAttribute="leading" secondItem="bYn-Y5-uTT" secondAttribute="leading" id="qk5-xv-Pgl"/>
                             <constraint firstAttribute="bottom" secondItem="ovX-S2-Q7Q" secondAttribute="bottom" id="xIA-s2-HEm"/>
                         </constraints>

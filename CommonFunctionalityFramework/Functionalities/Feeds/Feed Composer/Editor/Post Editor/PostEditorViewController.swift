@@ -74,6 +74,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet private weak var messageGuidenceContainerHeightContraint: NSLayoutConstraint?
     @IBOutlet private weak var shareWithSegmentControl: UISegmentedControl?
     var loader = CommonLoader()
+    var numberOfRows = 1
     
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(
@@ -538,6 +539,13 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     }
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func numberOfRowsIncrement(number: Int) {
+        self.numberOfRows = number
+        self.postEditorTable?.beginUpdates()
+        self.postEditorTable?.insertRows(at: [IndexPath(row: number - 1, section: 1)], with: .automatic)
+        self.postEditorTable?.endUpdates()
+    }
+    
     func removeAttachedECard() {
         postCoordinator.removeAttachedECard()
     }
@@ -651,7 +659,7 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
         return cellFactory.getNumberOfSection()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellFactory.numberOfRowsInSection(section)
+        return cellFactory.numberOfRowsInSection(section, numberOfRows)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -46,7 +46,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.titleText?.delegate = self
             switch post!.postType {
             case .Poll:
-                cell.titleText?.placeholder = "Ask something".localized
+                cell.titleText?.placeholder = "Write Your Question".localized
                 max_title_length = POLL_MAX_CHARACTER_LENGTH
             case .Post:
                 cell.titleText?.placeholder = "Title".localized
