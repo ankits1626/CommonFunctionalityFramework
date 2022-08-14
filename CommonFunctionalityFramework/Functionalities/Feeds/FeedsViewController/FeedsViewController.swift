@@ -106,7 +106,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     
     @objc private func loadFeeds(){
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "given", searchText: nil) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: nil) {[weak self] (result) in
             DispatchQueue.main.async {
                 self?.feedsTable?.loadCFFControl?.endLoading()
                 switch result{
