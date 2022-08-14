@@ -143,12 +143,12 @@ struct EditablePost : EditablePostProtocol{
         if let unwrappedDescription = postDesciption{
             postDictionary["description"] = unwrappedDescription
         }
-        if let unwrappedGif = attachedGif?.getGifMarkup(){
-            if let description = postDictionary["description"] as? String{
-                postDictionary["description"] = "\(description)\(unwrappedGif)"
-            }else{
-                postDictionary["description"] = "\(unwrappedGif)"
-            }
+        if let unwrappedGif = attachedGif?.getGifSourceUrl(){
+            postDictionary["gif"] = unwrappedGif
+        }
+        
+        if let unwrappedECard = selectedEcardMediaItems{
+            postDictionary["ecard"] = "\(unwrappedECard.pk)"
         }
         
         if !deletedRemoteMediaArray.isEmpty{
