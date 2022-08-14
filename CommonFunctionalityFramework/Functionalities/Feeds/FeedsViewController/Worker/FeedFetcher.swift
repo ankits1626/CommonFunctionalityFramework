@@ -100,6 +100,9 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
             if feedType == "SearchFromHome" {
                 url = "feeds/api/user_feed/organization_recognitions/"
             }
+            if feedType == "postPoll" {
+                url = "feeds/api/user_feed/organization_recognitions/?post_polls=1"
+            }
             if let searchedText = searchText {
                 if let nextPage = nextPageUrl, !nextPage.isEmpty {
                     return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: nextPage), method: .GET, httpBodyDict: nil)
