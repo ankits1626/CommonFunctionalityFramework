@@ -16,8 +16,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     private weak var targetTableView : UITableView?
     lazy var cachedFeedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         return [
-            FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
-            FeedTitleTableViewCellType().cellIdentifier : FeedTitleTableViewCellCoordinator(),
+            PostPollTopTableViewCellTableViewCellType().cellIdentifier : PostPollTableViewCellCordinator(),
+            PostPollTitleTableViewCellType().cellIdentifier : PostPollTitleCellCordinator(),
             FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
             SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
@@ -46,9 +46,9 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     func getRowsToRepresentAFeed(feedIndex : Int) -> [FeedCellTypeProtocol] {
         let feed = feedsDataSource.getFeedItem(feedIndex)
         var rows = [FeedCellTypeProtocol] ()
-        rows.append(FeedTopTableViewCellType())
+        rows.append(PostPollTopTableViewCellTableViewCellType())
         if feed.getFeedTitle() != nil {
-            rows.append(FeedTitleTableViewCellType())
+            rows.append(PostPollTitleTableViewCellType())
         }
         let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
         feedId: feed.feedIdentifier,
