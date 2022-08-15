@@ -57,7 +57,6 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerForPostUpdateNotifications()
         self.feedsTable?.bounces = true
         NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "TestScroll"), object: nil)
         clearAnyExistingFeedsData {[weak self] in

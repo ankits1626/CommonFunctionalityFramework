@@ -16,14 +16,14 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     private weak var themeManager: CFFThemeManagerProtocol?
     lazy var cachedFeedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         return [
-            FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
-            FeedTitleTableViewCellType().cellIdentifier : FeedTitleTableViewCellCoordinator(),
+            PostPollTopTableViewCellTableViewCellType().cellIdentifier : PostPollTableViewCellCordinator(),
+            PostPollTitleTableViewCellType().cellIdentifier : PostPollTitleCellCordinator(),
             FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
             PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
             PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
-            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
+            PostPollLikeTableViewCellType().cellIdentifier : PostPollLikeTableViewCordinator()
         ]
     }()
 
@@ -46,9 +46,9 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     func getRowsToRepresentAFeed(feedIndex : Int) -> [FeedCellTypeProtocol] {
         let feed = feedsDataSource.getFeedItem(feedIndex)
         var rows = [FeedCellTypeProtocol] ()
-        rows.append(FeedTopTableViewCellType())
+        rows.append(PostPollTopTableViewCellTableViewCellType())
         if feed.getFeedTitle() != nil {
-            rows.append(FeedTitleTableViewCellType())
+            rows.append(PostPollTitleTableViewCellType())
         }
         if feed.getFeedDescription() != nil{
             rows.append(FeedTextTableViewCellType())
@@ -73,7 +73,7 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
 //            }
 //        }
         rows.append(PollBottomTableViewCelType())
-        rows.append(FeedBottomTableViewCellType())
+        rows.append(PostPollLikeTableViewCellType())
 //        if let poll = feed.getPoll(),
 //            !poll.isPollActive(){
 //            rows.append(FeedBottomTableViewCellType())
