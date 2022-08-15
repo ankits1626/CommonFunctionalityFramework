@@ -23,7 +23,7 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
-            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
+            PostPollLikeTableViewCellType().cellIdentifier : PostPollLikeTableViewCordinator()
         ]
     }()
 
@@ -73,7 +73,7 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
 //            }
 //        }
         rows.append(PollBottomTableViewCelType())
-        rows.append(FeedBottomTableViewCellType())
+        rows.append(PostPollLikeTableViewCellType())
 //        if let poll = feed.getPoll(),
 //            !poll.isPollActive(){
 //            rows.append(FeedBottomTableViewCellType())

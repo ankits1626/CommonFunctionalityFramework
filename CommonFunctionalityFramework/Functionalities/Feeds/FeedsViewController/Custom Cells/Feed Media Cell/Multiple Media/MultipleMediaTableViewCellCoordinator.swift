@@ -48,7 +48,7 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol,Multi
                // cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             let feedTitle = feed.getStrengthData()
-            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
+            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "#FFFFFF", alpha: 1.0)
 
             cell.containerView?.clipsToBounds = true
             cell.containerView?.layer.cornerRadius = 8
