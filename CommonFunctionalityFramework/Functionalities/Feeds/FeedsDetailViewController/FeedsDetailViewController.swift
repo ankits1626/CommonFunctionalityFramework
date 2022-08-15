@@ -33,6 +33,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var selectedTab = ""
+    var isPostPollType : Bool = false
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
@@ -41,8 +42,9 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
             mediaFetcher: mediaFetcher,
             targetTableView: feedDetailTableView,
             themeManager: themeManager,
-            selectedOptionMapper: pollSelectedAnswerMapper, selectedTab: selectedTab
-
+            selectedOptionMapper: pollSelectedAnswerMapper,
+            selectedTab: selectedTab,
+            _isPostPoll: isPostPollType
         )
     }()
     var pollSelectedAnswerMapper: SelectedPollAnswerMapper?
