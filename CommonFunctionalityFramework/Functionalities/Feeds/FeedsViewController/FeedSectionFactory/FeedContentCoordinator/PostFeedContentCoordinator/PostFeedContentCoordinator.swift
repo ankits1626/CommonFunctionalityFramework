@@ -23,7 +23,11 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
             FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
-            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
+//            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
+            PostPollLikeTableViewCellType().cellIdentifier : PostPollLikeTableViewCordinator()
+            
+            
+//            BOUSFeedGrayDividerCellType().cellIdentifier : BOUSGrayDividerCoordinator()
         ]
     }()
 
@@ -80,7 +84,7 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         if model?.attachedGif != nil{
             rows.append(FeedGifTableViewCellType())
         }
-        rows.append(FeedBottomTableViewCellType())
+        rows.append(PostPollLikeTableViewCellType())
         return rows
     }
     

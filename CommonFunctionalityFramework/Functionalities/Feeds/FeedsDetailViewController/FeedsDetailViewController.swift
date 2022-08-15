@@ -399,6 +399,9 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
+    func showPostReactions(feedIdentifier: Int64) {
+        
+    }
     
     func toggleLikeForComment(commentIdentifier: Int64) {
         if let comment = getLikeableComment(commentIdentifier: commentIdentifier){

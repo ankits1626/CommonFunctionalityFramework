@@ -380,6 +380,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showPostReactions(feedIdentifier: Int64) {
+        
+    }
+    
     func postReaction(feedId: Int64, reactionType: String) {
         
     }

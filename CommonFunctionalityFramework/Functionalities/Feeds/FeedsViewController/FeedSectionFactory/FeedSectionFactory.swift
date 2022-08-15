@@ -36,6 +36,7 @@ protocol FeedsDelegate : AnyObject {
     func showAllClaps(feedIdentifier : Int64)
     func pinToPost(feedIdentifier : Int64, isAlreadyPinned : Bool)
     func postReaction(feedId: Int64, reactionType: String)
+    func showPostReactions(feedIdentifier : Int64)
 }
 
 class FeedSectionFactory{
