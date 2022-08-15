@@ -18,7 +18,7 @@ class PostPollLikeTableViewCordinator :  FeedCellCoordinatorProtocol{
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         return 110
     }
-    var cell: CommonPressLikeButtonTableViewCell!
+    var cell: PostPollLikeTableViewCell!
     private var inputModel : FeedCellLoadDataModel? = nil
     var reactionList: NSArray!
     var image1: Bool?
@@ -26,7 +26,7 @@ class PostPollLikeTableViewCordinator :  FeedCellCoordinatorProtocol{
     var reactionsCount : Int64!
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
-        if let cell  = inputModel.targetCell as? CommonPressLikeButtonTableViewCell{
+        if let cell  = inputModel.targetCell as? PostPollLikeTableViewCell{
             self.inputModel = inputModel
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             self.cell = cell

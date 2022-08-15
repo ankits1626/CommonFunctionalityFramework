@@ -343,6 +343,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
             feedDetailVC.requestCoordinator = requestCoordinator
             feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
             feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
+            feedDetailVC.isPostPollType = true
             feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
         }
     }
@@ -354,11 +355,48 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 
 extension FeedsViewController : FeedsDelegate{
     func showPostReactions(feedIdentifier: Int64) {
-        
+        let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
+        let controller = storyboard.instantiateViewController(withIdentifier: "BOUSReactionsListViewController") as! BOUSReactionsListViewController
+        controller.postId = Int(feedIdentifier)
+        controller.requestCoordinator = requestCoordinator
+        controller.mediaFetcher = mediaFetcher
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func postReaction(feedId: Int64, reactionType: String) {
-        
+        if let feed = getFeedItem(feedIdentifier: feedId){
+            if let reactionId = reactionType as? String{
+                BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: Int(reactionId)!){ (result) in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .Success(result: let result):
+                            CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                let post = ((feed as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
+                                if let likesResult =  result as? NSDictionary {
+                                    if let dataVal = likesResult["post_reactions"] as? NSArray {
+                                        post?.reactionTypesData =  dataVal
+                                        post?.messageType = Int64(likesResult.object(forKey: "reaction_type") as? Int ?? -1)
+                                        post?.numberOfLikes = Int64(dataVal.count)
+                                    }
+                                }
+                                CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                    CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                }
+                            }
+                            
+                            break
+                        case .SuccessWithNoResponseData:
+                            fallthrough
+                        case .Failure(_):
+                            ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+                        }
+                    }
+                }
+                
+            }
+        }
     }
     
     func showPostReactions() {
