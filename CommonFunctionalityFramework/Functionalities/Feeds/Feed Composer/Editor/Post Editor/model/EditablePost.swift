@@ -17,6 +17,7 @@ protocol EditablePostProtocol {
     var selectedMediaItems : [LocalSelectedMediaItem]? {set get}
     var attachedGif : RawGif?{set get}
     var postType : FeedType {set get}
+    var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?{set get}
     func getNetworkPostableFormat() -> [String : Any]
     var postableMediaMap : [Int : Data]? { get set}
     var postableLocalMediaUrls : [URL]? { get set}
@@ -52,14 +53,22 @@ struct EditablePost : EditablePostProtocol{
     var postableLocalMediaUrls: [URL]?
     var postableMediaMap: [Int : Data]?
     var attachedGif : RawGif?
+    var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
     
     func getNetworkPostableFormat() -> [String : Any] {
+        var postableDictionary : [String : Any]!
         switch postType {
         case .Poll:
-            return getPollDictionary()
+            postableDictionary = getPollDictionary()
         case .Post:
-            return getPostDictionary()
+            postableDictionary = getPostDictionary()
         }
+        
+        if let unwrappedSelectedOrgAndDepartment = selectedOrganisationsAndDepartments{
+            unwrappedSelectedOrgAndDepartment.getupdatePostDictionary(&postableDictionary)
+        }
+        
+        return postableDictionary
     }
     
     private func getPollDictionary() -> [String : Any]{
@@ -149,4 +158,5 @@ struct EditablePostNetworkModel {
     var url : URL?
     var method : HTTPMethod
     var postHttpBodyDict : NSDictionary?
+    var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
 }

@@ -25,6 +25,8 @@ class FeedsComposerDrawer: UIViewController {
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     weak var themeManager: CFFThemeManagerProtocol?
+    var selectedOrganisationsAndDepartment : FeedOrganisationDepartmentSelectionModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -77,7 +79,10 @@ extension FeedsComposerDrawer{
             FeedComposerCoordinator(
                 delegate: self.feedCoordinatorDeleagate,
                 requestCoordinator: self.requestCoordinator,
-                mediaFetcher: self.mediaFetcher, selectedAssets: nil, themeManager: self.themeManager).showFeedItemEditor(type: type)
+                mediaFetcher: self.mediaFetcher,
+                selectedAssets: nil,
+                themeManager: self.themeManager,
+                selectedOrganisationsAndDepartments: self.selectedOrganisationsAndDepartment).showFeedItemEditor(type: type)
         }
     }
     

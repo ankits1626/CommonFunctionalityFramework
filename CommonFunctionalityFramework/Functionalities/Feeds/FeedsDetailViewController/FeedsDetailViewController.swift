@@ -537,7 +537,8 @@ extension FeedsDetailViewController : FeedsDelegate{
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher,
             selectedAssets: nil,
-            themeManager: themeManager
+            themeManager: themeManager,
+            selectedOrganisationsAndDepartments: nil
         ).editPost(feed: feed)
     }
     

@@ -12,6 +12,7 @@ import RewardzCommonComponents
 
 struct FeedOrganisationSelectionInitModel{
     weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
+    var selectionCompletionHandler : (_ selectionModel: FeedOrganisationDepartmentSelectionModel?) -> Void
 }
 
 /**
@@ -98,5 +99,13 @@ extension FeedOrganisationSelectionViewController{
                 }
             }
         }
+    }
+}
+
+
+extension FeedOrganisationSelectionViewController{
+    @IBAction func proceedButtonTapped(){
+        self.navigationController?.popViewController(animated: true)
+        initModel.selectionCompletionHandler(dataManager.getSelectedOrganisationsAndDepartments())
     }
 }

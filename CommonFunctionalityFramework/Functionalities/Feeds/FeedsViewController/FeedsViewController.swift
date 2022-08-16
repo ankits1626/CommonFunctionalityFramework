@@ -191,26 +191,32 @@ extension FeedsViewController{
         if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
             triggerMutiOrgPath()
         }else{
-            continueWithFeedCreation()
+            continueWithFeedCreation(nil)
         }
         
     }
     
     private func triggerMutiOrgPath(){
         let orgPicker = FeedOrganisationSelectionViewController(
-            FeedOrganisationSelectionInitModel(requestCoordinator: requestCoordinator)
+            FeedOrganisationSelectionInitModel(
+                requestCoordinator: requestCoordinator,
+                selectionCompletionHandler: { [weak self] selectedOrganisationsAndDeparments in
+                    self?.continueWithFeedCreation(selectedOrganisationsAndDeparments)
+                })
         )
         feedCoordinatorDelegate.showMultiOrgPicker(orgPicker, presentationOption: .Navigate) { topBarModel in
             orgPicker.containerTopBarModel = topBarModel
         }
     }
     
-    private func continueWithFeedCreation(){
+    private func continueWithFeedCreation(_ selectedOrganisationsAndDeparments: FeedOrganisationDepartmentSelectionModel?){
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator
         drawer.mediaFetcher = mediaFetcher
         drawer.themeManager = themeManager
+        drawer.selectedOrganisationsAndDepartment = selectedOrganisationsAndDeparments
+        
         do{
             if let unwrappedCanUserCreatePost = self.mainAppCoordinator?.isUserAllowedToCreatePoll(),
                unwrappedCanUserCreatePost == false{
@@ -291,7 +297,8 @@ extension FeedsViewController{
                             requestCoordinator: self.requestCoordinator,
                             mediaFetcher: self.mediaFetcher,
                             selectedAssets: selectedMediaItems,
-                            themeManager: self.themeManager
+                            themeManager: self.themeManager,
+                            selectedOrganisationsAndDepartments: nil
                         ).showFeedItemEditor(type: .Post)
                     }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: self.themeManager, _identifier: asset.localIdentifier, _mediaType: asset.mediaType, _asset: asset))
                 }
@@ -310,7 +317,8 @@ extension FeedsViewController{
                         requestCoordinator: self.requestCoordinator,
                         mediaFetcher: self.mediaFetcher,
                         selectedAssets: selectedMediaItems,
-                        themeManager: self.themeManager
+                        themeManager: self.themeManager,
+                        selectedOrganisationsAndDepartments: nil
                     ).showFeedItemEditor(type: .Post)
             }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: themeManager
             )
@@ -550,7 +558,8 @@ extension FeedsViewController : FeedsDelegate{
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher,
             selectedAssets: nil,
-            themeManager: themeManager
+            themeManager: themeManager,
+            selectedOrganisationsAndDepartments: nil
         ).editPost(feed: feed)
     }
     

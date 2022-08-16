@@ -132,4 +132,11 @@ extension FeedOrganisationDataManager{
     func checkIfAnyOrganisationOrDepartmentSelected() -> Bool {
         return !selectedDepartment.isEmpty || !selectedOrganisation.isEmpty
     }
+    
+    func getSelectedOrganisationsAndDepartments() -> FeedOrganisationDepartmentSelectionModel{
+        return FeedOrganisationDepartmentSelectionModel(
+            selectedOrganisations: selectedOrganisation,
+            selectedDepartments: selectedDepartment
+        )
+    }
 }

@@ -14,12 +14,15 @@ class FeedComposerCoordinator {
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     private var selectedAssets : [LocalSelectedMediaItem]?
     weak var themeManager: CFFThemeManagerProtocol?
-    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?) {
+    var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
+    
+    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?) {
         self.feedCoordinatorDelegate = delegate
         self.requestCoordinator = requestCoordinator
         self.mediaFetcher = mediaFetcher
         self.selectedAssets = selectedAssets
         self.themeManager = themeManager
+        self.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
     }
     
     func showFeedItemEditor(type : FeedType) {
@@ -37,7 +40,8 @@ class FeedComposerCoordinator {
             post: feed?.getEditablePost(),
             mediaFetcher: mediaFetcher,
             selectedAssets: selectedAssets,
-            themeManager : themeManager
+            themeManager : themeManager,
+            selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments
         )
         feedCoordinatorDelegate.showComposer(_composer: postEditor) { (topBarModel) in
             postEditor.containerTopBarModel = topBarModel

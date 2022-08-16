@@ -38,13 +38,19 @@ class PostCoordinator {
     var postObsever : PostObserver?
     let postType: FeedType
     
-    init(postObsever : PostObserver?, postType: FeedType, editablePost : EditablePostProtocol?) {
+    init(postObsever : PostObserver?, postType: FeedType, editablePost : EditablePostProtocol?, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?) {
         self.postObsever = postObsever
         self.postType = postType
         if let unwrappedPost = editablePost{
             currentPost = unwrappedPost
+            currentPost.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
         }else{
-            currentPost = EditablePost(isShareWithSameDepartmentOnly: false, postType: postType, remotePostId: nil)
+            currentPost = EditablePost(
+                isShareWithSameDepartmentOnly: false,
+                selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments,
+                postType: postType,
+                remotePostId: nil
+            )
         }
         
     }

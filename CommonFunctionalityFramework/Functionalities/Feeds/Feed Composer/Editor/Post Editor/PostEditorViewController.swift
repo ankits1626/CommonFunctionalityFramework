@@ -39,7 +39,12 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     var loader = CommonLoader()
     
     lazy var postCoordinator: PostCoordinator = {
-        return PostCoordinator(postObsever: cellFactory, postType: postType, editablePost: editablePost)
+        return PostCoordinator(
+            postObsever: cellFactory,
+            postType: postType,
+            editablePost: editablePost,
+            selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments
+        )
     }()
     lazy var imageMapper : EditablePostMediaRepository = {
         return EditablePostMediaRepository(input: EditablePostMediaMapperInitModel(
@@ -72,12 +77,15 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }()
     private let editablePost : EditablePostProtocol?
     private var deferredSelectedMediaLoad : (() -> Void)?
-    init(postType: FeedType, requestCoordinator : CFFNetworkRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?){
+    private let selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
+    
+    init(postType: FeedType, requestCoordinator : CFFNetworkRequestCoordinatorProtocol, post: EditablePostProtocol?, mediaFetcher: CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?){
         self.postType  = postType
         self.requestCoordinator = requestCoordinator
         self.editablePost = post
         self.mediaFetcher = mediaFetcher
         self.themeManager = themeManager
+        self.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
         super.init(
             nibName: "PostEditorViewController"
             , bundle: Bundle(for: PostEditorViewController.self))

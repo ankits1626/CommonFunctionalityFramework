@@ -78,7 +78,10 @@ extension FeedsImageDrawer{
             FeedComposerCoordinator(
                 delegate: self.feedCoordinatorDeleagate,
                 requestCoordinator: self.requestCoordinator,
-                mediaFetcher: self.mediaFetcher, selectedAssets: nil, themeManager: self.themeManager).showFeedItemEditor(type: type)
+                mediaFetcher: self.mediaFetcher,
+                selectedAssets: nil,
+                themeManager: self.themeManager,
+                selectedOrganisationsAndDepartments: nil).showFeedItemEditor(type: type)
         }
     }
     
