@@ -27,9 +27,11 @@ class PollBottomTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             }else{
                // cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
-            cell.messageLabel?.textColor = .black
-            cell.messageLabel?.font = .Highlighter1
+           // cell.messageLabel?.textColor = .black
+            //cell.messageLabel?.font = .Highlighter1
             cell.messageLabel?.text = feed.getPoll()?.getPollInfo()
+            cell.daysLabel?.textColor = inputModel.themeManager?.getControlActiveColor()
+            cell.daysLabel?.text = feed.getPoll()?.getPollDate()
         }
     }
     
