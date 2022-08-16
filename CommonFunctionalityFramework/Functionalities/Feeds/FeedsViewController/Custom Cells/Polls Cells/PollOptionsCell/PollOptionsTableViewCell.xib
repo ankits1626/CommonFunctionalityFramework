@@ -22,14 +22,14 @@
                         <rect key="frame" x="16" y="0.0" width="288" height="44"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POW-zq-dLr">
-                                <rect key="frame" x="0.0" y="5" width="288" height="34"/>
+                                <rect key="frame" x="8" y="5" width="272" height="34"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otX-UZ-0Id" customClass="BlockButton" customModule="RewardzCommonComponents">
                                         <rect key="frame" x="0.0" y="0.0" width="217" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jct-pz-NKc">
-                                        <rect key="frame" x="8" y="9" width="90" height="16"/>
+                                        <rect key="frame" x="16" y="9" width="90" height="16"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5N-tl-Zk6">
                                                 <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -59,25 +59,25 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="1qx-xw-nOr"/>
-                                    <constraint firstItem="jct-pz-NKc" firstAttribute="leading" secondItem="POW-zq-dLr" secondAttribute="leading" constant="8" id="4dG-ho-Bp7"/>
-                                    <constraint firstItem="otX-UZ-0Id" firstAttribute="top" secondItem="POW-zq-dLr" secondAttribute="top" id="W7e-aS-SfU"/>
-                                    <constraint firstAttribute="width" constant="288" id="a9r-fm-pLM"/>
-                                    <constraint firstAttribute="trailing" secondItem="otX-UZ-0Id" secondAttribute="trailing" constant="71" id="b9q-BV-Coa"/>
-                                    <constraint firstItem="jct-pz-NKc" firstAttribute="centerY" secondItem="POW-zq-dLr" secondAttribute="centerY" id="d4b-gx-HdD"/>
-                                    <constraint firstAttribute="bottom" secondItem="otX-UZ-0Id" secondAttribute="bottom" id="dkc-lc-ohs"/>
-                                    <constraint firstItem="otX-UZ-0Id" firstAttribute="leading" secondItem="POW-zq-dLr" secondAttribute="leading" id="jEl-NS-qmB"/>
-                                    <constraint firstItem="jct-pz-NKc" firstAttribute="top" secondItem="POW-zq-dLr" secondAttribute="top" constant="9" id="oax-oF-FUP"/>
+                                    <constraint firstAttribute="bottom" secondItem="otX-UZ-0Id" secondAttribute="bottom" id="1yw-df-jvy"/>
+                                    <constraint firstAttribute="trailing" secondItem="otX-UZ-0Id" secondAttribute="trailing" id="8z3-jU-PJj"/>
+                                    <constraint firstItem="otX-UZ-0Id" firstAttribute="leading" secondItem="POW-zq-dLr" secondAttribute="leading" id="D0T-oX-uxC"/>
+                                    <constraint firstItem="jct-pz-NKc" firstAttribute="leading" secondItem="POW-zq-dLr" secondAttribute="leading" constant="16" id="T1d-dm-7MI"/>
+                                    <constraint firstItem="jct-pz-NKc" firstAttribute="centerY" secondItem="POW-zq-dLr" secondAttribute="centerY" id="ltk-jk-k1V"/>
+                                    <constraint firstItem="otX-UZ-0Id" firstAttribute="top" secondItem="POW-zq-dLr" secondAttribute="top" id="xLl-Io-DSC"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
-                            <constraint firstItem="POW-zq-dLr" firstAttribute="centerX" secondItem="3sb-Q3-RsW" secondAttribute="centerX" id="A9Y-Jh-YMr"/>
-                            <constraint firstItem="POW-zq-dLr" firstAttribute="centerY" secondItem="3sb-Q3-RsW" secondAttribute="centerY" id="iWP-6O-ttJ"/>
+                            <constraint firstItem="POW-zq-dLr" firstAttribute="top" secondItem="3sb-Q3-RsW" secondAttribute="top" constant="5" id="2pc-DV-T24"/>
+                            <constraint firstItem="POW-zq-dLr" firstAttribute="leading" secondItem="3sb-Q3-RsW" secondAttribute="leading" constant="8" id="57J-J2-iUG"/>
+                            <constraint firstAttribute="trailing" secondItem="POW-zq-dLr" secondAttribute="trailing" constant="8" id="UD8-Iv-Yac"/>
+                            <constraint firstAttribute="bottom" secondItem="POW-zq-dLr" secondAttribute="bottom" constant="5" id="rhP-Vo-U4p"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="3sb-Q3-RsW" firstAttribute="leading" secondItem="ZB5-e4-j9q" secondAttribute="leading" constant="16" id="Ey9-Ao-fad"/>
                     <constraint firstAttribute="trailing" secondItem="3sb-Q3-RsW" secondAttribute="trailing" constant="16" id="bgS-Xr-wUv"/>
@@ -87,6 +87,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="vFA-Pk-wUU"/>
             <connections>
+                <outlet property="circleLbl" destination="c5N-tl-Zk6" id="QcW-Zm-yZH"/>
                 <outlet property="containerView" destination="3sb-Q3-RsW" id="qT3-Bm-OJt"/>
                 <outlet property="optionContainerView" destination="POW-zq-dLr" id="I7B-d9-p8w"/>
                 <outlet property="optionSelectionButton" destination="otX-UZ-0Id" id="fUE-rz-V09"/>

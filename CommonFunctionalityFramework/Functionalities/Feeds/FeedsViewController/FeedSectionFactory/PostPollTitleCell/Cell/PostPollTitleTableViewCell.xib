@@ -35,6 +35,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="BbI-4f-ENv" secondAttribute="bottom" id="MxP-bC-2Uc"/>
                     <constraint firstItem="BbI-4f-ENv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ufi-Ho-i3I"/>

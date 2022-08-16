@@ -50,6 +50,7 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
         if feed.getFeedTitle() != nil {
             rows.append(PostPollTitleTableViewCellType())
         }
+        rows.append(PollBottomTableViewCelType())
         if feed.getFeedDescription() != nil{
             rows.append(FeedTextTableViewCellType())
         }
@@ -72,7 +73,7 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
 //                rows.append(PollSubmitButtonCellType())
 //            }
 //        }
-        rows.append(PollBottomTableViewCelType())
+        //rows.append(PollBottomTableViewCelType())
         rows.append(PostPollLikeTableViewCellType())
 //        if let poll = feed.getPoll(),
 //            !poll.isPollActive(){

@@ -304,6 +304,7 @@ extension FeedDetailSectionFactory{
             }
             
             if let poll = feed?.getPoll(){
+                rows.append(PollBottomTableViewCelType())
                 if poll.isPollActive() && !poll.hasUserVoted(){
                     poll.getPollOptions().forEach { (_) in
                         rows.append(PollOptionsTableViewCellType())
@@ -318,7 +319,7 @@ extension FeedDetailSectionFactory{
     //            poll.getPollOptions().forEach { (_) in
     //                rows.append(PollOptionsVotedTableViewCellType())
     //            }
-                rows.append(PollBottomTableViewCelType())
+               
             }
             rows.append(FeedBottomTableViewCellType())
             isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)

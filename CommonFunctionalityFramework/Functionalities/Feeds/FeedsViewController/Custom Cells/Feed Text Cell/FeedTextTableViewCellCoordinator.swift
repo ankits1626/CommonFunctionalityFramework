@@ -63,9 +63,9 @@ class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
                 }
             })
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             cell.readMorebutton?.titleLabel?.attributedText = NSAttributedString(string: "Read More".localized,attributes: [NSAttributedString.Key.underlineStyle : 1])
             if inputModel.datasource.showShowFullfeedDescription(){
