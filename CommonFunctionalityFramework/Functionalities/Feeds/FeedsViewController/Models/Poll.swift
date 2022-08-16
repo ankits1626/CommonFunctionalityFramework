@@ -81,17 +81,28 @@ struct Poll {
     }
     
     func getPollInfo() -> String? {
-        var pollInfos = [String]()
+        var pollInfos = ""
         if let totalVotes = rawPoll["total_votes"] as? Int64{
             pollInfos.append("\(totalVotes) \("vote".localized)\(totalVotes == 1 ? "" : "s".localized)")
         }
+//        if !isPollActive(){
+//            pollInfos.append("Final Result")
+//        }
+//        if let pollRemainingTime = rawPoll["poll_remaining_time"] as? String{
+//            pollInfos.append("\(pollRemainingTime) \("left".localized)")
+//        }
+        return pollInfos
+    }
+    
+    func getPollDate() -> String? {
+        var pollInfos = ""
         if !isPollActive(){
             pollInfos.append("Final Result")
         }
         if let pollRemainingTime = rawPoll["poll_remaining_time"] as? String{
             pollInfos.append("\(pollRemainingTime) \("left".localized)")
         }
-        return pollInfos.joined(separator:  " . ")
+        return pollInfos
     }
     
     func getPollId() -> Int64 {

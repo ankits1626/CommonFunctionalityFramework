@@ -13,6 +13,7 @@ class PollOptionsTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var optionContainerView : UIView?
     @IBOutlet weak var optionSelectionButton : BlockButton?
+    @IBOutlet weak var circleLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
