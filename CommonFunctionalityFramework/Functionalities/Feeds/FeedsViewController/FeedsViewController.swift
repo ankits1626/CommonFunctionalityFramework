@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Photos
 
-class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBOutlet private weak var composeBarContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var composeLabel : UILabel?
     @IBOutlet private weak var feedsTable : UITableView?
@@ -580,6 +580,7 @@ extension FeedsViewController : FeedsDelegate{
     
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
         print("show edit option")
+        var numberofElementsEnabled : CGFloat = 0.0
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
             var options = [FloatingMenuOption]()
             if feed.getFeedType() == .Post,
@@ -592,23 +593,28 @@ extension FeedsViewController : FeedsDelegate{
                                       )
                 )
             }
-            if feed.isFeedDeleteAllowed(){
-                options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
-                    print("Delete post- \(feedIdentifier)")
-                    self?.showDeletePostConfirmation(feedIdentifier)
-                    }
-                    )
-                )
+            
+            if feed.isLoggedUserAdmin()  == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
             }
-            if feed.isFeedReportAbuseAllowed(){
-                options.append( FloatingMenuOption(title: "REPORT ABUSE".localized, action: {[weak self] in
-                    print("report abuse- \(feedIdentifier)")
-                    self?.showReportAbuseConfirmation(feedIdentifier)
-                    }
-                    )
-                )
+
+            if feed.isFeedDeleteAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
             }
-            FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
+            if feed.isFeedReportAbuseAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+            
+            drawer.isPintoPostEnabled = feed.isLoggedUserAdmin()
+            drawer.isDeleteEnabled = feed.isFeedDeleteAllowed()
+            drawer.isreportAbusedEnabled = feed.isFeedReportAbuseAllowed()
+            do{
+                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+            }catch let error{
+                print("show error")
+                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                }
+            }
         }
     }
     
@@ -804,6 +810,23 @@ extension FeedsViewController:  FeedsImageDelegate {
             PhotosPermissionChecker().checkPermissions {[weak self] in
                 self?.showImagePicker()
             }
+        }
+    }
+}
+
+extension FeedsViewController : Click3DotsByMeFilterTypeProtocol {
+    func selectedFilterType(selectedType: Click3DotsByMeFilterType, feedIdentifier: Int64, isPostAlreadyPinned: Bool) {
+        switch selectedType {
+        case .Edit:
+            if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
+                self.openFeedEditor(feed)
+            }
+        case .Pin:
+            self.pinToPost(feedIdentifier: feedIdentifier, isAlreadyPinned: isPostAlreadyPinned)
+        case .Delete:
+            self.showDeletePostConfirmation(feedIdentifier)
+        case .ReportAbuse:
+            self.showReportAbuseConfirmation(feedIdentifier)
         }
     }
 }
