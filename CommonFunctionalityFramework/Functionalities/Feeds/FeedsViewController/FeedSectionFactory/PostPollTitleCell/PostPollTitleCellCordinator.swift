@@ -56,9 +56,9 @@ class PostPollTitleCellCordinator: NSObject, FeedCellCoordinatorProtocol{
                 }
             })
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+               // cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
         }
         return targetCell
@@ -72,9 +72,9 @@ class PostPollTitleCellCordinator: NSObject, FeedCellCoordinatorProtocol{
             cell.feedTitle?.font = UIFont.Title1
             cell.feedTitle?.textColor = UIColor.getTitleTextColor()
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+               // cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
         }
     }

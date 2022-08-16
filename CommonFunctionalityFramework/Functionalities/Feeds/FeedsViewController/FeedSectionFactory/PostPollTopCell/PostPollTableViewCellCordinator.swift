@@ -35,11 +35,11 @@ class PostPollTableViewCellCordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
-                cell.containerView?.addBorders(edges: [.top, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+               // cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                //cell.containerView?.addBorders(edges: [.top, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-                cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
+//                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
+//                cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
             }
             cell.pinPostButton?.setImage(
                 UIImage(

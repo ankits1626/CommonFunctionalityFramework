@@ -34,17 +34,19 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.optionTitle?.font = UIFont.Body1
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
             
-           cell.optionContainerView?.borderedControl(
-            borderColor: .unVotedPollOptionBorderColor,
-            borderWidth: BorderWidths.standardBorderWidth
-            )
+//           cell.optionContainerView?.borderedControl(
+//            borderColor: .unVotedPollOptionBorderColor,
+//            borderWidth: BorderWidths.standardBorderWidth
+//            )
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+              //  cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+               // cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
-            cell.myOptionIndicator?.isHidden = !(feedOption?.hasVoted ?? false)
-
+            cell.myOptionIndicator?.isHidden = true
+            cell.optionContainerView?.layer.masksToBounds = true
+            cell.optionContainerView?.layer.cornerRadius = 8.0
+            
             cell.percentageVote?.text = "\(feedOption?.getPercentage() ?? 0) %"
             let progress = Float((feedOption?.getPercentage() ?? 0)) / 100.0
             print("progress is \(progress)")
