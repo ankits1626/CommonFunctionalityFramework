@@ -49,9 +49,9 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                 )
             }
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+               // cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             cell.optionSelectionButton?.handleControlEvent(
                 event: .touchUpInside,
