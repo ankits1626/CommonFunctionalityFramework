@@ -234,6 +234,8 @@
 		BE94C3192821719A00E323E1 /* CommonFeedTopTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE94C3182821719A00E323E1 /* CommonFeedTopTableViewCellCoordinator.swift */; };
 		BE94C31C2821743C00E323E1 /* CommonFeedsTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE94C31A2821743C00E323E1 /* CommonFeedsTopTableViewCell.swift */; };
 		BE94C31D2821743C00E323E1 /* CommonFeedsTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE94C31B2821743C00E323E1 /* CommonFeedsTopTableViewCell.xib */; };
+		BE9E234A28AB92A700281F86 /* PostPollSelfBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9E234828AB92A700281F86 /* PostPollSelfBottomSheet.swift */; };
+		BE9E234B28AB92A700281F86 /* PostPollSelfBottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE9E234928AB92A700281F86 /* PostPollSelfBottomSheet.xib */; };
 		BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */; };
 		BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */; };
 		BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */; };
@@ -289,7 +291,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../CommonFunctionalityFramework/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../BOUSFEED/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
 		0F31325F2862D8470017B28C /* CommonOutastandingImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOutastandingImageTableViewCell.swift; sourceTree = "<group>"; };
 		0F3132602862D8470017B28C /* CommonOutastandingImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonOutastandingImageTableViewCell.xib; sourceTree = "<group>"; };
 		0F3132612862D8470017B28C /* OutsandingImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsandingImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -355,7 +357,7 @@
 		0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BOUSFeedGrayDivider.xib; sourceTree = "<group>"; };
 		0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSFeedGrayDivider.swift; sourceTree = "<group>"; };
 		0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGrayDividerCoordinator.swift; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../CommonFunctionalityFramework/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../BOUSFEED/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980D12192614285E00995F41 /* Pods_RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980D121E2614295F00995F41 /* RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
@@ -522,6 +524,8 @@
 		BE94C3182821719A00E323E1 /* CommonFeedTopTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedTopTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		BE94C31A2821743C00E323E1 /* CommonFeedsTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedsTopTableViewCell.swift; sourceTree = "<group>"; };
 		BE94C31B2821743C00E323E1 /* CommonFeedsTopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonFeedsTopTableViewCell.xib; sourceTree = "<group>"; };
+		BE9E234828AB92A700281F86 /* PostPollSelfBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPollSelfBottomSheet.swift; sourceTree = "<group>"; };
+		BE9E234928AB92A700281F86 /* PostPollSelfBottomSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostPollSelfBottomSheet.xib; sourceTree = "<group>"; };
 		BEAAD1FC26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PintoTopConfirmationDrawer.swift; sourceTree = "<group>"; };
 		BEAAD20226FB03060069C5C1 /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		BEAAD20326FB03060069C5C1 /* ItemsDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsDropDown.swift; sourceTree = "<group>"; };
@@ -1441,6 +1445,8 @@
 				9868C10E2419F94100B12321 /* Feed Composer */,
 				9868C0862410B4C900B12321 /* FeedsDetailViewController */,
 				98B90DEC240CAD010013E9D2 /* FeedsViewController */,
+				BE9E234828AB92A700281F86 /* PostPollSelfBottomSheet.swift */,
+				BE9E234928AB92A700281F86 /* PostPollSelfBottomSheet.xib */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
@@ -2012,6 +2018,7 @@
 				BE500D7F2822960600423E5A /* CommonLikesSectionTableViewCell.xib in Resources */,
 				BEC2B27526FD9E5B008417C3 /* GifCollectionViewCell.xib in Resources */,
 				BEB0084828A76DF200E3F1B0 /* AddECardTableViewCell.xib in Resources */,
+				BE9E234B28AB92A700281F86 /* PostPollSelfBottomSheet.xib in Resources */,
 				0F6021B928741C4F00D852BD /* CommentLikeWithCountCell.xib in Resources */,
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
 				BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */,
@@ -2150,6 +2157,7 @@
 				BE66CCC728A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift in Sources */,
 				987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */,
 				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
+				BE9E234A28AB92A700281F86 /* PostPollSelfBottomSheet.swift in Sources */,
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				BEBFD1E428A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift in Sources */,

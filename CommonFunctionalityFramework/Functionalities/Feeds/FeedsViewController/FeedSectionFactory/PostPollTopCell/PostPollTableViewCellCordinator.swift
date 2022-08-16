@@ -34,35 +34,13 @@ class PostPollTableViewCellCordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.text = feed.getfeedCreationDate()
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
-            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-               // cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
-                //cell.containerView?.addBorders(edges: [.top, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
-            }else{
-//                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-//                cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
-            }
-            cell.pinPostButton?.setImage(
-                UIImage(
-                    named: feed.isPinToPost() ? "cff_coloredPinPostIcon" : "cff_pinPostIcon",
-                    in: Bundle(for: PostPollTopTableViewCellTableViewCell.self),
-                    compatibleWith: nil),
-                for: .normal
-            )
-            cell.pinPostButton?.isHidden = !feed.isLoggedUserAdmin()
+            cell.pinPostButton?.isHidden = feed.isPinToPost() ? false : true
             cell.containerView?.clipsToBounds = true
              if !inputModel.datasource.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true
             }else{
                 cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             }
-            cell.pinPostButton?.handleControlEvent(
-                event: .touchUpInside, buttonActionBlock: {
-                    inputModel.delegate?.pinToPost(
-                        feedIdentifier: feed.feedIdentifier,
-                        isAlreadyPinned: feed.isPinToPost()
-                    )
-                }
-            )
             cell.editFeedButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {
