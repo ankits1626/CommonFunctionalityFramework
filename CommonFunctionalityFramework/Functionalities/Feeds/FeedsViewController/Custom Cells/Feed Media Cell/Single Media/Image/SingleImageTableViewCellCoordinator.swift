@@ -32,7 +32,8 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             }else{
                 cell.feedImageView?.image = nil
             }
-            
+            cell.feedImageView?.curvedCornerControl()
+            cell.feedImageView?.addBorders(edges: [.left, .right], color: .clear)
 //            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
 //                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
 //            }else{
