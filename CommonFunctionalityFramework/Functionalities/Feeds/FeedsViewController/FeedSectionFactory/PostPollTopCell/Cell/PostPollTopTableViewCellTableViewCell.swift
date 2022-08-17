@@ -13,6 +13,7 @@ class PostPollTopTableViewCellTableViewCell: UITableViewCell, FeedsCustomCellPro
     @IBOutlet weak var userName : UILabel?
     @IBOutlet weak var departmentName : UILabel?
     @IBOutlet weak var dateLabel : UILabel?
+    @IBOutlet weak var headerGrayViewHeight: NSLayoutConstraint!
     @IBOutlet weak var editFeedButton : BlockButton?
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var pinPostButton : BlockButton?

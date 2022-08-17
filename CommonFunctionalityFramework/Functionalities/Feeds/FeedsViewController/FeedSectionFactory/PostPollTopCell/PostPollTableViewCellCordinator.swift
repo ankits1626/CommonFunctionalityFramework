@@ -25,6 +25,11 @@ class PostPollTableViewCellCordinator: FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? PostPollTopTableViewCellTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            if inputModel.targetIndexpath.section == 0 {
+                cell.headerGrayViewHeight.constant = 0
+            }else {
+                cell.headerGrayViewHeight.constant = 10
+            }
             cell.userName?.text = feed.getUserName()
             cell.userName?.font = UIFont.Body2
             cell.userName?.textColor = UIColor.getTitleTextColor()

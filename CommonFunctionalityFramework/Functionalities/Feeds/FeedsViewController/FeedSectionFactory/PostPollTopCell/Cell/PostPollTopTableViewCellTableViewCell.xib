@@ -202,13 +202,23 @@
                             <constraint firstItem="EaC-sg-UVu" firstAttribute="top" secondItem="9A6-5o-i10" secondAttribute="top" id="spe-SI-yjt"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTv-mz-aOs">
+                        <rect key="frame" x="0.0" y="0.0" width="429" height="10"/>
+                        <color key="backgroundColor" red="0.91764706370000004" green="0.91764706370000004" blue="0.91764706370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="UDK-Oq-1RX"/>
+                        </constraints>
+                    </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="9A6-5o-i10" firstAttribute="leading" secondItem="u7J-r4-x9h" secondAttribute="leading" constant="16" id="7Ze-BY-hEs"/>
                     <constraint firstAttribute="bottom" secondItem="9A6-5o-i10" secondAttribute="bottom" id="9pI-0e-Pr0"/>
                     <constraint firstAttribute="trailing" secondItem="9A6-5o-i10" secondAttribute="trailing" constant="16" id="IxQ-QD-bS4"/>
+                    <constraint firstItem="xTv-mz-aOs" firstAttribute="leading" secondItem="u7J-r4-x9h" secondAttribute="leading" id="bwd-hi-aAr"/>
+                    <constraint firstAttribute="trailing" secondItem="xTv-mz-aOs" secondAttribute="trailing" id="m6P-MQ-lDp"/>
                     <constraint firstItem="9A6-5o-i10" firstAttribute="top" secondItem="u7J-r4-x9h" secondAttribute="top" constant="10" id="sSE-uF-ILr"/>
+                    <constraint firstItem="xTv-mz-aOs" firstAttribute="top" secondItem="u7J-r4-x9h" secondAttribute="top" id="xQf-lu-NA1"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="llO-Ui-YfI"/>
@@ -218,6 +228,7 @@
                 <outlet property="dateLabel" destination="co2-pN-oUt" id="BsW-6b-GlA"/>
                 <outlet property="departmentName" destination="Slv-B1-VLm" id="XO9-Dk-UAM"/>
                 <outlet property="editFeedButton" destination="xkm-Xa-WUK" id="cDD-hN-7hN"/>
+                <outlet property="headerGrayViewHeight" destination="UDK-Oq-1RX" id="SFU-NC-g6j"/>
                 <outlet property="pinPostButton" destination="4yE-Oc-j8r" id="eBt-hn-JB2"/>
                 <outlet property="pinPostWidthConstraint" destination="XdJ-o4-BEs" id="p5D-cv-vfp"/>
                 <outlet property="profileImage" destination="e1S-gr-0pS" id="v3A-Dy-1rb"/>

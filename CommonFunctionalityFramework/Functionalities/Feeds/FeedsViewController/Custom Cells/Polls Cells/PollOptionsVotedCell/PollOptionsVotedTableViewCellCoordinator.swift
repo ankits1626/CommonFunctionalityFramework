@@ -51,6 +51,7 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.percentageVote?.text = "\(feedOption?.getPercentage() ?? 0) %"
             let progress = Float((feedOption?.getPercentage() ?? 0)) / 100.0
             print("progress is \(progress)")
+            cell.percentageVote?.textColor = inputModel.themeManager?.getControlActiveColor()
             cell.percentageVoteIndicator?.setProgress(progress, animated: false )
             cell.percentageVoteIndicator?.progressTintColor = feedOption?.optionColor
             cell.percentageVoteIndicator?.trackTintColor =  .progressTrackColor
