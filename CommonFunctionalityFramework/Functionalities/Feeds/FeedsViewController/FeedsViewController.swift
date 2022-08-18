@@ -24,6 +24,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    var bottomSafeArea : CGFloat!
     
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
@@ -127,6 +128,15 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
         }else if fetchedfeeds.fetchedRawFeeds?.count == 1 {
             feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
+        }else{
+            if #available(iOS 11.0, *) {
+                bottomSafeArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+            }else{
+                bottomSafeArea = 0.0
+            }
+            if bottomSafeArea == 0.0 {
+                feedCreateViewConstraints?.constant = 40
+            }
         }
     }
     
