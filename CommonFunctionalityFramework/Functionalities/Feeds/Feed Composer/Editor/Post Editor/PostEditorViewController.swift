@@ -748,7 +748,7 @@ extension PostEditorViewController : PostPreviewViewEventListener{
 }
 
 extension  PostEditorViewController : DidTapOnEcard {
-    func selectedEcard(ecardData: EcardListResponseValues, selectedEcardPk: Int) {
+    func selectedEcard(ecardData: EcardListResponseValues) {
         postCoordinator.attachedEcardItems(_selectedECard: ecardData)
     }
     

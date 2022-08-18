@@ -19,7 +19,7 @@ class GetEcardWorker  {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     
-    func getEcard(categoryId: Int, searchString: String, nextUrl: String, completionHandler: @escaping GetEcardWorkerCompletionHandler) {
+    func getEcard(categoryId: Int?, searchString: String, nextUrl: String, completionHandler: @escaping GetEcardWorkerCompletionHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: GetEcardWorkerRequestGenerator( searchString: searchString, nextUrl: nextUrl, categoryId: categoryId, networkRequestCoordinator: networkRequestCoordinator),
@@ -40,9 +40,9 @@ class GetEcardWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     
     var searchString : String
     var nextUrl: String
-    var categoryId: Int
+    var categoryId: Int?
     
-    init(searchString: String, nextUrl: String, categoryId: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    init(searchString: String, nextUrl: String, categoryId: Int?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.searchString = searchString
         self.nextUrl = nextUrl
         self.categoryId = categoryId
@@ -53,9 +53,30 @@ class GetEcardWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     
     var apiRequest: URLRequest?{
         get{
-            if searchString.isEmpty && nextUrl.isEmpty {
+            if self.categoryId == nil {
+                if !searchString.isEmpty {
+                    return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                        url:  self.urlBuilder.getURL(
+                            endpoint: "/feeds/api/ecard/?search=\(searchString)",
+                            parameters: [
+                                "search" : searchString
+                            ]
+                        ),
+                        method: .GET ,
+                        httpBodyDict: nil
+                    )
+                }
+                
                 let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url:  self.urlBuilder.getURL(endpoint: "/feeds/api/ecard/?category=\(self.categoryId)", parameters: nil
+                    url:  self.urlBuilder.getURL(endpoint: "/feeds/api/ecard/", parameters: nil
+                    ),
+                    method: .GET ,
+                    httpBodyDict: nil
+                )
+                return req
+            }else if searchString.isEmpty && nextUrl.isEmpty {
+                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                    url:  self.urlBuilder.getURL(endpoint: "/feeds/api/ecard/?category=\(self.categoryId ?? 0)", parameters: nil
                     ),
                     method: .GET ,
                     httpBodyDict: nil
@@ -73,7 +94,7 @@ class GetEcardWorkerRequestGenerator: APIRequestGeneratorProtocol  {
                         endpoint: "/feeds/api/ecard/?search=\(searchString)",
                         parameters: [
                             "search" : searchString,
-                            "category_id" : "\(self.categoryId)"
+                            "category_id" : "\(self.categoryId ?? 0)"
                         ]
                     ),
                     method: .GET ,

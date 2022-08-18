@@ -39,7 +39,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="502" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BX3-0V-zOX">
+                            <button opaque="NO" userInteractionEnabled="NO" tag="502" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BX3-0V-zOX">
                                 <rect key="frame" x="172" y="104" width="57" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="ZZb-9b-Oq3"/>
