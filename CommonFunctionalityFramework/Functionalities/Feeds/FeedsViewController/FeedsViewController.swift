@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Photos
+import RewardzCommonComponents
 
 class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBOutlet private weak var composeBarContainerHeightConstraint : NSLayoutConstraint?
@@ -25,6 +26,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var bottomSafeArea : CGFloat!
+    var loader = MFLoader()
     
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
@@ -55,6 +57,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "PostScroll"), object: nil)
         feedCreateView?.layer.cornerRadius = (feedCreateView?.frame.size.width)!/2
         feedCreateView?.clipsToBounds = true
         feedCreateView?.backgroundColor = UIColor.getControlColor()
@@ -64,6 +67,21 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             self?.setup()
             self?.loadFeeds()
         }
+    }
+    
+    @objc func scrollTableView(notification: NSNotification) {
+        
+        if let paymentData = notification.object as? Dictionary<String, Any> {
+            if let paymentID = paymentData["isScrollable"] as? Bool {
+                print("paymentID ----- \(paymentID)")
+                self.feedsTable?.bounces = true
+                self.feedsTable?.isScrollEnabled = paymentID
+            }
+        }
+    }
+    
+    deinit {
+        print("Notification deinit")
     }
     
     private func registerForPostUpdateNotifications(){
@@ -105,13 +123,19 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+    }
+    
     @objc private func loadFeeds(){
+        self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
             nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: nil) {[weak self] (result) in
             DispatchQueue.main.async {
                 self?.feedsTable?.loadCFFControl?.endLoading()
                 switch result{
                 case .Success(let result):
+                    self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     self?.handleaddButton(fetchedfeeds: result)
                 case .SuccessWithNoResponseData:
@@ -136,6 +160,8 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             }
             if bottomSafeArea == 0.0 {
                 feedCreateViewConstraints?.constant = 40
+            }else{
+                feedCreateViewConstraints?.constant = 25
             }
         }
     }

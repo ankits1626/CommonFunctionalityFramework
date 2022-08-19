@@ -67,6 +67,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         var strengthIcon = ""
         var strengthMessage = ""
         var badgeBackgroundColor = ""
+        var illustration = ""
         var points = "0"
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
@@ -80,7 +81,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
                     }
                     
                     
-                    dataDic = ["strengthName" : userName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points]
+                    dataDic = ["strengthName" : userName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points, "illustration" : ""]
                 }else {
                     if let userStengthDic = rawFeedDictionary["user_strength"] as? NSDictionary {
                         if let pts = rawFeedDictionary["points"] as? String {
@@ -91,7 +92,8 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
                         strengthMessage = rawFeedDictionary["description"] as! String
                         strengthIcon = userStengthDic["icon"] as! String
                         badgeBackgroundColor = userStengthDic["background_color"] as! String
-                        dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points]
+                        illustration = userStengthDic["illustration"] as! String
+                        dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points, "illustration" : illustration]
                     }
                 }
             }

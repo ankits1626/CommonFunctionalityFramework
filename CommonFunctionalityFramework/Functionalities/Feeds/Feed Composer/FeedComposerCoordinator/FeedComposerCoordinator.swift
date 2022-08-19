@@ -49,10 +49,9 @@ class FeedComposerCoordinator {
             mainAppCoordinator: mainAppCoordinator,
             feedCoordinatorDelegate: feedCoordinatorDelegate
         )
-        feedCoordinatorDelegate.showComposer(
-            _composer: postEditor,
-            dismissCompletionBlock: postEditor.composerDismissCompletionBlock) { topItem in
-                postEditor.containerTopBarModel = topItem
-            }
+        let feedTitle = type == .Poll ? "Poll" : "Post"
+        feedCoordinatorDelegate.showComposer(_composer: postEditor, postType: feedTitle) { topItem in
+            postEditor.containerTopBarModel = topItem
+        }
     }
 }

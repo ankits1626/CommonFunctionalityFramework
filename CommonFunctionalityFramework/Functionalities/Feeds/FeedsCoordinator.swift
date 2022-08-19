@@ -38,6 +38,8 @@ public protocol FeedsCoordinatorDelegate : AnyObject {
     func showFeedDetail(_ detailViewController : UIViewController)
     func removeFeedDetail()
     func showComposer(_composer : UIViewController, dismissCompletionBlock : (()-> Void)?, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
+    func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
+    func showComposer(_composer : UIViewController, postType : String, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
     func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
     func showMultiOrgPicker(_ orgPicker : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
     
@@ -58,7 +60,7 @@ public class FeedsCoordinator {
         return feedsVc
     }
     
-    public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
+    public func showFeedsDetailView(feedId: Int,isPostType : Bool = false, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
         FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId, feedType: "") { (result) in
             DispatchQueue.main.async {
                 switch result{
@@ -75,6 +77,7 @@ public class FeedsCoordinator {
                         }
                         let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
                         feedDetailVC.mainAppCoordinator = inputModel.mainAppCoordinator
+                        feedDetailVC.isPostPollType = isPostType
                         feedDetailVC.themeManager = inputModel.themeManager
                         feedDetailVC.targetFeedItem = rawFeed //feeds[indexPath.section]
                         feedDetailVC.mediaFetcher = inputModel.mediaCoordinator
