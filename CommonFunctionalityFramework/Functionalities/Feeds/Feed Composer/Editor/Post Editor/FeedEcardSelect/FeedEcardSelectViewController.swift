@@ -7,7 +7,7 @@
 //
 
 protocol DidTapOnEcard {
-    func selectedEcard(ecardData: EcardListResponseValues,selectedEcardPk : Int)
+    func selectedEcard(ecardData: EcardListResponseValues)
 }
 
 import UIKit
@@ -30,6 +30,7 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
     var selectedCategory: Int!
     var delegate: DidTapOnEcard?
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
+    var nextPageUrl: String = ""
 
     
     override func viewDidLoad() {
@@ -48,6 +49,12 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
     
         self.orgHeaderView.backgroundColor = UIColor.getControlColor()
         searchBar.delegate = self
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = .white
+        loadCategory()
+    }
+    
+    func loadCategory() {
         GetEcardCategoryFormWorker(networkRequestCoordinator: self.requestCoordinator).getGetEcardCategory() { (result) in
             DispatchQueue.main.async {
                 switch result{
@@ -55,8 +62,8 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
                     do {
                         let data = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
                         self.constructData(data: data)
-                        self.selectedCategory = self.arrayHolder[0].pk
-                        self.loadData(category: self.selectedCategory ,searchString: "", nextURL: "")
+                        self.selectedCategory = nil
+                        self.loadData(category: nil ,searchString: "", nextURL: "")
                     }catch {
                         debugPrint(error)
                     }
@@ -67,7 +74,6 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
                 }
             }
         }
-        
     }
     
     func presentDrawer() throws{
@@ -81,7 +87,7 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    func loadData(category: Int, searchString: String, nextURL: String) {
+    func loadData(category: Int?, searchString: String, nextURL: String) {
       //  self.loader.showActivityIndicator(self.view)
         GetEcardWorker(networkRequestCoordinator: self.requestCoordinator).getEcard(
             categoryId: category,
@@ -91,9 +97,9 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
                 switch result{
                 case .Success(result: let response):
                     if let nextUrl = response["next"] as? String {
-                       // self.nextPageUrl = nextUrl
+                        self.nextPageUrl = nextUrl
                     } else {
-                       // self.nextPageUrl = ""
+                        self.nextPageUrl = ""
                     }
                     do {
                         let data = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
@@ -143,14 +149,18 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayHolder.count ?? 0
+        return arrayHolder.count  ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BOUSEcardCategoryListCollectionViewCell
-        let dataValues = arrayHolder[indexPath.row]
+        if indexPath.row == 0 {
+            cell.TxtLbl.text = "All"
+        }else {
+            let dataValues = arrayHolder[indexPath.row - 1]
+            cell.TxtLbl.text = dataValues.name
+        }
         cell.layer.cornerRadius = 8.0
-        cell.TxtLbl.text = dataValues.name
         if selectedIndex == indexPath.row {
             cell.backgroundColor = UIColor.getControlColor()
             cell.TxtLbl.textColor = UIColor.white
@@ -163,15 +173,17 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        self.searchBar.text = ""
+        if indexPath.row == 0 {
+            self.selectedCategory = nil
+            self.loadData(category: nil, searchString: "", nextURL: "")
+        }else {
+            self.selectedCategory = self.arrayHolder[indexPath.row - 1].pk
+            self.loadData(category: self.selectedCategory, searchString: "", nextURL: "")
+        }
         selectedIndex = indexPath.row
-        self.selectedCategory = self.arrayHolder[indexPath.row].pk
         self.collectionView.reloadData()
-        self.loadData(category: self.selectedCategory, searchString: "", nextURL: "")
         self.tableView.reloadData()
-        //           self.tableView.reloadData()
-        //            self.fecthContacts(searchKey: nil, selectedTabType: selectedTab)
-        //            self.tableView.scrollsToTop = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -187,7 +199,7 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataVal = arrayListHolder[indexPath.row]
-        delegate!.selectedEcard(ecardData: dataVal, selectedEcardPk: self.selectedCategory)
+        delegate!.selectedEcard(ecardData: dataVal)
         self.dismiss(animated: true)
     }
     
@@ -225,7 +237,7 @@ extension FeedEcardSelectViewController: UITextFieldDelegate {
                 loadData(category: self.selectedCategory, searchString: urlString!, nextURL: "")
             }
         }else {
-            arrayHolder = []
+            arrayListHolder = []
             loadData(category: self.selectedCategory, searchString: "", nextURL: "")
         }
     }

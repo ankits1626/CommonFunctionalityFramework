@@ -530,7 +530,7 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
     }
 }
 extension  PostEditorViewController : DidTapOnEcard {
-    func selectedEcard(ecardData: EcardListResponseValues, selectedEcardPk: Int) {
+    func selectedEcard(ecardData: EcardListResponseValues) {
         postCoordinator.attachedEcardItems(_selectedECard: ecardData)
     }
     
