@@ -1,7 +1,18 @@
 PODS:
   - ActiveLabel (1.1.5)
   - FLAnimatedImage (1.0.16)
+  - Giphy (2.1.22):
+    - libwebp
   - KUIPopOver (1.1.2)
+  - libwebp (1.2.1):
+    - libwebp/demux (= 1.2.1)
+    - libwebp/mux (= 1.2.1)
+    - libwebp/webp (= 1.2.1)
+  - libwebp/demux (1.2.1):
+    - libwebp/webp
+  - libwebp/mux (1.2.1):
+    - libwebp/demux
+  - libwebp/webp (1.2.1)
   - Loaf (0.7.0)
   - Reactions (3.0.0)
   - RewardzCommonComponents (0.0.6):
@@ -11,6 +22,7 @@ PODS:
 DEPENDENCIES:
   - ActiveLabel (from `https://github.com/ankits1626/ActiveLabel.swift`, branch `CFF_Customizations`)
   - FLAnimatedImage (~> 1.0)
+  - Giphy
   - KUIPopOver (= 1.1.2)
   - Loaf
   - Reactions (~> 3.0.0)
@@ -20,7 +32,9 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - FLAnimatedImage
+    - Giphy
     - KUIPopOver
+    - libwebp
     - Loaf
     - Reactions
     - SimpleCheckbox
@@ -44,12 +58,14 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ActiveLabel: d757b2404064bc63127c25c1a6beab0ca578bbaa
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
+  Giphy: 6757d929878ef45f70ed62a02a2c9a03994e7b6c
   KUIPopOver: fc7ccb3c1c1ada51f5251477a7993ec452e3eefb
+  libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
   Reactions: 4994c6bb3e7c6b75756a0b26a4d4f5bde1a47dc7
   RewardzCommonComponents: 71cdc605343de5561b6d595e693e40ecc054949d
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: 85c41d0d3732c523f8ed8b9ef516f7d9b05818c2
+PODFILE CHECKSUM: 3a8665dbaddd6fe263f64287f9450ff32a8b9524
 
 COCOAPODS: 1.11.3

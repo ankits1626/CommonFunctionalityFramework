@@ -11,6 +11,7 @@ import SimpleCheckbox
 import CoreData
 import Photos
 import RewardzCommonComponents
+import GiphyUISDK
 
 enum SharePostOption : Int{
     case MyOrg = 20
@@ -49,6 +50,7 @@ enum SharePostOption : Int{
     }
 }
 
+
 extension Notification.Name{
     static let didUpdatedPosts = Notification.Name("didUpdatedPosts")
 }
@@ -75,7 +77,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet private weak var shareWithSegmentControl: UISegmentedControl?
     var loader = CommonLoader()
     var numberOfRows = 1
-    
+    var selectedGif = ""
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(
             postObsever: cellFactory,
@@ -366,17 +368,25 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     
     private func initiateGifAttachment(){
         print("<<<<<<<< initiate gif attachment")
-        let gifSelector = FeedsGIFSelectorViewController(nibName: "FeedsGIFSelectorViewController", bundle: Bundle(for: FeedsGIFSelectorViewController.self))
-        gifSelector.requestCoordinator = requestCoordinator
-        gifSelector.mediaFetcher = mediaFetcher
-        gifSelector.feedsGIFSelectorDelegate = self
-        do{
-            try gifSelector.presentDrawer()
-        }catch let error{
-            print("show error")
-            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
-            }
-        }
+//        let gifSelector = FeedsGIFSelectorViewController(nibName: "FeedsGIFSelectorViewController", bundle: Bundle(for: FeedsGIFSelectorViewController.self))
+//        gifSelector.requestCoordinator = requestCoordinator
+//        gifSelector.mediaFetcher = mediaFetcher
+//        gifSelector.feedsGIFSelectorDelegate = self
+//        do{
+//            try gifSelector.presentDrawer()
+//        }catch let error{
+//            print("show error")
+//            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+//            }
+//        }
+        
+        let giphy = GiphyViewController()
+        Giphy.configure(apiKey: "Qr1kg1xNESfzpJ3fyXQllDI9KO5wdY2C")
+        giphy.delegate = self
+        giphy.mediaTypeConfig = [.gifs, .stickers, .text, .emoji]
+        GiphyViewController.trayHeightMultiplier = 1.0
+        giphy.theme = GPHTheme(type: .lightBlur)
+        present(giphy, animated: true, completion: nil)
         
     }
     
@@ -753,4 +763,19 @@ extension  PostEditorViewController : DidTapOnEcard {
     }
     
     
+}
+
+extension PostEditorViewController: GiphyDelegate {
+    func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia)   {
+        let gifURL = media.url(rendition: .fixedWidth, fileType: .gif)
+        // your user tapped a GIF!
+        self.selectedGif = gifURL!
+        //        self.documentsArr.append(["Gif" : self.selectedGif])
+        //self.tableView.reloadData()
+        giphyViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func didDismiss(controller: GiphyViewController?) {
+        // your user dismissed the controller without selecting a GIF.
+    }
 }
