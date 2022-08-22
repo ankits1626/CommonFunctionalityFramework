@@ -14,5 +14,5 @@ target 'CommonFunctionalityFramework' do
   #pod 'SDWebImageFLPlugin'
   pod 'RewardzCommonComponents', :git => 'https://github.com/ankits1626/RewardzCommonComponents.git', :branch => 'removedLocalization'
   # Pods for CommonFunctionalityFramework
-
+  pod 'Giphy'
 end
