@@ -78,7 +78,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             rows.append(MultipleMediaTableViewCellType())
         }
         
-        if model?.attachedGif != nil{
+        if let unwrappedGify = feed.getGiphy(),
+            !unwrappedGify.isEmpty {
             rows.append(FeedGifTableViewCellType())
         }
         rows.append(PostPollLikeTableViewCellType())

@@ -20,7 +20,7 @@ class FeedEditorAttachedGifTableViewCellCoordinator :  PostEditorCellCoordinator
         withIdentifier: cellType.cellIdentifier,
         for: inputModel.targetIndexpath) as! FeedGifTableViewCell
         let post = inputModel.datasource.getTargetPost()
-        if let rawGif = post?.attachedGif?.getGifSourceUrl() {
+        if let rawGif = post?.attachedGiflyGif {
             if let data = CFFGifCacheManager.sharedInstance.gifCache.object(forKey: rawGif as NSString) as Data?{
                 print("<<<<<<<<<< picked from cache")
                 cell.feedGifImage?.animatedImage = FLAnimatedImage(animatedGIFData: data)
@@ -77,7 +77,7 @@ class FeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
             feedId: feed.feedIdentifier,
             description: feed.getFeedDescription()
         )
-        if let rawGif = model?.attachedGif {
+        if let rawGif = feed.getGiphy(), !rawGif.isEmpty {
             if let data = CFFGifCacheManager.sharedInstance.gifCache.object(forKey: rawGif as NSString) as Data?{
                 print("<<<<<<<<<< picked from cache")
                 cell.feedGifImage?.animatedImage = FLAnimatedImage(animatedGIFData: data)

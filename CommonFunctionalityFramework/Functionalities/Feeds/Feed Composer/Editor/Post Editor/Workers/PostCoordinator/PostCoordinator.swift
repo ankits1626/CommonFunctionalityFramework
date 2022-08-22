@@ -89,12 +89,24 @@ class PostCoordinator {
         postObsever?.allAttachedMediaRemovedFromPost()
     }
     
+    func attachGifyGifItem(_ selectedGif: String) {
+        currentPost.selectedMediaItems = nil
+        currentPost.selectedEcardMediaItems = nil
+        deleteAllRemoteAttachedMediaItems()
+        currentPost.attachedGiflyGif = selectedGif
+        postObsever?.allAttachedMediaRemovedFromPost()
+    }
+    
     func removeAttachedECard() {
         currentPost.selectedEcardMediaItems = nil
     }
     
     func removeAttachedGif() {
         currentPost.attachedGif = nil
+    }
+    
+    func removeAttachedGiflyGif() {
+        currentPost.attachedGiflyGif = nil
     }
     
     func updatePostTitle(title: String?) {

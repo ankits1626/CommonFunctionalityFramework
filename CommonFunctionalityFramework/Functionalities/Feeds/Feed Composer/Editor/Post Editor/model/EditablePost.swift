@@ -29,6 +29,7 @@ protocol EditablePostProtocol {
     func isGifAttached() -> Bool
     var selectedEcardMediaItems : EcardListResponseValues? {set get}
     func isECardAttached() -> Bool
+    var attachedGiflyGif : String?{set get}
 }
 
 
@@ -38,6 +39,7 @@ enum DepartmentSharedChoice : Int {
 }
 struct EditablePost : EditablePostProtocol{
     var selectedEcardMediaItems: EcardListResponseValues?
+    var attachedGiflyGif : String?
     
     
     
@@ -46,7 +48,7 @@ struct EditablePost : EditablePostProtocol{
     }
     
     func isGifAttached() -> Bool {
-        return attachedGif != nil
+        return attachedGiflyGif != nil
     }
     
     func getCleanPollOptions() -> [String]? {
@@ -92,9 +94,11 @@ struct EditablePost : EditablePostProtocol{
         if let unwrappedDescription = postDesciption{
             postDictionary["description"] = unwrappedDescription
         }
-        if let unwrappedGif = attachedGif?.getGifSourceUrl(){
+        
+        if let unwrappedGif = attachedGiflyGif, !unwrappedGif.isEmpty {
             postDictionary["gif"] = unwrappedGif
         }
+        
         
         if let unwrappedECard = selectedEcardMediaItems{
             postDictionary["ecard"] = "\(unwrappedECard.pk)"

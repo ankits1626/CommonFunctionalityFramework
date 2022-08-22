@@ -229,6 +229,7 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if getFeedItem(indexPath.section).shouldShowDetail(){
+            UserDefaults.standard.setValue(false, forKey: "notRefreshFeedDetail")
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
             feedDetailVC.themeManager = themeManager
             feedDetailVC.mainAppCoordinator = mainAppCoordinator
