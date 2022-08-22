@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Photos
+import RewardzCommonComponents
 
 class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet private weak var feedsTable : UITableView?
@@ -57,7 +58,6 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.feedsTable?.bounces = true
         NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "TestScroll"), object: nil)
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
@@ -71,9 +71,18 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         if let paymentData = notification.object as? Dictionary<String, Any> {
             if let paymentID = paymentData["isScrollable"] as? Bool {
                 print("paymentID ----- \(paymentID)")
+                self.feedsTable?.bounces = true
                 self.feedsTable?.isScrollEnabled = paymentID
             }
         }
+    }
+    
+    deinit {
+        print("Notification deinit")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
     }
     
     private func registerForPostUpdateNotifications(){
@@ -116,13 +125,12 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @objc private func loadFeeds(){
-        self.activityLoader.isHidden = false
-        self.activityLoader.startAnimating()
+        self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         //loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
             nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk) {[weak self] (result) in
                 DispatchQueue.main.async {
-                    self?.activityLoader.stopAnimating()
+                    self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                     // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
