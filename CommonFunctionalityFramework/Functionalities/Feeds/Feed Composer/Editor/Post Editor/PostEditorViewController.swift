@@ -589,7 +589,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     
     
     func removeAttachedGif() {
-        postCoordinator.removeAttachedGif()
+        postCoordinator.removeAttachedGiflyGif()
     }
     func activeDaysForPollChanged(_ days: Int) {
         postCoordinator.updateActiveDayForPoll(days)
@@ -770,6 +770,7 @@ extension PostEditorViewController: GiphyDelegate {
         let gifURL = media.url(rendition: .fixedWidth, fileType: .gif)
         // your user tapped a GIF!
         self.selectedGif = gifURL!
+        postCoordinator.attachGifyGifItem(gifURL!)
         //        self.documentsArr.append(["Gif" : self.selectedGif])
         //self.tableView.reloadData()
         giphyViewController.dismiss(animated: true, completion: nil)

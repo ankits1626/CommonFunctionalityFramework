@@ -295,14 +295,12 @@ extension FeedDetailSectionFactory{
             }
             if
                 let unwrappedFeed = feed{
-                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
-                    feedId: unwrappedFeed.feedIdentifier,
-                    description: unwrappedFeed.getFeedDescription())
-                if model?.attachedGif != nil{
+                if let unwrappedGify = unwrappedFeed.getGiphy(),
+                    !unwrappedGify.isEmpty {
                     rows.append(FeedGifTableViewCellType())
                 }
             }
-            
+
             if let poll = feed?.getPoll(){
                 rows.append(PollBottomTableViewCelType())
                 if poll.isPollActive() && !poll.hasUserVoted(){
