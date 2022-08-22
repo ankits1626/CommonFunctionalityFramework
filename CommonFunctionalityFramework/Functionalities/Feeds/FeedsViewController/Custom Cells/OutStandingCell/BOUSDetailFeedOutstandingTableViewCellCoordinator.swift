@@ -14,11 +14,9 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 253
+        return UITableView.automaticDimension
     }
-    
-    
-    
+
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? BOUSDetailFeedOutstandingTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
