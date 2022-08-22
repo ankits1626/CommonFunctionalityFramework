@@ -14,6 +14,7 @@
                 <outlet property="cameraContainerViewView" destination="G6G-U9-vTq" id="PI6-lW-BIo"/>
                 <outlet property="composeBarContainerHeightConstraint" destination="Lg8-3Z-SpY" id="xYa-xI-idB"/>
                 <outlet property="composeLabel" destination="IWd-8n-oPd" id="v2t-wF-ycy"/>
+                <outlet property="createBtnHolderView" destination="orO-dV-om1" id="dbX-XC-EoY"/>
                 <outlet property="feedCreateView" destination="3bj-oG-Ner" id="0Vf-QQ-Bdk"/>
                 <outlet property="feedCreateViewConstraints" destination="NeN-23-Gkg" id="seG-gO-2Vn"/>
                 <outlet property="feedsTable" destination="VdA-C0-ggV" id="E70-6f-TtD"/>

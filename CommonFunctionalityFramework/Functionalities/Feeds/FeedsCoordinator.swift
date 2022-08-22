@@ -20,13 +20,14 @@ public struct GetFeedsViewModel{
     var feedCoordinatorDelegate : FeedsCoordinatorDelegate
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
-    
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?){
+    var shouldShowCreateButton : Bool = false
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
         self.themeManager = themeManager
         self.mainAppCoordinator = mainAppCoordinator
+        self.shouldShowCreateButton = shouldShowCreateButton
     }
 }
 
@@ -49,6 +50,7 @@ public class FeedsCoordinator {
         feedsVc.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
         feedsVc.themeManager = inputModel.themeManager
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
+        feedsVc.shouldShowCreateButton = inputModel.shouldShowCreateButton
         return feedsVc
     }
     

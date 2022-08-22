@@ -18,6 +18,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     @IBOutlet private weak var whatsInYourMindView : UIView?
     @IBOutlet private weak var cameraContainerViewView : UIView?
     @IBOutlet private weak var feedCreateView : UIView?
+    @IBOutlet weak var createBtnHolderView: UIView!
     @IBOutlet private weak var feedCreateViewConstraints : NSLayoutConstraint?
     var selectedTab = ""
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
@@ -27,6 +28,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var bottomSafeArea : CGFloat!
     var loader = MFLoader()
+    var shouldShowCreateButton: Bool = false
     
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
@@ -199,6 +201,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     
     private func setup(){
         view.backgroundColor = .viewBackgroundColor
+        self.createBtnHolderView.isHidden = shouldShowCreateButton ? true : false
         setupTopBar()
         setupTableView()
     }
