@@ -150,6 +150,11 @@
             <point key="canvasLocation" x="-41" y="104"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="eNJ-eI-glJ">
+            <size key="intrinsicContentSize" width="1416" height="17"/>
+        </designable>
+    </designables>
     <resources>
         <image name="medalIcon" width="68" height="75.5"/>
         <image name="transaperent_bg" width="343" height="140"/>

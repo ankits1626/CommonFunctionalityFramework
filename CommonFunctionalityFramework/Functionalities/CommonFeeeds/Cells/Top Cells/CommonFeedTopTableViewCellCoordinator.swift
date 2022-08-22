@@ -30,6 +30,10 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             
             if inputModel.selectedTab == "received" {
+                cell.userName?.text =  "From \(feed.getUserName() ?? "")"
+                cell.appraacitedBy.isHidden = true
+                cell.dot.isHidden = true
+            }else if inputModel.selectedTab == "SearchFromHome" {
                 cell.userName?.text = feed.getUserName()
                 if let nominatedName = feed.getNominatedByUserName() {
                     cell.appraacitedBy.text = "From \(nominatedName)"
