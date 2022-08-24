@@ -39,7 +39,6 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             reactionsCount = feed.getReactionCount()
             reactionList = feed.getReactionsData()
             if let reactionData = reactionList {
-                
                 if reactionsCount == 0 {
                     cell.reactionImg1.isHidden = true
                     cell.reactionImg2.isHidden = true

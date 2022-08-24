@@ -28,7 +28,11 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? CommonFeedsTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            
+            if let profileImageEndpoint = feed.getUserImageUrl(){
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+            }else{
+                cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+            }
             if inputModel.selectedTab == "received" {
                 cell.userName?.text =  "From \(feed.getUserName() ?? "")"
                 cell.appraacitedBy.isHidden = true
@@ -44,13 +48,13 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                     cell.appraacitedBy.isHidden = true
                     cell.dot.isHidden = true
                 }
+                if let profileImageEndpoint = feed.getGivenTabUserImg(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+                }
             }
             
-            if let profileImageEndpoint = feed.getUserImageUrl(){
-                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
-            }else{
-                cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
-            }
             cell.dateLabel?.text = feed.getfeedCreationMonthYear()
             if !inputModel.datasource.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true

@@ -60,7 +60,11 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
 //            if let nominatedName = feed.getNominatedByUserName() {
 //                cell.appraacitedBy.text = "From \(nominatedName)"
 //            }
-            
+            if let profileImageEndpoint = feed.getUserImageUrl(){
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+            }else{
+                cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+            }
             if inputModel.selectedTab == "received" {
                 cell.userName?.text =  "From \(feed.getUserName() ?? "")"
                 cell.appraacitedBy.isHidden = true
@@ -75,6 +79,12 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                     cell.userName?.text = "To \(toUserName)"
                     cell.appraacitedBy.isHidden = true
                     cell.dot.isHidden = true
+                }
+                
+                if let profileImageEndpoint = feed.getGivenTabUserImg(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
                 }
             }
             
@@ -127,11 +137,6 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                         feedIdentifier: feed.feedIdentifier
                     )
             })
-            if let profileImageEndpoint = feed.getUserImageUrl(){
-                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
-            }else{
-                cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
-            }
         }
     }
     

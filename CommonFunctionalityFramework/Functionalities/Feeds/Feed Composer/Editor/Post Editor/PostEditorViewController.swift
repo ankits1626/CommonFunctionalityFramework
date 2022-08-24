@@ -233,7 +233,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
 //        }
         
         let giphy = GiphyViewController()
-        Giphy.configure(apiKey: "Qr1kg1xNESfzpJ3fyXQllDI9KO5wdY2C")
+        Giphy.configure(apiKey: "sUhGOw62fGSyGbWUT0hrlsfLL3gBMQ3h")
         giphy.delegate = self
         giphy.mediaTypeConfig = [.gifs, .stickers, .text, .emoji]
         GiphyViewController.trayHeightMultiplier = 1.0

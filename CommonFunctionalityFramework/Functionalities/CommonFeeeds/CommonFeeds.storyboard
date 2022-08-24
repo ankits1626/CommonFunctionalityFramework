@@ -855,7 +855,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nominated by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="xdO-DK-43P">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nominated by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="xdO-DK-43P">
                                                             <rect key="frame" x="105.5" y="0.0" width="99.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                                             <nil key="textColor"/>
@@ -1276,14 +1276,13 @@ nominations?</string>
                                     <constraint firstItem="geF-ex-1yL" firstAttribute="top" secondItem="von-Bt-EjB" secondAttribute="top" constant="8" id="KG9-Ul-fgQ"/>
                                     <constraint firstItem="geF-ex-1yL" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="167" id="Lpu-MP-xZB"/>
                                     <constraint firstAttribute="trailing" secondItem="5uQ-3z-5NM" secondAttribute="trailing" constant="25" id="QVJ-id-vgY"/>
-                                    <constraint firstAttribute="trailing" secondItem="n2q-bS-qoE" secondAttribute="trailing" constant="171" id="Qug-Mm-Q5f"/>
                                     <constraint firstAttribute="trailing" secondItem="Wpg-1B-H9Q" secondAttribute="trailing" constant="65" id="RdG-la-bO5"/>
                                     <constraint firstItem="sKw-NM-Abb" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="66" id="SLc-NY-dfg"/>
                                     <constraint firstItem="n2q-bS-qoE" firstAttribute="top" secondItem="geF-ex-1yL" secondAttribute="bottom" constant="24" id="TSn-7a-MbI"/>
                                     <constraint firstItem="fUL-w0-RAf" firstAttribute="top" secondItem="7xT-yk-cca" secondAttribute="bottom" constant="18" id="UZU-qy-SuE"/>
+                                    <constraint firstItem="n2q-bS-qoE" firstAttribute="centerX" secondItem="von-Bt-EjB" secondAttribute="centerX" id="ZwF-hJ-1CU"/>
                                     <constraint firstAttribute="trailing" secondItem="sKw-NM-Abb" secondAttribute="trailing" constant="65" id="ccD-TE-ncz"/>
                                     <constraint firstItem="7xT-yk-cca" firstAttribute="top" secondItem="sKw-NM-Abb" secondAttribute="bottom" constant="16" id="f5w-19-Hqu"/>
-                                    <constraint firstItem="n2q-bS-qoE" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="171" id="iTD-g9-W8c"/>
                                     <constraint firstItem="5uQ-3z-5NM" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="25" id="jl7-zL-GBL"/>
                                     <constraint firstItem="7xT-yk-cca" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="26" id="pKk-wx-6h4"/>
                                     <constraint firstItem="fUL-w0-RAf" firstAttribute="leading" secondItem="von-Bt-EjB" secondAttribute="leading" constant="25" id="pQP-Wf-RbH"/>

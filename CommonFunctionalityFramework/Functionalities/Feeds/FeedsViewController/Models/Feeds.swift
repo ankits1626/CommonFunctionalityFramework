@@ -14,6 +14,7 @@ protocol FeedsItemProtocol : Likeable {
     var feedIdentifier : Int64{get}
     func getUserImageUrl() -> String?
     func getUserName() -> String?
+    func getGivenTabUserImg() -> String?
     func toUserName() -> String?
     func getNominatedByUserName() -> String?
     func getDepartmentName() -> String?
@@ -359,6 +360,14 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getUserName() -> String? {
         return getFeedAuthor()?.getAuthorName()
+    }
+    
+    func getGivenTabUserImg() -> String? {
+        var userImg : String?
+        if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            userImg = userDic["profile_img"] as? String ?? nil
+        }
+        return userImg
     }
     
     func toUserName() -> String? {

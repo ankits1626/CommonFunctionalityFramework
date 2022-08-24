@@ -38,6 +38,7 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     }
     
     private func configureConfirmButton(){
+        confirmButton?.alpha = 0.5
         confirmButton?.isEnabled = false
         confirmButton?.setTitle("Report".localized, for: .normal)
         confirmButton?.titleLabel?.font = .Button
@@ -98,8 +99,10 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
 extension ReportAbuseConfirmationDrawer : UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         if !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
+            confirmButton?.alpha = 1.0
             confirmButton?.isEnabled = true
         }else{
+            confirmButton?.alpha = 0.5
             confirmButton?.isEnabled = false
         }
     }
