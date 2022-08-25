@@ -62,7 +62,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                     self.image1 = false
                 }
                 
-                if reactionsCount > 1 {
+                if reactionsCount > 1 && reactionList.count > 1{
 
                     if let dict2 = reactionData[1] as? NSDictionary {
                         if let image2 = dict2["reaction_type"] as? Int {

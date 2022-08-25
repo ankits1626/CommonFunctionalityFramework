@@ -52,7 +52,13 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         refreshControl.tintColor = .gray
         return refreshControl
     }()
-    
+    @IBOutlet weak var emptyViewContainer : UIView?
+    lazy private var emptyResultView: NoEntryViewController = {
+        return NoEntryViewController(
+            nibName: "NoEntryViewController",
+            bundle: Bundle(for: NoEntryViewController.self)
+        )
+    }()
     private var frc : NSFetchedResultsController<ManagedPost>?
     private var pollAnswerSubmitter : PollAnswerSubmitter?
     
@@ -135,15 +141,27 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                     self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
                     case .Success(let result):
-                        let resultData = result.fetchedRawFeeds as! NSDictionary
-                        
-                        if self?.selectedTabType == "received" {
-                            NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
-                                "show_approvals": resultData["show_approvals"], "approvals_count": resultData["approvals_count"]
-                            ])
+                        if let resultData = result.fetchedRawFeeds as? NSDictionary {
+                            if self?.selectedTabType == "received" {
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
+                                    "show_approvals": resultData["show_approvals"], "approvals_count": resultData["approvals_count"]
+                                ])
+                            }
+                            if let resultCount = resultData["count"] as? Int  {
+                                if resultCount == 0 {
+                                    var emptyMessage : String!
+                                    emptyMessage = "No Records Found!"
+                                    self?.emptyResultView.showEmptyMessageView(
+                                        message: emptyMessage,
+                                        parentView: self!.emptyViewContainer!,
+                                        parentViewController: self!
+                                    )
+                                }else{
+                                    self?.emptyResultView.hideEmptyMessageView()
+                                }
+                            }
+                            
                         }
-                        
-                        
                         self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     case .SuccessWithNoResponseData:
                         ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
@@ -286,10 +304,10 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
                             CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                                 let post = ((feed as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
                                 if let likesResult =  result as? NSDictionary {
+                                    post?.numberOfLikes = likesResult["count"] as? Int64 ?? 0
                                     if let dataVal = likesResult["post_reactions"] as? NSArray {
                                         post?.reactionTypesData =  dataVal
                                         post?.messageType = Int64(likesResult.object(forKey: "reaction_type") as? Int ?? -1)
-                                        post?.numberOfLikes = Int64(dataVal.count)
                                     }
                                 }
                                 CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {

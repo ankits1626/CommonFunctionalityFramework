@@ -178,8 +178,8 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
         reactionType = rawFeedDictionary["user_reaction_type"] as? Int64 ?? -1 // -1 indicates no reaction
         
-        if let likesCount = rawFeedDictionary["reaction_type"] as? NSArray{
-            numberOfLikes = Int64(likesCount.count)
+        if let likesCount = rawFeedDictionary["appreciation_count"] as? Int64{
+            numberOfLikes = likesCount
         }else {
             numberOfLikes = 0
         }

@@ -82,6 +82,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         commentBarView?.requestCoordinator = requestCoordinator
         commentBarView?.mediaFetcher = mediaFetcher
         commentBarView?.setupUserProfile()
+        commentBarView?.backgroundColor = .white
 //        commentBarView?.leftUserImg.image = UIImage(named: "")
     }
     
@@ -431,10 +432,10 @@ extension FeedsDetailViewController : FeedsDelegate{
                             CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                                 let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
                                                             if let likesResult =  result as? NSDictionary {
+                                                                post.numberOfLikes = likesResult["count"] as? Int64 ?? 0
                                                                 if let dataVal = likesResult["post_reactions"] as? NSArray {
                                                                     post.reactionTypesData =  dataVal
                                                                     post.messageType = Int64(likesResult.object(forKey: "reaction_type") as? Int ?? -1)
-                                                                    post.numberOfLikes = Int64(dataVal.count)
                                                                 }
                                                             }
                                                             CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
