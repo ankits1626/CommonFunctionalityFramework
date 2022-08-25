@@ -76,6 +76,12 @@
                         <constraint firstAttribute="bottom" secondItem="Afc-FB-r6e" secondAttribute="bottom" constant="5" id="v7S-Wt-gkp"/>
                         <constraint firstItem="Afc-FB-r6e" firstAttribute="top" secondItem="pDx-RX-Hx7" secondAttribute="top" constant="5" id="vfn-YT-evM"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="eDb-F4-4Cl" userLabel="blue view">
                     <rect key="frame" x="0.0" y="111" width="40" height="44"/>
@@ -121,6 +127,12 @@
                         <constraint firstItem="osq-Ai-iT7" firstAttribute="centerX" secondItem="3Y3-rn-5QX" secondAttribute="centerX" id="Xjw-bm-Bse"/>
                         <constraint firstAttribute="width" constant="44" id="jpC-di-cUz"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7p-o2-Cdv" userLabel="attachmentContainer">
                     <rect key="frame" x="0.0" y="0.0" width="405" height="0.0"/>
