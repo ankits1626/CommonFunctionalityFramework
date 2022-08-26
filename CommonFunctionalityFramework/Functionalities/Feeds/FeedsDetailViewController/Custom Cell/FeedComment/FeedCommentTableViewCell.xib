@@ -151,7 +151,7 @@
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Kk-Di-qVa" userLabel="like button continer">
                                                         <rect key="frame" x="0.0" y="171" width="315" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HF8-IG-Dwm" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HF8-IG-Dwm" customClass="BlockButton" customModule="RewardzCommonComponents">
                                                                 <rect key="frame" x="12" y="2" width="22" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="22" id="Q6p-R9-2Ru"/>
