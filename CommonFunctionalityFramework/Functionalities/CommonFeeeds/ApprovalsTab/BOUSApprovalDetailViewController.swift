@@ -13,7 +13,7 @@ protocol PopToApprovals {
 }
 
 
-class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, PopToRootVc {
+class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, PopToRootVc, SelectAwardLevel {
     
     @IBOutlet weak var approvalTxt: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -31,7 +31,14 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var isComingFromNominationPage : Bool = false
     var delegate : PopToApprovals?
-
+    var selectedPrivacyvalue : Int = 20
+    var privacyName : String = "Public"
+    var privacyImage : String = "icon_public"
+    var awardImgUrl = ""
+    var awardTitle = ""
+    var awardPoints = ""
+    var selectedPk : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -83,6 +90,26 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let jsonData = try decoder.decode(BOUSApprovalsDetailData.self, from: data)
             
             jsonDataValues =  jsonData
+            if let awardId = jsonDataValues.nomination.category as? Int{
+                self.selectedPk = awardId
+                self.awardTitle = jsonDataValues.nomination.badges.name
+                self.awardPoints = "\(jsonDataValues.nomination.badges.award_points) Points"
+                self.awardImgUrl = jsonDataValues.nomination.badges.icon ?? ""
+            }
+
+            if let PrivacyType = jsonData.shared_with as? Int{
+                self.selectedPrivacyvalue = PrivacyType
+                if self.selectedPrivacyvalue == 20 {
+                    self.privacyName = "Public"
+                    self.privacyImage = "icon_public"
+                }else if self.selectedPrivacyvalue == 10 {
+                    self.privacyName = "Team"
+                    self.privacyImage = "icon_mydepartment"
+                }else {
+                    self.privacyName = "Private"
+                    self.privacyImage = "icon_private"
+                }
+            }
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -106,7 +133,11 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                 cell.leftName.text = "\(jsonDataValues.nomination.nominated_team_member.full_name)"
                 cell.rightName.text = "\(jsonDataValues.created_by_user_info.full_name)"
                 cell.dateLbl.text =  getCreationDate(jsonDate: jsonDataValues.created_on)
-                
+                let privacyTap = UITapGestureRecognizer(target: self, action: #selector(self.handlePrivacyTap(_:)))
+                cell.privacyTitle.text = self.privacyName
+                cell.privacyImg.image = UIImage(named: privacyImage)
+                cell.accessLevelTapped.addGestureRecognizer(privacyTap)
+                cell.accessLevelTapped.isUserInteractionEnabled = true
                 cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color,alpha:  0.1)
                 
                 if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String, leftImg.count > 0 {
@@ -140,10 +171,16 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         }else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! BOUSApprovalAwardLevelTableViewCell
             if jsonDataValues != nil {
-                cell.awardType.text = jsonDataValues.nomination.badges.name
-                cell.ptsLbl.text = "\(jsonDataValues.nomination.badges.award_points) Points"
-                mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: jsonDataValues.nomination.badges.icon ?? "")
+                cell.awardType.text = self.awardTitle
+                cell.ptsLbl.text = self.awardPoints
+                if self.awardImgUrl.contains("https://"){
+                    mediaFetcher.fetchImageAndLoad(cell.leftImg, imageWithCompleteURL: self.awardImgUrl)
+                }else {
+                    mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: self.awardImgUrl)
+                }
             }
+            let editAwardTap = UITapGestureRecognizer(target: self, action: #selector(self.handleEditAwardLevelTap(_:)))
+            cell.editBtn.addGestureRecognizer(editAwardTap)
             return cell
         }else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath) as! BOUSApprovalMessageTableViewCell
@@ -158,6 +195,36 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell5", for: indexPath)
             return cell
         }
+    }
+    
+    @objc func handlePrivacyTap(_ sender: UITapGestureRecognizer? = nil) {
+        let storyboard = UIStoryboard(name: "CommonFeeds", bundle: Bundle(for: CommonFeedsViewController.self))
+        let vc = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalPrivacyViewController") as! BOUSApprovalPrivacyViewController
+        vc.delegate = self
+        vc.selectedPrivacyPK = self.selectedPrivacyvalue
+        vc.modalPresentationStyle = .overCurrentContext
+        var topViewController = UIApplication.shared.keyWindow?.rootViewController
+        while topViewController?.presentedViewController != nil
+        {
+            topViewController = topViewController?.presentedViewController
+        }
+        topViewController?.present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func handleEditAwardLevelTap(_ sender: UITapGestureRecognizer? = nil) {
+        let storyboard = UIStoryboard(name: "CommonFeeds", bundle: Bundle(for: CommonFeedsViewController.self))
+        let vc = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalAwardViewController") as! BOUSApprovalAwardViewController
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.requestCoordinator = requestCoordinator
+        vc.userSelectedAwardPK = selectedPk
+        vc.mediaFetcher = mediaFetcher
+        vc.delegate = self
+        var topViewController = UIApplication.shared.keyWindow?.rootViewController
+        while topViewController?.presentedViewController != nil
+        {
+            topViewController = topViewController?.presentedViewController
+        }
+        topViewController?.present(vc, animated: false, completion: nil)
     }
     
     func getCreationDate(jsonDate: String) -> String? {
@@ -208,6 +275,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = true
+        vc.selectedPrivacyvalue = selectedPrivacyvalue
+        vc.selectedCategory = selectedPk!
         vc.delegate = self
         vc.modalPresentationStyle = .overCurrentContext
         var topViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -224,6 +293,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = false
+        vc.selectedPrivacyvalue = selectedPrivacyvalue
+        vc.selectedCategory = selectedPk!
         vc.delegate = self
         vc.modalPresentationStyle = .overCurrentContext
         var topViewController = UIApplication.shared.keyWindow?.rootViewController
@@ -243,5 +314,23 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         self.navigationController?.popViewController(animated: true)
     }
     
-    
+    func selectedAwardLevel(awardDataSelected : ApprovalAwardCategoryModel,selectedPointsPK : Int) {
+        self.awardTitle = awardDataSelected.name
+        self.awardPoints = "\(awardDataSelected.points) Points"
+        self.awardImgUrl = awardDataSelected.icon
+        self.selectedPk = awardDataSelected.pk
+        self.tableView.beginUpdates()
+        let indexPath = IndexPath(item: 2, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        self.tableView.endUpdates()
+    }
+}
+
+extension BOUSApprovalDetailViewController : ApprovalSelectedPrivacyType {
+    func postVisibility(selectedPrivacyPK: Int, selectedVisibilityName: String, selectedVisibilityIcon: String) {
+        self.selectedPrivacyvalue = selectedPrivacyPK
+        self.privacyName = selectedVisibilityName
+        self.privacyImage = selectedVisibilityIcon
+        self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+    }
 }

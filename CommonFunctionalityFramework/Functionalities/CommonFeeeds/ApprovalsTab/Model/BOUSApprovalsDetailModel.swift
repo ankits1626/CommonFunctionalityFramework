@@ -21,7 +21,7 @@ struct BOUSApprovalsDetailData: Decodable {
     let description : String
     let created_on : String
     let created_by_user_info : created_by_user_info
-    
+    let shared_with: Int
 }
 
 struct userStrength : Decodable {
@@ -40,10 +40,11 @@ struct nominationKey : Decodable {
     }
     let badges : badge
     let nominated_team_member : nominated_team_member
-    
+    let category : Int
 }
 
 struct badge : Decodable {
+    let id : Int
     let name: String
     let icon : String
     let award_points : String

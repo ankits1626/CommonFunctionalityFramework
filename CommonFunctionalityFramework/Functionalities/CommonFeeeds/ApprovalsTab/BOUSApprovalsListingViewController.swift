@@ -78,25 +78,31 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
             let decoder = JSONDecoder()
             let jsonData = try decoder.decode(BOUSApprovalData.self, from: data)
             jsonDataValues =  jsonData.results
-            if jsonDataValues.count == 0 {
+            if jsonDataValues.count == 0 && self.searchText == nil  {
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
                     "selectedTab" : "received"
                 ])
                 
                 return
             }
-            
-            
+
             DispatchQueue.main.async {
-                
                 if self.jsonDataValues.count > 1 {
                     self.approvalsCountLbl.text = "\(self.jsonDataValues.count) Approvals Pending"
                 }else {
                     self.approvalsCountLbl.text = "\(self.jsonDataValues.count) Approval Pending"
                 }
                 
-                self.approvalView.isHidden = false
-                self.selectAllView.isHidden = false
+                if self.searchText != nil {
+                    self.selectAllView.isHidden = true
+                    self.approvalView.isHidden = true
+                    self.selectAllViewHeightConstraint.constant = 0
+                    self.approvalsCountHolder.constant = 0
+                }else {
+                    self.approvalView.isHidden = false
+                    self.selectAllView.isHidden = false
+                }
+               
                 self.tableView.reloadData()
             }
         } catch {

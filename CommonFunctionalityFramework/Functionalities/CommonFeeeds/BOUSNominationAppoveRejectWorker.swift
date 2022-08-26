@@ -17,10 +17,11 @@ class BOUSNominationAppoveRejectWorker  {
     init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func postnomination(postId: Int, multipleNominations: String?, message: String?,approvalStatus: String, completionHandler: @escaping BOUSNominationAppoveRejectWorkerResultHandler) {
+    func postnomination(postId: Int, multipleNominations: String?, message: String?,approvalStatus: String,selectedPrivacyvalue : Int,
+                        selectedCategory: Int, completionHandler: @escaping BOUSNominationAppoveRejectWorkerResultHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
-                apiRequestProvider: BOUSNominationAppoveRejectRequestGenerator(feedIdentifier: postId, message: message, multipleNominations: multipleNominations, approvalStatus: approvalStatus, networkRequestCoordinator: networkRequestCoordinator),
+                apiRequestProvider: BOUSNominationAppoveRejectRequestGenerator(feedIdentifier: postId, message: message, multipleNominations: multipleNominations, approvalStatus: approvalStatus, selectedPrivacyvalue: selectedPrivacyvalue,selectedCategory: selectedCategory,  networkRequestCoordinator: networkRequestCoordinator),
                 dataParser: ReportAbuseDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
             )
@@ -39,12 +40,17 @@ class BOUSNominationAppoveRejectRequestGenerator: APIRequestGeneratorProtocol  {
     var message: String?
     var approvalStatus : String
     var multipleNominations: String?
-    init(feedIdentifier: Int, message: String?,multipleNominations: String?, approvalStatus: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    var selectedPrivacyvalue : Int
+    var selectedCategory: Int
+    init(feedIdentifier: Int, message: String?,multipleNominations: String?, approvalStatus: String, selectedPrivacyvalue : Int,
+    selectedCategory: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
         self.message = message
         self.approvalStatus = approvalStatus
         self.networkRequestCoordinator = networkRequestCoordinator
         self.multipleNominations = multipleNominations
+        self.selectedCategory = selectedCategory
+        self.selectedPrivacyvalue = selectedPrivacyvalue
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
     }
@@ -75,7 +81,7 @@ class BOUSNominationAppoveRejectRequestGenerator: APIRequestGeneratorProtocol  {
     
     private func prepareHttpBody() -> String{
         var params = ""
-        params = "comment=\(message ?? "")&approval_status=\(approvalStatus)" as String
+        params = "comment=\(message ?? "")&approval_status=\(approvalStatus)&shared_with=\(selectedPrivacyvalue)&category=\(selectedCategory)" as String
         return params
     }
 }
