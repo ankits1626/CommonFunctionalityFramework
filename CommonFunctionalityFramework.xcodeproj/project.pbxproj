@@ -63,6 +63,11 @@
 		0F94B75628890535003AC4C8 /* BOUSApprovalDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B75528890535003AC4C8 /* BOUSApprovalDescriptionTableViewCell.swift */; };
 		0F94B7582889054A003AC4C8 /* BOUSApprovalAwardLevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B7572889054A003AC4C8 /* BOUSApprovalAwardLevelTableViewCell.swift */; };
 		0F94B75A2889055B003AC4C8 /* BOUSApprovalMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B7592889055B003AC4C8 /* BOUSApprovalMessageTableViewCell.swift */; };
+		0F9C4A7328B79751000A99A2 /* BOUSApprovalPrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C4A7228B79751000A99A2 /* BOUSApprovalPrivacyViewController.swift */; };
+		0F9C4A7528B798EB000A99A2 /* BOUSApprovalPrivacyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C4A7428B798EB000A99A2 /* BOUSApprovalPrivacyTableViewCell.swift */; };
+		0F9C4A7728B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C4A7628B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift */; };
+		0F9C4A7928B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C4A7828B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift */; };
+		0F9C4A7B28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C4A7A28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift */; };
 		0FEB520E286C2BCA00BA8ACF /* ImageViewSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEB520D286C2BCA00BA8ACF /* ImageViewSectionCell.xib */; };
 		0FEB5210286C2C0B00BA8ACF /* ImageViewSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB520F286C2C0B00BA8ACF /* ImageViewSectionCell.swift */; };
 		0FEB5212286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB5211286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift */; };
@@ -381,6 +386,11 @@
 		0F94B75528890535003AC4C8 /* BOUSApprovalDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		0F94B7572889054A003AC4C8 /* BOUSApprovalAwardLevelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalAwardLevelTableViewCell.swift; sourceTree = "<group>"; };
 		0F94B7592889055B003AC4C8 /* BOUSApprovalMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalMessageTableViewCell.swift; sourceTree = "<group>"; };
+		0F9C4A7228B79751000A99A2 /* BOUSApprovalPrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalPrivacyViewController.swift; sourceTree = "<group>"; };
+		0F9C4A7428B798EB000A99A2 /* BOUSApprovalPrivacyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalPrivacyTableViewCell.swift; sourceTree = "<group>"; };
+		0F9C4A7628B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalAwardCategoryWorker.swift; sourceTree = "<group>"; };
+		0F9C4A7828B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalAwardViewController.swift; sourceTree = "<group>"; };
+		0F9C4A7A28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalAwardLevelCollectionViewCell.swift; sourceTree = "<group>"; };
 		0FEB520D286C2BCA00BA8ACF /* ImageViewSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewSectionCell.xib; sourceTree = "<group>"; };
 		0FEB520F286C2C0B00BA8ACF /* ImageViewSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSectionCell.swift; sourceTree = "<group>"; };
 		0FEB5211286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSectionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -835,6 +845,10 @@
 				0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */,
 				0FED7EEE287EB21800D490BB /* BOUSApproveRejectPopViewController.swift */,
 				0FED7EF6287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift */,
+				0F9C4A7228B79751000A99A2 /* BOUSApprovalPrivacyViewController.swift */,
+				0F9C4A7428B798EB000A99A2 /* BOUSApprovalPrivacyTableViewCell.swift */,
+				0F9C4A7828B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift */,
+				0F9C4A7A28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift */,
 			);
 			path = ApprovalsTab;
 			sourceTree = "<group>";
@@ -844,6 +858,7 @@
 			children = (
 				0FED7EF2287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift */,
 				0F94B75028883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift */,
+				0F9C4A7628B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -2226,6 +2241,7 @@
 				9872266824616BBE00809D7A /* ManagedPost+RawRepresentable.swift in Sources */,
 				980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */,
 				987D0BB42583DA58001A0F07 /* ASMentionPresenter.swift in Sources */,
+				0F9C4A7928B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift in Sources */,
 				BE66CCB628A659F700C7CE83 /* SelectPostTypeTableCellCordinator.swift in Sources */,
 				9868C047240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift in Sources */,
 				9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */,
@@ -2235,6 +2251,7 @@
 				987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */,
 				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
 				BE9E234A28AB92A700281F86 /* PostPollSelfBottomSheet.swift in Sources */,
+				0F9C4A7B28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift in Sources */,
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				BC37F29C288947020075E7CB /* FeedOrganisationDataManager.swift in Sources */,
@@ -2251,6 +2268,7 @@
 				BE66CCB928A65A0800C7CE83 /* SelectPostTypeTableViewCell.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
 				987D0BB32583DA58001A0F07 /* MockUserListProvider.swift in Sources */,
+				0F9C4A7528B798EB000A99A2 /* BOUSApprovalPrivacyTableViewCell.swift in Sources */,
 				98722683246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift in Sources */,
 				987D0BA92583DA58001A0F07 /* ASMention+Extensions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
@@ -2297,6 +2315,7 @@
 				9811DD02241A885F003B91FD /* PostCoordinator.swift in Sources */,
 				9868C0F22419488000B12321 /* FeedCommentTableViewCell.swift in Sources */,
 				BE66CCC328A6718C00C7CE83 /* FeedEcardCategoryWorker.swift in Sources */,
+				0F9C4A7328B79751000A99A2 /* BOUSApprovalPrivacyViewController.swift in Sources */,
 				9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */,
 				BE39BA4628A91856004ADA9E /* PostPollTopTableViewCellTableViewCell.swift in Sources */,
 				0F32908928898F65008BF09D /* BOUSNominationAppoveRejectWorker.swift in Sources */,
@@ -2313,6 +2332,7 @@
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
 				0F6021A52874150800D852BD /* CommonFeedDescriptionTableViewCell.swift in Sources */,
+				0F9C4A7728B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift in Sources */,
 				0F32906D28896689008BF09D /* BOUSReactionListTableViewCell.swift in Sources */,
 				BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */,
 				BE66CCC128A6701400C7CE83 /* FeedsEcardListResponseValues.swift in Sources */,

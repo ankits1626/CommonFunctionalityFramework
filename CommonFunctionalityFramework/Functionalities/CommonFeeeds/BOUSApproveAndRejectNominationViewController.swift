@@ -29,6 +29,8 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
     @IBOutlet weak var rejectText: UITextView!
     var multipleNomination = ""
     var delegate : PopToRootVc?
+    var selectedPrivacyvalue : Int = 0
+    var selectedCategory: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +84,7 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
     }
     
     func postToServer(approvalStatus: String, message: String?) {
-        BOUSNominationAppoveRejectWorker(networkRequestCoordinator: self.requestCoordinator).postnomination(postId: postId, multipleNominations: multipleNomination, message: message ?? "", approvalStatus: approvalStatus) { (result) in
+        BOUSNominationAppoveRejectWorker(networkRequestCoordinator: self.requestCoordinator).postnomination(postId: postId, multipleNominations: multipleNomination, message: message ?? "", approvalStatus: approvalStatus, selectedPrivacyvalue: selectedPrivacyvalue, selectedCategory: selectedCategory) { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(_):

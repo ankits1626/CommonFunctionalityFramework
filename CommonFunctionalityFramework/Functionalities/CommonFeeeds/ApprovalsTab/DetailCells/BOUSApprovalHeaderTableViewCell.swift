@@ -15,6 +15,8 @@ class BOUSApprovalHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var leftImg: UIImageView!
     @IBOutlet weak var leftName: UILabel!
     @IBOutlet weak var rightName: UILabel!
+    @IBOutlet weak var privacyImg: UIImageView!
+    @IBOutlet weak var privacyTitle: UILabel!
     @IBOutlet weak var rightImg: UIImageView!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var accessLevelTapped: UIStackView!
