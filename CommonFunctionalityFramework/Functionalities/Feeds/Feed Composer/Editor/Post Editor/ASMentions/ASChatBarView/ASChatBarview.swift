@@ -77,7 +77,7 @@ public class ASChatBarview : UIView {
     private let kAttachmentContainerTopInset : CGFloat = 5
     private let kAttachmentContainerBottomInset : CGFloat = 5
     private let kDefaultAttachmentContainerWidth : CGFloat = 44
-    private let kDefaultAttachmentContainerHeight  : CGFloat = 44
+    private let kDefaultAttachmentContainerHeight  : CGFloat = 84
     
     private lazy var attachmentHandler: AttachmentHandler = {
         return AttachmentHandler()
@@ -109,6 +109,9 @@ public class ASChatBarview : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonSetup()
+        leftContainerWidthConstraint?.constant = kDefaultAttachmentContainerWidth
+        leftContainerHeightConstraint?.constant = kDefaultAttachmentContainerHeight
+        heightConstraint?.constant = kDefaultAttachmentContainerHeight
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -385,8 +388,8 @@ extension ASChatBarview{
     private func removeAttachedImageView(){
         //attachedImageView.removeFromSuperview()
         leftContainerWidthConstraint?.constant = kDefaultAttachmentContainerWidth
-        leftContainerHeightConstraint?.constant = kDefaultAttachmentContainerHeight
-        heightConstraint?.constant = kDefaultAttachmentContainerHeight
+        leftContainerHeightConstraint?.constant = 44
+        heightConstraint?.constant = 44
     }
 
 }
