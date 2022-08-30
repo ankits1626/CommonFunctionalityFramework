@@ -137,7 +137,14 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                 cell.privacyTitle.text = self.privacyName
                 cell.privacyImg.image = UIImage(named: privacyImage)
                 cell.accessLevelTapped.addGestureRecognizer(privacyTap)
-                cell.accessLevelTapped.isUserInteractionEnabled = true
+                if isComingFromNominationPage {
+                    cell.accessLevelTapped.isUserInteractionEnabled = false
+                    cell.rightArrowImg.isHidden = true
+                }else {
+                    cell.accessLevelTapped.isUserInteractionEnabled = true
+                    cell.rightArrowImg.isHidden = false
+                }
+
                 cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color,alpha:  0.1)
                 
                 if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String, leftImg.count > 0 {
@@ -180,6 +187,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                 }
             }
             let editAwardTap = UITapGestureRecognizer(target: self, action: #selector(self.handleEditAwardLevelTap(_:)))
+            cell.editBtn.isHidden = isComingFromNominationPage
             cell.editBtn.addGestureRecognizer(editAwardTap)
             return cell
         }else if indexPath.row == 3 {
@@ -258,7 +266,9 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
             let vc = storyboard.instantiateViewController(withIdentifier: "BOUSAwardLevelProgressViewController") as! BOUSAwardLevelProgressViewController
             //self.navigationController?.pushViewController(controller, animated: true)
-            
+            vc.nominationId = jsonDataValues.nomination.id
+            vc.requestCoordinator = requestCoordinator
+            vc.mediaFetcher = mediaFetcher
             vc.modalPresentationStyle = .overCurrentContext
             var topViewController = UIApplication.shared.keyWindow?.rootViewController
             while topViewController?.presentedViewController != nil
