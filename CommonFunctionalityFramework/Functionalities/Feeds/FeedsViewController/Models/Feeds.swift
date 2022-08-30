@@ -20,6 +20,7 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getDepartmentName() -> String?
     func getfeedCreationDate() -> String?
     func getfeedCreationMonthYear() -> String?
+    func getAppreciationCreationMonthDate() -> String?
     func getIsEditActionAllowedOnFeedItem() -> Bool
     func getFeedTitle() -> String?
     func getFeedDescription() -> String?
@@ -428,6 +429,13 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         //hello
         if let rawDate = rawFeedDictionary["created_on"] as? String{
             return CommonFrameworkDateUtility.getDisplayedDateInFormatMMMYYYY(input: rawDate, dateFormat: "yyyy-MM-dd") ?? ""
+        }
+        return rawFeedDictionary["created_on"] as? String
+    }
+    
+    func getAppreciationCreationMonthDate() -> String? {
+        if let rawDate = rawFeedDictionary["created_on"] as? String{
+            return CommonFrameworkDateUtility.getDisplayedDateInFormatMMMDD(input: rawDate, dateFormat: "yyyy-MM-dd") ?? ""
         }
         return rawFeedDictionary["created_on"] as? String
     }

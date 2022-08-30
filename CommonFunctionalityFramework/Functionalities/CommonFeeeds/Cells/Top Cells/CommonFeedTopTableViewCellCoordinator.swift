@@ -55,7 +55,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                 }
             }
             
-            cell.dateLabel?.text = feed.getfeedCreationMonthYear()
+            cell.dateLabel?.text = feed.getAppreciationCreationMonthDate()
             if !inputModel.datasource.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true
             }else{

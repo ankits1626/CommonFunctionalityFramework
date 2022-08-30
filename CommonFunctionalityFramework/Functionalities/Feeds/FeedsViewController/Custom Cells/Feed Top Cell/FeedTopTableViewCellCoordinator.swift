@@ -93,9 +93,9 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.departmentName?.text = feed.getDepartmentName()
             cell.departmentName?.font = UIFont.Caption1
             cell.departmentName?.textColor = UIColor.getSubTitleTextColor()
-            cell.dateLabel?.text = feed.getfeedCreationMonthYear()
-            cell.dateLabel?.font = UIFont.Caption1
-            cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
+            cell.dateLabel?.text = feed.getAppreciationCreationMonthDate()
+            //cell.dateLabel?.font = UIFont.Caption1
+            //cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
                 cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
                 cell.containerView?.addBorders(edges: [.top, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)

@@ -128,7 +128,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         }
         cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) points"
         cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
-        cell.userStrengthDescription.text = "\(dataValue.nomination.user_strength.message)"
+        cell.userStrengthDescription.text = "\(dataValue.description)"
         cell.usrImg.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         if isSelectedAll {
             if selectedDataArray[indexPath.row] == dataValue.nomination.id {

@@ -19,6 +19,7 @@ class BOUSApprovalHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var privacyTitle: UILabel!
     @IBOutlet weak var rightImg: UIImageView!
     @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var rightArrowImg: UIImageView!
     @IBOutlet weak var accessLevelTapped: UIStackView!
     override func awakeFromNib() {
         super.awakeFromNib()
