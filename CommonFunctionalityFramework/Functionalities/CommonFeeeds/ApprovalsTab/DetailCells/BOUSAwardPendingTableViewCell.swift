@@ -13,6 +13,7 @@ class BOUSAwardPendingTableViewCell: UITableViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var department: UILabel!
+    @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var status: UILabel!
     
     override func awakeFromNib() {

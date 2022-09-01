@@ -1042,7 +1042,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Award History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxZ-cR-Due">
-                                                    <rect key="frame" x="20" y="11" width="100" height="17"/>
+                                                    <rect key="frame" x="20" y="14" width="100" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="Rvj-Aq-wAy"/>
                                                     </constraints>
@@ -1050,7 +1050,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bousProfileRightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="bvp-7O-Ryh">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_rightarrow_gray" translatesAutoresizingMaskIntoConstraints="NO" id="bvp-7O-Ryh">
                                                     <rect key="frame" x="384" y="14" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="yUS-Nh-uEY"/>
@@ -1062,7 +1062,7 @@
                                                 <constraint firstItem="zxZ-cR-Due" firstAttribute="leading" secondItem="zrV-PZ-iLk" secondAttribute="leading" constant="20" id="aU0-Ov-app"/>
                                                 <constraint firstItem="bvp-7O-Ryh" firstAttribute="top" secondItem="zrV-PZ-iLk" secondAttribute="top" constant="14" id="dCF-Pn-kFs"/>
                                                 <constraint firstAttribute="trailing" secondItem="bvp-7O-Ryh" secondAttribute="trailing" constant="14" id="nsc-sj-c2U"/>
-                                                <constraint firstItem="zxZ-cR-Due" firstAttribute="top" secondItem="zrV-PZ-iLk" secondAttribute="top" constant="11" id="wdh-N8-MlY"/>
+                                                <constraint firstItem="zxZ-cR-Due" firstAttribute="top" secondItem="zrV-PZ-iLk" secondAttribute="top" constant="14" id="wdh-N8-MlY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1939,16 +1939,16 @@ nominations?</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="approverLine_1" translatesAutoresizingMaskIntoConstraints="NO" id="fb8-BA-oma">
-                                                            <rect key="frame" x="21" y="17" width="28" height="88"/>
+                                                            <rect key="frame" x="29" y="17" width="13" height="88"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="28" id="f1E-Wi-BNa"/>
+                                                                <constraint firstAttribute="width" constant="13" id="f1E-Wi-BNa"/>
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQm-XE-SJN">
                                                             <rect key="frame" x="51" y="11" width="343" height="86"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nomination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwJ-FN-cwU">
-                                                                    <rect key="frame" x="8" y="8" width="69.5" height="21"/>
+                                                                    <rect key="frame" x="12" y="8" width="69.5" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="LCD-qY-rOX"/>
                                                                     </constraints>
@@ -1957,14 +1957,20 @@ nominations?</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_user_image_profilepage" translatesAutoresizingMaskIntoConstraints="NO" id="22w-wz-aXW">
-                                                                    <rect key="frame" x="8" y="35" width="36" height="36"/>
+                                                                    <rect key="frame" x="12" y="35" width="36" height="36"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="36" id="5ao-4N-ajd"/>
                                                                         <constraint firstAttribute="height" constant="36" id="vn5-au-ZpP"/>
                                                                     </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="8"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton nominated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHc-ha-T1h">
-                                                                    <rect key="frame" x="52" y="30" width="168" height="21"/>
+                                                                    <rect key="frame" x="56" y="30" width="168" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="lrM-sk-6jJ"/>
                                                                     </constraints>
@@ -1973,7 +1979,7 @@ nominations?</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="jOZ-Rm-Fwl">
-                                                                    <rect key="frame" x="52" y="55" width="97.5" height="16"/>
+                                                                    <rect key="frame" x="56" y="55" width="97.5" height="16"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Jane Cooper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVa-2i-3xi">
                                                                             <rect key="frame" x="0.0" y="0.0" width="97.5" height="16"/>
@@ -1996,27 +2002,33 @@ nominations?</string>
                                                             <color key="backgroundColor" red="0.96078401800000002" green="0.97254925969999995" blue="0.99999946360000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="Scr-7J-3KA" secondAttribute="trailing" constant="8.5" id="0pD-yS-Kq8"/>
-                                                                <constraint firstItem="22w-wz-aXW" firstAttribute="leading" secondItem="fQm-XE-SJN" secondAttribute="leading" constant="8" id="9i3-dD-KAi"/>
+                                                                <constraint firstItem="22w-wz-aXW" firstAttribute="leading" secondItem="fQm-XE-SJN" secondAttribute="leading" constant="12" id="9i3-dD-KAi"/>
                                                                 <constraint firstItem="AHc-ha-T1h" firstAttribute="top" secondItem="qwJ-FN-cwU" secondAttribute="bottom" constant="1" id="Kob-IA-abr"/>
                                                                 <constraint firstItem="qwJ-FN-cwU" firstAttribute="top" secondItem="fQm-XE-SJN" secondAttribute="top" constant="8" id="b0e-dd-wGH"/>
                                                                 <constraint firstItem="22w-wz-aXW" firstAttribute="top" secondItem="qwJ-FN-cwU" secondAttribute="bottom" constant="6" id="cc8-r0-nKk"/>
                                                                 <constraint firstItem="AHc-ha-T1h" firstAttribute="leading" secondItem="22w-wz-aXW" secondAttribute="trailing" constant="8" symbolic="YES" id="dSA-Hd-JeF"/>
-                                                                <constraint firstItem="qwJ-FN-cwU" firstAttribute="leading" secondItem="fQm-XE-SJN" secondAttribute="leading" constant="8" id="i5U-rn-d4l"/>
+                                                                <constraint firstItem="qwJ-FN-cwU" firstAttribute="leading" secondItem="fQm-XE-SJN" secondAttribute="leading" constant="12" id="i5U-rn-d4l"/>
                                                                 <constraint firstItem="jOZ-Rm-Fwl" firstAttribute="top" secondItem="AHc-ha-T1h" secondAttribute="bottom" constant="4" id="pDX-ks-0Uh"/>
                                                                 <constraint firstItem="jOZ-Rm-Fwl" firstAttribute="leading" secondItem="22w-wz-aXW" secondAttribute="trailing" constant="8" symbolic="YES" id="qTm-Io-ehW"/>
                                                                 <constraint firstItem="Scr-7J-3KA" firstAttribute="top" secondItem="fQm-XE-SJN" secondAttribute="top" constant="11" id="xrN-P0-dvs"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="fb8-BA-oma" secondAttribute="bottom" constant="1" id="2V6-wt-w7M"/>
                                                         <constraint firstItem="fQm-XE-SJN" firstAttribute="leading" secondItem="pKU-kD-csW" secondAttribute="leading" constant="51" id="PpZ-ek-pjk"/>
                                                         <constraint firstAttribute="bottom" secondItem="fQm-XE-SJN" secondAttribute="bottom" constant="9" id="QZh-gi-5UB"/>
-                                                        <constraint firstItem="fQm-XE-SJN" firstAttribute="leading" secondItem="fb8-BA-oma" secondAttribute="trailing" constant="2" id="YKn-Nu-UCn"/>
+                                                        <constraint firstItem="fQm-XE-SJN" firstAttribute="leading" secondItem="fb8-BA-oma" secondAttribute="trailing" constant="9" id="YKn-Nu-UCn"/>
                                                         <constraint firstItem="fb8-BA-oma" firstAttribute="top" secondItem="pKU-kD-csW" secondAttribute="top" constant="17" id="cwx-eh-gSw"/>
                                                         <constraint firstAttribute="trailing" secondItem="fQm-XE-SJN" secondAttribute="trailing" constant="20" symbolic="YES" id="dA8-nv-7Kh"/>
                                                         <constraint firstItem="fQm-XE-SJN" firstAttribute="top" secondItem="pKU-kD-csW" secondAttribute="top" constant="11" id="oCd-0u-akK"/>
-                                                        <constraint firstItem="fb8-BA-oma" firstAttribute="leading" secondItem="pKU-kD-csW" secondAttribute="leading" constant="21" id="xha-IS-VFe"/>
+                                                        <constraint firstItem="fb8-BA-oma" firstAttribute="leading" secondItem="pKU-kD-csW" secondAttribute="leading" constant="29" id="xha-IS-VFe"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2037,13 +2049,13 @@ nominations?</string>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FPf-xF-Uqk">
                                                             <rect key="frame" x="1" y="0.0" width="394" height="239"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="008-Jf-I4U">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="008-Jf-I4U">
                                                                     <rect key="frame" x="0.0" y="0.0" width="394" height="83"/>
                                                                     <subviews>
-                                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-dH-l2F">
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-dH-l2F">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="83"/>
                                                                             <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="approverLine_2" translatesAutoresizingMaskIntoConstraints="NO" id="z2a-3x-ols">
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="approverLine_2" translatesAutoresizingMaskIntoConstraints="NO" id="z2a-3x-ols">
                                                                                     <rect key="frame" x="28" y="-4" width="13" height="88"/>
                                                                                 </imageView>
                                                                             </subviews>
@@ -2054,11 +2066,11 @@ nominations?</string>
                                                                                 <constraint firstItem="z2a-3x-ols" firstAttribute="top" secondItem="SqZ-dH-l2F" secondAttribute="top" constant="-4" id="vP7-yr-sKS"/>
                                                                             </constraints>
                                                                         </view>
-                                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Up6-AX-VtA">
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Up6-AX-VtA">
                                                                             <rect key="frame" x="50" y="0.0" width="344" height="83"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 1 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t06-ij-rCb">
-                                                                                    <rect key="frame" x="8" y="2" width="44" height="21"/>
+                                                                                    <rect key="frame" x="8" y="6" width="44" height="21"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="21" id="NV8-LG-odU"/>
                                                                                     </constraints>
@@ -2067,14 +2079,20 @@ nominations?</string>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_user_image_profilepage" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-YT-IA3">
-                                                                                    <rect key="frame" x="8" y="32" width="36" height="36"/>
+                                                                                    <rect key="frame" x="8" y="34" width="36" height="36"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="36" id="918-Ph-DWK"/>
                                                                                         <constraint firstAttribute="width" constant="36" id="VLi-P7-WXv"/>
                                                                                     </constraints>
+                                                                                    <userDefinedRuntimeAttributes>
+                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                            <integer key="value" value="8"/>
+                                                                                        </userDefinedRuntimeAttribute>
+                                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                                    </userDefinedRuntimeAttributes>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton nominated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbP-H5-Nte">
-                                                                                    <rect key="frame" x="52" y="27" width="168" height="21"/>
+                                                                                    <rect key="frame" x="52" y="29" width="168" height="21"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="21" id="KIW-UJ-d59"/>
                                                                                     </constraints>
@@ -2090,7 +2108,7 @@ nominations?</string>
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="zCp-FK-Smw">
-                                                                                    <rect key="frame" x="52" y="47" width="54" height="16"/>
+                                                                                    <rect key="frame" x="52" y="49" width="54" height="16"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syJ-5P-PKF">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="54" height="16"/>
@@ -2104,38 +2122,39 @@ nominations?</string>
                                                                                     </constraints>
                                                                                 </stackView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9U-1d-BRq">
-                                                                                    <rect key="frame" x="282" y="2" width="54" height="16"/>
+                                                                                    <rect key="frame" x="282" y="8" width="54" height="16"/>
                                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX9-zt-SDT">
-                                                                                    <rect key="frame" x="282" y="31" width="46" height="21"/>
-                                                                                    <color key="backgroundColor" red="1" green="0.96470528840000003" blue="0.90588361019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX9-zt-SDT">
+                                                                                    <rect key="frame" x="266" y="33" width="70" height="28"/>
+                                                                                    <color key="backgroundColor" red="0.90196073060000004" green="0.9529411793" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                     <constraints>
-                                                                                        <constraint firstAttribute="height" constant="21" id="CeV-s3-bqI"/>
+                                                                                        <constraint firstAttribute="width" constant="70" id="BJZ-jS-yeF"/>
+                                                                                        <constraint firstAttribute="height" constant="28" id="CeV-s3-bqI"/>
                                                                                     </constraints>
                                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                                                                    <color key="textColor" red="1" green="0.64313725489999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <color key="textColor" red="0.4196078479" green="0.78431367870000002" blue="0.39607840779999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
                                                                             <color key="backgroundColor" red="0.96078401800000002" green="0.97254925969999995" blue="0.99999946360000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <constraints>
-                                                                                <constraint firstItem="PX9-zt-SDT" firstAttribute="top" secondItem="E9U-1d-BRq" secondAttribute="bottom" constant="13" id="2Ma-Ge-FHK"/>
+                                                                                <constraint firstItem="PX9-zt-SDT" firstAttribute="top" secondItem="E9U-1d-BRq" secondAttribute="bottom" constant="9" id="2Ma-Ge-FHK"/>
                                                                                 <constraint firstItem="zCp-FK-Smw" firstAttribute="leading" secondItem="gmx-YT-IA3" secondAttribute="trailing" constant="8" symbolic="YES" id="Arz-jC-CwF"/>
                                                                                 <constraint firstItem="OwU-l4-8vO" firstAttribute="leading" secondItem="Up6-AX-VtA" secondAttribute="leading" constant="8" id="Fpi-4A-Q9O"/>
                                                                                 <constraint firstItem="t06-ij-rCb" firstAttribute="leading" secondItem="Up6-AX-VtA" secondAttribute="leading" constant="8" id="HHz-3a-phV"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="PX9-zt-SDT" secondAttribute="trailing" constant="16" id="HJk-aL-yrM"/>
-                                                                                <constraint firstItem="OwU-l4-8vO" firstAttribute="top" secondItem="gmx-YT-IA3" secondAttribute="bottom" constant="12.5" id="JD2-At-VcF"/>
-                                                                                <constraint firstItem="E9U-1d-BRq" firstAttribute="top" secondItem="Up6-AX-VtA" secondAttribute="top" constant="2" id="Li2-zn-vmK"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="PX9-zt-SDT" secondAttribute="trailing" constant="8" id="HJk-aL-yrM"/>
+                                                                                <constraint firstItem="OwU-l4-8vO" firstAttribute="top" secondItem="gmx-YT-IA3" secondAttribute="bottom" constant="10.5" id="JD2-At-VcF"/>
+                                                                                <constraint firstItem="E9U-1d-BRq" firstAttribute="top" secondItem="Up6-AX-VtA" secondAttribute="top" constant="8" id="Li2-zn-vmK"/>
                                                                                 <constraint firstItem="gmx-YT-IA3" firstAttribute="leading" secondItem="Up6-AX-VtA" secondAttribute="leading" constant="8" id="arn-ro-raW"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="OwU-l4-8vO" secondAttribute="trailing" constant="7" id="bCB-ZH-Be2"/>
                                                                                 <constraint firstItem="AbP-H5-Nte" firstAttribute="leading" secondItem="gmx-YT-IA3" secondAttribute="trailing" constant="8" symbolic="YES" id="eUc-6y-Yw9"/>
-                                                                                <constraint firstItem="zCp-FK-Smw" firstAttribute="top" secondItem="t06-ij-rCb" secondAttribute="bottom" constant="24" id="eXc-Zz-jHZ"/>
-                                                                                <constraint firstItem="gmx-YT-IA3" firstAttribute="top" secondItem="t06-ij-rCb" secondAttribute="bottom" constant="9" id="pV7-pP-eve"/>
-                                                                                <constraint firstItem="t06-ij-rCb" firstAttribute="top" secondItem="Up6-AX-VtA" secondAttribute="top" constant="2" id="rc9-q6-bai"/>
-                                                                                <constraint firstItem="AbP-H5-Nte" firstAttribute="top" secondItem="t06-ij-rCb" secondAttribute="bottom" constant="4" id="tOg-8d-W86"/>
+                                                                                <constraint firstItem="zCp-FK-Smw" firstAttribute="top" secondItem="t06-ij-rCb" secondAttribute="bottom" constant="22" id="eXc-Zz-jHZ"/>
+                                                                                <constraint firstItem="gmx-YT-IA3" firstAttribute="top" secondItem="t06-ij-rCb" secondAttribute="bottom" constant="7" id="pV7-pP-eve"/>
+                                                                                <constraint firstItem="t06-ij-rCb" firstAttribute="top" secondItem="Up6-AX-VtA" secondAttribute="top" constant="6" id="rc9-q6-bai"/>
+                                                                                <constraint firstItem="AbP-H5-Nte" firstAttribute="top" secondItem="t06-ij-rCb" secondAttribute="bottom" constant="2" id="tOg-8d-W86"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="E9U-1d-BRq" secondAttribute="trailing" constant="8" id="xGb-nt-auV"/>
                                                                             </constraints>
                                                                         </view>
@@ -2144,13 +2163,13 @@ nominations?</string>
                                                                         <constraint firstItem="Up6-AX-VtA" firstAttribute="leading" secondItem="008-Jf-I4U" secondAttribute="leading" constant="50" id="N5q-Y1-M5V"/>
                                                                     </constraints>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfL-xa-6dG">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfL-xa-6dG">
                                                                     <rect key="frame" x="0.0" y="83" width="394" height="96"/>
                                                                     <subviews>
-                                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zRn-yL-guR">
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRn-yL-guR">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="96"/>
                                                                             <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="approverLine_3" translatesAutoresizingMaskIntoConstraints="NO" id="a9s-eL-sHi">
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="approverLine_3" translatesAutoresizingMaskIntoConstraints="NO" id="a9s-eL-sHi">
                                                                                     <rect key="frame" x="34" y="0.0" width="1" height="97"/>
                                                                                 </imageView>
                                                                             </subviews>
@@ -2158,11 +2177,11 @@ nominations?</string>
                                                                             <constraints>
                                                                                 <constraint firstItem="a9s-eL-sHi" firstAttribute="leading" secondItem="zRn-yL-guR" secondAttribute="leading" constant="34" id="1yF-yY-bW6"/>
                                                                                 <constraint firstItem="a9s-eL-sHi" firstAttribute="top" secondItem="zRn-yL-guR" secondAttribute="top" id="MNH-bs-cbC"/>
-                                                                                <constraint firstAttribute="bottom" secondItem="a9s-eL-sHi" secondAttribute="bottom" id="Qw3-3P-VO9"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="a9s-eL-sHi" secondAttribute="bottom" constant="-1" id="Qw3-3P-VO9"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="a9s-eL-sHi" secondAttribute="trailing" constant="15" id="f8P-9q-Dz2"/>
                                                                             </constraints>
                                                                         </view>
-                                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S8j-TR-Njj">
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8j-TR-Njj">
                                                                             <rect key="frame" x="50" y="0.0" width="344" height="96"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-E9-Syc">
@@ -2245,7 +2264,7 @@ nominations?</string>
                                                                             <rect key="frame" x="50" y="0.0" width="344" height="60"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfd-dJ-Pxy">
-                                                                                    <rect key="frame" x="8" y="5" width="43" height="14.5"/>
+                                                                                    <rect key="frame" x="8" y="16" width="43" height="14.5"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="14.5" id="UQc-Ty-1YY"/>
                                                                                     </constraints>
@@ -2253,8 +2272,15 @@ nominations?</string>
                                                                                     <color key="textColor" red="0.082352928820000004" green="0.082352928820000004" blue="0.082352928820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
+                                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0O-6N-2SH">
+                                                                                    <rect key="frame" x="0.0" y="5" width="329" height="1"/>
+                                                                                    <color key="backgroundColor" red="0.92941129209999995" green="0.94117671250000001" blue="0.99999898669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="height" constant="1" id="CC5-0H-myJ"/>
+                                                                                    </constraints>
+                                                                                </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdP-TV-F4W">
-                                                                                    <rect key="frame" x="8" y="26.5" width="49" height="14.5"/>
+                                                                                    <rect key="frame" x="8" y="37.5" width="49" height="14.5"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="14.5" id="URm-aE-7T4"/>
                                                                                     </constraints>
@@ -2263,7 +2289,7 @@ nominations?</string>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zq-oS-AoX">
-                                                                                    <rect key="frame" x="62" y="26.5" width="43" height="14.5"/>
+                                                                                    <rect key="frame" x="62" y="37.5" width="43" height="14.5"/>
                                                                                     <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="12"/>
                                                                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -2272,11 +2298,14 @@ nominations?</string>
                                                                             <color key="backgroundColor" red="0.96078401800000002" green="0.97254925969999995" blue="0.99999946360000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="RdP-TV-F4W" firstAttribute="top" secondItem="Xfd-dJ-Pxy" secondAttribute="bottom" constant="7" id="CCF-NV-jhn"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="M0O-6N-2SH" secondAttribute="trailing" constant="15" id="GGb-ge-oeu"/>
                                                                                 <constraint firstItem="5Zq-oS-AoX" firstAttribute="centerY" secondItem="RdP-TV-F4W" secondAttribute="centerY" id="GYm-N9-xbj"/>
                                                                                 <constraint firstItem="5Zq-oS-AoX" firstAttribute="leading" secondItem="RdP-TV-F4W" secondAttribute="trailing" constant="5" id="RVc-vI-HUe"/>
+                                                                                <constraint firstItem="M0O-6N-2SH" firstAttribute="leading" secondItem="cwY-pd-kEC" secondAttribute="leading" id="U42-tD-F18"/>
+                                                                                <constraint firstItem="M0O-6N-2SH" firstAttribute="top" secondItem="cwY-pd-kEC" secondAttribute="top" constant="5" id="fJN-1V-gJm"/>
                                                                                 <constraint firstItem="Xfd-dJ-Pxy" firstAttribute="leading" secondItem="cwY-pd-kEC" secondAttribute="leading" constant="8" id="hRk-fr-cuP"/>
                                                                                 <constraint firstItem="RdP-TV-F4W" firstAttribute="leading" secondItem="cwY-pd-kEC" secondAttribute="leading" constant="8" id="hi8-cA-q0h"/>
-                                                                                <constraint firstItem="Xfd-dJ-Pxy" firstAttribute="top" secondItem="cwY-pd-kEC" secondAttribute="top" constant="5" id="msj-GT-YrH"/>
+                                                                                <constraint firstItem="Xfd-dJ-Pxy" firstAttribute="top" secondItem="cwY-pd-kEC" secondAttribute="top" constant="16" id="msj-GT-YrH"/>
                                                                             </constraints>
                                                                         </view>
                                                                     </subviews>
@@ -2286,10 +2315,19 @@ nominations?</string>
                                                                 </stackView>
                                                             </subviews>
                                                         </stackView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Linefiller" translatesAutoresizingMaskIntoConstraints="NO" id="PLA-5E-Abk">
+                                                            <rect key="frame" x="35" y="239" width="1" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="15" id="nLJ-30-6Vh"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="PLA-5E-Abk" secondAttribute="bottom" id="4Vq-7N-ni3"/>
+                                                        <constraint firstItem="PLA-5E-Abk" firstAttribute="top" secondItem="FPf-xF-Uqk" secondAttribute="bottom" id="6Hb-Lu-cGm"/>
                                                         <constraint firstItem="FPf-xF-Uqk" firstAttribute="top" secondItem="Us1-oT-wwA" secondAttribute="top" id="Gla-sg-vbK"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="FPf-xF-Uqk" secondAttribute="trailing" constant="-1" id="K02-fd-4Ki"/>
+                                                        <constraint firstItem="PLA-5E-Abk" firstAttribute="leading" secondItem="Us1-oT-wwA" secondAttribute="leading" constant="35" id="OLS-84-DvI"/>
                                                         <constraint firstItem="FPf-xF-Uqk" firstAttribute="leading" secondItem="Us1-oT-wwA" secondAttribute="leadingMargin" constant="-19" id="Sc8-O9-DLx"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="FPf-xF-Uqk" secondAttribute="bottom" constant="4" id="lMo-Mx-Mlw"/>
                                                     </constraints>
@@ -2329,7 +2367,7 @@ nominations?</string>
                                                             <rect key="frame" x="49" y="0.0" width="345" height="88"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 1 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5Q-da-nrc">
-                                                                    <rect key="frame" x="8" y="8" width="44" height="21"/>
+                                                                    <rect key="frame" x="12" y="8" width="44" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="Xlc-7r-yzc"/>
                                                                     </constraints>
@@ -2338,14 +2376,20 @@ nominations?</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_user_image_profilepage" translatesAutoresizingMaskIntoConstraints="NO" id="j1D-WN-pMl">
-                                                                    <rect key="frame" x="8" y="35" width="36" height="36"/>
+                                                                    <rect key="frame" x="13" y="35" width="36" height="36"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="36" id="1cy-XH-8RF"/>
                                                                         <constraint firstAttribute="height" constant="36" id="S9X-d1-ClX"/>
                                                                     </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="8"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issac Norton nominated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ym-Xb-k7R">
-                                                                    <rect key="frame" x="52" y="30" width="196" height="21"/>
+                                                                    <rect key="frame" x="57" y="30" width="196" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="7dn-ae-MpJ"/>
                                                                         <constraint firstAttribute="width" constant="196" id="DDb-Lw-qAE"/>
@@ -2354,18 +2398,8 @@ nominations?</string>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wiv-cH-b75">
-                                                                    <rect key="frame" x="291" y="8" width="46" height="21"/>
-                                                                    <color key="backgroundColor" red="1" green="0.96470528840000003" blue="0.90588361019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="21" id="6U9-V9-eO6"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                                                    <color key="textColor" red="1" green="0.64313725489999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="uCH-1T-kDn">
-                                                                    <rect key="frame" x="52" y="55" width="54" height="16"/>
+                                                                    <rect key="frame" x="57" y="55" width="54" height="16"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adR-41-pWc">
                                                                             <rect key="frame" x="0.0" y="0.0" width="54" height="16"/>
@@ -2378,21 +2412,39 @@ nominations?</string>
                                                                         <constraint firstAttribute="height" constant="16" id="VYv-Ht-6jp"/>
                                                                     </constraints>
                                                                 </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wiv-cH-b75">
+                                                                    <rect key="frame" x="267" y="43" width="70" height="28"/>
+                                                                    <color key="backgroundColor" red="1" green="0.96470528840000003" blue="0.90588361019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="28" id="6U9-V9-eO6"/>
+                                                                        <constraint firstAttribute="width" constant="70" id="V0E-pw-P1A"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                                                    <color key="textColor" red="1" green="0.64313725489999995" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.96078401800000002" green="0.97254925969999995" blue="0.99999946360000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="uCH-1T-kDn" firstAttribute="top" secondItem="1Ym-Xb-k7R" secondAttribute="bottom" constant="4" id="093-w4-Bei"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Wiv-cH-b75" secondAttribute="trailing" constant="8" id="AuK-WL-WPs"/>
                                                                 <constraint firstItem="1Ym-Xb-k7R" firstAttribute="leading" secondItem="j1D-WN-pMl" secondAttribute="trailing" constant="8" symbolic="YES" id="Csd-1K-dMK"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Wiv-cH-b75" secondAttribute="bottom" constant="17" id="Eqr-Oc-abA"/>
                                                                 <constraint firstItem="1Ym-Xb-k7R" firstAttribute="top" secondItem="y5Q-da-nrc" secondAttribute="bottom" constant="1" id="Jm4-S7-nc9"/>
-                                                                <constraint firstItem="y5Q-da-nrc" firstAttribute="leading" secondItem="Nwi-7b-RPa" secondAttribute="leading" constant="8" id="T6f-c7-6zp"/>
+                                                                <constraint firstItem="y5Q-da-nrc" firstAttribute="leading" secondItem="Nwi-7b-RPa" secondAttribute="leading" constant="12" id="T6f-c7-6zp"/>
                                                                 <constraint firstAttribute="height" constant="88" id="aGQ-jG-v0G"/>
                                                                 <constraint firstItem="uCH-1T-kDn" firstAttribute="leading" secondItem="j1D-WN-pMl" secondAttribute="trailing" constant="8" symbolic="YES" id="gqN-kb-Cv1"/>
-                                                                <constraint firstItem="j1D-WN-pMl" firstAttribute="leading" secondItem="Nwi-7b-RPa" secondAttribute="leading" constant="8" id="hh2-lQ-fTZ"/>
+                                                                <constraint firstItem="j1D-WN-pMl" firstAttribute="leading" secondItem="Nwi-7b-RPa" secondAttribute="leading" constant="13" id="hh2-lQ-fTZ"/>
                                                                 <constraint firstItem="j1D-WN-pMl" firstAttribute="top" secondItem="y5Q-da-nrc" secondAttribute="bottom" constant="6" id="kzJ-Ws-JJC"/>
-                                                                <constraint firstItem="Wiv-cH-b75" firstAttribute="top" secondItem="Nwi-7b-RPa" secondAttribute="top" constant="8" id="tV3-pG-aPe"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Wiv-cH-b75" secondAttribute="trailing" constant="8" id="vcv-Bv-Ur0"/>
                                                                 <constraint firstItem="y5Q-da-nrc" firstAttribute="top" secondItem="Nwi-7b-RPa" secondAttribute="top" constant="8" id="vga-H0-vNl"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
@@ -2406,6 +2458,7 @@ nominations?</string>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="department" destination="adR-41-pWc" id="jCN-TZ-edg"/>
+                                                    <outlet property="holderView" destination="Nwi-7b-RPa" id="B4J-Ne-55W"/>
                                                     <outlet property="levelTitle" destination="y5Q-da-nrc" id="I4f-0X-P5M"/>
                                                     <outlet property="status" destination="Wiv-cH-b75" id="phn-Ft-Ibm"/>
                                                     <outlet property="userImg" destination="j1D-WN-pMl" id="LoA-KS-oEd"/>
@@ -2454,6 +2507,7 @@ nominations?</string>
                             <constraint firstItem="rwq-Zi-5Hi" firstAttribute="top" secondItem="IVw-cb-aSN" secondAttribute="top" id="1eP-pO-yew"/>
                             <constraint firstAttribute="bottom" secondItem="rwq-Zi-5Hi" secondAttribute="bottom" id="6mC-BW-Ru5"/>
                             <constraint firstAttribute="bottom" secondItem="2eb-s1-sjO" secondAttribute="bottom" id="CUe-Lk-Xkq"/>
+                            <constraint firstItem="2eb-s1-sjO" firstAttribute="top" secondItem="OPB-2q-C8T" secondAttribute="top" constant="135" id="LKc-oB-2OY"/>
                             <constraint firstItem="rwq-Zi-5Hi" firstAttribute="leading" secondItem="OPB-2q-C8T" secondAttribute="leading" id="T5o-ZC-YU6"/>
                             <constraint firstItem="2eb-s1-sjO" firstAttribute="leading" secondItem="OPB-2q-C8T" secondAttribute="leading" id="YP6-nn-qar"/>
                             <constraint firstItem="2eb-s1-sjO" firstAttribute="trailing" secondItem="OPB-2q-C8T" secondAttribute="trailing" id="kdo-kc-jgg"/>
@@ -2710,10 +2764,10 @@ nominations?</string>
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bug-LV-oSQ">
-                                                            <rect key="frame" x="60" y="41" width="64.5" height="16"/>
+                                                            <rect key="frame" x="60" y="41" width="68.5" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1h-7C-jLg">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="64.5" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="68.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -2908,22 +2962,22 @@ nominations?</string>
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="WyP-4E-k5G">
-                                                            <rect key="frame" x="60" y="31" width="178" height="16"/>
+                                                            <rect key="frame" x="60" y="31" width="186" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Jane Cooper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwr-EK-T1k">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="94" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="97.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dot" translatesAutoresizingMaskIntoConstraints="NO" id="nX8-uw-zRv">
-                                                                    <rect key="frame" x="97" y="0.0" width="8" height="16"/>
+                                                                    <rect key="frame" x="100.5" y="0.0" width="8" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="8" id="xfh-At-iI4"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jI0-h7-lcW">
-                                                                    <rect key="frame" x="108" y="0.0" width="70" height="16"/>
+                                                                    <rect key="frame" x="111.5" y="0.0" width="74.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -3671,20 +3725,20 @@ nominations?</string>
     </scenes>
     <designables>
         <designable name="6c4-PV-ghr">
-            <size key="intrinsicContentSize" width="946" height="16.5"/>
+            <size key="intrinsicContentSize" width="1003" height="17"/>
         </designable>
         <designable name="Bgg-eN-g5z"/>
         <designable name="X0m-7V-LTP">
-            <size key="intrinsicContentSize" width="946" height="16.5"/>
+            <size key="intrinsicContentSize" width="1003" height="17"/>
         </designable>
     </designables>
     <resources>
         <image name="Dot" width="3" height="3"/>
+        <image name="Linefiller" width="1" height="15"/>
         <image name="approverLine_1" width="13" height="88"/>
         <image name="approverLine_2" width="13" height="88"/>
         <image name="approverLine_3" width="1" height="97"/>
         <image name="approverLine_5" width="13" height="26"/>
-        <image name="bousProfileRightArrow" width="16" height="16"/>
         <image name="brand_br-telegram" width="24" height="24"/>
         <image name="cff_dummyProfile" width="30" height="30"/>
         <image name="design_so-pencil" width="22" height="22"/>
@@ -3702,6 +3756,7 @@ nominations?</string>
         <image name="icon_points-2" width="36" height="23"/>
         <image name="icon_public" width="32" height="32"/>
         <image name="icon_reportabouse" width="32" height="32"/>
+        <image name="icon_rightarrow_gray" width="16" height="16"/>
         <image name="icon_tick_round" width="24" height="24"/>
         <image name="interface_close-lg" width="22" height="22"/>
         <image name="no_user_image_profilepage" width="119" height="119"/>
