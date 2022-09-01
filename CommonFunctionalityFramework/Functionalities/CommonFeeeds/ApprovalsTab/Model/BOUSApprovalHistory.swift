@@ -15,7 +15,8 @@ struct BOUSApprovalHistory: Decodable {
 struct BOUSApprovalHistoryDataResponseValues : Decodable {
     let actor : actorDetails
     let action : String?
-   // let changes : changeDetails
+    let changes : changeDetails?
+    let timestamp : String?
 }
 
 struct actorDetails : Decodable {
@@ -27,5 +28,16 @@ struct actorDetails : Decodable {
 }
 
 struct changeDetails : Decodable {
-    let category: String
+    let badges: badgesChanges?
+    let shared_with: privacyChanges?
+}
+
+struct badgesChanges : Decodable {
+    let old_badge: String
+    let new_badge: String
+}
+
+struct privacyChanges : Decodable {
+    let old: String
+    let new: String
 }

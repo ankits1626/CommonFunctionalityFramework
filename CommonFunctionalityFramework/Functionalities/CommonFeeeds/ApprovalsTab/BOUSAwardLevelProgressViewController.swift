@@ -94,14 +94,82 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
         let dataValues = arrayHolder[indexPath.row]
         if dataValues.action == "created" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! BOUSAwardLevelNominationTableViewCell
-            return cell
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath)
-            return cell
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath)
+            cell.userName.text = dataValues.actor.first_name  + dataValues.actor.last_name
+            cell.department.text = dataValues.actor.department_name
+            if let Img = dataValues.actor.profile_pic_url as? String, Img.count > 0 {
+                 mediaFetcher.fetchImageAndLoad(cell.userImg, imageEndPoint: Img)
+            }else{
+                let fullName = dataValues.actor.first_name + dataValues.actor.last_name
+                cell.userImg.setImageForName(fullName, circular: false, textAttributes: nil)
+            }
+            
+            cell.date.text = getCreationDate(jsonDate: dataValues.timestamp ?? "")
+            
             return cell
         }
+        
+        if dataValues.action == "updated" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! BOUSAwardLevel1TableViewCell
+            cell.userName.text = dataValues.actor.first_name + dataValues.actor.last_name
+            cell.department.text = dataValues.actor.department_name
+            if dataValues.changes?.badges == nil {
+                cell.awardLevelStackView.isHidden = true
+            }else {
+                let attributedText = NSAttributedString(
+                    string: "\(dataValues.changes?.badges?.old_badge ?? "")",
+                    attributes: [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
+                )
+                cell.leftAwardLevel.attributedText = attributedText
+                cell.rightAwardLevel.text = " > " + "\(dataValues.changes?.badges?.new_badge ?? "")"
+            }
+            if dataValues.changes?.shared_with == nil {
+                cell.privacyLevelStackView.isHidden = true
+            }else {
+                let attributedText = NSAttributedString(
+                    string: "\(dataValues.changes?.shared_with?.old ?? "")",
+                    attributes: [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
+                )
+                cell.leftPrivacyLevel.attributedText = attributedText
+                cell.rightPrivacyLevel.text = " > " + "\(dataValues.changes?.shared_with?.new ?? "")"
+            }
+            
+            if let Img = dataValues.actor.profile_pic_url as? String, Img.count > 0 {
+                 mediaFetcher.fetchImageAndLoad(cell.userImg, imageEndPoint: Img)
+            }else{
+                let fullName = dataValues.actor.first_name + dataValues.actor.last_name
+                cell.userImg.setImageForName(fullName, circular: false, textAttributes: nil)
+            }
+            cell.date.text =  getCreationDate(jsonDate: dataValues.timestamp ?? "")
+
+            return cell
+        }
+        
+        if dataValues.action == nil {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! BOUSAwardPendingTableViewCell
+            cell.userName.text = dataValues.actor.first_name + dataValues.actor.last_name
+            cell.department.text = dataValues.actor.department_name
+            cell.holderView.layer.borderColor = #colorLiteral(red: 0.9248943925, green: 0.9362992644, blue: 0.9943410754, alpha: 1)
+            cell.holderView.layer.borderWidth = 1.0
+            cell.holderView.layer.cornerRadius = 8.0
+            if let Img = dataValues.actor.profile_pic_url as? String, Img.count > 0 {
+                 mediaFetcher.fetchImageAndLoad(cell.userImg, imageEndPoint: Img)
+            }else{
+                let fullName = dataValues.actor.first_name + dataValues.actor.last_name
+                cell.userImg.setImageForName(fullName, circular: false, textAttributes: nil)
+            }
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! BOUSAwardPendingTableViewCell
+            return cell
+        }
+    }
+    
+    func getCreationDate(jsonDate: String) -> String? {
+        if !jsonDate.isEmpty{
+            let dateInFormate = jsonDate.getdateFromStringFrom(dateFormat: "yyyy-MM-dd")
+            return "\(dateInFormate.monthName) \(dateInFormate.day)"
+        }
+        return ""
     }
 
 }
