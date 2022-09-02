@@ -17,6 +17,7 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var arrayHolder = [BOUSApprovalHistoryDataResponseValues]()
+    @IBOutlet weak var holderView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,8 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
         getHistory()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 400
+        self.holderView.layer.cornerRadius = 8.0
+        self.tableView.allowsSelection = false
     }
     
     func getHistory() {
@@ -112,6 +115,11 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! BOUSAwardLevel1TableViewCell
             cell.userName.text = dataValues.actor.first_name + dataValues.actor.last_name
             cell.department.text = dataValues.actor.department_name
+            if let level = dataValues.level as? Int{
+                cell.levelNumber.text = "Level \(level)"
+            }else {
+                cell.levelNumber.text = "Level"
+            }
             if dataValues.changes?.badges == nil {
                 cell.awardLevelStackView.isHidden = true
             }else {
@@ -156,6 +164,11 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
             }else{
                 let fullName = dataValues.actor.first_name + dataValues.actor.last_name
                 cell.userImg.setImageForName(fullName, circular: false, textAttributes: nil)
+            }
+            if let level = dataValues.level as? Int{
+                cell.levelTitle.text = "Level \(level)"
+            }else {
+                cell.levelTitle.text = "Level"
             }
             return cell
         }else {
