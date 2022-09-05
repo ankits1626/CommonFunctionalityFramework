@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FeedsComposerDrawerError {
-    static let UnableToGetTopViewController = NSError(
+public class FeedsComposerDrawerError {
+    public static let UnableToGetTopViewController = NSError(
         domain: "com.commonfunctionality.FeedsComposerDrawer",
         code: 1,
         userInfo: [NSLocalizedDescriptionKey: "Unable to get top view controller"]

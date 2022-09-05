@@ -15,7 +15,7 @@ struct InitFeedEditorLocalMediaCollectionCoordinatorModel {
     var postImageMapper : EditablePostMediaRepository
 }
 
-enum EditableMediaSection : Int, CaseIterable{
+public enum EditableMediaSection : Int, CaseIterable{
     case Local = 0
     case Remote
 }
