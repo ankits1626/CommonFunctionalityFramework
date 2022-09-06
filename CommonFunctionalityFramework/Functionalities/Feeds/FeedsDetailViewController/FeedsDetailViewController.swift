@@ -395,6 +395,66 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
+    func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
+        print(commentedByPk)
+        var numberofElementsEnabled : CGFloat = 0.0
+        let drawer = EditCommentDrawer(nibName: "EditCommentDrawer", bundle: Bundle(for: EditCommentDrawer.self))
+        drawer.bottomsheetdelegate = self
+        drawer.commentFeedIdentifier = commentIdentifier
+        drawer.chatMessage = chatMessage
+        if mainAppCoordinator?.getUserPK() == commentedByPk {
+            drawer.isEditEnabled = true
+            numberofElementsEnabled = numberofElementsEnabled + 1
+        }else{
+            drawer.isEditEnabled = false
+        }
+        
+        if mainAppCoordinator?.getUserPK() == commentedByPk || self.mainAppCoordinator?.isUserAllowedToCreatePoll() == true{
+            numberofElementsEnabled = numberofElementsEnabled + 1
+            drawer.isDeleteEnabled = true
+        }else{
+            drawer.isDeleteEnabled = false
+        }
+        do{
+            try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
+    }
+    
+    func deleteComment(commentIdentifier : Int64) {
+        CommentDeleteWorker(networkRequestCoordinator: self.requestCoordinator).deleteComment(commentIdentifier) { (result) in
+            switch result{
+            case .Success(result: _):
+                DispatchQueue.main.async {[weak self] in
+                    if let feedItem = self?.targetFeedItem{
+                        CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                            if let comment = self?.getLikeableComment(commentIdentifier: commentIdentifier){
+                                let commentonPost = comment.getManagedObject() as! ManagedPostComment
+                                CFFCoreDataManager.sharedInstance.manager.deleteManagedObject(managedObject: commentonPost, context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext)
+                                CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                    print("<<<<<<<<<<<<<poll deleted suceessfully")
+                                    CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                    DispatchQueue.main.async {
+                                        ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            case .SuccessWithNoResponseData:
+                fallthrough
+            case .Failure(error: _):
+                print("<<<<< Unable to delete post")
+            }
+        }
+    }
+    
+    
     func showPostReactions(feedIdentifier: Int64) {
         
     }
@@ -743,7 +803,9 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
             FeedCommentPostWorker(networkRequestCoordinator: requestCoordinator).postComment(
                 comment: PostbaleComment(
                     feedId: targetFeedItem.feedIdentifier,
-                    commentText: chatBar.taggedMessaged)) { (result) in
+                    commentText: chatBar.taggedMessaged),
+                isPostEditing: chatBar.isEditCommentEnabled,
+                commentID: chatBar.commentID) { (result) in
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
@@ -824,3 +886,21 @@ extension FeedsDetailViewController:  NSFetchedResultsControllerDelegate {
         feedDetailTableView?.endUpdates()
     }
 }
+extension FeedsDetailViewController : EditCommentTypeProtocol{
+    
+    func selectedFilterType(selectedType: EditCommentType, commentIdentifier: Int64, chatMessage: String) {
+        switch selectedType {
+        case .Edit:
+            commentBarView?.placeholder = ""
+            commentBarView?.isEditCommentEnabled = true
+            commentBarView?.commentID = commentIdentifier
+            ASMentionCoordinator.shared.getPresentableMentionText(chatMessage, completion: { (attr) in
+                commentBarView?.messageTextView?.attributedText = attr
+            })
+            commentBarView?.becomeFirstResponder()
+        case .Delete:
+            deleteComment(commentIdentifier: commentIdentifier)
+        }
+    }
+}
+

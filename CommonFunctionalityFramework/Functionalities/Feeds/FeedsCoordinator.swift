@@ -11,6 +11,7 @@ import UIKit
 public protocol CFFMainAppInformationCoordinator : class {
     func isUserAllowedToPostFeed() -> Bool
     func isUserAllowedToCreatePoll() -> Bool
+    func getUserPK() -> Int
 }
 
 
@@ -21,13 +22,15 @@ public struct GetFeedsViewModel{
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var shouldShowCreateButton : Bool = false
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool){
+    var isFeedLoadingFromProfilePage : Bool = false
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
         self.themeManager = themeManager
         self.mainAppCoordinator = mainAppCoordinator
         self.shouldShowCreateButton = shouldShowCreateButton
+        self.isFeedLoadingFromProfilePage = _isFeedLoadingFromProfilePage
     }
 }
 
@@ -51,6 +54,7 @@ public class FeedsCoordinator {
         feedsVc.themeManager = inputModel.themeManager
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.shouldShowCreateButton = inputModel.shouldShowCreateButton
+        feedsVc.isComingFromProfilePage = inputModel.isFeedLoadingFromProfilePage
         return feedsVc
     }
     

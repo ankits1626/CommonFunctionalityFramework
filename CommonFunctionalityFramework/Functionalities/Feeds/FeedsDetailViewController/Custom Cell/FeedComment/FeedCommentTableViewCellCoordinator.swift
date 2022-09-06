@@ -39,9 +39,6 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             let comment = inputModel.datasource.getCommentProvider()?.getComment(inputModel.targetIndexpath.row)
             cell.userNameLabel?.text = comment?.getCommentUser().getAuthorName()
             cell.userNameLabel?.font = UIFont.Highlighter2
-            cell.commentDateLabel?.text = comment?.getCommentDate()
-            cell.commentDateLabel?.font = .Caption1
-            cell.commentDateLabel?.textColor = .getSubTitleTextColor()
             cell.userDepartmentLabel?.text = comment?.getCommentDate()
             cell.userDepartmentLabel?.font = .Caption1
             cell.userDepartmentLabel?.textColor = .getSubTitleTextColor()
@@ -79,6 +76,15 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                     event: .touchUpInside,
                     buttonActionBlock: {
                         inputModel.delegate?.toggleLikeForComment(commentIdentifier: commentId)
+                })
+            }
+            
+            if let commentId = comment?.getComentId(),
+                commentId != -1{
+                cell.editOptionsButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        inputModel.delegate?.editComment(commentIdentifier: commentId, chatMessage: comment?.getCommentText() ?? "", commentedByPk: comment?.getCommentUser().getCommentedUserPk() ?? 0)
                 })
             }
         }

@@ -29,6 +29,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     var bottomSafeArea : CGFloat!
     var loader = MFLoader()
     var shouldShowCreateButton: Bool = false
+    var isComingFromProfilePage : Bool = false
     
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
@@ -132,7 +133,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     @objc private func loadFeeds(){
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: nil) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: nil,isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
             DispatchQueue.main.async {
                 self?.feedsTable?.loadCFFControl?.endLoading()
                 switch result{
@@ -394,6 +395,14 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
+        
+    }
+    
+    func deleteComment(commentIdentifier: Int64) {
+        
+    }
+    
     func showPostReactions(feedIdentifier: Int64) {
         let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
         let controller = storyboard.instantiateViewController(withIdentifier: "BOUSReactionsListViewController") as! BOUSReactionsListViewController
