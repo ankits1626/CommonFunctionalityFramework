@@ -15,7 +15,9 @@ class SelectPostTypeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
+        posttoDepartment?.onTintColor = UIColor.getControlColor()
+        posttoDepartment?.tintColor =  UIColor.getControlColor()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

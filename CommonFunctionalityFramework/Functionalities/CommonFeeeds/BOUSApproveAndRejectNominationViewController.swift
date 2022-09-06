@@ -37,6 +37,8 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         blurImg.isUserInteractionEnabled = true
         blurImg.addGestureRecognizer(tapGestureRecognizer)
+        self.yesBtn.backgroundColor = UIColor.getControlColor()
+        self.noBtn.setTitleColor(UIColor.getControlColor(), for: .normal)
         if isNominationApproved {
             self.nominationType.text = "Approve"
             holderViewHeightConstraint.constant = 400

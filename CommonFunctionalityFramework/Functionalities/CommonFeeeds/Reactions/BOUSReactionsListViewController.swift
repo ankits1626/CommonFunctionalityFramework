@@ -10,6 +10,7 @@ import UIKit
 
 class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource,UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var curveHeader: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
@@ -28,6 +29,7 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
         curveHeader.layer.cornerRadius = 10
         curveHeader.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         loadData(reaction: "")
+        holderView.backgroundColor = UIColor.getControlColor()
     }
     
     func loadData(reaction: String) {
@@ -105,7 +107,7 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
      //   }
         
         if selectedIndex == indexPath.row {
-            cell.backgroundColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+            cell.backgroundColor = UIColor.getControlColor()
             cell.TxtLbl.textColor = .white
         }else {
             cell.backgroundColor = .white
