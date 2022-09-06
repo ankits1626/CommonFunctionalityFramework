@@ -15,6 +15,7 @@ public protocol CFFMainAppInformationCoordinator : AnyObject {
     func getCurrentUserName() -> String
     func getCurrenUserProfilePicUrl() -> String
     func getCurrentUserDepartment() -> String
+    func getUserPK() -> Int
 }
 
 

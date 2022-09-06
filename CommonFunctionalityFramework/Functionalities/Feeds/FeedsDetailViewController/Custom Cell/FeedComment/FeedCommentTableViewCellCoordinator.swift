@@ -81,6 +81,15 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                         inputModel.delegate?.toggleLikeForComment(commentIdentifier: commentId)
                 })
             }
+            
+            if let commentId = comment?.getComentId(),
+                commentId != -1{
+                cell.editOptionsButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        inputModel.delegate?.editComment(commentIdentifier: commentId, chatMessage: comment?.getCommentText() ?? "", commentedByPk: comment?.getCommentUser().getCommentedUserPk() ?? 0)
+                })
+            }
         }
     }
     
