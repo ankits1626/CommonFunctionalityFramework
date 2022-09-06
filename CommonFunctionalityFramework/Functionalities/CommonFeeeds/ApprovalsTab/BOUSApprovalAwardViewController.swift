@@ -76,7 +76,7 @@ class BOUSApprovalAwardViewController: UIViewController, UICollectionViewDelegat
         if userSelectedAwardPK == dataSource.pk {
             cell.tickImg.isHidden = false
             cell.contentView.backgroundColor = UIColor(red: 245, green: 248, blue: 255)
-            cell.contentView.curvedUIBorderedControl(borderColor:  UIColor(red: 32, green: 41, blue: 112), borderWidth: 1.0, cornerRadius: 8.0)
+            cell.contentView.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
         }else {
             cell.tickImg.isHidden = true
             cell.contentView.backgroundColor = UIColor(red: 245, green: 255, blue: 255)

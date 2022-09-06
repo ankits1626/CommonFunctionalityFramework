@@ -27,15 +27,8 @@ public class ASChatBarview : UIView {
     public var themeManager: CFFThemeManagerProtocol?
     @IBOutlet public weak var container : UIView?
     @IBOutlet public weak var attachImageButton : UIButton?
-    @IBOutlet public weak var attachImageWidthConstraint : NSLayoutConstraint?
-    public var isAttachmentButtonVisibile = false{
-        didSet{
-            attachImageWidthConstraint?.constant = isAttachmentButtonVisibile ? 40 : 0
-        }
-    }
-    @IBOutlet private weak var attachmentContainer : UIView?
-    @IBOutlet private weak var attachmentDisplayHeightConstraint : NSLayoutConstraint?
-    @IBOutlet private weak var sendButton : UIButton?
+    @IBOutlet weak var sendBtnView: UIView!
+    @IBOutlet public weak var sendButton : UIButton?
     @IBOutlet weak var leftUserImg: UIImageView!
     @IBOutlet public weak var messageTextView : KMPlaceholderTextView?
     @IBOutlet private weak var placeholderLabel : UILabel?
