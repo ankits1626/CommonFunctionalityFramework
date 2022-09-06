@@ -13,6 +13,7 @@ class BOUSApprovalHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var leftImg: UIImageView!
+    @IBOutlet weak var nomnationIcon: UIImageView!
     @IBOutlet weak var leftName: UILabel!
     @IBOutlet weak var rightName: UILabel!
     @IBOutlet weak var privacyImg: UIImageView!

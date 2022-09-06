@@ -20,6 +20,8 @@
             <connections>
                 <outlet property="createPollButton" destination="ALy-J9-9ey" id="Ftt-7J-NZ7"/>
                 <outlet property="createPostButton" destination="bV7-Sq-OZd" id="S1x-bF-YxT"/>
+                <outlet property="pollImg" destination="uRp-y9-Tcz" id="YAd-AG-ykk"/>
+                <outlet property="postImg" destination="2O9-qF-nfR" id="Q2Z-3m-hoM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
