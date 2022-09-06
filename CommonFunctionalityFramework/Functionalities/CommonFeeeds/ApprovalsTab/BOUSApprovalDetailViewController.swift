@@ -138,6 +138,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                 let privacyTap = UITapGestureRecognizer(target: self, action: #selector(self.handlePrivacyTap(_:)))
                 cell.privacyTitle.text = self.privacyName
                 cell.privacyImg.image = UIImage(named: privacyImage)
+                cell.nomnationIcon.setImageColor(color: UIColor.getControlColor())
                 cell.accessLevelTapped.addGestureRecognizer(privacyTap)
                 if isComingFromNominationPage {
                     cell.accessLevelTapped.isUserInteractionEnabled = false

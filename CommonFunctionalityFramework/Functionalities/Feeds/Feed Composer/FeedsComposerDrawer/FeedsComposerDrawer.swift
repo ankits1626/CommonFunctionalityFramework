@@ -18,6 +18,8 @@ class FeedsComposerDrawerError {
 
 class FeedsComposerDrawer: UIViewController {
     
+    @IBOutlet weak var pollImg: UIImageView!
+    @IBOutlet weak var postImg: UIImageView!
     @IBOutlet private weak var createPostButton : UIButton?
     @IBOutlet private weak var createPollButton : UIButton?
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
@@ -25,9 +27,12 @@ class FeedsComposerDrawer: UIViewController {
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     weak var themeManager: CFFThemeManagerProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        // setup()
+        pollImg.setImageColor(color: UIColor.getControlColor())
+        postImg.setImageColor(color: UIColor.getControlColor())
     }
     
     private func setup() {
