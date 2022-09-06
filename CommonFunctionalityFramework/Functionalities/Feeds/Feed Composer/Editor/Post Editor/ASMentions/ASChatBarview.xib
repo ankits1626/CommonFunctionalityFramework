@@ -15,6 +15,7 @@
                 <outlet property="leftUserImg" destination="bN7-kl-O4f" id="Hea-Mt-ynw"/>
                 <outlet property="messageTextView" destination="Afc-FB-r6e" id="5lk-89-CRl"/>
                 <outlet property="placeholderLabel" destination="GPF-Bl-jGZ" id="WEh-jp-inW"/>
+                <outlet property="sendBtnView" destination="3Y3-rn-5QX" id="TkA-uX-TKq"/>
                 <outlet property="sendButton" destination="osq-Ai-iT7" id="J3b-va-zE0"/>
             </connections>
         </placeholder>

@@ -25,6 +25,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var approveBtn: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
     @IBOutlet weak var approvalsCountHolder: NSLayoutConstraint!
+    @IBOutlet weak var smallTickImg: UIImageView!
     @IBOutlet weak var selectAllViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var approvalsCountLbl: UILabel!
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
@@ -38,8 +39,12 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         self.selectAllViewHeightConstraint.constant = 60
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
-        self.selectAllBtn.setImage(UIImage(named: "small_icon_checkbox_unselected"), for: .normal)
+        //self.selectAllBtn.setImage(UIImage(named: "small_icon_checkbox_unselected"), for: .normal)
         loadApprovalsList()
+        self.approveBtn.backgroundColor = UIColor.getControlColor()
+        self.rejectButton.setTitleColor(UIColor.getControlColor(), for: .normal)
+        smallTickImg.image = UIImage(named: "small_icon_checkbox_unselected")
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,7 +137,8 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         cell.usrImg.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         if isSelectedAll {
             if selectedDataArray[indexPath.row] == dataValue.nomination.id {
-                cell.usrImg.image = UIImage(named: "icon_checkbox_selected")
+                cell.usrImg.image = UIImage(named: "New_tick_icon")
+                cell.usrImg?.setImageColor(color: UIColor.getControlColor())
             }else {
                 mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
             }
@@ -200,7 +206,10 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
             }else {
                 self.approvalsCountLbl.text = "\(self.jsonDataValues.count) Approval Pending"
             }
-            self.selectAllBtn.setImage(UIImage(named: "small_icon_checkbox_unselected"), for: .normal)
+            
+            smallTickImg.image = UIImage(named: "small_icon_checkbox_unselected")
+
+            //self.selectAllBtn.setImage(UIImage(named: "small_icon_checkbox_unselected"), for: .normal)
 
             selectedDataArray.removeAll()
             self.tableView.reloadData()
@@ -213,7 +222,9 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
             }else {
                 self.approvalsCountLbl.text = "\(self.jsonDataValues.count) Approval Selected"
             }
-            self.selectAllBtn.setImage(UIImage(named: "small_icon_checkbox_selected"), for: .normal)
+            smallTickImg.image = UIImage(named: "New_tick_icon")
+            smallTickImg.setImageColor(color: UIColor.getControlColor())
+           // self.selectAllBtn.setImage(UIImage(named: "New_tick_icon"), for: .normal)
             self.selectAllViewHeightConstraint.constant = 150
             self.approveBtn.isHidden = false
             self.rejectButton.isHidden = false

@@ -43,6 +43,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         super.viewDidLoad()
         setupView()
         loadApprovalsData()
+        self.approveButton?.backgroundColor = UIColor.getControlColor()
+        self.rejectButton?.setTitleColor(UIColor.getControlColor(), for: .normal)
     }
     
     func setupView() {

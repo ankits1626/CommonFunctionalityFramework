@@ -83,6 +83,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         commentBarView?.mediaFetcher = mediaFetcher
         commentBarView?.setupUserProfile()
         commentBarView?.backgroundColor = .white
+        commentBarView?.sendBtnView.backgroundColor = UIColor.getControlColor()
 //        commentBarView?.leftUserImg.image = UIImage(named: "")
     }
     
