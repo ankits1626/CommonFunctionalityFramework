@@ -35,6 +35,8 @@ protocol FeedsDelegate : class {
     func pinToPost(feedIdentifier : Int64, isAlreadyPinned : Bool)
     func postReaction(feedId: Int64, reactionType: String)
     func showPostReactions(feedIdentifier : Int64)
+    func deleteComment(commentIdentifier : Int64)
+    func editComment(commentIdentifier : Int64, chatMessage : String)
 }
 
 class FeedSectionFactory{

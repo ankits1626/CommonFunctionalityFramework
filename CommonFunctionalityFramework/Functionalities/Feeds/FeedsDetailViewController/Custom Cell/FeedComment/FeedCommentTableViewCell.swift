@@ -16,7 +16,7 @@ class FeedCommentTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var userDepartmentLabel : UILabel?
     @IBOutlet weak var userNameLabel : UILabel?
     @IBOutlet weak var commentLabel : ActiveLabel?
-    @IBOutlet weak var commentDateLabel : UILabel?
+    @IBOutlet weak var editOptionsButton : BlockButton?
     @IBOutlet weak var commentCountLabel : UILabel?
     @IBOutlet weak var commentCountConatiner : UIView?
     @IBOutlet weak var likeButton : BlockButton?

@@ -39,6 +39,8 @@ public class ASChatBarview : UIView {
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     weak var themeManager: CFFThemeManagerProtocol?
+    var isEditCommentEnabled : Bool = false
+    var commentID : Int64 = 0
     public override var backgroundColor: UIColor?{
         didSet{
             container?.backgroundColor = backgroundColor
