@@ -332,6 +332,8 @@
 		BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */; };
 		BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543B26FC978400327205 /* UIView+XibSetup.swift */; };
 		BEF4021828201248001B9D7E /* CommonFeedsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */; };
+		BEFF9D8A28C740D5009DF1AC /* DeleteCommentDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */; };
+		BEFF9D8B28C740D5009DF1AC /* DeleteCommentDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -666,6 +668,8 @@
 		BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+NumberOfLines.swift"; sourceTree = "<group>"; };
 		BEEF543B26FC978400327205 /* UIView+XibSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XibSetup.swift"; sourceTree = "<group>"; };
 		BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedsCoordinator.swift; sourceTree = "<group>"; };
+		BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentDrawer.swift; sourceTree = "<group>"; };
+		BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteCommentDrawer.xib; sourceTree = "<group>"; };
 		C56C3038FE2999C0BF8A38A9 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1750,6 +1754,17 @@
 			path = UILoadControl;
 			sourceTree = "<group>";
 		};
+		BE048C3528C6226F008E9565 /* EditCommentDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				BE048C3628C62296008E9565 /* EditCommentDrawer.swift */,
+				BE048C3728C62296008E9565 /* EditCommentDrawer.xib */,
+				BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */,
+				BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */,
+			);
+			path = EditCommentDrawer;
+			sourceTree = "<group>";
+		};
 		BE39BA4028A917C0004ADA9E /* PostPollTopCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2094,6 +2109,7 @@
 				0FED7EFD288042F300D490BB /* BOUSFeedGrayDivider.xib in Resources */,
 				BEC2B28926FDA1B4008417C3 /* FeedDetailHeader.xib in Resources */,
 				0FEB520E286C2BCA00BA8ACF /* ImageViewSectionCell.xib in Resources */,
+				BEFF9D8B28C740D5009DF1AC /* DeleteCommentDrawer.xib in Resources */,
 				BEC2B26726FD9A81008417C3 /* PollSubmitButtonCell.xib in Resources */,
 				BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */,
 				BCCF646028EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */,
@@ -2413,6 +2429,7 @@
 				9876834D26143D6A00B597B0 /* CommonFunctionalityModel.xcdatamodeld in Sources */,
 				0F602185286EBB8800D852BD /* BOUSFeedDetailViewController.swift in Sources */,
 				0F94B7582889054A003AC4C8 /* BOUSApprovalAwardLevelTableViewCell.swift in Sources */,
+				BEFF9D8A28C740D5009DF1AC /* DeleteCommentDrawer.swift in Sources */,
 				9868C041240F9D3900B12321 /* SingleImageTableViewCellCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

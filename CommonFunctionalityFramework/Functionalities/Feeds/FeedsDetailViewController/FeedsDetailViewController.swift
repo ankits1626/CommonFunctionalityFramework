@@ -809,7 +809,6 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
     
     func rightButtonPressed(_ chatBar: ASChatBarview) {
         if let message = chatBar.messageTextView?.text{
-            print("post \(message)")
             FeedCommentPostWorker(networkRequestCoordinator: requestCoordinator).postComment(
                 comment: PostbaleComment(
                     feedId: targetFeedItem.feedIdentifier,
@@ -817,6 +816,7 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
+                                chatBar.placeholder = "Enter your comments here".localized
                                 CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {[weak self] in
                                     let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
                                     post.numberOfComments =  post.numberOfComments + 1
@@ -894,3 +894,29 @@ extension FeedsDetailViewController:  NSFetchedResultsControllerDelegate {
         feedDetailTableView?.endUpdates()
     }
 }
+extension FeedsDetailViewController : EditCommentTypeProtocol,DeleteCommentProtocol{
+    func deleteCommentPressed(commentID: Int64) {
+        deleteComment(commentIdentifier: commentID)
+    }
+    
+    func selectedFilterType(selectedType: EditCommentType, commentIdentifier: Int64, chatMessage: String) {
+        switch selectedType {
+        case .Edit:
+            commentBarView?.placeholder = ""
+            commentBarView?.isEditCommentEnabled = true
+            commentBarView?.commentID = commentIdentifier
+            ASMentionCoordinator.shared.getPresentableMentionText(chatMessage, completion: { (attr) in
+                commentBarView?.messageTextView?.attributedText = attr
+            })
+            commentBarView?.becomeFirstResponder()
+        case .Delete:
+            let deleteBottomSheet = DeleteCommentDrawer(nibName: "DeleteCommentDrawer", bundle: Bundle(for: DeleteCommentDrawer.self))
+            deleteBottomSheet.delegate = self
+            deleteBottomSheet.commentId = commentIdentifier
+            deleteBottomSheet.modalPresentationStyle = .overCurrentContext
+            self.present(deleteBottomSheet, animated: true)
+            
+        }
+    }
+}
+
