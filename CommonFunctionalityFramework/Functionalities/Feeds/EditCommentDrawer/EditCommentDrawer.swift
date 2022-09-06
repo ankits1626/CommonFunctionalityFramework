@@ -55,7 +55,7 @@ class EditCommentDrawer: UIViewController {
 
     func presentDrawer(numberofElementsEnabled : CGFloat) throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: numberofElementsEnabled < 3 ? 129 : 258.0)
+            slideInTransitioningDelegate.direction = .bottom(height: numberofElementsEnabled ==  2 ? 168 : 98.0)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
@@ -83,7 +83,6 @@ extension EditCommentDrawer{
             self.bottomsheetdelegate?.selectedFilterType(selectedType: .Delete, commentIdentifier: self.commentFeedIdentifier, chatMessage: self.chatMessage)
         }
     }
-    
 }
 
 
