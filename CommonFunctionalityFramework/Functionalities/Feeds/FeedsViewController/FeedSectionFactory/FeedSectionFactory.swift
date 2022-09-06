@@ -36,7 +36,7 @@ protocol FeedsDelegate : class {
     func postReaction(feedId: Int64, reactionType: String)
     func showPostReactions(feedIdentifier : Int64)
     func deleteComment(commentIdentifier : Int64)
-    func editComment(commentIdentifier : Int64, chatMessage : String)
+    func editComment(commentIdentifier : Int64, chatMessage : String, commentedByPk : Int)
 }
 
 class FeedSectionFactory{

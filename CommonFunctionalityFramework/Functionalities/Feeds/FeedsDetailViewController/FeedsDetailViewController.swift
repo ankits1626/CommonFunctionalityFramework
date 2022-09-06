@@ -394,33 +394,31 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate{
-    func editComment(commentIdentifier: Int64, chatMessage: String) {
+    func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
+        print(commentedByPk)
         var numberofElementsEnabled : CGFloat = 0.0
-        let feedIdentifier = Int(targetFeedItem.feedIdentifier)
+        let drawer = EditCommentDrawer(nibName: "EditCommentDrawer", bundle: Bundle(for: EditCommentDrawer.self))
+        drawer.bottomsheetdelegate = self
+        drawer.commentFeedIdentifier = commentIdentifier
+        drawer.chatMessage = chatMessage
+        if mainAppCoordinator?.getUserPK() == commentedByPk {
+            drawer.isEditEnabled = true
+            numberofElementsEnabled = numberofElementsEnabled + 1
+        }else{
+            drawer.isEditEnabled = false
+        }
         
-        if let feed =  self.getFeedItem(feedIdentifier) as? FeedsItemProtocol{
-            let drawer = EditCommentDrawer(nibName: "EditCommentDrawer", bundle: Bundle(for: EditCommentDrawer.self))
-            drawer.bottomsheetdelegate = self
-            drawer.commentFeedIdentifier = commentIdentifier
-            drawer.chatMessage = chatMessage
-            if feed.isFeedEditAllowed(){
-                drawer.isEditEnabled = true
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }else{
-                drawer.isEditEnabled = false
-            }
-            
-            if feed.isFeedDeleteAllowed() == true{
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }
-            
-            drawer.isDeleteEnabled = feed.isFeedDeleteAllowed()
-            do{
-                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
-            }catch let error{
-                print("show error")
-                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
-                }
+        if mainAppCoordinator?.getUserPK() == commentedByPk || self.mainAppCoordinator?.isUserAllowedToCreatePoll() == true{
+            numberofElementsEnabled = numberofElementsEnabled + 1
+            drawer.isDeleteEnabled = true
+        }else{
+            drawer.isDeleteEnabled = false
+        }
+        do{
+            try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
             }
         }
     }

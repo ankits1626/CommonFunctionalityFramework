@@ -395,7 +395,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
-    func editComment(commentIdentifier: Int64, chatMessage: String) {
+    func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
         
     }
     

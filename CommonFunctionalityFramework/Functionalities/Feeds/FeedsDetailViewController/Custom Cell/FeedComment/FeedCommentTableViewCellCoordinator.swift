@@ -75,7 +75,6 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                 cell.likeButton?.handleControlEvent(
                     event: .touchUpInside,
                     buttonActionBlock: {
-//                        inputModel.delegate?.deleteComment(commentIdentifier: commentId)
                         inputModel.delegate?.toggleLikeForComment(commentIdentifier: commentId)
                 })
             }
@@ -85,7 +84,7 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                 cell.editOptionsButton?.handleControlEvent(
                     event: .touchUpInside,
                     buttonActionBlock: {
-                        inputModel.delegate?.editComment(commentIdentifier: commentId, chatMessage: comment?.getCommentText() ?? "")
+                        inputModel.delegate?.editComment(commentIdentifier: commentId, chatMessage: comment?.getCommentText() ?? "", commentedByPk: comment?.getCommentUser().getCommentedUserPk() ?? 0)
                 })
             }
         }
