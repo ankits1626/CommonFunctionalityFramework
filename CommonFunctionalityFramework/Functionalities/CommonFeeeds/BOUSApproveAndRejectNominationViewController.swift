@@ -14,6 +14,7 @@ protocol PopToRootVc {
 
 class BOUSApproveAndRejectNominationViewController: UIViewController {
     @IBOutlet weak var blurImg: UIImageView!
+    @IBOutlet weak var tickImg: UIImageView!
     @IBOutlet weak var nominationType: UILabel!
     @IBOutlet weak var nominationDescription: UILabel!
     @IBOutlet weak var imageType: UIImageView!
@@ -39,6 +40,8 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
         blurImg.addGestureRecognizer(tapGestureRecognizer)
         self.yesBtn.backgroundColor = UIColor.getControlColor()
         self.noBtn.setTitleColor(UIColor.getControlColor(), for: .normal)
+        self.imageType.setImageColor(color: UIColor.getControlColor())
+
         if isNominationApproved {
             self.nominationType.text = "Approve"
             holderViewHeightConstraint.constant = 400
@@ -51,8 +54,7 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
             }
         }else {
             self.nominationType.text = "Reject"
-            self.imageType.image = UIImage(named: "icon_reject")
-            
+            self.tickImg.image = UIImage(named: "reject_new")
             if multipleNomination.count > 1 {
                 self.nominationDescription.text = "Are you sure you want to reject these nomination?"
             }else {
