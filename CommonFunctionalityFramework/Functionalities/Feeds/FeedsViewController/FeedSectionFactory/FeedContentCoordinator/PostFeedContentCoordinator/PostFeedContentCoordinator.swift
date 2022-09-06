@@ -65,7 +65,10 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 rows.append(SingleImageTableViewCellType())
             case .Video:
                 rows.append(SingleVideoTableViewCellType())
+            case .Document:
+                debugPrint("documents not supported")
             }
+        
         case .TwoMediaItemPresent:
             fallthrough
         case .MoreThanTwoMediItemPresent:

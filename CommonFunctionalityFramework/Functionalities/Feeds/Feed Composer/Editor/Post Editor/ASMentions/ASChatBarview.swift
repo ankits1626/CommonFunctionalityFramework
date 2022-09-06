@@ -30,7 +30,7 @@ public class ASChatBarview : UIView {
     @IBOutlet private weak var placeholderLabel : UILabel?
     @IBOutlet public weak var delegate : ASChatBarViewDelegate?
     var tagPicker : ASMentionSelectorViewController?
-    @IBOutlet private weak var heightConstraint : NSLayoutConstraint?
+    @IBOutlet public weak var heightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainer : UIView?
     @IBOutlet private weak var leftContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainerWidthConstraint : NSLayoutConstraint?
@@ -43,7 +43,8 @@ public class ASChatBarview : UIView {
     lazy var tap: UITapGestureRecognizer = {
         return UITapGestureRecognizer(target: self, action: #selector(dismiss))
     }()
-    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet public var bottomConstraint: NSLayoutConstraint!
+    public var containerSuperView: UIView?
     lazy var maxHeight: NSLayoutConstraint = {
         let _bottomConstraint =   NSLayoutConstraint(
             item: messageTextView!,
@@ -145,26 +146,68 @@ public class ASChatBarview : UIView {
             placeholderLabel?.isHidden = !txtview.text.isEmpty
             attachImageButton?.isEnabled = !txtview.text.isEmpty
             sendButton?.isEnabled = !txtview.text.isEmpty
-            if (previousnumberOfLines == nil ) || (previousnumberOfLines != txtview.getNumberOfLines()) || (txtview.getNumberOfLines() == maxNumberOflines){
-                previousnumberOfLines = txtview.getNumberOfLines()
-                if txtview.getNumberOfLines() >= maxNumberOflines{
-                    maxHeight.constant = txtview.frame.size.height
-                    messageTextView?.addConstraint(maxHeight)
-                    txtview.isScrollEnabled = true
-                    txtview.setNeedsFocusUpdate()
-                    txtview.invalidateIntrinsicContentSize()
-                }else{
-                    txtview.isScrollEnabled = false
-                    if txtview.constraints.contains(maxHeight){
-                        txtview.removeConstraint(maxHeight)
-                    }
-                    txtview.invalidateIntrinsicContentSize()
-                }
-            }
+            adjustHeight()
+//            if (previousnumberOfLines == nil ) || (previousnumberOfLines != txtview.getNumberOfLines()) || (txtview.getNumberOfLines() == maxNumberOflines){
+//                previousnumberOfLines = txtview.getNumberOfLines()
+//                if txtview.getNumberOfLines() >= maxNumberOflines{
+//                    maxHeight.constant = txtview.frame.size.height
+//                    messageTextView?.addConstraint(maxHeight)
+//                    txtview.isScrollEnabled = true
+//                    txtview.setNeedsFocusUpdate()
+//                    txtview.invalidateIntrinsicContentSize()
+//                }else{
+//                    txtview.isScrollEnabled = false
+//                    if txtview.constraints.contains(maxHeight){
+//                        txtview.removeConstraint(maxHeight)
+//                    }
+//                    txtview.invalidateIntrinsicContentSize()
+//                }
+//            }
+        }
+    }
+    
+    var orignalHeight : CGFloat!
+    private func adjustHeight(){
+        messageTextView?.isScrollEnabled = true
+        let textView = messageTextView!
+        let fixedWidth = textView.frame.size.width
+        
+        /// Here we need to get The height as Greatest that we can have or expected
+        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        
+        /// Get New Size
+        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        
+        /// New Frame
+        var newFrame = textView.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        
+        /// Orignal height is height that is assigned to TextView for first time and 100 is maximum height that textview can increase
+        self.heightConstraint?.constant = CGFloat(
+            min(
+                100,
+                max(
+                    Int(newFrame.size.height),
+                    Int(self.orignalHeight!)
+                   )
+            )
+        )
+        
+        scrollTextViewToBottom(textView: messageTextView!)
+        
+        //                bookSessionStruct.sessionTopicDiscussion = textView.text!.trimmed()
+    }
+    
+    func scrollTextViewToBottom(textView: UITextView) {
+        if textView.text.count > 0 {
+            let location = textView.text.count
+            let bottom = NSMakeRange(location, 1)
+            textView.scrollRangeToVisible(bottom)
         }
     }
     
     private func setupCoordinator(_ targetTextView: UITextView?){
+        orignalHeight = self.frame.size.height
         targetTextView?.delegate = ASMentionCoordinator.shared
         ASMentionCoordinator.shared.loadInitialText(targetTextView: targetTextView)
         ASMentionCoordinator.shared.textUpdateListener = self
@@ -180,7 +223,12 @@ public class ASChatBarview : UIView {
         var bottomInset : CGFloat = 0
         if #available(iOS 11.0, *) {
             //TO:DO: Needs to be refactored
-            bottomInset = self.superview?.superview?.superview?.safeAreaInsets.bottom ?? 34
+            if let unwrappedSuperView = containerSuperView{
+                bottomInset = unwrappedSuperView.safeAreaInsets.bottom ?? 34
+            }else{
+                bottomInset = self.superview?.superview?.superview?.safeAreaInsets.bottom ?? 34
+            }
+            
         }
         bottomConstraint.constant = isKeyboardShowing ?  keyboardFrame.height - bottomInset : 0
         UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
