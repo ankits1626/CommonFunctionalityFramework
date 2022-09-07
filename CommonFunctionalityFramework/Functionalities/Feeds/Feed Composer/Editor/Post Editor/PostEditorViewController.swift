@@ -350,7 +350,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                     insertDirection: self?.editablePost?.remotePostId == nil ? .Top : .Bottom,
                                     completion: {[weak self] in
                                         DispatchQueue.main.async {
-                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
+//                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                             ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
                                                 self?.dismiss(animated: true, completion: nil)
                                             }

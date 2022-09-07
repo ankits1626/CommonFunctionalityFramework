@@ -238,14 +238,15 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 feedId: feedIdentifier,
                 description: unrappedDescription
             )
-            
             var post =  EditablePost(
+                selectedEcardMediaItems : getEcard(),
+                attachedGiflyGif : getGiphy(),
                 isShareWithSameDepartmentOnly: isSharedWithDepartment(),
                 postType: getFeedType(),
                 pollOptions: nil,
                 title: getFeedTitle(),
                 postDesciption:  model?.displayableDescription.string,
-                remoteAttachedMedia: getMediaList(),
+                remoteAttachedMedia: getEditMediaList(),
                 selectedMediaItems: nil,
                 remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
             )
@@ -262,7 +263,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 pollOptions: nil,
                 title: getFeedTitle(),
                 postDesciption:  getFeedDescription(),
-                remoteAttachedMedia: getMediaList(),
+                remoteAttachedMedia: getEditMediaList(),
                 selectedMediaItems: nil,
                 remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
             )
@@ -306,6 +307,16 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getGiphy() -> String?  {
         return  rawFeedDictionary["gif"] as? String
+    }
+    
+    func getEcard() -> EcardListResponseValues? {
+        if let ecardData = rawFeedDictionary["ecard"] as? NSDictionary {
+            let id = ecardData.object(forKey: "pk") as? Int ?? 0
+            let categoryId = ecardData.object(forKey: "category") as? Int ?? 0
+            let ecardImages = ecardData.object(forKey: "image") as? String ?? ""
+            return EcardListResponseValues(category: categoryId, image: ecardImages, pk: id)
+        }
+        return nil
     }
     
     func getFeedType() -> FeedType {
@@ -437,6 +448,22 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }else{
             return nil
         }
+    }
+    
+    func getEditMediaList() -> [MediaItemProtocol]? {
+        var mediaElements = [MediaItemProtocol]()
+        if let videos = rawFeedDictionary["videos"] as? [[String : Any]]{
+            for aVideo in videos {
+                mediaElements.append(FeedVideoItem(aVideo))
+            }
+        }
+        
+        if let images = rawFeedDictionary["images"] as? [[String : Any]]{
+            for anImage in images {
+                mediaElements.append(FeedImageItem(anImage))
+            }
+        }
+        return mediaElements.isEmpty ? nil : mediaElements
     }
     
     func getMediaList() -> [MediaItemProtocol]? {
