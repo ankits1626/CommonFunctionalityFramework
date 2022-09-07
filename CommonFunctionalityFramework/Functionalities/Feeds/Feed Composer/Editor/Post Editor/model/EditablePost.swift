@@ -48,7 +48,11 @@ struct EditablePost : EditablePostProtocol{
     }
     
     func isGifAttached() -> Bool {
-        return attachedGiflyGif != nil
+        if let gif = attachedGiflyGif ,
+            !gif.isEmpty {
+            return true
+        }
+        return false
     }
     
     func getCleanPollOptions() -> [String]? {
@@ -97,11 +101,14 @@ struct EditablePost : EditablePostProtocol{
         
         if let unwrappedGif = attachedGiflyGif, !unwrappedGif.isEmpty {
             postDictionary["gif"] = unwrappedGif
+        }else{
+            postDictionary["gif"] = ""
         }
-        
         
         if let unwrappedECard = selectedEcardMediaItems{
             postDictionary["ecard"] = "\(unwrappedECard.pk)"
+        }else{
+            postDictionary["ecard"] = ""
         }
         
         if !deletedRemoteMediaArray.isEmpty{
