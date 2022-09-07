@@ -146,7 +146,7 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
                 return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(url: URL(string: unwrappedNextPageUrl), method: .GET, httpBodyDict: nil)
             }else{
                 var endPoints = url
-                if feedType != "SearchFromHome" || feedType != "postPoll" {
+                if feedType == "received" || feedType == "given" {
                     endPoints = appendFeedInputType(endPoints)
                 }
                 endPoints = appendFeedType(endPoints)

@@ -14,7 +14,10 @@ protocol FeedsItemProtocol : Likeable {
     var feedIdentifier : Int64{get}
     func getUserImageUrl() -> String?
     func getUserName() -> String?
+    func getHomeUserCreatedName() -> String?
+    func getHomeUserReceivedName() -> String?
     func getGivenTabUserImg() -> String?
+    func getHomeUserReceivedImg() -> String?
     func toUserName() -> String?
     func getNominatedByUserName() -> String?
     func getDepartmentName() -> String?
@@ -363,9 +366,43 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return getFeedAuthor()?.getAuthorName()
     }
     
-    func getGivenTabUserImg() -> String? {
+    func getHomeUserImg() -> String? {
         var userImg : String?
         if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            userImg = userDic["profile_img"] as? String ?? nil
+        }
+        return userImg
+    }
+    
+    func getHomeUserCreatedName() -> String? {
+        var userName : String?
+        if let userDic = rawFeedDictionary["created_by_user_info"] as? NSDictionary {
+            userName = userDic["full_name"] as? String ?? ""
+        }
+        return userName
+    }
+    
+    func getHomeUserReceivedName() -> String? {
+        var userName : String?
+        if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            userName = userDic["full_name"] as? String ?? ""
+        }
+        return userName
+    }
+    
+    
+    func getHomeUserReceivedImg() -> String? {
+        var userImg : String?
+        if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            userImg = userDic["profile_img"] as? String ?? nil
+        }
+        return userImg
+    }
+
+    
+    func getGivenTabUserImg() -> String? {
+        var userImg : String?
+        if let userDic = rawFeedDictionary["created_by_user_info"] as? NSDictionary {
             userImg = userDic["profile_img"] as? String ?? nil
         }
         return userImg

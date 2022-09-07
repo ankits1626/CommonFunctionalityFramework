@@ -65,10 +65,16 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "TestScroll"), object: nil)
+        UserDefaults.standard.setValue(selectedTabType, forKey: "selectedTab")
+        UserDefaults.standard.synchronize()
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
             self?.setup()
             self?.loadFeeds()
+        }
+        
+        if selectedTabType == "SearchFromHome" {
+            self.feedsTable?.alwaysBounceVertical = false
         }
     }
     
