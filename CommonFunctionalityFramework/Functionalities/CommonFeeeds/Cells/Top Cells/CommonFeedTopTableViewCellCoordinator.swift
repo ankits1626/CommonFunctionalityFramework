@@ -33,14 +33,26 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
             }else{
                 cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
             }
-            if inputModel.selectedTab == "received" {
+            
+            let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
+            
+            if selectedtabValue == "received" {
                 cell.userName?.text =  "From \(feed.getUserName() ?? "")"
                 cell.appraacitedBy.isHidden = true
                 cell.dot.isHidden = true
-            }else if inputModel.selectedTab == "SearchFromHome" {
-                cell.userName?.text = feed.getUserName()
-                if let nominatedName = feed.getNominatedByUserName() {
+            }else if selectedtabValue == "SearchFromHome" {
+                if let nominatedName = feed.getHomeUserCreatedName() {
                     cell.appraacitedBy.text = "From \(nominatedName)"
+                }
+                cell.userName?.text = "\(feed.getHomeUserReceivedName() ?? "")"
+                
+                
+                if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    if let nominatedName = feed.getNominatedByUserName() {
+                        cell.profileImage?.setImageForName(nominatedName ?? "NN", circular: false, textAttributes: nil)
+                    }
                 }
             }else {
                 if let toUserName = feed.toUserName() {
