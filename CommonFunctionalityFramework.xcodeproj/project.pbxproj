@@ -297,6 +297,7 @@
 		BED3ADAE28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3ADAC28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift */; };
 		BED3ADAF28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */; };
 		BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */; };
+		BEDA6B3728CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA6B3628CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift */; };
 		BEEF543826FC927E00327205 /* ASChatBarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543626FC927E00327205 /* ASChatBarview.swift */; };
 		BEEF543926FC927E00327205 /* ASChatBarview.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEF543726FC927E00327205 /* ASChatBarview.xib */; };
 		BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */; };
@@ -604,6 +605,7 @@
 		BED3ADAC28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppreciationSubjectTableViewCell.swift; sourceTree = "<group>"; };
 		BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonAppreciationSubjectTableViewCell.xib; sourceTree = "<group>"; };
 		BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppreciationSubjectTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		BEDA6B3628CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BousDetailSingleImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		BEEF543626FC927E00327205 /* ASChatBarview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASChatBarview.swift; sourceTree = "<group>"; };
 		BEEF543726FC927E00327205 /* ASChatBarview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASChatBarview.xib; sourceTree = "<group>"; };
 		BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+NumberOfLines.swift"; sourceTree = "<group>"; };
@@ -1076,6 +1078,7 @@
 				BEC2B25E26FD99A3008417C3 /* SingleImageTableViewCell.xib */,
 				9868C025240F799200B12321 /* SingleImageTableViewCell.swift */,
 				9868C040240F9D3900B12321 /* SingleImageTableViewCellCoordinator.swift */,
+				BEDA6B3628CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -2297,6 +2300,7 @@
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
 				0F6021A52874150800D852BD /* CommonFeedDescriptionTableViewCell.swift in Sources */,
 				0F9C4A7728B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift in Sources */,
+				BEDA6B3728CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift in Sources */,
 				0F32906D28896689008BF09D /* BOUSReactionListTableViewCell.swift in Sources */,
 				BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */,
 				BE66CCC128A6701400C7CE83 /* FeedsEcardListResponseValues.swift in Sources */,

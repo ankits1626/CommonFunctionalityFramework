@@ -49,7 +49,16 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
             }
             cell.feedText?.numberOfLines = 3
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["illustration"] as? String ?? "")
-            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
+//            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
+            
+            let backGroundColor = feedTitle["badgeBackgroundColor"] as? String ?? ""
+            let backGroundColorLite = feedTitle["background_color_lite"] as? String ?? ""
+            if let bgColor = UIColor(hex: backGroundColorLite) {
+                cell.containerView?.backgroundColor = bgColor
+            }else{
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
+            }
+            
 //            cell.containerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
 //
             

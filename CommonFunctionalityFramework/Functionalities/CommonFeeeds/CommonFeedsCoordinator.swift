@@ -123,6 +123,7 @@ public class CommonFeedsCoordinator {
                         feedDetailVC.themeManager = inputModel.themeManager
                         feedDetailVC.targetFeedItem = rawFeed //feeds[indexPath.section]
                         feedDetailVC.mediaFetcher = inputModel.mediaCoordinator
+                        feedDetailVC.mainAppCoordinator = inputModel.mainAppCoordinator
                         feedDetailVC.requestCoordinator = inputModel.networkRequestCoordinator
                         feedDetailVC.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
                         feedDetailVC.pollSelectedAnswerMapper = SelectedPollAnswerMapper()
