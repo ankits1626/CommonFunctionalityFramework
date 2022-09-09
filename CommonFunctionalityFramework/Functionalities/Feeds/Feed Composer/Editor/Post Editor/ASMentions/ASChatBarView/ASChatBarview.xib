@@ -19,7 +19,6 @@
                 <outlet property="leftContainer" destination="eDb-F4-4Cl" id="zDd-ZK-aS4"/>
                 <outlet property="leftUserImg" destination="bN7-kl-O4f" id="Hea-Mt-ynw"/>
                 <outlet property="messageTextView" destination="Afc-FB-r6e" id="5lk-89-CRl"/>
-                <outlet property="placeholderLabel" destination="GPF-Bl-jGZ" id="WEh-jp-inW"/>
                 <outlet property="sendBtnView" destination="3Y3-rn-5QX" id="TkA-uX-TKq"/>
                 <outlet property="sendButton" destination="osq-Ai-iT7" id="J3b-va-zE0"/>
             </connections>
@@ -35,8 +34,9 @@
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-FB-r6e" customClass="KMPlaceholderTextView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                             <rect key="frame" x="42" y="5" width="264" height="74"/>
                             <color key="backgroundColor" red="0.96078401800000002" green="0.97254925969999995" blue="0.99999946360000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="5"/>
@@ -44,9 +44,10 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                     <integer key="value" value="0"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your comments here"/>
                             </userDefinedRuntimeAttributes>
                         </textView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPF-Bl-jGZ">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPF-Bl-jGZ">
                             <rect key="frame" x="42" y="42" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>

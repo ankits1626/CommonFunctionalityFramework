@@ -31,7 +31,6 @@ public class ASChatBarview : UIView {
     @IBOutlet public weak var sendButton : UIButton?
     @IBOutlet weak var leftUserImg: UIImageView!
     @IBOutlet public weak var messageTextView : KMPlaceholderTextView?
-    @IBOutlet private weak var placeholderLabel : UILabel?
     @IBOutlet public weak var delegate : ASChatBarViewDelegate?
     var tagPicker : ASMentionSelectorViewController?
     @IBOutlet public weak var heightConstraint : NSLayoutConstraint?
@@ -87,17 +86,6 @@ public class ASChatBarview : UIView {
         }
     }
     
-    public var placeholderColor : UIColor?{
-        didSet{
-            placeholderLabel?.textColor = placeholderColor
-        }
-    }
-    
-    public var placeholderFont : UIFont?{
-        didSet{
-            placeholderLabel?.font = placeholderFont
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -153,8 +141,7 @@ public class ASChatBarview : UIView {
     private func commonSetup(){
         xibSetup()
         registerForKeyboardNotifications()
-        registerForTextChangeNotification()
-        attachImageWidthConstraint?.constant = isAttachmentButtonVisibile ? 40 : 0
+//        registerForTextChangeNotification()
     }
     
     func registerTextView() {
