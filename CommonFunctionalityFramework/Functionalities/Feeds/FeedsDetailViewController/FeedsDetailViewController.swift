@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 enum FeedDetailSection : Int {
     case FeedInfo = 0
@@ -55,8 +56,12 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
+        IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        IQKeyboardManager.shared.enableAutoToolbar = true
+    }
     private func setup(){
         view.backgroundColor = .white
         setupTableView()

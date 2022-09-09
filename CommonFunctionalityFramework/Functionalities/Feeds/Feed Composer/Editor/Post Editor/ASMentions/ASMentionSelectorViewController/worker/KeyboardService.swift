@@ -43,8 +43,8 @@ class KeyboardService: NSObject {
 
     override init() {
         super.init()
-        observeKeyboardNotifications()
-        observeKeyboard()
+//        observeKeyboardNotifications()
+//        observeKeyboard()
     }
 
     deinit {

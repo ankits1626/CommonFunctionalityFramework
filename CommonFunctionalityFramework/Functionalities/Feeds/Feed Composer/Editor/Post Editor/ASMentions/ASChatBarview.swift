@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 public class ASChatBarError {
     static let NoHeightConstraintSet : Error = NSError(
@@ -29,6 +30,7 @@ public class ASChatBarview : UIView {
     @IBOutlet public weak var sendButton : UIButton?
     @IBOutlet weak var leftUserImg: UIImageView!
     @IBOutlet public weak var messageTextView : KMPlaceholderTextView?
+    @IBOutlet private weak var placeholderLabel : UILabel?
     @IBOutlet public weak var delegate : ASChatBarViewDelegate?
     var tagPicker : ASMentionSelectorViewController?
     @IBOutlet private weak var heightConstraint : NSLayoutConstraint?
@@ -70,7 +72,23 @@ public class ASChatBarview : UIView {
     private let kDefaultAttachmentContainerWidth : CGFloat = 44
     private let kDefaultAttachmentContainerHeight  : CGFloat = 84
     
+    public var placeholder: String?{
+        didSet{
+            placeholderLabel?.text = placeholder
+        }
+    }
     
+    public var placeholderColor : UIColor?{
+        didSet{
+            placeholderLabel?.textColor = placeholderColor
+        }
+    }
+    
+    public var placeholderFont : UIFont?{
+        didSet{
+            placeholderLabel?.font = placeholderFont
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -126,7 +144,9 @@ public class ASChatBarview : UIView {
     private func commonSetup(){
         xibSetup()
         registerForKeyboardNotifications()
-//        registerForTextChangeNotification()
+        registerForTextChangeNotification()
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
     
     func registerTextView() {
@@ -143,6 +163,7 @@ public class ASChatBarview : UIView {
     @objc private func textChanged(){
         registerTextView()
         if let txtview = messageTextView{
+            placeholderLabel?.isHidden = !txtview.text.isEmpty
             attachImageButton?.isEnabled = !txtview.text.isEmpty
             sendButton?.isEnabled = !txtview.text.isEmpty
             if (previousnumberOfLines == nil ) || (previousnumberOfLines != txtview.getNumberOfLines()) || (txtview.getNumberOfLines() == maxNumberOflines){
