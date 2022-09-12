@@ -39,64 +39,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" userInteractionEnabled="NO" tag="502" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BX3-0V-zOX">
+                            <button opaque="NO" userInteractionEnabled="NO" tag="502" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BX3-0V-zOX">
                                 <rect key="frame" x="172" y="104" width="57" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="ZZb-9b-Oq3"/>
                                     <constraint firstAttribute="width" constant="57" id="a8g-9s-pJQ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Read More">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="message" size="11"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28.299999237060547">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56.650001525878906">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="85">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="113.34999847412109">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="141.69999694824219">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="170.05000305175781">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="198.39999389648438">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="226.75">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="255.10000610351562">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="283.45001220703125">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="311.79998779296875">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="340.14999389648438">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
-                                                <integer key="NSUnderline" value="1"/>
-                                                <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <state key="normal" title="Read More">
+                                    <color key="titleColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_appreciationImage" translatesAutoresizingMaskIntoConstraints="NO" id="re4-pr-fCE">
