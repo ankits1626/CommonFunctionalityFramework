@@ -59,7 +59,7 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             if let bgColor = UIColor(hex: backGroundColorLite) {
                 cell.containerView?.backgroundColor = bgColor
             }else{
-                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
             }
             //cell.feedTitle?.URLColor = .urlColor
 //            cell.feedTitle?.handleURLTap({ (targetUrl) in
@@ -132,7 +132,7 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             if let bgColor = UIColor(hex: backGroundColorLite) {
                 cell.containerView?.backgroundColor = bgColor
             }else{
-                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
             }
             
             if let mediaItem = feed.getMediaList()?.first,

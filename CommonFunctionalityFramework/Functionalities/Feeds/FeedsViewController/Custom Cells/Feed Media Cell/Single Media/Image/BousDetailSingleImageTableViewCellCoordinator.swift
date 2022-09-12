@@ -40,7 +40,7 @@ class BousDetailSingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtoc
             if let bgColor = UIColor(hex: backGroundColorLite) {
                 cell.containerView?.backgroundColor = bgColor
             }else{
-                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
             }
                                                           
             cell.containerView?.clipsToBounds = true
