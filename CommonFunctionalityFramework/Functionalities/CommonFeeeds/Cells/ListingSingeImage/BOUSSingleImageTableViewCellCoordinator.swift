@@ -49,7 +49,7 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
             if let bgColor = UIColor(hex: backGroundColorLite) {
                 cell.containerView?.backgroundColor = bgColor
             }else{
-                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
             }
 
             

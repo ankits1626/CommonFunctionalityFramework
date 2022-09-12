@@ -62,7 +62,7 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
             if let bgColor = UIColor(hex: backGroundColorLite) {
                 cell.containerView?.backgroundColor = bgColor
             }else{
-                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
             }
             
 //            cell.containerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)

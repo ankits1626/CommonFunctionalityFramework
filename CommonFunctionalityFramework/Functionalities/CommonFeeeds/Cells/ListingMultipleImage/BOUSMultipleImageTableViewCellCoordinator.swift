@@ -40,7 +40,7 @@ class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProt
             if let bgColor = UIColor(hex: backGroundColorLite) {
                 cell.containerView?.backgroundColor = bgColor
             }else{
-                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
             }
 
 //            Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
