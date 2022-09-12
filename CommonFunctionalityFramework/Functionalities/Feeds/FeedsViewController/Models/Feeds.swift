@@ -72,6 +72,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         var strengthIcon = ""
         var strengthMessage = ""
         var badgeBackgroundColor = ""
+        var backGroundLite = ""
         var illustration = ""
         var points = "0"
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
@@ -79,14 +80,15 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
                     strengthMessage = rawFeedDictionary["description"] as! String
                    // strengthIcon = userStengthDic["icon"] as! String
-                    badgeBackgroundColor = userStengthDic["background_color"] as! String
+                    badgeBackgroundColor = userStengthDic["background_color"] as? String ?? ""
+                    backGroundLite = userStengthDic["background_color_lite"] as? String ?? ""
                     
                     if let pts = rawFeedDictionary["points"] as? String {
                         points = pts
                     }
                     
                     
-                    dataDic = ["strengthName" : userName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points, "illustration" : ""]
+                    dataDic = ["strengthName" : userName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points, "illustration" : "","background_color_lite" : backGroundLite]
                 }else {
                     if let userStengthDic = rawFeedDictionary["user_strength"] as? NSDictionary {
                         if let pts = rawFeedDictionary["points"] as? String {
@@ -96,9 +98,10 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                         strengthName = userStengthDic["name"] as! String
                         strengthMessage = rawFeedDictionary["description"] as! String
                         strengthIcon = userStengthDic["icon"] as! String
-                        badgeBackgroundColor = userStengthDic["background_color"] as! String
+                        badgeBackgroundColor = userStengthDic["background_color"] as? String ?? ""
+                        backGroundLite = userStengthDic["background_color_lite"] as? String ?? ""
                         illustration = userStengthDic["illustration"] as! String
-                        dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points, "illustration" : illustration]
+                        dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points, "illustration" : illustration,"background_color_lite" : backGroundLite]
                     }
                 }
             }

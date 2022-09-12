@@ -35,7 +35,15 @@ class BOUSMultipleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProt
             }
             let feedTitle = feed.getStrengthData()
             
-            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
+            let backGroundColor = feedTitle["badgeBackgroundColor"] as? String ?? ""
+            let backGroundColorLite = feedTitle["background_color_lite"] as? String ?? ""
+            if let bgColor = UIColor(hex: backGroundColorLite) {
+                cell.containerView?.backgroundColor = bgColor
+            }else{
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
+            }
+
+//            Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
             //cell.containerView.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
             cell.mediaCollectionView.decelerationRate = .fast
             (cell.mediaCollectionView?.collectionViewLayout as! MultipleImageFlowLayout).pageCollectionLayoutDelegate = self

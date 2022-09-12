@@ -1,29 +1,27 @@
 //
-//  BOUSSingleImageTableViewCellCoordinator.swift
+//  BousDetailSingleImageTableViewCellCoordinator.swift
 //  CommonFunctionalityFramework
 //
-//  Created by Puneeeth on 21/07/22.
+//  Created by Suyesh Kandpal on 09/09/22.
 //  Copyright © 2022 Rewardz. All rights reserved.
 //
 
 import UIKit
 
-class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
+class BousDetailSingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+    var cellType: FeedCellTypeProtocol{
+        return SingleImageTableViewCellType()
+    }
     
-    
-    func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
+    func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         return 140
     }
     
-    var cellType: CommonFeedCellTypeProtocol{
-        return BOUSSingleImageTableViewCellType()
-    }
-    
-    func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
-        if let cell  = inputModel.targetCell as? BOUSSingleImageTableViewCell{
+    func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
+        if let cell  = inputModel.targetCell as? SingleImageTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             if let mediaItem = feed.getMediaList()?.first,
-               let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
+                let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.feedImageView, imageEndPoint: mediaItemEndpoint)
             }else if let gifItem = feed.getGiphy() {
                 if !gifItem.isEmpty {
@@ -36,13 +34,6 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
             }
             cell.feedImageView?.curvedCornerControl()
             cell.feedImageView?.addBorders(edges: [.left, .right], color: .clear)
-            //            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-            //                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
-            //            }else{
-            //                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-            //            }
-            
-            
             let feedTitle = feed.getStrengthData()
             let backGroundColor = feedTitle["badgeBackgroundColor"] as? String ?? ""
             let backGroundColorLite = feedTitle["background_color_lite"] as? String ?? ""
@@ -51,9 +42,10 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
             }else{
                 cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColor)
             }
-
-            
-            
+                                                          
+            cell.containerView?.clipsToBounds = true
+            cell.containerView?.layer.cornerRadius = 8
+            cell.containerView?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.imageTapButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {
@@ -61,13 +53,9 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
                         feedIdentifier: feed.feedIdentifier,
                         scrollToItemIndex: 0
                     )
-                })
-            
-            cell.containerView?.clipsToBounds = true
-            cell.containerView?.layer.cornerRadius = 8
-            cell.containerView?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-            
+            })
         }
     }
-    
 }
+
+

@@ -3,6 +3,7 @@ PODS:
   - FLAnimatedImage (1.0.16)
   - Giphy (2.1.22):
     - libwebp
+  - IQKeyboardManagerSwift (6.5.10)
   - KUIPopOver (1.1.2)
   - libwebp (1.2.1):
     - libwebp/demux (= 1.2.1)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - ActiveLabel (from `https://github.com/ankits1626/ActiveLabel.swift`, branch `CFF_Customizations`)
   - FLAnimatedImage (~> 1.0)
   - Giphy
+  - IQKeyboardManagerSwift
   - KUIPopOver (= 1.1.2)
   - Loaf
   - Reactions (~> 3.0.0)
@@ -33,6 +35,7 @@ SPEC REPOS:
   trunk:
     - FLAnimatedImage
     - Giphy
+    - IQKeyboardManagerSwift
     - KUIPopOver
     - libwebp
     - Loaf
@@ -59,6 +62,7 @@ SPEC CHECKSUMS:
   ActiveLabel: d757b2404064bc63127c25c1a6beab0ca578bbaa
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
   Giphy: 6757d929878ef45f70ed62a02a2c9a03994e7b6c
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   KUIPopOver: fc7ccb3c1c1ada51f5251477a7993ec452e3eefb
   libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
@@ -66,6 +70,6 @@ SPEC CHECKSUMS:
   RewardzCommonComponents: 71cdc605343de5561b6d595e693e40ecc054949d
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: 3a8665dbaddd6fe263f64287f9450ff32a8b9524
+PODFILE CHECKSUM: fa42768d0a54cbc5d0c3c20e888aed1aeb709125
 
 COCOAPODS: 1.11.3

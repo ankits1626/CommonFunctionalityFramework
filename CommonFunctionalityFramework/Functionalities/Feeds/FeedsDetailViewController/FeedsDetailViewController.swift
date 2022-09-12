@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 enum FeedDetailSection : Int {
     case FeedInfo = 0
@@ -55,8 +56,12 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
+        IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        IQKeyboardManager.shared.enableAutoToolbar = true
+    }
     private func setup(){
         view.backgroundColor = .white
         setupTableView()
@@ -75,9 +80,9 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     
     private func setupCommentBar(){
         commentBarView?.backgroundColor = .commentBarBackgroundColor
-        commentBarView?.placeholder = "Enter your comments here".localized
-        commentBarView?.placeholderColor = .getPlaceholderTextColor()
-        commentBarView?.placeholderFont = .Body1
+//        commentBarView?.placeholder = "Enter your comments here".localized
+//        commentBarView?.placeholderColor = .getPlaceholderTextColor()
+//        commentBarView?.placeholderFont = .Body1
         commentBarView?.themeManager = themeManager
         commentBarView?.requestCoordinator = requestCoordinator
         commentBarView?.mediaFetcher = mediaFetcher
@@ -808,7 +813,7 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
-                                chatBar.placeholder = "Enter your comments here".localized
+//                                chatBar.placeholder = "Enter your comments here".localized
                                 CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {[weak self] in
                                     let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
                                     post.numberOfComments =  post.numberOfComments + 1
@@ -894,7 +899,7 @@ extension FeedsDetailViewController : EditCommentTypeProtocol,DeleteCommentProto
     func selectedFilterType(selectedType: EditCommentType, commentIdentifier: Int64, chatMessage: String) {
         switch selectedType {
         case .Edit:
-            commentBarView?.placeholder = ""
+//            commentBarView?.placeholder = ""
             commentBarView?.isEditCommentEnabled = true
             commentBarView?.commentID = commentIdentifier
             ASMentionCoordinator.shared.getPresentableMentionText(chatMessage, completion: { (attr) in

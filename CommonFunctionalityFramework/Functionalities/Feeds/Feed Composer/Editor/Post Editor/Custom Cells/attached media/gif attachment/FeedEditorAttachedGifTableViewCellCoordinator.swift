@@ -110,6 +110,69 @@ class FeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.removeButton?.isHidden = true
             cell.imageTapButton?.backgroundColor = .clear
+            cell.containerView?.backgroundColor = .white
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+            }else{
+                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            }
+        }
+    }
+    
+    func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    
+}
+
+class BOUSFeedAttachedGifTableViewCellCoordinator : FeedCellCoordinatorProtocol{
+    var cellType: FeedCellTypeProtocol{
+        return FeedGifTableViewCellType()
+    }
+    
+    func getCell(_ inputModel: FeedCellDequeueModel) -> UITableViewCell {
+        let cell = inputModel.targetTableView.dequeueReusableCell(
+        withIdentifier: cellType.cellIdentifier,
+        for: inputModel.targetIndexpath) as! FeedGifTableViewCell
+        let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+        let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+            feedId: feed.feedIdentifier,
+            description: feed.getFeedDescription()
+        )
+        if let rawGif = feed.getGiphy(), !rawGif.isEmpty {
+            if let data = CFFGifCacheManager.sharedInstance.gifCache.object(forKey: rawGif as NSString) as Data?{
+                print("<<<<<<<<<< picked from cache")
+                cell.feedGifImage?.animatedImage = FLAnimatedImage(animatedGIFData: data)
+            }else{
+                cell.feedGifImage?.animatedImage = nil
+                cell.imageLoader?.startAnimating()
+                let task = URLSession.shared.dataTask(with: URLRequest(url: URL(string:rawGif)!)) { (data, _, _) in
+                  DispatchQueue.main.async {
+                    cell.imageLoader?.stopAnimating()
+                    if let unwrappeData = data as NSData?{
+                        CFFGifCacheManager.sharedInstance.gifCache.setObject(unwrappeData, forKey: rawGif as NSString)
+                        
+                        if let visibleIndexpaths = inputModel.targetTableView.indexPathsForVisibleRows,
+                            visibleIndexpaths.contains(inputModel.targetIndexpath){
+                            inputModel.targetTableView.reloadRows(at: [inputModel.targetIndexpath], with: .none)
+                        }else{
+                            print("<<<<<<<<<<<<< let it be probably table not visible >>>>>>>>>>")
+                        }
+                    }
+                  }
+                }
+                task.resume()
+            }
+        }
+        return cell
+    }
+    
+    func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
+        if let cell  = inputModel.targetCell as? FeedGifTableViewCell{
+            let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            cell.removeButton?.isHidden = true
+            cell.imageTapButton?.backgroundColor = .clear
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
                 cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{

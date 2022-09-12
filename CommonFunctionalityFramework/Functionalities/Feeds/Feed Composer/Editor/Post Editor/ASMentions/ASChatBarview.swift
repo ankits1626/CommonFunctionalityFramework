@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 public class ASChatBarError {
     static let NoHeightConstraintSet : Error = NSError(
@@ -144,6 +145,8 @@ public class ASChatBarview : UIView {
         xibSetup()
         registerForKeyboardNotifications()
         registerForTextChangeNotification()
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
     
     func registerTextView() {
