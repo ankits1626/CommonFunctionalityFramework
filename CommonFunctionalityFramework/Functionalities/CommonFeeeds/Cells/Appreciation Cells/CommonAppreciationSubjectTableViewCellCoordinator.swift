@@ -47,6 +47,12 @@ class CommonAppreciationSubjectTableViewCellCoordinator: CommonFeedCellCoordinat
                     cell.readMorebutton?.isHidden = true
                 }
             }
+            let attributedString = NSAttributedString(string: NSLocalizedString("Read More", comment: ""), attributes:[
+                NSAttributedString.Key.font : UIFont(name: "SFProText-Bold", size: 10.0),
+                NSAttributedString.Key.foregroundColor : UIColor.getControlColor(),
+                NSAttributedString.Key.underlineStyle:1.0
+            ])
+            cell.readMorebutton?.setAttributedTitle(attributedString, for: .normal)
             cell.feedText?.numberOfLines = 3
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["illustration"] as? String ?? "")
 //            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)

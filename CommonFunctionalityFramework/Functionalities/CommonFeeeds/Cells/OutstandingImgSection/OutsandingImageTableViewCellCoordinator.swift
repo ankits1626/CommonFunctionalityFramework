@@ -41,18 +41,18 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
                 
                 if cell.nominationMessage!.maxNumberOfLines > 3 {
                     let readmoreFont = UIFont(name: "SFProText-Regular", size: 14)
-                    let readmoreFontColor = UIColor.blue
+                    let readmoreFontColor = UIColor.getControlColor()
                     DispatchQueue.main.async {
-                        cell.nominationMessage?.addTrailing(with: "... ", moreText: "Read more", moreTextFont: readmoreFont!, moreTextColor: readmoreFontColor)
+                        cell.nominationMessage?.addTrailing(with: "... ", moreText: "Read More", moreTextFont: readmoreFont!, moreTextColor: readmoreFontColor)
                     }
                 }
             }else{
                 cell.nominationMessage?.text = feedNominationData["strengthMessage"] as? String ?? ""
                 if cell.nominationMessage!.maxNumberOfLines > 3 {
                     let readmoreFont = UIFont(name: "SFProText-Regular", size: 14)
-                    let readmoreFontColor = UIColor.blue
+                    let readmoreFontColor = UIColor.getControlColor()
                     DispatchQueue.main.async {
-                        cell.nominationMessage?.addTrailing(with: "... ", moreText: "Read more", moreTextFont: readmoreFont!, moreTextColor: readmoreFontColor)
+                        cell.nominationMessage?.addTrailing(with: "... ", moreText: "Read More", moreTextFont: readmoreFont!, moreTextColor: readmoreFontColor)
                     }
                 }
             }
