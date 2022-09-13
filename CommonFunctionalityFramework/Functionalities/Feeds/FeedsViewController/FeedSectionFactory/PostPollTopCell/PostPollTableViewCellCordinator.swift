@@ -40,6 +40,8 @@ class PostPollTableViewCellCordinator: FeedCellCoordinatorProtocol{
             cell.dateLabel?.font = UIFont.Caption1
             cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
             cell.pinPostButton?.isHidden = feed.isPinToPost() ? false : true
+            cell.pinImage?.isHidden = feed.isPinToPost() ? false : true
+            cell.pinImage.setImageColor(color: UIColor.getControlColor())
             cell.containerView?.clipsToBounds = true
              if !inputModel.datasource.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true

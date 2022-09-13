@@ -23,7 +23,9 @@ public struct GetFeedsViewModel{
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var shouldShowCreateButton : Bool = false
     var isFeedLoadingFromProfilePage : Bool = false
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false){
+    var searchText : String? = nil
+
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -31,6 +33,7 @@ public struct GetFeedsViewModel{
         self.mainAppCoordinator = mainAppCoordinator
         self.shouldShowCreateButton = shouldShowCreateButton
         self.isFeedLoadingFromProfilePage = _isFeedLoadingFromProfilePage
+        self.searchText = searchText
     }
 }
 
@@ -55,6 +58,7 @@ public class FeedsCoordinator {
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.shouldShowCreateButton = inputModel.shouldShowCreateButton
         feedsVc.isComingFromProfilePage = inputModel.isFeedLoadingFromProfilePage
+        feedsVc.searchText = inputModel.searchText
         return feedsVc
     }
     

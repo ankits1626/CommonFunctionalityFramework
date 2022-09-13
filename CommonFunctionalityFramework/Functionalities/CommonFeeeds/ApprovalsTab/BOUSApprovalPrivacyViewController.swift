@@ -50,9 +50,11 @@ class BOUSApprovalPrivacyViewController: UIViewController , UITableViewDataSourc
         cell.leftTitle.text = privacyType[indexPath.row]
         cell.leftDesc.text = privacyDescription[indexPath.row]
         cell.tickImg.isHidden = selectedPrivacyPK == privacyPk[indexPath.row] ? false : true
+        cell.tickImg.image = UIImage(named: "interface_tick-circle")
+        cell.tickImg.setImageColor(color: UIColor.getControlColor())
         cell.leftImg.image = UIImage(named: privacyImage[indexPath.row])
         if selectedPrivacyPK == privacyPk[indexPath.row] {
-          //  cell.holderView.layer.borderColor = Rgbconverter.HexToColor(getOrgBackgroundColor(), alpha: 1.0).cgColor
+            cell.holderView.layer.borderColor = UIColor.getControlColor().cgColor
             cell.holderView.backgroundColor = #colorLiteral(red: 0.9602764249, green: 0.9721366763, blue: 1, alpha: 1)
             cell.holderView.layer.borderWidth = 1.0
             cell.holderView.layer.cornerRadius = 5.0

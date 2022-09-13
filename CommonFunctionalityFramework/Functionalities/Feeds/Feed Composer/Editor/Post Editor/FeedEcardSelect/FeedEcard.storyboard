@@ -47,14 +47,13 @@
                                         <rect key="frame" x="16" y="36" width="36" height="36"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mj4-rL-Zvf">
-                                                <rect key="frame" x="7" y="7" width="22" height="22"/>
-                                                <state key="normal" image="icon_back_white-2"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                <state key="normal" image="newBOUSBackButton"/>
                                                 <connections>
                                                     <action selector="backPressed:" destination="WXS-oB-sLx" eventType="touchUpInside" id="vzT-ib-AEO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.2290067375" green="0.2600655556" blue="0.50499862429999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="Mj4-rL-Zvf" firstAttribute="centerY" secondItem="Xqv-Sh-h0l" secondAttribute="centerY" id="E5C-A4-Mlc"/>
                                             <constraint firstAttribute="height" constant="36" id="egI-rx-lTu"/>
@@ -193,6 +192,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_back_white-2" width="22" height="22"/>
+        <image name="newBOUSBackButton" width="36" height="36"/>
     </resources>
 </document>
