@@ -10,6 +10,7 @@ import UIKit
 
 class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak var closeLabel : UILabel?
     @IBOutlet private weak var titleLabel : UILabel?
+    @IBOutlet weak var reportAbuseImg: UIImageView!
     @IBOutlet private weak var messageLabel : UILabel?
     @IBOutlet private weak var commentsLabel : UILabel?
     @IBOutlet private weak var confirmButton : UIButton?
@@ -35,6 +36,7 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
         descriptionText?.placeholderColor = .gray
         descriptionText?.font = .Body1
         descriptionText?.delegate = self
+        reportAbuseImg.setImageColor(color: UIColor.getControlColor())
     }
     
     private func configureConfirmButton(){

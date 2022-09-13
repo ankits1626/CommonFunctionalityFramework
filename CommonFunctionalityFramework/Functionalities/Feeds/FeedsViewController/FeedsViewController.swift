@@ -29,7 +29,15 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     var bottomSafeArea : CGFloat!
     var loader = MFLoader()
     var shouldShowCreateButton: Bool = false
-    
+    var isComingFromProfilePage : Bool = false
+    var searchText : String?
+    @IBOutlet weak var emptyViewContainer : UIView?
+    lazy private var emptyResultView: NoEntryViewController = {
+        return NoEntryViewController(
+            nibName: "NoEntryViewController",
+            bundle: Bundle(for: NoEntryViewController.self)
+        )
+    }()
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
             feedsDatasource: self,
@@ -132,12 +140,26 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     @objc private func loadFeeds(){
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: nil) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: searchText,isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
+                print(result)
             DispatchQueue.main.async {
                 self?.feedsTable?.loadCFFControl?.endLoading()
                 switch result{
                 case .Success(let result):
                     self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
+                        if resultCount.count == 0 {
+                            var emptyMessage : String!
+                            emptyMessage = "No Records Found!"
+                            self?.emptyResultView.showEmptyMessageView(
+                                message: emptyMessage,
+                                parentView: self!.emptyViewContainer!,
+                                parentViewController: self!
+                            )
+                        }else{
+                            self?.emptyResultView.hideEmptyMessageView()
+                        }
+                    }
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     self?.handleaddButton(fetchedfeeds: result)
                 case .SuccessWithNoResponseData:

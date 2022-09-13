@@ -136,19 +136,27 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ksl-wD-VEv" userLabel="Pin Post">
                                                         <rect key="frame" x="317" y="0.0" width="30" height="70"/>
                                                         <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="NcI-p1-AP6">
+                                                                <rect key="frame" x="0.0" y="6" width="30" height="40"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="Sdz-Ox-ekP"/>
+                                                                </constraints>
+                                                            </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yE-Oc-j8r" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="6" width="30" height="38"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="TS4-uh-Gxt"/>
                                                                 </constraints>
-                                                                <state key="normal" image="cff_pinnedPostIcon"/>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="NcI-p1-AP6" secondAttribute="trailing" id="8cy-Y5-ZpV"/>
                                                             <constraint firstAttribute="trailing" secondItem="4yE-Oc-j8r" secondAttribute="trailing" id="VDO-PH-QGI"/>
                                                             <constraint firstAttribute="width" constant="30" id="XdJ-o4-BEs"/>
                                                             <constraint firstItem="4yE-Oc-j8r" firstAttribute="leading" secondItem="Ksl-wD-VEv" secondAttribute="leading" id="llQ-ws-vVp"/>
+                                                            <constraint firstItem="NcI-p1-AP6" firstAttribute="centerY" secondItem="Ksl-wD-VEv" secondAttribute="centerY" constant="-9" id="pl9-0x-NWn"/>
+                                                            <constraint firstItem="NcI-p1-AP6" firstAttribute="leading" secondItem="Ksl-wD-VEv" secondAttribute="leading" id="xXo-vp-YeL"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtA-cf-XHT" userLabel="3 dot Container">
@@ -229,6 +237,7 @@
                 <outlet property="departmentName" destination="Slv-B1-VLm" id="XO9-Dk-UAM"/>
                 <outlet property="editFeedButton" destination="xkm-Xa-WUK" id="cDD-hN-7hN"/>
                 <outlet property="headerGrayViewHeight" destination="UDK-Oq-1RX" id="SFU-NC-g6j"/>
+                <outlet property="pinImage" destination="NcI-p1-AP6" id="f3M-CF-qZ1"/>
                 <outlet property="pinPostButton" destination="4yE-Oc-j8r" id="eBt-hn-JB2"/>
                 <outlet property="pinPostWidthConstraint" destination="XdJ-o4-BEs" id="p5D-cv-vfp"/>
                 <outlet property="profileImage" destination="e1S-gr-0pS" id="v3A-Dy-1rb"/>
@@ -239,8 +248,8 @@
     </objects>
     <resources>
         <image name="cff_feedMore" width="22" height="22"/>
-        <image name="cff_pinnedPostIcon" width="22" height="22"/>
         <image name="dummyProfile" width="30" height="30"/>
+        <image name="icon_pin" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

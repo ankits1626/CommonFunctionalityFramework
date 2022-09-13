@@ -47,14 +47,16 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                 }else if reactionsCount > 0 {
                     cell.reactionCountBtn.setTitle("\(reactionsCount!)", for: .normal)
                     cell.reactionCountBtn.isHidden = false
-                    if let dict1 = reactionData[0] as?  NSDictionary {
-                        if let image1 = dict1["reaction_type"] as? Int {
-                            cell.reactionImg1.isHidden = false
-                            cell.reactionImg1.setImage(UIImage(named: "\(setReactionImageType( reactionType: image1))"), for: .normal)
-                            self.image1 = true
-                        }else {
-                            cell.reactionImg1.isHidden = true
-                            self.image1 = false
+                    if reactionData.count > 0 {
+                        if let dict1 = reactionData[0] as?  NSDictionary {
+                            if let image1 = dict1["reaction_type"] as? Int {
+                                cell.reactionImg1.isHidden = false
+                                cell.reactionImg1.setImage(UIImage(named: "\(setReactionImageType( reactionType: image1))"), for: .normal)
+                                self.image1 = true
+                            }else {
+                                cell.reactionImg1.isHidden = true
+                                self.image1 = false
+                            }
                         }
                     }
                 }else {
@@ -62,7 +64,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
                     self.image1 = false
                 }
                 
-                if reactionsCount > 1 && reactionList.count > 1{
+                if reactionsCount > 1 && reactionData.count > 1{
 
                     if let dict2 = reactionData[1] as? NSDictionary {
                         if let image2 = dict2["reaction_type"] as? Int {
