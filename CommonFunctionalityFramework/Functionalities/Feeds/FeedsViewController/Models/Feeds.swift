@@ -264,6 +264,8 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
             
         }else{
             return EditablePost(
+                selectedEcardMediaItems : getEcard(),
+                attachedGiflyGif : getGiphy(),
                 isShareWithSameDepartmentOnly: isSharedWithDepartment(),
                 postType: getFeedType(),
                 pollOptions: nil,
