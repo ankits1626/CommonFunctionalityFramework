@@ -147,19 +147,21 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
                 switch result{
                 case .Success(let result):
                     self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
-                        if resultCount.count == 0 {
-                            var emptyMessage : String!
-                            emptyMessage = "No Records Found!"
-                            self?.emptyResultView.showEmptyMessageView(
-                                message: emptyMessage,
-                                parentView: self!.emptyViewContainer!,
-                                parentViewController: self!
-                            )
-                        }else{
-                            self?.emptyResultView.hideEmptyMessageView()
-                        }
-                    }
+//                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
+//                        if resultCount.count == 0 {
+//                            var emptyMessage : String!
+//                            emptyMessage = "No Records Found!"
+//                            self?.emptyResultView.showEmptyMessageView(
+//                                message: emptyMessage,
+//                                parentView: self!.emptyViewContainer!,
+//                                parentViewController: self!
+//                            )
+//                        }else{
+//                            self?.emptyResultView.hideEmptyMessageView()
+//                        }
+//                    }
+                    
+                    
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     self?.handleaddButton(fetchedfeeds: result)
                 case .SuccessWithNoResponseData:
@@ -170,6 +172,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             }
         }
     }
+    
     
     func handleaddButton(fetchedfeeds : FetchedFeedModel) {
         if fetchedfeeds.fetchedRawFeeds?.count == 0 {
@@ -401,6 +404,25 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return feedSectionFactory.getNumberOfSections()
+//
+//        if feedSectionFactory.getNumberOfSections() > 0 {
+//                //self.feedsTable?.backgroundView = nil
+//                //self.feedsTable?.separatorStyle = .singleLine
+//                return feedSectionFactory.getNumberOfSections()
+//            }
+//
+//            let rect = CGRect(x: 0,
+//                              y: 0,
+//                              width: self.feedsTable?.bounds.size.width ?? 360,
+//                              height: self.feedsTable?.bounds.size.height ?? 360)
+//            let noDataLabel: UILabel = UILabel(frame: rect)
+//            noDataLabel.text = "No Records Found!"
+//            noDataLabel.textColor = .black
+//            noDataLabel.textAlignment = NSTextAlignment.center
+//            self.feedsTable?.backgroundView = noDataLabel
+//            self.feedsTable?.separatorStyle = .none
+//
+//            return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

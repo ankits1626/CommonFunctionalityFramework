@@ -62,7 +62,7 @@ class BOUSNominationAppoveRejectRequestGenerator: APIRequestGeneratorProtocol  {
                         let req =  self.requestBuilder.apiRequestWithMultiPartFormHeader(
                             url: URL(string: baseUrl + "nominations/api/nominations/\(feedIdentifier)/update_status/?appreciation=1&nominations=\(multipleNom)"),
                             method: .POST,
-                            httpBodyString: self.prepareHttpBody()
+                            httpBodyString: self.prepareHttpForMultipleNominationBody()
                         )
                         return req
                 }else {
@@ -82,6 +82,12 @@ class BOUSNominationAppoveRejectRequestGenerator: APIRequestGeneratorProtocol  {
     private func prepareHttpBody() -> String{
         var params = ""
         params = "comment=\(message ?? "")&approval_status=\(approvalStatus)&shared_with=\(selectedPrivacyvalue)&category=\(selectedCategory)" as String
+        return params
+    }
+    
+    private func prepareHttpForMultipleNominationBody() -> String{
+        var params = ""
+        params = "comment=\(message ?? "")&approval_status=\(approvalStatus)" as String
         return params
     }
 }
