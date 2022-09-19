@@ -40,7 +40,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
         //self.selectAllBtn.setImage(UIImage(named: "small_icon_checkbox_unselected"), for: .normal)
-        loadApprovalsList()
+        loadApprovalsList(isFromApproval: false)
         self.approveBtn.backgroundColor = UIColor.getControlColor()
         self.rejectButton.setTitleColor(UIColor.getControlColor(), for: .normal)
         smallTickImg.image = UIImage(named: "small_icon_checkbox_unselected")
@@ -52,7 +52,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         NotificationCenter.default.post(name: Notification.Name(rawValue: "showMenuButton"), object: nil)
     }
     
-    func loadApprovalsList(){
+    func loadApprovalsList(isFromApproval: Bool){
         self.activityLoader.isHidden = false
         self.activityLoader.startAnimating()
         BOUSGetApprovalsListWorker(networkRequestCoordinator: requestCoordinator).getApprovalsList(searchString: searchText ?? "", nextUrl: "") { (result) in
@@ -65,7 +65,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
                     }
                     do {
                         let data = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
-                        self.constructData(data: data)
+                        self.constructData(data: data, isFromApproval: isFromApproval)
                     }catch {
                         debugPrint(error)
                     }
@@ -78,19 +78,25 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         }
     }
     
-    func constructData(data: Data){
+    func constructData(data: Data, isFromApproval: Bool){
         do {
             let decoder = JSONDecoder()
             let jsonData = try decoder.decode(BOUSApprovalData.self, from: data)
             jsonDataValues =  jsonData.results
-            if jsonDataValues.count == 0 && self.searchText == nil  {
+            if isFromApproval && jsonDataValues.count > 0{
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
-                    "selectedTab" : "received"
+                    "refreshedCount" : self.jsonDataValues.count
                 ])
-                
                 return
+            }else {
+                if jsonDataValues.count == 0 && self.searchText == nil  {
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
+                        "selectedTab" : "received"
+                    ])
+                    return
+                }
             }
-
+            
             DispatchQueue.main.async {
                 if self.jsonDataValues.count > 1 {
                     self.approvalsCountLbl.text = "\(self.jsonDataValues.count) Approvals Pending"
@@ -280,7 +286,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         self.selectAllViewHeightConstraint.constant = 60
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
-        loadApprovalsList()
+        loadApprovalsList(isFromApproval: true)
     }
     
     func popToApprovalsAndReload() {
@@ -288,7 +294,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         self.selectAllViewHeightConstraint.constant = 60
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
-        loadApprovalsList()
+        loadApprovalsList(isFromApproval: true)
     }
     
 }
