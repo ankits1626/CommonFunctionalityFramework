@@ -48,8 +48,10 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "showMenuButton"), object: nil)
+        
+        //check this
+//        self.tabBarController?.tabBar.isHidden = false
+//        NotificationCenter.default.post(name: Notification.Name(rawValue: "showMenuButton"), object: nil)
     }
     
     func loadApprovalsList(isFromApproval: Bool){

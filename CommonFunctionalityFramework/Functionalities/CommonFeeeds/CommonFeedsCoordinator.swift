@@ -90,6 +90,18 @@ public class CommonFeedsCoordinator {
 
     }
     
+    public func showApprovalsDetail(_ inputModel : GetCommonFeedsViewModel, approvalsId: Int)  -> UIViewController{
+        let storyboardName = "CommonFeeds"
+        let storyboardBundle =  Bundle(for: BOUSApprovalDetailViewController.self)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: storyboardBundle)
+        let controller = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalDetailViewController") as! BOUSApprovalDetailViewController
+        controller.isComingFromNominationPage = true
+        controller.selectedNominationId = approvalsId
+        controller.requestCoordinator = inputModel.networkRequestCoordinator
+        controller.mediaFetcher = inputModel.mediaCoordinator
+        return controller
+    }
+    
     public func getApprovalsViewFromFeeds(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
         let storyboardName = "CommonFeeds"
         let storyboardBundle =  Bundle(for: BOUSApprovalsListingViewController.self)
