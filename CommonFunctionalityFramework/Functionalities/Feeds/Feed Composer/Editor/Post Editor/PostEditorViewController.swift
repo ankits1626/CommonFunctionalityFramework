@@ -152,9 +152,9 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     private func setupCreateButton(){
         switch postType {
         case .Poll:
-            createButton?.setTitle("CREATE POLL".localized, for: .normal)
+            createButton?.setTitle("Create".localized, for: .normal)
         case .Post:
-            createButton?.setTitle("POST".localized, for: .normal)
+            createButton?.setTitle("Post".localized, for: .normal)
         }
         createButton?.titleLabel?.font = UIFont.Button
         createButton?.titleLabel?.tintColor = .buttonTextColor
@@ -314,7 +314,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                 assetSelectionCompletion: { (selectedMediaItems) in
                     self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
             },
-                maximumItemSelectionAllowed: 10 - postCoordinator.getRemoteMediaCount(),
+                maximumItemSelectionAllowed: 5,
                 presentingViewController: self,
                 themeManager: themeManager
             )

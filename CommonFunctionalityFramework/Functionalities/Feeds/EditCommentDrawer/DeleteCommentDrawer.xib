@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="areYouSureLabel" destination="PuV-5p-x5P" id="tbN-iy-ZI6"/>
                 <outlet property="cancelButton" destination="bPE-L5-rYi" id="KYO-JU-rXy"/>
+                <outlet property="commentImg" destination="kRl-bk-I9G" id="yRt-jE-yCS"/>
                 <outlet property="confirmButton" destination="QLE-dr-KZx" id="YIQ-re-zOD"/>
                 <outlet property="deleteAddress" destination="Kcl-uJ-JUN" id="wKj-ha-xnC"/>
                 <outlet property="holderVIew" destination="bng-5m-jTU" id="4lB-U5-5Um"/>
@@ -31,13 +32,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bng-5m-jTU">
                     <rect key="frame" x="0.0" y="556" width="414" height="340"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete_comment" translatesAutoresizingMaskIntoConstraints="NO" id="kRl-bk-I9G">
-                            <rect key="frame" x="171" y="40" width="72" height="72"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="72" id="0RF-Pt-WP1"/>
-                                <constraint firstAttribute="width" constant="72" id="jwj-2k-mD4"/>
-                            </constraints>
-                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcl-uJ-JUN">
                             <rect key="frame" x="51" y="128" width="312" height="30"/>
                             <constraints>
@@ -95,25 +89,59 @@
                                 <action selector="cancelButton:" destination="-1" eventType="touchUpInside" id="at3-vt-1bC"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lco-Ho-EhK">
+                            <rect key="frame" x="169.5" y="31" width="75" height="71"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete_comment_icon" translatesAutoresizingMaskIntoConstraints="NO" id="kRl-bk-I9G">
+                                    <rect key="frame" x="20" y="20" width="35" height="31"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="31" id="0RF-Pt-WP1"/>
+                                        <constraint firstAttribute="width" constant="35" id="jwj-2k-mD4"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete_comment_trash" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-mc-Jx8">
+                                    <rect key="frame" x="40" y="34" width="22" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="22" id="12G-IN-NRi"/>
+                                        <constraint firstAttribute="width" constant="22" id="1Dh-rx-cDh"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.95294088129999999" green="0.96470612290000002" blue="0.99215632679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="R7H-mc-Jx8" secondAttribute="bottom" constant="15" id="0jw-Dh-ORU"/>
+                                <constraint firstAttribute="trailing" secondItem="R7H-mc-Jx8" secondAttribute="trailing" constant="13" id="CZ1-ma-2j8"/>
+                                <constraint firstItem="kRl-bk-I9G" firstAttribute="centerX" secondItem="Lco-Ho-EhK" secondAttribute="centerX" id="F4T-AF-5d1"/>
+                                <constraint firstAttribute="width" constant="75" id="Ld1-rJ-VXp"/>
+                                <constraint firstAttribute="height" constant="71" id="NaG-dZ-dZE"/>
+                                <constraint firstItem="kRl-bk-I9G" firstAttribute="top" secondItem="Lco-Ho-EhK" secondAttribute="top" constant="20" id="yxL-fy-aGq"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="QLE-dr-KZx" firstAttribute="leading" secondItem="bng-5m-jTU" secondAttribute="leading" constant="21" id="0Ta-Zr-7Wk"/>
-                        <constraint firstItem="Kcl-uJ-JUN" firstAttribute="top" secondItem="kRl-bk-I9G" secondAttribute="bottom" constant="16" id="4Ca-3a-Lcn"/>
                         <constraint firstItem="Kcl-uJ-JUN" firstAttribute="leading" secondItem="bng-5m-jTU" secondAttribute="leading" constant="51" id="5kO-lm-lRa"/>
                         <constraint firstItem="PuV-5p-x5P" firstAttribute="leading" secondItem="bng-5m-jTU" secondAttribute="leading" constant="35" id="L0j-kU-Twh"/>
                         <constraint firstAttribute="trailing" secondItem="bPE-L5-rYi" secondAttribute="trailing" constant="20" id="LX0-vh-MYH"/>
                         <constraint firstAttribute="height" constant="340" id="RyB-CO-qX7"/>
                         <constraint firstItem="MXs-uP-N43" firstAttribute="centerX" secondItem="bng-5m-jTU" secondAttribute="centerX" id="V3o-Ae-V5w"/>
                         <constraint firstItem="bPE-L5-rYi" firstAttribute="top" secondItem="QLE-dr-KZx" secondAttribute="bottom" constant="24" id="YDQ-zn-YuN"/>
+                        <constraint firstItem="Kcl-uJ-JUN" firstAttribute="top" secondItem="Lco-Ho-EhK" secondAttribute="bottom" constant="26" id="Zjp-PB-Qt9"/>
                         <constraint firstItem="QLE-dr-KZx" firstAttribute="top" secondItem="PuV-5p-x5P" secondAttribute="bottom" constant="32" id="aEC-u3-0PN"/>
+                        <constraint firstItem="Lco-Ho-EhK" firstAttribute="centerX" secondItem="bng-5m-jTU" secondAttribute="centerX" id="cii-dV-L4F"/>
+                        <constraint firstItem="Lco-Ho-EhK" firstAttribute="top" secondItem="MXs-uP-N43" secondAttribute="bottom" constant="13" id="dwJ-be-IcP"/>
                         <constraint firstAttribute="trailing" secondItem="PuV-5p-x5P" secondAttribute="trailing" constant="35" id="gXF-dC-Qo0"/>
                         <constraint firstItem="PuV-5p-x5P" firstAttribute="top" secondItem="Kcl-uJ-JUN" secondAttribute="bottom" constant="3" id="jg3-A8-8yA"/>
                         <constraint firstAttribute="trailing" secondItem="Kcl-uJ-JUN" secondAttribute="trailing" constant="51" id="kn5-iQ-c1L"/>
                         <constraint firstItem="bPE-L5-rYi" firstAttribute="leading" secondItem="bng-5m-jTU" secondAttribute="leading" constant="21" id="mDz-Pt-Y2S"/>
-                        <constraint firstItem="kRl-bk-I9G" firstAttribute="top" secondItem="bng-5m-jTU" secondAttribute="top" constant="40" id="muz-Yb-1iH"/>
                         <constraint firstAttribute="trailing" secondItem="QLE-dr-KZx" secondAttribute="trailing" constant="20" id="qGF-Ob-yYF"/>
-                        <constraint firstItem="kRl-bk-I9G" firstAttribute="centerX" secondItem="bng-5m-jTU" secondAttribute="centerX" id="sWw-wt-E2i"/>
                         <constraint firstItem="MXs-uP-N43" firstAttribute="top" secondItem="bng-5m-jTU" secondAttribute="top" constant="8" id="vCb-In-jEm"/>
                     </constraints>
                 </view>
@@ -134,6 +162,7 @@
     </objects>
     <resources>
         <image name="backStick" width="80" height="5.5"/>
-        <image name="delete_comment" width="72" height="72"/>
+        <image name="delete_comment_icon" width="35" height="31"/>
+        <image name="delete_comment_trash" width="22" height="22"/>
     </resources>
 </document>

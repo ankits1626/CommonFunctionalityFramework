@@ -10,6 +10,7 @@ import Foundation
 
 struct BOUSApprovalData: Decodable {
     var results: [BOUSApprovalDataResponseValues]
+    var supervisor_remaining_budget: String?
 }
 
 struct BOUSApprovalDataResponseValues : Decodable {

@@ -79,7 +79,7 @@ class PintoTopConfirmationDrawer: UIViewController {
         closeLabel?.font = .Caption1
         closeLabel?.text = "Close".localized
         if isAlreadyPinned {
-            titleLabel?.text = "Unpin the post".localized
+            titleLabel?.text = "Unpin the poll".localized
             frequencyView?.alpha = 0
             messageLabel?.text = "".localized
         }else{
