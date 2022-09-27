@@ -95,10 +95,10 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
                       self.dismiss(animated: true) {
                           self.delegate?.popToVC()
                       }
+                case .Failure(let error):
+                    ErrorDisplayer.showError(errorMsg: "\(error.displayableErrorMessage())".localized) { (_) in}
                 case .SuccessWithNoResponseData:
-                    fallthrough
-                case .Failure(_):
-                    ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+                    break
                 }
             }
         }

@@ -40,7 +40,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
         //self.selectAllBtn.setImage(UIImage(named: "small_icon_checkbox_unselected"), for: .normal)
-        loadApprovalsList(isFromApproval: false)
+        loadApprovalsList(isFromApproval: true)
         self.approveBtn.backgroundColor = UIColor.getControlColor()
         self.rejectButton.setTitleColor(UIColor.getControlColor(), for: .normal)
         smallTickImg.image = UIImage(named: "small_icon_checkbox_unselected")
@@ -87,13 +87,14 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
             jsonDataValues =  jsonData.results
             if isFromApproval && jsonDataValues.count > 0{
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
-                    "refreshedCount" : self.jsonDataValues.count
+                    "refreshedCount" : self.jsonDataValues.count,
+                    "supervisor_remaining_budget" : jsonData.supervisor_remaining_budget ?? ""
                 ])
-                return
             }else {
                 if jsonDataValues.count == 0 && self.searchText == nil  {
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "approvalsTabStatus"), object: nil, userInfo: [
-                        "selectedTab" : "received"
+                        "selectedTab" : "received",
+                        "supervisor_remaining_budget" : jsonData.supervisor_remaining_budget ?? ""
                     ])
                     return
                 }

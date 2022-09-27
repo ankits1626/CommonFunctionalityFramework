@@ -75,6 +75,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         
         if selectedTabType == "SearchFromHome" {
             self.feedsTable?.alwaysBounceVertical = false
+            self.feedsTable?.showsVerticalScrollIndicator = false
         }
     }
     
@@ -153,10 +154,20 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                                     "show_approvals": resultData["show_approvals"], "approvals_count": resultData["approvals_count"]
                                 ])
                             }
+                            
+                            
                             if let resultCount = resultData["count"] as? Int  {
-                                if resultCount == 0 {
+                                if resultCount == 0 && self?.selectedTabType == "given" {
+                                    self?.feedsTable?.isHidden = true
                                     var emptyMessage : String!
-                                    emptyMessage = "No Records Found!"
+                                    emptyMessage = ""
+                                }else{
+                                    self?.feedsTable?.isHidden = false
+                                }
+                                
+                                if resultCount == 0 && self?.selectedTabType == "SearchFromHome" {
+                                    var emptyMessage : String!
+                                    emptyMessage = ""
                                     self?.emptyResultView.showEmptyMessageView(
                                         message: emptyMessage,
                                         parentView: self!.emptyViewContainer!,

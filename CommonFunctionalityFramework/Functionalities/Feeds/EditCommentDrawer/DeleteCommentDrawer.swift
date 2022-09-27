@@ -18,6 +18,7 @@ class DeleteCommentDrawer: UIViewController {
     var delegate : DeleteCommentProtocol?
     @IBOutlet weak var holderVIew: UIView!
     @IBOutlet weak var viewConatinerView: UIView?
+    @IBOutlet weak var commentImg: UIImageView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var deleteAddress: UILabel!
     @IBOutlet weak var areYouSureLabel: UILabel!
@@ -32,6 +33,7 @@ class DeleteCommentDrawer: UIViewController {
         confirmButton.setTitle("Delete", for: .normal)
         cancelButton.setTitle("Cancel".localized, for: .normal)
         cancelButton.setTitleColor(UIColor.getControlColor(), for: .normal)
+        commentImg.setImageColor(color: UIColor.getControlColor())
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         viewConatinerView?.isUserInteractionEnabled = true
         viewConatinerView?.addGestureRecognizer(tapGestureRecognizer)

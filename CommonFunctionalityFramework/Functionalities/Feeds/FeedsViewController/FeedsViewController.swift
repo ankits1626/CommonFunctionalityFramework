@@ -536,13 +536,13 @@ extension FeedsViewController : FeedsDelegate{
                 DispatchQueue.main.async {
                     switch result{
                     case .Success(_):
-                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Post is unpinned successfully".localized : "Post is pinned successfully".localized, okActionHandler: { (_) in
+                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Poll is unpinned successfully".localized : "Poll is pinned successfully".localized, okActionHandler: { (_) in
                           NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                         })
                     case .SuccessWithNoResponseData:
                         fallthrough
                     case .Failure(_):
-                        ErrorDisplayer.showError(errorMsg: "Failed to pin post, please try again.".localized) { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Failed to pin poll, please try again.".localized) { (_) in}
                     }
                 }
             }

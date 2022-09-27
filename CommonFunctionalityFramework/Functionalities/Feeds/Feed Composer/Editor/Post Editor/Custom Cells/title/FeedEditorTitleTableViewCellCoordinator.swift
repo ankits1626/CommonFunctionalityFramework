@@ -48,13 +48,15 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             case .Poll:
                 cell.titleText?.placeholder = "Write Your Question".localized
                 max_title_length = POLL_MAX_CHARACTER_LENGTH
+                cell.maxCharacterLabel?.isHidden = false
             case .Post:
                 cell.titleText?.placeholder = "Title".localized
-                cell.titleText?.font = .SemiBold14
+                cell.titleText?.font = .Title1
                 max_title_length = POST_MAX_CHARACTER_LENGTH
+                cell.maxCharacterLabel?.isHidden = true
             }
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()
-            cell.titleText?.placeholderFont = .Body2
+            cell.titleText?.placeholderFont = .Title1
             cell.maxCharacterLabel?.textColor = UIColor.getPlaceholderTextColor()
             cell.maxCharacterLabel?.font = .Caption1
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)

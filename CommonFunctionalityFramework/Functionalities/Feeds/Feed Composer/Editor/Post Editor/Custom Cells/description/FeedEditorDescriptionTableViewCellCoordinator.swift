@@ -33,7 +33,7 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
             //cell.descriptionText?.delegate = self
             ASMentionCoordinator.shared.delegate = delegate
             //ASMentionCoordinator.shared.presentingViewController = delegate as? UIViewController
-            cell.descriptionText?.placeholder = "Whats on your mind?".localized
+            cell.descriptionText?.placeholder = "What would you like to post?".localized
             cell.descriptionText?.placeholderColor = .gray
             
             if let mediaItems = inputModel.datasource.getTargetPost()?.selectedMediaItems,
