@@ -45,6 +45,8 @@ class FeedDetailSectionFactory {
                 ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
                 FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
                 FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator(),
+                BOUSTwoImageDetailTableViewCellType().cellIdentifier : BOUSTwoImageDetailCoordinator(),
+                BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator()
             ]
         }
         return [
@@ -63,7 +65,9 @@ class FeedDetailSectionFactory {
             FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
             FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator(),
             FeedDetailOutstandingTableViewCellType().cellIdentifier :
-                BOUSDetailFeedOutstandingTableViewCellCoordinator()
+                BOUSDetailFeedOutstandingTableViewCellCoordinator(),
+            BOUSTwoImageDetailTableViewCellType().cellIdentifier : BOUSTwoImageDetailCoordinator(),
+            BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator()
         ]
     }()
     
@@ -289,9 +293,9 @@ extension FeedDetailSectionFactory{
                     rows.append(SingleVideoTableViewCellType())
                 }
             case .TwoMediaItemPresent:
-                fallthrough
+                rows.append(BOUSTwoImageDetailTableViewCellType())
             case .MoreThanTwoMediItemPresent:
-                rows.append(MultipleMediaTableViewCellType())
+                rows.append(BOUSThreeImageDetailTableViewCellType())
             }
             if
                 let unwrappedFeed = feed{
@@ -346,9 +350,9 @@ extension FeedDetailSectionFactory{
                     rows.append(SingleVideoTableViewCellType())
                 }
             case .TwoMediaItemPresent:
-                fallthrough
+                rows.append(BOUSTwoImageDetailTableViewCellType())
             case .MoreThanTwoMediItemPresent:
-                rows.append(MultipleMediaTableViewCellType())
+                rows.append(BOUSThreeImageDetailTableViewCellType())
             }
             
             if let gif = feed!.getGiphy() {
