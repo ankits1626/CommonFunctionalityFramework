@@ -24,8 +24,9 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
             FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
 //            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
-            PostPollLikeTableViewCellType().cellIdentifier : PostPollLikeTableViewCordinator()
-            
+            PostPollLikeTableViewCellType().cellIdentifier : PostPollLikeTableViewCordinator(),
+            BOUSTwoImageDetailTableViewCellType().cellIdentifier : BOUSTwoImageDetailCoordinator(),
+            BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator()
             
 //            BOUSFeedGrayDividerCellType().cellIdentifier : BOUSGrayDividerCoordinator()
         ]
@@ -73,9 +74,9 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 rows.append(SingleVideoTableViewCellType())
             }
         case .TwoMediaItemPresent:
-            fallthrough
+            rows.append(BOUSTwoImageDetailTableViewCellType())
         case .MoreThanTwoMediItemPresent:
-            rows.append(MultipleMediaTableViewCellType())
+            rows.append(BOUSThreeImageDetailTableViewCellType())
         }
         
         if let unwrappedGify = feed.getGiphy(),

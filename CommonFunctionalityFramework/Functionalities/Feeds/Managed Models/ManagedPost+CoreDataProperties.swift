@@ -28,6 +28,10 @@ extension ManagedPost {
     @NSManaged public var isAdmin: Bool
     @NSManaged public var messageType: Int64
     @NSManaged public var reactionTypesData: NSObject?
+    @NSManaged public var feedImageHeight: Float
+    @NSManaged public var ecardImageHeight: Float
+    @NSManaged public var singleImageHeight: Float
+    @NSManaged public var gifImageHeight: Float
 }
 
 // MARK: Generated accessors for comments

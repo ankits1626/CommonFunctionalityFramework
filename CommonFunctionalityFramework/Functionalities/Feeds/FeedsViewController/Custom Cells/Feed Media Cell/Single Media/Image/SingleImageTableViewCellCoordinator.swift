@@ -9,12 +9,35 @@
 import UIKit
 
 class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+    
+    var singleImgHeight = 140.0
+
     var cellType: FeedCellTypeProtocol{
         return SingleImageTableViewCellType()
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 140
+        let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+        if let getEcardUrl = feed.getEcardUrl() {
+            if !getEcardUrl.isEmpty {
+                return feed.geteCardHeight()
+            }else {
+                return singleImgHeight
+            }
+        }
+        
+        if let mediaItem = feed.getMediaList()?.first,
+           let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
+            return feed.getSingleImageHeight()
+        }else if let gifItem = feed.getGiphy() {
+            if !gifItem.isEmpty {
+                return feed.getGifImageHeight()
+            }else {
+                return singleImgHeight
+            }
+        }else{
+            return singleImgHeight
+        }
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {

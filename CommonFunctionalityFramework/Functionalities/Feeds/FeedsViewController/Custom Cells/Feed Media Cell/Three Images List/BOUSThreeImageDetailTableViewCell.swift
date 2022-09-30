@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BOUSThreeImageDetailTableViewCell: UITableViewCell {
+class BOUSThreeImageDetailTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var feedImageView1 : UIImageView?
     @IBOutlet weak var feedImageView2 : UIImageView?
     @IBOutlet weak var remainingImgCount: UILabel!
