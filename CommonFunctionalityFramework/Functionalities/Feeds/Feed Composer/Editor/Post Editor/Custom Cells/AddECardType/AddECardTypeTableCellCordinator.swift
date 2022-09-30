@@ -12,7 +12,7 @@ import Loaf
 class AddECardTypeTableCellCordinator: NSObject, PostEditorCellCoordinatorProtocol {
     var cellType: FeedCellTypeProtocol = AddECardTableViewCellType()
     weak var themeManager : CFFThemeManagerProtocol?
-    
+    var ecardHeight = 144.0
     
     func getCell(_ inputModel: PostEditorCellDequeueModel) -> UITableViewCell {
         let cell = inputModel.targetTableView.dequeueReusableCell(
@@ -21,6 +21,7 @@ class AddECardTypeTableCellCordinator: NSObject, PostEditorCellCoordinatorProtoc
         let post = inputModel.datasource.getTargetPost()
         if let eCardImage = post?.selectedEcardMediaItems?.image {
             inputModel.mediaFetcher.fetchImageAndLoad(cell.eCardImageView, imageWithCompleteURL: eCardImage)
+            ecardHeight = imageDimenssions(url: eCardImage)
         }
         return cell
     }
@@ -39,7 +40,18 @@ class AddECardTypeTableCellCordinator: NSObject, PostEditorCellCoordinatorProtoc
     }
     
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
-        return 144
+        return ecardHeight
+    }
+    
+    func imageDimenssions(url: String) -> CGFloat{
+        if let imageSource = CGImageSourceCreateWithURL(URL(string: url)! as CFURL, nil) {
+            if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+//                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
+                let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
+                return pixelHeight
+            }
+        }
+        return 0.0
     }
     
     weak var delegate : PostEditorCellFactoryDelegate?

@@ -35,6 +35,7 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getPollState() -> PollState
     func getMediaCountState() -> MediaCountState
     func getGiphy() -> String?
+    func getEcardUrl() -> String?
     func getFeedType() -> FeedType
     //func getPollOptions() -> [PollOption]?
     func getEditablePost() -> EditablePostProtocol
@@ -53,6 +54,10 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getUserReactionType() -> Int
     func getReactionsData() -> NSArray?
     func getReactionCount() -> Int64
+    func getFeedHeight() -> CGFloat
+    func geteCardHeight() -> CGFloat
+    func getSingleImageHeight() -> CGFloat
+    func getGifImageHeight() -> CGFloat
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -79,7 +84,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
                     strengthMessage = rawFeedDictionary["description"] as! String
-                   // strengthIcon = userStengthDic["icon"] as! String
+                    // strengthIcon = userStengthDic["icon"] as! String
                     badgeBackgroundColor = userStengthDic["background_color"] as? String ?? ""
                     backGroundLite = userStengthDic["background_color_lite"] as? String ?? ""
                     
@@ -106,7 +111,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 }
             }
         }
-
+        
         return dataDic
     }
     
@@ -130,11 +135,11 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func shouldShowDetail() -> Bool {
         return true
-//        if let unwrappedPoll = getPoll(){
-//            return !unwrappedPoll.isPollActive()
-//        }else{
-//            return true
-//        }
+        //        if let unwrappedPoll = getPoll(){
+        //            return !unwrappedPoll.isPollActive()
+        //        }else{
+        //            return true
+        //        }
     }
     
     func getPoll() -> Poll? {
@@ -146,10 +151,26 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     }
     
     func getReactionsData() -> NSArray? {
-//        if let images = rawFeedDictionary["reaction_type"] as? NSArray{
-//                return images
-//        }
+        //        if let images = rawFeedDictionary["reaction_type"] as? NSArray{
+        //                return images
+        //        }
         return reactionTypeData
+    }
+    
+    func getFeedHeight() -> CGFloat {
+        return CGFloat(feedImageHeight)
+    }
+    
+    func getGifImageHeight() -> CGFloat {
+        return CGFloat(gifImageHeight)
+    }
+    
+    func geteCardHeight() -> CGFloat {
+        return CGFloat(ecardImageHeight)
+    }
+    
+    func getSingleImageHeight() -> CGFloat {
+        return CGFloat(singleImageHeight)
     }
     
     func getNumberOfLikesCount() -> Int64 {
@@ -176,6 +197,11 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private let isAdminUser : Bool
     private let reactionType : Int64
     var reactionTypeData : NSArray
+    private var feedImageHeight: Float
+    private var ecardImageHeight: Float
+    private var singleImageHeight: Float
+    private var gifImageHeight: Float
+    var defaultFeedImageHeight: Float = 140.0
     
     required public init(input : [String : Any]){
         self.rawFeedDictionary = input
@@ -185,6 +211,67 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
         reactionType = rawFeedDictionary["user_reaction_type"] as? Int64 ?? -1 // -1 indicates no reaction
         
+        if let images = rawFeedDictionary["images"] as? [[String : Any]]{
+            if images.count == 1 {
+                let singleImg = images[0] as? NSDictionary
+                let sImage = singleImg!["display_img_url"] as? String ?? ""
+                if let imageSource = CGImageSourceCreateWithURL(URL(string: "https://raghavendra.skordev.com" + sImage)! as CFURL, nil) {
+                    if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+                        //                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
+                        let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
+                        self.singleImageHeight = Float(pixelHeight)
+                    }else {
+                        self.singleImageHeight = defaultFeedImageHeight
+                    }
+                }else {
+                    self.singleImageHeight = defaultFeedImageHeight
+                }
+            }else {
+                self.singleImageHeight = defaultFeedImageHeight
+            }
+        }else {
+            self.singleImageHeight = defaultFeedImageHeight
+        }
+        
+        if let ecardData = rawFeedDictionary["images_with_ecard"] as? [[String : Any]] {
+            if ecardData.count == 1 {
+                let eCardImg = ecardData[0] as? NSDictionary
+                let eImage = eCardImg!["display_img_url"] as? String ?? ""
+                if let imageSource = CGImageSourceCreateWithURL(URL(string: "https://raghavendra.skordev.com" + eImage)! as CFURL, nil) {
+                    if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+                        //                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
+                        let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
+                        self.ecardImageHeight = Float(pixelHeight)
+                    }else {
+                        self.ecardImageHeight = defaultFeedImageHeight
+                    }
+                }else {
+                    self.ecardImageHeight = defaultFeedImageHeight
+                }
+                
+            }else {
+                self.ecardImageHeight = defaultFeedImageHeight
+            }
+        }else {
+            self.ecardImageHeight = defaultFeedImageHeight
+        }
+        
+        if let gifData = rawFeedDictionary["gif"] as? String, !gifData.isEmpty {
+            if let imageSource = CGImageSourceCreateWithURL(URL(string: gifData)! as CFURL, nil) {
+                if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+                    //                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
+                    let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
+                    self.gifImageHeight = Float(pixelHeight)
+                }else {
+                    self.gifImageHeight = defaultFeedImageHeight
+                }
+            }else {
+                self.gifImageHeight = defaultFeedImageHeight
+            }
+        }else {
+            self.gifImageHeight = defaultFeedImageHeight
+        }
+        
         if let likesCount = rawFeedDictionary["appreciation_count"] as? Int64{
             numberOfLikes = likesCount
         }else {
@@ -192,10 +279,12 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
         
         if let reactionData = rawFeedDictionary["reaction_type"] as? NSArray{
-                reactionTypeData = reactionData
+            reactionTypeData = reactionData
         }else{
             reactionTypeData = NSArray()
         }
+        
+        self.feedImageHeight = 140.0
     }
     
     required public init(managedObject : NSManagedObject){
@@ -207,6 +296,21 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isAdminUser = (managedObject as! ManagedPost).isAdmin
         reactionType = (managedObject as! ManagedPost).messageType
         reactionTypeData = (managedObject as! ManagedPost).reactionTypesData as! NSArray
+        feedImageHeight = (managedObject as! ManagedPost).feedImageHeight
+        ecardImageHeight = (managedObject as! ManagedPost).ecardImageHeight
+        singleImageHeight = (managedObject as! ManagedPost).singleImageHeight
+        gifImageHeight = (managedObject as! ManagedPost).gifImageHeight
+    }
+    
+    func imageDimenssions(url: String) -> CGFloat{
+        if let imageSource = CGImageSourceCreateWithURL(URL(string: url)! as CFURL, nil) {
+            if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+                //                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
+                let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
+                return pixelHeight
+            }
+        }
+        return 0.0
     }
     
     @discardableResult public func getManagedObject() -> NSManagedObject{
@@ -234,6 +338,10 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         managedPost.isAdmin = isAdminUser
         managedPost.messageType = reactionType
         managedPost.reactionTypesData = reactionTypeData
+        managedPost.feedImageHeight = feedImageHeight
+        managedPost.ecardImageHeight = ecardImageHeight
+        managedPost.singleImageHeight = singleImageHeight
+        managedPost.gifImageHeight = gifImageHeight
         return managedPost
     }
     
@@ -258,7 +366,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             )
             post.parentFeedItem = self
             if let unwrappedGifSource = model?.attachedGif{
-               post.attachedGif = RawGif(sourceUrl: unwrappedGifSource)
+                post.attachedGif = RawGif(sourceUrl: unwrappedGifSource)
             }
             
             return post
@@ -302,6 +410,8 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         if let rawSharedWithValue = rawFeedDictionary["shared_with"] as? Int,
             let departmentSharedChoice = SharePostOption(rawValue: rawSharedWithValue) {
             return departmentSharedChoice
+        //    let departmentSharedChoice = DepartmentSharedChoice(rawValue: rawSharedWithValue) {
+        //     return departmentSharedChoice == .SelfDepartment
         }else{
             return .MyOrg
         }
@@ -337,9 +447,26 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return  rawFeedDictionary["gif"] as? String
     }
     
+    func getEcardUrl() -> String? {
+        if let ecardData = rawFeedDictionary["ecard"] as? NSDictionary {
+            return ecardData["display_img_url"] as? String ?? ""
+        }
+        return nil
+    }
+    
+    func getEcard() -> EcardListResponseValues? {
+        if let ecardData = rawFeedDictionary["ecard"] as? NSDictionary {
+            let id = ecardData.object(forKey: "pk") as? Int ?? 0
+            let categoryId = ecardData.object(forKey: "category") as? Int ?? 0
+            let ecardImages = ecardData.object(forKey: "image") as? String ?? ""
+            return EcardListResponseValues(category: categoryId, image: ecardImages, pk: id)
+        }
+        return nil
+    }
+    
     func getFeedType() -> FeedType {
         if let type = rawFeedDictionary["post_type"] as? Int,
-            let pollType = FeedType(rawValue: type){
+           let pollType = FeedType(rawValue: type){
             return pollType
         }else{
             return .Post
@@ -348,7 +475,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getPostType() -> FeedPostType {
         if let type = rawFeedDictionary["post_type"] as? Int,
-            let pollType = FeedPostType(rawValue: type){
+           let pollType = FeedPostType(rawValue: type){
             if type == 6 {
                 return .Appreciation
             }else {
@@ -424,7 +551,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
         return userImg
     }
-
+    
     
     func getGivenTabUserImg() -> String? {
         var userImg : String?
@@ -486,7 +613,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getFeedTitle() -> String? {
         if let unwrappedTitle  = rawFeedDictionary["title"] as? String,
-            !unwrappedTitle.isEmpty{
+           !unwrappedTitle.isEmpty{
             return unwrappedTitle
         }else{
             return nil
@@ -495,7 +622,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getFeedDescription() -> String? {
         if let unwrappedDescription  = rawFeedDictionary["description"] as? String,
-            !unwrappedDescription.isEmpty{
+           !unwrappedDescription.isEmpty{
             return unwrappedDescription
         }else{
             return nil

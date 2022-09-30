@@ -9,10 +9,29 @@
 import UIKit
 
 class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
-    
-    
+    var singleImgHeight = 140.0
+
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
-        return 140
+        let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+        if let getEcardUrl = feed.getEcardUrl() {
+            if !getEcardUrl.isEmpty {
+                return feed.geteCardHeight()
+            }else {
+                return singleImgHeight
+            }
+        }
+        if let mediaItem = feed.getMediaList()?.first,
+           let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
+            return feed.getSingleImageHeight()
+        }else if let gifItem = feed.getGiphy() {
+            if !gifItem.isEmpty {
+                return feed.getGifImageHeight()
+            }else {
+                return singleImgHeight
+            }
+        }else{
+            return singleImgHeight
+        }
     }
     
     var cellType: CommonFeedCellTypeProtocol{
@@ -68,6 +87,17 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
             cell.containerView?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             
         }
+    }
+    
+    func imageDimenssions(url: String) -> CGFloat{
+        if let imageSource = CGImageSourceCreateWithURL(URL(string: url)! as CFURL, nil) {
+            if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+//                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
+                let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
+                return pixelHeight
+            }
+        }
+        return 0.0
     }
     
 }

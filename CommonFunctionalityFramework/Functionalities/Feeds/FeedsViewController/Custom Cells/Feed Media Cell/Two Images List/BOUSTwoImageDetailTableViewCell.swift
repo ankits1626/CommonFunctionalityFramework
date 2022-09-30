@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BOUSTwoImageDetailTableViewCell: UITableViewCell {
+class BOUSTwoImageDetailTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
 
     @IBOutlet weak var feedImageView1 : UIImageView?
     @IBOutlet weak var feedImageView2 : UIImageView?

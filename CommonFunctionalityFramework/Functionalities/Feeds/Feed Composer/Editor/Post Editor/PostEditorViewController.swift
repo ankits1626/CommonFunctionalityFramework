@@ -767,7 +767,7 @@ extension  PostEditorViewController : DidTapOnEcard {
 
 extension PostEditorViewController: GiphyDelegate {
     func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia)   {
-        let gifURL = media.url(rendition: .fixedWidth, fileType: .gif)
+        let gifURL = media.url(rendition: .downsized, fileType: .gif)
         // your user tapped a GIF!
         self.selectedGif = gifURL!
         postCoordinator.attachGifyGifItem(gifURL!)

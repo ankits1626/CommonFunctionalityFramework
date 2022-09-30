@@ -400,6 +400,7 @@
 		0F60221E287E72CC00D852BD /* BOUSApprovalsListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalsListingViewController.swift; sourceTree = "<group>"; };
 		0F602220287E7EDB00D852BD /* BOUSApprovalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalDetailViewController.swift; sourceTree = "<group>"; };
 		0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardLevelProgressViewController.swift; sourceTree = "<group>"; };
+		0F72619328E5F49A00EECB50 /* CommonFunctionalityModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		0F94B74E2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalsDetailModel.swift; sourceTree = "<group>"; };
 		0F94B75028883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGetSelectedApprovalWorker.swift; sourceTree = "<group>"; };
 		0F94B7532889051F003AC4C8 /* BOUSApprovalHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -2718,11 +2719,12 @@
 		9876834926143D6A00B597B0 /* CommonFunctionalityModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0F72619328E5F49A00EECB50 /* CommonFunctionalityModel 4.xcdatamodel */,
 				BE3E63F92899411400271518 /* CommonFunctionalityModel 3.xcdatamodel */,
 				BEAAD20A26FB04B40069C5C1 /* CommonFunctionalityModel 2.xcdatamodel */,
 				9876834A26143D6A00B597B0 /* CommonFunctionalityModel.xcdatamodel */,
 			);
-			currentVersion = BE3E63F92899411400271518 /* CommonFunctionalityModel 3.xcdatamodel */;
+			currentVersion = 0F72619328E5F49A00EECB50 /* CommonFunctionalityModel 4.xcdatamodel */;
 			path = CommonFunctionalityModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
