@@ -210,68 +210,36 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
         reactionType = rawFeedDictionary["user_reaction_type"] as? Int64 ?? -1 // -1 indicates no reaction
-        
-        if let images = rawFeedDictionary["images"] as? [[String : Any]]{
-            if images.count == 1 {
-                let singleImg = images[0] as? NSDictionary
-                let sImage = singleImg!["display_img_url"] as? String ?? ""
-                if let imageSource = CGImageSourceCreateWithURL(URL(string: "https://raghavendra.skordev.com" + sImage)! as CFURL, nil) {
-                    if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
-                        //                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
-                        let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
-                        self.singleImageHeight = Float(pixelHeight)
-                    }else {
-                        self.singleImageHeight = defaultFeedImageHeight
-                    }
-                }else {
-                    self.singleImageHeight = defaultFeedImageHeight
-                }
-            }else {
-                self.singleImageHeight = defaultFeedImageHeight
-            }
-        }else {
-            self.singleImageHeight = defaultFeedImageHeight
-        }
-        
-        if let ecardData = rawFeedDictionary["images_with_ecard"] as? [[String : Any]] {
-            if ecardData.count == 1 {
-                let eCardImg = ecardData[0] as? NSDictionary
-                let eImage = eCardImg!["display_img_url"] as? String ?? ""
-                if let imageSource = CGImageSourceCreateWithURL(URL(string: "https://raghavendra.skordev.com" + eImage)! as CFURL, nil) {
-                    if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
-                        //                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
-                        let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
-                        self.ecardImageHeight = Float(pixelHeight)
-                    }else {
-                        self.ecardImageHeight = defaultFeedImageHeight
-                    }
-                }else {
-                    self.ecardImageHeight = defaultFeedImageHeight
-                }
-                
-            }else {
-                self.ecardImageHeight = defaultFeedImageHeight
-            }
-        }else {
-            self.ecardImageHeight = defaultFeedImageHeight
-        }
-        
-        if let gifData = rawFeedDictionary["gif"] as? String, !gifData.isEmpty {
-            if let imageSource = CGImageSourceCreateWithURL(URL(string: gifData)! as CFURL, nil) {
-                if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
-                    //                let pixelWidth = imageProperties[kCGImagePropertyPixelWidth] as? CGFloat ?? 0.0
-                    let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
-                    self.gifImageHeight = Float(pixelHeight)
-                }else {
-                    self.gifImageHeight = defaultFeedImageHeight
-                }
-            }else {
-                self.gifImageHeight = defaultFeedImageHeight
-            }
-        }else {
-            self.gifImageHeight = defaultFeedImageHeight
-        }
-        
+//        if let images = rawFeedDictionary["images"] as? [[String : Any]]{
+//            if images.count == 1 {
+//                let singleImg = images[0] as? NSDictionary
+//                let sImage = singleImg!["display_img_url"] as? String ?? ""
+//                self.singleImageHeight = Float(FTImageSize.shared.getImageSize(sImage).height)
+//            }else {
+//                self.singleImageHeight = defaultFeedImageHeight
+//            }
+//        }else {
+//            self.singleImageHeight = defaultFeedImageHeight
+//        }
+//
+//        if let ecardData = rawFeedDictionary["images_with_ecard"] as? [[String : Any]] {
+//            if ecardData.count == 1 {
+//                let eCardImg = ecardData[0] as? NSDictionary
+//                let eImage = eCardImg!["display_img_url"] as? String ?? ""
+//                self.ecardImageHeight = Float(FTImageSize.shared.getImageSize(eImage).height)
+//            }else {
+//                self.ecardImageHeight = defaultFeedImageHeight
+//            }
+//        }else {
+//            self.ecardImageHeight = defaultFeedImageHeight
+//        }
+//
+//        if let gifData = rawFeedDictionary["gif"] as? String, !gifData.isEmpty {
+//            self.gifImageHeight = Float(FTImageSize.shared.getImageSize(gifData).height)
+//        }else {
+//            self.gifImageHeight = defaultFeedImageHeight
+//        }
+//
         if let likesCount = rawFeedDictionary["appreciation_count"] as? Int64{
             numberOfLikes = likesCount
         }else {
@@ -285,6 +253,10 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
         
         self.feedImageHeight = 140.0
+        self.gifImageHeight = 140.0
+        self.ecardImageHeight = 140.0
+        self.singleImageHeight = 140.0
+
     }
     
     required public init(managedObject : NSManagedObject){

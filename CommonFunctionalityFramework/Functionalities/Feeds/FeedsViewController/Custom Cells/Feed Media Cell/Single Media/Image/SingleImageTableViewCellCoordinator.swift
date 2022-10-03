@@ -11,6 +11,7 @@ import UIKit
 class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     
     var singleImgHeight = 140.0
+    let serverUrl = UserDefaults.standard.value(forKey: "serviceurl") as? String ?? ""
 
     var cellType: FeedCellTypeProtocol{
         return SingleImageTableViewCellType()
@@ -20,18 +21,20 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
         if let getEcardUrl = feed.getEcardUrl() {
             if !getEcardUrl.isEmpty {
-                return feed.geteCardHeight()
+                let ecardHeight = FTImageSize.shared.getImageSize(serverUrl+getEcardUrl)
+                return ecardHeight.height
             }else {
                 return singleImgHeight
             }
         }
-        
         if let mediaItem = feed.getMediaList()?.first,
            let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
-            return feed.getSingleImageHeight()
+            let singleImageHeight = FTImageSize.shared.getImageSize(serverUrl+mediaItemEndpoint)
+            return singleImageHeight.height
         }else if let gifItem = feed.getGiphy() {
             if !gifItem.isEmpty {
-                return feed.getGifImageHeight()
+                let gifImageHeight = FTImageSize.shared.getImageSize(gifItem)
+                return gifImageHeight.height
             }else {
                 return singleImgHeight
             }

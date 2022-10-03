@@ -143,12 +143,10 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: searchText,isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
                 print(result)
             DispatchQueue.main.async {
+                self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                 self?.feedsTable?.loadCFFControl?.endLoading()
                 switch result{
                 case .Success(let result):
-                    self?.delay(bySeconds: 3.0) {
-                        self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                    }
 //                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
 //                        if resultCount.count == 0 {
 //                            var emptyMessage : String!
@@ -162,6 +160,8 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
 //                            self?.emptyResultView.hideEmptyMessageView()
 //                        }
 //                    }
+                    
+                    
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     self?.handleaddButton(fetchedfeeds: result)
                 case .SuccessWithNoResponseData:
@@ -173,23 +173,6 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
         }
     }
     
-    public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
-        let dispatchTime = DispatchTime.now() + seconds
-        dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
-    }
-
-    public enum DispatchLevel {
-        case main, userInteractive, userInitiated, utility, background
-        var dispatchQueue: DispatchQueue {
-            switch self {
-            case .main:                 return DispatchQueue.main
-            case .userInteractive:      return DispatchQueue.global(qos: .userInteractive)
-            case .userInitiated:        return DispatchQueue.global(qos: .userInitiated)
-            case .utility:              return DispatchQueue.global(qos: .utility)
-            case .background:           return DispatchQueue.global(qos: .background)
-            }
-        }
-    }
     
     func handleaddButton(fetchedfeeds : FetchedFeedModel) {
         if fetchedfeeds.fetchedRawFeeds?.count == 0 {
