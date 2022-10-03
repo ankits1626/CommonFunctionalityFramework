@@ -143,11 +143,9 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
             nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk) {[weak self] (result) in
                 DispatchQueue.main.async {
-                    self?.delay(bySeconds: 3.0) {
-                        self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                        self?.feedsTable?.loadCFFControl?.endLoading()
-                    }
-                    
+                    self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                    // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
+                    self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
                     case .Success(let result):
                         if let resultData = result.fetchedRawFeeds as? NSDictionary {
@@ -194,24 +192,6 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     private func handleFetchedFeedsResult (fetchedfeeds : FetchedFeedModel){
         self.lastFetchedFeeds = fetchedfeeds
         loadfetchedFeeds()
-    }
-    
-    public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
-        let dispatchTime = DispatchTime.now() + seconds
-        dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
-    }
-
-    public enum DispatchLevel {
-        case main, userInteractive, userInitiated, utility, background
-        var dispatchQueue: DispatchQueue {
-            switch self {
-            case .main:                 return DispatchQueue.main
-            case .userInteractive:      return DispatchQueue.global(qos: .userInteractive)
-            case .userInitiated:        return DispatchQueue.global(qos: .userInitiated)
-            case .utility:              return DispatchQueue.global(qos: .utility)
-            case .background:           return DispatchQueue.global(qos: .background)
-            }
-        }
     }
     
     private func loadfetchedFeeds(){

@@ -57,6 +57,7 @@
 		0F60221F287E72CC00D852BD /* BOUSApprovalsListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F60221E287E72CC00D852BD /* BOUSApprovalsListingViewController.swift */; };
 		0F602221287E7EDC00D852BD /* BOUSApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602220287E7EDB00D852BD /* BOUSApprovalDetailViewController.swift */; };
 		0F602223287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */; };
+		0F72619528E6D5CF00EECB50 /* FTImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72619428E6D5CF00EECB50 /* FTImageSize.swift */; };
 		0F94B74F2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B74E2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift */; };
 		0F94B75128883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B75028883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift */; };
 		0F94B7542889051F003AC4C8 /* BOUSApprovalHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B7532889051F003AC4C8 /* BOUSApprovalHeaderTableViewCell.swift */; };
@@ -371,6 +372,7 @@
 		0F602220287E7EDB00D852BD /* BOUSApprovalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalDetailViewController.swift; sourceTree = "<group>"; };
 		0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardLevelProgressViewController.swift; sourceTree = "<group>"; };
 		0F72619328E5F49A00EECB50 /* CommonFunctionalityModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 4.xcdatamodel"; sourceTree = "<group>"; };
+		0F72619428E6D5CF00EECB50 /* FTImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTImageSize.swift; sourceTree = "<group>"; };
 		0F94B74E2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalsDetailModel.swift; sourceTree = "<group>"; };
 		0F94B75028883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGetSelectedApprovalWorker.swift; sourceTree = "<group>"; };
 		0F94B7532889051F003AC4C8 /* BOUSApprovalHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -795,6 +797,13 @@
 			path = CommentDescriptionCell;
 			sourceTree = "<group>";
 		};
+		0F72619628E6F5CF00EECB50 /* Poll MultipleImages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Poll MultipleImages";
+			sourceTree = "<group>";
+		};
 		0F94B75228890507003AC4C8 /* DetailCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1090,6 +1099,7 @@
 		9868C00D240F772700B12321 /* Feed Media Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0F72619628E6F5CF00EECB50 /* Poll MultipleImages */,
 				0F961A1028E4564D0003FE8D /* Three Images List */,
 				0F961A0F28E4563B0003FE8D /* Two Images List */,
 				9868C01E240F793600B12321 /* Multiple Media */,
@@ -1525,6 +1535,7 @@
 		98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
 			isa = PBXGroup;
 			children = (
+				0F72619428E6D5CF00EECB50 /* FTImageSize.swift */,
 				98F62690265787BC0086B818 /* UILoadControl */,
 				9876834626143D6A00B597B0 /* CoreData */,
 				9868C05D2410A87D00B12321 /* Workers */,
@@ -2319,6 +2330,7 @@
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				BEBFD1E728A9F167006E5D8B /* PostPollLikeTableViewCell.swift in Sources */,
 				0F961A1328E457550003FE8D /* BOUSTwoImageDetailTableViewCell.swift in Sources */,
+				0F72619528E6D5CF00EECB50 /* FTImageSize.swift in Sources */,
 				BE66CCB928A65A0800C7CE83 /* SelectPostTypeTableViewCell.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
 				987D0BB32583DA58001A0F07 /* MockUserListProvider.swift in Sources */,

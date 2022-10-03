@@ -59,13 +59,16 @@ class BOUSTwoImageDetailCoordinator :  FeedCellCoordinatorProtocol{
             let feedTitle = feed.getStrengthData()
             let backGroundColor = feedTitle["badgeBackgroundColor"] as? String ?? ""
             let backGroundColorLite = feedTitle["background_color_lite"] as? String ?? ""
-            if feed.getFeedType() != .Post && feed.getFeedType() != .Poll {
+            if !backGroundColorLite.isEmpty {
                 if let bgColor = UIColor(hex: backGroundColorLite) {
                     cell.containerView?.backgroundColor = bgColor
                 }else{
                     cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
                 }
+            }else {
+                cell.containerView?.backgroundColor = .white
             }
+           
             cell.imageTapButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

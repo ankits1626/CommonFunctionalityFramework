@@ -10,22 +10,49 @@ import UIKit
 
 class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     var singleImgHeight = 140.0
+    let serverUrl = UserDefaults.standard.value(forKey: "serviceurl") as? String ?? ""
 
+//    func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
+//        let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+//        if let getEcardUrl = feed.getEcardUrl() {
+//            if !getEcardUrl.isEmpty {
+//                return feed.geteCardHeight()
+//            }else {
+//                return singleImgHeight
+//            }
+//        }
+//        if let mediaItem = feed.getMediaList()?.first,
+//           let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
+//            return feed.getSingleImageHeight()
+//        }else if let gifItem = feed.getGiphy() {
+//            if !gifItem.isEmpty {
+//                return feed.getGifImageHeight()
+//            }else {
+//                return singleImgHeight
+//            }
+//        }else{
+//            return singleImgHeight
+//        }
+//    }
+    
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
         if let getEcardUrl = feed.getEcardUrl() {
             if !getEcardUrl.isEmpty {
-                return feed.geteCardHeight()
+                let ecardHeight = FTImageSize.shared.getImageSize(serverUrl+getEcardUrl)
+                return ecardHeight.height
             }else {
                 return singleImgHeight
             }
         }
         if let mediaItem = feed.getMediaList()?.first,
            let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
-            return feed.getSingleImageHeight()
+            let singleImageHeight = FTImageSize.shared.getImageSize(serverUrl+mediaItemEndpoint)
+            return singleImageHeight.height
         }else if let gifItem = feed.getGiphy() {
             if !gifItem.isEmpty {
-                return feed.getGifImageHeight()
+                let gifImageHeight = FTImageSize.shared.getImageSize(gifItem)
+                return gifImageHeight.height
             }else {
                 return singleImgHeight
             }
@@ -33,7 +60,7 @@ class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtoc
             return singleImgHeight
         }
     }
-    
+
     var cellType: CommonFeedCellTypeProtocol{
         return BOUSSingleImageTableViewCellType()
     }
