@@ -8,18 +8,25 @@
 
 import Foundation
 import UIKit
+import Photos
+import RewardzCommonComponents
 
 public protocol AttachmentHandlerDelegate : AnyObject{
     func finishedSelectionfFile(documentUrl: URL)
+    func finishedSelectionfImage(images: [LocalSelectedMediaItem]?)
+    func finishedDeletingDocument()
 }
 
-public class AttachmentHandler : NSObject{
+public class AttachmentHandler : NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     private weak var presentedViewController: UIViewController?
     public  weak var delegate: AttachmentHandlerDelegate?
-    
+    weak var themeManager: CFFThemeManagerProtocol?
     public override init() {
         super.init()
     }
+    private lazy var localMediaManager: LocalMediaManager = {
+        return LocalMediaManager()
+    }()
     
     func showAttachmentOptions(){
         let drawer = AvailableAttachmentOptionsDrawerViewController(
@@ -30,7 +37,7 @@ public class AttachmentHandler : NSObject{
             try drawer.presentDrawer()
             drawer.attachPhotosButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
                 drawer.dismiss(animated: true) {
-//                    self?.intiateImageAttachment()
+                    self?.intiateImageAttachment()
                 }
             })
             drawer.attachDocumentButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
@@ -56,7 +63,29 @@ public class AttachmentHandler : NSObject{
         }
     }
     
-    
+    private func intiateImageAttachment(){
+        let drawer = ImageAttachmentOptionsViewController(
+            nibName: "ImageAttachmentOptionsViewController",
+            bundle: Bundle(for: ImageAttachmentOptionsViewController.self)
+        )
+        do{
+            try drawer.presentDrawer()
+            drawer.cameraButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+                drawer.dismiss(animated: true) {
+                    self?.selectedImageType(isCamera: true)
+                }
+            })
+            drawer.galleryButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+                drawer.dismiss(animated: true) {
+                    self?.selectedImageType(isCamera: false)
+                }
+            })
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
+    }
 }
 
 extension AttachmentHandler : UIDocumentPickerDelegate {
@@ -100,4 +129,73 @@ extension AttachmentHandler : UIDocumentPickerDelegate {
         }
     }
     
+}
+
+
+extension AttachmentHandler{
+    private func selectedImageType(isCamera : Bool) {
+        if isCamera {
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.openCameraInput()
+            }
+        }else{
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.showImagePicker()
+            }
+        }
+    }
+    
+    func openCameraInput(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        switch authStatus {
+        case .authorized:
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true)
+            break
+        case .denied:
+            self.alertPromptToAllowCameraAccessViaSettings()
+            break
+        default:
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true)
+            break
+        }
+    }
+    
+    private func showImagePicker(){
+        if let topviewController : UIViewController = UIApplication.topViewController(){
+            AssetGridViewController.presentMediaPickerStack(
+                presentationModel: MediaPickerPresentationModel(
+                    localMediaManager: self.localMediaManager,
+                    selectedAssets:nil,
+                    assetSelectionCompletion: { [weak self](selectedMediaItems) in
+                        print("here")
+                        self?.delegate?.finishedSelectionfImage(images: selectedMediaItems)
+                }, maximumItemSelectionAllowed: 1, presentingViewController: topviewController, themeManager: themeManager
+                )
+            )
+        }else{
+            //throw FeedsComposerDrawerError.UnableToGetTopViewController
+        }
+        
+    }
+}
+
+extension AttachmentHandler{
+    private func present(_ vc : UIViewController, animated: Bool){
+        if let topviewController : UIViewController = UIApplication.topViewController(){
+            topviewController.present(vc, animated: true, completion: nil)
+            presentedViewController = vc
+        }else{
+            //throw FeedsComposerDrawerError.UnableToGetTopViewController
+        }
+    }
+    
+    private func alertPromptToAllowCameraAccessViaSettings(){
+        
+    }
 }

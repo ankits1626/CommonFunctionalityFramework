@@ -23,6 +23,7 @@ public class ASChatBarError {
 }
 
 public class ASChatBarview : UIView {
+    public var themeManager: CFFThemeManagerProtocol?
     @IBOutlet public weak var container : UIView?
     @IBOutlet public weak var attachImageButton : UIButton?
     @IBOutlet public weak var attachImageWidthConstraint : NSLayoutConstraint?
@@ -31,6 +32,8 @@ public class ASChatBarview : UIView {
             attachImageWidthConstraint?.constant = isAttachmentButtonVisibile ? 40 : 0
         }
     }
+    @IBOutlet private weak var attachmentContainer : UIView?
+    @IBOutlet private weak var attachmentDisplayHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var sendButton : UIButton?
     @IBOutlet public weak var messageTextView : KMPlaceholderTextView?
     @IBOutlet private weak var placeholderLabel : UILabel?
@@ -78,6 +81,7 @@ public class ASChatBarview : UIView {
     private lazy var attachmentDataManager: AttachmentDataManager = {
         return AttachmentDataManager()
     }()
+    private var attachmentView: ASChatBarAttachmentViewController?
     
     public var placeholder: String?{
         didSet{
@@ -195,12 +199,22 @@ public class ASChatBarview : UIView {
         
         /// New Frame
         var newFrame = textView.frame
-        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        var maxHeight : Int = 100
+        if let attachmentHeight = attachmentDataManager.getRequiredAttachmentHeight(){
+            maxHeight = maxHeight + attachmentHeight + 40
+            newFrame.size = CGSize(
+                width: max(newSize.width, fixedWidth),
+                height: newSize.height + CGFloat(attachmentHeight)
+            )
+        }else{
+            newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        }
+        
         
         /// Orignal height is height that is assigned to TextView for first time and 100 is maximum height that textview can increase
         self.heightConstraint?.constant = CGFloat(
             min(
-                100,
+                maxHeight,
                 max(
                     Int(newFrame.size.height),
                     Int(self.orignalHeight!)
@@ -321,6 +335,8 @@ public class ASChatBarview : UIView {
 extension ASChatBarview{
     @IBAction private func leftButtonTapped(){
         //addAttachedImageView()
+        attachmentHandler.delegate = self
+        attachmentHandler.themeManager = themeManager
         attachmentHandler.showAttachmentOptions()
         delegate?.addAttachmentButtonPressed()
     }
@@ -366,7 +382,32 @@ extension ASChatBarview : AttachmentHandlerDelegate{
         }
     }
     
+    public func finishedSelectionfImage(images: [LocalSelectedMediaItem]?) {
+        attachmentDataManager.addSelectedImages(images: images) {[weak self] in
+            self?.toggleAttachmentContainer()
+        }
+    }
+    
     private func toggleAttachmentContainer(){
-        
+        updateAttachmentView()
+        adjustHeight()
+    }
+    
+    private func updateAttachmentView(){
+        if attachmentView == nil{
+            let attachmentVC = ASChatBarAttachmentViewController(
+                nibName: "ASChatBarAttachmentViewController",
+                bundle: Bundle(for: ASChatBarAttachmentViewController.self))
+            attachmentVC.parentContainerHeightConstraint = attachmentDisplayHeightConstraint
+            attachmentVC.attachmentDataManager = attachmentDataManager
+            attachmentVC.delegate = self
+            attachmentContainer?.addSubview(attachmentVC.view)
+            self.attachmentView = attachmentVC
+        }
+        attachmentView?.updateHeight()
+    }
+    
+    public func finishedDeletingDocument() {
+        adjustHeight()
     }
 }
