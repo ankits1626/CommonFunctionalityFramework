@@ -136,6 +136,15 @@
 		BC788DD228995E7E004C612F /* FeedsOrganisationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC788DD128995E7E004C612F /* FeedsOrganisationFetcher.swift */; };
 		BCA04B1D2887F982009457AB /* FeedOrganisationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */; };
 		BCA04B1E2887F982009457AB /* FeedOrganisationSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */; };
+		BCCF645828EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF645628EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift */; };
+		BCCF645928EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCF645728EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib */; };
+		BCCF645F28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF645D28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift */; };
+		BCCF646028EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCF645E28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib */; };
+		BCCF646328EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF646128EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift */; };
+		BCCF646428EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCF646228EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib */; };
+		BCCF646828EC1A9F0033AF2C /* AttachmentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF646728EC1A9F0033AF2C /* AttachmentHandler.swift */; };
+		BCCF646A28EC267B0033AF2C /* AttachmentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF646928EC267B0033AF2C /* AttachmentDataManager.swift */; };
+		BCCF646D28EC28900033AF2C /* CommentAttachedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF646C28EC28900033AF2C /* CommentAttachedDocument.swift */; };
 		BCE9964728A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9964628A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift */; };
 		BE54420D27F30BFF00CBF6D9 /* FeedsImageDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */; };
 		BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */; };
@@ -319,6 +328,15 @@
 		BC788DD128995E7E004C612F /* FeedsOrganisationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsOrganisationFetcher.swift; sourceTree = "<group>"; };
 		BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationSelectionViewController.swift; sourceTree = "<group>"; };
 		BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedOrganisationSelectionViewController.xib; sourceTree = "<group>"; };
+		BCCF645628EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASChatBarAttachmentViewController.swift; sourceTree = "<group>"; };
+		BCCF645728EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASChatBarAttachmentViewController.xib; sourceTree = "<group>"; };
+		BCCF645D28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableAttachmentOptionsDrawerViewController.swift; sourceTree = "<group>"; };
+		BCCF645E28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvailableAttachmentOptionsDrawerViewController.xib; sourceTree = "<group>"; };
+		BCCF646128EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachmentOptionsViewController.swift; sourceTree = "<group>"; };
+		BCCF646228EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageAttachmentOptionsViewController.xib; sourceTree = "<group>"; };
+		BCCF646728EC1A9F0033AF2C /* AttachmentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentHandler.swift; sourceTree = "<group>"; };
+		BCCF646928EC267B0033AF2C /* AttachmentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentDataManager.swift; sourceTree = "<group>"; };
+		BCCF646C28EC28900033AF2C /* CommentAttachedDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAttachedDocument.swift; sourceTree = "<group>"; };
 		BCE9964628A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationDepartmentSelectionModel.swift; sourceTree = "<group>"; };
 		BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsImageDrawer.swift; sourceTree = "<group>"; };
 		BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsImageDrawer.xib; sourceTree = "<group>"; };
@@ -854,10 +872,9 @@
 		987D0B8F2583DA58001A0F07 /* ASMentions */ = {
 			isa = PBXGroup;
 			children = (
+				BCCF645428EBFCA00033AF2C /* ASChatBarView */,
 				BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */,
 				BEEF543B26FC978400327205 /* UIView+XibSetup.swift */,
-				BEEF543626FC927E00327205 /* ASChatBarview.swift */,
-				BEEF543726FC927E00327205 /* ASChatBarview.xib */,
 				987D0B922583DA58001A0F07 /* ASMentionCoordinator.swift */,
 				987D0B9C2583DA58001A0F07 /* ASMentionSelectorViewController */,
 				987D0B902583DA58001A0F07 /* ASMentionStore */,
@@ -1299,6 +1316,80 @@
 			path = FeedDepartmentSelection;
 			sourceTree = "<group>";
 		};
+		BCCF645428EBFCA00033AF2C /* ASChatBarView */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646528EC1A780033AF2C /* Attachment */,
+				BEEF543626FC927E00327205 /* ASChatBarview.swift */,
+				BEEF543726FC927E00327205 /* ASChatBarview.xib */,
+			);
+			path = ASChatBarView;
+			sourceTree = "<group>";
+		};
+		BCCF645528EBFCB30033AF2C /* AttachmentView */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF645628EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift */,
+				BCCF645728EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib */,
+			);
+			path = AttachmentView;
+			sourceTree = "<group>";
+		};
+		BCCF645A28EBFD090033AF2C /* AttachmentOptionDrawers */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF645C28EBFFE30033AF2C /* ImageAttachmentOptions */,
+				BCCF645B28EBFF7B0033AF2C /* AvailableAttachmentOptionsDrawer */,
+			);
+			path = AttachmentOptionDrawers;
+			sourceTree = "<group>";
+		};
+		BCCF645B28EBFF7B0033AF2C /* AvailableAttachmentOptionsDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF645D28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift */,
+				BCCF645E28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib */,
+			);
+			path = AvailableAttachmentOptionsDrawer;
+			sourceTree = "<group>";
+		};
+		BCCF645C28EBFFE30033AF2C /* ImageAttachmentOptions */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646128EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift */,
+				BCCF646228EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib */,
+			);
+			path = ImageAttachmentOptions;
+			sourceTree = "<group>";
+		};
+		BCCF646528EC1A780033AF2C /* Attachment */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646B28EC28790033AF2C /* Models */,
+				BCCF646628EC1A860033AF2C /* AttachmentHandler */,
+				BCCF645A28EBFD090033AF2C /* AttachmentOptionDrawers */,
+				BCCF645528EBFCB30033AF2C /* AttachmentView */,
+				BCCF646928EC267B0033AF2C /* AttachmentDataManager.swift */,
+			);
+			path = Attachment;
+			sourceTree = "<group>";
+		};
+		BCCF646628EC1A860033AF2C /* AttachmentHandler */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646728EC1A9F0033AF2C /* AttachmentHandler.swift */,
+			);
+			path = AttachmentHandler;
+			sourceTree = "<group>";
+		};
+		BCCF646B28EC28790033AF2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646C28EC28900033AF2C /* CommentAttachedDocument.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1418,6 +1509,7 @@
 				BEC2B27F26FD9FD1008417C3 /* FeedGifTableViewCell.xib in Resources */,
 				BEC2B26126FD99DC008417C3 /* FeedBottomTableViewCell.xib in Resources */,
 				BEC2B28B26FDA1EF008417C3 /* FeedCommentTableViewCell.xib in Resources */,
+				BCCF645928EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib in Resources */,
 				BEC2B25F26FD99A3008417C3 /* SingleImageTableViewCell.xib in Resources */,
 				BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */,
 				BEC2B25B26FD992A008417C3 /* MultipleMediaTableViewCell.xib in Resources */,
@@ -1429,6 +1521,7 @@
 				BEC2B28926FDA1B4008417C3 /* FeedDetailHeader.xib in Resources */,
 				BEC2B26726FD9A81008417C3 /* PollSubmitButtonCell.xib in Resources */,
 				BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */,
+				BCCF646028EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */,
 				BEC2B28726FDA153008417C3 /* FeedsComposerDrawer.xib in Resources */,
 				BEC2B25726FD989D008417C3 /* FeedTitleTableViewCell.xib in Resources */,
 				BCA04B1E2887F982009457AB /* FeedOrganisationSelectionViewController.xib in Resources */,
@@ -1442,6 +1535,7 @@
 				BC37F2A328894EF20075E7CB /* FeedOrganisationTableViewCell.xib in Resources */,
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
 				BEC2B28326FDA04A008417C3 /* FeedEditorTitleTableViewCell.xib in Resources */,
+				BCCF646428EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib in Resources */,
 				BEC2B26526FD9A4D008417C3 /* PollBottomTableViewCell.xib in Resources */,
 				BEEF543926FC927E00327205 /* ASChatBarview.xib in Resources */,
 				BEC2B26926FD9AB6008417C3 /* PollOptionsTableViewCell.xib in Resources */,
@@ -1545,6 +1639,7 @@
 				BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */,
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
+				BCCF646D28EC28900033AF2C /* CommentAttachedDocument.swift in Sources */,
 				9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
@@ -1562,6 +1657,7 @@
 				9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */,
 				BC37F29A288945E10075E7CB /* FeedDepartment.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
+				BCCF646A28EC267B0033AF2C /* AttachmentDataManager.swift in Sources */,
 				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,
 				BC37F2A228894EF20075E7CB /* FeedOrganisationTableViewCell.swift in Sources */,
 				98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */,
@@ -1582,6 +1678,7 @@
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */,
+				BCCF646828EC1A9F0033AF2C /* AttachmentHandler.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
 				BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */,
@@ -1589,6 +1686,7 @@
 				BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */,
 				9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
+				BCCF645828EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift in Sources */,
 				987D0BA72583DA58001A0F07 /* ASMentionStore.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */,
@@ -1605,12 +1703,14 @@
 				98CC2FB02425C4C400E8F9E0 /* LikeListViewController.swift in Sources */,
 				98BC8A20241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift in Sources */,
 				98BC8A1E241A19DE007C175D /* PostEditorCellFactory.swift in Sources */,
+				BCCF646328EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift in Sources */,
 				9873D63524BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift in Sources */,
 				9868C0E724125ACC00B12321 /* FeedDetailSectionFactory.swift in Sources */,
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
 				983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */,
 				980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */,
 				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
+				BCCF645F28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,
 				98C648B3241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift in Sources */,
 				9876834D26143D6A00B597B0 /* CommonFunctionalityModel.xcdatamodeld in Sources */,

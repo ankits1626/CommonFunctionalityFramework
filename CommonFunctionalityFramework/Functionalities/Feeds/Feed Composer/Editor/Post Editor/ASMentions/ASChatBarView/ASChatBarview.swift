@@ -25,6 +25,12 @@ public class ASChatBarError {
 public class ASChatBarview : UIView {
     @IBOutlet public weak var container : UIView?
     @IBOutlet public weak var attachImageButton : UIButton?
+    @IBOutlet public weak var attachImageWidthConstraint : NSLayoutConstraint?
+    public var isAttachmentButtonVisibile = false{
+        didSet{
+            attachImageWidthConstraint?.constant = isAttachmentButtonVisibile ? 40 : 0
+        }
+    }
     @IBOutlet private weak var sendButton : UIButton?
     @IBOutlet public weak var messageTextView : KMPlaceholderTextView?
     @IBOutlet private weak var placeholderLabel : UILabel?
@@ -64,6 +70,14 @@ public class ASChatBarview : UIView {
     private let kAttachmentContainerBottomInset : CGFloat = 5
     private let kDefaultAttachmentContainerWidth : CGFloat = 44
     private let kDefaultAttachmentContainerHeight  : CGFloat = 44
+    
+    private lazy var attachmentHandler: AttachmentHandler = {
+        return AttachmentHandler()
+    }()
+    
+    private lazy var attachmentDataManager: AttachmentDataManager = {
+        return AttachmentDataManager()
+    }()
     
     public var placeholder: String?{
         didSet{
@@ -127,6 +141,7 @@ public class ASChatBarview : UIView {
         xibSetup()
         registerForKeyboardNotifications()
         registerForTextChangeNotification()
+        attachImageWidthConstraint?.constant = isAttachmentButtonVisibile ? 40 : 0
     }
     
     func registerTextView() {
@@ -306,6 +321,7 @@ public class ASChatBarview : UIView {
 extension ASChatBarview{
     @IBAction private func leftButtonTapped(){
         //addAttachedImageView()
+        attachmentHandler.showAttachmentOptions()
         delegate?.addAttachmentButtonPressed()
     }
 
@@ -340,5 +356,17 @@ extension ASChatBarview{
 extension ASChatBarview : ASMentionCoordinatortextUpdateListener{
     func textUpdated() {
         taggedMessaged = ASMentionCoordinator.shared.getPostableTaggedText() ?? ""
+    }
+}
+
+extension ASChatBarview : AttachmentHandlerDelegate{
+    public func finishedSelectionfFile(documentUrl: URL) {
+        attachmentDataManager.addSelectedDocument(documentUrl: documentUrl) {[weak self] in
+            self?.toggleAttachmentContainer()
+        }
+    }
+    
+    private func toggleAttachmentContainer(){
+        
     }
 }
