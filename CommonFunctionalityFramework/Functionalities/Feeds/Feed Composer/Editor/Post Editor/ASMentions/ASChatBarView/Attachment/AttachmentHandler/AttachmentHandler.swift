@@ -196,6 +196,42 @@ extension AttachmentHandler{
     }
     
     private func alertPromptToAllowCameraAccessViaSettings(){
+        DispatchQueue.main.async {
+            let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")as? String ?? ""
+            let alert = UIAlertController(title: "\"\(String(describing: appName))\" Would Like To Access the Camera/Gallery", message: "Please grant permission", preferredStyle: .alert )
+            alert.addAction(UIAlertAction(title: "Open Settings", style: .cancel) { alert in
+                if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSettingsURL)
+                }
+            })
+            self.present(alert, animated: true)
+        }
+    }
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        UIApplication.topViewController()!.dismiss(animated: true) {
+            var placeholderAsset: PHObjectPlaceholder? = nil
+            let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+            PHPhotoLibrary.shared().performChanges({
+                let newAssetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+                placeholderAsset = newAssetRequest.placeholderForCreatedAsset
+            }, completionHandler: { [weak self] (sucess, error) in
+                DispatchQueue.main.async {
+                    if sucess, let `self` = self, let identifier = placeholderAsset?.localIdentifier {
+                        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject else { return }
+                        AssetGridViewController.presentCameraPickerStack(
+                            presentationModel: CameraPickerPresentationModel(
+                                localMediaManager: self.localMediaManager,
+                                selectedAssets: nil,
+                                assetSelectionCompletion: {[weak self] (selectedMediaItems) in
+                                    self?.delegate?.finishedSelectionfImage(images: selectedMediaItems)
+    //                        self.updatePostWithSelectedMediaSection(selectedMediaItems: selectedMediaItems)
+                                }, maximumItemSelectionAllowed: 1, presentingViewController: UIApplication.topViewController(), themeManager: self.themeManager, _identifier: asset.localIdentifier, _mediaType: asset.mediaType, _asset: asset))
+                    }
+                }
+            })
+        }
         
     }
 }

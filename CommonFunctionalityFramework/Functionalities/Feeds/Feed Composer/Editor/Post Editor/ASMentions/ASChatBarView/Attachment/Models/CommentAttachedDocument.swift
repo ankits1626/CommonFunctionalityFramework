@@ -44,3 +44,9 @@ class CommentAttachedDocument : MediaItemProtocol{
     
     
 }
+
+public struct NetworkPostableCommentModel{
+    public let commentText : String?
+    public let postableLocalMediaUrls: [URL]?
+    public let postableLocalDocumentUrls: [URL]?
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 public class ASChatBarError {
     static let NoHeightConstraintSet : Error = NSError(
@@ -164,7 +165,8 @@ public class ASChatBarview : UIView {
         if let txtview = messageTextView{
             placeholderLabel?.isHidden = !txtview.text.isEmpty
             attachImageButton?.isEnabled = !txtview.text.isEmpty
-            sendButton?.isEnabled = !txtview.text.isEmpty
+            enableSendButtonIfRequired()
+            
             adjustHeight()
 //            if (previousnumberOfLines == nil ) || (previousnumberOfLines != txtview.getNumberOfLines()) || (txtview.getNumberOfLines() == maxNumberOflines){
 //                previousnumberOfLines = txtview.getNumberOfLines()
@@ -182,6 +184,19 @@ public class ASChatBarview : UIView {
 //                    txtview.invalidateIntrinsicContentSize()
 //                }
 //            }
+        }
+    }
+    
+    private func enableSendButtonIfRequired(){
+        if let isMessageEmpty = messageTextView?.text.isEmpty,
+            !isMessageEmpty{
+            sendButton?.isEnabled = true
+        }else{
+            if attachmentDataManager.getNumberOfAttachments() > 0{
+                sendButton?.isEnabled = true
+            }else{
+                sendButton?.isEnabled = false
+            }
         }
     }
     
@@ -364,11 +379,6 @@ extension ASChatBarview{
 
 }
 
-extension ASChatBarview{
-    func clearChatBar() {
-    
-    }
-}
 extension ASChatBarview : ASMentionCoordinatortextUpdateListener{
     func textUpdated() {
         taggedMessaged = ASMentionCoordinator.shared.getPostableTaggedText() ?? ""
@@ -379,12 +389,14 @@ extension ASChatBarview : AttachmentHandlerDelegate{
     public func finishedSelectionfFile(documentUrl: URL) {
         attachmentDataManager.addSelectedDocument(documentUrl: documentUrl) {[weak self] in
             self?.toggleAttachmentContainer()
+            self?.enableSendButtonIfRequired()
         }
     }
     
     public func finishedSelectionfImage(images: [LocalSelectedMediaItem]?) {
         attachmentDataManager.addSelectedImages(images: images) {[weak self] in
             self?.toggleAttachmentContainer()
+            self?.enableSendButtonIfRequired()
         }
     }
     
@@ -409,5 +421,25 @@ extension ASChatBarview : AttachmentHandlerDelegate{
     
     public func finishedDeletingDocument() {
         adjustHeight()
+        enableSendButtonIfRequired()
     }
+    
+    public func getNetworkPostableCommentModel() -> NetworkPostableCommentModel?{
+        if (messageTextView?.text != nil) || (attachmentDataManager.getNumberOfAttachments()>0){
+            return NetworkPostableCommentModel(
+                commentText: messageTextView?.text,
+                postableLocalMediaUrls: attachmentDataManager.getAllAttachedImageUrl(),
+                postableLocalDocumentUrls: attachmentDataManager.getAllAttachedDocumentUrl())
+        }else{
+            return nil
+        }
+    }
+    
+    public func clearChatBar(){
+        self.messageTextView?.text = nil
+        self.attachmentDataManager.clearDataManager()
+        adjustHeight()
+        enableSendButtonIfRequired()
+    }
+    
 }

@@ -42,11 +42,11 @@ class ASChatBarAttachmentViewController: UIViewController, UICollectionViewDeleg
             parentContainerHeightConstraint?.constant = 0
         }
         self.view.frame = self.view.superview!.bounds
+        //TODO: this is because collection vew is not sized as of now thus cells will not be generated
         DispatchQueue.main.asyncAfter(
             deadline: .now() + 0.1) {
                 self.collectionView?.reloadData()
             }
-        
     }
     
     private func setup(){
