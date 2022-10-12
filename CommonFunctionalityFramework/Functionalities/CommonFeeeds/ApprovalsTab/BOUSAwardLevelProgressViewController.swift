@@ -115,6 +115,8 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! BOUSAwardLevel1TableViewCell
             cell.userName.text = dataValues.actor.first_name + dataValues.actor.last_name
             cell.department.text = dataValues.actor.department_name
+            cell.awardLevelStatus.text =  dataValues.status ?? ""
+            
             if let level = dataValues.level as? Int{
                 cell.levelNumber.text = "Level \(level)"
             }else {

@@ -187,9 +187,9 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     private func appendFeedOrg(_ baseEndpoint : String) -> String{
         if self.organisationPK != 0 {
             if baseEndpoint.contains("?") {
-                return "\(baseEndpoint)&organization=\(self.organisationPK)"
+                return "\(baseEndpoint)&organizations=\(self.organisationPK)"
             }else{
-                return "\(baseEndpoint)?organization=\(self.organisationPK)"
+                return "\(baseEndpoint)?organizations=\(self.organisationPK)"
             }
         }
         return baseEndpoint

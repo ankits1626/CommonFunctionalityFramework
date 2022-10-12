@@ -10,7 +10,7 @@ import UIKit
 
 class BousDetailSingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     
-    var singleImgHeight = 140.0
+    var singleImgHeight = 250.0
     let serverUrl = UserDefaults.standard.value(forKey: "serviceurl") as? String ?? ""
 
     var cellType: FeedCellTypeProtocol{
@@ -21,29 +21,52 @@ class BousDetailSingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtoc
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
         if let getEcardUrl = feed.getEcardUrl() {
             if !getEcardUrl.isEmpty {
-                let ecardHeight = FTImageSize.shared.getImageSize(serverUrl+getEcardUrl)
-                return ecardHeight.height
+                return feed.geteCardHeight()
             }else {
                 return singleImgHeight
             }
         }
         if let mediaItem = feed.getMediaList()?.first,
            let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
-            let singleImageHeight = FTImageSize.shared.getImageSize(serverUrl+mediaItemEndpoint)
-            return singleImageHeight.height
+            return feed.getSingleImageHeight()
         }else if let gifItem = feed.getGiphy() {
             if !gifItem.isEmpty {
-                let gifImageHeight = FTImageSize.shared.getImageSize(gifItem)
-                return gifImageHeight.height
+                return feed.getGifImageHeight()
             }else {
                 return singleImgHeight
             }
         }else{
             return singleImgHeight
         }
-        
-        
     }
+    
+//    func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
+//        let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+//        if let getEcardUrl = feed.getEcardUrl() {
+//            if !getEcardUrl.isEmpty {
+//                let ecardHeight = FTImageSize.shared.getImageSize(serverUrl+getEcardUrl)
+//                return ecardHeight.height
+//            }else {
+//                return singleImgHeight
+//            }
+//        }
+//        if let mediaItem = feed.getMediaList()?.first,
+//           let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
+//            let singleImageHeight = FTImageSize.shared.getImageSize(serverUrl+mediaItemEndpoint)
+//            return singleImageHeight.height
+//        }else if let gifItem = feed.getGiphy() {
+//            if !gifItem.isEmpty {
+//                let gifImageHeight = FTImageSize.shared.getImageSize(gifItem)
+//                return gifImageHeight.height
+//            }else {
+//                return singleImgHeight
+//            }
+//        }else{
+//            return singleImgHeight
+//        }
+//
+//
+//    }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? SingleImageTableViewCell{

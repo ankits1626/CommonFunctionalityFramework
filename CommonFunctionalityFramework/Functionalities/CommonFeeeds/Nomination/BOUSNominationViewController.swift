@@ -115,8 +115,11 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) Points"
         cell.timeRemaining.text = "\(dataValue.nomination.nom_status)"
         cell.timeRemaining.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 6.0)
-        cell.timeRemaining.backgroundColor = Rgbconverter.HexToColor(dataValue.nomination.nom_status_color, alpha: 0.1)
-        cell.timeRemaining.textColor = Rgbconverter.HexToColor(dataValue.nomination.nom_status_color, alpha: 1.0)
+        if let nom_color = dataValue.nomination.nom_status_color {
+            cell.timeRemaining.backgroundColor = Rgbconverter.HexToColor(nom_color, alpha: 0.1)
+            cell.timeRemaining.textColor = Rgbconverter.HexToColor(nom_color, alpha: 1.0)
+        }
+       
         cell.usrImg.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         return cell
         
