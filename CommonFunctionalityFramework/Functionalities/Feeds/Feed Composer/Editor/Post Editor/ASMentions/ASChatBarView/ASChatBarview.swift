@@ -164,7 +164,7 @@ public class ASChatBarview : UIView {
         registerTextView()
         if let txtview = messageTextView{
             placeholderLabel?.isHidden = !txtview.text.isEmpty
-            attachImageButton?.isEnabled = !txtview.text.isEmpty
+//            attachImageButton?.isEnabled = !txtview.text.isEmpty
             enableSendButtonIfRequired()
             
             adjustHeight()
