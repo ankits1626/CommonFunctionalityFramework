@@ -10,7 +10,7 @@ import UIKit
 
 class BOUSSingleImageTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     var singleImgHeight = 250.0
-    let serverUrl = UserDefaults.standard.value(forKey: "serviceurl") as? String ?? ""
+    //let serverUrl = UserDefaults.standard.value(forKey: "serviceurl") as? String ?? ""
 
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)

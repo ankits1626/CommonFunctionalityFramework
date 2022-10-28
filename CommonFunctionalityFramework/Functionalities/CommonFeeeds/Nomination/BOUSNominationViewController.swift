@@ -147,7 +147,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
     
     func getCreationDate(jsonData : BOUSApprovalDataResponseValues) -> String? {
         if !jsonData.nomination.created.isEmpty{
-            let dateInFormate = jsonData.time_left.getdateFromStringFrom(dateFormat: "yyyy-MM-dd")
+            let dateInFormate = jsonData.created_on.getdateFromStringFrom(dateFormat: "yyyy-MM-dd")
             return "\(dateInFormate.monthName) \(dateInFormate.day)"
         }else{
             return ""

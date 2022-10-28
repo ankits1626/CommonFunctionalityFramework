@@ -202,7 +202,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private var singleImageHeight: Float
     private var gifImageHeight: Float
     var defaultFeedImageHeight: Float = 250
-    let serverUrl = UserDefaults.standard.value(forKey: "serviceurl") as? String ?? ""
+    let serverUrl = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
 
     required public init(input : [String : Any]){
         self.rawFeedDictionary = input
