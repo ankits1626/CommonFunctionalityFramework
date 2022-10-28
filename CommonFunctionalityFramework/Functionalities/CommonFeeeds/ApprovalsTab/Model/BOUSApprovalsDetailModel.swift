@@ -10,12 +10,12 @@ import Foundation
 
 struct BOUSApprovalsDetailData: Decodable {
     enum CodingValue : String, CodingKey {
-        case user_strength = "user_strength"
+        //case user_strength = "user_strength"
         case nominationKey = "nomination"
         case user = "user"
         case created_by_user_info = "created_by_user_info"
     }
-    let user_strength : userStrength
+    //let user_strength : userStrength
     let nomination : nominationKey
     let user : user
     let description : String
@@ -36,9 +36,11 @@ struct nominationKey : Decodable {
     let nominator_name : String
     enum CodingValue : String, CodingKey {
         case badge = "badges"
+        case user_strength = "user_strength"
         case nominated_team_member = "nominated_team_member"
     }
     let badges : badge
+    let user_strength : userStrength
     let nominated_team_member : nominated_team_member
     let category : Int
 }

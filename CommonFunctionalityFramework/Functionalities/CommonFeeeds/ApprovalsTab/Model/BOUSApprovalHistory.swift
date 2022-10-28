@@ -19,6 +19,7 @@ struct BOUSApprovalHistoryDataResponseValues : Decodable {
     let timestamp : String?
     let level: Int?
     let status: String?
+    let nom_status_color: String?
 }
 
 struct actorDetails : Decodable {
