@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RewardzCommonComponents
 
 class FeedOrgaisationTableViewHeader: UITableViewHeaderFooterView {
     

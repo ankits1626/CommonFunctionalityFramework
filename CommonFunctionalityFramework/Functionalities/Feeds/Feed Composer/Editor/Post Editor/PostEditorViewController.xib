@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,6 +19,7 @@
                 <outlet property="postWithSameDepartmentCheckBox" destination="uTj-u0-hou" id="GTB-P9-6fE"/>
                 <outlet property="postWithSameDepartmentContainer" destination="roZ-qC-VOA" id="zeR-Iw-hfx"/>
                 <outlet property="postWithSameDepartmentMessage" destination="29o-IF-Tpj" id="aSW-ze-Dsr"/>
+                <outlet property="shareWithSegmentControl" destination="QNU-hC-Gcm" id="r9u-8m-QkD"/>
                 <outlet property="tableBackgroundContainer" destination="aD1-7E-f6D" id="bkb-Sq-5Hc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,14 +33,14 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97L-aH-bcr" userLabel="TableContainer">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="576"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aD1-7E-f6D" userLabel="Table Background">
-                                    <rect key="frame" x="16" y="0.0" width="382" height="677"/>
+                                    <rect key="frame" x="16" y="0.0" width="382" height="576"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KdF-ud-HFa">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="677"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="576"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                             </subviews>
@@ -55,8 +56,8 @@
                                 <constraint firstItem="KdF-ud-HFa" firstAttribute="top" secondItem="97L-aH-bcr" secondAttribute="top" id="zXR-Gj-4ud"/>
                             </constraints>
                         </view>
-                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uz-i0-rpJ">
-                            <rect key="frame" x="0.0" y="677" width="414" height="40"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uz-i0-rpJ" userLabel="Message">
+                            <rect key="frame" x="0.0" y="576" width="414" height="40"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbI-SE-oNC">
                                     <rect key="frame" x="16" y="8" width="382" height="32"/>
@@ -92,6 +93,32 @@
                                 <constraint firstAttribute="trailing" secondItem="JbI-SE-oNC" secondAttribute="trailing" constant="16" id="Txa-6x-ZYb"/>
                                 <constraint firstItem="JbI-SE-oNC" firstAttribute="leading" secondItem="1Uz-i0-rpJ" secondAttribute="leading" constant="16" id="tK9-Ga-dZ3"/>
                                 <constraint firstAttribute="height" constant="40" id="w6U-FB-ItR"/>
+                            </constraints>
+                        </view>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzf-KL-pvx" userLabel="PostWith Container">
+                            <rect key="frame" x="0.0" y="616" width="414" height="101"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QNU-hC-Gcm">
+                                    <rect key="frame" x="16" y="29.5" width="382" height="43"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="uiJ-I9-gsw"/>
+                                    </constraints>
+                                    <segments>
+                                        <segment title="First"/>
+                                        <segment title="Second"/>
+                                    </segments>
+                                    <color key="selectedSegmentTintColor" systemColor="tintColor"/>
+                                    <connections>
+                                        <action selector="segmentControlSelectionChanged" destination="-1" eventType="valueChanged" id="O2h-2V-isi"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="QNU-hC-Gcm" secondAttribute="trailing" constant="16" id="D78-aD-rxk"/>
+                                <constraint firstAttribute="height" constant="101" id="SkC-6u-l24"/>
+                                <constraint firstItem="QNU-hC-Gcm" firstAttribute="leading" secondItem="mzf-KL-pvx" secondAttribute="leading" constant="16" id="XQs-xF-dhl"/>
+                                <constraint firstItem="QNU-hC-Gcm" firstAttribute="centerY" secondItem="mzf-KL-pvx" secondAttribute="centerY" id="maT-g3-Msc"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roZ-qC-VOA" userLabel="Department Settings">
@@ -197,7 +224,13 @@
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

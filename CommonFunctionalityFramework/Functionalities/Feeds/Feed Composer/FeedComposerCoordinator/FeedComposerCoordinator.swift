@@ -15,14 +15,17 @@ class FeedComposerCoordinator {
     private var selectedAssets : [LocalSelectedMediaItem]?
     weak var themeManager: CFFThemeManagerProtocol?
     var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
+    private weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     
-    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?) {
+    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?,
+         mainAppCoordinator : CFFMainAppInformationCoordinator?) {
         self.feedCoordinatorDelegate = delegate
         self.requestCoordinator = requestCoordinator
         self.mediaFetcher = mediaFetcher
         self.selectedAssets = selectedAssets
         self.themeManager = themeManager
         self.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
+        self.mainAppCoordinator = mainAppCoordinator
     }
     
     func showFeedItemEditor(type : FeedType) {
@@ -41,10 +44,14 @@ class FeedComposerCoordinator {
             mediaFetcher: mediaFetcher,
             selectedAssets: selectedAssets,
             themeManager : themeManager,
-            selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments
+            selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments,
+            mainAppCoordinator: mainAppCoordinator,
+            feedCoordinatorDelegate: feedCoordinatorDelegate
         )
-        feedCoordinatorDelegate.showComposer(_composer: postEditor) { (topBarModel) in
-            postEditor.containerTopBarModel = topBarModel
-        }
+        feedCoordinatorDelegate.showComposer(
+            _composer: postEditor,
+            dismissCompletionBlock: postEditor.composerDismissCompletionBlock) { topItem in
+                postEditor.containerTopBarModel = topItem
+            }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-protocol FeedsItemProtocol : Likeable {
+protocol FeedsItemProtocol : Likeable, AnyObject {
 
     var feedIdentifier : Int64{get}
     func getUserImageUrl() -> String?
@@ -39,7 +39,7 @@ protocol FeedsItemProtocol : Likeable {
     func isLoggedUserAdmin() -> Bool
 }
 
-public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
+public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func isPinToPost() -> Bool {
         return isPriority
@@ -76,7 +76,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     private let isPriority : Bool
     private let isAdminUser : Bool
     
-    public init(input : [String : Any]){
+    required public init(input : [String : Any]){
         self.rawFeedDictionary = input
         isLikedByMe = rawFeedDictionary["has_appreciated"] as? Bool ?? false
         numberOfLikes = rawFeedDictionary["appreciation_count"] as? Int64 ?? 0
@@ -85,7 +85,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
     }
     
-    public init(managedObject : NSManagedObject){
+    required public init(managedObject : NSManagedObject){
         self.rawFeedDictionary = (managedObject as! ManagedPost).postRawDictionary as! [String : Any]
         self.isLikedByMe = (managedObject as! ManagedPost).isLikedByMe
         self.numberOfLikes = (managedObject as! ManagedPost).numberOfLikes
@@ -138,6 +138,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 selectedMediaItems: nil,
                 remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
             )
+            post.parentFeedItem = self
             if let unwrappedGifSource = model?.attachedGif{
                post.attachedGif = RawGif(sourceUrl: unwrappedGifSource)
             }
@@ -145,7 +146,8 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
             return post
             
         }else{
-            return EditablePost(
+            
+            var post =  EditablePost(
                 isShareWithSameDepartmentOnly: isSharedWithDepartment(),
                 postType: getFeedType(),
                 pollOptions: nil,
@@ -155,6 +157,8 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 selectedMediaItems: nil,
                 remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
             )
+            post.parentFeedItem = self
+            return post
         }
         
     }

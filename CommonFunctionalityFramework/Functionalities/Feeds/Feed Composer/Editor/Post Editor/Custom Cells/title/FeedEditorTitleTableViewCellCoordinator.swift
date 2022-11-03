@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol{
-    var delegate : PostEditorCellFactoryDelegate?
+    weak var delegate : PostEditorCellFactoryDelegate?
     var targetIndexPath : IndexPath = []
     private weak var targetTableView : UITableView?
     private let POST_MAX_CHARACTER_LENGTH = 80
@@ -20,7 +20,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         let targetCell = inputModel.targetTableView.dequeueReusableCell(
         withIdentifier: cellType.cellIdentifier,
         for: inputModel.targetIndexpath)
-        let post = inputModel.datasource.getTargetPost()
+        let post = inputModel.datasource?.getTargetPost()
         
         if let cell  = targetCell as? FeedEditorTitleTableViewCell{
             cell.titleText?.text = post?.title

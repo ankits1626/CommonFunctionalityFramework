@@ -152,7 +152,10 @@ extension FeedOrganisationListManager{
                 unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(
                     organisation,
                     {
-                        unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
+                        unwrappedSelf.initModel.tableView?.reloadSections(
+                            IndexSet(integer: section),
+                            with: .none
+                        )
                         unwrappedSelf.initModel.recordSelectedCompletion()
                     })
 //                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)

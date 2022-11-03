@@ -50,7 +50,9 @@ class FeedDescriptionMarkupParser : NSObject{
     /// - Returns: Output model after the parsing of complete markup string for all possible types of tags
     @discardableResult func getDescriptionParserOutputModelForFeed(feedId: Int64, description: String?) -> FeedDescriptionParserOutPutModel? {
         if let unwrappedDescription = description{
-            if let cachedModel = paserOutputRepository[feedId]{
+            if
+              feedId >= 0,//check for editable post which has a feed id of -1
+                let cachedModel = paserOutputRepository[feedId]{
                 return cachedModel
             }else{
                 let model = parseDescriptionText(unwrappedDescription)

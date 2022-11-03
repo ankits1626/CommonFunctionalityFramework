@@ -9,15 +9,15 @@
 import UIKit
 
 struct InitFeedEditorLocalMediaCollectionCoordinatorModel {
-    let datasource : PostEditorCellFactoryDatasource
+    weak var datasource : PostEditorCellFactoryDatasource?
     var mediaManager : LocalMediaManager?
-    var delegate: PostEditorCellFactoryDelegate
-    var postImageMapper : EditablePostMediaRepository
+    weak var delegate: PostEditorCellFactoryDelegate?
+    weak var postImageMapper : EditablePostMediaRepository?
 }
 
 public enum EditableMediaSection : Int, CaseIterable{
-    case Local = 0
-    case Remote
+    case Remote = 0
+    case Local
 }
 
 class FeedEditorLocalMediaCollectionCoordinator : NSObject {
@@ -49,7 +49,7 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
         return EditableMediaSection.allCases.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return input.postImageMapper.getNumberOfMediaItemsForPost(input.datasource.getTargetPost(), section: EditableMediaSection(rawValue: section)!)
+        return input.postImageMapper?.getNumberOfMediaItemsForPost(input.datasource?.getTargetPost(), section: EditableMediaSection(rawValue: section)!) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,13 +60,13 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
         cell.curvedCornerControl()
         cell.removeButton?.handleControlEvent(
             event: .touchUpInside,
-            buttonActionBlock: {
-                self.input.delegate.removeSelectedMedia(
+            buttonActionBlock: {[weak self] in
+                self?.input.delegate?.removeSelectedMedia(
                     index: indexPath.item,
                     mediaSection: EditableMediaSection(rawValue: indexPath.section)!
                 )
         })
-        input.postImageMapper.loadImage(indexpath: indexPath, imageView: cell.mediaCoverImageView)
+        input.postImageMapper?.loadImage(indexpath: indexPath, imageView: cell.mediaCoverImageView)
         cell.mediaCoverImageView?.curvedCornerControl()
         return cell
     }
@@ -74,7 +74,7 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
 
 extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let mediaCount = input.postImageMapper.getMediaCount(input.datasource.getTargetPost())
+        let mediaCount = input.postImageMapper?.getMediaCount(input.datasource?.getTargetPost())
         if mediaCount == 0 {
             return CGSize(width: 0, height: 0)
         }

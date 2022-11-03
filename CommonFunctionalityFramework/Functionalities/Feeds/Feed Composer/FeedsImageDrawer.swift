@@ -21,6 +21,7 @@ class FeedsImageDrawer: UIViewController {
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     weak var themeManager: CFFThemeManagerProtocol?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var delegate : FeedsImageDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +82,8 @@ extension FeedsImageDrawer{
                 mediaFetcher: self.mediaFetcher,
                 selectedAssets: nil,
                 themeManager: self.themeManager,
-                selectedOrganisationsAndDepartments: nil).showFeedItemEditor(type: type)
+                selectedOrganisationsAndDepartments: nil,
+                mainAppCoordinator: self.mainAppCoordinator).showFeedItemEditor(type: type)
         }
     }
     

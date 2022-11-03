@@ -10,6 +10,7 @@ import UIKit
 import Photos
 
 protocol EditablePostProtocol {
+    var parentFeedItem : FeedsItemProtocol? {set get}
     var deletedRemoteMediaArray : [Int] {set get}
     var title : String? {set get}
     var postDesciption : String? {set get}
@@ -35,7 +36,7 @@ enum DepartmentSharedChoice : Int {
     case SelfDepartment = 10
     case AllDepartment = 20
 }
-struct EditablePost : EditablePostProtocol{
+class EditablePost : EditablePostProtocol{
     
     func isGifAttached() -> Bool {
         return attachedGif != nil
@@ -54,6 +55,43 @@ struct EditablePost : EditablePostProtocol{
     var postableMediaMap: [Int : Data]?
     var attachedGif : RawGif?
     var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
+    var postType: FeedType
+    
+    var pollOptions: [String]?
+    
+    var title: String?
+    
+    var postDesciption: String?
+    
+    var remoteAttachedMedia: [MediaItemProtocol]?
+    
+    var selectedMediaItems : [LocalSelectedMediaItem]?
+    
+    let remotePostId : String?
+    var parentFeedItem : FeedsItemProtocol?{
+        didSet{
+            debugPrint("&&&&&&&&&&&&&& parentFeedItem set to \(parentFeedItem)  ")
+        }
+    }
+    
+    init(isShareWithSameDepartmentOnly: Bool,
+         postType: FeedType,
+         pollOptions: [String]? = nil,
+         title:String? = nil,
+         postDesciption:  String? = nil,
+         remoteAttachedMedia: [MediaItemProtocol]? = nil,
+         selectedMediaItems: [LocalSelectedMediaItem]? = nil,
+         remotePostId: String? = nil,
+         selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel? = nil){
+        self.isShareWithSameDepartmentOnly = isShareWithSameDepartmentOnly
+        self.postType = postType
+        self.title = title
+        self.postDesciption = postDesciption
+        self.remoteAttachedMedia = remoteAttachedMedia
+        self.selectedMediaItems = selectedMediaItems
+        self.remotePostId = remotePostId
+        
+    }
     
     func getNetworkPostableFormat() -> [String : Any] {
         var postableDictionary : [String : Any]!
@@ -107,19 +145,7 @@ struct EditablePost : EditablePostProtocol{
         return postDictionary
     }
     
-    var postType: FeedType
     
-    var pollOptions: [String]?
-    
-    var title: String?
-    
-    var postDesciption: String?
-    
-    var remoteAttachedMedia: [MediaItemProtocol]?
-    
-    var selectedMediaItems : [LocalSelectedMediaItem]?
-    
-    let remotePostId : String?
     
     func getEditablePostNetworkModel(_ baseUrl : String) -> EditablePostNetworkModel{
         return EditablePostNetworkModel(

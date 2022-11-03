@@ -20,9 +20,9 @@ struct FeedCellLoadDataModel {
     var targetIndexpath : IndexPath
     var targetTableView: UITableView?
     var targetCell : UITableViewCell
-    var datasource: FeedsDatasource
+    weak var datasource: FeedsDatasource!
     var mediaFetcher: CFFMediaCoordinatorProtocol
-    var delegate : FeedsDelegate?
+    weak var delegate : FeedsDelegate?
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
     var isFeedDetailPage : Bool
@@ -30,7 +30,7 @@ struct FeedCellLoadDataModel {
 
 struct FeedCellGetHeightModel {
     var targetIndexpath : IndexPath
-    var datasource: FeedsDatasource
+    weak var datasource: FeedsDatasource!
 }
 
 protocol FeedCellCongiguratorProtocol {
@@ -54,7 +54,7 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedTopTableViewCell{
-            let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            let feed = inputModel.datasource!.getFeedItem(inputModel.targetIndexpath.section)
             cell.userName?.text = feed.getUserName()
             cell.userName?.font = UIFont.Body2
             cell.userName?.textColor = UIColor.getTitleTextColor()
@@ -80,27 +80,30 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             )
             cell.pinPostButton?.isHidden = !feed.isLoggedUserAdmin()
             cell.containerView?.clipsToBounds = true
-             if !inputModel.datasource.shouldShowMenuOptionForFeed(){
+             if !inputModel.datasource!.shouldShowMenuOptionForFeed(){
                 cell.editFeedButton?.isHidden = true
             }else{
                 cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             }
-            cell.pinPostButton?.handleControlEvent(
-                event: .touchUpInside, buttonActionBlock: {
-                    inputModel.delegate?.pinToPost(
-                        feedIdentifier: feed.feedIdentifier,
-                        isAlreadyPinned: feed.isPinToPost()
-                    )
-                }
-            )
-            cell.editFeedButton?.handleControlEvent(
-                event: .touchUpInside,
-                buttonActionBlock: {
-                    inputModel.delegate?.showFeedEditOptions(
-                        targetView: cell.editFeedButton,
-                        feedIdentifier: feed.feedIdentifier
-                    )
-            })
+            if let unwrappedDelegate = inputModel.delegate{
+                cell.pinPostButton?.handleControlEvent(
+                    event: .touchUpInside, buttonActionBlock: {
+                        unwrappedDelegate.pinToPost(
+                            feedIdentifier: feed.feedIdentifier,
+                            isAlreadyPinned: feed.isPinToPost()
+                        )
+                    }
+                )
+                cell.editFeedButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        unwrappedDelegate.showFeedEditOptions(
+                            targetView: cell.editFeedButton,
+                            feedIdentifier: feed.feedIdentifier
+                        )
+                })
+            }
+            
             if let profileImageEndpoint = feed.getUserImageUrl(){
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
             }else{

@@ -183,17 +183,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
 extension FeedsViewController{
     
     @IBAction func openFeedComposerSelectionDrawer(){
-        /**
-         so instead of opening the drawer right away we have to check if multi-org post is enabled
-         github refernce: https://github.com/rewardz/skor-ios/issues/318
-         design reference: https://zpl.io/Am6YQNP
-         */
-        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
-            triggerMutiOrgPath()
-        }else{
-            continueWithFeedCreation(nil)
-        }
-        
+        continueWithFeedCreation(nil)
     }
     
     private func triggerMutiOrgPath(){
@@ -211,6 +201,7 @@ extension FeedsViewController{
     
     private func continueWithFeedCreation(_ selectedOrganisationsAndDeparments: FeedOrganisationDepartmentSelectionModel?){
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
+        drawer.mainAppCoordinator = mainAppCoordinator
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator
         drawer.mediaFetcher = mediaFetcher
@@ -233,6 +224,7 @@ extension FeedsViewController{
     
     @IBAction func openImagePickerToComposePost(){
         let drawer = FeedsImageDrawer(nibName: "FeedsImageDrawer", bundle: Bundle(for: FeedsImageDrawer.self))
+        drawer.mainAppCoordinator = mainAppCoordinator
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator
         drawer.mediaFetcher = mediaFetcher
@@ -298,7 +290,8 @@ extension FeedsViewController{
                             mediaFetcher: self.mediaFetcher,
                             selectedAssets: selectedMediaItems,
                             themeManager: self.themeManager,
-                            selectedOrganisationsAndDepartments: nil
+                            selectedOrganisationsAndDepartments: nil,
+                            mainAppCoordinator: self.mainAppCoordinator
                         ).showFeedItemEditor(type: .Post)
                     }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: self.themeManager, _identifier: asset.localIdentifier, _mediaType: asset.mediaType, _asset: asset))
                 }
@@ -318,7 +311,8 @@ extension FeedsViewController{
                         mediaFetcher: self.mediaFetcher,
                         selectedAssets: selectedMediaItems,
                         themeManager: self.themeManager,
-                        selectedOrganisationsAndDepartments: nil
+                        selectedOrganisationsAndDepartments: nil,
+                        mainAppCoordinator: self.mainAppCoordinator
                     ).showFeedItemEditor(type: .Post)
             }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: themeManager
             )
@@ -353,6 +347,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if getFeedItem(indexPath.section).shouldShowDetail(){
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+            feedDetailVC.mainAppCoordinator = mainAppCoordinator
             feedDetailVC.themeManager = themeManager
             feedDetailVC.mainAppCoordinator = mainAppCoordinator
             feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
@@ -559,7 +554,8 @@ extension FeedsViewController : FeedsDelegate{
             mediaFetcher: mediaFetcher,
             selectedAssets: nil,
             themeManager: themeManager,
-            selectedOrganisationsAndDepartments: nil
+            selectedOrganisationsAndDepartments: nil,
+            mainAppCoordinator: mainAppCoordinator
         ).editPost(feed: feed)
     }
     

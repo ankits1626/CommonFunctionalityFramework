@@ -19,7 +19,7 @@ class FeedEditorAttachedGifTableViewCellCoordinator :  PostEditorCellCoordinator
         let cell = inputModel.targetTableView.dequeueReusableCell(
         withIdentifier: cellType.cellIdentifier,
         for: inputModel.targetIndexpath) as! FeedGifTableViewCell
-        let post = inputModel.datasource.getTargetPost()
+        let post = inputModel.datasource?.getTargetPost()
         if let rawGif = post?.attachedGif?.getGifSourceUrl() {
             if let data = CFFGifCacheManager.sharedInstance.gifCache.object(forKey: rawGif as NSString) as Data?{
                 print("<<<<<<<<<< picked from cache")

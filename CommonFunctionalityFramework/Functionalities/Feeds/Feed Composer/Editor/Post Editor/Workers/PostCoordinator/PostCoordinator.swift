@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PostObserver {
+protocol PostObserver : AnyObject {
     func mediaAttachedToPost()
     func attachedMediaUpdated()
     func allAttachedMediaRemovedFromPost()
@@ -35,7 +35,7 @@ class PostCoordinatorError {
 
 class PostCoordinator {
     private var currentPost : EditablePostProtocol
-    var postObsever : PostObserver?
+    weak var postObsever : PostObserver?
     let postType: FeedType
     
     init(postObsever : PostObserver?, postType: FeedType, editablePost : EditablePostProtocol?, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?) {
@@ -43,14 +43,11 @@ class PostCoordinator {
         self.postType = postType
         if let unwrappedPost = editablePost{
             currentPost = unwrappedPost
+            print("&&&&&&&&&&&&& PostCoordinator \(currentPost.parentFeedItem) \(editablePost?.parentFeedItem)")
             currentPost.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
         }else{
-            currentPost = EditablePost(
-                isShareWithSameDepartmentOnly: false,
-                selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments,
-                postType: postType,
-                remotePostId: nil
-            )
+            currentPost = EditablePost(isShareWithSameDepartmentOnly: false, postType: postType)
+            currentPost.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
         }
         
     }

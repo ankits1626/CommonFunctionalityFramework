@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol PostEditorCellFactoryDatasource : class{
+protocol PostEditorCellFactoryDatasource : AnyObject{
     func getTargetPost() -> EditablePostProtocol?
 }
 
-protocol PostEditorCellFactoryDelegate : class {
+protocol PostEditorCellFactoryDelegate : AnyObject {
     func reloadTextViewContainingRow(indexpath : IndexPath)
     func updatePostTitle( title : String?)
     func updatePostDescription( decription: String?)
@@ -28,7 +28,7 @@ protocol PostEditorCellFactoryDelegate : class {
 struct PostEditorCellDequeueModel {
     var targetIndexpath : IndexPath
     var targetTableView : UITableView
-    var datasource: PostEditorCellFactoryDatasource
+    weak var datasource: PostEditorCellFactoryDatasource?
 }
 
 struct PostEditorCellLoadDataModel {
@@ -87,7 +87,7 @@ enum PostEditorSection : Int {
 
 class PostEditorCellFactory {
     
-    var input : InitPostEditorCellFactoryModel
+    var input : InitPostEditorCellFactoryModel!
     
     lazy var cachedCellCoordinators: [String : PostEditorCellCoordinatorProtocol] = {
         return [
@@ -100,12 +100,21 @@ class PostEditorCellFactory {
         ]
     }()
     
-    private lazy var headerCoordinator: FeedEditorHeaderCoordinator = {
-        return FeedEditorHeaderCoordinator(dataSource: input.datasource)
-    }()
+//    private lazy var headerCoordinator: FeedEditorHeaderCoordinator = {
+//        return FeedEditorHeaderCoordinator(dataSource: input.datasource)
+//    }()
     
+    var headerCoordinator: FeedEditorHeaderCoordinator
     init(_ input : InitPostEditorCellFactoryModel) {
         self.input = input
+        headerCoordinator = FeedEditorHeaderCoordinator(dataSource: input.datasource)
+    }
+    
+    func clear(){
+        input = nil
+    }
+    deinit{
+        debugPrint("************  PostEditorCellFactory deinit")
     }
     
     func registerTableToAllPossibleCellTypes(_ targetTableView : UITableView?) {

@@ -28,7 +28,9 @@ class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
             if let unwrappedText = feed.getFeedDescription(){
                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
                 //cell.feedText?.text = model?.displayableDescription.string
-                 ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                 ASMentionCoordinator.shared.getPresentableMentionText(
+                    model?.displayableDescription.string,
+                    completion: { (attr) in
                     cell.feedText?.text = nil
                     cell.feedText?.attributedText = attr
                 })

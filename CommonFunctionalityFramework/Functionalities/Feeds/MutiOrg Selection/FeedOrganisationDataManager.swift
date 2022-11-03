@@ -10,6 +10,7 @@ import Foundation
 
 struct FeedOrganisationDataManagerInitModel {
     weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
+    var selectionModel: FeedOrganisationDepartmentSelectionModel?
 }
 
 enum SelectionOperation{
@@ -26,6 +27,10 @@ class FeedOrganisationDataManager{
     
     init(_ initModel: FeedOrganisationDataManagerInitModel){
         self.initModel = initModel
+        if let unwrappedSelectedOrgDepartment = initModel.selectionModel{
+            self.selectedOrganisation = unwrappedSelectedOrgDepartment.selectedOrganisations
+            self.selectedDepartment = unwrappedSelectedOrgDepartment.selectedDepartments
+        }
     }
     
     
@@ -45,6 +50,22 @@ extension FeedOrganisationDataManager{
         switch result{
         case .Success(result: let result):
             self.fetchedOrganisations = result
+            var refreshedSelectedOrg = Set<FeedOrgnaisation>()
+            var refreshedSelectedDepartment = Set<FeedDepartment>()
+            for org in result {
+                if !(selectedOrganisation.filter{$0 == org}).isEmpty{
+                    refreshedSelectedOrg.insert(org)
+                }
+                
+                for dep in org.departments {
+                    if !(selectedDepartment.filter{$0 == dep}).isEmpty{
+                        refreshedSelectedDepartment.insert(dep)
+                    }
+                }
+                
+            }
+            selectedDepartment = refreshedSelectedDepartment
+            selectedOrganisation = refreshedSelectedOrg
             return nil
         case .SuccessWithNoResponseData:
             return "Unexpected response while fetching organisations"
@@ -60,7 +81,7 @@ extension FeedOrganisationDataManager{
     }
     
     func toggleOrganisationSelection(_ organisation: FeedOrgnaisation, _ completion: ()-> Void){
-        if selectedOrganisation.contains(organisation){
+        if checkIfOrganisationIsSelected(organisation){
             selectedOrganisation.remove(organisation)
             for deparment in organisation.departments {
                 selectedDepartment.remove(deparment)
@@ -76,11 +97,11 @@ extension FeedOrganisationDataManager{
     }
     
     func checkIfOrganisationIsSelected(_ organisation: FeedOrgnaisation) -> Bool{
-        return selectedOrganisation.contains(organisation)
+        return !selectedOrganisation.filter{$0 == organisation}.isEmpty
     }
     
     func checkIfDepartmentIsSelected(_ department: FeedDepartment) -> Bool{
-        return selectedDepartment.contains(department)
+        return !selectedDepartment.filter{$0 == department}.isEmpty
     }
     
     func toggleDepartmentSelection(_ department: FeedDepartment, _ completion:()->Void){
@@ -108,7 +129,7 @@ extension FeedOrganisationDataManager{
     }
  
     func getSelectionDetails(_ organisation: FeedOrgnaisation) -> String?{
-        if selectedOrganisation.contains(organisation){
+        if checkIfOrganisationIsSelected(organisation){
             return "All departments selected"
         }else{
             let selectedDepartments = selectedDepartment.filter{$0.parentOrganisation == organisation}
