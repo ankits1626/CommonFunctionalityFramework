@@ -116,7 +116,10 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
             cell.userName.text = dataValues.actor.first_name + dataValues.actor.last_name
             cell.department.text = dataValues.actor.department_name
             cell.awardLevelStatus.text =  dataValues.status ?? ""
-            
+            if let nom_color = dataValues.nom_status_color {
+                cell.awardLevelStatus.backgroundColor = Rgbconverter.HexToColor(nom_color, alpha: 0.1)
+                cell.awardLevelStatus.textColor = Rgbconverter.HexToColor(nom_color, alpha: 1.0)
+            }
             if let level = dataValues.level as? Int{
                 cell.levelNumber.text = "Level \(level)"
             }else {

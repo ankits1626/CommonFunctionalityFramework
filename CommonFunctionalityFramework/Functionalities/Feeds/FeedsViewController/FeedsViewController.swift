@@ -77,6 +77,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             self?.setup()
             self?.loadFeeds()
         }
+        self.feedsTable?.showsVerticalScrollIndicator = false
     }
     
     @objc func scrollTableView(notification: NSNotification) {
@@ -434,6 +435,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.loadCFFControl?.update()
+        if scrollView.contentOffset.y <= 0
+        {
+            scrollView.contentOffset = .zero
+        }
     }
 }
 

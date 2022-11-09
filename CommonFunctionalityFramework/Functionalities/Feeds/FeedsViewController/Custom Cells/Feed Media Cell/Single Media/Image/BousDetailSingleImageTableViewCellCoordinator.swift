@@ -11,7 +11,7 @@ import UIKit
 class BousDetailSingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     
     var singleImgHeight = 250.0
-    let serverUrl = UserDefaults.standard.value(forKey: "serviceurl") as? String ?? ""
+    //let serverUrl = UserDefaults.standard.value(forKey: "serviceurl") as? String ?? ""
 
     var cellType: FeedCellTypeProtocol{
         return SingleImageTableViewCellType()

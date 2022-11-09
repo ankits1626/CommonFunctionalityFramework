@@ -84,7 +84,9 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         if let paymentData = notification.object as? Dictionary<String, Any> {
             if let paymentID = paymentData["isScrollable"] as? Bool {
                 print("paymentID ----- \(paymentID)")
-                self.feedsTable?.bounces = true
+                if selectedTabType != "SearchFromHome" {
+                    self.feedsTable?.bounces = true
+                }
                 self.feedsTable?.isScrollEnabled = paymentID
             }
         }
@@ -131,9 +133,11 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @objc private func refreshFeeds(){
-        clearAnyExistingFeedsData {[weak self] in
-            self?.lastFetchedFeeds = nil
-            self?.loadFeeds()
+        if selectedTabType != "SearchFromHome" {
+            clearAnyExistingFeedsData {[weak self] in
+                self?.lastFetchedFeeds = nil
+                self?.loadFeeds()
+            }
         }
     }
     
@@ -227,7 +231,9 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     
     
     private func setupTableView(){
-        feedsTable?.addSubview(refreshControl)
+        if selectedTabType != "SearchFromHome" {
+            feedsTable?.addSubview(refreshControl)
+        }
         feedsTable?.tableFooterView = UIView(frame: CGRect.zero)
         feedsTable?.rowHeight = UITableView.automaticDimension
         feedsTable?.estimatedRowHeight = 500
@@ -280,6 +286,11 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.loadCFFControl?.update()
+        if selectedTabType == "SearchFromHome" {
+            if scrollView.contentOffset.y <= 0 {
+                scrollView.contentOffset = .zero
+             }
+        }
     }
 }
 
