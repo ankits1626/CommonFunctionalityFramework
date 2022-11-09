@@ -105,7 +105,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                         strengthIcon = userStengthDic["icon"] as! String
                         badgeBackgroundColor = userStengthDic["background_color"] as? String ?? ""
                         backGroundLite = userStengthDic["background_color_lite"] as? String ?? ""
-                        illustration = userStengthDic["illustration"] as! String
+                        illustration = userStengthDic["illustration"] as? String ?? ""
                         dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points, "illustration" : illustration,"background_color_lite" : backGroundLite]
                     }
                 }
