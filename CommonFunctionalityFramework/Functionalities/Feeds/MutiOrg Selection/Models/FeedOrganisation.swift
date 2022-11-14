@@ -8,8 +8,8 @@
 
 import Foundation
 
-class FeedOrgnaisation : NSObject{
-    static func == (lhs: FeedOrgnaisation, rhs: FeedOrgnaisation) -> Bool {
+class FeedOrganisation : NSObject{
+    static func == (lhs: FeedOrganisation, rhs: FeedOrganisation) -> Bool {
         return lhs.pk == rhs.pk
     }
     

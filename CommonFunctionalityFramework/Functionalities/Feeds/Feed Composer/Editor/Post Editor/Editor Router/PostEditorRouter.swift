@@ -27,7 +27,7 @@ struct PostEditorRouterInitModel{
 
 
 protocol PostEditorRouterDelegate : AnyObject{
-    func selectedSharePostOption () -> SharePostOption?
+    func selectedSharePostOption () -> SharePostOption
     func saveOrganisationAndDepartmentSelection(_ selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?)
     func getSavedOrganisationAndDepartmentSelection() -> FeedOrganisationDepartmentSelectionModel?
     func getPreviewablePost() -> PreviewablePost
@@ -46,7 +46,11 @@ class PostEditorRouter{
             self.initModel.routerDelegate?.selectedSharePostOption() == .MultiOrg{
             routeToMultiOrgPicker()
         }else{
-            routeToPreviewScreen(nil)
+            routeToPreviewScreen(
+                nil,
+                displayableSelectionModel: nil,
+                sharePostOption: (self.initModel.routerDelegate?.selectedSharePostOption())!
+            )
         }
     }
     
@@ -55,9 +59,13 @@ class PostEditorRouter{
             FeedOrganisationSelectionInitModel(
                 requestCoordinator: initModel.requestCoordinator,
                 selectionModel: initModel.routerDelegate?.getSavedOrganisationAndDepartmentSelection(),
-                selectionCompletionHandler: {  [weak self] selectedOrganisationsAndDeparments in
+                selectionCompletionHandler: {  [weak self] selectedOrganisationsAndDeparments,displayable  in
                     self?.initModel.routerDelegate?.saveOrganisationAndDepartmentSelection(selectedOrganisationsAndDeparments)
-                    self?.routeToPreviewScreen(selectedOrganisationsAndDeparments)
+                    self?.routeToPreviewScreen(
+                        selectedOrganisationsAndDeparments,
+                        displayableSelectionModel: displayable,
+                        sharePostOption: (self?.initModel.routerDelegate?.selectedSharePostOption())!
+                    )
                     
                 })
         )
@@ -67,13 +75,14 @@ class PostEditorRouter{
         initModel.baseNavigationController?.pushViewController(embeddedOrgPicker, animated: true)
     }
     
-    private func routeToPreviewScreen(_ selectedOrganisationsAndDeparments: FeedOrganisationDepartmentSelectionModel?){
+    private func routeToPreviewScreen(_ selectedOrganisationsAndDeparments: FeedOrganisationDepartmentSelectionModel?, displayableSelectionModel : FeedOrganisationDepartmentSelectionDisplayModel?, sharePostOption: SharePostOption){
         let post = initModel.routerDelegate!.getPreviewablePost()
         let previewScreen = PostPreviewViewController(
             FeedPreviewInitModel(
                 requestCoordinator: initModel.requestCoordinator,
                 editorRouter: self,
                 selectedOrganisationsAndDepartments: selectedOrganisationsAndDeparments,
+                selectedOrganisationsAndDepartmentsDisplayable: displayableSelectionModel,
                 themeManager: initModel.themeManager,
                 mediaFetcher: initModel.mediaFetcher,
                 post: post,
@@ -81,7 +90,8 @@ class PostEditorRouter{
                 localMediaManager: initModel.localMediaManager,
                 postImageMapper: initModel.postImageMapper,
                 delegate: initModel.delegate,
-                eventListener: initModel.eventListener
+                eventListener: initModel.eventListener,
+                sharePostOption: sharePostOption
             )
         )
         let embeddedPreviewVC = initModel.feedCoordinatorDelegate.getVCEmbeddedInContainer(previewScreen, presentationOption: .Navigate) { topItem in
@@ -92,6 +102,10 @@ class PostEditorRouter{
     
     func routeToEditor(){
         initModel.baseNavigationController?.popToRootViewController(animated: true)
+    }
+    
+    func routeToMultiOrgPickerFromPreview(){
+        initModel.baseNavigationController?.popViewController(animated: true)
     }
 }
 

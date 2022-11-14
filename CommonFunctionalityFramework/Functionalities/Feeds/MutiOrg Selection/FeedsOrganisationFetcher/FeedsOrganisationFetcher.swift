@@ -9,10 +9,10 @@
 import Foundation
 import RewardzCommonComponents
 
-typealias FeedsOrganisationFetcherHandler = (APICallResult<[FeedOrgnaisation]>) -> Void
+typealias FeedsOrganisationFetcherHandler = (APICallResult<[FeedOrganisation]>) -> Void
 
 class FeedsOrganisationFetcher  {
-    typealias ResultType = [FeedOrgnaisation]
+    typealias ResultType = [FeedOrganisation]
     var commonAPICall : CommonAPICall<FeedsOrganisationFetchDataParser>?
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     
@@ -65,12 +65,12 @@ class FeedsOrganisationFetchRequestGenerator: APIRequestGeneratorProtocol  {
 
 class FeedsOrganisationFetchDataParser: DataParserProtocol {
     typealias ExpectedRawDataType = [[String : Any]]
-    typealias ResultType = [FeedOrgnaisation]
+    typealias ResultType = [FeedOrganisation]
     
     func parseFetchedData(fetchedData: ExpectedRawDataType) -> APICallResult<ResultType> {
-        var fetchedOrganisation = [FeedOrgnaisation]()
+        var fetchedOrganisation = [FeedOrganisation]()
         for rawOrganisation in fetchedData{
-            fetchedOrganisation.append(FeedOrgnaisation(rawOrganisation))
+            fetchedOrganisation.append(FeedOrganisation(rawOrganisation))
         }
         return APICallResult.Success(result: fetchedOrganisation)
     }

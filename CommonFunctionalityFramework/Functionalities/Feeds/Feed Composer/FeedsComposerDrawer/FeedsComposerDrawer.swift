@@ -26,6 +26,7 @@ class FeedsComposerDrawer: UIViewController {
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     weak var themeManager: CFFThemeManagerProtocol?
     var selectedOrganisationsAndDepartment : FeedOrganisationDepartmentSelectionModel?
+    var displayable : FeedOrganisationDepartmentSelectionDisplayModel?
     weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     
     override func viewDidLoad() {

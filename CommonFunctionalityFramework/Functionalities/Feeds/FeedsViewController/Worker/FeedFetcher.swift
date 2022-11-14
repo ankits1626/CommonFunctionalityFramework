@@ -91,6 +91,8 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
                         method: .GET,
                         httpBodyDict: nil
                     )
+                    
+                    print("here \(req)")
                     return req
                 }
                 return nil

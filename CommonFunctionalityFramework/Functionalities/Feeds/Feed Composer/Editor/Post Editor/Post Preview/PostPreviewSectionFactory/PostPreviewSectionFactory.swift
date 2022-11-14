@@ -14,12 +14,17 @@ struct PostPreviewSectionFactoryInitModel{
     weak var themeManager: CFFThemeManagerProtocol?
     weak var targetTableView : UITableView?
     var mediaFetcher: CFFMediaCoordinatorProtocol!
+    weak var router : PostEditorRouter?
 }
 
 class PostPreviewSectionFactory {
-    private var cachedCellCoordinators: [String : FeedCellCoordinatorProtocol]!    
+    private var cachedCellCoordinators: [String : FeedCellCoordinatorProtocol]!
     private var rowsForDetails : [FeedCellTypeProtocol]!
     private let initModel : PostPreviewSectionFactoryInitModel
+    
+    private lazy var headerCoordinator: PostPreviewHeaderCoordinator = {
+        return PostPreviewHeaderCoordinator()
+    }()
     
     init(_ initModel : PostPreviewSectionFactoryInitModel){
         self.initModel = initModel
@@ -33,7 +38,8 @@ class PostPreviewSectionFactory {
             FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
             PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
             PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
-            PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator()
+            PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
+            PostShareOptionTableCellType().cellIdentifier : PostShareOptionTableViewCellCoordinator()
         ]
     }
     
@@ -48,6 +54,14 @@ class PostPreviewSectionFactory {
                 forCellReuseIdentifier: cellCoordinator.value.cellType.cellIdentifier
             )
         }
+        registerTableViewForHeaderView(targetTable)
+    }
+    
+    private func registerTableViewForHeaderView(_ tableView : UITableView?){
+        tableView?.register(
+            UINib(nibName: "FeedDetailHeader", bundle: Bundle(for: FeedDetailHeader.self)),
+            forHeaderFooterViewReuseIdentifier: "FeedDetailHeader"
+        )
     }
     
     func getNumberOfRowsFor(section : PostPreviewSection, post : FeedsItemProtocol) -> Int{
@@ -55,7 +69,14 @@ class PostPreviewSectionFactory {
         case .PostInfo:
             return getRowsToRepresentFeedDetail(feed: post).count
         case .ShareWithInfoSection:
-            return 0
+            switch initModel.feedDataSource!.getPostShareOption(){
+            case .MyOrg:
+                fallthrough
+            case .MyDepartment:
+                return 1
+            case .MultiOrg:
+                return initModel.feedDataSource!.getPostSharedWithOrgAndDepartment()!.displayables().count
+            }
         }
     }
     
@@ -64,19 +85,20 @@ class PostPreviewSectionFactory {
         switch PostPreviewSection(rawValue: indexpath.section)!{
         case .PostInfo:
             cellType =  getRowsToRepresentFeedDetail(feed: initModel.feedDataSource!.getFeedItem())[indexpath.row]
+            return cachedCellCoordinators[cellType.cellIdentifier]!
         case .ShareWithInfoSection:
-            cellType =  getRowsToRepresentFeedDetail(feed: initModel.feedDataSource!.getFeedItem())[indexpath.row]
+            return cachedCellCoordinators[PostShareOptionTableCellType().cellIdentifier]!
         }
-        return cachedCellCoordinators[cellType.cellIdentifier]!
     }
     
     func getCell(tableView : UITableView, indexpath : IndexPath, post : FeedsItemProtocol) -> UITableViewCell{
-        let cell = getCellCoordinator(indexpath).getCell(FeedCellDequeueModel(
-            targetIndexpath: indexpath,
-            targetTableView: tableView,
-            datasource: initModel.feedDataSource!,
-            isFeedDetailPage: true,
-            themeManager: initModel.themeManager
+        let cell = getCellCoordinator(indexpath).getCell(
+            FeedCellDequeueModel(
+                targetIndexpath: indexpath,
+                targetTableView: tableView,
+                datasource: initModel.feedDataSource!,
+                isFeedDetailPage: true,
+                themeManager: initModel.themeManager
             )
         )
         cell.backgroundColor = .clear
@@ -109,6 +131,26 @@ class PostPreviewSectionFactory {
                 datasource: initModel.feedDataSource!
             )
         )
+    }
+    
+    func getViewForHeaderInSection(section: Int, tableView: UITableView) -> UIView? {
+        return headerCoordinator.getHeader(
+            input: GetPostPreviewHeaderInput(
+                section: PostPreviewSection(rawValue: section)!,
+                table: tableView,
+                shareOption: initModel.feedDataSource!.getPostShareOption(),
+                router: initModel.router
+            )
+        )
+    }
+    
+    func getHeightOfViewForSection(section: Int) -> CGFloat {
+        switch PostPreviewSection(rawValue: section)!{
+        case .PostInfo:
+            return 0
+        case .ShareWithInfoSection:
+            return 40
+        }
     }
 }
 

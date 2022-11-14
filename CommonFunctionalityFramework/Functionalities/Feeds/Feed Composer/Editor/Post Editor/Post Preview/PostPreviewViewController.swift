@@ -13,6 +13,7 @@ struct FeedPreviewInitModel{
     weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
     weak var editorRouter : PostEditorRouter?
     var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
+    var selectedOrganisationsAndDepartmentsDisplayable : FeedOrganisationDepartmentSelectionDisplayModel?
     weak var themeManager: CFFThemeManagerProtocol?
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var post : PreviewablePost
@@ -21,6 +22,7 @@ struct FeedPreviewInitModel{
     weak var postImageMapper : EditablePostMediaRepository?
     weak var delegate: PostEditorCellFactoryDelegate?
     weak var eventListener : PostPreviewViewEventListener?
+    var sharePostOption : SharePostOption
 }
 
 
@@ -43,14 +45,14 @@ class PostPreviewViewController: UIViewController {
         return PostPreviewListManager(
             PostPreviewListManagerInitModel(
                 targetTableView: previewTableview,
-                selectedOrganisationsAndDepartments: initModel.selectedOrganisationsAndDepartments,
                 feedDataSource: self,
                 themeManager: initModel.themeManager,
                 mediaFetcher: initModel.mediaFetcher,
                 datasource: initModel.datasource,
                 localMediaManager: initModel.localMediaManager,
                 postImageMapper: initModel.postImageMapper,
-                delegate: nil
+                delegate: nil,
+                router: initModel.editorRouter
             )
         )
     }()
@@ -121,6 +123,14 @@ class PostPreviewViewController: UIViewController {
 
 
 extension PostPreviewViewController : FeedsDatasource{
+    func getPostShareOption() -> SharePostOption {
+        return initModel.sharePostOption
+    }
+    
+    func getPostSharedWithOrgAndDepartment() -> FeedOrganisationDepartmentSelectionDisplayModel? {
+        return initModel.selectedOrganisationsAndDepartmentsDisplayable
+    }
+    
     func getNumberOfItems() -> Int {
         return 0
     }

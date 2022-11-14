@@ -37,14 +37,15 @@ class FeedComposerCoordinator {
     }
     
     private func openEditor(_ feed : FeedsItemProtocol?, type : FeedType){
+        let editabalePost = feed?.getEditablePost()
         let postEditor = PostEditorViewController(
             postType: type,
             requestCoordinator: requestCoordinator,
-            post: feed?.getEditablePost(),
+            post: editabalePost,
             mediaFetcher: mediaFetcher,
             selectedAssets: selectedAssets,
             themeManager : themeManager,
-            selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments,
+            selectedOrganisationsAndDepartments: editabalePost?.selectedOrganisationsAndDepartments,
             mainAppCoordinator: mainAppCoordinator,
             feedCoordinatorDelegate: feedCoordinatorDelegate
         )

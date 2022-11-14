@@ -14,9 +14,9 @@ class FeedDepartment: NSObject{
     }
     
     let rawFeedDepartment: [String : Any]
-    weak var parentOrganisation: FeedOrgnaisation!
+    weak var parentOrganisation: FeedOrganisation!
     
-    init(_ rawFeedDepartment: [String : Any], parentOrganisation: FeedOrgnaisation!){
+    init(_ rawFeedDepartment: [String : Any], parentOrganisation: FeedOrganisation!){
         self.rawFeedDepartment = rawFeedDepartment
         self.parentOrganisation = parentOrganisation
     }

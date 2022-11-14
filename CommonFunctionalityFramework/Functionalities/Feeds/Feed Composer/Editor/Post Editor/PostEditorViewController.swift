@@ -13,9 +13,9 @@ import Photos
 import RewardzCommonComponents
 
 enum SharePostOption : Int{
-    case MyOrg = 0
-    case MyDepartment
-    case MultiOrg
+    case MyOrg = 10
+    case MyDepartment = 20
+    case MultiOrg = 40
     
     func displayableTitle() -> String{
         switch self {
@@ -34,6 +34,18 @@ enum SharePostOption : Int{
     
     static var multiOrgCases : [SharePostOption]{
         return [.MyOrg, .MyDepartment, .MultiOrg]
+    }
+    
+    static func getOption(_ index : Int) -> SharePostOption{
+        if index == 1{
+            return .MyDepartment
+        }
+        
+        if index == 2{
+            return .MultiOrg
+        }
+        
+        return .MyOrg
     }
 }
 
@@ -64,12 +76,10 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     var loader = CommonLoader()
     
     lazy var postCoordinator: PostCoordinator = {
-        print("&&&&&&&&&&& editor postCoordinator \(editablePost?.parentFeedItem)")
         return PostCoordinator(
             postObsever: cellFactory,
             postType: postType,
-            editablePost: editablePost,
-            selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments
+            editablePost: editablePost
         )
     }()
     lazy var imageMapper : EditablePostMediaRepository = {[weak self] in
@@ -206,9 +216,13 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         
         if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
             segments = SharePostOption.multiOrgCases
-            
         }
-        for  shareOption in segments {
+        var tupple = editablePost?.postSharedWith() ?? (SharePostOption.MyOrg, nil)
+        var selectedIndex = 0
+        for  (index, shareOption) in segments.enumerated() {
+            if shareOption == tupple.0{
+                selectedIndex = index
+            }
             shareWithSegmentControl?.insertSegment(
                 withTitle: shareOption.displayableTitle(),
                 at: shareOption.rawValue,
@@ -216,6 +230,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         }
         shareWithSegmentControl?.selectedSegmentIndex = 0
         shareWithSegmentControl?.tintColor = .getControlColor()
+        shareWithSegmentControl?.selectedSegmentIndex = selectedIndex
+        updatePostButton()
     }
     
     private func setupMessageGuidenceContainer(){
@@ -237,16 +253,17 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     private func setupPostWithDepartment() {
+        postWithSameDepartmentCheckBox?.isHidden = true
         postWithSameDepartmentCheckBox?.borderLineWidth = 1
-        postWithSameDepartmentCheckBox?.isEnabled = postCoordinator.isDepartmentSharedWithEditable()
+        postWithSameDepartmentCheckBox?.isEnabled = false// postCoordinator.isDepartmentSharedWithEditable()
         postWithSameDepartmentCheckBox?.checkmarkStyle = .tick
-        postWithSameDepartmentCheckBox?.isChecked = postCoordinator.isPostWithSameDepartment()
-        postWithSameDepartmentCheckBox?.valueChanged = {[weak self] (isChecked) in
-            self?.postCoordinator.updatePostWithSameDepartment(isChecked)
-        }
-        
-        postWithSameDepartmentMessage?.text = "Post to my department only".localized
-        postWithSameDepartmentMessage?.font = .Highlighter2
+//        postWithSameDepartmentCheckBox?.isChecked = postCoordinator.isPostWithSameDepartment()
+//        postWithSameDepartmentCheckBox?.valueChanged = {[weak self] (isChecked) in
+//            self?.postCoordinator.updatePostWithSameDepartment(isChecked)
+//        }
+//
+//        postWithSameDepartmentMessage?.text = "Post to my department only".localized
+//        postWithSameDepartmentMessage?.font = .Highlighter2
         
     }
     
@@ -271,9 +288,9 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     private func getCreateButtonTitle() -> String{
         switch postType {
         case .Poll:
-            return "CREATE POLL".localized
+            return "PREVIEW POLL".localized
         case .Post:
-            return "POST".localized
+            return "PREVIEW POST".localized
         }
     }
     
@@ -616,14 +633,23 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
 
 extension PostEditorViewController{
     @IBAction func segmentControlSelectionChanged(){
-        debugPrint("<<< share with\(shareWithSegmentControl?.selectedSegmentIndex)")
         updatePostButton()
+        if let selectedIndex = shareWithSegmentControl?.selectedSegmentIndex{
+           let selectedSharePostOption = SharePostOption.getOption(selectedIndex)
+            switch selectedSharePostOption {
+            case .MyOrg:
+                fallthrough
+            case .MyDepartment:
+                postCoordinator.updatePostShareOption(selectedSharePostOption, selectedOrganisationsAndDepartments: nil)
+            case .MultiOrg:
+                postCoordinator.updatePostShareOption(selectedSharePostOption, selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments)
+            }
+        }
     }
     
     private func updatePostButton(){
-        if let selectedIndex = shareWithSegmentControl?.selectedSegmentIndex,
-           let selectedSharePostOption = SharePostOption(rawValue: selectedIndex){
-            switch selectedSharePostOption {
+        if let selectedIndex = shareWithSegmentControl?.selectedSegmentIndex{
+            switch SharePostOption.getOption(selectedIndex) {
             case .MyOrg:
                 fallthrough
             case .MyDepartment:
@@ -645,16 +671,17 @@ extension PostEditorViewController : PostEditorRouterDelegate{
         )
     }
     
-    func selectedSharePostOption() -> SharePostOption? {
+    func selectedSharePostOption() -> SharePostOption {
         if let selectedShareOptionIndex = shareWithSegmentControl?.selectedSegmentIndex{
-            return SharePostOption(rawValue: selectedShareOptionIndex)
+            return SharePostOption.getOption(selectedShareOptionIndex)
         }else{
-            return nil
+            return SharePostOption.MyOrg
         }
     }
     
     func saveOrganisationAndDepartmentSelection(_ selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?){
         self.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
+        postCoordinator.updatePostShareOption(.MultiOrg, selectedOrganisationsAndDepartments: selectedOrganisationsAndDepartments)
     }
     
     func getSavedOrganisationAndDepartmentSelection() -> FeedOrganisationDepartmentSelectionModel?{

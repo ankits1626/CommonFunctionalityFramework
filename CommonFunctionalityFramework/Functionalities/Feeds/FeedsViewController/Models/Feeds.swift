@@ -129,14 +129,15 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             )
             
             var post =  EditablePost(
-                isShareWithSameDepartmentOnly: isSharedWithDepartment(),
+                postSharedChoice: sharedWith(),
                 postType: getFeedType(),
                 pollOptions: nil,
                 title: getFeedTitle(),
                 postDesciption:  model?.displayableDescription.string,
                 remoteAttachedMedia: getMediaList(),
                 selectedMediaItems: nil,
-                remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
+                remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil,
+                selectedOrganisationsAndDepartments: getSharedOption()
             )
             post.parentFeedItem = self
             if let unwrappedGifSource = model?.attachedGif{
@@ -148,14 +149,15 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }else{
             
             var post =  EditablePost(
-                isShareWithSameDepartmentOnly: isSharedWithDepartment(),
+                postSharedChoice: sharedWith(),
                 postType: getFeedType(),
                 pollOptions: nil,
                 title: getFeedTitle(),
                 postDesciption:  getFeedDescription(),
                 remoteAttachedMedia: getMediaList(),
                 selectedMediaItems: nil,
-                remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil
+                remotePostId: feedIdentifier != -1 ? "\(feedIdentifier)" : nil,
+                selectedOrganisationsAndDepartments: getSharedOption()
             )
             post.parentFeedItem = self
             return post
@@ -163,14 +165,31 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         
     }
     
-    private func isSharedWithDepartment() -> Bool{
+    private func getSharedOption() -> FeedOrganisationDepartmentSelectionModel?{
+        if sharedWith() == .MultiOrg{
+            var orgs = Set<Int>()
+            var departments =  Set<Int>()
+            if let selectedOrgs = rawFeedDictionary["organizations"] as? [Int]{
+                orgs = Set(selectedOrgs)
+            }
+            if let selectedDepartments = rawFeedDictionary["departments"] as? [Int]{
+                departments = Set(selectedDepartments)
+            }
+            return FeedOrganisationDepartmentSelectionModel(orgs, departments)
+        }
+        
+        return nil
+    }
+    
+    private func sharedWith() -> SharePostOption{
         if let rawSharedWithValue = rawFeedDictionary["shared_with"] as? Int,
-            let departmentSharedChoice = DepartmentSharedChoice(rawValue: rawSharedWithValue) {
-            return departmentSharedChoice == .SelfDepartment
+            let departmentSharedChoice = SharePostOption(rawValue: rawSharedWithValue) {
+            return departmentSharedChoice
         }else{
-            return false
+            return .MyOrg
         }
     }
+    
     
     var feedIdentifier: Int64{
         return rawFeedDictionary["id"] as? Int64 ?? -1

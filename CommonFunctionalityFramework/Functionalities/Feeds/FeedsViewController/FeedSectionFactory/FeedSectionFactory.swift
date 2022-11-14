@@ -20,6 +20,8 @@ protocol FeedsDatasource : AnyObject {
     func getCommentProvider() -> FeedsDetailCommentsProviderProtocol?
     func showShowFullfeedDescription() -> Bool
     func shouldShowMenuOptionForFeed() -> Bool
+    func getPostShareOption() -> SharePostOption
+    func getPostSharedWithOrgAndDepartment() -> FeedOrganisationDepartmentSelectionDisplayModel?
 }
 
 protocol FeedsDelegate : AnyObject {

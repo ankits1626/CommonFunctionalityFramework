@@ -25,16 +25,19 @@ protocol EditablePostProtocol {
     var remoteAttachedMedia: [MediaItemProtocol]?{get set}
     var remotePostId : String?{get}
     func getEditablePostNetworkModel(_ baseUrl : String) -> EditablePostNetworkModel
-    var isShareWithSameDepartmentOnly : Bool {set get}
+    var postSharedChoice : SharePostOption {set get}
     var pollActiveDays : Int {set get}
     func getCleanPollOptions() -> [String]?
     func isGifAttached() -> Bool
+    func postSharedWith() -> (SharePostOption, FeedOrganisationDepartmentSelectionModel?)
 }
 
 
-enum DepartmentSharedChoice : Int {
+enum PostSharedChoice : Int {
     case SelfDepartment = 10
     case AllDepartment = 20
+    case CustomMultiOrgDepartment = 40
+    
 }
 class EditablePost : EditablePostProtocol{
     
@@ -49,7 +52,7 @@ class EditablePost : EditablePostProtocol{
     }
     
     var pollActiveDays: Int = 1
-    var isShareWithSameDepartmentOnly: Bool
+    var postSharedChoice: SharePostOption
     var deletedRemoteMediaArray = [Int]()
     var postableLocalMediaUrls: [URL]?
     var postableMediaMap: [Int : Data]?
@@ -74,7 +77,7 @@ class EditablePost : EditablePostProtocol{
         }
     }
     
-    init(isShareWithSameDepartmentOnly: Bool,
+    init(postSharedChoice: SharePostOption,
          postType: FeedType,
          pollOptions: [String]? = nil,
          title:String? = nil,
@@ -83,13 +86,14 @@ class EditablePost : EditablePostProtocol{
          selectedMediaItems: [LocalSelectedMediaItem]? = nil,
          remotePostId: String? = nil,
          selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel? = nil){
-        self.isShareWithSameDepartmentOnly = isShareWithSameDepartmentOnly
+        self.postSharedChoice = postSharedChoice
         self.postType = postType
         self.title = title
         self.postDesciption = postDesciption
         self.remoteAttachedMedia = remoteAttachedMedia
         self.selectedMediaItems = selectedMediaItems
         self.remotePostId = remotePostId
+        self.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
         
     }
     
@@ -101,7 +105,7 @@ class EditablePost : EditablePostProtocol{
         case .Post:
             postableDictionary = getPostDictionary()
         }
-        
+        postableDictionary["shared_with"] = postSharedChoice.rawValue
         if let unwrappedSelectedOrgAndDepartment = selectedOrganisationsAndDepartments{
             unwrappedSelectedOrgAndDepartment.getupdatePostDictionary(&postableDictionary)
         }
@@ -117,7 +121,7 @@ class EditablePost : EditablePostProtocol{
         if let options = getCleanPollOptions(){
            pollDictionary["answers"] = options
         }
-        pollDictionary["shared_with"] = isShareWithSameDepartmentOnly ? DepartmentSharedChoice.SelfDepartment.rawValue : DepartmentSharedChoice.AllDepartment.rawValue
+        
         pollDictionary["active_days"] = pollActiveDays
         return pollDictionary
     }
@@ -141,7 +145,6 @@ class EditablePost : EditablePostProtocol{
         if !deletedRemoteMediaArray.isEmpty{
             postDictionary["delete_image_ids"] = (deletedRemoteMediaArray.map{String($0)}).joined(separator: ",")
         }
-        postDictionary["shared_with"] = isShareWithSameDepartmentOnly ? DepartmentSharedChoice.SelfDepartment.rawValue : DepartmentSharedChoice.AllDepartment.rawValue
         return postDictionary
     }
     
@@ -175,6 +178,10 @@ class EditablePost : EditablePostProtocol{
     
     private func getEditablePostNetworkMethod () -> HTTPMethod{
         return  remotePostId == nil ? .POST : .PUT
+    }
+    
+    func postSharedWith() -> (SharePostOption, FeedOrganisationDepartmentSelectionModel?){
+        return (postSharedChoice, selectedOrganisationsAndDepartments)
     }
     
 }

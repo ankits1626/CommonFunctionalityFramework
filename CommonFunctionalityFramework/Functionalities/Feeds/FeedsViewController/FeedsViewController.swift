@@ -183,15 +183,15 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
 extension FeedsViewController{
     
     @IBAction func openFeedComposerSelectionDrawer(){
-        continueWithFeedCreation(nil)
+        continueWithFeedCreation(nil, nil)
     }
     
     private func triggerMutiOrgPath(){
         let orgPicker = FeedOrganisationSelectionViewController(
             FeedOrganisationSelectionInitModel(
                 requestCoordinator: requestCoordinator,
-                selectionCompletionHandler: { [weak self] selectedOrganisationsAndDeparments in
-                    self?.continueWithFeedCreation(selectedOrganisationsAndDeparments)
+                selectionCompletionHandler: { [weak self] selectedOrganisationsAndDeparments,displayable  in
+                    self?.continueWithFeedCreation(selectedOrganisationsAndDeparments, displayable)
                 })
         )
         feedCoordinatorDelegate.showMultiOrgPicker(orgPicker, presentationOption: .Navigate) { topBarModel in
@@ -199,7 +199,7 @@ extension FeedsViewController{
         }
     }
     
-    private func continueWithFeedCreation(_ selectedOrganisationsAndDeparments: FeedOrganisationDepartmentSelectionModel?){
+    private func continueWithFeedCreation(_ selectedOrganisationsAndDeparments: FeedOrganisationDepartmentSelectionModel?, _ displayable : FeedOrganisationDepartmentSelectionDisplayModel?){
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
         drawer.mainAppCoordinator = mainAppCoordinator
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
@@ -207,6 +207,7 @@ extension FeedsViewController{
         drawer.mediaFetcher = mediaFetcher
         drawer.themeManager = themeManager
         drawer.selectedOrganisationsAndDepartment = selectedOrganisationsAndDeparments
+        drawer.displayable = displayable
         
         do{
             if let unwrappedCanUserCreatePost = self.mainAppCoordinator?.isUserAllowedToCreatePoll(),
@@ -518,13 +519,13 @@ extension FeedsViewController : FeedsDelegate{
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
             var options = [FloatingMenuOption]()
             if feed.getFeedType() == .Post,
-            feed.isFeedEditAllowed(){
+               feed.isFeedEditAllowed(){
                 options.append(
-                    FloatingMenuOption(title: "EDIT".localized, action: {
+                    FloatingMenuOption(title: "EDIT".localized, action: {[weak self] in
                         print("Edit post - \(feedIdentifier)")
-                        self.openFeedEditor(feed)
+                        self?.openFeedEditor(feed)
                     }
-                    )
+                                      )
                 )
             }
             if feed.isFeedDeleteAllowed(){
@@ -634,6 +635,14 @@ extension FeedsViewController : FeedsDelegate{
 
 
 extension FeedsViewController : FeedsDatasource{
+    func getPostShareOption() -> SharePostOption {
+        return .MyOrg //dummy will be changes if we plan to show selected org/department on feed detail
+    }
+    
+    func getPostSharedWithOrgAndDepartment() -> FeedOrganisationDepartmentSelectionDisplayModel? {
+        return nil
+    }
+    
     
     func shouldShowMenuOptionForFeed() -> Bool {
         return mainAppCoordinator?.isUserAllowedToPostFeed() ?? true

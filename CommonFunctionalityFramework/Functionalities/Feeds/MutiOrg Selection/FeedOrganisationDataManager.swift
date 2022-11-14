@@ -20,10 +20,10 @@ enum SelectionOperation{
 
 class FeedOrganisationDataManager{
     private let initModel: FeedOrganisationDataManagerInitModel
-    private var fetchedOrganisations = [FeedOrgnaisation]()
+    private var fetchedOrganisations = [FeedOrganisation]()
     
-    private var selectedOrganisation = Set<FeedOrgnaisation>()
-    private var selectedDepartment = Set<FeedDepartment>()
+    private var selectedOrganisation = Set<Int>()
+    private var selectedDepartment = Set<Int>()
     
     init(_ initModel: FeedOrganisationDataManagerInitModel){
         self.initModel = initModel
@@ -46,20 +46,20 @@ class FeedOrganisationDataManager{
 
 extension FeedOrganisationDataManager{
     
-    private func handleOrganisationFetchResult(_ result: APICallResult<[FeedOrgnaisation]>) -> String?{
+    private func handleOrganisationFetchResult(_ result: APICallResult<[FeedOrganisation]>) -> String?{
         switch result{
         case .Success(result: let result):
             self.fetchedOrganisations = result
-            var refreshedSelectedOrg = Set<FeedOrgnaisation>()
-            var refreshedSelectedDepartment = Set<FeedDepartment>()
+            var refreshedSelectedOrg = Set<Int>()
+            var refreshedSelectedDepartment = Set<Int>()
             for org in result {
-                if !(selectedOrganisation.filter{$0 == org}).isEmpty{
-                    refreshedSelectedOrg.insert(org)
+                if !(selectedOrganisation.filter{$0 == org.pk}).isEmpty{
+                    refreshedSelectedOrg.insert(org.pk)
                 }
                 
                 for dep in org.departments {
-                    if !(selectedDepartment.filter{$0 == dep}).isEmpty{
-                        refreshedSelectedDepartment.insert(dep)
+                    if !(selectedDepartment.filter{$0 == dep.pk}).isEmpty{
+                        refreshedSelectedDepartment.insert(dep.pk)
                     }
                 }
                 
@@ -76,68 +76,71 @@ extension FeedOrganisationDataManager{
 }
 
 extension FeedOrganisationDataManager{
-    func getOrganisations() -> [FeedOrgnaisation]{
+    func getOrganisations() -> [FeedOrganisation]{
         return fetchedOrganisations
     }
     
-    func toggleOrganisationSelection(_ organisation: FeedOrgnaisation, _ completion: ()-> Void){
+    func toggleOrganisationSelection(_ organisation: FeedOrganisation, _ completion: ()-> Void){
         if checkIfOrganisationIsSelected(organisation){
-            selectedOrganisation.remove(organisation)
+            selectedOrganisation.remove(organisation.pk)
             for deparment in organisation.departments {
-                selectedDepartment.remove(deparment)
+                selectedDepartment.remove(deparment.pk)
             }
             
         }else{
-            selectedOrganisation.insert(organisation)
+            selectedOrganisation.insert(organisation.pk)
             for deparment in organisation.departments {
-                selectedDepartment.insert(deparment)
+                selectedDepartment.insert(deparment.pk)
             }
         }
         completion()
     }
     
-    func checkIfOrganisationIsSelected(_ organisation: FeedOrgnaisation) -> Bool{
-        return !selectedOrganisation.filter{$0 == organisation}.isEmpty
+    func checkIfOrganisationIsSelected(_ organisation: FeedOrganisation) -> Bool{
+        return !selectedOrganisation.filter{$0 == organisation.pk}.isEmpty
     }
     
     func checkIfDepartmentIsSelected(_ department: FeedDepartment) -> Bool{
-        return !selectedDepartment.filter{$0 == department}.isEmpty
+        return !selectedDepartment.filter{$0 == department.pk}.isEmpty
     }
     
     func toggleDepartmentSelection(_ department: FeedDepartment, _ completion:()->Void){
-        if selectedDepartment.contains(department){
-            selectedDepartment.remove(department)
+        if selectedDepartment.contains(department.pk){
+            selectedDepartment.remove(department.pk)
             if let parentOrg = department.parentOrganisation,
-               selectedOrganisation.contains(parentOrg){
-                selectedOrganisation.remove(parentOrg)
+               selectedOrganisation.contains(parentOrg.pk){
+                selectedOrganisation.remove(parentOrg.pk)
             }
         }else{
-            selectedDepartment.insert(department)
+            selectedDepartment.insert(department.pk)
             var selectedDepartmentsFromSameOrgCount = 0
             if let targetOrganisation = department.parentOrganisation{
                 for department in targetOrganisation.departments{
-                    if selectedDepartment.contains(department){
+                    if selectedDepartment.contains(department.pk){
                         selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
                     }
                 }
                 if selectedDepartmentsFromSameOrgCount == targetOrganisation.departments.count{
-                    selectedOrganisation.insert(targetOrganisation)
+                    selectedOrganisation.insert(targetOrganisation.pk)
                 }
             }
         }
         completion()
     }
  
-    func getSelectionDetails(_ organisation: FeedOrgnaisation) -> String?{
+    func getSelectionDetails(_ organisation: FeedOrganisation) -> String?{
         if checkIfOrganisationIsSelected(organisation){
             return "All departments selected"
         }else{
-            let selectedDepartments = selectedDepartment.filter{$0.parentOrganisation == organisation}
-            let filteredSelectedDepartments = selectedDepartment.filter({ department in
-                return department.parentOrganisation == organisation
-            })
-            if !selectedDepartments.isEmpty{
+            var filteredSelectedDepartments = [FeedDepartment]()
+            for department in organisation.departments{
+                if (self.selectedDepartment.contains(department.pk)){
+                    filteredSelectedDepartments.append(department)
+                }
+            }
+            if !filteredSelectedDepartments.isEmpty{
                 var retval : String?
+                //return retval
                 if let firstDepartment = filteredSelectedDepartments.first{
                     retval =  "\(firstDepartment.getDisplayName())"
                 }
@@ -156,8 +159,15 @@ extension FeedOrganisationDataManager{
     
     func getSelectedOrganisationsAndDepartments() -> FeedOrganisationDepartmentSelectionModel{
         return FeedOrganisationDepartmentSelectionModel(
-            selectedOrganisations: selectedOrganisation,
-            selectedDepartments: selectedDepartment
+            selectedOrganisation,
+            selectedDepartment
+        )
+    }
+    
+    func getSelectedOrganisationsAndDepartmentsDisplayable() -> FeedOrganisationDepartmentSelectionDisplayModel{
+        return FeedOrganisationDepartmentSelectionDisplayModel(
+            fetchedOrganisations: fetchedOrganisations,
+            selectionModel: getSelectedOrganisationsAndDepartments()
         )
     }
 }

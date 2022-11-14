@@ -270,6 +270,14 @@ extension FeedsDetailViewController : FeedsDetailCommentsProviderProtocol{
 }
 
 extension FeedsDetailViewController : FeedsDatasource{
+    func getPostShareOption() -> SharePostOption {
+        return .MyOrg //dummy will be changes if we plan to show selected org/department on feed detail
+    }
+    
+    func getPostSharedWithOrgAndDepartment() -> FeedOrganisationDepartmentSelectionDisplayModel? {
+        return nil
+    }
+    
     func shouldShowMenuOptionForFeed() -> Bool {
         return mainAppCoordinator?.isUserAllowedToPostFeed() ?? true
     }
