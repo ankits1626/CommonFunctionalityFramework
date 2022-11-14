@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="activityLoader" destination="ASA-jd-VAa" id="0lG-OR-cKk"/>
                 <outlet property="emptyViewContainer" destination="pi0-Sz-Fel" id="SrK-n4-n1s"/>
+                <outlet property="feedCreateView" destination="rNJ-JM-vGW" id="gbi-dg-9bw"/>
                 <outlet property="feedsTable" destination="9dc-rS-z1o" id="fmg-vC-MnC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,7 +37,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_MyFeed_Given_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="jIx-5s-ru7">
                                     <rect key="frame" x="157" y="50" width="100" height="118"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No time like the present to send your first recognition message! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gr-fi-BOp">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Records Found!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gr-fi-BOp">
                                     <rect key="frame" x="22" y="176" width="369" height="79"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="79" id="T2f-ur-qVR"/>
@@ -49,17 +50,41 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </tableView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0TY-9x-aQk">
+                                    <rect key="frame" x="338" y="741" width="60" height="60"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNJ-JM-vGW">
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="cff_pluspostIcon"/>
+                                            <connections>
+                                                <action selector="createNominationView" destination="-1" eventType="touchUpInside" id="pvd-OH-bPF"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="68P-g4-daU"/>
+                                        <constraint firstAttribute="bottom" secondItem="rNJ-JM-vGW" secondAttribute="bottom" id="9iG-65-6Ti"/>
+                                        <constraint firstAttribute="height" constant="60" id="ASD-zb-kcD"/>
+                                        <constraint firstItem="rNJ-JM-vGW" firstAttribute="leading" secondItem="0TY-9x-aQk" secondAttribute="leading" id="F45-jM-rAu"/>
+                                        <constraint firstAttribute="trailing" secondItem="rNJ-JM-vGW" secondAttribute="trailing" id="PiA-ds-BBm"/>
+                                        <constraint firstItem="rNJ-JM-vGW" firstAttribute="top" secondItem="0TY-9x-aQk" secondAttribute="top" id="eix-ac-uA5"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="jIx-5s-ru7" firstAttribute="top" secondItem="pi0-Sz-Fel" secondAttribute="top" constant="50" id="71d-a1-sgR"/>
                                 <constraint firstItem="5gr-fi-BOp" firstAttribute="leading" secondItem="pi0-Sz-Fel" secondAttribute="leading" constant="22" id="FcD-Hx-41d"/>
+                                <constraint firstAttribute="trailing" secondItem="0TY-9x-aQk" secondAttribute="trailing" constant="16" id="JKx-uH-Xpz"/>
                                 <constraint firstAttribute="bottom" secondItem="9dc-rS-z1o" secondAttribute="bottom" id="Ogk-fW-vl4"/>
                                 <constraint firstItem="5gr-fi-BOp" firstAttribute="top" secondItem="jIx-5s-ru7" secondAttribute="bottom" constant="8" symbolic="YES" id="Yhv-aM-tEm"/>
                                 <constraint firstItem="9dc-rS-z1o" firstAttribute="leading" secondItem="pi0-Sz-Fel" secondAttribute="leading" id="bye-b1-GAl"/>
                                 <constraint firstAttribute="trailing" secondItem="5gr-fi-BOp" secondAttribute="trailing" constant="23" id="dVZ-lc-5EI"/>
                                 <constraint firstAttribute="trailing" secondItem="9dc-rS-z1o" secondAttribute="trailing" id="i2Z-ll-MfJ"/>
                                 <constraint firstItem="jIx-5s-ru7" firstAttribute="centerX" secondItem="pi0-Sz-Fel" secondAttribute="centerX" id="o0H-Lr-0nC"/>
+                                <constraint firstAttribute="bottom" secondItem="0TY-9x-aQk" secondAttribute="bottom" constant="95" id="u6E-k2-cCD"/>
                                 <constraint firstItem="9dc-rS-z1o" firstAttribute="top" secondItem="pi0-Sz-Fel" secondAttribute="top" id="zCn-VZ-wIP"/>
                             </constraints>
                         </view>
@@ -92,6 +117,7 @@
     </objects>
     <resources>
         <image name="black_MyFeed_Given_Empty" width="100" height="118"/>
+        <image name="cff_pluspostIcon" width="11" height="11.5"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

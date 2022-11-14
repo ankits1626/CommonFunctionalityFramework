@@ -20,6 +20,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var feedCoordinatorDelegate: FeedsCommonCoordinatorDelegate!
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    @IBOutlet private weak var feedCreateView : UIButton?
     var selectedTabType = ""
     var searchText : String?
     
@@ -77,6 +78,10 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
             self.feedsTable?.alwaysBounceVertical = false
             self.feedsTable?.showsVerticalScrollIndicator = false
         }
+        
+        feedCreateView?.layer.cornerRadius = (feedCreateView?.frame.size.width)!/2
+        feedCreateView?.clipsToBounds = true
+        feedCreateView?.backgroundColor = UIColor.getControlColor()
     }
     
     @objc func scrollTableView(notification: NSNotification) {
@@ -171,13 +176,15 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                                 if resultCount == 0 && self?.selectedTabType == "SearchFromHome" {
                                     var emptyMessage : String!
                                     emptyMessage = ""
-                                    self?.emptyResultView.showEmptyMessageView(
-                                        message: emptyMessage,
-                                        parentView: self!.emptyViewContainer!,
-                                        parentViewController: self!
-                                    )
+//                                    self?.emptyResultView.showEmptyMessageView(
+//                                        message: emptyMessage,
+//                                        parentView: self!.emptyViewContainer!,
+//                                        parentViewController: self!
+//                                    )
+                                    self?.feedsTable?.isHidden = true
                                 }else{
-                                    self?.emptyResultView.hideEmptyMessageView()
+                                    self?.feedsTable?.isHidden = false
+//                                    self?.emptyResultView.hideEmptyMessageView()
                                 }
                             }
                             
@@ -241,6 +248,10 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         feedsTable?.loadCFFControl = CFFLoadControl(target: self, action: #selector(loadFeeds))
         feedsTable?.loadCFFControl?.tintColor = .gray
         feedsTable?.loadCFFControl?.heightLimit = 100.0
+    }
+    
+    @IBAction func createNominationView() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "openThanksView"), object: nil, userInfo: nil)
     }
 }
 
