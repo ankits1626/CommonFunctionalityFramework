@@ -82,7 +82,7 @@ class FeedDescriptionMarkupParser : NSObject{
     private func parseDescriptionText(_ input : String) -> FeedDescriptionParserOutPutModel{
         let allComponents =  getComponents(markupTag: .Gif, input: input)
         let gifComponents = allComponents.filter { (aModel) -> Bool in
-            return aModel.tag == .Gif
+            return !aModel.content.isEmpty && aModel.tag == .Gif
         }
 
         let plainTextComponents = allComponents.filter { (aModel) -> Bool in
