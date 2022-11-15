@@ -146,13 +146,20 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         }
     }
     
+    @objc private func bottomLoader(){
+        if !(lastFetchedFeeds?.nextPageUrl?.isEmpty ?? true) {
+            loadFeeds()
+        }else{
+            self.feedsTable?.loadCFFControl?.endLoading()
+        }
+    }
+    
     @objc private func loadFeeds(){
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         //loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
             nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk) {[weak self] (result) in
                 DispatchQueue.main.async {
-                    self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                     // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
@@ -189,6 +196,9 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                                 }
                             }
                             
+                        }
+                        if result.fetchedRawFeeds?.count == 0 {
+                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                         }
                         self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     case .SuccessWithNoResponseData:
@@ -246,7 +256,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         feedsTable?.estimatedRowHeight = 500
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
-        feedsTable?.loadCFFControl = CFFLoadControl(target: self, action: #selector(loadFeeds))
+        feedsTable?.loadCFFControl = CFFLoadControl(target: self, action: #selector(bottomLoader))
         feedsTable?.loadCFFControl?.tintColor = .gray
         feedsTable?.loadCFFControl?.heightLimit = 100.0
     }
@@ -666,6 +676,7 @@ extension CommonFeedsViewController:  NSFetchedResultsControllerDelegate {
     
     // did change
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         feedsTable?.endUpdates()
     }
 }
