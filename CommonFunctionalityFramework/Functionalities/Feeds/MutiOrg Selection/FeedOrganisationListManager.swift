@@ -30,6 +30,9 @@ class FeedOrganisationListManager : NSObject{
         self.setupTableView()
     }
     
+    func reset(){
+        self.collapsedSections = Set<Int>()
+    }
     
     func loadListAfterDataFetch(){
         initModel.tableView?.reloadData()
@@ -74,7 +77,8 @@ extension FeedOrganisationListManager : UITableViewDataSource, UITableViewDelega
         if self.collapsedSections.contains(section) {
                 return 0
         }else{
-            return initModel.dataManager?.getOrganisations()[section].departments.count ?? 0
+            
+            return initModel.dataManager?.getOrganisations()[section].departments.filter{$0.isDisplayable}.count ?? 0
         }
         
     }
@@ -170,7 +174,7 @@ extension FeedOrganisationListManager{
     
     private func configureDepartmentRow(cell: FeedOrganisationTableViewCell, indexpath: IndexPath){
         
-        let department = initModel.dataManager!.getOrganisations()[indexpath.section].departments[indexpath.row]
+        let department = initModel.dataManager!.getOrganisations()[indexpath.section].departments.filter{$0.isDisplayable}[indexpath.row]
         cell.departmentLbl?.text = department.getDisplayName()
         cell.departmentLbl?.font = .Body2
         cell.departmentLbl?.textColor = .getTitleTextColor()

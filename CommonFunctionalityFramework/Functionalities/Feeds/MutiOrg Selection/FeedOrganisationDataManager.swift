@@ -24,6 +24,7 @@ class FeedOrganisationDataManager{
     
     private var selectedOrganisation = Set<Int>()
     private var selectedDepartment = Set<Int>()
+    private var isSearchEnabled = false
     
     init(_ initModel: FeedOrganisationDataManagerInitModel){
         self.initModel = initModel
@@ -42,6 +43,41 @@ class FeedOrganisationDataManager{
             }
         }
     }
+    
+    func updateSearchState(_ isSearchEnabled : Bool){
+        if !isSearchEnabled{
+            for organisation in fetchedOrganisations {
+                organisation.isDisplayable = true
+                for department in organisation.departments {
+                    department.isDisplayable = true
+                }
+            }
+        }
+        self.isSearchEnabled = isSearchEnabled
+    }
+    
+    func performSearch(_ searchKey: String, completion:()-> Void){
+        for org in fetchedOrganisations{
+            var displayableDepartmentCount = 0
+            for department in org.departments {
+                if department.getDisplayName().contains(searchKey){
+                    department.isDisplayable = true
+                    displayableDepartmentCount = displayableDepartmentCount + 1
+                }else{
+                    department.isDisplayable = false
+                }
+            }
+            
+            if org.displayName.contains(searchKey) || displayableDepartmentCount>0{
+                org.isDisplayable = true
+            }else{
+                org.isDisplayable = false
+            }
+        }
+        completion()
+    }
+    
+    
 }
 
 extension FeedOrganisationDataManager{
@@ -77,7 +113,7 @@ extension FeedOrganisationDataManager{
 
 extension FeedOrganisationDataManager{
     func getOrganisations() -> [FeedOrganisation]{
-        return fetchedOrganisations
+        return fetchedOrganisations.filter{$0.isDisplayable}
     }
     
     func toggleOrganisationSelection(_ organisation: FeedOrganisation, _ completion: ()-> Void){
@@ -90,7 +126,9 @@ extension FeedOrganisationDataManager{
         }else{
             selectedOrganisation.insert(organisation.pk)
             for deparment in organisation.departments {
-                selectedDepartment.insert(deparment.pk)
+                if deparment.isDisplayable{
+                    selectedDepartment.insert(deparment.pk)
+                }
             }
         }
         completion()

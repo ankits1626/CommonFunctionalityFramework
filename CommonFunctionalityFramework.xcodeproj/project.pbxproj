@@ -1318,7 +1318,6 @@
 				BC37F2A428894F0C0075E7CB /* custom header */,
 				BC37F29F28894EC80075E7CB /* custom cell */,
 				BC37F296288945B80075E7CB /* Models */,
-				BCA04B162887B4F4009457AB /* FeedDepartmentSelection */,
 				BCA04B152887B4DE009457AB /* FeedOrganisationSelection */,
 				BC37F29B288947020075E7CB /* FeedOrganisationDataManager.swift */,
 				BC37F29D288947140075E7CB /* FeedOrganisationListManager.swift */,
@@ -1333,13 +1332,6 @@
 				BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */,
 			);
 			path = FeedOrganisationSelection;
-			sourceTree = "<group>";
-		};
-		BCA04B162887B4F4009457AB /* FeedDepartmentSelection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FeedDepartmentSelection;
 			sourceTree = "<group>";
 		};
 		BCCF645428EBFCA00033AF2C /* ASChatBarView */ = {

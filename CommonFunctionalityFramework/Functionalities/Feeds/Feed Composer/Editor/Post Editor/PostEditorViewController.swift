@@ -63,6 +63,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     var composerDismissCompletionBlock : (() -> Void)?
     
+    @IBOutlet private weak var postToLabel : UILabel?
     @IBOutlet private weak var postEditorTable : UITableView?
     @IBOutlet private weak var createButton : UIButton?
     @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
@@ -197,6 +198,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     private func setup(){
         tableBackgroundContainer?.curvedCornerControl()
         view.backgroundColor = .viewBackgroundColor
+        setupPostToLabel()
         setupTableView()
         setupCreateButton()
         setupPostWithDepartment()
@@ -209,6 +211,11 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         setupShareWithSegmentedControl()
     }
     
+    private func setupPostToLabel(){
+        self.postToLabel?.font = .Caption2
+        self.postToLabel?.textColor = .black44
+    }
+    
     private func setupShareWithSegmentedControl(){
         shareWithSegmentControl?.removeAllSegments()
         var segments = SharePostOption.defaultCases
@@ -217,7 +224,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
             segments = SharePostOption.multiOrgCases
         }
-        var tupple = editablePost?.postSharedWith() ?? (SharePostOption.MyOrg, nil)
+        let tupple = editablePost?.postSharedWith() ?? (SharePostOption.MyOrg, nil)
         var selectedIndex = 0
         for  (index, shareOption) in segments.enumerated() {
             if shareOption == tupple.0{
@@ -230,6 +237,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         }
         shareWithSegmentControl?.selectedSegmentIndex = 0
         shareWithSegmentControl?.tintColor = .getControlColor()
+        shareWithSegmentControl?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for:
+            .selected)
         shareWithSegmentControl?.selectedSegmentIndex = selectedIndex
         updatePostButton()
     }

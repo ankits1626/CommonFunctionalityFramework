@@ -16,6 +16,7 @@
                 <outlet property="messageGuidenceContainer" destination="JbI-SE-oNC" id="3yd-bB-FSI"/>
                 <outlet property="messageGuidenceContainerHeightContraint" destination="w6U-FB-ItR" id="or5-hK-s5t"/>
                 <outlet property="postEditorTable" destination="KdF-ud-HFa" id="Zh3-ec-kQF"/>
+                <outlet property="postToLabel" destination="Mud-s3-Dnh" id="yAC-7p-Rl8"/>
                 <outlet property="postWithSameDepartmentCheckBox" destination="uTj-u0-hou" id="GTB-P9-6fE"/>
                 <outlet property="postWithSameDepartmentContainer" destination="roZ-qC-VOA" id="zeR-Iw-hfx"/>
                 <outlet property="postWithSameDepartmentMessage" destination="29o-IF-Tpj" id="aSW-ze-Dsr"/>
@@ -98,6 +99,12 @@
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzf-KL-pvx" userLabel="PostWith Container">
                             <rect key="frame" x="0.0" y="676" width="414" height="101"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mud-s3-Dnh">
+                                    <rect key="frame" x="16" y="1" width="53.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QNU-hC-Gcm">
                                     <rect key="frame" x="16" y="29.5" width="382" height="43"/>
                                     <constraints>
@@ -117,7 +124,9 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="QNU-hC-Gcm" secondAttribute="trailing" constant="16" id="D78-aD-rxk"/>
                                 <constraint firstAttribute="height" constant="101" id="SkC-6u-l24"/>
+                                <constraint firstItem="Mud-s3-Dnh" firstAttribute="leading" secondItem="mzf-KL-pvx" secondAttribute="leading" constant="16" id="Ssg-YI-laf"/>
                                 <constraint firstItem="QNU-hC-Gcm" firstAttribute="leading" secondItem="mzf-KL-pvx" secondAttribute="leading" constant="16" id="XQs-xF-dhl"/>
+                                <constraint firstItem="QNU-hC-Gcm" firstAttribute="top" secondItem="Mud-s3-Dnh" secondAttribute="bottom" constant="8" id="hSi-f3-wDd"/>
                                 <constraint firstItem="QNU-hC-Gcm" firstAttribute="centerY" secondItem="mzf-KL-pvx" secondAttribute="centerY" id="maT-g3-Msc"/>
                             </constraints>
                         </view>
@@ -225,9 +234,6 @@
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

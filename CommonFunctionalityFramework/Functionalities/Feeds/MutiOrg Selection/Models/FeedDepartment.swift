@@ -15,6 +15,7 @@ class FeedDepartment: NSObject{
     
     let rawFeedDepartment: [String : Any]
     weak var parentOrganisation: FeedOrganisation!
+    var isDisplayable : Bool = true
     
     init(_ rawFeedDepartment: [String : Any], parentOrganisation: FeedOrganisation!){
         self.rawFeedDepartment = rawFeedDepartment

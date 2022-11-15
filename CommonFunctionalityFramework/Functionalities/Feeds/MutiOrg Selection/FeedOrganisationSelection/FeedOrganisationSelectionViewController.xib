@@ -16,10 +16,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedOrganisationSelectionViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
+                <outlet property="clearButtonWidthConstraint" destination="Cah-hF-Ufb" id="Dg2-5j-1Gb"/>
                 <outlet property="organisationListTableView" destination="s2S-iD-acG" id="sPy-dA-gEl"/>
                 <outlet property="proceedButton" destination="RKN-Ux-twZ" id="r1q-y5-au5"/>
                 <outlet property="proceedButtonContainerHeight" destination="GMm-8N-jA5" id="la0-oj-QKK"/>
                 <outlet property="searchTextField" destination="P1D-d2-dQR" id="jlg-pa-1Bc"/>
+                <outlet property="topInfoLabel" destination="Jzd-Q2-h3K" id="EFB-1h-JdM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,36 +33,73 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wbL-ut-GKN">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sta-55-gku" userLabel="search bar container">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0h-Ok-ar0">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="   test🔍 Search by name or email" textAlignment="natural" minimumFontSize="17" background="SearchBarImage" translatesAutoresizingMaskIntoConstraints="NO" id="P1D-d2-dQR">
-                                    <rect key="frame" x="16" y="10" width="382" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="mE1-b6-vbU"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </textField>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Organizations/Departments who can view your post" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzd-Q2-h3K">
+                                    <rect key="frame" x="18.5" y="-0.5" width="377" height="41"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="P1D-d2-dQR" firstAttribute="leading" secondItem="Sta-55-gku" secondAttribute="leading" constant="16" id="LLo-vm-iUF"/>
+                                <constraint firstAttribute="height" constant="40" id="2Lg-dU-1mP"/>
+                                <constraint firstItem="Jzd-Q2-h3K" firstAttribute="leading" secondItem="w0h-Ok-ar0" secondAttribute="leading" constant="18.5" id="6y0-zE-vMw"/>
+                                <constraint firstAttribute="trailing" secondItem="Jzd-Q2-h3K" secondAttribute="trailing" constant="18.5" id="Mq8-IC-YFc"/>
+                                <constraint firstItem="Jzd-Q2-h3K" firstAttribute="centerY" secondItem="w0h-Ok-ar0" secondAttribute="centerY" id="Udo-jh-JDR"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sta-55-gku" userLabel="search bar container">
+                            <rect key="frame" x="0.0" y="40" width="414" height="70"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRd-jL-v9S">
+                                    <rect key="frame" x="16.5" y="10" width="381" height="50"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="   test🔍 Search by name or email" textAlignment="natural" minimumFontSize="17" background="SearchBarImage" translatesAutoresizingMaskIntoConstraints="NO" id="P1D-d2-dQR">
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="mE1-b6-vbU"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </textField>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLk-ri-t7M">
+                                            <rect key="frame" x="314" y="0.0" width="67" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="67" id="Cah-hF-Ufb"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Clear"/>
+                                            <connections>
+                                                <action selector="clearSearch" destination="-1" eventType="touchUpInside" id="0Pf-kg-tbS"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="D5C-Zh-GPS"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
                                 <constraint firstAttribute="height" constant="70" id="afs-vb-x8J"/>
-                                <constraint firstItem="P1D-d2-dQR" firstAttribute="centerY" secondItem="Sta-55-gku" secondAttribute="centerY" id="eXe-tN-Aou"/>
-                                <constraint firstAttribute="trailing" secondItem="P1D-d2-dQR" secondAttribute="trailing" constant="16" id="fAH-aA-W1e"/>
+                                <constraint firstItem="HRd-jL-v9S" firstAttribute="leading" secondItem="Sta-55-gku" secondAttribute="leading" constant="16.5" id="cV7-is-PiP"/>
+                                <constraint firstAttribute="trailing" secondItem="HRd-jL-v9S" secondAttribute="trailing" constant="16.5" id="jek-RT-4kR"/>
+                                <constraint firstItem="HRd-jL-v9S" firstAttribute="centerY" secondItem="Sta-55-gku" secondAttribute="centerY" id="juS-ML-FUT"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaZ-Tq-BN1" userLabel="Table Container">
-                            <rect key="frame" x="0.0" y="70" width="414" height="774"/>
+                            <rect key="frame" x="0.0" y="110" width="414" height="734"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-iD-acG">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </tableView>
                             </subviews>

@@ -29,13 +29,16 @@ class FeedOrganisationSelectionViewController: UIViewController {
     }
     private let initModel : FeedOrganisationSelectionInitModel
     
+    @IBOutlet private weak var topInfoLabel : UILabel?
     @IBOutlet private weak var proceedButton : UIButton?
     @IBOutlet private weak var proceedButtonContainerHeight : NSLayoutConstraint?
     @IBOutlet private weak var searchTextField: UITextField?
     @IBOutlet private weak var organisationListTableView: UITableView?
+    @IBOutlet private weak var clearButton: UIButton?
+    @IBOutlet private weak var clearButtonWidthConstraint: NSLayoutConstraint?
     
     private func setupContainerTopbar(){
-        containerTopBarModel?.title?.text = "Select Organisation".localized.uppercased()
+        containerTopBarModel?.title?.text = "Select Orgs/Dept".localized.uppercased()
     }
     
     private lazy var dataManager: FeedOrganisationDataManager = {
@@ -81,11 +84,37 @@ extension FeedOrganisationSelectionViewController{
         configureSearchBar()
         configureProceedButton()
         askDataManagerToFetchData()
+        setupTopInfoLabel()
+        toggleClearSearchButtonVisibility()
+    }
+    
+    private func toggleClearSearchButtonVisibility(){
+        if let unwrappedSearchText = searchTextField?.text,
+           !unwrappedSearchText.isEmpty{
+            clearButtonWidthConstraint?.constant = 70
+        }else{
+            clearButtonWidthConstraint?.constant = 0
+        }
+    }
+    
+    private func setupTopInfoLabel(){
+        topInfoLabel?.font = .Caption1
+        topInfoLabel?.textColor = .black35
     }
     
     private func configureSearchBar(){
         searchTextField?.backgroundColor = UIColor(red: 249, green: 249, blue: 251)
-        searchTextField?.placeholder = "🔍 " + "search orginisation".localized.lowercased()
+        searchTextField?.placeholder = "🔍 " + "search organisations/departments".localized.lowercased()
+        searchTextField?.addTarget(
+            self,
+            action: #selector(performSearch),
+            for: .editingDidEndOnExit
+        )
+        searchTextField?.addTarget(
+            self,
+            action: #selector(searchFieldDidChanged),
+            for: .editingChanged
+        )
     }
     
     private func configureProceedButton(){
@@ -106,15 +135,43 @@ extension FeedOrganisationSelectionViewController{
         }
     }
 }
-//hello
-
 
 extension FeedOrganisationSelectionViewController{
     @IBAction func proceedButtonTapped(){
-//        self.navigationController?.popViewController(animated: false)
         initModel.selectionCompletionHandler(
             dataManager.getSelectedOrganisationsAndDepartments(),
             dataManager.getSelectedOrganisationsAndDepartmentsDisplayable()
         )
     }
+}
+
+extension FeedOrganisationSelectionViewController{
+    
+    @IBAction private func clearSearch(){
+        searchTextField?.text = nil
+        toggleClearSearchButtonVisibility()
+        performSearch()
+    }
+    
+    @objc private func searchFieldDidChanged(){
+        toggleClearSearchButtonVisibility()
+    }
+    
+    @objc private func performSearch(){
+        if let searchText = searchTextField?.text,
+           !searchText.isEmpty{
+            debugPrint("search \(searchText)")
+            dataManager.updateSearchState(true)
+            dataManager.performSearch(searchText) {[weak self] in
+                self?.listManager.reset()
+                self?.listManager.loadListAfterDataFetch()
+            }
+        }else{
+            dataManager.updateSearchState(false)
+            listManager.reset()
+            listManager.loadListAfterDataFetch()
+        }
+        
+    }
+    
 }

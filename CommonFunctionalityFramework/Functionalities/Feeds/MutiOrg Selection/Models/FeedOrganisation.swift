@@ -14,6 +14,7 @@ class FeedOrganisation : NSObject{
     }
     
     let rawFeedOrgansation: [String : Any]
+    var isDisplayable : Bool = true
     
     init(_ rawFeedOrgansation: [String : Any]){
         self.rawFeedOrgansation = rawFeedOrgansation
