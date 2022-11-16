@@ -220,12 +220,20 @@ extension FeedOrganisationListManager{
 extension FeedOrganisationListManager{
     
     private func toggleSection( section: Int){
+        let rows : Int = initModel.dataManager?.getOrganisations()[section].departments.filter{$0.isDisplayable}.count ?? 0
         if self.collapsedSections.contains(section) {
             self.collapsedSections.remove(section)
-            initModel.tableView?.insertRows(at: indexPathsForSection(section), with: .fade)
+            if rows > 0{
+                initModel.tableView?.insertRows(at: indexPathsForSection(section), with: .fade)
+            }
+            
         } else {
             self.collapsedSections.insert(section)
-            initModel.tableView?.deleteRows(at: indexPathsForSection(section), with: .fade)
+            
+            if rows > 0{
+                initModel.tableView?.deleteRows(at: indexPathsForSection(section), with: .fade)
+            }
+            
         }
         initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
     }

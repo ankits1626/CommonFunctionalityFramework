@@ -60,7 +60,7 @@ class FeedOrganisationDataManager{
         for org in fetchedOrganisations{
             var displayableDepartmentCount = 0
             for department in org.departments {
-                if department.getDisplayName().contains(searchKey){
+                if department.getDisplayName().lowercased().contains(searchKey.lowercased()){
                     department.isDisplayable = true
                     displayableDepartmentCount = displayableDepartmentCount + 1
                 }else{
@@ -68,7 +68,7 @@ class FeedOrganisationDataManager{
                 }
             }
             
-            if org.displayName.contains(searchKey) || displayableDepartmentCount>0{
+            if org.displayName.lowercased().contains(searchKey.lowercased()) || displayableDepartmentCount>0{
                 org.isDisplayable = true
             }else{
                 org.isDisplayable = false
