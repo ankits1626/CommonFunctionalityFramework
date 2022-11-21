@@ -29,7 +29,11 @@ class PostPreviewHeaderCoordinator{
                 edges: [.left, .right],
                 color: .feedCellBorderColor
             )
+            header?.titleLeftConstraint?.constant = 0
+            header?.actionButtonRightConstraint?.constant = 0
+            header?.headerContainer?.backgroundColor = .clear
             header?.headerTitleLabel?.font = UIFont.Highlighter2
+            header?.headerTitleLabel?.textColor = .gray176
             switch input.shareOption{
                 
             case .MyOrg:

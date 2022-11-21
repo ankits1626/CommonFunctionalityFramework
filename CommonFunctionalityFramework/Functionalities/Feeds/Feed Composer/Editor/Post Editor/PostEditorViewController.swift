@@ -13,8 +13,8 @@ import Photos
 import RewardzCommonComponents
 
 enum SharePostOption : Int{
-    case MyOrg = 10
-    case MyDepartment = 20
+    case MyOrg = 20
+    case MyDepartment = 10
     case MultiOrg = 40
     
     func displayableTitle() -> String{

@@ -23,7 +23,7 @@ class PollsActiveDaysTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
             cell.activeDaysStepper?.reading = 1
             cell.activeDaysStepper?.incrementIndicatorColor = themeManager?.getStepperActiveColor() ?? .stepperActiveColor
             cell.activeDaysStepper?.decrementIndicatorColor = .stepperInactiveColor
-            cell.activeDaysStepper?.middleColor = .stepperMiddleColor
+            cell.activeDaysStepper?.middleColor = .gray245
             cell.activeDaysStepper?.curvedBorderedControl()
             cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
         }

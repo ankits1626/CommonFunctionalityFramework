@@ -35,11 +35,13 @@ public struct GenericContainerTopBarModel{
     var title : UILabel?
     var leftButton : UIButton?
     var rightButton : UIButton?
+    var container : UIView?
     
-    public init(title : UILabel? , leftButton : UIButton?, rightButton : UIButton?){
+    public init(title : UILabel? , leftButton : UIButton?, rightButton : UIButton?, container : UIView?){
         self.title = title
         self.leftButton = leftButton
         self.rightButton = rightButton
+        self.container = container
     }
 }
 

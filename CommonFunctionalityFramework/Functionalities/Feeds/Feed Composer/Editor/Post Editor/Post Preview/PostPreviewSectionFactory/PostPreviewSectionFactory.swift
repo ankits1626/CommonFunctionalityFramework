@@ -149,7 +149,7 @@ class PostPreviewSectionFactory {
         case .PostInfo:
             return 0
         case .ShareWithInfoSection:
-            return 40
+            return 35
         }
     }
 }

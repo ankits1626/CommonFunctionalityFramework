@@ -77,6 +77,7 @@ class PostPreviewViewController: UIViewController {
         listManager.clear()
     }
     private func setupContainerTopbar(){
+        containerTopBarModel?.container?.backgroundColor = .clear
         containerTopBarModel?.title?.text = "PREVIEW POST".localized.uppercased()
         containerTopBarModel?.rightButton?.tintColor = .black
         containerTopBarModel?.rightButton?.setImage(

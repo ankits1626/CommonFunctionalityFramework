@@ -56,10 +56,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="actionButtonRightConstraint" destination="a2P-5a-JvV" id="uAd-F2-LYl"/>
                 <outlet property="headerActionButton" destination="Hqx-Y0-K8n" id="ndV-Hi-6S7"/>
                 <outlet property="headerContainer" destination="QfA-JF-Dry" id="4bP-xP-XD2"/>
                 <outlet property="headerSecondaryTitleLabel" destination="u3C-p8-MJf" id="9hJ-kS-v6c"/>
                 <outlet property="headerTitleLabel" destination="RCH-DN-M52" id="XrQ-9h-oxJ"/>
+                <outlet property="titleLeftConstraint" destination="RW0-ba-c6u" id="IyX-n9-bzT"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="-187.83482142857142"/>
         </view>
