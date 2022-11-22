@@ -295,13 +295,12 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     private func getCreateButtonTitle() -> String{
-        return "SUBMIT".localized
-//        switch postType {
-//        case .Poll:
-//            return "PREVIEW POLL".localized
-//        case .Post:
-//            return "PREVIEW POST".localized
-//        }
+        switch postType {
+        case .Poll:
+            return "PREVIEW POLL".localized
+        case .Post:
+            return "PREVIEW POST".localized
+        }
     }
     
     private func setupContainerTopbar(){
