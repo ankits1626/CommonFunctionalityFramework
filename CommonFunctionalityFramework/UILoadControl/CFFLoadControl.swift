@@ -14,7 +14,7 @@ public class CFFLoadControl: UIControl {
     fileprivate var activityIndicatorView: UIActivityIndicatorView!
     private var originalDelegate: UIScrollViewDelegate?
     
-    internal var target: AnyObject?
+    internal weak var target: AnyObject?
     internal var action: Selector!
     
     public var heightLimit: CGFloat = 80.0

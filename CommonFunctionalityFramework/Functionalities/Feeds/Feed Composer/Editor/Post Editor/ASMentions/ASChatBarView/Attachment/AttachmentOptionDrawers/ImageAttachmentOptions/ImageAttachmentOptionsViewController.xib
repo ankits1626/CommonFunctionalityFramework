@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageAttachmentOptionsViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraButton" destination="Has-Kf-QlR" id="naS-Rc-WCV"/>
+                <outlet property="galleryButton" destination="j2B-NN-bti" id="mO7-dQ-yon"/>
+                <outlet property="view" destination="DSX-h2-KTC" id="Urd-WX-MhW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DSX-h2-KTC">
+            <rect key="frame" x="0.0" y="0.0" width="548" height="260"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XDA-C4-Kwp">
+                    <rect key="frame" x="0.0" y="44" width="548" height="172"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GE3-nY-uCm">
+                            <rect key="frame" x="0.0" y="0.0" width="548" height="86"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Has-Kf-QlR" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                    <rect key="frame" x="53" y="44" width="442" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="TxL-4m-K93"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Has-Kf-QlR" firstAttribute="leading" secondItem="GE3-nY-uCm" secondAttribute="leading" constant="53" id="8GK-Be-EhM"/>
+                                <constraint firstAttribute="bottom" secondItem="Has-Kf-QlR" secondAttribute="bottom" id="FlQ-sW-4Ab"/>
+                                <constraint firstAttribute="trailing" secondItem="Has-Kf-QlR" secondAttribute="trailing" constant="53" id="KfF-GL-jDM"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbF-Au-YEP">
+                            <rect key="frame" x="0.0" y="86" width="548" height="86"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2B-NN-bti" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                    <rect key="frame" x="53" y="44" width="442" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="Kd9-GE-XBS"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="j2B-NN-bti" firstAttribute="leading" secondItem="IbF-Au-YEP" secondAttribute="leading" constant="53" id="E6b-W8-l6J"/>
+                                <constraint firstAttribute="bottom" secondItem="j2B-NN-bti" secondAttribute="bottom" id="IR7-wd-Kb7"/>
+                                <constraint firstAttribute="trailing" secondItem="j2B-NN-bti" secondAttribute="trailing" constant="53" id="ha2-e4-GlT"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="b3z-S1-kgP"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="XDA-C4-Kwp" firstAttribute="leading" secondItem="b3z-S1-kgP" secondAttribute="leading" id="0yX-Dr-rbH"/>
+                <constraint firstItem="b3z-S1-kgP" firstAttribute="bottom" secondItem="XDA-C4-Kwp" secondAttribute="bottom" constant="10" id="dbH-KJ-ywU"/>
+                <constraint firstItem="b3z-S1-kgP" firstAttribute="trailing" secondItem="XDA-C4-Kwp" secondAttribute="trailing" id="qqw-5f-CfT"/>
+                <constraint firstItem="XDA-C4-Kwp" firstAttribute="top" secondItem="b3z-S1-kgP" secondAttribute="top" id="ya9-oO-FIY"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-86.956521739130437" y="320.75892857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

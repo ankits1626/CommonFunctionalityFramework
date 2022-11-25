@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PostObserver {
+protocol PostObserver : AnyObject {
     func mediaAttachedToPost()
     func attachedMediaUpdated()
     func allAttachedMediaRemovedFromPost()
@@ -35,7 +35,7 @@ class PostCoordinatorError {
 
 class PostCoordinator {
     private var currentPost : EditablePostProtocol
-    var postObsever : PostObserver?
+    weak var postObsever : PostObserver?
     let postType: FeedType
     
     init(postObsever : PostObserver?, postType: FeedType, editablePost : EditablePostProtocol?) {
@@ -43,8 +43,9 @@ class PostCoordinator {
         self.postType = postType
         if let unwrappedPost = editablePost{
             currentPost = unwrappedPost
+            print("&&&&&&&&&&&&& PostCoordinator \(currentPost.parentFeedItem) \(editablePost?.parentFeedItem)")
         }else{
-            currentPost = EditablePost(isShareWithSameDepartmentOnly: false, postType: postType, remotePostId: nil)
+            currentPost = EditablePost(postSharedChoice: .MyOrg, postType: postType)
         }
         
     }
@@ -168,14 +169,19 @@ class PostCoordinator {
     }
     
     func isPostWithSameDepartment() -> Bool {
-        return currentPost.isShareWithSameDepartmentOnly
+        return currentPost.postSharedChoice == .MyDepartment
     }
-    func isDepartmentSharedWithEditable() -> Bool{
-        return getCurrentPost().remotePostId == nil
-    }
+//    func isDepartmentSharedWithEditable() -> Bool{
+//        return false// getCurrentPost().remotePostId == nil
+//    }
     
-    func updatePostWithSameDepartment(_ flag: Bool) {
-        currentPost.isShareWithSameDepartmentOnly = flag
+//    func updatePostWithSameDepartment(_ flag: Bool) {
+//        currentPost.isShareWithSameDepartmentOnly = flag
+//    }
+    
+    func updatePostShareOption(_ shareOption: SharePostOption, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?){
+        currentPost.postSharedChoice = shareOption
+        currentPost.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
     }
     
     func updateActiveDayForPoll(_ days: Int) {

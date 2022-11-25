@@ -8,9 +8,13 @@
 
 import UIKit
 
-public protocol CFFMainAppInformationCoordinator : class {
+public protocol CFFMainAppInformationCoordinator : AnyObject {
     func isUserAllowedToPostFeed() -> Bool
     func isUserAllowedToCreatePoll() -> Bool
+    func isMultiOrgPostEnabled() -> Bool
+    func getCurrentUserName() -> String
+    func getCurrenUserProfilePicUrl() -> String
+    func getCurrentUserDepartment() -> String
 }
 
 
@@ -30,11 +34,14 @@ public struct GetFeedsViewModel{
     }
 }
 
-public protocol FeedsCoordinatorDelegate {
+public protocol FeedsCoordinatorDelegate : AnyObject {
     func showFeedDetail(_ detailViewController : UIViewController)
     func removeFeedDetail()
-    func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
+    func showComposer(_composer : UIViewController, dismissCompletionBlock : (()-> Void)?, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
     func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
+    func showMultiOrgPicker(_ orgPicker : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
+    
+    func getVCEmbeddedInContainer(_ targetVC : UIViewController,presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void)) -> UIViewController
 }
 
 public class FeedsCoordinator {
@@ -67,6 +74,7 @@ public class FeedsCoordinator {
                             )
                         }
                         let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+                        feedDetailVC.mainAppCoordinator = inputModel.mainAppCoordinator
                         feedDetailVC.themeManager = inputModel.themeManager
                         feedDetailVC.targetFeedItem = rawFeed //feeds[indexPath.section]
                         feedDetailVC.mediaFetcher = inputModel.mediaCoordinator

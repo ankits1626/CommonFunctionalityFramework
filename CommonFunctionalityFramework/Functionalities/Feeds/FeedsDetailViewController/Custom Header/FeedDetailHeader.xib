@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,11 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FeedDetailHeader" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QfA-JF-Dry">
-                    <rect key="frame" x="16" y="0.0" width="382" height="62"/>
+                    <rect key="frame" x="16" y="0.0" width="382" height="61"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCH-DN-M52">
                             <rect key="frame" x="12" y="11" width="42" height="21"/>
@@ -30,7 +30,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-Y0-K8n" customClass="BlockButton" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-Y0-K8n" customClass="BlockButton" customModule="RewardzCommonComponents">
                             <rect key="frame" x="320" y="6.5" width="46" height="30"/>
                             <state key="normal" title="Button"/>
                         </button>
@@ -56,12 +56,14 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="actionButtonRightConstraint" destination="a2P-5a-JvV" id="uAd-F2-LYl"/>
                 <outlet property="headerActionButton" destination="Hqx-Y0-K8n" id="ndV-Hi-6S7"/>
                 <outlet property="headerContainer" destination="QfA-JF-Dry" id="4bP-xP-XD2"/>
                 <outlet property="headerSecondaryTitleLabel" destination="u3C-p8-MJf" id="9hJ-kS-v6c"/>
                 <outlet property="headerTitleLabel" destination="RCH-DN-M52" id="XrQ-9h-oxJ"/>
+                <outlet property="titleLeftConstraint" destination="RW0-ba-c6u" id="IyX-n9-bzT"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="-187.5"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-187.83482142857142"/>
         </view>
     </objects>
     <resources>

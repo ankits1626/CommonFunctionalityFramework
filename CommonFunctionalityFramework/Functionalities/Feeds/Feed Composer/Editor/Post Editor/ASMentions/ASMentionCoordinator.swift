@@ -12,7 +12,11 @@ protocol ASMentionCoordinatortextUpdateListener : class {
 }
 
 class ASMentionCoordinator: NSObject{
-    weak var textUpdateListener : ASMentionCoordinatortextUpdateListener?
+    weak var textUpdateListener : ASMentionCoordinatortextUpdateListener?{
+        didSet{
+            debugPrint("------ textUpdateListener set to \(textUpdateListener)")
+        }
+    }
     weak var delegate : PostEditorCellFactoryDelegate?
     static let shared = ASMentionCoordinator()
     weak var targetTextview : UITextView?

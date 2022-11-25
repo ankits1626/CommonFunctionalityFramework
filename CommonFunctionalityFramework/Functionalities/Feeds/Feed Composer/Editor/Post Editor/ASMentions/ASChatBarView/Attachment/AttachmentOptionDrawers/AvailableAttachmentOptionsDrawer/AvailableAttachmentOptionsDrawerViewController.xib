@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AvailableAttachmentOptionsDrawerViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <connections>
+                <outlet property="attachDocumentButton" destination="Ncg-vK-We6" id="dgT-JP-8d5"/>
+                <outlet property="attachPhotosButton" destination="CT3-Dq-JiB" id="fU4-pO-fZ0"/>
+                <outlet property="view" destination="DiX-Eq-hXL" id="cLU-Yg-9lT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DiX-Eq-hXL">
+            <rect key="frame" x="0.0" y="0.0" width="548" height="260"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kvB-Ou-V9c">
+                    <rect key="frame" x="0.0" y="44" width="548" height="172"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7RC-Sc-qyE">
+                            <rect key="frame" x="0.0" y="0.0" width="548" height="86"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CT3-Dq-JiB" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                    <rect key="frame" x="53" y="44" width="442" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="cII-UA-K8K"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="CT3-Dq-JiB" secondAttribute="trailing" constant="53" id="58d-WP-UBI"/>
+                                <constraint firstItem="CT3-Dq-JiB" firstAttribute="leading" secondItem="7RC-Sc-qyE" secondAttribute="leading" constant="53" id="bwS-9P-0JB"/>
+                                <constraint firstAttribute="bottom" secondItem="CT3-Dq-JiB" secondAttribute="bottom" id="vkR-aD-612"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYh-Jl-fnd">
+                            <rect key="frame" x="0.0" y="86" width="548" height="86"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncg-vK-We6" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                    <rect key="frame" x="53" y="44" width="442" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="6g7-Uc-c2o"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Ncg-vK-We6" firstAttribute="leading" secondItem="gYh-Jl-fnd" secondAttribute="leading" constant="53" id="1tn-m6-cbD"/>
+                                <constraint firstAttribute="trailing" secondItem="Ncg-vK-We6" secondAttribute="trailing" constant="53" id="pIT-sJ-3R4"/>
+                                <constraint firstAttribute="bottom" secondItem="Ncg-vK-We6" secondAttribute="bottom" id="wSL-B9-hix"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="yNd-7P-18Q"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="kvB-Ou-V9c" firstAttribute="leading" secondItem="yNd-7P-18Q" secondAttribute="leading" id="5cf-3m-AJ7"/>
+                <constraint firstItem="yNd-7P-18Q" firstAttribute="bottom" secondItem="kvB-Ou-V9c" secondAttribute="bottom" constant="10" id="7e0-76-ENK"/>
+                <constraint firstItem="kvB-Ou-V9c" firstAttribute="top" secondItem="yNd-7P-18Q" secondAttribute="top" id="Umz-Lm-51k"/>
+                <constraint firstItem="yNd-7P-18Q" firstAttribute="trailing" secondItem="kvB-Ou-V9c" secondAttribute="trailing" id="auW-cY-6k5"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-86.956521739130437" y="320.75892857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

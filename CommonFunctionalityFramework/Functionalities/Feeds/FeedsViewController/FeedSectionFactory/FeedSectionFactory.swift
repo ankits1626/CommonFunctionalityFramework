@@ -12,7 +12,7 @@ protocol FeedsCustomCellProtcol {
     var containerView : UIView?{set get}
 }
 
-protocol FeedsDatasource {
+protocol FeedsDatasource : AnyObject {
     func getNumberOfItems() -> Int
     func getFeedItem(_ index: Int) -> FeedsItemProtocol
     func getFeedItem() -> FeedsItemProtocol!
@@ -20,9 +20,11 @@ protocol FeedsDatasource {
     func getCommentProvider() -> FeedsDetailCommentsProviderProtocol?
     func showShowFullfeedDescription() -> Bool
     func shouldShowMenuOptionForFeed() -> Bool
+    func getPostShareOption() -> SharePostOption
+    func getPostSharedWithOrgAndDepartment() -> FeedOrganisationDepartmentSelectionDisplayModel?
 }
 
-protocol FeedsDelegate : class {
+protocol FeedsDelegate : AnyObject {
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
     func showLikedByUsersList()
     func showMediaBrowser(feedIdentifier : Int64,scrollToItemIndex: Int)

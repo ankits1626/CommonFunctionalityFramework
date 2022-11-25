@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FeedsComposerDrawerError {
-    static let UnableToGetTopViewController = NSError(
+public class FeedsComposerDrawerError {
+    public static let UnableToGetTopViewController = NSError(
         domain: "com.commonfunctionality.FeedsComposerDrawer",
         code: 1,
         userInfo: [NSLocalizedDescriptionKey: "Unable to get top view controller"]
@@ -25,6 +25,10 @@ class FeedsComposerDrawer: UIViewController {
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     weak var themeManager: CFFThemeManagerProtocol?
+    var selectedOrganisationsAndDepartment : FeedOrganisationDepartmentSelectionModel?
+    var displayable : FeedOrganisationDepartmentSelectionDisplayModel?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -77,7 +81,11 @@ extension FeedsComposerDrawer{
             FeedComposerCoordinator(
                 delegate: self.feedCoordinatorDeleagate,
                 requestCoordinator: self.requestCoordinator,
-                mediaFetcher: self.mediaFetcher, selectedAssets: nil, themeManager: self.themeManager).showFeedItemEditor(type: type)
+                mediaFetcher: self.mediaFetcher,
+                selectedAssets: nil,
+                themeManager: self.themeManager,
+                selectedOrganisationsAndDepartments: self.selectedOrganisationsAndDepartment,
+                mainAppCoordinator: self.mainAppCoordinator).showFeedItemEditor(type: type)
         }
     }
     

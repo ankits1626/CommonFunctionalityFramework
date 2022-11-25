@@ -125,6 +125,39 @@
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
+		BC37F298288945D50075E7CB /* FeedOrganisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37F297288945D50075E7CB /* FeedOrganisation.swift */; };
+		BC37F29A288945E10075E7CB /* FeedDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37F299288945E10075E7CB /* FeedDepartment.swift */; };
+		BC37F29C288947020075E7CB /* FeedOrganisationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37F29B288947020075E7CB /* FeedOrganisationDataManager.swift */; };
+		BC37F29E288947140075E7CB /* FeedOrganisationListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37F29D288947140075E7CB /* FeedOrganisationListManager.swift */; };
+		BC37F2A228894EF20075E7CB /* FeedOrganisationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37F2A028894EF20075E7CB /* FeedOrganisationTableViewCell.swift */; };
+		BC37F2A328894EF20075E7CB /* FeedOrganisationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC37F2A128894EF20075E7CB /* FeedOrganisationTableViewCell.xib */; };
+		BC37F2A628894F580075E7CB /* FeedOrgaisationTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37F2A528894F580075E7CB /* FeedOrgaisationTableViewHeader.swift */; };
+		BC37F2A828894F620075E7CB /* FeedOrgaisationTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC37F2A728894F620075E7CB /* FeedOrgaisationTableViewHeader.xib */; };
+		BC788DD228995E7E004C612F /* FeedsOrganisationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC788DD128995E7E004C612F /* FeedsOrganisationFetcher.swift */; };
+		BCA04B1D2887F982009457AB /* FeedOrganisationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */; };
+		BCA04B1E2887F982009457AB /* FeedOrganisationSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */; };
+		BCCF645828EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF645628EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift */; };
+		BCCF645928EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCF645728EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib */; };
+		BCCF645F28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF645D28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift */; };
+		BCCF646028EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCF645E28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib */; };
+		BCCF646328EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF646128EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift */; };
+		BCCF646428EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCF646228EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib */; };
+		BCCF646828EC1A9F0033AF2C /* AttachmentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF646728EC1A9F0033AF2C /* AttachmentHandler.swift */; };
+		BCCF646A28EC267B0033AF2C /* AttachmentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF646928EC267B0033AF2C /* AttachmentDataManager.swift */; };
+		BCCF646D28EC28900033AF2C /* CommentAttachedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF646C28EC28900033AF2C /* CommentAttachedDocument.swift */; };
+		BCCF647428EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF647228EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.swift */; };
+		BCCF647528EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCF647328EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.xib */; };
+		BCE14D2E290BFE46008806EA /* PostEditorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D2D290BFE46008806EA /* PostEditorRouter.swift */; };
+		BCE14D32290C3F9C008806EA /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D30290C3F9C008806EA /* PostPreviewViewController.swift */; };
+		BCE14D33290C3F9C008806EA /* PostPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE14D31290C3F9C008806EA /* PostPreviewViewController.xib */; };
+		BCE14D36290CFEEB008806EA /* PostPreviewSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D35290CFEEA008806EA /* PostPreviewSectionFactory.swift */; };
+		BCE14D39290D00FB008806EA /* PostPreviewListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D38290D00FB008806EA /* PostPreviewListManager.swift */; };
+		BCE14D3C290D973B008806EA /* PreviewablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D3B290D973B008806EA /* PreviewablePost.swift */; };
+		BCE14D4629139C72008806EA /* PostPreviewHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D4529139C72008806EA /* PostPreviewHeaderCoordinator.swift */; };
+		BCE14D4A2913AD7C008806EA /* PostShareOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D482913AD7C008806EA /* PostShareOptionTableViewCell.swift */; };
+		BCE14D4B2913AD7C008806EA /* PostShareOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE14D492913AD7C008806EA /* PostShareOptionTableViewCell.xib */; };
+		BCE14D4D2913AFB5008806EA /* PostShareOptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE14D4C2913AFB5008806EA /* PostShareOptionTableViewCellCoordinator.swift */; };
+		BCE9964728A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE9964628A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift */; };
 		BE54420D27F30BFF00CBF6D9 /* FeedsImageDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */; };
 		BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */; };
 		BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */; };
@@ -296,6 +329,39 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		BC37F297288945D50075E7CB /* FeedOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisation.swift; sourceTree = "<group>"; };
+		BC37F299288945E10075E7CB /* FeedDepartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDepartment.swift; sourceTree = "<group>"; };
+		BC37F29B288947020075E7CB /* FeedOrganisationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationDataManager.swift; sourceTree = "<group>"; };
+		BC37F29D288947140075E7CB /* FeedOrganisationListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationListManager.swift; sourceTree = "<group>"; };
+		BC37F2A028894EF20075E7CB /* FeedOrganisationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationTableViewCell.swift; sourceTree = "<group>"; };
+		BC37F2A128894EF20075E7CB /* FeedOrganisationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedOrganisationTableViewCell.xib; sourceTree = "<group>"; };
+		BC37F2A528894F580075E7CB /* FeedOrgaisationTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrgaisationTableViewHeader.swift; sourceTree = "<group>"; };
+		BC37F2A728894F620075E7CB /* FeedOrgaisationTableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedOrgaisationTableViewHeader.xib; sourceTree = "<group>"; };
+		BC788DD128995E7E004C612F /* FeedsOrganisationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsOrganisationFetcher.swift; sourceTree = "<group>"; };
+		BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationSelectionViewController.swift; sourceTree = "<group>"; };
+		BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedOrganisationSelectionViewController.xib; sourceTree = "<group>"; };
+		BCCF645628EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASChatBarAttachmentViewController.swift; sourceTree = "<group>"; };
+		BCCF645728EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASChatBarAttachmentViewController.xib; sourceTree = "<group>"; };
+		BCCF645D28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableAttachmentOptionsDrawerViewController.swift; sourceTree = "<group>"; };
+		BCCF645E28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvailableAttachmentOptionsDrawerViewController.xib; sourceTree = "<group>"; };
+		BCCF646128EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachmentOptionsViewController.swift; sourceTree = "<group>"; };
+		BCCF646228EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageAttachmentOptionsViewController.xib; sourceTree = "<group>"; };
+		BCCF646728EC1A9F0033AF2C /* AttachmentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentHandler.swift; sourceTree = "<group>"; };
+		BCCF646928EC267B0033AF2C /* AttachmentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentDataManager.swift; sourceTree = "<group>"; };
+		BCCF646C28EC28900033AF2C /* CommentAttachedDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAttachedDocument.swift; sourceTree = "<group>"; };
+		BCCF647228EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentAttachedDocumentCollectionViewCell.swift; sourceTree = "<group>"; };
+		BCCF647328EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComentAttachedDocumentCollectionViewCell.xib; sourceTree = "<group>"; };
+		BCE14D2D290BFE46008806EA /* PostEditorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorRouter.swift; sourceTree = "<group>"; };
+		BCE14D30290C3F9C008806EA /* PostPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewViewController.swift; sourceTree = "<group>"; };
+		BCE14D31290C3F9C008806EA /* PostPreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostPreviewViewController.xib; sourceTree = "<group>"; };
+		BCE14D35290CFEEA008806EA /* PostPreviewSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewSectionFactory.swift; sourceTree = "<group>"; };
+		BCE14D38290D00FB008806EA /* PostPreviewListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewListManager.swift; sourceTree = "<group>"; };
+		BCE14D3B290D973B008806EA /* PreviewablePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewablePost.swift; sourceTree = "<group>"; };
+		BCE14D4529139C72008806EA /* PostPreviewHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewHeaderCoordinator.swift; sourceTree = "<group>"; };
+		BCE14D482913AD7C008806EA /* PostShareOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShareOptionTableViewCell.swift; sourceTree = "<group>"; };
+		BCE14D492913AD7C008806EA /* PostShareOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostShareOptionTableViewCell.xib; sourceTree = "<group>"; };
+		BCE14D4C2913AFB5008806EA /* PostShareOptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShareOptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		BCE9964628A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationDepartmentSelectionModel.swift; sourceTree = "<group>"; };
 		BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsImageDrawer.swift; sourceTree = "<group>"; };
 		BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsImageDrawer.xib; sourceTree = "<group>"; };
 		BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -444,6 +510,8 @@
 		983500EB2419FC87009084D4 /* Post Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BCE14D2F290C3F6F008806EA /* Post Preview */,
+				BCE14D2C290BFE2E008806EA /* Editor Router */,
 				987D0B8F2583DA58001A0F07 /* ASMentions */,
 				9873D61A24B6C2590041504C /* FeedsGIFSelector */,
 				9873D61524B63A1B0041504C /* FeedAttachmentOptionsDrawer */,
@@ -453,6 +521,7 @@
 				98BC8A1C241A19C9007C175D /* PostEditorCellFactory */,
 				98BC8A0B241A171E007C175D /* Custom Cells */,
 				983500EC2419FDA0009084D4 /* PostEditorViewController.swift */,
+				BEC2B28426FDA100008417C3 /* PostEditorViewController.xib */,
 			);
 			path = "Post Editor";
 			sourceTree = "<group>";
@@ -830,10 +899,9 @@
 		987D0B8F2583DA58001A0F07 /* ASMentions */ = {
 			isa = PBXGroup;
 			children = (
+				BCCF645428EBFCA00033AF2C /* ASChatBarView */,
 				BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */,
 				BEEF543B26FC978400327205 /* UIView+XibSetup.swift */,
-				BEEF543626FC927E00327205 /* ASChatBarview.swift */,
-				BEEF543726FC927E00327205 /* ASChatBarview.xib */,
 				987D0B922583DA58001A0F07 /* ASMentionCoordinator.swift */,
 				987D0B9C2583DA58001A0F07 /* ASMentionSelectorViewController */,
 				987D0B902583DA58001A0F07 /* ASMentionStore */,
@@ -977,6 +1045,7 @@
 		98B90DEB240CAD010013E9D2 /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
+				BCA04B142887B4B7009457AB /* MutiOrg Selection */,
 				BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */,
 				98D5E88F25314BE800813991 /* ReportAbuseConfirmationDrawer */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
@@ -1020,7 +1089,6 @@
 		98BC8A0B241A171E007C175D /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BEC2B28426FDA100008417C3 /* PostEditorViewController.xib */,
 				9819120C2459B5A30078A2FF /* Polls Active Days */,
 				98C648B0241BB4C1006689E9 /* EditablePollOptions */,
 				98BC8A16241A179D007C175D /* attached media */,
@@ -1207,6 +1275,213 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BC37F296288945B80075E7CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BC37F297288945D50075E7CB /* FeedOrganisation.swift */,
+				BC37F299288945E10075E7CB /* FeedDepartment.swift */,
+				BCE9964628A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BC37F29F28894EC80075E7CB /* custom cell */ = {
+			isa = PBXGroup;
+			children = (
+				BC37F2A028894EF20075E7CB /* FeedOrganisationTableViewCell.swift */,
+				BC37F2A128894EF20075E7CB /* FeedOrganisationTableViewCell.xib */,
+			);
+			path = "custom cell";
+			sourceTree = "<group>";
+		};
+		BC37F2A428894F0C0075E7CB /* custom header */ = {
+			isa = PBXGroup;
+			children = (
+				BC37F2A528894F580075E7CB /* FeedOrgaisationTableViewHeader.swift */,
+				BC37F2A728894F620075E7CB /* FeedOrgaisationTableViewHeader.xib */,
+			);
+			path = "custom header";
+			sourceTree = "<group>";
+		};
+		BC788DD028995E4A004C612F /* FeedsOrganisationFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				BC788DD128995E7E004C612F /* FeedsOrganisationFetcher.swift */,
+			);
+			path = FeedsOrganisationFetcher;
+			sourceTree = "<group>";
+		};
+		BCA04B142887B4B7009457AB /* MutiOrg Selection */ = {
+			isa = PBXGroup;
+			children = (
+				BC788DD028995E4A004C612F /* FeedsOrganisationFetcher */,
+				BC37F2A428894F0C0075E7CB /* custom header */,
+				BC37F29F28894EC80075E7CB /* custom cell */,
+				BC37F296288945B80075E7CB /* Models */,
+				BCA04B152887B4DE009457AB /* FeedOrganisationSelection */,
+				BC37F29B288947020075E7CB /* FeedOrganisationDataManager.swift */,
+				BC37F29D288947140075E7CB /* FeedOrganisationListManager.swift */,
+			);
+			path = "MutiOrg Selection";
+			sourceTree = "<group>";
+		};
+		BCA04B152887B4DE009457AB /* FeedOrganisationSelection */ = {
+			isa = PBXGroup;
+			children = (
+				BCA04B1B2887F982009457AB /* FeedOrganisationSelectionViewController.swift */,
+				BCA04B1C2887F982009457AB /* FeedOrganisationSelectionViewController.xib */,
+			);
+			path = FeedOrganisationSelection;
+			sourceTree = "<group>";
+		};
+		BCCF645428EBFCA00033AF2C /* ASChatBarView */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646528EC1A780033AF2C /* Attachment */,
+				BEEF543626FC927E00327205 /* ASChatBarview.swift */,
+				BEEF543726FC927E00327205 /* ASChatBarview.xib */,
+			);
+			path = ASChatBarView;
+			sourceTree = "<group>";
+		};
+		BCCF645528EBFCB30033AF2C /* AttachmentView */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF647128EC50250033AF2C /* Custom Cell */,
+				BCCF645628EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift */,
+				BCCF645728EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib */,
+			);
+			path = AttachmentView;
+			sourceTree = "<group>";
+		};
+		BCCF645A28EBFD090033AF2C /* AttachmentOptionDrawers */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF645C28EBFFE30033AF2C /* ImageAttachmentOptions */,
+				BCCF645B28EBFF7B0033AF2C /* AvailableAttachmentOptionsDrawer */,
+			);
+			path = AttachmentOptionDrawers;
+			sourceTree = "<group>";
+		};
+		BCCF645B28EBFF7B0033AF2C /* AvailableAttachmentOptionsDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF645D28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift */,
+				BCCF645E28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib */,
+			);
+			path = AvailableAttachmentOptionsDrawer;
+			sourceTree = "<group>";
+		};
+		BCCF645C28EBFFE30033AF2C /* ImageAttachmentOptions */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646128EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift */,
+				BCCF646228EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib */,
+			);
+			path = ImageAttachmentOptions;
+			sourceTree = "<group>";
+		};
+		BCCF646528EC1A780033AF2C /* Attachment */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646B28EC28790033AF2C /* Models */,
+				BCCF646628EC1A860033AF2C /* AttachmentHandler */,
+				BCCF645A28EBFD090033AF2C /* AttachmentOptionDrawers */,
+				BCCF645528EBFCB30033AF2C /* AttachmentView */,
+				BCCF646928EC267B0033AF2C /* AttachmentDataManager.swift */,
+			);
+			path = Attachment;
+			sourceTree = "<group>";
+		};
+		BCCF646628EC1A860033AF2C /* AttachmentHandler */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646728EC1A9F0033AF2C /* AttachmentHandler.swift */,
+			);
+			path = AttachmentHandler;
+			sourceTree = "<group>";
+		};
+		BCCF646B28EC28790033AF2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF646C28EC28900033AF2C /* CommentAttachedDocument.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BCCF647128EC50250033AF2C /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF647228EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.swift */,
+				BCCF647328EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.xib */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		BCE14D2C290BFE2E008806EA /* Editor Router */ = {
+			isa = PBXGroup;
+			children = (
+				BCE14D2D290BFE46008806EA /* PostEditorRouter.swift */,
+			);
+			path = "Editor Router";
+			sourceTree = "<group>";
+		};
+		BCE14D2F290C3F6F008806EA /* Post Preview */ = {
+			isa = PBXGroup;
+			children = (
+				BCE14D472913AD57008806EA /* Custom Cell */,
+				BCE14D4429139C55008806EA /* Custom Header */,
+				BCE14D3A290D9726008806EA /* Model */,
+				BCE14D37290D00ED008806EA /* PostPreviewListManager */,
+				BCE14D34290CFEC6008806EA /* PostPreviewSectionFactory */,
+				BCE14D30290C3F9C008806EA /* PostPreviewViewController.swift */,
+				BCE14D31290C3F9C008806EA /* PostPreviewViewController.xib */,
+			);
+			path = "Post Preview";
+			sourceTree = "<group>";
+		};
+		BCE14D34290CFEC6008806EA /* PostPreviewSectionFactory */ = {
+			isa = PBXGroup;
+			children = (
+				BCE14D35290CFEEA008806EA /* PostPreviewSectionFactory.swift */,
+			);
+			path = PostPreviewSectionFactory;
+			sourceTree = "<group>";
+		};
+		BCE14D37290D00ED008806EA /* PostPreviewListManager */ = {
+			isa = PBXGroup;
+			children = (
+				BCE14D38290D00FB008806EA /* PostPreviewListManager.swift */,
+			);
+			path = PostPreviewListManager;
+			sourceTree = "<group>";
+		};
+		BCE14D3A290D9726008806EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BCE14D3B290D973B008806EA /* PreviewablePost.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BCE14D4429139C55008806EA /* Custom Header */ = {
+			isa = PBXGroup;
+			children = (
+				BCE14D4529139C72008806EA /* PostPreviewHeaderCoordinator.swift */,
+			);
+			path = "Custom Header";
+			sourceTree = "<group>";
+		};
+		BCE14D472913AD57008806EA /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BCE14D482913AD7C008806EA /* PostShareOptionTableViewCell.swift */,
+				BCE14D492913AD7C008806EA /* PostShareOptionTableViewCell.xib */,
+				BCE14D4C2913AFB5008806EA /* PostShareOptionTableViewCellCoordinator.swift */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 		BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1321,10 +1596,13 @@
 				BEAE357E270ABD6400E95DF9 /* DeletePostConfirmationDrawer.xib in Resources */,
 				BEAE3580270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib in Resources */,
 				BEC2B27B26FD9F4D008417C3 /* PollsActiveDaysTableViewCell.xib in Resources */,
+				BCE14D33290C3F9C008806EA /* PostPreviewViewController.xib in Resources */,
 				BEC2B26D26FD9C27008417C3 /* LikedByTableViewCell.xib in Resources */,
+				BC37F2A828894F620075E7CB /* FeedOrgaisationTableViewHeader.xib in Resources */,
 				BEC2B27F26FD9FD1008417C3 /* FeedGifTableViewCell.xib in Resources */,
 				BEC2B26126FD99DC008417C3 /* FeedBottomTableViewCell.xib in Resources */,
 				BEC2B28B26FDA1EF008417C3 /* FeedCommentTableViewCell.xib in Resources */,
+				BCCF645928EBFCF00033AF2C /* ASChatBarAttachmentViewController.xib in Resources */,
 				BEC2B25F26FD99A3008417C3 /* SingleImageTableViewCell.xib in Resources */,
 				BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */,
 				BEC2B25B26FD992A008417C3 /* MultipleMediaTableViewCell.xib in Resources */,
@@ -1332,21 +1610,27 @@
 				BEC2B27726FD9EB8008417C3 /* FeedsGIFSelectorViewController.xib in Resources */,
 				BEC2B27D26FD9F83008417C3 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
 				BEC2B28126FDA010008417C3 /* FeedEditorDescriptionTableViewCell.xib in Resources */,
+				BCCF647528EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.xib in Resources */,
 				BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */,
 				BEC2B28926FDA1B4008417C3 /* FeedDetailHeader.xib in Resources */,
 				BEC2B26726FD9A81008417C3 /* PollSubmitButtonCell.xib in Resources */,
 				BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */,
+				BCCF646028EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */,
 				BEC2B28726FDA153008417C3 /* FeedsComposerDrawer.xib in Resources */,
 				BEC2B25726FD989D008417C3 /* FeedTitleTableViewCell.xib in Resources */,
+				BCA04B1E2887F982009457AB /* FeedOrganisationSelectionViewController.xib in Resources */,
 				BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */,
 				9868C0842410B48D00B12321 /* Media.xcassets in Resources */,
 				BEC2B25326FD97C8008417C3 /* FeedsViewController.xib in Resources */,
 				BEC2B27926FD9EFE008417C3 /* FeedAttachmentOptionsDrawerViewController.xib in Resources */,
 				BEAE3582270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib in Resources */,
+				BCE14D4B2913AD7C008806EA /* PostShareOptionTableViewCell.xib in Resources */,
 				BEC2B28526FDA100008417C3 /* PostEditorViewController.xib in Resources */,
 				BEC2B27526FD9E5B008417C3 /* GifCollectionViewCell.xib in Resources */,
+				BC37F2A328894EF20075E7CB /* FeedOrganisationTableViewCell.xib in Resources */,
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
 				BEC2B28326FDA04A008417C3 /* FeedEditorTitleTableViewCell.xib in Resources */,
+				BCCF646428EC002A0033AF2C /* ImageAttachmentOptionsViewController.xib in Resources */,
 				BEC2B26526FD9A4D008417C3 /* PollBottomTableViewCell.xib in Resources */,
 				BEEF543926FC927E00327205 /* ASChatBarview.xib in Resources */,
 				BEC2B26926FD9AB6008417C3 /* PollOptionsTableViewCell.xib in Resources */,
@@ -1388,6 +1672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98722671246176E700809D7A /* ManagedPostComment+CoreDataClass.swift in Sources */,
+				BCE14D4D2913AFB5008806EA /* PostShareOptionTableViewCellCoordinator.swift in Sources */,
 				98722672246176E700809D7A /* ManagedPost+CoreDataClass.swift in Sources */,
 				BEEF543826FC927E00327205 /* ASChatBarview.swift in Sources */,
 				98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */,
@@ -1395,11 +1680,14 @@
 				987226702461769400809D7A /* ManagedPost+CoreDataProperties.swift in Sources */,
 				BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */,
 				9872266E246173B500809D7A /* ManagedPostComment+CoreDataProperties.swift in Sources */,
+				BCE14D3C290D973B008806EA /* PreviewablePost.swift in Sources */,
 				980F564A245C51B30093AFE7 /* PollAnswerSubmitter.swift in Sources */,
 				9868C04E240FE2F200B12321 /* FeedSectionFactory.swift in Sources */,
 				9868C0EA24125E1900B12321 /* ClappedByUser.swift in Sources */,
+				BCE14D2E290BFE46008806EA /* PostEditorRouter.swift in Sources */,
 				9868C0FF2419EB2D00B12321 /* FeedsComposerDrawer.swift in Sources */,
 				9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */,
+				BCE14D4A2913AD7C008806EA /* PostShareOptionTableViewCell.swift in Sources */,
 				9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */,
 				986B9737258DDD1B006EBDA9 /* ASTaggedUser.swift in Sources */,
 				98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */,
@@ -1414,16 +1702,20 @@
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
 				BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */,
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
+				BC37F298288945D50075E7CB /* FeedOrganisation.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
+				BCA04B1D2887F982009457AB /* FeedOrganisationSelectionViewController.swift in Sources */,
 				9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */,
 				987D0BA82583DA58001A0F07 /* ASMentionCoordinator.swift in Sources */,
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
 				9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */,
 				987D0BB22583DA58001A0F07 /* KeyboardService.swift in Sources */,
+				BCE14D39290D00FB008806EA /* PostPreviewListManager.swift in Sources */,
 				BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */,
 				9873D62224B6C5C00041504C /* GifCollectionViewCell.swift in Sources */,
+				BC37F29E288947140075E7CB /* FeedOrganisationListManager.swift in Sources */,
 				9868C05C2410A7AA00B12321 /* CFFNetwrokRequestCoordinator.swift in Sources */,
 				9868C012240F778100B12321 /* FeedTopTableViewCell.swift in Sources */,
 				9868C0FB241948C800B12321 /* ClappedByTableViewCellCoordinator.swift in Sources */,
@@ -1442,10 +1734,12 @@
 				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
+				BC37F29C288947020075E7CB /* FeedOrganisationDataManager.swift in Sources */,
 				987D0BAB2583DA58001A0F07 /* ASMentionText.swift in Sources */,
 				BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */,
 				9868C1102419F95500B12321 /* FeedComposerCoordinator.swift in Sources */,
 				9868C0EC24125E2900B12321 /* FeedComment.swift in Sources */,
+				BCCF646D28EC28900033AF2C /* CommentAttachedDocument.swift in Sources */,
 				9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
@@ -1454,14 +1748,21 @@
 				987D0BA92583DA58001A0F07 /* ASMention+Extensions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
+				BCE14D36290CFEEB008806EA /* PostPreviewSectionFactory.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
 				987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */,
 				987D0BAF2583DA58001A0F07 /* TagUserTableViewCell.swift in Sources */,
+				BC788DD228995E7E004C612F /* FeedsOrganisationFetcher.swift in Sources */,
+				BC37F2A628894F580075E7CB /* FeedOrgaisationTableViewHeader.swift in Sources */,
 				9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */,
+				BC37F29A288945E10075E7CB /* FeedDepartment.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
+				BCCF646A28EC267B0033AF2C /* AttachmentDataManager.swift in Sources */,
 				98B90E1C240CAD010013E9D2 /* FeedsCoordinator.swift in Sources */,
+				BC37F2A228894EF20075E7CB /* FeedOrganisationTableViewCell.swift in Sources */,
 				98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */,
+				BCE9964728A39AE100F3E65C /* FeedOrganisationDepartmentSelectionModel.swift in Sources */,
 				9868C045240F9D6C00B12321 /* MultipleMediaTableViewCellCoordinator.swift in Sources */,
 				BE54420D27F30BFF00CBF6D9 /* FeedsImageDrawer.swift in Sources */,
 				980F5645245C1D300093AFE7 /* PollBottomTableViewCell.swift in Sources */,
@@ -1478,13 +1779,16 @@
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				98C648A0241B87D3006689E9 /* PollFeedContentCoordinator.swift in Sources */,
 				BEAAD20526FB03060069C5C1 /* DropDownTableViewCell.swift in Sources */,
+				BCCF646828EC1A9F0033AF2C /* AttachmentHandler.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
 				BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */,
+				BCE14D32290C3F9C008806EA /* PostPreviewViewController.swift in Sources */,
 				9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */,
 				98C648A4241B88F5006689E9 /* PollOptionsTableViewCell.swift in Sources */,
+				BCCF645828EBFCF00033AF2C /* ASChatBarAttachmentViewController.swift in Sources */,
 				987D0BA72583DA58001A0F07 /* ASMentionStore.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
 				980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */,
@@ -1501,12 +1805,16 @@
 				98CC2FB02425C4C400E8F9E0 /* LikeListViewController.swift in Sources */,
 				98BC8A20241A1C46007C175D /* FeedEditorTitleTableViewCellCoordinator.swift in Sources */,
 				98BC8A1E241A19DE007C175D /* PostEditorCellFactory.swift in Sources */,
+				BCCF647428EC50460033AF2C /* ComentAttachedDocumentCollectionViewCell.swift in Sources */,
+				BCCF646328EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift in Sources */,
 				9873D63524BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift in Sources */,
 				9868C0E724125ACC00B12321 /* FeedDetailSectionFactory.swift in Sources */,
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
 				983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */,
+				BCE14D4629139C72008806EA /* PostPreviewHeaderCoordinator.swift in Sources */,
 				980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */,
 				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
+				BCCF645F28EC001E0033AF2C /* AvailableAttachmentOptionsDrawerViewController.swift in Sources */,
 				9868C000240F585900B12321 /* Feeds.swift in Sources */,
 				98C648B3241BB4F1006689E9 /* FeedEditorPollOptionTableViewCell.swift in Sources */,
 				9876834D26143D6A00B597B0 /* CommonFunctionalityModel.xcdatamodeld in Sources */,

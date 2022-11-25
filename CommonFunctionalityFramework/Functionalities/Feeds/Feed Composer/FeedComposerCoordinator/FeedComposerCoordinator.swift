@@ -14,12 +14,18 @@ class FeedComposerCoordinator {
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     private var selectedAssets : [LocalSelectedMediaItem]?
     weak var themeManager: CFFThemeManagerProtocol?
-    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?) {
+    var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
+    private weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    
+    init(delegate : FeedsCoordinatorDelegate, requestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaFetcher : CFFMediaCoordinatorProtocol?, selectedAssets : [LocalSelectedMediaItem]?, themeManager: CFFThemeManagerProtocol?, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?,
+         mainAppCoordinator : CFFMainAppInformationCoordinator?) {
         self.feedCoordinatorDelegate = delegate
         self.requestCoordinator = requestCoordinator
         self.mediaFetcher = mediaFetcher
         self.selectedAssets = selectedAssets
         self.themeManager = themeManager
+        self.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
+        self.mainAppCoordinator = mainAppCoordinator
     }
     
     func showFeedItemEditor(type : FeedType) {
@@ -31,16 +37,22 @@ class FeedComposerCoordinator {
     }
     
     private func openEditor(_ feed : FeedsItemProtocol?, type : FeedType){
+        let editabalePost = feed?.getEditablePost()
         let postEditor = PostEditorViewController(
             postType: type,
             requestCoordinator: requestCoordinator,
-            post: feed?.getEditablePost(),
+            post: editabalePost,
             mediaFetcher: mediaFetcher,
             selectedAssets: selectedAssets,
-            themeManager : themeManager
+            themeManager : themeManager,
+            selectedOrganisationsAndDepartments: editabalePost?.selectedOrganisationsAndDepartments,
+            mainAppCoordinator: mainAppCoordinator,
+            feedCoordinatorDelegate: feedCoordinatorDelegate
         )
-        feedCoordinatorDelegate.showComposer(_composer: postEditor) { (topBarModel) in
-            postEditor.containerTopBarModel = topBarModel
-        }
+        feedCoordinatorDelegate.showComposer(
+            _composer: postEditor,
+            dismissCompletionBlock: postEditor.composerDismissCompletionBlock) { topItem in
+                postEditor.containerTopBarModel = topItem
+            }
     }
 }
