@@ -170,7 +170,11 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
 //                            self?.emptyResultView.hideEmptyMessageView()
 //                        }
 //                    }
-                    
+                    if let resultData = result.fetchedRawFeeds as? NSDictionary {
+                        if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
+                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                        }
+                    }
                     
                     self?.handleFetchedFeedsResult(fetchedfeeds: result)
                     self?.handleaddButton(fetchedfeeds: result)
