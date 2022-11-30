@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommonFeedsViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="activityLoader" destination="ASA-jd-VAa" id="0lG-OR-cKk"/>
+                <outlet property="creationButtonView" destination="0TY-9x-aQk" id="Rud-cd-zHS"/>
                 <outlet property="emptyViewContainer" destination="pi0-Sz-Fel" id="SrK-n4-n1s"/>
                 <outlet property="feedCreateView" destination="rNJ-JM-vGW" id="gbi-dg-9bw"/>
                 <outlet property="feedsTable" destination="9dc-rS-z1o" id="fmg-vC-MnC"/>
@@ -56,7 +57,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNJ-JM-vGW">
                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="cff_pluspostIcon"/>
+                                            <state key="normal" image="createAppreciation"/>
                                             <connections>
                                                 <action selector="createNominationView" destination="-1" eventType="touchUpInside" id="pvd-OH-bPF"/>
                                             </connections>
@@ -117,7 +118,7 @@
     </objects>
     <resources>
         <image name="black_MyFeed_Given_Empty" width="100" height="118"/>
-        <image name="cff_pluspostIcon" width="11" height="11.5"/>
+        <image name="createAppreciation" width="18.5" height="20.5"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

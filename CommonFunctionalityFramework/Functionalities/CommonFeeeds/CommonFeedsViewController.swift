@@ -21,6 +21,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     @IBOutlet private weak var feedCreateView : UIButton?
+    @IBOutlet private weak var creationButtonView : UIView?
     var selectedTabType = ""
     var searchText : String?
     
@@ -29,6 +30,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var departmentPK : Int = 0
     var dateRangePK : Int = 0
     var coreValuePk : Int = 0
+    var isCreationButtonRequired : Bool = false
     
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
@@ -82,6 +84,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         feedCreateView?.layer.cornerRadius = (feedCreateView?.frame.size.width)!/2
         feedCreateView?.clipsToBounds = true
         feedCreateView?.backgroundColor = UIColor.getControlColor()
+        self.creationButtonView?.isHidden = !isCreationButtonRequired
     }
     
     @objc func scrollTableView(notification: NSNotification) {
@@ -170,6 +173,9 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                                 ])
                             }
                             
+                            if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
+                                self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                            }
                             
                             if let resultCount = resultData["count"] as? Int  {
                                 if resultCount == 0 && self?.selectedTabType == "given" {
@@ -196,6 +202,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                             }
                             
                         }
+                        
                         if result.fetchedRawFeeds?.count == 0 {
                             self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                         }
