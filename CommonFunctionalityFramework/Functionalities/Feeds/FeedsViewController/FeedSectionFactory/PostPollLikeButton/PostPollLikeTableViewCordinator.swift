@@ -62,8 +62,11 @@ class PostPollLikeTableViewCordinator :  FeedCellCoordinatorProtocol{
                     cell.reactionImg1.isHidden = true
                     self.image1 = false
                 }
-                
-                if reactionsCount > 1 {
+//                if "appreciation_count".count > 1 && "reaction_type".count > 1 {
+//                     if let dict2 = "reaction_type"[1] as? NSDictionary {
+//                }
+                    
+                if reactionsCount > 1  && reactionData.count > 1{
                     if let dict2 = reactionData[1] as? NSDictionary {
                         if let image2 = dict2["reaction_type"] as? Int {
                             cell.reactionImg2.isHidden = false
