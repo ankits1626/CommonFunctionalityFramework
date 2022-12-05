@@ -684,9 +684,9 @@ extension FeedsDetailViewController : FeedsDelegate{
 //                )
 //            )
 //        }
-      //  if targetFeedItem.isFeedReportAbuseAllowed(){
+        if targetFeedItem.isFeedReportAbuseAllowed(){
             self.showReportAbuseConfirmation(feedIdentifier)
-     //   }
+       }
     }
     
     private func openFeedEditor(_ feed : FeedsItemProtocol){

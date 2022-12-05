@@ -142,7 +142,17 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         }
         cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) points"
         cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
-        cell.userStrengthDescription.text = "\(dataValue.description)"
+        
+        if let unwrappedText = dataValue.description as? String{
+            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: Int64(dataValue.nomination.id), description: unwrappedText)
+            ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                cell.userStrengthDescription.text = nil
+                cell.userStrengthDescription.attributedText = attr
+            })
+        }else{
+            cell.userStrengthDescription.text = "\(dataValue.description)"
+        }
+
         cell.usrImg.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
         if isSelectedAll {
             if selectedDataArray[indexPath.row] == dataValue.nomination.id {
