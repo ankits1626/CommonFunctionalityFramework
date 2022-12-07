@@ -79,7 +79,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
         }
         self.feedsTable?.showsVerticalScrollIndicator = false
     }
-    
+        
     @objc func scrollTableView(notification: NSNotification) {
         
         if let paymentData = notification.object as? Dictionary<String, Any> {
@@ -190,9 +190,9 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     
     func handleaddButton(fetchedfeeds : FetchedFeedModel) {
         if fetchedfeeds.fetchedRawFeeds?.count == 0 {
-            feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
+//            feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
         }else if fetchedfeeds.fetchedRawFeeds?.count == 1 {
-            feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
+//            feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
         }else{
             if #available(iOS 11.0, *) {
                 bottomSafeArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
@@ -200,9 +200,9 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
                 bottomSafeArea = 0.0
             }
             if bottomSafeArea == 0.0 {
-                feedCreateViewConstraints?.constant = 40
+//                feedCreateViewConstraints?.constant = 40
             }else{
-                feedCreateViewConstraints?.constant = 25
+//                feedCreateViewConstraints?.constant = 25
             }
         }
     }
