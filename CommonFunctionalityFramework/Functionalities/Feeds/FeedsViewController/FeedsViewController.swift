@@ -19,6 +19,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     @IBOutlet private weak var cameraContainerViewView : UIView?
     @IBOutlet private weak var feedCreateView : UIView?
     @IBOutlet weak var createBtnHolderView: UIView!
+    @IBOutlet weak var noRecordsLabel: UILabel?
     @IBOutlet private weak var feedCreateViewConstraints : NSLayoutConstraint?
     var selectedTab = ""
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
@@ -173,6 +174,9 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
                     if let resultData = result.fetchedRawFeeds as? NSDictionary {
                         if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
                             self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                            self?.noRecordsLabel?.isHidden = false
+                        }else{
+                            self?.noRecordsLabel?.isHidden = true
                         }
                     }
                     
@@ -444,6 +448,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        self.noRecordsLabel?.isHidden = feedSectionFactory.getNumberOfRows(section: 0) > 0 ? true : false
         return  feedSectionFactory.getCell(indexPath: indexPath, tableView: tableView)
     }
     
