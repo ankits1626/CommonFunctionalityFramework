@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
@@ -14,6 +19,7 @@
                 <outlet property="emptyViewContainer" destination="TbV-Y5-qUk" id="CZZ-19-lbg"/>
                 <outlet property="feedCreateView" destination="3bj-oG-Ner" id="0Vf-QQ-Bdk"/>
                 <outlet property="feedsTable" destination="VdA-C0-ggV" id="E70-6f-TtD"/>
+                <outlet property="noRecordsLabel" destination="Bx8-NT-cJd" id="vJI-kY-ZrR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,6 +31,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TbV-Y5-qUk" userLabel="table view container">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Records Found!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bx8-NT-cJd">
+                            <rect key="frame" x="16" y="408.5" width="382" height="79"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="79" id="1v3-ya-u0W"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                            <color key="textColor" red="0.41176470590000003" green="0.41568627450000001" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VdA-C0-ggV">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,11 +70,15 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="VdA-C0-ggV" firstAttribute="leading" secondItem="TbV-Y5-qUk" secondAttribute="leading" id="7IC-aq-Jux"/>
+                        <constraint firstItem="Bx8-NT-cJd" firstAttribute="centerX" secondItem="TbV-Y5-qUk" secondAttribute="centerX" id="GgP-nR-h9f"/>
                         <constraint firstItem="VdA-C0-ggV" firstAttribute="top" secondItem="TbV-Y5-qUk" secondAttribute="top" id="Ns3-il-GEA"/>
                         <constraint firstAttribute="trailing" secondItem="orO-dV-om1" secondAttribute="trailing" constant="16" id="NwB-fq-X5C"/>
+                        <constraint firstAttribute="trailing" secondItem="Bx8-NT-cJd" secondAttribute="trailing" constant="16" id="Rpj-fl-fDh"/>
                         <constraint firstItem="orO-dV-om1" firstAttribute="bottom" secondItem="VdA-C0-ggV" secondAttribute="bottom" constant="-95" id="UQo-0P-2gv"/>
                         <constraint firstAttribute="bottom" secondItem="VdA-C0-ggV" secondAttribute="bottom" id="YBV-lQ-TtF"/>
+                        <constraint firstItem="Bx8-NT-cJd" firstAttribute="centerY" secondItem="TbV-Y5-qUk" secondAttribute="centerY" id="fVF-qd-AST"/>
                         <constraint firstAttribute="trailing" secondItem="VdA-C0-ggV" secondAttribute="trailing" id="mKr-j3-pZf"/>
+                        <constraint firstItem="Bx8-NT-cJd" firstAttribute="leading" secondItem="TbV-Y5-qUk" secondAttribute="leading" constant="16" id="z0s-ON-SMG"/>
                     </constraints>
                 </view>
             </subviews>
