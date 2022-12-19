@@ -28,11 +28,6 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? CommonFeedsTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            if let profileImageEndpoint = feed.getUserImageUrl(){
-                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
-            }else{
-                cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
-            }
             
             let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
             
@@ -40,6 +35,11 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                 cell.userName?.text =  "From \(feed.getUserName() ?? "")"
                 cell.appraacitedBy.isHidden = true
                 cell.dot.isHidden = true
+                if let profileImageEndpoint = feed.getUserImageUrl(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+                }
             }else if selectedtabValue == "SearchFromHome" {
                 if let nominatedName = feed.getHomeUserCreatedName() {
                     cell.appraacitedBy.text = "From \(nominatedName)"
@@ -60,7 +60,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                     cell.appraacitedBy.isHidden = true
                     cell.dot.isHidden = true
                 }
-                if let profileImageEndpoint = feed.getGivenTabUserImg(){
+                if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
                     inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
                 }else{
                     cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
