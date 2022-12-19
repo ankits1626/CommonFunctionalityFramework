@@ -60,17 +60,17 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
 //            if let nominatedName = feed.getNominatedByUserName() {
 //                cell.appraacitedBy.text = "From \(nominatedName)"
 //            }
-            if let profileImageEndpoint = feed.getUserImageUrl(){
-                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
-            }else{
-                cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
-            }
 
             let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
             if selectedtabValue == "received" {
                 cell.userName?.text =  "From \(feed.getUserName() ?? "")"
                 cell.appraacitedBy.isHidden = true
                 cell.dot.isHidden = true
+                if let profileImageEndpoint = feed.getUserImageUrl(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+                }
             }else if selectedtabValue == "SearchFromHome" {
                 if let nominatedName = feed.getHomeUserCreatedName() {
                     cell.appraacitedBy.text = "From \(nominatedName)"
