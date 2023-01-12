@@ -55,7 +55,6 @@ public class CFFLoadControl: UIControl {
     override public func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     /*
      Update layout at finsih to load
      */
