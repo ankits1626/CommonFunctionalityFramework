@@ -244,7 +244,16 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     
     private func setup(){
         view.backgroundColor = .viewBackgroundColor
-        self.createBtnHolderView.isHidden = shouldShowCreateButton ? true : false
+        
+        if let unwrappedCanUserCreatePost = self.mainAppCoordinator?.isUserAllowedToPostFeed(),
+           unwrappedCanUserCreatePost == false{
+            self.createBtnHolderView.isHidden = true
+        }
+        
+        if shouldShowCreateButton {
+            self.createBtnHolderView.isHidden = true
+        }
+        
         setupTopBar()
         setupTableView()
     }
