@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 struct EditablePostMediaMapperInitModel {
     weak var datasource : PostEditorCellFactoryDatasource?
@@ -57,7 +58,7 @@ class EditablePostMediaRepository {
                 imageView?.image = croppedImage
                 imageView?.contentMode = .scaleAspectFit
             }else if let asset = mediaItem.asset{
-                input.localMediaManager?.fetchImageForAsset(asset: asset, size: (imageView?.bounds.size)!, completion: { (_, fetchedImage) in
+                input.localMediaManager?.fetchImageForAsset(asset: asset, size: PHImageManagerMaximumSize, completion: { (_, fetchedImage) in
                     imageView?.image = fetchedImage
                 })
             }
