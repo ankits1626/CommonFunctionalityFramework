@@ -64,7 +64,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "TestScroll"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "FeedsScroll"), object: nil)
         UserDefaults.standard.setValue(selectedTabType, forKey: "selectedTab")
         UserDefaults.standard.synchronize()
         clearAnyExistingFeedsData {[weak self] in
@@ -80,14 +80,13 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     @objc func scrollTableView(notification: NSNotification) {
-        
-        if let paymentData = notification.object as? Dictionary<String, Any> {
-            if let paymentID = paymentData["isScrollable"] as? Bool {
-                print("paymentID ----- \(paymentID)")
+        if let scrollData = notification.object as? Dictionary<String, Any> {
+            if let isScrollable = scrollData["isScrollable"] as? Bool {
+                print("isScrollable ----- \(isScrollable)")
                 if selectedTabType != "SearchFromHome" {
                     self.feedsTable?.bounces = true
                 }
-                self.feedsTable?.isScrollEnabled = paymentID
+                self.feedsTable?.isScrollEnabled = isScrollable
             }
         }
     }
