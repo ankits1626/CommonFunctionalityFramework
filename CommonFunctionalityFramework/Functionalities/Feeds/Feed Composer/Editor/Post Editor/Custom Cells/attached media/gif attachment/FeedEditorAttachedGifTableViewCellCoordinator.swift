@@ -49,7 +49,7 @@ class FeedEditorAttachedGifTableViewCellCoordinator :  PostEditorCellCoordinator
             cell.containerView?.addBorders(edges: [.bottom, .left, .right], color: .feedCellBorderColor)
             cell.containerView?.curvedCornerControl()
             cell.removeButton?.isHidden = false
-            cell.imageTapButton?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+            cell.imageTapButton?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.10)
             cell.removeButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
                 print("<<<<<<<< delete attached mediapo ")
                 inputModel.delegate?.removeAttachedGif()
