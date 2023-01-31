@@ -28,8 +28,14 @@ public struct GetFeedsViewModel{
     var shouldShowCreateButton : Bool = false
     var isFeedLoadingFromProfilePage : Bool = false
     var searchText : String? = nil
+    
+    var feedTypePk : Int = 0
+    var organisationPK : Int = 0
+    var departmentPK : Int = 0
+    var dateRangePK : Int = 0
+    var coreValuePk : Int = 0
 
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?){
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -38,6 +44,11 @@ public struct GetFeedsViewModel{
         self.shouldShowCreateButton = shouldShowCreateButton
         self.isFeedLoadingFromProfilePage = _isFeedLoadingFromProfilePage
         self.searchText = searchText
+        self.feedTypePk = _feedTypePk
+        self.organisationPK = _organisationPK
+        self.departmentPK = _departmentPK
+        self.dateRangePK = _dateRangePK
+        self.coreValuePk = _coreValuePk
     }
 }
 
@@ -66,6 +77,11 @@ public class FeedsCoordinator {
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.shouldShowCreateButton = inputModel.shouldShowCreateButton
         feedsVc.isComingFromProfilePage = inputModel.isFeedLoadingFromProfilePage
+        feedsVc.feedTypePk = inputModel.feedTypePk
+        feedsVc.organisationPK = inputModel.organisationPK
+        feedsVc.departmentPK = inputModel.departmentPK
+        feedsVc.dateRangePK = inputModel.dateRangePK
+        feedsVc.coreValuePk = inputModel.coreValuePk
         feedsVc.searchText = inputModel.searchText
         return feedsVc
     }
