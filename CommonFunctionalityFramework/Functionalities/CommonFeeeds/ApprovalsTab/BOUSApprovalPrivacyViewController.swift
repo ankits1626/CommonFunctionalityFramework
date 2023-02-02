@@ -19,7 +19,7 @@ class BOUSApprovalPrivacyViewController: UIViewController , UITableViewDataSourc
     @IBOutlet weak var blurImg: UIImageView!
     var delegate : ApprovalSelectedPrivacyType?
     var privacyType = ["Public","Team", "Private"]
-    var privacyDescription = ["Display on recognition feed for all to celebrate","Display only to colleagues of this recipient who share the same manager", "Do not display on recognition feed (Manager and administrators can still view )"]
+    var privacyDescription = ["Display on recognition feed for all to celebrate","Display only to colleagues of this recipient who share the same manager", "Do not display on recognition feed"]
     var privacyImage = ["icon_public","icon_mydepartment","icon_private"]
     var privacyPk = [20,10,30]
     var selectedPrivacyPK : Int = 20
