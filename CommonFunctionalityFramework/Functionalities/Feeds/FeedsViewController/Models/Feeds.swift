@@ -85,8 +85,8 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
                     strengthMessage = rawFeedDictionary["description"] as! String
                     // strengthIcon = userStengthDic["icon"] as! String
-                    badgeBackgroundColor = userStengthDic["background_color"] as? String ?? ""
-                    backGroundLite = userStengthDic["background_color_lite"] as? String ?? ""
+                    badgeBackgroundColor = userStengthDic["background_color"] as? String ?? "#EBEBEB"
+                    backGroundLite = userStengthDic["background_color_lite"] as? String ?? "#EBEBEB"
                     
                     if let pts = rawFeedDictionary["points"] as? String {
                         points = pts
@@ -102,9 +102,21 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
                         
                         strengthName = userStengthDic["name"] as! String
                         strengthMessage = rawFeedDictionary["description"] as! String
-                        strengthIcon = userStengthDic["icon"] as! String
-                        badgeBackgroundColor = userStengthDic["background_color"] as? String ?? ""
-                        backGroundLite = userStengthDic["background_color_lite"] as? String ?? ""
+                        strengthIcon = userStengthDic["icon"] as? String ?? ""
+                        if let unwrappedBgColor = userStengthDic["background_color"] as? String,
+                           !unwrappedBgColor.isEmpty {
+                            badgeBackgroundColor = unwrappedBgColor
+                        }else {
+                            badgeBackgroundColor = "#EBEBEB"
+                        }
+                        
+                        if let unwrappedBgColorLite = userStengthDic["background_color_lite"] as? String,
+                           !unwrappedBgColorLite.isEmpty {
+                            backGroundLite = unwrappedBgColorLite
+                        }else {
+                            backGroundLite = "#EBEBEB"
+                        }
+                        
                         illustration = userStengthDic["illustration"] as? String ?? ""
                         dataDic = ["strengthName" : strengthName, "strengthMessage" : strengthMessage, "strengthIcon" : strengthIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : points, "illustration" : illustration,"background_color_lite" : backGroundLite]
                     }
