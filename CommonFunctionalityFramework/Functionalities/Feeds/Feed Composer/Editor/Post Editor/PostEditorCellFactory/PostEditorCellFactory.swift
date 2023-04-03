@@ -225,6 +225,8 @@ extension PostEditorCellFactory{
             case .Post:
                 sections.append(.Description)
                 
+            case .Greeting:
+                sections.append(.Description)
             }
         }
         
@@ -249,6 +251,9 @@ extension PostEditorCellFactory{
             case .Poll:
                 sections.append(.PostType)
             case .Post:
+                sections.append(.AddMedia)
+                sections.append(.PostType)
+            case .Greeting:
                 sections.append(.AddMedia)
                 sections.append(.PostType)
             }

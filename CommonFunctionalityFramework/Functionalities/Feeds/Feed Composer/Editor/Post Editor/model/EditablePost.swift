@@ -74,6 +74,8 @@ struct EditablePost : EditablePostProtocol{
             return getPollDictionary()
         case .Post:
             return getPostDictionary()
+        case .Greeting:
+            return getPostDictionary()
         }
     }
     
@@ -147,11 +149,15 @@ struct EditablePost : EditablePostProtocol{
                 return nil
             case .Post:
                 return URL(string: baseUrl + "feeds/api/posts/\(unwrappedRemotePostId)/")
+            case .Greeting:
+                return nil
             }
         }else{
             switch postType {
             case .Poll:
                 return URL(string: baseUrl + "feeds/api/posts/create_poll/")
+            case .Greeting:
+                return nil
             case .Post:
                 return URL(string: baseUrl + "feeds/api/posts/")
             }

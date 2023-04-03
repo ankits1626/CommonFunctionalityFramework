@@ -7,11 +7,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SF-Pro-Text-Regular.otf">
-            <string>SFProText-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
@@ -19,7 +14,6 @@
                 <outlet property="emptyViewContainer" destination="TbV-Y5-qUk" id="CZZ-19-lbg"/>
                 <outlet property="feedCreateView" destination="3bj-oG-Ner" id="0Vf-QQ-Bdk"/>
                 <outlet property="feedsTable" destination="VdA-C0-ggV" id="E70-6f-TtD"/>
-                <outlet property="noRecordsLabel" destination="Bx8-NT-cJd" id="vJI-kY-ZrR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
