@@ -68,9 +68,9 @@ class PostPollSelfBottomSheet: UIViewController {
     
     private func setupButtons(){
         if isPostAlreadyPinned {
-            pinButton?.setTitle("Unpin poll".localized, for: .normal)
+            pinButton?.setTitle("Unpin \(self.isEditEnabled ? "post" : "poll")".localized, for: .normal)
         }else{
-            pinButton?.setTitle("Pin poll".localized, for: .normal)
+            pinButton?.setTitle("Pin \(self.isEditEnabled ? "post" : "poll")".localized, for: .normal)
         }
     }
     

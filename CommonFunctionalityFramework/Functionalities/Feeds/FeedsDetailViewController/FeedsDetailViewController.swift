@@ -446,6 +446,9 @@ extension FeedsDetailViewController : FeedsDelegate{
                         CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                             if let comment = self?.getLikeableComment(commentIdentifier: commentIdentifier){
                                 let commentonPost = comment.getManagedObject() as! ManagedPostComment
+                                let post = ((feedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                                post.numberOfComments =  post.numberOfComments - 1
+                                self?.targetFeedItem = post.getRawObject() as! RawFeed
                                 CFFCoreDataManager.sharedInstance.manager.deleteManagedObject(managedObject: commentonPost, context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext)
                                 CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                                     print("<<<<<<<<<<<<<poll deleted suceessfully")
@@ -548,7 +551,7 @@ extension FeedsDetailViewController : FeedsDelegate{
                     DispatchQueue.main.async {
                         switch result{
                         case .Success(_):
-                            ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Poll is unpinned successfully".localized : "Poll is pinned successfully".localized, okActionHandler: { (_) in
+                            ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll") is unpinned successfully".localized : "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll")  is pinned successfully".localized, okActionHandler: { (_) in
                                 NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                 self.navigationController?.popViewController(animated: true)
                             })
@@ -821,12 +824,12 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
-//                                chatBar.placeholder = "Enter your comments here".localized
-                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {[weak self] in
-                                    let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                                chatBar.placeholder = "Enter your comments here".localized
+                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                    let post = ((self.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
                                     post.numberOfComments =  post.numberOfComments + 1
                                     ASMentionCoordinator.shared.clearMentionsTextView()
-                                    self?.targetFeedItem = post.getRawObject() as! RawFeed
+                                    self.targetFeedItem = post.getRawObject() as! RawFeed
                                     let _ = FeedComment(input: result).getManagedObject() as! ManagedPostComment
                                     CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                                         CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
