@@ -24,23 +24,18 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
         for: inputModel.targetIndexpath)
         if let cell  = targetCell as? FeedTitleTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            
-                        
-            
-            //cell.feedText?.enabledTypes  = [.url]
-//            let attributes : [NSAttributedString.Key: Any] = [
-//                .font : UIFont.Title1,
-//                .foregroundColor : UIColor.getTitleTextColor()
-//            ]
-//            if let title = feed.getFeedTitle(){
-//                cell.feedText?.attributedText = NSAttributedString(
-//                    string: title,
-//                    attributes: nil
-//                )
-//            }else{
-//                cell.feedText?.attributedText = nil
-//            }
-            
+            if let mediaItem = feed.getMediaList()?.first,
+               let _ = mediaItem.getCoverImageUrl(){
+                addFeedViewCornerRadius(cell: cell, feed: feed)
+            }else if let gifItem = feed.getGiphy() {
+                if !gifItem.isEmpty {
+                    addFeedViewCornerRadius(cell: cell, feed: feed)
+                }
+            }else {
+                cell.containerView?.layer.masksToBounds = true
+                cell.containerView?.layer.cornerRadius = 8
+            }
+            addFeedViewCornerRadius(cell: cell, feed: feed)
             let feedTitle = feed.getStrengthData()
             if let unwrappedText = feedTitle["strengthMessage"] as? String{
                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
@@ -52,8 +47,6 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
                 cell.feedText?.text = feedTitle["strengthMessage"] as? String ?? ""
             }
             cell.appreciationSubject?.text =  feedTitle["strengthName"] as? String ?? ""
-            //inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["strengthIcon"] as! String)
-//            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
             let backGroundColor = feedTitle["badgeBackgroundColor"] as? String ?? ""
             let backGroundColorLite = feedTitle["background_color_lite"] as? String ?? ""
             if let bgColor = UIColor(hex: backGroundColorLite) {
@@ -61,56 +54,25 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             }else{
                 cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
             }
-            //cell.feedTitle?.URLColor = .urlColor
-//            cell.feedTitle?.handleURLTap({ (targetUrl) in
-//                print("<<<<<<<< open \(targetUrl)")
-//                if !targetUrl.absoluteString.hasPrefix("http"),
-//                    let modifiedUrl = URL(string: "http://\(targetUrl.absoluteString)"){
-//                    UIApplication.shared.open(
-//                        modifiedUrl,
-//                        options: [:],
-//                        completionHandler: nil
-//                    )
-//                }else{
-//                    UIApplication.shared.open(
-//                        targetUrl,
-//                        options: [:],
-//                        completionHandler: nil
-//                    )
-//                }
-//            })
-//            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-//                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
-//            }else{
-//                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-//            }
-            
-            if let mediaItem = feed.getMediaList()?.first,
-                let _ = mediaItem.getCoverImageUrl(){
-                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
-            }else if let gifItem = feed.getGiphy() {
-                if !gifItem.isEmpty {
-                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
-                }
-            }else {
-                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
-            }
         }
         return targetCell
     }
     
+    func addFeedViewCornerRadius(cell : FeedTitleTableViewCell, feed : FeedsItemProtocol) {
+        let seconds = 0.1
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            cell.containerView?.clipsToBounds = true
+            cell.containerView?.layer.masksToBounds = true
+            let path = UIBezierPath(roundedRect: cell.containerView!.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSizeMake(08, 08))
+            let maskLayer = CAShapeLayer()
+            maskLayer.path = path.cgPath
+            cell.containerView?.layer.mask = maskLayer
+        }
+    }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedTitleTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
- //           cell.feedText?.text = feed.getFeedTitle()
-//            cell.feedTitle?.font = UIFont.Title1
-//            cell.feedTitle?.textColor = UIColor.getTitleTextColor()
-//            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-//                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
-//            }else{
-//                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-//            }
             let feedTitle = feed.getStrengthData()
             if let unwrappedText = feedTitle["strengthMessage"] as? String{
                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
@@ -125,8 +87,6 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             cell.pointBtn.setTitle("\(feedTitle["points"] as? String ?? "") Points", for: .normal)
             
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["illustration"] as? String ?? "")
-//            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "", alpha: 1.0)
-            
             let backGroundColor = feedTitle["badgeBackgroundColor"] as? String ?? ""
             let backGroundColorLite = feedTitle["background_color_lite"] as? String ?? ""
             if let bgColor = UIColor(hex: backGroundColorLite) {
@@ -134,28 +94,7 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             }else{
                 cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
             }
-            
-            if let mediaItem = feed.getMediaList()?.first,
-                let _ = mediaItem.getCoverImageUrl(){
-                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
-            }else if let gifItem = feed.getGiphy() {
-                if !gifItem.isEmpty {
-                    cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 8)
-                }
-            }else {
-                cell.containerView?.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 8)
-            }
         }
     }
     
 }
-
-//extension FeedTitleTableViewCellCoordinator : TTTAttributedLabelDelegate{
-//    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-//        UIApplication.shared.open(
-//            url,
-//            options: [:],
-//            completionHandler: nil
-//        )
-//    }
-//}
