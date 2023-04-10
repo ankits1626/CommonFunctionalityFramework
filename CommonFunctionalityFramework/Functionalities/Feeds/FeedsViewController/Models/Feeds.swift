@@ -527,7 +527,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     func toUserName() -> String? {
         var userName = ""
         if let userDic = rawFeedDictionary["user"] as? NSDictionary {
-            userName = userDic["full_name"] as! String
+            userName = userDic["full_name"] as? String ?? ""
         }
         
         return userName
@@ -536,7 +536,7 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
     func getNominatedByUserName() -> String? {
         var userName = ""
         if let userDic = rawFeedDictionary["user"] as? NSDictionary {
-            userName = userDic["full_name"] as! String
+            userName = userDic["full_name"] as? String ?? ""
         }
         
         return userName
