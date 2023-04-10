@@ -824,10 +824,10 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
-                                chatBar.placeholder = "Enter your comments here".localized
                                 CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                                     let post = ((self.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
-                                    post.numberOfComments =  post.numberOfComments + 1
+                                    post.numberOfComments =  chatBar.isEditCommentEnabled ? post.numberOfComments : post.numberOfComments + 1
+                                    chatBar.isEditCommentEnabled = false
                                     ASMentionCoordinator.shared.clearMentionsTextView()
                                     self.targetFeedItem = post.getRawObject() as! RawFeed
                                     let _ = FeedComment(input: result).getManagedObject() as! ManagedPostComment
