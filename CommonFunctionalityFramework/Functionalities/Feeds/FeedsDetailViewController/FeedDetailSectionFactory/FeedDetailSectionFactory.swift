@@ -28,6 +28,7 @@ class FeedDetailSectionFactory {
     private var isLikedByCellIndexpath : IndexPath!
     private weak var themeManager: CFFThemeManagerProtocol?
     var isPostPoll : Bool = false
+    var canDownload : Bool = false
     private weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     lazy var cachedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         if isPostPoll {
@@ -79,7 +80,7 @@ class FeedDetailSectionFactory {
     }()
     
     
-    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?, selectedTab : String, _isPostPoll : Bool, mainAppCoordinator : CFFMainAppInformationCoordinator?) {
+    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?, selectedTab : String, _isPostPoll : Bool, mainAppCoordinator : CFFMainAppInformationCoordinator?, canDownload: Bool = false) {
         self.feedDataSource = feedDataSource
         self.selectedTab = selectedTab
         self.feedDetailDelegate = feedDetailDelegate
@@ -88,6 +89,7 @@ class FeedDetailSectionFactory {
         self.themeManager = themeManager
         self.selectedOptionMapper = selectedOptionMapper
         self.isPostPoll = _isPostPoll
+        self.canDownload = canDownload
         self.mainAppCoordinator = mainAppCoordinator
         registerTableViewForAllPossibleCellTypes(targetTableView)
         registerTableViewForHeaderView(targetTableView)
@@ -171,7 +173,7 @@ class FeedDetailSectionFactory {
                 delegate: feedDetailDelegate,
                 selectedoptionMapper: selectedOptionMapper,
                 themeManager: themeManager,
-                mainAppCoordinator: mainAppCoordinator, isFeedDetailPage: true, selectedTab: selectedTab
+                mainAppCoordinator: mainAppCoordinator, isFeedDetailPage: true, selectedTab: selectedTab, canDownload: self.canDownload
             )
         )
     }
@@ -207,6 +209,11 @@ class FeedDetailSectionFactory {
     
     func reloadToShowLikeAndCommentCountUpdate() {
         targetTableView?.reloadRows(at: [isLikedByCellIndexpath], with: .none)
+    }
+    
+    func reloadDownloadCertificateButton(canDownload: Bool = false) {
+        self.canDownload = canDownload
+        targetTableView?.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
     }
     
     func reloadToCommentCountHeader() {
