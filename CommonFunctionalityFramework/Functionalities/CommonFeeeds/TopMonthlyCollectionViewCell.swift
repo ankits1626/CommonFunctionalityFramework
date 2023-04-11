@@ -1,0 +1,23 @@
+//
+//  TopMonthlyCollectionViewCell.swift
+//  CommonFunctionalityFramework
+//
+//  Created by Suyesh Kandpal on 11/04/23.
+//  Copyright © 2023 Rewardz. All rights reserved.
+//
+
+import UIKit
+
+class TopMonthlyCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var heroImageView : UIImageView?
+    @IBOutlet weak var heroImageViewContainer : UIView?
+    @IBOutlet weak var appreciationCountLabel : UILabel?
+    @IBOutlet weak var heroNameLabel : UILabel?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+}

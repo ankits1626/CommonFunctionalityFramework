@@ -300,6 +300,10 @@
 		BEAE3580270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAE357F270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib */; };
 		BEAE3582270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAE3581270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib */; };
 		BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAE3584270AC06D00E95DF9 /* PostPinWorker.swift */; };
+		BEAFDF2A29E541CF00C04FC4 /* TopHeroesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFDF2829E541CF00C04FC4 /* TopHeroesModel.swift */; };
+		BEAFDF2B29E541CF00C04FC4 /* TopMonthlyHeroesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFDF2929E541CF00C04FC4 /* TopMonthlyHeroesWorker.swift */; };
+		BEAFDF2E29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFDF2C29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.swift */; };
+		BEAFDF2F29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAFDF2D29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.xib */; };
 		BEB0084428A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */; };
 		BEB0084728A76DF200E3F1B0 /* AddECardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */; };
 		BEB0084828A76DF200E3F1B0 /* AddECardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */; };
@@ -651,6 +655,10 @@
 		BEAE357F270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportAbuseConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEAE3581270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PintoTopConfirmationDrawer.xib; sourceTree = "<group>"; };
 		BEAE3584270AC06D00E95DF9 /* PostPinWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPinWorker.swift; sourceTree = "<group>"; };
+		BEAFDF2829E541CF00C04FC4 /* TopHeroesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopHeroesModel.swift; sourceTree = "<group>"; };
+		BEAFDF2929E541CF00C04FC4 /* TopMonthlyHeroesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMonthlyHeroesWorker.swift; sourceTree = "<group>"; };
+		BEAFDF2C29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMonthlyCollectionViewCell.swift; sourceTree = "<group>"; };
+		BEAFDF2D29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopMonthlyCollectionViewCell.xib; sourceTree = "<group>"; };
 		BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTypeTableCellCordinator.swift; sourceTree = "<group>"; };
 		BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTableViewCell.swift; sourceTree = "<group>"; };
 		BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddECardTableViewCell.xib; sourceTree = "<group>"; };
@@ -2052,6 +2060,9 @@
 		BEF402162820120F001B9D7E /* CommonFeeeds */ = {
 			isa = PBXGroup;
 			children = (
+				BEAFDF2829E541CF00C04FC4 /* TopHeroesModel.swift */,
+				BEAFDF2929E541CF00C04FC4 /* TopMonthlyHeroesWorker.swift */,
+				0F329069288962F3008BF09D /* Reactions */,
 				BE514A16288949E4002EA271 /* Nomination */,
 				0F329069288962F3008BF09D /* Reactions */,
 				0FED7EF0287EEAA500D490BB /* ApprovalsTab */,
@@ -2070,6 +2081,8 @@
 				0F32908828898F65008BF09D /* BOUSNominationAppoveRejectWorker.swift */,
 				0F32908A28899DDF008BF09D /* BOUSReactionPostWorker.swift */,
 				0F5BF69E289AA90300920224 /* BOUSFeedsDotPopUpViewController.swift */,
+				BEAFDF2C29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.swift */,
+				BEAFDF2D29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.xib */,
 			);
 			path = CommonFeeeds;
 			sourceTree = "<group>";
@@ -2212,6 +2225,7 @@
 				BCE14D4B2913AD7C008806EA /* PostShareOptionTableViewCell.xib in Resources */,
 				BEC2B28526FDA100008417C3 /* PostEditorViewController.xib in Resources */,
 				BED3ADAF28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib in Resources */,
+				BEAFDF2F29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.xib in Resources */,
 				BE500D7F2822960600423E5A /* CommonLikesSectionTableViewCell.xib in Resources */,
 				BEC2B27526FD9E5B008417C3 /* GifCollectionViewCell.xib in Resources */,
 				BC37F2A328894EF20075E7CB /* FeedOrganisationTableViewCell.xib in Resources */,
@@ -2308,10 +2322,12 @@
 				9873D63F24C09C830041504C /* FeedDescriptionParser.swift in Sources */,
 				98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */,
 				BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */,
+				BEAFDF2B29E541CF00C04FC4 /* TopMonthlyHeroesWorker.swift in Sources */,
 				98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */,
 				0FB4AFD028BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift in Sources */,
 				BE94C30D282140AC00E323E1 /* CommonFeedContentCoordinatorProtocol.swift in Sources */,
 				0F94B75128883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift in Sources */,
+				BEAFDF2A29E541CF00C04FC4 /* TopHeroesModel.swift in Sources */,
 				BE39BA4A28A925B7004ADA9E /* PostPollTitleCellCordinator.swift in Sources */,
 				0FEB5210286C2C0B00BA8ACF /* ImageViewSectionCell.swift in Sources */,
 				980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */,
@@ -2397,6 +2413,7 @@
 				0F72619528E6D5CF00EECB50 /* FTImageSize.swift in Sources */,
 				BE66CCB928A65A0800C7CE83 /* SelectPostTypeTableViewCell.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
+				BEAFDF2E29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.swift in Sources */,
 				987D0BB32583DA58001A0F07 /* MockUserListProvider.swift in Sources */,
 				0F9C4A7528B798EB000A99A2 /* BOUSApprovalPrivacyTableViewCell.swift in Sources */,
 				98722683246180F700809D7A /* PollOptionsVotedTableViewCellCoordinator.swift in Sources */,

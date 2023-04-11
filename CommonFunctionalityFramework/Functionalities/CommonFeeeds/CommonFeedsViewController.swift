@@ -31,6 +31,8 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var dateRangePK : Int = 0
     var coreValuePk : Int = 0
     var isCreationButtonRequired : Bool = false
+    @IBOutlet weak var topLeaderboardCollectionView : UICollectionView?
+    private var fetchedData = TopHeroesFetchedData()
     
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
@@ -70,6 +72,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "FeedsScroll"), object: nil)
         UserDefaults.standard.setValue(selectedTabType, forKey: "selectedTab")
         UserDefaults.standard.synchronize()
+        registerCollectionViewCell()
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
             self?.setup()
@@ -85,6 +88,43 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         feedCreateView?.clipsToBounds = true
         feedCreateView?.backgroundColor = UIColor.getControlColor()
         self.creationButtonView?.isHidden = !isCreationButtonRequired
+    }
+    
+    func registerCollectionViewCell()  {
+        let xib = UINib(nibName: "TopMonthlyCollectionViewCell", bundle: Bundle(for: TopMonthlyCollectionViewCell.self))
+        topLeaderboardCollectionView?.register(xib, forCellWithReuseIdentifier: "TopMonthlyCollectionViewCell")
+        self.getTopGetters()
+    }
+    
+    func getTopGetters() {
+        //        self.loader.showActivityIndicator(self.view)
+        TopMonthlyHeroesWorker("monthly", networkRequestCoordinator: requestCoordinator).fetchHeroes {[weak self]  (result) in
+            DispatchQueue.main.async {
+                if let unwrappedSelf = self{
+                    print("<<<<<<<<<<<<<<<< fetchHeroesForCategory \(unwrappedSelf)")
+                    unwrappedSelf.loader.hideActivityIndicator(unwrappedSelf.view)
+                    unwrappedSelf.handleHeroesFetchRespone(result)
+                }
+            }
+        }
+    }
+    
+    private func handleHeroesFetchRespone(_ result : APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String)>){
+        switch result{
+        case .Success(let successResult):
+            loadFetchedHeroes(successResult.fetchedHeroes)
+        case .SuccessWithNoResponseData:
+            ErrorDisplayer.showError(errorMsg: "Unexpected empty response".localized) { (_) in}
+        case .Failure(let error):
+            ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+        }
+    }
+    
+    private func loadFetchedHeroes(_ fetchedHeroes: [TopRecognitionHero]){
+        fetchedData.setHeroes(fetchedHeroes)
+        topLeaderboardCollectionView?.delegate = self
+        topLeaderboardCollectionView?.dataSource = self
+        topLeaderboardCollectionView?.reloadData()
     }
     
     @objc func scrollTableView(notification: NSNotification) {
@@ -686,4 +726,28 @@ extension CommonFeedsViewController:  NSFetchedResultsControllerDelegate {
         feedsTable?.endUpdates()
     }
 }
+extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+         return self.fetchedData.getHeroes().count
+     }
 
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "TopMonthlyCollectionViewCell", for: indexPath) as! TopMonthlyCollectionViewCell
+         let heroData = self.fetchedData.getHeroes()[indexPath.row]
+         cell.heroNameLabel?.text = heroData.name
+         cell.appreciationCountLabel?.text = heroData.appreciationRatio.received
+         return cell
+     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 78, height: 88)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func getSizeOfItem(collectionView : UICollectionView, indexPath : IndexPath) -> CGSize {
+        return CGSize(width: 78, height: 88)//copying this from oakley branch as tester said its fine there.
+    }
+ }
