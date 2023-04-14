@@ -24,7 +24,6 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet private weak var creationButtonView : UIView?
     var selectedTabType = ""
     var searchText : String?
-    
     var feedTypePk : Int = 0
     var organisationPK : Int = 0
     var departmentPK : Int = 0
@@ -33,6 +32,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var isCreationButtonRequired : Bool = false
     @IBOutlet weak var topLeaderboardCollectionView : UICollectionView?
     private var fetchedData = TopHeroesFetchedData()
+    var selectedTopUserPk : Int = 0
     
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
@@ -73,12 +73,6 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         UserDefaults.standard.setValue(selectedTabType, forKey: "selectedTab")
         UserDefaults.standard.synchronize()
         registerCollectionViewCell()
-        clearAnyExistingFeedsData {[weak self] in
-            self?.initializeFRC()
-            self?.setup()
-            self?.loadFeeds()
-        }
-        
         if selectedTabType == "SearchFromHome" {
             self.feedsTable?.alwaysBounceVertical = false
             self.feedsTable?.showsVerticalScrollIndicator = false
@@ -112,7 +106,12 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     private func handleHeroesFetchRespone(_ result : APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String)>){
         switch result{
         case .Success(let successResult):
-            loadFetchedHeroes(successResult.fetchedHeroes)
+            self.clearAnyExistingFeedsData {[weak self] in
+                self?.loadFetchedHeroes(successResult.fetchedHeroes)
+                self?.initializeFRC()
+                self?.setup()
+                self?.loadFeeds()
+            }
         case .SuccessWithNoResponseData:
             ErrorDisplayer.showError(errorMsg: "Unexpected empty response".localized) { (_) in}
         case .Failure(let error):
@@ -200,7 +199,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         //loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk,selectedTopGetterPk: self.selectedTopUserPk) {[weak self] (result) in
                 DispatchQueue.main.async {
                     // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()
@@ -353,10 +352,12 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.loadCFFControl?.update()
-        if selectedTabType == "SearchFromHome" {
-            if scrollView.contentOffset.y <= 0 {
-                scrollView.contentOffset = .zero
-             }
+        if Bundle.main.bundleIdentifier == "com.rewardz.iOSabundantly" {
+            if selectedTabType == "SearchFromHome" {
+                if scrollView.contentOffset.y <= 0 {
+                    scrollView.contentOffset = .zero
+                 }
+            }
         }
     }
 }
@@ -749,5 +750,15 @@ extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionView
     
     func getSizeOfItem(collectionView : UICollectionView, indexPath : IndexPath) -> CGSize {
         return CGSize(width: 78, height: 88)//copying this from oakley branch as tester said its fine there.
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("indexPath ---- \(indexPath.row)")
+        let heroData = self.fetchedData.getHeroes()[indexPath.row]
+        print("heroData ---- \(heroData)")
+        self.clearAnyExistingFeedsData {[weak self] in
+            self?.selectedTopUserPk = heroData.heroPK
+            self?.loadFeeds()
+        }
     }
  }

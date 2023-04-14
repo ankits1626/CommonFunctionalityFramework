@@ -21,13 +21,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yn-Ix-XGT">
                         <rect key="frame" x="8" y="8" width="56" height="56"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="97A-u4-krt">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_addImage" translatesAutoresizingMaskIntoConstraints="NO" id="97A-u4-krt">
                                 <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePh-w3-Ksv">
-                                <rect key="frame" x="45.666666666666664" y="0.0" width="20.999999999999993" height="21"/>
+                                <rect key="frame" x="45.666666666666664" y="-6" width="20.999999999999993" height="21"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G9s-hE-Db2">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_GettersCountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="G9s-hE-Db2">
                                         <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2z-8s-B8o">
@@ -37,7 +37,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="G9s-hE-Db2" firstAttribute="top" secondItem="ePh-w3-Ksv" secondAttribute="top" id="2sG-c0-eIC"/>
                                     <constraint firstAttribute="trailing" secondItem="G9s-hE-Db2" secondAttribute="trailing" id="9og-gc-syJ"/>
@@ -55,7 +55,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="97A-u4-krt" firstAttribute="top" secondItem="3yn-Ix-XGT" secondAttribute="top" id="9IM-An-l1G"/>
-                            <constraint firstItem="ePh-w3-Ksv" firstAttribute="top" secondItem="3yn-Ix-XGT" secondAttribute="top" id="Gop-em-1iN"/>
+                            <constraint firstItem="ePh-w3-Ksv" firstAttribute="top" secondItem="3yn-Ix-XGT" secondAttribute="top" constant="-6" id="Gop-em-1iN"/>
                             <constraint firstAttribute="height" constant="56" id="Ij6-gX-e3o"/>
                             <constraint firstAttribute="width" constant="56" id="X2g-qn-dze"/>
                             <constraint firstItem="97A-u4-krt" firstAttribute="leading" secondItem="3yn-Ix-XGT" secondAttribute="leading" id="d4K-3C-POB"/>
@@ -94,6 +94,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="cff_GettersCountIcon" width="24" height="24"/>
+        <image name="cff_addImage" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
