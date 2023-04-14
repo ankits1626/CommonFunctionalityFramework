@@ -104,6 +104,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="AEU-8N-VVP" firstAttribute="leading" secondItem="SM8-zO-5co" secondAttribute="leading" constant="16" id="MA1-5b-P3l"/>
                     <constraint firstAttribute="trailing" secondItem="AEU-8N-VVP" secondAttribute="trailing" constant="16" id="R6O-JB-erb"/>

@@ -54,6 +54,8 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
                 cell.titleText?.font = .Title1
                 max_title_length = POST_MAX_CHARACTER_LENGTH
                 cell.maxCharacterLabel?.isHidden = true
+            case .Greeting:
+                break
             }
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()
             cell.titleText?.placeholderFont = .Title1

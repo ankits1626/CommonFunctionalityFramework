@@ -155,6 +155,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             createButton?.setTitle("Create".localized, for: .normal)
         case .Post:
             createButton?.setTitle("Post".localized, for: .normal)
+        case .Greeting:
+            break
         }
         createButton?.titleLabel?.font = UIFont.Button
         createButton?.titleLabel?.tintColor = .buttonTextColor
@@ -180,6 +182,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             containerTopBarModel?.cameraButton?.tintColor = .black
             containerTopBarModel?.cameraButton?.addTarget(self, action: #selector(initiateMediaAttachment), for: .touchUpInside)
             containerTopBarModel?.attachPDFButton?.addTarget(self, action: #selector(initiateAttachment), for: .touchUpInside)
+        case .Greeting:
+            break
         }
     }
     

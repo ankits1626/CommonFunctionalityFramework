@@ -8,10 +8,16 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsDetailViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="commentBarView" destination="2ae-UC-IJ0" id="tfW-2R-YUf"/>
+                <outlet property="downloadCompletedView" destination="h3l-gh-bWa" id="hbh-3B-fYV"/>
                 <outlet property="feedDetailTableView" destination="qEs-Ux-26W" id="BTC-fK-62e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -38,22 +44,63 @@
                         <outlet property="heightConstraint" destination="DFw-ei-8EN" id="ZGv-vq-JC2"/>
                     </connections>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3l-gh-bWa">
+                    <rect key="frame" x="16" y="550" width="343" height="64"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_success-2" translatesAutoresizingMaskIntoConstraints="NO" id="Xux-hb-TJg">
+                            <rect key="frame" x="10" y="12" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="155-sK-gir"/>
+                                <constraint firstAttribute="height" constant="40" id="m24-Zi-3ft"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recognition successfully downloaded" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZa-5m-Pgc">
+                            <rect key="frame" x="64" y="24" width="271" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="vvK-W7-Ypg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="4K5-sg-2BF"/>
+                        <constraint firstItem="cZa-5m-Pgc" firstAttribute="leading" secondItem="Xux-hb-TJg" secondAttribute="trailing" constant="14" id="6Gt-Lv-gGx"/>
+                        <constraint firstAttribute="bottom" secondItem="Xux-hb-TJg" secondAttribute="bottom" constant="12" id="F8Z-dO-nI1"/>
+                        <constraint firstItem="Xux-hb-TJg" firstAttribute="top" secondItem="h3l-gh-bWa" secondAttribute="top" constant="12" id="Hib-PD-Goi"/>
+                        <constraint firstAttribute="trailing" secondItem="cZa-5m-Pgc" secondAttribute="trailing" constant="8" id="Tt8-D3-BN6"/>
+                        <constraint firstItem="cZa-5m-Pgc" firstAttribute="top" secondItem="h3l-gh-bWa" secondAttribute="top" constant="24" id="anx-fU-CE6"/>
+                        <constraint firstItem="Xux-hb-TJg" firstAttribute="leading" secondItem="h3l-gh-bWa" secondAttribute="leading" constant="10" id="rHR-vr-efD"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="h3l-gh-bWa" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-16" id="1p3-RV-reg"/>
                 <constraint firstItem="2ae-UC-IJ0" firstAttribute="top" secondItem="qEs-Ux-26W" secondAttribute="bottom" constant="15" id="AZ3-hc-SQB"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GgV-Zv-dOh"/>
+                <constraint firstItem="2ae-UC-IJ0" firstAttribute="top" secondItem="h3l-gh-bWa" secondAttribute="bottom" constant="9" id="NpD-Rx-aKa"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ohw-wb-spi"/>
                 <constraint firstItem="2ae-UC-IJ0" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="W0q-la-B2H"/>
                 <constraint firstItem="2ae-UC-IJ0" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="f4O-1v-URe"/>
                 <constraint firstItem="2ae-UC-IJ0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fT3-Re-CUh"/>
                 <constraint firstItem="qEs-Ux-26W" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="m0i-C6-8qb"/>
+                <constraint firstItem="h3l-gh-bWa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="pGB-4r-ky1"/>
             </constraints>
             <point key="canvasLocation" x="138.40000000000001" y="93.103448275862078"/>
         </view>
     </objects>
     <resources>
+        <image name="icon_success-2" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -56,6 +56,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Hu7-xb-Cu3" firstAttribute="leading" secondItem="SIj-3w-nsc" secondAttribute="leading" constant="16" id="2f6-Bj-BLO"/>
                     <constraint firstItem="Hu7-xb-Cu3" firstAttribute="top" secondItem="SIj-3w-nsc" secondAttribute="top" id="QcB-t9-Enq"/>

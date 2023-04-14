@@ -14,6 +14,8 @@ protocol FeedsItemProtocol : Likeable {
     var feedIdentifier : Int64{get}
     func getUserImageUrl() -> String?
     func getUserName() -> String?
+    func getOrganizationName() -> String?
+    func getOrganizationLogo() -> String?
     func getHomeUserCreatedName() -> String?
     func getHomeUserReceivedName() -> String?
     func getGivenTabUserImg() -> String?
@@ -22,6 +24,7 @@ protocol FeedsItemProtocol : Likeable {
     func getNominatedByUserName() -> String?
     func getDepartmentName() -> String?
     func getfeedCreationDate() -> String?
+    func getfeedCreationMonthDay() -> String?
     func getfeedCreationMonthYear() -> String?
     func getAppreciationCreationMonthDate() -> String?
     func getIsEditActionAllowedOnFeedItem() -> Bool
@@ -58,6 +61,7 @@ protocol FeedsItemProtocol : Likeable {
     func geteCardHeight() -> CGFloat
     func getSingleImageHeight() -> CGFloat
     func getGifImageHeight() -> CGFloat
+    func getGreeting() -> GreetingAnniAndBday?
 }
 
 public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -160,6 +164,24 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }else{
             return nil
         }
+    }
+    
+    func getGreeting() -> GreetingAnniAndBday? {
+        if let unwrappedRawPoll = rawFeedDictionary["greeting_info"] as? [String : Any]{
+            let date = unwrappedRawPoll["date"] as? String ?? ""
+            let department_name = unwrappedRawPoll["department_name"] as? String ?? ""
+            let profile_pic = unwrappedRawPoll["profile_pic"] as? String ?? ""
+            let thumbnail = unwrappedRawPoll["thumbnail"] as? String ?? ""
+            let type = unwrappedRawPoll["type"] as? String ?? ""
+            let user_email = unwrappedRawPoll["user_email"] as? String ?? ""
+            let user_first_name = unwrappedRawPoll["user_first_name"] as? String ?? ""
+            let user_last_name = unwrappedRawPoll["user_last_name"] as? String ?? ""
+            let user_pk = unwrappedRawPoll["user_pk"] as! Int
+            let yearCompleted = unwrappedRawPoll["years_completed"] as? Int ?? 0
+
+            return GreetingAnniAndBday(date: date, department_name: department_name, profile_pic: profile_pic, thumbnail: thumbnail, type: type, userPk: user_pk, user_email: user_email, user_first_name: user_first_name, user_last_name: user_last_name, yearCompleted: yearCompleted)
+        }
+        return nil
     }
     
     func getReactionsData() -> NSArray? {
@@ -441,7 +463,9 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
            let pollType = FeedPostType(rawValue: type){
             if type == 6 {
                 return .Appreciation
-            }else {
+            }else if type == 9 {
+                return .Greeting
+            } else {
                 return .Nomination
             }
         }else{
@@ -486,6 +510,22 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         var userImg : String?
         if let userDic = rawFeedDictionary["user"] as? NSDictionary {
             userImg = userDic["profile_img"] as? String ?? nil
+        }
+        return userImg
+    }
+    
+    func getOrganizationName() -> String? {
+        var userImg : String?
+        if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            userImg = userDic["organization_name"] as? String ?? nil
+        }
+        return userImg
+    }
+    
+    func getOrganizationLogo() -> String? {
+        var userImg : String?
+        if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            userImg = userDic["organization_logo"] as? String ?? nil
         }
         return userImg
     }
@@ -551,6 +591,15 @@ public struct RawFeed : FeedsItemProtocol, RawObjectProtocol {
         //hello
         if let rawDate = rawFeedDictionary["created_on"] as? String{
             return CommonFrameworkDateUtility.getDisplayedDateInFormatDMMMYYYY(input: rawDate, dateFormat: "yyyy-MM-dd") ?? ""
+        }
+        return rawFeedDictionary["created_on"] as? String
+    }
+    
+    func getfeedCreationMonthDay() -> String? {
+        //hello
+        if let rawDate = rawFeedDictionary["greeting_info"] as? [String : Any] {
+            let date = rawDate["date"] as? String ?? ""
+            return CommonFrameworkDateUtility.getDisplayedDateInFormatMMMDD(input: date, dateFormat: "yyyy-MM-dd") ?? ""
         }
         return rawFeedDictionary["created_on"] as? String
     }

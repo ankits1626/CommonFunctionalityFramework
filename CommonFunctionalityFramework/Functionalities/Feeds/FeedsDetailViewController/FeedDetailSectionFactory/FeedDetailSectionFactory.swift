@@ -28,6 +28,7 @@ class FeedDetailSectionFactory {
     private var isLikedByCellIndexpath : IndexPath!
     private weak var themeManager: CFFThemeManagerProtocol?
     var isPostPoll : Bool = false
+    private weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     lazy var cachedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         if isPostPoll {
             return [
@@ -46,7 +47,9 @@ class FeedDetailSectionFactory {
                 FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
                 FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator(),
                 BOUSTwoImageDetailTableViewCellType().cellIdentifier : BOUSTwoImageDetailCoordinator(),
-                BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator()
+                BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator(),
+                BOUSAnniversaryTableViewCellType().cellIdentifier :
+                               BOUSAnniversaryBirthdayImageTableViewCellCoordinator()
             ]
         }
         return [
@@ -76,7 +79,7 @@ class FeedDetailSectionFactory {
     }()
     
     
-    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?, selectedTab : String, _isPostPoll : Bool) {
+    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?, selectedTab : String, _isPostPoll : Bool, mainAppCoordinator : CFFMainAppInformationCoordinator?) {
         self.feedDataSource = feedDataSource
         self.selectedTab = selectedTab
         self.feedDetailDelegate = feedDetailDelegate
@@ -85,6 +88,7 @@ class FeedDetailSectionFactory {
         self.themeManager = themeManager
         self.selectedOptionMapper = selectedOptionMapper
         self.isPostPoll = _isPostPoll
+        self.mainAppCoordinator = mainAppCoordinator
         registerTableViewForAllPossibleCellTypes(targetTableView)
         registerTableViewForHeaderView(targetTableView)
     }
@@ -146,7 +150,7 @@ class FeedDetailSectionFactory {
             targetTableView: tableView,
             datasource: feedDataSource,
             isFeedDetailPage: true,
-            themeManager: themeManager
+            themeManager: themeManager, mainAppCoordinator: mainAppCoordinator
             )
         )
         cell.backgroundColor = .clear
@@ -167,7 +171,7 @@ class FeedDetailSectionFactory {
                 delegate: feedDetailDelegate,
                 selectedoptionMapper: selectedOptionMapper,
                 themeManager: themeManager,
-                isFeedDetailPage: true, selectedTab: selectedTab
+                mainAppCoordinator: mainAppCoordinator, isFeedDetailPage: true, selectedTab: selectedTab
             )
         )
     }
@@ -229,67 +233,72 @@ extension FeedDetailSectionFactory{
             var map = [FeedDetailSection :  [FeedCellTypeProtocol]]()
             var rows = [FeedCellTypeProtocol] ()
             rows.append(PostPollTopTableViewCellTableViewCellType())
-            if feed!.getFeedTitle() != nil {
-                rows.append(PostPollTitleTableViewCellType())
+            if let greeting = feed?.getFeedType(), greeting == .Greeting {
+                rows.append(BOUSAnniversaryTableViewCellType())
+            }else {
+                if feed!.getFeedTitle() != nil {
+                    rows.append(PostPollTitleTableViewCellType())
+                }
+                if
+                    let unwrappedFeed = feed{
+                    let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+                        feedId: unwrappedFeed.feedIdentifier,
+                        description: unwrappedFeed.getFeedDescription())
+                    if model?.displayableDescription.string != nil{
+                        if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+                                    !disaplyableDescription.isEmpty{
+                        //        if feed.getFeedDescription() != nil{
+                                    rows.append(FeedTextTableViewCellType())
+                                }
+                    }
+                }
+                
+              
+                switch feed!.getMediaCountState() {
+                case .None:
+                    break
+                case .OneMediaItemPresent(let mediaType):
+                    switch mediaType {
+                    case .Image:
+                        rows.append(SingleImageTableViewCellType())
+                    case .Video:
+                        rows.append(SingleVideoTableViewCellType())
+                    }
+                case .TwoMediaItemPresent:
+                    rows.append(BOUSTwoImageDetailTableViewCellType())
+                case .MoreThanTwoMediItemPresent:
+                    rows.append(BOUSThreeImageDetailTableViewCellType())
+                }
+                if
+                    let unwrappedFeed = feed{
+                    if let unwrappedGify = unwrappedFeed.getGiphy(),
+                        !unwrappedGify.isEmpty {
+                        rows.append(FeedGifTableViewCellType())
+                    }
+                }
+
+                if let poll = feed?.getPoll(){
+                    rows.append(PollBottomTableViewCelType())
+                    if poll.isPollActive() && !poll.hasUserVoted(){
+                        poll.getPollOptions().forEach { (_) in
+                            rows.append(PollOptionsTableViewCellType())
+                        }
+                        rows.append(PollSubmitButtonCellType())
+                    }else{
+                        poll.getPollOptions().forEach { (_) in
+                            rows.append(PollOptionsVotedTableViewCellType())
+                        }
+                        
+                    }
+        //            poll.getPollOptions().forEach { (_) in
+        //                rows.append(PollOptionsVotedTableViewCellType())
+        //            }
+                   
+                }
             }
     //        if feed!.getFeedDescription() != nil{
     //            rows.append(FeedTextTableViewCellType())
     //        }
-            if
-                let unwrappedFeed = feed{
-                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
-                    feedId: unwrappedFeed.feedIdentifier,
-                    description: unwrappedFeed.getFeedDescription())
-                if model?.displayableDescription.string != nil{
-                    if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
-                                !disaplyableDescription.isEmpty{
-                    //        if feed.getFeedDescription() != nil{
-                                rows.append(FeedTextTableViewCellType())
-                            }
-                }
-            }
-            
-            switch feed!.getMediaCountState() {
-            case .None:
-                break
-            case .OneMediaItemPresent(let mediaType):
-                switch mediaType {
-                case .Image:
-                    rows.append(SingleImageTableViewCellType())
-                case .Video:
-                    rows.append(SingleVideoTableViewCellType())
-                }
-            case .TwoMediaItemPresent:
-                rows.append(BOUSTwoImageDetailTableViewCellType())
-            case .MoreThanTwoMediItemPresent:
-                rows.append(BOUSThreeImageDetailTableViewCellType())
-            }
-            if
-                let unwrappedFeed = feed{
-                if let unwrappedGify = unwrappedFeed.getGiphy(),
-                    !unwrappedGify.isEmpty {
-                    rows.append(FeedGifTableViewCellType())
-                }
-            }
-
-            if let poll = feed?.getPoll(){
-                rows.append(PollBottomTableViewCelType())
-                if poll.isPollActive() && !poll.hasUserVoted(){
-                    poll.getPollOptions().forEach { (_) in
-                        rows.append(PollOptionsTableViewCellType())
-                    }
-                    rows.append(PollSubmitButtonCellType())
-                }else{
-                    poll.getPollOptions().forEach { (_) in
-                        rows.append(PollOptionsVotedTableViewCellType())
-                    }
-                    
-                }
-    //            poll.getPollOptions().forEach { (_) in
-    //                rows.append(PollOptionsVotedTableViewCellType())
-    //            }
-               
-            }
             rows.append(FeedBottomTableViewCellType())
             isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)
             map[.FeedInfo] = rows
