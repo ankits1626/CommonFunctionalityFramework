@@ -124,6 +124,13 @@ public class FeedsCoordinator {
                         feedDetailVC.requestCoordinator = inputModel.networkRequestCoordinator
                         feedDetailVC.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
                         feedDetailVC.pollSelectedAnswerMapper = SelectedPollAnswerMapper()
+                        if inputModel.isGreetingType {
+                            feedDetailVC.selectedTab = "GreetingsFeed"
+                            UserDefaults.standard.setValue("GreetingsFeed", forKey: "selectedTab")
+                        }else {
+                            feedDetailVC.selectedTab = ""
+                            UserDefaults.standard.setValue("SearchFromHome", forKey: "selectedTab")
+                        }
                         inputModel.feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
                     }
                 case .SuccessWithNoResponseData:
