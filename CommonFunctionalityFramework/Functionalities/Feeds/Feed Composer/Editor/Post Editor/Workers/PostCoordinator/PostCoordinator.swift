@@ -222,6 +222,8 @@ class PostCoordinator {
             }else{
                 return "Post edited successfully.".localized
             }
+        case .Greeting:
+            return ""
         }
     }
 }
@@ -232,6 +234,8 @@ extension PostCoordinator{
         case .Poll:
             try checkIfPollReadyToBePosted()
         case .Post:
+            try checkIfPostReadyToBePosted()
+        case .Greeting:
             try checkIfPostReadyToBePosted()
         }
     }

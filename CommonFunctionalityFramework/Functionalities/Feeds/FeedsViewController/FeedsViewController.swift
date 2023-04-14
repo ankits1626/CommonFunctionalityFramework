@@ -39,6 +39,9 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     var dateRangePK : Int = 0
     var coreValuePk : Int = 0
     
+    var isTypeGreeting = false
+    var greetingID  : Int = 0
+
     @IBOutlet weak var emptyViewContainer : UIView?
     lazy private var emptyResultView: NoEntryViewController = {
         return NoEntryViewController(
@@ -52,7 +55,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             mediaFetcher: mediaFetcher,
             targetTableView: feedsTable,
             selectedOptionMapper: pollSelectedAnswerMapper,
-            themeManager: themeManager, selectedTab: selectedTab
+            themeManager: themeManager, selectedTab: selectedTab, mainAppCoordinator: mainAppCoordinator
         )
     }()
     
@@ -156,43 +159,87 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     
     @objc private func loadFeeds(){
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-        FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk, isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
-            DispatchQueue.main.async {
-                self?.feedsTable?.loadCFFControl?.endLoading()
-                switch result{
-                case .Success(let result):
-                    if result.fetchedRawFeeds?.count == 0 {
-                        self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                    }
-//                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
-//                        if resultCount.count == 0 {
-//                            var emptyMessage : String!
-//                            emptyMessage = "No Records Found!"
-//                            self?.emptyResultView.showEmptyMessageView(
-//                                message: emptyMessage,
-//                                parentView: self!.emptyViewContainer!,
-//                                parentViewController: self!
-//                            )
-//                        }else{
-//                            self?.emptyResultView.hideEmptyMessageView()
-//                        }
-//                    }
-                    if let resultData = result.fetchedRawFeeds as? NSDictionary {
-                        if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
+        
+        if isTypeGreeting {
+            GreetingsWishesFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
+                greetingID: greetingID, nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk, isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
+                DispatchQueue.main.async {
+                    self?.feedsTable?.loadCFFControl?.endLoading()
+                    switch result{
+                    case .Success(let result):
+                        if result.fetchedRawFeeds?.count == 0 {
                             self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                            self?.noRecordsLabel?.isHidden = false
-                        }else{
-                            self?.noRecordsLabel?.isHidden = true
                         }
+    //                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
+    //                        if resultCount.count == 0 {
+    //                            var emptyMessage : String!
+    //                            emptyMessage = "No Records Found!"
+    //                            self?.emptyResultView.showEmptyMessageView(
+    //                                message: emptyMessage,
+    //                                parentView: self!.emptyViewContainer!,
+    //                                parentViewController: self!
+    //                            )
+    //                        }else{
+    //                            self?.emptyResultView.hideEmptyMessageView()
+    //                        }
+    //                    }
+                        if let resultData = result.fetchedRawFeeds as? NSDictionary {
+                            if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
+                                self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                                self?.noRecordsLabel?.isHidden = false
+                            }else{
+                                self?.noRecordsLabel?.isHidden = true
+                            }
+                        }
+                        
+                        self?.handleFetchedFeedsResult(fetchedfeeds: result)
+                        self?.handleaddButton(fetchedfeeds: result)
+                    case .SuccessWithNoResponseData:
+                        ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
+                    case .Failure(let error):
+                        ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
                     }
-                    
-                    self?.handleFetchedFeedsResult(fetchedfeeds: result)
-                    self?.handleaddButton(fetchedfeeds: result)
-                case .SuccessWithNoResponseData:
-                    ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
-                case .Failure(let error):
-                    ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                }
+            }
+        }else {
+            FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
+                nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk, isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
+                DispatchQueue.main.async {
+                    self?.feedsTable?.loadCFFControl?.endLoading()
+                    switch result{
+                    case .Success(let result):
+                        if result.fetchedRawFeeds?.count == 0 {
+                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                        }
+    //                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
+    //                        if resultCount.count == 0 {
+    //                            var emptyMessage : String!
+    //                            emptyMessage = "No Records Found!"
+    //                            self?.emptyResultView.showEmptyMessageView(
+    //                                message: emptyMessage,
+    //                                parentView: self!.emptyViewContainer!,
+    //                                parentViewController: self!
+    //                            )
+    //                        }else{
+    //                            self?.emptyResultView.hideEmptyMessageView()
+    //                        }
+    //                    }
+                        if let resultData = result.fetchedRawFeeds as? NSDictionary {
+                            if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
+                                self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                                self?.noRecordsLabel?.isHidden = false
+                            }else{
+                                self?.noRecordsLabel?.isHidden = true
+                            }
+                        }
+                        
+                        self?.handleFetchedFeedsResult(fetchedfeeds: result)
+                        self?.handleaddButton(fetchedfeeds: result)
+                    case .SuccessWithNoResponseData:
+                        ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
+                    case .Failure(let error):
+                        ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                    }
                 }
             }
         }
@@ -257,7 +304,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             self.createBtnHolderView.isHidden = true
         }
         
-        if shouldShowCreateButton {
+        if shouldShowCreateButton || isTypeGreeting {
             self.createBtnHolderView.isHidden = true
         }
         
@@ -478,19 +525,20 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if getFeedItem(indexPath.section).shouldShowDetail(){
-            UserDefaults.standard.setValue(false, forKey: "notRefreshFeedDetail")
-            let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
-            feedDetailVC.mainAppCoordinator = mainAppCoordinator
-            feedDetailVC.themeManager = themeManager
-            feedDetailVC.mainAppCoordinator = mainAppCoordinator
-            feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
-            feedDetailVC.mediaFetcher = mediaFetcher
-            feedDetailVC.requestCoordinator = requestCoordinator
-            feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
-            feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
-            feedDetailVC.isPostPollType = true
-            feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
+        if isTypeGreeting {} else {
+            if getFeedItem(indexPath.section).shouldShowDetail(){
+                UserDefaults.standard.setValue(false, forKey: "notRefreshFeedDetail")
+                let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+                feedDetailVC.themeManager = themeManager
+                feedDetailVC.mainAppCoordinator = mainAppCoordinator
+                feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
+                feedDetailVC.mediaFetcher = mediaFetcher
+                feedDetailVC.requestCoordinator = requestCoordinator
+                feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
+                feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
+                feedDetailVC.isPostPollType = true
+                feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
+            }
         }
     }
     

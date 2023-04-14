@@ -114,7 +114,9 @@ struct EditablePost : EditablePostProtocol{
         case .Poll:
             postableDictionary = getPollDictionary()
         case .Post:
-            postableDictionary = getPostDictionary()
+            return getPostDictionary()
+        case .Greeting:
+            return getPostDictionary()
         }
         postableDictionary["shared_with"] = postSharedChoice.rawValue
         if let unwrappedSelectedOrgAndDepartment = selectedOrganisationsAndDepartments{
@@ -178,11 +180,15 @@ struct EditablePost : EditablePostProtocol{
                 return nil
             case .Post:
                 return URL(string: baseUrl + "feeds/api/posts/\(unwrappedRemotePostId)/")
+            case .Greeting:
+                return nil
             }
         }else{
             switch postType {
             case .Poll:
                 return URL(string: baseUrl + "feeds/api/posts/create_poll/")
+            case .Greeting:
+                return nil
             case .Post:
                 return URL(string: baseUrl + "feeds/api/posts/")
             }

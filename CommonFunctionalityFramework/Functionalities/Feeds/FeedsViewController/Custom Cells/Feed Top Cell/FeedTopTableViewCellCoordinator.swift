@@ -14,6 +14,7 @@ struct FeedCellDequeueModel {
     var datasource: FeedsDatasource
     var isFeedDetailPage : Bool
     weak var themeManager: CFFThemeManagerProtocol?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
 }
 
 struct FeedCellLoadDataModel {
@@ -25,6 +26,7 @@ struct FeedCellLoadDataModel {
     weak var delegate : FeedsDelegate?
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var isFeedDetailPage : Bool
     var selectedTab : String
 }

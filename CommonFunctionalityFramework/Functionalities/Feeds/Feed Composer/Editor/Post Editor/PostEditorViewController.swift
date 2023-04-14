@@ -328,6 +328,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             containerTopBarModel?.cameraButton?.tintColor = .black
             containerTopBarModel?.cameraButton?.addTarget(self, action: #selector(initiateMediaAttachment), for: .touchUpInside)
             containerTopBarModel?.attachPDFButton?.addTarget(self, action: #selector(initiateAttachment), for: .touchUpInside)
+        case .Greeting:
+            break
         }
     }
     

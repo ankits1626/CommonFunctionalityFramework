@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="MediaForCertificateDownloadCollectionViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bXS-4f-hrt">
+                        <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yaf-Cy-wng">
+                        <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaparent_tick" translatesAutoresizingMaskIntoConstraints="NO" id="5ca-Wr-frG">
+                        <rect key="frame" x="88" y="0.0" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="KAg-nf-1A8"/>
+                            <constraint firstAttribute="width" constant="24" id="QFu-Jo-UDM"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Yaf-Cy-wng" secondAttribute="trailing" id="2Ov-Mb-3es"/>
+                <constraint firstItem="5ca-Wr-frG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6hW-LY-oXw"/>
+                <constraint firstItem="Yaf-Cy-wng" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HQB-v5-p9e"/>
+                <constraint firstItem="bXS-4f-hrt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZuY-ws-liV"/>
+                <constraint firstAttribute="trailing" secondItem="5ca-Wr-frG" secondAttribute="trailing" id="b83-ty-1ER"/>
+                <constraint firstAttribute="trailing" secondItem="bXS-4f-hrt" secondAttribute="trailing" id="q2G-zv-WkU"/>
+                <constraint firstAttribute="bottom" secondItem="Yaf-Cy-wng" secondAttribute="bottom" id="rUg-MX-r8M"/>
+                <constraint firstItem="bXS-4f-hrt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uR9-PZ-8Gh"/>
+                <constraint firstItem="Yaf-Cy-wng" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wq8-bU-dgE"/>
+                <constraint firstAttribute="bottom" secondItem="bXS-4f-hrt" secondAttribute="bottom" id="za5-Qz-g7A"/>
+            </constraints>
+            <size key="customSize" width="78" height="68"/>
+            <connections>
+                <outlet property="imageHolder" destination="bXS-4f-hrt" id="vIP-a4-EDy"/>
+                <outlet property="selectedGrayImg" destination="Yaf-Cy-wng" id="J8y-py-9oo"/>
+                <outlet property="tickImg" destination="5ca-Wr-frG" id="OLm-Sp-td8"/>
+            </connections>
+            <point key="canvasLocation" x="152.17391304347828" y="79.6875"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="transaparent_tick" width="24" height="24"/>
+    </resources>
+</document>

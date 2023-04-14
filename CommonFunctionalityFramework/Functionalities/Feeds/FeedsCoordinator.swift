@@ -34,8 +34,10 @@ public struct GetFeedsViewModel{
     var departmentPK : Int = 0
     var dateRangePK : Int = 0
     var coreValuePk : Int = 0
+    var isGreetingType = false
+    var greetingId = 0
 
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0){
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -49,6 +51,8 @@ public struct GetFeedsViewModel{
         self.departmentPK = _departmentPK
         self.dateRangePK = _dateRangePK
         self.coreValuePk = _coreValuePk
+        self.isGreetingType = _isGreetingType
+        self.greetingId = _greetingId
     }
 }
 
@@ -83,6 +87,15 @@ public class FeedsCoordinator {
         feedsVc.dateRangePK = inputModel.dateRangePK
         feedsVc.coreValuePk = inputModel.coreValuePk
         feedsVc.searchText = inputModel.searchText
+        feedsVc.isTypeGreeting = inputModel.isGreetingType
+        feedsVc.greetingID = inputModel.greetingId
+        if inputModel.isGreetingType {
+            feedsVc.selectedTab = "GreetingsFeed"
+            UserDefaults.standard.setValue("GreetingsFeed", forKey: "selectedTab")
+        }else {
+            feedsVc.selectedTab = ""
+            UserDefaults.standard.setValue("SearchFromHome", forKey: "selectedTab")
+        }
         return feedsVc
     }
     

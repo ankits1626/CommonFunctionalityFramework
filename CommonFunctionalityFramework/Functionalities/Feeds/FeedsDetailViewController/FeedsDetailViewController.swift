@@ -34,6 +34,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var selectedTab = ""
+    @IBOutlet weak var downloadCompletedView: UIView!
     var isPostPollType : Bool = false
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
@@ -45,7 +46,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
             themeManager: themeManager,
             selectedOptionMapper: pollSelectedAnswerMapper,
             selectedTab: selectedTab,
-            _isPostPoll: isPostPollType
+            _isPostPoll: isPostPollType, mainAppCoordinator: mainAppCoordinator
         )
     }()
     var pollSelectedAnswerMapper: SelectedPollAnswerMapper?
@@ -407,7 +408,8 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     }
 }
 
-extension FeedsDetailViewController : FeedsDelegate{
+extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownload{
+ 
     func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
         print(commentedByPk)
         var numberofElementsEnabled : CGFloat = 0.0
@@ -695,9 +697,25 @@ extension FeedsDetailViewController : FeedsDelegate{
 //                )
 //            )
 //        }
-        if targetFeedItem.isFeedReportAbuseAllowed(){
-            self.showReportAbuseConfirmation(feedIdentifier)
-       }
+//        if targetFeedItem.isFeedReportAbuseAllowed(){
+//            self.showReportAbuseConfirmation(feedIdentifier)
+//       }
+        
+        let downloadFeedCertificateViewController = DownloadFeedCertificateViewController(nibName: "DownloadFeedCertificateViewController", bundle: Bundle(for: DownloadFeedCertificateViewController.self))
+        downloadFeedCertificateViewController.targetFeed = targetFeedItem
+        downloadFeedCertificateViewController.mediaFetcher = mediaFetcher
+        downloadFeedCertificateViewController.themeManager = themeManager
+        downloadFeedCertificateViewController.requestCoordinator = requestCoordinator
+        downloadFeedCertificateViewController.delegate = self
+        do{
+            try downloadFeedCertificateViewController.presentDrawer()
+        }catch {
+            
+        }
+    }
+    
+    func didFinishSavingCertificate() {
+        
     }
     
     private func openFeedEditor(_ feed : FeedsItemProtocol){

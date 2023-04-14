@@ -118,7 +118,13 @@ class CommonFeedsSectionFactory{
                 tableview: targetTableView,
                 themeManager: themeManager, selectedTab: selectedTab ?? ""
             )
-        
+        case .Greeting:
+            return NominationFeedContentCoordinator(
+                feedsDatasource: feedsDatasource,
+                mediaFetcher: mediaFetcher,
+                tableview: targetTableView,
+                themeManager: themeManager, selectedTab: selectedTab ?? ""
+            )
         }
     }
 }

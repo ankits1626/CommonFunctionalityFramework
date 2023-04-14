@@ -58,6 +58,12 @@
 		0F602221287E7EDC00D852BD /* BOUSApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602220287E7EDB00D852BD /* BOUSApprovalDetailViewController.swift */; };
 		0F602223287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */; };
 		0F72619528E6D5CF00EECB50 /* FTImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F72619428E6D5CF00EECB50 /* FTImageSize.swift */; };
+		0F7AA80929D54C84006DF6FE /* UIView+AnimateShowHideViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AA80829D54C84006DF6FE /* UIView+AnimateShowHideViewExtension.swift */; };
+		0F7AA81829D7F2B9006DF6FE /* DownloadFeedCertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AA81629D7F2B9006DF6FE /* DownloadFeedCertificateViewController.swift */; };
+		0F7AA81929D7F2B9006DF6FE /* DownloadFeedCertificateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7AA81729D7F2B9006DF6FE /* DownloadFeedCertificateViewController.xib */; };
+		0F7AA81E29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AA81C29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.swift */; };
+		0F7AA81F29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7AA81D29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.xib */; };
+		0F7AA82B29D86859006DF6FE /* SaveCertificateNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AA82A29D86859006DF6FE /* SaveCertificateNetworkHandler.swift */; };
 		0F94B74F2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B74E2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift */; };
 		0F94B75128883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B75028883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift */; };
 		0F94B7542889051F003AC4C8 /* BOUSApprovalHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94B7532889051F003AC4C8 /* BOUSApprovalHeaderTableViewCell.swift */; };
@@ -81,6 +87,14 @@
 		0F9C4A7728B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C4A7628B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift */; };
 		0F9C4A7928B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C4A7828B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift */; };
 		0F9C4A7B28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9C4A7A28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift */; };
+		0FB1635529B71117000AA631 /* AnniversaryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1635229B71117000AA631 /* AnniversaryDetailTableViewCell.swift */; };
+		0FB1635629B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1635329B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift */; };
+		0FB1635729B71117000AA631 /* AnniversaryDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FB1635429B71117000AA631 /* AnniversaryDetailTableViewCell.xib */; };
+		0FB1635D29B7159A000AA631 /* BOUSAnniversaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FB1635A29B7159A000AA631 /* BOUSAnniversaryTableViewCell.xib */; };
+		0FB1635E29B7159A000AA631 /* BOUSAnniversaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1635B29B7159A000AA631 /* BOUSAnniversaryTableViewCell.swift */; };
+		0FB1635F29B7159A000AA631 /* BOUSAnniversaryTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1635C29B7159A000AA631 /* BOUSAnniversaryTableViewCellCoordinator.swift */; };
+		0FB1636129B71625000AA631 /* GreetingsAnniAndBday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1636029B71625000AA631 /* GreetingsAnniAndBday.swift */; };
+		0FB1643029B72E91000AA631 /* GreetingsWishesFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1642F29B72E91000AA631 /* GreetingsWishesFetcher.swift */; };
 		0FB4AFC228BCE7360020008B /* BOUSGetApprovalAwardHistoryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB4AFC128BCE7360020008B /* BOUSGetApprovalAwardHistoryWorker.swift */; };
 		0FB4AFC428BCF5D30020008B /* BOUSApprovalHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB4AFC328BCF5D30020008B /* BOUSApprovalHistory.swift */; };
 		0FB4AFD028BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB4AFCF28BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift */; };
@@ -355,7 +369,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../CF/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
+		0193A98AAECFC069D0305275 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "../../2CpF/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
 		0F31325F2862D8470017B28C /* CommonOutastandingImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOutastandingImageTableViewCell.swift; sourceTree = "<group>"; };
 		0F3132602862D8470017B28C /* CommonOutastandingImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonOutastandingImageTableViewCell.xib; sourceTree = "<group>"; };
 		0F3132612862D8470017B28C /* OutsandingImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsandingImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -407,6 +421,12 @@
 		0F602222287E86BF00D852BD /* BOUSAwardLevelProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardLevelProgressViewController.swift; sourceTree = "<group>"; };
 		0F72619328E5F49A00EECB50 /* CommonFunctionalityModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CommonFunctionalityModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		0F72619428E6D5CF00EECB50 /* FTImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTImageSize.swift; sourceTree = "<group>"; };
+		0F7AA80829D54C84006DF6FE /* UIView+AnimateShowHideViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AnimateShowHideViewExtension.swift"; sourceTree = "<group>"; };
+		0F7AA81629D7F2B9006DF6FE /* DownloadFeedCertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFeedCertificateViewController.swift; sourceTree = "<group>"; };
+		0F7AA81729D7F2B9006DF6FE /* DownloadFeedCertificateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadFeedCertificateViewController.xib; sourceTree = "<group>"; };
+		0F7AA81C29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaForCertificateDownloadCollectionViewCell.swift; sourceTree = "<group>"; };
+		0F7AA81D29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaForCertificateDownloadCollectionViewCell.xib; sourceTree = "<group>"; };
+		0F7AA82A29D86859006DF6FE /* SaveCertificateNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCertificateNetworkHandler.swift; sourceTree = "<group>"; };
 		0F94B74E2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalsDetailModel.swift; sourceTree = "<group>"; };
 		0F94B75028883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGetSelectedApprovalWorker.swift; sourceTree = "<group>"; };
 		0F94B7532889051F003AC4C8 /* BOUSApprovalHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -430,6 +450,14 @@
 		0F9C4A7628B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalAwardCategoryWorker.swift; sourceTree = "<group>"; };
 		0F9C4A7828B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalAwardViewController.swift; sourceTree = "<group>"; };
 		0F9C4A7A28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalAwardLevelCollectionViewCell.swift; sourceTree = "<group>"; };
+		0FB1635229B71117000AA631 /* AnniversaryDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnniversaryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		0FB1635329B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnniversaryTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		0FB1635429B71117000AA631 /* AnniversaryDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnniversaryDetailTableViewCell.xib; sourceTree = "<group>"; };
+		0FB1635A29B7159A000AA631 /* BOUSAnniversaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BOUSAnniversaryTableViewCell.xib; sourceTree = "<group>"; };
+		0FB1635B29B7159A000AA631 /* BOUSAnniversaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOUSAnniversaryTableViewCell.swift; sourceTree = "<group>"; };
+		0FB1635C29B7159A000AA631 /* BOUSAnniversaryTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BOUSAnniversaryTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		0FB1636029B71625000AA631 /* GreetingsAnniAndBday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingsAnniAndBday.swift; sourceTree = "<group>"; };
+		0FB1642F29B72E91000AA631 /* GreetingsWishesFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingsWishesFetcher.swift; sourceTree = "<group>"; };
 		0FB4AFC128BCE7360020008B /* BOUSGetApprovalAwardHistoryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGetApprovalAwardHistoryWorker.swift; sourceTree = "<group>"; };
 		0FB4AFC328BCF5D30020008B /* BOUSApprovalHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSApprovalHistory.swift; sourceTree = "<group>"; };
 		0FB4AFCF28BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardLevelNominationTableViewCell.swift; sourceTree = "<group>"; };
@@ -445,7 +473,7 @@
 		0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BOUSFeedGrayDivider.xib; sourceTree = "<group>"; };
 		0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSFeedGrayDivider.swift; sourceTree = "<group>"; };
 		0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGrayDividerCoordinator.swift; sourceTree = "<group>"; };
-		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../CF/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../2CpF/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980D12192614285E00995F41 /* Pods_RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980D121E2614295F00995F41 /* RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollSubmitButtonCell.swift; sourceTree = "<group>"; };
@@ -871,6 +899,26 @@
 			path = "Poll MultipleImages";
 			sourceTree = "<group>";
 		};
+		0F7AA80729D54C4A006DF6FE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0F7AA80829D54C84006DF6FE /* UIView+AnimateShowHideViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0F7AA81529D7F1FD006DF6FE /* FeedCertificate */ = {
+			isa = PBXGroup;
+			children = (
+				0F7AA81629D7F2B9006DF6FE /* DownloadFeedCertificateViewController.swift */,
+				0F7AA81729D7F2B9006DF6FE /* DownloadFeedCertificateViewController.xib */,
+				0F7AA81C29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.swift */,
+				0F7AA81D29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.xib */,
+				0F7AA82A29D86859006DF6FE /* SaveCertificateNetworkHandler.swift */,
+			);
+			path = FeedCertificate;
+			sourceTree = "<group>";
+		};
 		0F94B75228890507003AC4C8 /* DetailCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +971,26 @@
 				0F961A1928E457820003FE8D /* BOUSThreeImageDetailCoordinator.swift */,
 			);
 			path = "Three Images List";
+			sourceTree = "<group>";
+		};
+		0FB1635129B7110B000AA631 /* AnniversayCell */ = {
+			isa = PBXGroup;
+			children = (
+				0FB1635229B71117000AA631 /* AnniversaryDetailTableViewCell.swift */,
+				0FB1635429B71117000AA631 /* AnniversaryDetailTableViewCell.xib */,
+				0FB1635329B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift */,
+			);
+			path = AnniversayCell;
+			sourceTree = "<group>";
+		};
+		0FB1635829B7154F000AA631 /* Anniversary Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0FB1635B29B7159A000AA631 /* BOUSAnniversaryTableViewCell.swift */,
+				0FB1635A29B7159A000AA631 /* BOUSAnniversaryTableViewCell.xib */,
+				0FB1635C29B7159A000AA631 /* BOUSAnniversaryTableViewCellCoordinator.swift */,
+			);
+			path = "Anniversary Cell";
 			sourceTree = "<group>";
 		};
 		0FEB520C286C2B8C00BA8ACF /* ImageViewSection */ = {
@@ -1014,6 +1082,7 @@
 		9811DD53241AC84D003B91FD /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				0FB1642F29B72E91000AA631 /* GreetingsWishesFetcher.swift */,
 				983C4F8C2462F09E00FDEB76 /* PostDeleteWorker.swift */,
 				9811DD54241AC860003B91FD /* FeedFetcher.swift */,
 				98726545245044C100CD4530 /* FeedClapToggler.swift */,
@@ -1115,6 +1184,7 @@
 		9868BFFE240F584500B12321 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0FB1636029B71625000AA631 /* GreetingsAnniAndBday.swift */,
 				9868BFEE240EA5CB00B12321 /* FeedsItemProtocol.swift */,
 				9868BFFF240F585900B12321 /* Feeds.swift */,
 				980F563E245C03920093AFE7 /* FeedAuthor.swift */,
@@ -1591,6 +1661,7 @@
 		98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
 			isa = PBXGroup;
 			children = (
+				0F7AA80729D54C4A006DF6FE /* Extensions */,
 				0F72619428E6D5CF00EECB50 /* FTImageSize.swift */,
 				98F62690265787BC0086B818 /* UILoadControl */,
 				9876834626143D6A00B597B0 /* CoreData */,
@@ -1616,6 +1687,8 @@
 			isa = PBXGroup;
 			children = (
 				BCA04B142887B4B7009457AB /* MutiOrg Selection */,
+				0F7AA81529D7F1FD006DF6FE /* FeedCertificate */,
+				BE048C3528C6226F008E9565 /* EditCommentDrawer */,
 				BEAAD1FB26FAE8630069C5C1 /* PinToTopConfirmationDrawer */,
 				98D5E88F25314BE800813991 /* ReportAbuseConfirmationDrawer */,
 				98B90E09240CAD010013E9D2 /* FeedsCoordinator.swift */,
@@ -1648,6 +1721,7 @@
 		98B90DED240CAD010013E9D2 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0FB1635129B7110B000AA631 /* AnniversayCell */,
 				0F32907028897025008BF09D /* OutStandingCell */,
 				9868C00F240F774900B12321 /* Polls Cells */,
 				9868C00E240F773300B12321 /* Feed Bottom Cell */,
@@ -1967,6 +2041,7 @@
 		BE94C312282170F800E323E1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0FB1635829B7154F000AA631 /* Anniversary Cell */,
 				0F96194C28E428600003FE8D /* ListingThreeImages */,
 				0F96194528E416B00003FE8D /* ListingTwoImages */,
 				0F32908C288A5345008BF09D /* ReactionDetailScrollCell */,
@@ -2169,6 +2244,7 @@
 				BEC2B25D26FD996F008417C3 /* SingleVideoTableViewCell.xib in Resources */,
 				0F3132632862D8470017B28C /* CommonOutastandingImageTableViewCell.xib in Resources */,
 				BEC2B25926FD98D8008417C3 /* FeedTextTableViewCell.xib in Resources */,
+				0F7AA81F29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.xib in Resources */,
 				BEC2B26F26FD9CE0008417C3 /* LikeListViewController.xib in Resources */,
 				BEAE357E270ABD6400E95DF9 /* DeletePostConfirmationDrawer.xib in Resources */,
 				BEAE3580270ABE2C00E95DF9 /* ReportAbuseConfirmationDrawer.xib in Resources */,
@@ -2182,6 +2258,7 @@
 				BEC2B26D26FD9C27008417C3 /* LikedByTableViewCell.xib in Resources */,
 				BC37F2A828894F620075E7CB /* FeedOrgaisationTableViewHeader.xib in Resources */,
 				BEC2B27F26FD9FD1008417C3 /* FeedGifTableViewCell.xib in Resources */,
+				0F7AA81929D7F2B9006DF6FE /* DownloadFeedCertificateViewController.xib in Resources */,
 				BEC2B26126FD99DC008417C3 /* FeedBottomTableViewCell.xib in Resources */,
 				BE39BA4728A91856004ADA9E /* PostPollTopTableViewCellTableViewCell.xib in Resources */,
 				BEC2B28B26FDA1EF008417C3 /* FeedCommentTableViewCell.xib in Resources */,
@@ -2190,6 +2267,7 @@
 				BEC2B25F26FD99A3008417C3 /* SingleImageTableViewCell.xib in Resources */,
 				BE39BA4F28A9260E004ADA9E /* PostPollTitleTableViewCell.xib in Resources */,
 				0F6021B12874162700D852BD /* CommentsTableViewCell.xib in Resources */,
+				0FB1635729B71117000AA631 /* AnniversaryDetailTableViewCell.xib in Resources */,
 				BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */,
 				BEC2B25B26FD992A008417C3 /* MultipleMediaTableViewCell.xib in Resources */,
 				0F6021A3287414F800D852BD /* CommonFeedDescriptionTableViewCell.xib in Resources */,
@@ -2246,6 +2324,7 @@
 				0F32909D288E3EB6008BF09D /* Media.xcassets in Resources */,
 				BEC2B28D26FDA254008417C3 /* ClappedByTableViewCell.xib in Resources */,
 				BE7C9B00288AD0CA00E7CAE4 /* NoEntryViewController.xib in Resources */,
+				0FB1635D29B7159A000AA631 /* BOUSAnniversaryTableViewCell.xib in Resources */,
 				BEC2B27326FD9DBD008417C3 /* TagUserTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2320,6 +2399,7 @@
 				98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */,
 				BEB0084728A76DF200E3F1B0 /* AddECardTableViewCell.swift in Sources */,
 				9873D63F24C09C830041504C /* FeedDescriptionParser.swift in Sources */,
+				0FB1635529B71117000AA631 /* AnniversaryDetailTableViewCell.swift in Sources */,
 				98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */,
 				BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */,
 				BEAFDF2B29E541CF00C04FC4 /* TopMonthlyHeroesWorker.swift in Sources */,
@@ -2376,6 +2456,7 @@
 				BE66CCBE28A66E4C00C7CE83 /* FeedEcardSelectViewController.swift in Sources */,
 				9872654D2456C08E00CD4530 /* EditablePostMediaRepository.swift in Sources */,
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
+				0F7AA80929D54C84006DF6FE /* UIView+AnimateShowHideViewExtension.swift in Sources */,
 				98BF39CC2588D11100498C85 /* TagUserListProvider.swift in Sources */,
 				9876834C26143D6A00B597B0 /* CFFCoreDataManager.swift in Sources */,
 				0F961A1C28E457900003FE8D /* BOUSTwoImageDetailCoordinator.swift in Sources */,
@@ -2398,7 +2479,9 @@
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				BC37F29C288947020075E7CB /* FeedOrganisationDataManager.swift in Sources */,
+				0F7AA82B29D86859006DF6FE /* SaveCertificateNetworkHandler.swift in Sources */,
 				BEBFD1E428A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift in Sources */,
+				0F7AA81E29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.swift in Sources */,
 				0F96194828E416F00003FE8D /* BOUSTwoImageTableViewCell.swift in Sources */,
 				987D0BAB2583DA58001A0F07 /* ASMentionText.swift in Sources */,
 				0FED7EF3287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift in Sources */,
@@ -2411,6 +2494,7 @@
 				BEBFD1E728A9F167006E5D8B /* PostPollLikeTableViewCell.swift in Sources */,
 				0F961A1328E457550003FE8D /* BOUSTwoImageDetailTableViewCell.swift in Sources */,
 				0F72619528E6D5CF00EECB50 /* FTImageSize.swift in Sources */,
+				0FB1635629B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift in Sources */,
 				BE66CCB928A65A0800C7CE83 /* SelectPostTypeTableViewCell.swift in Sources */,
 				9868C043240F9D4F00B12321 /* SingleVideoTableViewCellCoordinator.swift in Sources */,
 				BEAFDF2E29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.swift in Sources */,
@@ -2421,11 +2505,13 @@
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
 				BCE14D36290CFEEB008806EA /* PostPreviewSectionFactory.swift in Sources */,
+				0FB1635F29B7159A000AA631 /* BOUSAnniversaryTableViewCellCoordinator.swift in Sources */,
 				0F602221287E7EDC00D852BD /* BOUSApprovalDetailViewController.swift in Sources */,
 				0F32908128897B1B008BF09D /* BOUSMultipleImageTableViewCell.swift in Sources */,
 				0F32907A28897717008BF09D /* BOUSSingleImageTableViewCell.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
+				0FB1636129B71625000AA631 /* GreetingsAnniAndBday.swift in Sources */,
 				987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */,
 				BE7C9AFF288AD0CA00E7CAE4 /* NoEntryViewController.swift in Sources */,
 				987D0BAF2583DA58001A0F07 /* TagUserTableViewCell.swift in Sources */,
@@ -2450,6 +2536,7 @@
 				0F60219428716B7900D852BD /* CommonNominationSelectAllCellCoordinator.swift in Sources */,
 				0FED7EFF2880430100D490BB /* BOUSFeedGrayDivider.swift in Sources */,
 				0F6021BD28741C8000D852BD /* CommentLikeWithCountCellCoordinator.swift in Sources */,
+				0FB1635E29B7159A000AA631 /* BOUSAnniversaryTableViewCell.swift in Sources */,
 				0F32907D28897729008BF09D /* BOUSSingleImageTableViewCellCoordinator.swift in Sources */,
 				0F32907628897073008BF09D /* BOUSDetailFeedOutstandingTableViewCellCoordinator.swift in Sources */,
 				98575A3F2532BBC1007644FE /* ReportAbuseWorker.swift in Sources */,
@@ -2486,6 +2573,7 @@
 				BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */,
 				BE66CCC128A6701400C7CE83 /* FeedsEcardListResponseValues.swift in Sources */,
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
+				0F7AA81829D7F2B9006DF6FE /* DownloadFeedCertificateViewController.swift in Sources */,
 				BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */,
 				BCE14D32290C3F9C008806EA /* PostPreviewViewController.swift in Sources */,
 				BE500D8528229B5500423E5A /* CommonPressLikeButtonTableViewCell.swift in Sources */,
@@ -2512,6 +2600,7 @@
 				BEB0084428A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift in Sources */,
 				0FED7EF7287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift in Sources */,
 				BE94C30F2821417800E323E1 /* AppreciationFeedContentCoordinator.swift in Sources */,
+				0FB1643029B72E91000AA631 /* GreetingsWishesFetcher.swift in Sources */,
 				0F94B75A2889055B003AC4C8 /* BOUSApprovalMessageTableViewCell.swift in Sources */,
 				9868C03D240F9CED00B12321 /* FeedTitleTableViewCellCoordinator.swift in Sources */,
 				9868BFEF240EA5CB00B12321 /* FeedsItemProtocol.swift in Sources */,
