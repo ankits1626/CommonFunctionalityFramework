@@ -719,29 +719,8 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
 //            )
 //        }
         
-        if isPostPollType {
-            if targetFeedItem.isFeedReportAbuseAllowed(){
-                self.showReportAbuseConfirmation(feedIdentifier)
-           }
-        }else {
-            if targetFeedItem.getPostType() == .Appreciation {
-                let downloadFeedCertificateViewController = DownloadFeedCertificateViewController(nibName: "DownloadFeedCertificateViewController", bundle: Bundle(for: DownloadFeedCertificateViewController.self))
-                downloadFeedCertificateViewController.targetFeed = targetFeedItem
-                downloadFeedCertificateViewController.mediaFetcher = mediaFetcher
-                downloadFeedCertificateViewController.themeManager = themeManager
-                downloadFeedCertificateViewController.is_download_choice_needed = is_download_choice_needed
-                downloadFeedCertificateViewController.requestCoordinator = requestCoordinator
-                downloadFeedCertificateViewController.delegate = self
-                do{
-                    try downloadFeedCertificateViewController.presentDrawer()
-                }catch {
-                    
-                }
-            }else {
-                if targetFeedItem.isFeedReportAbuseAllowed(){
-                    self.showReportAbuseConfirmation(feedIdentifier)
-               }
-            }
+        if targetFeedItem.isFeedReportAbuseAllowed(){
+            self.showReportAbuseConfirmation(feedIdentifier)
         }
     }
     
