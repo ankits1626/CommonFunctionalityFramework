@@ -19,7 +19,7 @@ class FeedFetcher  {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     
-    func fetchFeeds(nextPageUrl : String?, feedType: String?, searchText: String?,feedTypePk : Int = 0,organisationPK : Int = 0,departmentPK : Int = 0,dateRangePK : Int = 0,coreValuePk : Int = 0,isComingFromProfile : Bool = false, completionHandler: @escaping FeedFetcherHandler) {
+    func fetchFeeds(nextPageUrl : String?, feedType: String?, searchText: String?,feedTypePk : Int = 0,organisationPK : Int = 0,departmentPK : Int = 0,dateRangePK : Int = 0,coreValuePk : Int = 0,isComingFromProfile : Bool = false,selectedTopGetterPk : Int = 0,  completionHandler: @escaping FeedFetcherHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: FeedFetchRequestGenerator(
@@ -31,7 +31,8 @@ class FeedFetcher  {
                     _departmentPK: departmentPK,
                     _dateRangePK: dateRangePK,
                     _coreValuePk: coreValuePk,
-                    _isComingFromProfile: isComingFromProfile
+                    _isComingFromProfile: isComingFromProfile,
+                    _selectedFeedPk: selectedTopGetterPk
                 ),
                 dataParser: FeedFetchDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
@@ -81,8 +82,9 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     var departmentPK : Int = 0
     var dateRangePK : Int = 0
     var coreValuePk : Int = 0
+    var selectedFeedPk : Int = 0
     
-    init( feedID: Int?, nextPageUrl : String?, feedType: String?, searchText: String?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int, _isComingFromProfile : Bool) {
+    init( feedID: Int?, nextPageUrl : String?, feedType: String?, searchText: String?, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int, _isComingFromProfile : Bool, _selectedFeedPk : Int = 0) {
          self.feedID = feedID
         self.nextPageUrl = nextPageUrl
         self.feedType = feedType
@@ -93,6 +95,7 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
         self.departmentPK = _departmentPK
         self.dateRangePK = _dateRangePK
         self.coreValuePk = _coreValuePk
+        self.selectedFeedPk = _selectedFeedPk
         self.isComingFromProfile = _isComingFromProfile
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
@@ -154,6 +157,7 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
                 endPoints = appendFeedDepartment(endPoints)
                 endPoints = appendFeedDateRange(endPoints)
                 endPoints = appendFeedCoreValue(endPoints)
+                endPoints = appendTopGettersPk(endPoints)
                 
                 if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                     let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
@@ -232,6 +236,17 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
                 return "\(baseEndpoint)&user_strength=\(self.coreValuePk)"
             }else{
                 return "\(baseEndpoint)?user_strength=\(self.coreValuePk)"
+            }
+        }
+        return baseEndpoint
+    }
+    
+    private func appendTopGettersPk(_ baseEndpoint : String) -> String{
+        if self.selectedFeedPk != 0 {
+            if baseEndpoint.contains("?") {
+                return "\(baseEndpoint)&user=\(self.selectedFeedPk)"
+            }else{
+                return "\(baseEndpoint)?user=\(self.selectedFeedPk)"
             }
         }
         return baseEndpoint
