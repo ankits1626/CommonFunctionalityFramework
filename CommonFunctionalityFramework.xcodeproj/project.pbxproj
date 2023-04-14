@@ -110,6 +110,7 @@
 		0FED7EFD288042F300D490BB /* BOUSFeedGrayDivider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */; };
 		0FED7EFF2880430100D490BB /* BOUSFeedGrayDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */; };
 		0FED7F012880438600D490BB /* BOUSGrayDividerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */; };
+		0FF47D7429DBF2FB00767A42 /* FeedFetchDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF47D7329DBF2FB00767A42 /* FeedFetchDetailsWorker.swift */; };
 		980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 980D121E2614295F00995F41 /* RewardzCommonComponents.framework */; };
 		980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */; };
 		980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */; };
@@ -473,6 +474,7 @@
 		0FED7EFC288042F300D490BB /* BOUSFeedGrayDivider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BOUSFeedGrayDivider.xib; sourceTree = "<group>"; };
 		0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSFeedGrayDivider.swift; sourceTree = "<group>"; };
 		0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSGrayDividerCoordinator.swift; sourceTree = "<group>"; };
+		0FF47D7329DBF2FB00767A42 /* FeedFetchDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetchDetailsWorker.swift; sourceTree = "<group>"; };
 		34BF6C9EDD4F03C0FA2B2D28 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "../../2CpF/Pods/Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		980D12192614285E00995F41 /* Pods_RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		980D121E2614295F00995F41 /* RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1108,6 +1110,7 @@
 			children = (
 				9820C108243F5C5100A6A30A /* FeedCommentPostWorker.swift */,
 				9820C10A243F618A00A6A30A /* FeedCommentsFetcher.swift */,
+				0FF47D7329DBF2FB00767A42 /* FeedFetchDetailsWorker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -2614,6 +2617,7 @@
 				BCCF646328EC002A0033AF2C /* ImageAttachmentOptionsViewController.swift in Sources */,
 				9873D63524BABF300041504C /* FeedEditorAttachedGifTableViewCellCoordinator.swift in Sources */,
 				9868C0E724125ACC00B12321 /* FeedDetailSectionFactory.swift in Sources */,
+				0FF47D7429DBF2FB00767A42 /* FeedFetchDetailsWorker.swift in Sources */,
 				BE39BA4E28A9260E004ADA9E /* PostPollTitleTableViewCell.swift in Sources */,
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
 				BE66CCB228A6543F00C7CE83 /* SelectPostMediaTableViewCell.swift in Sources */,

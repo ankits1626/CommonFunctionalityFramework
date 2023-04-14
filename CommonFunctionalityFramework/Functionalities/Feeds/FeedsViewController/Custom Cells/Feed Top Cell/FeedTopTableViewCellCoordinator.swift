@@ -29,6 +29,7 @@ struct FeedCellLoadDataModel {
     weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var isFeedDetailPage : Bool
     var selectedTab : String
+    var canDownload : Bool = false
 }
 
 struct FeedCellGetHeightModel {
@@ -159,14 +160,32 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                     )
                 }
             )
-            cell.editFeedButton?.handleControlEvent(
-                event: .touchUpInside,
-                buttonActionBlock: {
-                    inputModel.delegate?.showFeedEditOptions(
-                        targetView: cell.editFeedButton,
-                        feedIdentifier: feed.feedIdentifier
-                    )
-            })
+            
+            if selectedtabValue == "received" && feed.getPostType() == .Appreciation || selectedtabValue == "SearchFromHome" && feed.getPostType() == .Appreciation {
+                if inputModel.canDownload {
+                    cell.editFeedButton?.setImage(UIImage(named: "icon_setasdefault-2"), for: .normal)
+                    cell.editFeedButton?.isHidden = false
+                    cell.editFeedButton?.handleControlEvent(
+                        event: .touchUpInside,
+                        buttonActionBlock: {
+                            inputModel.delegate?.showFeedEditOptions(
+                                targetView: cell.editFeedButton,
+                                feedIdentifier: feed.feedIdentifier
+                            )
+                    })
+                }else {
+                    cell.editFeedButton?.isHidden = true
+                }
+            }else {
+                cell.editFeedButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        inputModel.delegate?.showFeedEditOptions(
+                            targetView: cell.editFeedButton,
+                            feedIdentifier: feed.feedIdentifier
+                        )
+                })
+            }
         }
     }
     
