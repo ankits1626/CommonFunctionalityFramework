@@ -31,6 +31,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var coreValuePk : Int = 0
     var isCreationButtonRequired : Bool = false
     @IBOutlet weak var topLeaderboardCollectionView : UICollectionView?
+    @IBOutlet weak var topLeaderboardHeightConstraints : NSLayoutConstraint?
     private var fetchedData = TopHeroesFetchedData()
     var selectedTopUserPk : Int = 0
     
@@ -49,6 +50,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }()
     let currentWindow: UIWindow? = UIApplication.shared.keyWindow!
     private var lastFetchedFeeds : FetchedFeedModel?
+    var hideTopLeaderboard : Bool = true
     
     private lazy var refreshControl : UIRefreshControl  = {
         let refreshControl = UIRefreshControl()
@@ -72,7 +74,17 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "FeedsScroll"), object: nil)
         UserDefaults.standard.setValue(selectedTabType, forKey: "selectedTab")
         UserDefaults.standard.synchronize()
-        registerCollectionViewCell()
+        if hideTopLeaderboard {
+            topLeaderboardHeightConstraints?.constant = 0
+            clearAnyExistingFeedsData {[weak self] in
+                self?.initializeFRC()
+                self?.setup()
+                self?.loadFeeds()
+            }
+        }else{
+            topLeaderboardHeightConstraints?.constant = 200
+            registerCollectionViewCell()
+        }
         if selectedTabType == "SearchFromHome" {
             self.feedsTable?.alwaysBounceVertical = false
             self.feedsTable?.showsVerticalScrollIndicator = false
