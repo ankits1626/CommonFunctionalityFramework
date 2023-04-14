@@ -36,6 +36,8 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     var selectedTab = ""
     @IBOutlet weak var downloadCompletedView: UIView!
     var isPostPollType : Bool = false
+    var is_download_choice_needed : Bool = false
+    var can_download : Bool = false
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
@@ -46,7 +48,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
             themeManager: themeManager,
             selectedOptionMapper: pollSelectedAnswerMapper,
             selectedTab: selectedTab,
-            _isPostPoll: isPostPollType, mainAppCoordinator: mainAppCoordinator
+            _isPostPoll: isPostPollType, mainAppCoordinator: mainAppCoordinator, canDownload: can_download
         )
     }()
     var pollSelectedAnswerMapper: SelectedPollAnswerMapper?
@@ -151,6 +153,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         clearAnyExistingFeedsData {[weak self] in
             ASMentionCoordinator.shared.delegate = self
             self?.initializeFRC()
+            self?.fetchFeedDetail()
             self?.setup()
             self?.fetchComments()
             ASChatBarview().setNeedsDisplay()
@@ -246,6 +249,24 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
                 DispatchQueue.main.async {[weak self] in
                     self?.clappedByUsers = likeList
                     self?.feedDetailTableView?.reloadData()
+                }
+            case .SuccessWithNoResponseData:
+                fallthrough
+            case .Failure(error: _):
+                print("<<<<<<< error while fetching like list")
+            }
+        }
+    }
+    
+    private func fetchFeedDetail() {
+        FeedDetailsFetcherFormWorker(networkRequestCoordinator: requestCoordinator).getFeedDetailsFetcher(feedId: targetFeedItem.feedIdentifier) { (result) in
+            switch result{
+            case .Success(result: let result):
+                self.can_download = result["can_download"] as? Bool ?? false
+                self.is_download_choice_needed = result["is_download_choice_needed"] as? Bool ?? false
+                DispatchQueue.main.async {
+                    self.feedDetailSectionFactory.reloadDownloadCertificateButton(canDownload: self.can_download)
+                    self.feedDetailTableView?.reloadData()
                 }
             case .SuccessWithNoResponseData:
                 fallthrough
@@ -689,26 +710,46 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
 //                )
 //            )
 //        }
-//        if targetFeedItem.isFeedReportAbuseAllowed(){
-//            self.showReportAbuseConfirmation(feedIdentifier)
-//       }
         
-        let downloadFeedCertificateViewController = DownloadFeedCertificateViewController(nibName: "DownloadFeedCertificateViewController", bundle: Bundle(for: DownloadFeedCertificateViewController.self))
-        downloadFeedCertificateViewController.targetFeed = targetFeedItem
-        downloadFeedCertificateViewController.mediaFetcher = mediaFetcher
-        downloadFeedCertificateViewController.themeManager = themeManager
-        downloadFeedCertificateViewController.requestCoordinator = requestCoordinator
-        downloadFeedCertificateViewController.delegate = self
-        do{
-            try downloadFeedCertificateViewController.presentDrawer()
-        }catch {
-            
+        if isPostPollType {
+            if targetFeedItem.isFeedReportAbuseAllowed(){
+                self.showReportAbuseConfirmation(feedIdentifier)
+           }
+        }else {
+            if targetFeedItem.getPostType() == .Appreciation {
+                let downloadFeedCertificateViewController = DownloadFeedCertificateViewController(nibName: "DownloadFeedCertificateViewController", bundle: Bundle(for: DownloadFeedCertificateViewController.self))
+                downloadFeedCertificateViewController.targetFeed = targetFeedItem
+                downloadFeedCertificateViewController.mediaFetcher = mediaFetcher
+                downloadFeedCertificateViewController.themeManager = themeManager
+                downloadFeedCertificateViewController.is_download_choice_needed = is_download_choice_needed
+                downloadFeedCertificateViewController.requestCoordinator = requestCoordinator
+                downloadFeedCertificateViewController.delegate = self
+                do{
+                    try downloadFeedCertificateViewController.presentDrawer()
+                }catch {
+                    
+                }
+            }else {
+                if targetFeedItem.isFeedReportAbuseAllowed(){
+                    self.showReportAbuseConfirmation(feedIdentifier)
+               }
+            }
         }
     }
     
-    func didFinishSavingCertificate() {
-        
+    func didFinishSavingCertificate(didSave: Bool) {
+        if didSave {
+            didFinishSavingCertificate()
+        }
+        is_download_choice_needed = false
     }
+    
+    func didFinishSavingCertificate() {
+          downloadCompletedView.animShow()
+          DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+              self.downloadCompletedView.animHide()
+          }
+      }
     
     private func openFeedEditor(_ feed : FeedsItemProtocol){
         FeedComposerCoordinator(

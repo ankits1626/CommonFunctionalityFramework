@@ -17,7 +17,7 @@ class FeedCertificateDrawerError {
 }
 
 protocol CompletedCertificatedDownload {
-    func didFinishSavingCertificate()
+    func didFinishSavingCertificate(didSave: Bool)
 }
 
 class DownloadFeedCertificateViewController: UIViewController {
@@ -38,9 +38,12 @@ class DownloadFeedCertificateViewController: UIViewController {
     var selectedIndex : Int!
     var delegate: CompletedCertificatedDownload?
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
+    var is_download_choice_needed : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //saveCertificate(urlString: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")
+        //saveCertificate(urlString: "https://www.africau.edu/images/default/sample.pdf")
         setupCollectionView()
     }
     
@@ -55,27 +58,38 @@ class DownloadFeedCertificateViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = margin
         flowLayout.minimumLineSpacing = margin
         flowLayout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-        if let mediaList = targetFeed?.getMediaList() {
-            if mediaList.count == 0 {
-                self.imageHolderView.isHidden = true
-            }else if mediaList.count > 3 {
-                self.collectionViewHolderHeight.constant = 300
-            }else {
-                if mediaList.count == 1 {
-                    self.selectedIndex = 0
+        if is_download_choice_needed {
+            if let mediaList = targetFeed?.getMediaList() {
+                if mediaList.count == 0 {
+                    self.imageHolderView.isHidden = true
+                }else if mediaList.count > 3 {
+                    self.imageHolderView.isHidden = false
+                    self.collectionViewHolderHeight.constant = 300
+                }else {
+                    if mediaList.count == 1 {
+                        self.selectedIndex = 0
+                    }
+                    self.imageHolderView.isHidden = false
+                    self.collectionViewHolderHeight.constant = 150
                 }
-                self.collectionViewHolderHeight.constant = 150
-            }
-        }else {
-            if let giphy = targetFeed?.getGiphy() {
-                self.selectedIndex = 0
-                self.imageHolderView.isHidden = false
             }else {
-                self.imageHolderView.isHidden = true
+                setUpCollectionViewForGifIfPresent()
             }
+        } else {
+            setUpCollectionViewForGifIfPresent()
         }
+        
         pdfImg.setImageColor(color: UIColor.getControlColor())
         jpgImg.setImageColor(color: UIColor.getControlColor())
+    }
+    
+    func setUpCollectionViewForGifIfPresent() {
+        if let giphy = targetFeed?.getGiphy(), !giphy.isEmpty {
+            self.selectedIndex = 0
+            self.imageHolderView.isHidden = false
+        }else {
+            self.imageHolderView.isHidden = true
+        }
     }
     
     @IBAction func jpgPressed(_ sender: Any) {
@@ -84,21 +98,22 @@ class DownloadFeedCertificateViewController: UIViewController {
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            if let mediaList = targetFeed?.getMediaList() {
-                if mediaList.count == 0 {
-                    slideInTransitioningDelegate.direction = .bottom(height: 340)
-                }else if mediaList.count > 3 {
-                    slideInTransitioningDelegate.direction = .bottom(height: bottomViewHeight)
+            if is_download_choice_needed {
+                if let mediaList = targetFeed?.getMediaList() {
+                    if mediaList.count == 0 {
+                        slideInTransitioningDelegate.direction = .bottom(height: 340)
+                    }else if mediaList.count > 3 {
+                        slideInTransitioningDelegate.direction = .bottom(height: bottomViewHeight)
+                    }else {
+                        slideInTransitioningDelegate.direction = .bottom(height: 500)
+                    }
                 }else {
-                    slideInTransitioningDelegate.direction = .bottom(height: 500)
+                    setUpViewHeightForGif()
                 }
             }else {
-                if let giphy = targetFeed?.getGiphy() {
-                    slideInTransitioningDelegate.direction = .bottom(height: 500)
-                }else {
-                    slideInTransitioningDelegate.direction = .bottom(height: 340)
-                }
+                setUpViewHeightForGif()
             }
+            
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
@@ -107,39 +122,79 @@ class DownloadFeedCertificateViewController: UIViewController {
         }
     }
     
+    func setUpViewHeightForGif() {
+        if let giphy = targetFeed?.getGiphy(), !giphy.isEmpty {
+            slideInTransitioningDelegate.direction = .bottom(height: 500)
+        }else {
+            slideInTransitioningDelegate.direction = .bottom(height: 340)
+        }
+    }
+    
     func createUrlBasedOnImage(fileType: String) {
         var completeURL = ""
         if let baseUrl = requestCoordinator.getBaseUrlProvider().baseURLString(), let feedId = targetFeed?.feedIdentifier  {
-            if let mediaList = targetFeed?.getMediaList() {
-                if mediaList.count == 0 {
-                    completeURL = (baseUrl) + "/finance/api/download_certificate/\(feedId)/?appreciation=1&format_type=\(fileType)"
-                    saveCertificate(urlString: completeURL)
-                }else {
-                    if selectedIndex == nil {
-                        let alertView = UIAlertController(title: title, message: "Please select image", preferredStyle: .alert)
-                        let cancelAction = UIAlertAction(title: "OK".localized, style: .cancel, handler: nil)
-                        alertView.addAction(cancelAction)
-                        self.present(alertView, animated: true)
-                        return
-                    }
-                    if let ecardPk = mediaList[selectedIndex].getImagePK() {
-                        completeURL = (baseUrl) + "finance/api/download_certificate/\(feedId)/?appreciation=1&attachment_type=ecard&attachment_id=\(ecardPk)&format_type=\(fileType)"
+//            feedCertificateDownload(networkRequestCoordinator: requestCoordinator).downloadFeddCertificate(url: "finance/api/download_certificate/\(feedId)/?appreciation=1&format_type=\(fileType)") { (result) in
+//                DispatchQueue.main.async {
+//                    //self.loader.hideActivityIndicator(self.view)
+//                    switch result{
+//                    case .Success(result: let response):
+//                        if let dataValue = response["results"] as? NSArray {
+//                            print(dataValue)
+//                        }
+//                        do {
+//                            let data = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+//                            //self.constructData(data: data)
+//                        }catch {
+//                            debugPrint(error)
+//                        }
+//                    case .Failure(let error):
+//                        self.showAlert(title: NSLocalizedString("Error", comment: ""), message: error.displayableErrorMessage())
+//                    case .SuccessWithNoResponseData:
+//                        self.showAlert(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("UNEXPECTED RESPONSE", comment: ""))
+//                    }
+//                }
+//            }
+            
+            
+            if is_download_choice_needed {
+                if let mediaList = targetFeed?.getMediaList() {
+                    if mediaList.count == 0 {
+                        completeURL = (baseUrl) + "/finance/api/download_certificate/\(feedId)/?appreciation=1&format_type=\(fileType)"
                         saveCertificate(urlString: completeURL)
                     }else {
-                        let imagePk = mediaList[selectedIndex].getRemoteId()
-                        completeURL = (baseUrl) + "finance/api/download_certificate/\(feedId)/?appreciation=1&attachment_type=image&attachment_id=\(imagePk)&format_type=\(fileType)"
-                        saveCertificate(urlString: completeURL)
+                        if selectedIndex == nil {
+                            let alertView = UIAlertController(title: title, message: "Please select image", preferredStyle: .alert)
+                            let cancelAction = UIAlertAction(title: "OK".localized, style: .cancel, handler: nil)
+                            alertView.addAction(cancelAction)
+                            self.present(alertView, animated: true)
+                            return
+                        }
+                        if let ecardPk = mediaList[selectedIndex].getImagePK() {
+                            completeURL = (baseUrl) + "finance/api/download_certificate/\(feedId)/?appreciation=1&attachment_type=ecard&attachment_id=\(ecardPk)&format_type=\(fileType)"
+                            saveCertificate(urlString: completeURL)
+                        }else {
+                            let imagePk = mediaList[selectedIndex].getRemoteId()
+                            completeURL = (baseUrl) + "finance/api/download_certificate/\(feedId)/?appreciation=1&attachment_type=image&attachment_id=\(imagePk)&format_type=\(fileType)"
+                            saveCertificate(urlString: completeURL)
+                        }
                     }
+                }else {
+                    checkForGifOrNotReturnUrl(baseUrl: baseUrl, feedId: feedId, fileType: fileType)
                 }
             }else {
-                if let giphy = targetFeed?.getGiphy() {
-                    completeURL = (baseUrl) + "/finance/api/download_certificate/\(feedId)/?appreciation=1&format_type=gif"
-                    saveCertificate(urlString: completeURL)
-                }else {
-                    completeURL = (baseUrl) + "/finance/api/download_certificate/\(feedId)/?appreciation=1&format_type=\(fileType)"
-                    saveCertificate(urlString: completeURL)
-                }
+                checkForGifOrNotReturnUrl(baseUrl: baseUrl, feedId: feedId, fileType: fileType)
             }
+        }
+    }
+    
+    func checkForGifOrNotReturnUrl(baseUrl: String, feedId: Int64, fileType: String) {
+        var completeURL = ""
+        if let giphy = targetFeed?.getGiphy(), !giphy.isEmpty {
+            completeURL = (baseUrl) + "/finance/api/download_certificate/\(feedId)/?appreciation=1&format_type=gif"
+            saveCertificate(urlString: completeURL)
+        }else {
+            completeURL = (baseUrl) + "/finance/api/download_certificate/\(feedId)/?appreciation=1&format_type=\(fileType)"
+            saveCertificate(urlString: completeURL)
         }
     }
     
@@ -153,11 +208,11 @@ class DownloadFeedCertificateViewController: UIViewController {
     
     func saveCertificate(urlString: String) {
         let url = URL(string: urlString)
-        let fileName = String((url!.lastPathComponent)) as NSString
+        let fileName = String((randomString(length: 10) + url!.lastPathComponent)) as NSString
+        // Create destination URL
         let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
-        let destinationFileUrl = documentsUrl.appendingPathComponent(String(format: "%@\(fileName)",randomString(length: 10)))
-        let fileURL = URL(string: urlString)
-        URLSession.shared.downloadTask(with: fileURL!, completionHandler: { (tempLocalUrl, response, error) -> Void in
+        let destinationFileUrl = documentsUrl.appendingPathComponent("\(fileName)")
+        URLSession.shared.downloadTask(with: url!, completionHandler: { (tempLocalUrl, response, error) -> Void in
             guard let tempLocalUrl = tempLocalUrl, error == nil else { return }
             do {
                 try FileManager.default.copyItem(at: tempLocalUrl, to: destinationFileUrl)
@@ -168,13 +223,22 @@ class DownloadFeedCertificateViewController: UIViewController {
                         if contents[indexx].lastPathComponent == destinationFileUrl.lastPathComponent {
                             DispatchQueue.main.async {
                                 let activityViewController = UIActivityViewController(activityItems: [contents[indexx]], applicationActivities: nil)
+                                if #available(iOS 15.4, *) {
+                                    activityViewController.excludedActivityTypes = [.postToFacebook, .postToTwitter, .postToWeibo, .message, .mail, .print, .copyToPasteboard, .assignToContact, .addToReadingList, .postToFlickr, .postToVimeo, .postToTencentWeibo, .airDrop, .openInIBooks, .markupAsPDF, .sharePlay]
+                                } else {
+
+                                }
                                 activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
                                     if !completed {
-                                        // User canceled
-                                        return
+                                        self.delegate?.didFinishSavingCertificate(didSave: false)
                                     }
-                                    // User completed activity
-                                    self.delegate?.didFinishSavingCertificate()
+                                    
+                                    if activityType == .saveToCameraRoll || activityType?.rawValue == "com.apple.DocumentManagerUICore.SaveToFiles" && error == nil {
+                                        // User completed activity
+                                        self.delegate?.didFinishSavingCertificate(didSave: true)
+                                    }else {
+                                        self.delegate?.didFinishSavingCertificate(didSave: false)
+                                    }
                                     self.dismiss(animated: true)
                                 }
                                 self.present(activityViewController, animated: true, completion: nil)
@@ -221,7 +285,7 @@ extension DownloadFeedCertificateViewController: UICollectionViewDataSource, UIC
             for: indexPath) as? MediaForCertificateDownloadCollectionViewCell
         else { fatalError("unexpected cell in collection view")
         }
-        if let giphy = targetFeed?.getGiphy() {
+        if let giphy = targetFeed?.getGiphy(), !giphy.isEmpty {
             mediaFetcher.fetchImageAndLoad(cell.imageHolder, imageWithCompleteURL: giphy)
         }else {
             if let mediaList = targetFeed?.getMediaList() {

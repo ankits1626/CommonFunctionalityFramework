@@ -1,28 +1,26 @@
 //
-//  BOUSGetApprovalAwardHistoryWorker.swift
+//  FeedFetchDetailsWorker.swift
 //  CommonFunctionalityFramework
 //
-//  Created by Puneeeth on 29/08/22.
-//  Copyright © 2022 Rewardz. All rights reserved.
+//  Created by Puneeeth on 04/04/23.
+//  Copyright © 2023 Rewardz. All rights reserved.
 //
 
 import Foundation
 
-typealias BOUSGetAprrovalAwardHistoryWorkerCompletionHandler = (APICallResult<NSDictionary>) -> Void
-
-class BOUSGetAprrovalAwardHistoryWorker  {
+typealias FeedDetailsFetcherFormWorkerCompletionHandler = (APICallResult<NSDictionary>) -> Void
+class FeedDetailsFetcherFormWorker  {
     typealias ResultType = NSDictionary
-    var commonAPICall : CommonAPICall<BOUSGetAprrovalAwardHistoryDataParser>?
+    var commonAPICall : CommonAPICall<FeedDetailsFetcherFormDataParser>?
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func getApproverAwardHistoryData(nominationId: Int, completionHandler: @escaping BOUSGetAprrovalAwardHistoryWorkerCompletionHandler) {
+    func getFeedDetailsFetcher(feedId: Int64, completionHandler: @escaping FeedDetailsFetcherFormWorkerCompletionHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
-                apiRequestProvider: BOUSGetAprrovalAwardHistoryWorkerRequestGenerator(nominationId: nominationId, networkRequestCoordinator: networkRequestCoordinator),
-                dataParser: BOUSGetAprrovalAwardHistoryDataParser(),
-                logouthandler: networkRequestCoordinator.getLogoutHandler()
+                apiRequestProvider: FeedDetailsFetcherFormWorkerRequestGenerator(networkRequestCoordinator: networkRequestCoordinator, feedId: feedId),
+                dataParser: FeedDetailsFetcherFormDataParser(), logouthandler: networkRequestCoordinator.getLogoutHandler()
             )
         }
         commonAPICall?.callAPI(completionHandler: { (result : APICallResult<ResultType>) in
@@ -31,33 +29,31 @@ class BOUSGetAprrovalAwardHistoryWorker  {
     }
 }
 
-class BOUSGetAprrovalAwardHistoryWorkerRequestGenerator: APIRequestGeneratorProtocol  {
+class FeedDetailsFetcherFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
-    var nominationId: Int
+    let feedId: Int64
     
-    init(nominationId: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, feedId: Int64) {
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
-        self.nominationId = nominationId
+        self.feedId = feedId
     }
     
     var apiRequest: URLRequest?{
         get{
-            let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                url:  self.urlBuilder.getURL(endpoint: "finance/api/download_certificate/2108/?appreciation=1&attachment_type=image&attachment_id=2685&format_type=pdf", parameters: nil
-                ),
+            return self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                url:  self.urlBuilder.getURL(endpoint: "/feeds/api/posts/" + "\(feedId)/", parameters: nil),
                 method: .GET ,
                 httpBodyDict: nil
             )
-            return req
         }
     }
 }
 
-class BOUSGetAprrovalAwardHistoryDataParser: DataParserProtocol {
+class FeedDetailsFetcherFormDataParser: DataParserProtocol {
     typealias ExpectedRawDataType = NSDictionary
     typealias ResultType = NSDictionary
     
@@ -65,7 +61,4 @@ class BOUSGetAprrovalAwardHistoryDataParser: DataParserProtocol {
         return APICallResult.Success(result: fetchedData)
     }
 }
-
-
-
 
