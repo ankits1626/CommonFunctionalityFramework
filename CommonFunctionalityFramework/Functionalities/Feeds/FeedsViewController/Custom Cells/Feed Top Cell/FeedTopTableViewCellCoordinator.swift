@@ -141,31 +141,15 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                 }
             )
             
-            if selectedtabValue == "received" && feed.getPostType() == .Appreciation || selectedtabValue == "SearchFromHome" && feed.getPostType() == .Appreciation {
-                if inputModel.canDownload {
-                    cell.editFeedButton?.setImage(UIImage(named: "icon_setasdefault-2"), for: .normal)
-                    cell.editFeedButton?.isHidden = false
-                    cell.editFeedButton?.handleControlEvent(
-                        event: .touchUpInside,
-                        buttonActionBlock: {
-                            inputModel.delegate?.showFeedEditOptions(
-                                targetView: cell.editFeedButton,
-                                feedIdentifier: feed.feedIdentifier
-                            )
-                    })
-                }else {
-                    cell.editFeedButton?.isHidden = true
-                }
-            }else {
-                cell.editFeedButton?.handleControlEvent(
-                    event: .touchUpInside,
-                    buttonActionBlock: {
-                        inputModel.delegate?.showFeedEditOptions(
-                            targetView: cell.editFeedButton,
-                            feedIdentifier: feed.feedIdentifier
-                        )
-                })
-            }
+            cell.editFeedButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate?.showFeedEditOptions(
+                        targetView: cell.editFeedButton,
+                        feedIdentifier: feed.feedIdentifier
+                    )
+            })
+            
         }
     }
     
