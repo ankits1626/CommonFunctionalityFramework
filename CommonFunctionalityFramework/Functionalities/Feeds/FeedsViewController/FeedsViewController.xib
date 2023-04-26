@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
@@ -14,6 +19,7 @@
                 <outlet property="emptyViewContainer" destination="TbV-Y5-qUk" id="CZZ-19-lbg"/>
                 <outlet property="feedCreateView" destination="3bj-oG-Ner" id="0Vf-QQ-Bdk"/>
                 <outlet property="feedsTable" destination="VdA-C0-ggV" id="E70-6f-TtD"/>
+                <outlet property="noRecordsLabel" destination="kir-hM-2Zw" id="1vT-tk-v9W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,7 +32,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Records Found!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kir-hM-2Zw">
-                            <rect key="frame" x="144" y="408.5" width="126.5" height="79"/>
+                            <rect key="frame" x="146" y="408.5" width="122" height="79"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="79" id="qbk-Vr-Hak"/>
                             </constraints>

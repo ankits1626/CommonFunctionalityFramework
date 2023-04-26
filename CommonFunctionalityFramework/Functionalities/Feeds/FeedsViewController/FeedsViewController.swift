@@ -89,6 +89,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             self?.loadFeeds()
         }
         self.feedsTable?.showsVerticalScrollIndicator = false
+        self.noRecordsLabel?.text = "No Records Found!".localized
     }
         
     @objc func scrollTableView(notification: NSNotification) {
