@@ -22,6 +22,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     @IBOutlet private weak var feedCreateView : UIButton?
     @IBOutlet private weak var creationButtonView : UIView?
+    @IBOutlet private weak var noRecordsLabel : UILabel?
     var selectedTabType = ""
     var searchText : String?
     var feedTypePk : Int = 0
@@ -94,6 +95,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         feedCreateView?.clipsToBounds = true
         feedCreateView?.backgroundColor = UIColor.getControlColor()
         self.creationButtonView?.isHidden = !isCreationButtonRequired
+        self.noRecordsLabel?.text = "No Records Found!".localized
     }
     
     func registerCollectionViewCell()  {
