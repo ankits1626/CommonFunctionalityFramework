@@ -152,6 +152,7 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
                 endPoints = appendFeedDateRange(endPoints)
                 endPoints = appendFeedCoreValue(endPoints)
                 endPoints = appendTopGettersPk(endPoints)
+                endPoints = appendTodayDate(endPoints)
                 
                 if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                     let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
@@ -244,6 +245,17 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
         }
         return baseEndpoint
     }
+    
+    private func appendTodayDate(_ baseEndpoint : String) -> String{
+        if self.selectedFeedPk != 0 {
+            if baseEndpoint.contains("?") {
+                return "\(baseEndpoint)&created_on_after=\(Date().string(format: "yyyy-MM-dd"))"
+            }else{
+                return "\(baseEndpoint)?created_on_after=\(Date().string(format: "yyyy-MM-dd"))"
+            }
+        }
+        return baseEndpoint
+    }
 }
 
 class FeedFetchDataParser: DataParserProtocol {
@@ -258,5 +270,12 @@ class FeedFetchDataParser: DataParserProtocol {
                 nextPageUrl: fetchedData["next"] as? String
             )
         )
+    }
+}
+extension Date {
+    func string(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
     }
 }

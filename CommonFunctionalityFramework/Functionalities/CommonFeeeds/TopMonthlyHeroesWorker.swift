@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias TopHeroesDataHandler = (APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String)>) -> Void
+typealias TopHeroesDataHandler = (APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String, userRemainingPoints : Double, userMonthlyAppreciationLimit : Int)>) -> Void
 class TopMonthlyHeroesWorker  {
-    typealias ResultType = (fetchedHeroes:[TopRecognitionHero], slug: String)
+    typealias ResultType = (fetchedHeroes:[TopRecognitionHero], slug: String, userRemainingPoints : Double, userMonthlyAppreciationLimit : Int)
     var commonAPICall : CommonAPICall<TopHeroesDataParser>?
     private var slug : String
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
@@ -66,7 +66,7 @@ class TopHeroesFetcherRequestGenerator: APIRequestGeneratorProtocol  {
 
 class TopHeroesDataParser: DataParserProtocol {
     typealias ExpectedRawDataType = [String : Any]
-    typealias ResultType = (fetchedHeroes:[TopRecognitionHero], slug: String)
+    typealias ResultType = (fetchedHeroes:[TopRecognitionHero], slug: String, userRemainingPoints : Double, userMonthlyAppreciationLimit : Int)
     
     private let slug: String
     
@@ -82,7 +82,9 @@ class TopHeroesDataParser: DataParserProtocol {
               hero.category = fetchedData["name"] as! String
                 items.append(TopRecognitionHero(aHero))
             }
-            let result : ResultType = (fetchedHeroes: items, slug:slug)
+            let remainingPoints = fetchedData["remaining_points"] as? Double ?? 0
+            let monthlyAppreciationLimit = fetchedData["monthly_appreciation_left_count"] as? Int ?? 0
+            let result : ResultType = (fetchedHeroes: items, slug:slug,userRemainingPoints : remainingPoints, userMonthlyAppreciationLimit :  monthlyAppreciationLimit)
             return APICallResult.Success(result: result)
             
         }else{
