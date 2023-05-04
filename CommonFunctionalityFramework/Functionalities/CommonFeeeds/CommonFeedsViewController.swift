@@ -23,6 +23,8 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet private weak var feedCreateView : UIButton?
     @IBOutlet private weak var creationButtonView : UIView?
     @IBOutlet private weak var noRecordsLabel : UILabel?
+    @IBOutlet private weak var remainingPoints : UILabel?
+    @IBOutlet private weak var monthlyAppreicationLimit : UILabel?
     var selectedTabType = ""
     var searchText : String?
     var feedTypePk : Int = 0
@@ -51,7 +53,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }()
     let currentWindow: UIWindow? = UIApplication.shared.keyWindow!
     private var lastFetchedFeeds : FetchedFeedModel?
-    var hideTopLeaderboard : Bool = true
+    var hideTopLeaderboard : Bool = false
     
     private lazy var refreshControl : UIRefreshControl  = {
         let refreshControl = UIRefreshControl()
@@ -117,11 +119,13 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         }
     }
     
-    private func handleHeroesFetchRespone(_ result : APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String)>){
+    private func handleHeroesFetchRespone(_ result : APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String, userRemainingPoints : Double, userMonthlyAppreciationLimit : Int)>){
         switch result{
         case .Success(let successResult):
             self.clearAnyExistingFeedsData {[weak self] in
                 self?.loadFetchedHeroes(successResult.fetchedHeroes)
+                self?.remainingPoints?.text = "You have \(successResult.userRemainingPoints) Points"
+                self?.monthlyAppreicationLimit?.text = "Monthly appreciation remaining : \(successResult.userMonthlyAppreciationLimit)"
                 self?.initializeFRC()
                 self?.setup()
                 self?.loadFeeds()

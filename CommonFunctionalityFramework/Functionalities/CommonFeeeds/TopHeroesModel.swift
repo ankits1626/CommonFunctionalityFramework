@@ -78,6 +78,8 @@ struct TopRecognitionHero {
   var profileImage : String?
   var appreciationRatio: AppreciationRatio
   var category: String = ""
+  var remainingPoints : Double?
+  var monthlyAppreciationLimit : Int?
   var name : String{
     get{
       if firstName.isEmpty && lastName.isEmpty {
