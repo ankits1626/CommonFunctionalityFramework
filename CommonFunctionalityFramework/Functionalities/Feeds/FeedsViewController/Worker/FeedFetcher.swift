@@ -256,9 +256,9 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     private func appendTodayDate(_ baseEndpoint : String) -> String{
         if self.selectedFeedPk != 0 {
             if baseEndpoint.contains("?") {
-                return "\(baseEndpoint)&created_on_after=\(Date().string(format: "yyyy-MM-dd"))"
+                return "\(baseEndpoint)&created_on_after=\(Date().startOfMonth().string(format: "yyyy-MM-dd"))"
             }else{
-                return "\(baseEndpoint)?created_on_after=\(Date().string(format: "yyyy-MM-dd"))"
+                return "\(baseEndpoint)?created_on_after=\(Date().startOfMonth().string(format: "yyyy-MM-dd"))"
             }
         }
         return baseEndpoint
@@ -284,5 +284,20 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: self)
+    }
+}
+
+extension Date {
+    
+    var year:   Int { return Calendar(identifier: .gregorian).component(.year,   from: self as Date) }
+    var month:  Int { return Calendar(identifier: .gregorian).component(.month,  from: self as Date) }
+    var day:    Int { return Calendar(identifier: .gregorian).component(.day,    from: self as Date) }
+    
+    func startOfMonth() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+    }
+    
+    func endOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
     }
 }

@@ -755,6 +755,14 @@ extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionView
          let heroData = self.fetchedData.getHeroes()[indexPath.row]
          cell.heroNameLabel?.text = heroData.name
          cell.appreciationCountLabel?.text = heroData.appreciationRatio.received
+        
+         if let userProfile = heroData.getProfileImageUrl(),
+                !userProfile.isEmpty {
+             mediaFetcher.fetchImageAndLoad(cell.heroImageView, imageEndPoint: userProfile)
+         }else{
+             cell.heroImageView?.setImageForName(heroData.getFullName(), circular: false, textAttributes: nil)
+         }
+         cell.heroImageView?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
          return cell
      }
     
@@ -771,10 +779,9 @@ extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("indexPath ---- \(indexPath.row)")
         let heroData = self.fetchedData.getHeroes()[indexPath.row]
-        print("heroData ---- \(heroData)")
         self.clearAnyExistingFeedsData {[weak self] in
+            self?.lastFetchedFeeds?.nextPageUrl = nil
             self?.selectedTopUserPk = heroData.heroPK
             self?.loadFeeds()
         }
