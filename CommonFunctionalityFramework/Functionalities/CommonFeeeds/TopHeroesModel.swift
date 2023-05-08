@@ -106,11 +106,23 @@ struct TopRecognitionHero {
     }
     
     func getProfileImageUrl() -> String? {
-        if let profileImage = self.profileImage{
+        if let profileImage = self.profileImage,
+            !profileImage.isEmpty{
             return profileImage
         }else{
             return ""
         }
+    }
+    
+    func getFullName() -> String {
+        var fullName : String = ""
+        if !self.firstName.isEmpty {
+            fullName = self.firstName + " "
+        }
+        if !self.lastName.isEmpty {
+            fullName = fullName + self.lastName
+        }
+        return fullName
     }
     
     func getMetric() -> String {
