@@ -37,6 +37,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var topLeaderboardHeightConstraints : NSLayoutConstraint?
     private var fetchedData = TopHeroesFetchedData()
     var selectedTopUserPk : Int = 0
+    var selectedUserPk : Int = 0
     
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
@@ -762,7 +763,17 @@ extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionView
          }else{
              cell.heroImageView?.setImageForName(heroData.getFullName(), circular: false, textAttributes: nil)
          }
-         cell.heroImageView?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
+         cell.cancelFeedButton?.addTarget(self, action: #selector(cancelSelectedUserFilter), for: .touchUpInside)
+         if selectedUserPk == heroData.heroPK {
+             cell.cancelFeedButton?.isHidden = false
+             cell.appreciationCountView?.isHidden = true
+             cell.heroImageView?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
+         }else {
+             cell.cancelFeedButton?.isHidden = true
+             cell.appreciationCountView?.isHidden = false
+             cell.heroImageView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+         }
+         
          return cell
      }
     
@@ -778,11 +789,23 @@ extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionView
         return CGSize(width: 78, height: 88)//copying this from oakley branch as tester said its fine there.
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let heroData = self.fetchedData.getHeroes()[indexPath.row]
+    @objc private func cancelSelectedUserFilter(){
+        self.selectedUserPk = 0
+        topLeaderboardCollectionView?.reloadData()
         self.clearAnyExistingFeedsData {[weak self] in
             self?.lastFetchedFeeds?.nextPageUrl = nil
-            self?.selectedTopUserPk = heroData.heroPK
+            self?.selectedTopUserPk = self?.selectedUserPk ?? 0
+            self?.loadFeeds()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let heroData = self.fetchedData.getHeroes()[indexPath.row]
+        self.selectedUserPk = heroData.heroPK
+        topLeaderboardCollectionView?.reloadData()
+        self.clearAnyExistingFeedsData {[weak self] in
+            self?.lastFetchedFeeds?.nextPageUrl = nil
+            self?.selectedTopUserPk = self?.selectedUserPk ?? 0
             self?.loadFeeds()
         }
     }

@@ -392,6 +392,22 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         
     }
     
+    @objc private func openImagePickerToComposePost(){
+        let drawer = FeedsImageDrawer(nibName: "FeedsImageDrawer", bundle: Bundle(for: FeedsImageDrawer.self))
+//        drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
+        drawer.requestCoordinator = requestCoordinator
+        drawer.mediaFetcher = mediaFetcher
+        drawer.themeManager = themeManager
+        drawer.delegate = self
+        do{
+            try drawer.presentDrawer()
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
+    }
+    
     @objc private func initiateMediaAttachment(){
         PhotosPermissionChecker().checkPermissions {[weak self] in
             self?.openCameraInput()
@@ -563,7 +579,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     }
     
     func openPhotoLibrary() {
-        self.initiateGalleryAttachment()
+        self.openImagePickerToComposePost()
     }
     
     func openGif() {
@@ -780,5 +796,18 @@ extension PostEditorViewController: GiphyDelegate {
     
     func didDismiss(controller: GiphyViewController?) {
         // your user dismissed the controller without selecting a GIF.
+    }
+}
+extension PostEditorViewController:  FeedsImageDelegate {
+    func selectedImageType(isCamera : Bool) {
+        if isCamera {
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.openCameraInput()
+            }
+        }else{
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.showImagePicker()
+            }
+        }
     }
 }

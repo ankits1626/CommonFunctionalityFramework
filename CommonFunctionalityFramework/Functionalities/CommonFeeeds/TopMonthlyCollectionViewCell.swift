@@ -13,7 +13,9 @@ class TopMonthlyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var heroImageView : UIImageView?
     @IBOutlet weak var heroImageViewContainer : UIView?
     @IBOutlet weak var appreciationCountLabel : UILabel?
+    @IBOutlet weak var appreciationCountView : UIView?
     @IBOutlet weak var heroNameLabel : UILabel?
+    @IBOutlet weak var cancelFeedButton : UIButton?
 
     override func awakeFromNib() {
         super.awakeFromNib()
