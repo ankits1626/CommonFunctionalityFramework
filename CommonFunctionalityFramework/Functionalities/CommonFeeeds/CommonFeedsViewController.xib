@@ -21,6 +21,9 @@
                 <outlet property="emptyViewContainer" destination="pi0-Sz-Fel" id="SrK-n4-n1s"/>
                 <outlet property="feedCreateView" destination="rNJ-JM-vGW" id="gbi-dg-9bw"/>
                 <outlet property="feedsTable" destination="9dc-rS-z1o" id="fmg-vC-MnC"/>
+                <outlet property="monthlyAppreicationLimit" destination="nkn-3F-A0I" id="8M9-7S-vO6"/>
+                <outlet property="noRecordsLabel" destination="5gr-fi-BOp" id="ab3-7F-nor"/>
+                <outlet property="remainingPoints" destination="cg8-PU-V6s" id="ErX-3Z-1Ac"/>
                 <outlet property="topLeaderboardCollectionView" destination="C1w-pc-lng" id="NxH-CJ-tWc"/>
                 <outlet property="topLeaderboardHeightConstraints" destination="mhE-2k-EjY" id="j7N-Le-OMw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -79,7 +82,7 @@
                                                 <constraint firstAttribute="width" constant="35" id="gkV-75-0r2"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have 30,000 Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg8-PU-V6s">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg8-PU-V6s">
                                             <rect key="frame" x="51" y="7.5" width="276" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="jZX-pI-v3u"/>
@@ -88,7 +91,7 @@
                                             <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly appreciation remaining : 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkn-3F-A0I">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkn-3F-A0I">
                                             <rect key="frame" x="51" y="29.5" width="276" height="13.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="13.5" id="u4v-vy-Cce"/>

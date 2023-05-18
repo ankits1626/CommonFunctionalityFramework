@@ -59,11 +59,6 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-//            cell.userName?.text = feed.getUserName()
-//            if let nominatedName = feed.getNominatedByUserName() {
-//                cell.appraacitedBy.text = "From \(nominatedName)"
-//            }
-
             let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
             if selectedtabValue == "received" {
                 cell.userName?.text =  "From \(feed.getUserName() ?? "")"
@@ -86,7 +81,18 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                         cell.profileImage?.setImageForName(nominatedName ?? "NN", circular: false, textAttributes: nil)
                     }
                 }
-            }else {
+            }else if selectedtabValue == "given" {
+                if let toUserName = feed.toUserName() {
+                    cell.userName?.text = "To \(toUserName)"
+                    cell.appraacitedBy.isHidden = true
+                    cell.dot.isHidden = true
+                }
+                if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+                }
+            } else {
                 if let toUserName = feed.toUserName() {
                     cell.userName?.text = "To \(toUserName)"
                     cell.appraacitedBy.isHidden = true
@@ -141,29 +147,22 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                 }
             )
             
-            cell.editFeedButton?.handleControlEvent(
-                event: .touchUpInside,
-                buttonActionBlock: {
-                    inputModel.delegate?.showFeedEditOptions(
-                        targetView: cell.editFeedButton,
-                        feedIdentifier: feed.feedIdentifier
-                    )
-                })
-            
-            if selectedtabValue == "received" && feed.getPostType() == .Appreciation || selectedtabValue == "SearchFromHome" && feed.getPostType() == .Appreciation {
-                if inputModel.canDownload {
-                    cell.editFeedButton?.setImage(UIImage(named: "icon_setasdefault-2"), for: .normal)
-                    cell.editFeedButton?.isHidden = false
-                    cell.editFeedButton?.handleControlEvent(
-                        event: .touchUpInside,
-                        buttonActionBlock: {
-                            inputModel.delegate?.showFeedEditOptions(
-                                targetView: cell.editFeedButton,
-                                feedIdentifier: feed.feedIdentifier
-                            )
-                        })
-                }else {
-                    cell.editFeedButton?.isHidden = true
+            if Bundle.main.bundleIdentifier == "com.rewardz.iOSabundantly" {
+                if  feed.getPostType() == .Appreciation {
+                    if inputModel.canDownload {
+                        cell.editFeedButton?.setImage(UIImage(named: "icon_setasdefault-2"), for: .normal)
+                        cell.editFeedButton?.isHidden = false
+                        cell.editFeedButton?.handleControlEvent(
+                            event: .touchUpInside,
+                            buttonActionBlock: {
+                                inputModel.delegate?.showFeedEditOptions(
+                                    targetView: cell.editFeedButton,
+                                    feedIdentifier: feed.feedIdentifier
+                                )
+                            })
+                    }else {
+                        cell.editFeedButton?.isHidden = true
+                    }
                 }
             }else {
                 cell.editFeedButton?.handleControlEvent(

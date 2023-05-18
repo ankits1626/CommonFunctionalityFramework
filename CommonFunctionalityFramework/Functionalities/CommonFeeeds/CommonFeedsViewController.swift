@@ -22,6 +22,9 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     @IBOutlet private weak var feedCreateView : UIButton?
     @IBOutlet private weak var creationButtonView : UIView?
+    @IBOutlet private weak var noRecordsLabel : UILabel?
+    @IBOutlet private weak var remainingPoints : UILabel?
+    @IBOutlet private weak var monthlyAppreicationLimit : UILabel?
     var selectedTabType = ""
     var searchText : String?
     var feedTypePk : Int = 0
@@ -50,7 +53,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }()
     let currentWindow: UIWindow? = UIApplication.shared.keyWindow!
     private var lastFetchedFeeds : FetchedFeedModel?
-    var hideTopLeaderboard : Bool = true
+    var hideTopLeaderboard : Bool = false
     
     private lazy var refreshControl : UIRefreshControl  = {
         let refreshControl = UIRefreshControl()
@@ -94,6 +97,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         feedCreateView?.clipsToBounds = true
         feedCreateView?.backgroundColor = UIColor.getControlColor()
         self.creationButtonView?.isHidden = !isCreationButtonRequired
+        self.noRecordsLabel?.text = "No Records Found!".localized
     }
     
     func registerCollectionViewCell()  {
@@ -115,11 +119,13 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         }
     }
     
-    private func handleHeroesFetchRespone(_ result : APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String)>){
+    private func handleHeroesFetchRespone(_ result : APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String, userRemainingPoints : Double, userMonthlyAppreciationLimit : Int)>){
         switch result{
         case .Success(let successResult):
             self.clearAnyExistingFeedsData {[weak self] in
                 self?.loadFetchedHeroes(successResult.fetchedHeroes)
+                self?.remainingPoints?.text = "You have \(successResult.userRemainingPoints) Points"
+                self?.monthlyAppreicationLimit?.text = "Monthly appreciation remaining : \(successResult.userMonthlyAppreciationLimit)"
                 self?.initializeFRC()
                 self?.setup()
                 self?.loadFeeds()
@@ -749,6 +755,14 @@ extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionView
          let heroData = self.fetchedData.getHeroes()[indexPath.row]
          cell.heroNameLabel?.text = heroData.name
          cell.appreciationCountLabel?.text = heroData.appreciationRatio.received
+        
+         if let userProfile = heroData.getProfileImageUrl(),
+                !userProfile.isEmpty {
+             mediaFetcher.fetchImageAndLoad(cell.heroImageView, imageEndPoint: userProfile)
+         }else{
+             cell.heroImageView?.setImageForName(heroData.getFullName(), circular: false, textAttributes: nil)
+         }
+         cell.heroImageView?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
          return cell
      }
     
@@ -765,10 +779,9 @@ extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("indexPath ---- \(indexPath.row)")
         let heroData = self.fetchedData.getHeroes()[indexPath.row]
-        print("heroData ---- \(heroData)")
         self.clearAnyExistingFeedsData {[weak self] in
+            self?.lastFetchedFeeds?.nextPageUrl = nil
             self?.selectedTopUserPk = heroData.heroPK
             self?.loadFeeds()
         }

@@ -78,6 +78,8 @@ struct TopRecognitionHero {
   var profileImage : String?
   var appreciationRatio: AppreciationRatio
   var category: String = ""
+  var remainingPoints : Double?
+  var monthlyAppreciationLimit : Int?
   var name : String{
     get{
       if firstName.isEmpty && lastName.isEmpty {
@@ -104,11 +106,23 @@ struct TopRecognitionHero {
     }
     
     func getProfileImageUrl() -> String? {
-        if let profileImage = self.profileImage{
+        if let profileImage = self.profileImage,
+            !profileImage.isEmpty{
             return profileImage
         }else{
             return ""
         }
+    }
+    
+    func getFullName() -> String {
+        var fullName : String = ""
+        if !self.firstName.isEmpty {
+            fullName = self.firstName + " "
+        }
+        if !self.lastName.isEmpty {
+            fullName = fullName + self.lastName
+        }
+        return fullName
     }
     
     func getMetric() -> String {
