@@ -74,6 +74,8 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
                     rows.append(BOUSSingleImageTableViewCellType())
                 case .Video:
                     rows.append(BOUSSingleImageTableViewCellType())
+                case .Document:
+                    break
                 }
             case .TwoMediaItemPresent:
                 rows.append(BOUSTwoImageTableViewCellType())

@@ -553,6 +553,14 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
+        
+    }
+    
+    func deleteComment(commentIdentifier: Int64) {
+        
+    }
+    
     func showPostReactions(feedIdentifier: Int64) {
         let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
         let controller = storyboard.instantiateViewController(withIdentifier: "BOUSReactionsListViewController") as! BOUSReactionsListViewController
@@ -755,16 +763,16 @@ extension FeedsViewController : FeedsDelegate{
         print("show edit option")
         var numberofElementsEnabled : CGFloat = 0.0
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
-            var options = [FloatingMenuOption]()
-            if feed.getFeedType() == .Post,
-               feed.isFeedEditAllowed(){
-                options.append(
-                    FloatingMenuOption(title: "EDIT".localized, action: {[weak self] in
-                        print("Edit post - \(feedIdentifier)")
-                        self?.openFeedEditor(feed)
-                    }
-                                      )
-                )
+            let drawer = PostPollSelfBottomSheet(nibName: "PostPollSelfBottomSheet", bundle: Bundle(for: PostPollSelfBottomSheet.self))
+            drawer.bottomsheetdelegate = self
+            drawer.feedIdentifier = feedIdentifier
+            drawer.isPostAlreadyPinned = feed.isPinToPost()
+
+            if feed.isFeedEditAllowed() && feed.getFeedType() == .Post {
+                drawer.isEditEnabled = true
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }else{
+                drawer.isEditEnabled = false
             }
             
             if feed.isLoggedUserAdmin()  == true{

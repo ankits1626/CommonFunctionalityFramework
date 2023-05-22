@@ -73,6 +73,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
             }else{
                 cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
             }
+            
             cell.editFeedButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

@@ -325,6 +325,8 @@ extension FeedDetailSectionFactory{
                         rows.append(SingleImageTableViewCellType())
                     case .Video:
                         rows.append(SingleVideoTableViewCellType())
+                    case .Document:
+                        break
                     }
                 case .TwoMediaItemPresent:
                     rows.append(BOUSTwoImageDetailTableViewCellType())
@@ -386,6 +388,8 @@ extension FeedDetailSectionFactory{
                     rows.append(SingleImageTableViewCellType())
                 case .Video:
                     rows.append(SingleVideoTableViewCellType())
+                case .Document:
+                    break
                 }
             case .TwoMediaItemPresent:
                 rows.append(BOUSTwoImageDetailTableViewCellType())

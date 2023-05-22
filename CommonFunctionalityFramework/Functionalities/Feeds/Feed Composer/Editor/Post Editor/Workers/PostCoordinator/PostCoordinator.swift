@@ -195,13 +195,14 @@ class PostCoordinator {
     func isPostWithSameDepartment() -> Bool {
         return currentPost.postSharedChoice == .MyDepartment
     }
-//    func isDepartmentSharedWithEditable() -> Bool{
-//        return false// getCurrentPost().remotePostId == nil
-//    }
     
-//    func updatePostWithSameDepartment(_ flag: Bool) {
-//        currentPost.isShareWithSameDepartmentOnly = flag
-//    }
+    func isDepartmentSharedWithEditable() -> Bool{
+        return false// getCurrentPost().remotePostId == nil
+    }
+    
+    func updatePostWithSameDepartment(_ flag: Bool) {
+        currentPost.isShareWithSameDepartmentOnly = flag
+    }
     
     func updatePostShareOption(_ shareOption: SharePostOption, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?){
         currentPost.postSharedChoice = shareOption

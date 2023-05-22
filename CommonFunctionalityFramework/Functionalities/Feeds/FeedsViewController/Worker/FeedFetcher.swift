@@ -54,7 +54,8 @@ class FeedFetcher  {
                     _organisationPK: organisationPK,
                     _departmentPK: departmentPK,
                     _dateRangePK: dateRangePK,
-                    _coreValuePk: coreValuePk
+                    _coreValuePk: coreValuePk,
+                    _isComingFromProfile: false
                 ),
                 dataParser: FeedFetchDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
@@ -74,7 +75,8 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     private var feedID : Int?
     private var feedType : String?
     private var searchText : String?
-    
+    private var isComingFromProfile : Bool = false
+
     var feedTypePk : Int = 0
     var organisationPK : Int = 0
     var departmentPK : Int = 0

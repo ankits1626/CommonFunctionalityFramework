@@ -18,7 +18,7 @@ class AddECardTypeTableCellCordinator: NSObject, PostEditorCellCoordinatorProtoc
         let cell = inputModel.targetTableView.dequeueReusableCell(
         withIdentifier: cellType.cellIdentifier,
         for: inputModel.targetIndexpath) as! AddECardTableViewCell
-        let post = inputModel.datasource.getTargetPost()
+        let post = inputModel.datasource?.getTargetPost()
         if let eCardImage = post?.selectedEcardMediaItems?.image {
             inputModel.mediaFetcher.fetchImageAndLoad(cell.eCardImageView, imageWithCompleteURL: eCardImage)
             ecardHeight = imageDimenssions(url: eCardImage)

@@ -23,6 +23,7 @@ protocol EditablePostProtocol {
     var postableMediaMap : [Int : Data]? { get set}
     var postableLocalMediaUrls : [URL]? { get set}
     var remoteAttachedMedia: [MediaItemProtocol]?{get set}
+    var isShareWithSameDepartmentOnly : Bool {set get}
     var remotePostId : String?{get}
     func getEditablePostNetworkModel(_ baseUrl : String) -> EditablePostNetworkModel
     var postSharedChoice : SharePostOption {set get}
@@ -62,6 +63,7 @@ struct EditablePost : EditablePostProtocol{
         }
     }
     
+    var isShareWithSameDepartmentOnly: Bool
     var pollActiveDays: Int = 1
     var postSharedChoice: SharePostOption
     var deletedRemoteMediaArray = [Int]()
@@ -96,7 +98,7 @@ struct EditablePost : EditablePostProtocol{
          remoteAttachedMedia: [MediaItemProtocol]? = nil,
          selectedMediaItems: [LocalSelectedMediaItem]? = nil,
          remotePostId: String? = nil,
-         selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel? = nil){
+         selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel? = nil, isShareWithSameDepartmentOnly: Bool? = nil){
         self.postSharedChoice = postSharedChoice
         self.postType = postType
         self.title = title
@@ -105,7 +107,7 @@ struct EditablePost : EditablePostProtocol{
         self.selectedMediaItems = selectedMediaItems
         self.remotePostId = remotePostId
         self.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
-        
+        self.isShareWithSameDepartmentOnly = isShareWithSameDepartmentOnly ?? false
     }
     
     func getNetworkPostableFormat() -> [String : Any] {

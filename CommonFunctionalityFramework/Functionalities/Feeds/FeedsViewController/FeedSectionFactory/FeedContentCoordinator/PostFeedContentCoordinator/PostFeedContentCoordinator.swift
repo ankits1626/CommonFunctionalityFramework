@@ -74,6 +74,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                     rows.append(SingleImageTableViewCellType())
                 case .Video:
                     rows.append(SingleVideoTableViewCellType())
+                case .Document:
+                    break
                 }
             case .TwoMediaItemPresent:
                 rows.append(BOUSTwoImageDetailTableViewCellType())
@@ -109,6 +111,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                         rows.append(SingleImageTableViewCellType())
                     case .Video:
                         rows.append(SingleVideoTableViewCellType())
+                    case .Document:
+                        break
                     }
                 case .TwoMediaItemPresent:
                     rows.append(BOUSTwoImageDetailTableViewCellType())

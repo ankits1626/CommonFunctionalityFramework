@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,12 +21,13 @@
                         <rect key="frame" x="16" y="0.0" width="289" height="215"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vVR-BE-VH2">
-                                <rect key="frame" x="9" y="0.0" width="273" height="199"/>
+                                <rect key="frame" x="9" y="0.0" width="273" height="215"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra7-Lh-5Wn" customClass="BlockButton" customModule="RewardzCommonComponents">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra7-Lh-5Wn" customClass="BlockButton" customModule="RewardzCommonComponents">
                                 <rect key="frame" x="0.0" y="0.0" width="289" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSR-2c-ZbH" customClass="BlockButton" customModule="RewardzCommonComponents">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSR-2c-ZbH" customClass="BlockButton" customModule="RewardzCommonComponents">
                                 <rect key="frame" x="262" y="5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="Jnx-c3-oSS"/>
@@ -36,16 +37,15 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="vQ5-6t-XM9" firstAttribute="width" secondItem="vVR-BE-VH2" secondAttribute="width" constant="16" id="A49-ld-Xt8"/>
-                            <constraint firstItem="vQ5-6t-XM9" firstAttribute="centerX" secondItem="vVR-BE-VH2" secondAttribute="centerX" id="Acu-YT-6DG"/>
+                            <constraint firstAttribute="width" secondItem="vVR-BE-VH2" secondAttribute="width" constant="16" id="A49-ld-Xt8"/>
+                            <constraint firstAttribute="centerX" secondItem="vVR-BE-VH2" secondAttribute="centerX" id="Acu-YT-6DG"/>
                             <constraint firstItem="vVR-BE-VH2" firstAttribute="top" secondItem="dqz-ah-zSC" secondAttribute="top" id="HhD-bL-A6x"/>
                             <constraint firstItem="vVR-BE-VH2" firstAttribute="leading" secondItem="dqz-ah-zSC" secondAttribute="leading" constant="9" id="I9H-iE-gOp"/>
                             <constraint firstAttribute="trailing" secondItem="vVR-BE-VH2" secondAttribute="trailing" constant="7" id="KE1-FA-nhD"/>
-                            <constraint firstItem="vQ5-6t-XM9" firstAttribute="centerY" secondItem="vVR-BE-VH2" secondAttribute="centerY" id="TI7-ka-USH"/>
-                            <constraint firstItem="chH-Hq-lCK" firstAttribute="top" secondItem="dqz-ah-zSC" secondAttribute="top" id="egY-QI-ndP"/>
+                            <constraint firstAttribute="centerY" secondItem="vVR-BE-VH2" secondAttribute="centerY" id="TI7-ka-USH"/>
+                            <constraint firstAttribute="top" secondItem="dqz-ah-zSC" secondAttribute="top" id="egY-QI-ndP"/>
                             <constraint firstAttribute="bottom" secondItem="vVR-BE-VH2" secondAttribute="bottom" constant="16" id="fLw-T2-BwX"/>
-                            <constraint firstAttribute="trailing" secondItem="chH-Hq-lCK" secondAttribute="trailing" constant="4" id="lrD-qH-IOY"/>
-                            <constraint firstItem="vQ5-6t-XM9" firstAttribute="height" secondItem="vVR-BE-VH2" secondAttribute="height" id="zQv-Gh-Ma0"/>
+                            <constraint firstAttribute="height" secondItem="vVR-BE-VH2" secondAttribute="height" id="zQv-Gh-Ma0"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -61,8 +61,6 @@
             <connections>
                 <outlet property="containerView" destination="dqz-ah-zSC" id="EAc-rr-Dfj"/>
                 <outlet property="feedImageView" destination="vVR-BE-VH2" id="sig-7G-Ie9"/>
-                <outlet property="imageTapButton" destination="vQ5-6t-XM9" id="CjR-yK-VpC"/>
-                <outlet property="removeButton" destination="chH-Hq-lCK" id="eoX-XE-9zW"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="143.63839285714286"/>
         </tableViewCell>

@@ -69,12 +69,15 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet private weak var postEditorTable : UITableView?
     @IBOutlet private weak var createButton : UIButton?
     @IBOutlet private weak var postWithSameDepartmentContainer: UIView?
+    @IBOutlet private weak var postWithSameDepartmentMessage: UILabel?
     @IBOutlet private weak var tableBackgroundContainer: UIView?
     @IBOutlet private weak var parentTableView: UIView?
     @IBOutlet private weak var messageGuidenceContainer: UIView?
     @IBOutlet private weak var guidenceMessage: UILabel?
     @IBOutlet private weak var messageGuidenceContainerHeightContraint: NSLayoutConstraint?
     @IBOutlet private weak var shareWithSegmentControl: UISegmentedControl?
+    @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
+
     var loader = CommonLoader()
     var numberOfRows = 1
     var selectedGif = ""
@@ -306,6 +309,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         case .Poll:
             return "PREVIEW POLL".localized
         case .Post:
+            return "PREVIEW POST".localized
+        case .Greeting:
             return "PREVIEW POST".localized
         }
     }

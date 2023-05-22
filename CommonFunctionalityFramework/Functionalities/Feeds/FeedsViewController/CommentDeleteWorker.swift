@@ -1,26 +1,27 @@
 //
-//  BOUSReactionPostWorker.swift
+//  CommentDeleteWorker.swift
 //  CommonFunctionalityFramework
 //
-//  Created by Puneeeth on 21/07/22.
+//  Created by Suyesh Kandpal on 05/09/22.
 //  Copyright © 2022 Rewardz. All rights reserved.
 //
 
 import Foundation
-typealias BOUSReactionPostWorkerResultHandler = (APICallResult<Any?>) -> Void
 
-class BOUSReactionPostWorker  {
+typealias CommentDeleteWorkerResultHandler = (APICallResult<Any?>) -> Void
+
+class CommentDeleteWorker  {
     typealias ResultType = Any?
-    var commonAPICall : CommonAPICall<BOUSReactionPostWorkerDataParser>?
+    var commonAPICall : CommonAPICall<CommentDeleteDataParser>?
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func postReaction(postId: Int, reactionType: Int, completionHandler: @escaping BOUSReactionPostWorkerResultHandler) {
+    func deleteComment(_ feedIdentifier: Int64,completionHandler: @escaping CommentDeleteWorkerResultHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
-                apiRequestProvider: BOUSReactionPostWorkerRequestGenerator(feedIdentifier: postId, reactionType: reactionType, networkRequestCoordinator: networkRequestCoordinator),
-                dataParser: BOUSReactionPostWorkerDataParser(),
+                apiRequestProvider: CommentDeleteRequestGenerator(feedIdentifier: feedIdentifier, networkRequestCoordinator: networkRequestCoordinator),
+                dataParser: CommentDeleteDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
             )
         }
@@ -30,16 +31,13 @@ class BOUSReactionPostWorker  {
     }
 }
 
-class BOUSReactionPostWorkerRequestGenerator: APIRequestGeneratorProtocol  {
+class CommentDeleteRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
-    var feedIdentifier : Int
-    var reactionType : Int
-    
-    init(feedIdentifier: Int, reactionType: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    var feedIdentifier : Int64
+    init( feedIdentifier: Int64, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
-        self.reactionType = reactionType
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
@@ -48,11 +46,9 @@ class BOUSReactionPostWorkerRequestGenerator: APIRequestGeneratorProtocol  {
         get{
             if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                 let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: baseUrl + "feeds/api/posts/\(feedIdentifier)/appreciate/"),
-                    method: .POST,
-                    httpBodyDict: [
-                        "type" : reactionType
-                    ]
+                    url: URL(string: baseUrl + "feeds/api/comments/\(feedIdentifier)/"),
+                    method: .DELETE,
+                    httpBodyDict: nil
                 )
                 return req
             }
@@ -61,12 +57,12 @@ class BOUSReactionPostWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     }
 }
 
-class BOUSReactionPostWorkerDataParser: DataParserProtocol {
+class CommentDeleteDataParser: DataParserProtocol {
     typealias ExpectedRawDataType = Any?
     typealias ResultType = Any?
     
     func parseFetchedData(fetchedData: ExpectedRawDataType) -> APICallResult<ResultType> {
-        return .Success(result: fetchedData)
+        return .Success(result: nil)
     }
 }
 
