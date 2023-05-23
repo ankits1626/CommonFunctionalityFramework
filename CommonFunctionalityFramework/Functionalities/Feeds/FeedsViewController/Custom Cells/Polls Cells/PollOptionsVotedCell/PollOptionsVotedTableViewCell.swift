@@ -15,6 +15,7 @@ class PollOptionsVotedTableViewCell: UITableViewCell {
     @IBOutlet weak var optionContainerView : UIView?
     @IBOutlet weak var myOptionIndicator : UIImageView?
     @IBOutlet weak var percentageVote : UILabel?
+    @IBOutlet weak var circleLbl: UILabel!
     @IBOutlet weak var percentageVoteIndicator : UIProgressView?
     
     override func awakeFromNib() {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Reactions
 
 class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var clapsButton : BlockButton?
@@ -17,10 +18,23 @@ class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var commentsCountLabel : UILabel?
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var seperator : UIView?
+    @IBOutlet weak var reactionView: ReactionButton! {
+        didSet {
+            reactionView.reactionSelector = ReactionSelector()
+            reactionView.config           = ReactionButtonConfig() {
+            $0.iconMarging      = 8
+            $0.spacing          = 4
+            $0.font             = UIFont(name: "HelveticaNeue", size: 14)
+            $0.neutralTintColor = UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1)
+            $0.alignment        = .left
+          }
+
+            reactionView.reactionSelector?.feedbackDelegate = self
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,4 +56,12 @@ class FeedBottomTableViewCellType : FeedCellTypeProtocol{
     }
 }
 
+
+extension FeedBottomTableViewCell: ReactionFeedbackDelegate {
+  func reactionFeedbackDidChanged(_ feedback: ReactionFeedback?) {
+//    feedbackLabel.isHidden = feedback == nil
+//
+//    feedbackLabel.text = feedback?.localizedString
+  }
+}
 

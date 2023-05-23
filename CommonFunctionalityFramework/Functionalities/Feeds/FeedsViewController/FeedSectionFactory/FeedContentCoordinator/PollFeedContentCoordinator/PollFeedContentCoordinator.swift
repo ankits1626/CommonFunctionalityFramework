@@ -10,24 +10,26 @@ import UIKit
 
 class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     var feedsDataSource: FeedsDatasource!
+    var selectedTab = ""
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var targetTableView : UITableView?
     private weak var themeManager: CFFThemeManagerProtocol?
     lazy var cachedFeedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         return [
-            FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
-            FeedTitleTableViewCellType().cellIdentifier : FeedTitleTableViewCellCoordinator(),
+            PostPollTopTableViewCellTableViewCellType().cellIdentifier : PostPollTableViewCellCordinator(),
+            PostPollTitleTableViewCellType().cellIdentifier : PostPollTitleCellCordinator(),
             FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
             PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
             PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
-            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
+            PostPollLikeTableViewCellType().cellIdentifier : PostPollLikeTableViewCordinator()
         ]
     }()
 
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedTab: String) {
         self.feedsDataSource = feedsDatasource
+        self.selectedTab = selectedTab
         self.mediaFetcher = mediaFetcher
         self.targetTableView = tableview
         self.themeManager = themeManager
@@ -44,10 +46,11 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     func getRowsToRepresentAFeed(feedIndex : Int) -> [FeedCellTypeProtocol] {
         let feed = feedsDataSource.getFeedItem(feedIndex)
         var rows = [FeedCellTypeProtocol] ()
-        rows.append(FeedTopTableViewCellType())
+        rows.append(PostPollTopTableViewCellTableViewCellType())
         if feed.getFeedTitle() != nil {
-            rows.append(FeedTitleTableViewCellType())
+            rows.append(PostPollTitleTableViewCellType())
         }
+        rows.append(PollBottomTableViewCelType())
         if feed.getFeedDescription() != nil{
             rows.append(FeedTextTableViewCellType())
         }
@@ -70,8 +73,8 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
 //                rows.append(PollSubmitButtonCellType())
 //            }
 //        }
-        rows.append(PollBottomTableViewCelType())
-        rows.append(FeedBottomTableViewCellType())
+        //rows.append(PollBottomTableViewCelType())
+        rows.append(PostPollLikeTableViewCellType())
 //        if let poll = feed.getPoll(),
 //            !poll.isPollActive(){
 //            rows.append(FeedBottomTableViewCellType())
@@ -101,7 +104,7 @@ class PollFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 delegate: inputModel.delegate,
                 selectedoptionMapper: inputModel.selectedoptionMapper,
                 themeManager: inputModel.themeManager,
-                isFeedDetailPage: false
+                isFeedDetailPage: false, selectedTab: selectedTab
             )
         )
     }

@@ -27,6 +27,7 @@ protocol FeedsDatasource : AnyObject {
 protocol FeedsDelegate : AnyObject {
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
     func showLikedByUsersList()
+    func showPostReactions()
     func showMediaBrowser(feedIdentifier : Int64,scrollToItemIndex: Int)
     func toggleClapForPost(feedIdentifier : Int64)
     func toggleLikeForComment(commentIdentifier : Int64)
@@ -34,22 +35,30 @@ protocol FeedsDelegate : AnyObject {
     func submitPollAnswer(feedIdentifier : Int64)
     func showAllClaps(feedIdentifier : Int64)
     func pinToPost(feedIdentifier : Int64, isAlreadyPinned : Bool)
+    func postReaction(feedId: Int64, reactionType: String)
+    func showPostReactions(feedIdentifier : Int64)
+    func deleteComment(commentIdentifier : Int64)
+    func editComment(commentIdentifier : Int64, chatMessage : String, commentedByPk : Int)
 }
 
 class FeedSectionFactory{
     private let  feedsDatasource : FeedsDatasource!
+    private var  selectedTab = ""
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private var cachedFeedContentCoordinator = [FeedType : FeedContentCoordinatorProtocol]()
     private weak var targetTableView : UITableView?
     private weak var selectedOptionMapper : SelectedPollAnswerMapper?
     private weak var themeManager: CFFThemeManagerProtocol?
-    
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, selectedOptionMapper : SelectedPollAnswerMapper, themeManager: CFFThemeManagerProtocol?) {
+    private weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
+
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, selectedOptionMapper : SelectedPollAnswerMapper, themeManager: CFFThemeManagerProtocol?, selectedTab: String, mainAppCoordinator : CFFMainAppInformationCoordinator?) {
         self.feedsDatasource = feedsDatasource
+        self.selectedTab = selectedTab
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
         self.selectedOptionMapper = selectedOptionMapper
         self.themeManager = themeManager
+        self.mainAppCoordinator = mainAppCoordinator
     }
     
     func getNumberOfSections() -> Int {
@@ -110,16 +119,23 @@ class FeedSectionFactory{
                 feedsDatasource: feedsDatasource,
                 mediaFetcher: mediaFetcher,
                 tableview: targetTableView,
-                themeManager: themeManager
+                themeManager: themeManager, selectedTab: selectedTab
             )
         case .Post:
             return PostFeedContentCoordinator(
                 feedsDatasource: feedsDatasource,
                 mediaFetcher: mediaFetcher,
                 tableview: targetTableView,
-                themeManager: themeManager
+                themeManager: themeManager, selectedTab: selectedTab, mainAppCoordinator: mainAppCoordinator
             )
         
+        case .Greeting:
+            return PostFeedContentCoordinator(
+                feedsDatasource: feedsDatasource,
+                mediaFetcher: mediaFetcher,
+                tableview: targetTableView,
+                themeManager: themeManager, selectedTab: selectedTab, mainAppCoordinator: mainAppCoordinator
+            )
         }
     }
 }

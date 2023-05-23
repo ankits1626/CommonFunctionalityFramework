@@ -11,7 +11,7 @@ import UIKit
 class PollBottomTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var messageLabel : UILabel?
-    
+    @IBOutlet weak var daysLabel : UILabel?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

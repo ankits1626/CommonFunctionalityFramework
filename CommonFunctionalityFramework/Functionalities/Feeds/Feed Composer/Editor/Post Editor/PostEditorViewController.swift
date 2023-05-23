@@ -11,6 +11,7 @@ import SimpleCheckbox
 import CoreData
 import Photos
 import RewardzCommonComponents
+import GiphyUISDK
 
 enum SharePostOption : Int{
     case MyOrg = 20
@@ -49,6 +50,7 @@ enum SharePostOption : Int{
     }
 }
 
+
 extension Notification.Name{
     static let didUpdatedPosts = Notification.Name("didUpdatedPosts")
 }
@@ -66,16 +68,19 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet private weak var postToLabel : UILabel?
     @IBOutlet private weak var postEditorTable : UITableView?
     @IBOutlet private weak var createButton : UIButton?
-    @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
-    @IBOutlet private weak var postWithSameDepartmentMessage: UILabel?
     @IBOutlet private weak var postWithSameDepartmentContainer: UIView?
+    @IBOutlet private weak var postWithSameDepartmentMessage: UILabel?
     @IBOutlet private weak var tableBackgroundContainer: UIView?
+    @IBOutlet private weak var parentTableView: UIView?
     @IBOutlet private weak var messageGuidenceContainer: UIView?
     @IBOutlet private weak var guidenceMessage: UILabel?
     @IBOutlet private weak var messageGuidenceContainerHeightContraint: NSLayoutConstraint?
     @IBOutlet private weak var shareWithSegmentControl: UISegmentedControl?
+    @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
+
     var loader = CommonLoader()
-    
+    var numberOfRows = 1
+    var selectedGif = ""
     lazy var postCoordinator: PostCoordinator = {
         return PostCoordinator(
             postObsever: cellFactory,
@@ -104,7 +109,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             localMediaManager: localMediaManager,
             targetTableView: postEditorTable,
             postImageMapper: imageMapper,
-            themeManager: themeManager
+            themeManager: themeManager,
+            mediaFetcher: mediaFetcher
             )
         )
     }()
@@ -195,20 +201,24 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         ASMentionCoordinator.shared.textUpdateListener = nil
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableBackgroundContainer?.roundCorners(corners: [.topLeft,.topRight], radius: 12)
+    }
+    
     private func setup(){
-        tableBackgroundContainer?.curvedCornerControl()
+        parentTableView?.backgroundColor = UIColor.getControlColor()
         view.backgroundColor = .viewBackgroundColor
         setupPostToLabel()
         setupTableView()
         setupCreateButton()
-        setupPostWithDepartment()
         if let deferredLoad = deferredSelectedMediaLoad{
             deferredLoad()
         }
         postWithSameDepartmentContainer?.isHidden = editablePost?.remotePostId != nil
         setupMessageGuidenceContainer()
         setupCheckbox()
-        setupShareWithSegmentedControl()
+        //setupShareWithSegmentedControl()
     }
     
     private func setupPostToLabel(){
@@ -286,12 +296,28 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         postEditorTable?.reloadData()
     }
     
+//    private func setupCreateButton(){
+//        createButton?.setTitle(getCreateButtonTitle(), for: .normal)
+//        createButton?.titleLabel?.font = UIFont.Button
+//        createButton?.titleLabel?.tintColor = .buttonTextColor
+//        createButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .buttonColor
+//        createButton?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+//
+//    }
+    
     private func setupCreateButton(){
-        createButton?.setTitle(getCreateButtonTitle(), for: .normal)
+        switch postType {
+        case .Poll:
+            createButton?.setTitle("Create".localized, for: .normal)
+        case .Post:
+            createButton?.setTitle("Post".localized, for: .normal)
+        case .Greeting:
+            break
+        }
         createButton?.titleLabel?.font = UIFont.Button
         createButton?.titleLabel?.tintColor = .buttonTextColor
         createButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .buttonColor
-        createButton?.curvedCornerControl()
+        createButton?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
     }
     
     private func getCreateButtonTitle() -> String{
@@ -299,6 +325,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         case .Poll:
             return "PREVIEW POLL".localized
         case .Post:
+            return "PREVIEW POST".localized
+        case .Greeting:
             return "PREVIEW POST".localized
         }
     }
@@ -321,6 +349,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             containerTopBarModel?.cameraButton?.tintColor = .black
             containerTopBarModel?.cameraButton?.addTarget(self, action: #selector(initiateMediaAttachment), for: .touchUpInside)
             containerTopBarModel?.attachPDFButton?.addTarget(self, action: #selector(initiateAttachment), for: .touchUpInside)
+        case .Greeting:
+            break
         }
     }
     
@@ -361,18 +391,42 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     
     private func initiateGifAttachment(){
         print("<<<<<<<< initiate gif attachment")
-        let gifSelector = FeedsGIFSelectorViewController(nibName: "FeedsGIFSelectorViewController", bundle: Bundle(for: FeedsGIFSelectorViewController.self))
-        gifSelector.requestCoordinator = requestCoordinator
-        gifSelector.mediaFetcher = mediaFetcher
-        gifSelector.feedsGIFSelectorDelegate = self
+//        let gifSelector = FeedsGIFSelectorViewController(nibName: "FeedsGIFSelectorViewController", bundle: Bundle(for: FeedsGIFSelectorViewController.self))
+//        gifSelector.requestCoordinator = requestCoordinator
+//        gifSelector.mediaFetcher = mediaFetcher
+//        gifSelector.feedsGIFSelectorDelegate = self
+//        do{
+//            try gifSelector.presentDrawer()
+//        }catch let error{
+//            print("show error")
+//            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+//            }
+//        }
+        
+        let giphy = GiphyViewController()
+        Giphy.configure(apiKey: "sUhGOw62fGSyGbWUT0hrlsfLL3gBMQ3h")
+        giphy.delegate = self
+        giphy.mediaTypeConfig = [.gifs, .stickers, .text, .emoji]
+        GiphyViewController.trayHeightMultiplier = 1.0
+        giphy.theme = GPHTheme(type: .lightBlur)
+        present(giphy, animated: true, completion: nil)
+        
+    }
+    
+    @objc private func openImagePickerToComposePost(){
+        let drawer = FeedsImageDrawer(nibName: "FeedsImageDrawer", bundle: Bundle(for: FeedsImageDrawer.self))
+//        drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
+        drawer.requestCoordinator = requestCoordinator
+        drawer.mediaFetcher = mediaFetcher
+        drawer.themeManager = themeManager
+        drawer.delegate = self
         do{
-            try gifSelector.presentDrawer()
+            try drawer.presentDrawer()
         }catch let error{
             print("show error")
             ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
             }
         }
-        
     }
     
     @objc private func initiateMediaAttachment(){
@@ -458,29 +512,85 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         postCoordinator.updateAttachedMediaItems(selectedMediaItems)
     }
     
+    //Commenting this as per BOUS flow
+//    @IBAction func createButtonPressed(){
+//        do{
+//            //            createButton?.isUserInteractionEnabled  = false
+//            try postCoordinator.checkIfPostReadyToPublish()
+//            PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
+//                postCoordinator.getCurrentPost()) { localImageUrls, error in
+//                    if let unwrappedUrls = localImageUrls{
+//                        self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
+//                    }
+//                    if let unwrappedError = error{
+//                        self.createButton?.isUserInteractionEnabled  = true
+//                        ErrorDisplayer.showError(
+//                            errorMsg: unwrappedError.localizedDescription) { _ in }
+//                        print("<<<<<<<<<<<<<<<<<<< erorr observed \(unwrappedError)")
+//                    }else{
+//                        self.router.routeToNextScreenFromEditor()
+//                    }
+//                }
+//
+//        }catch let error{
+//            createButton?.isUserInteractionEnabled  = true
+//            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in}
+//        }
+//    }
     
     @IBAction func createButtonPressed(){
         do{
-            //            createButton?.isUserInteractionEnabled  = false
+            createButton?.isUserInteractionEnabled  = false
             try postCoordinator.checkIfPostReadyToPublish()
+            self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
             PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
-                postCoordinator.getCurrentPost()) { localImageUrls, error in
-                    if let unwrappedUrls = localImageUrls{
-                        self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
-                    }
-                    if let unwrappedError = error{
-                        self.createButton?.isUserInteractionEnabled  = true
-                        ErrorDisplayer.showError(
-                            errorMsg: unwrappedError.localizedDescription) { _ in }
-                        print("<<<<<<<<<<<<<<<<<<< erorr observed \(unwrappedError)")
-                    }else{
-                        self.router.routeToNextScreenFromEditor()
+            self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
+                 print("here")
+                if let unwrappedUrls = localImageUrls{
+                    self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
+                }
+                if error == nil{
+                    PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
+                    post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
+                        DispatchQueue.main.async {
+                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                            self?.createButton?.isUserInteractionEnabled  = true
+                            switch callResult{
+                            case .Success(let rawFeed):
+                                self?.feedOrderManager.insertFeeds(
+                                    rawFeeds: [rawFeed],
+                                    insertDirection: self?.editablePost?.remotePostId == nil ? .Top : .Bottom,
+                                    completion: {[weak self] in
+                                        DispatchQueue.main.async {
+//                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
+                                            ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
+                                                self?.dismiss(animated: true, completion: nil)
+                                            }
+                                        }
+                                })
+                                
+                            case .SuccessWithNoResponseData:
+                                ErrorDisplayer.showError(errorMsg: "Unable to post.".localized) { (_) in
+
+                                }
+                            case .Failure(let error):
+                                ErrorDisplayer.showError(errorMsg: "\("Unable to post due to".localized) \(error.displayableErrorMessage())") { (_) in
+
+                                }
+                            }
+                        }
                     }
                 }
-            
+                else{
+                    self.createButton?.isUserInteractionEnabled  = true
+                    print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
+                }
+            }
         }catch let error{
             createButton?.isUserInteractionEnabled  = true
-            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in}
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                
+            }
         }
     }
     
@@ -534,9 +644,47 @@ extension PostEditorViewController : PostEditorCellFactoryDatasource{
     }
 }
 extension PostEditorViewController : PostEditorCellFactoryDelegate{
+    func numberOfRowsIncrement(number: Int) {
+        self.numberOfRows = number
+        self.postEditorTable?.beginUpdates()
+        self.postEditorTable?.insertRows(at: [IndexPath(row: number - 1, section: 1)], with: .automatic)
+        self.postEditorTable?.endUpdates()
+    }
+    
+    func removeAttachedECard() {
+        postCoordinator.removeAttachedECard()
+    }
+    
+    func openPhotoLibrary() {
+        self.openImagePickerToComposePost()
+    }
+    
+    func openGif() {
+        self.initiateGifAttachment()
+    }
+    
+    func openECard() {
+        let storyboard = UIStoryboard(name: "FeedEcard",bundle: Bundle(for: FeedEcardSelectViewController.self))
+        let controller = storyboard.instantiateViewController(withIdentifier: "FeedEcardSelectViewController") as! FeedEcardSelectViewController
+        controller.delegate = self
+        controller.requestCoordinator = requestCoordinator
+        controller.mediaFetcher = mediaFetcher
+        do{
+            try controller.presentDrawer()
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
+    }
+    
+    func createdPostType(_ isEnabled: Bool?) {
+        self.postCoordinator.updatePostWithSameDepartment(isEnabled ?? false)
+    }
+    
     
     func removeAttachedGif() {
-        postCoordinator.removeAttachedGif()
+        postCoordinator.removeAttachedGiflyGif()
     }
     func activeDaysForPollChanged(_ days: Int) {
         postCoordinator.updateActiveDayForPoll(days)
@@ -616,7 +764,7 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
         return cellFactory.getNumberOfSection()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellFactory.numberOfRowsInSection(section)
+        return cellFactory.numberOfRowsInSection(section, numberOfRows)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -702,6 +850,41 @@ extension PostEditorViewController : PostPreviewViewEventListener{
     func postTriggered(_ completion: @escaping () -> Void) {
         self.postToNetwork(completion)
     }
+}
+
+extension  PostEditorViewController : DidTapOnEcard {
+    func selectedEcard(ecardData: EcardListResponseValues) {
+        postCoordinator.attachedEcardItems(_selectedECard: ecardData)
+    }
     
     
+}
+
+extension PostEditorViewController: GiphyDelegate {
+    func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia)   {
+        let gifURL = media.url(rendition: .downsized, fileType: .gif)
+        // your user tapped a GIF!
+        self.selectedGif = gifURL!
+        postCoordinator.attachGifyGifItem(gifURL!)
+        //        self.documentsArr.append(["Gif" : self.selectedGif])
+        //self.tableView.reloadData()
+        giphyViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func didDismiss(controller: GiphyViewController?) {
+        // your user dismissed the controller without selecting a GIF.
+    }
+}
+extension PostEditorViewController:  FeedsImageDelegate {
+    func selectedImageType(isCamera : Bool) {
+        if isCamera {
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.openCameraInput()
+            }
+        }else{
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.showImagePicker()
+            }
+        }
+    }
 }

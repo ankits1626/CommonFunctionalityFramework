@@ -10,8 +10,10 @@ target 'CommonFunctionalityFramework' do
   pod 'ActiveLabel', :git => 'https://github.com/ankits1626/ActiveLabel.swift', :branch => 'CFF_Customizations'
   pod 'Loaf'
   pod 'FLAnimatedImage', '~> 1.0'
+  pod 'Reactions', '~> 3.0.0'
   #pod 'SDWebImageFLPlugin'
   pod 'RewardzCommonComponents', :git => 'https://github.com/ankits1626/RewardzCommonComponents.git', :branch => 'removedLocalization'
+pod 'IQKeyboardManagerSwift'
   # Pods for CommonFunctionalityFramework
-
+  pod 'Giphy'
 end

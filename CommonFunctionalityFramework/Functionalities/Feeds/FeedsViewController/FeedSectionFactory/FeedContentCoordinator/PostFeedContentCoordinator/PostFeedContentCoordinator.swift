@@ -10,28 +10,38 @@ import UIKit
 
 class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     var feedsDataSource: FeedsDatasource!
+    var selectedTab = ""
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var themeManager: CFFThemeManagerProtocol?
     private weak var targetTableView : UITableView?
+    private weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     lazy var cachedFeedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         return [
-            FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
-            FeedTitleTableViewCellType().cellIdentifier : FeedTitleTableViewCellCoordinator(),
+            PostPollTopTableViewCellTableViewCellType().cellIdentifier : PostPollTableViewCellCordinator(),
+            PostPollTitleTableViewCellType().cellIdentifier : PostPollTitleCellCordinator(),
             FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
             SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
             FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
-            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
+//            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
+            PostPollLikeTableViewCellType().cellIdentifier : PostPollLikeTableViewCordinator(),
+            BOUSTwoImageDetailTableViewCellType().cellIdentifier : BOUSTwoImageDetailCoordinator(),
+            BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator(),
+            BOUSAnniversaryTableViewCellType().cellIdentifier :
+                BOUSAnniversaryBirthdayImageTableViewCellCoordinator()
+//            BOUSFeedGrayDividerCellType().cellIdentifier : BOUSGrayDividerCoordinator()
         ]
     }()
 
-    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?) {
+    init(feedsDatasource : FeedsDatasource, mediaFetcher: CFFMediaCoordinatorProtocol!, tableview : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedTab: String, mainAppCoordinator : CFFMainAppInformationCoordinator?) {
         self.feedsDataSource = feedsDatasource
+        self.selectedTab = selectedTab
         self.mediaFetcher = mediaFetcher
         self.targetTableView = tableview
         self.themeManager = themeManager
         registerTableViewForAllPossibleCellTypes(tableview)
+        self.mainAppCoordinator = mainAppCoordinator
     }
     
     internal func registerTableViewForAllPossibleCellTypes(_ tableView : UITableView? ){
@@ -44,41 +54,79 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
     func getRowsToRepresentAFeed(feedIndex : Int) -> [FeedCellTypeProtocol] {
         let feed = feedsDataSource.getFeedItem(feedIndex)
         var rows = [FeedCellTypeProtocol] ()
-        rows.append(FeedTopTableViewCellType())
-        if feed.getFeedTitle() != nil {
-            rows.append(FeedTitleTableViewCellType())
-        }
-        let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
-        feedId: feed.feedIdentifier,
-        description: feed.getFeedDescription())
-        if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
-            !disaplyableDescription.isEmpty{
-//        if feed.getFeedDescription() != nil{
-            rows.append(FeedTextTableViewCellType())
-        }
-        switch feed.getMediaCountState() {
-        case .None:
-            break
-        case .OneMediaItemPresent(let mediaType):
-            switch mediaType {
-            case .Image:
-                rows.append(SingleImageTableViewCellType())
-            case .Video:
-                rows.append(SingleVideoTableViewCellType())
-            case .Document:
-                debugPrint("documents not supported")
+        rows.append(PostPollTopTableViewCellTableViewCellType())
+        
+        if selectedTab == "GreetingsFeed" {
+            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+            feedId: feed.feedIdentifier,
+            description: feed.getFeedDescription())
+            if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+                !disaplyableDescription.isEmpty{
+    //        if feed.getFeedDescription() != nil{
+                rows.append(FeedTextTableViewCellType())
             }
-        
-        case .TwoMediaItemPresent:
-            fallthrough
-        case .MoreThanTwoMediItemPresent:
-            rows.append(MultipleMediaTableViewCellType())
+            switch feed.getMediaCountState() {
+            case .None:
+                break
+            case .OneMediaItemPresent(let mediaType):
+                switch mediaType {
+                case .Image:
+                    rows.append(SingleImageTableViewCellType())
+                case .Video:
+                    rows.append(SingleVideoTableViewCellType())
+                case .Document:
+                    break
+                }
+            case .TwoMediaItemPresent:
+                rows.append(BOUSTwoImageDetailTableViewCellType())
+            case .MoreThanTwoMediItemPresent:
+                rows.append(BOUSThreeImageDetailTableViewCellType())
+            }
+            
+            if let unwrappedGify = feed.getGiphy(),
+                !unwrappedGify.isEmpty {
+                rows.append(FeedGifTableViewCellType())
+            }
+        }else {
+            if feed.getPostType() == .Greeting {
+                rows.append(BOUSAnniversaryTableViewCellType())
+            }else {
+                if feed.getFeedTitle() != nil {
+                    rows.append(PostPollTitleTableViewCellType())
+                }
+                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+                feedId: feed.feedIdentifier,
+                description: feed.getFeedDescription())
+                if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+                    !disaplyableDescription.isEmpty{
+        //        if feed.getFeedDescription() != nil{
+                    rows.append(FeedTextTableViewCellType())
+                }
+                switch feed.getMediaCountState() {
+                case .None:
+                    break
+                case .OneMediaItemPresent(let mediaType):
+                    switch mediaType {
+                    case .Image:
+                        rows.append(SingleImageTableViewCellType())
+                    case .Video:
+                        rows.append(SingleVideoTableViewCellType())
+                    case .Document:
+                        break
+                    }
+                case .TwoMediaItemPresent:
+                    rows.append(BOUSTwoImageDetailTableViewCellType())
+                case .MoreThanTwoMediItemPresent:
+                    rows.append(BOUSThreeImageDetailTableViewCellType())
+                }
+                
+                if let unwrappedGify = feed.getGiphy(),
+                    !unwrappedGify.isEmpty {
+                    rows.append(FeedGifTableViewCellType())
+                }
+            }
+            rows.append(PostPollLikeTableViewCellType())
         }
-        
-        if model?.attachedGif != nil{
-            rows.append(FeedGifTableViewCellType())
-        }
-        rows.append(FeedBottomTableViewCellType())
         return rows
     }
     
@@ -88,7 +136,8 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
             targetTableView: targetTableView!,
             datasource: feedsDataSource,
             isFeedDetailPage: false,
-            themeManager: themeManager
+            themeManager: themeManager,
+            mainAppCoordinator: mainAppCoordinator
             )
         )
     }
@@ -104,7 +153,7 @@ class PostFeedContentCoordinator  : FeedContentCoordinatorProtocol{
                 delegate: inputModel.delegate,
                 selectedoptionMapper: inputModel.selectedoptionMapper,
                 themeManager: themeManager,
-                isFeedDetailPage: false
+                mainAppCoordinator: mainAppCoordinator, isFeedDetailPage: false, selectedTab: selectedTab
             )
         )
     }

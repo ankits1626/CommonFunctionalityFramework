@@ -27,6 +27,13 @@ struct FeedVideoItem :  MediaItemProtocol{
         
         return rawVideo["display_img_url"] as? String
     }
+    
+    func getGiphy() -> String? {
+        return ""
+    }
+    func getImagePK() -> Int? {
+        return rawVideo["pk"] as? Int
+    }
 }
 
 struct FeedImageItem :  MediaItemProtocol{
@@ -45,11 +52,24 @@ struct FeedImageItem :  MediaItemProtocol{
     func getCoverImageUrl() -> String?{
         return rawImage["display_img_url"] as? String
     }
+    func getGiphy() -> String? {
+        return rawImage["gif"] as? String
+    }
+    func getImagePK() -> Int? {
+        return rawImage["pk"] as? Int
+    }
 }
 
 enum FeedType : Int{
     case Poll = 2
     case Post = 1
+    case Greeting = 9
+}
+
+enum FeedPostType : Int{
+    case Appreciation = 6
+    case Nomination = 7
+    case Greeting = 9
 }
 
 

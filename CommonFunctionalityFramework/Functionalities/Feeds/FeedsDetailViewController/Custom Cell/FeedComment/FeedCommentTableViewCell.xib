@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,17 +27,23 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLf-0t-9wT" userLabel="profile Image container">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="211"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-ni-OTg">
-                                                <rect key="frame" x="12" y="0.0" width="22" height="22"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-ni-OTg">
+                                                <rect key="frame" x="4" y="0.0" width="36" height="36"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="6iA-da-coB"/>
-                                                    <constraint firstAttribute="width" constant="22" id="he2-P5-653"/>
+                                                    <constraint firstAttribute="height" constant="36" id="6iA-da-coB"/>
+                                                    <constraint firstAttribute="width" constant="36" id="he2-P5-653"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="a3E-ni-OTg" firstAttribute="top" secondItem="ZLf-0t-9wT" secondAttribute="top" id="2Sv-SM-zo6"/>
-                                            <constraint firstItem="a3E-ni-OTg" firstAttribute="leading" secondItem="ZLf-0t-9wT" secondAttribute="leading" constant="12" id="mKi-7B-Vz3"/>
+                                            <constraint firstItem="a3E-ni-OTg" firstAttribute="leading" secondItem="ZLf-0t-9wT" secondAttribute="leading" constant="4" id="mKi-7B-Vz3"/>
                                             <constraint firstAttribute="width" constant="44" id="yNS-WU-wYr"/>
                                         </constraints>
                                     </view>
@@ -60,10 +66,10 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="27"/>
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYd-lI-7Bk">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="215" height="27"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="27"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyG-uD-yj5">
-                                                                                                <rect key="frame" x="12" y="6" width="198" height="20.5"/>
+                                                                                                <rect key="frame" x="12" y="6" width="258" height="20.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
@@ -76,24 +82,25 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-LR-tVi">
-                                                                                        <rect key="frame" x="215" y="0.0" width="100" height="27"/>
+                                                                                        <rect key="frame" x="275" y="0.0" width="40" height="27"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAQ-YM-8lV">
-                                                                                                <rect key="frame" x="5" y="6" width="75" height="20.5"/>
-                                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                                <nil key="textColor"/>
-                                                                                                <nil key="highlightedColor"/>
-                                                                                            </label>
+                                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nx-z9-1uO" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                                                                                <rect key="frame" x="0.0" y="4" width="40" height="23"/>
+                                                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                                <state key="normal" image="cff_feedMore"/>
+                                                                                            </button>
                                                                                         </subviews>
                                                                                         <constraints>
-                                                                                            <constraint firstAttribute="width" constant="100" id="ErR-sK-SPp"/>
-                                                                                            <constraint firstAttribute="trailing" secondItem="FAQ-YM-8lV" secondAttribute="trailing" constant="20" symbolic="YES" id="mhl-kG-0RN"/>
-                                                                                            <constraint firstItem="FAQ-YM-8lV" firstAttribute="leading" secondItem="rpb-LR-tVi" secondAttribute="leading" constant="5" id="mnR-QN-wq3"/>
+                                                                                            <constraint firstItem="8nx-z9-1uO" firstAttribute="top" secondItem="rpb-LR-tVi" secondAttribute="top" constant="4" id="6hU-1R-pf9"/>
+                                                                                            <constraint firstAttribute="width" constant="40" id="ErR-sK-SPp"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="8nx-z9-1uO" secondAttribute="bottom" id="ii4-EY-MDY"/>
+                                                                                            <constraint firstItem="8nx-z9-1uO" firstAttribute="leading" secondItem="rpb-LR-tVi" secondAttribute="leading" id="pbR-Su-KUu"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="8nx-z9-1uO" secondAttribute="trailing" id="xWI-QU-flf"/>
                                                                                         </constraints>
                                                                                     </view>
                                                                                 </subviews>
                                                                                 <constraints>
-                                                                                    <constraint firstItem="FAQ-YM-8lV" firstAttribute="centerY" secondItem="dyG-uD-yj5" secondAttribute="centerY" id="CTj-zg-Pq0"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="rpb-LR-tVi" secondAttribute="trailing" id="ALY-Tp-2Wo"/>
                                                                                 </constraints>
                                                                             </stackView>
                                                                         </subviews>
@@ -174,7 +181,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDf-1m-ZAm">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="8" height="20"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="●" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CL-vd-cj4">
+                                                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="●" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CL-vd-cj4">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="8" height="20"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="4"/>
                                                                                         <nil key="textColor"/>
@@ -194,7 +201,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiR-co-0jo">
                                                                                 <rect key="frame" x="8" y="0.0" width="263" height="20"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-PF-EZv">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-PF-EZv">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="263" height="20"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
@@ -271,9 +278,9 @@
                 <outlet property="commentContainer" destination="kpG-oJ-NuF" id="01x-t7-YiC"/>
                 <outlet property="commentCountConatiner" destination="6Rt-l5-g5x" id="HtM-LQ-oqV"/>
                 <outlet property="commentCountLabel" destination="8Ku-PF-EZv" id="Wwz-GY-n6U"/>
-                <outlet property="commentDateLabel" destination="FAQ-YM-8lV" id="Hb8-lc-Yju"/>
                 <outlet property="commentLabel" destination="CzA-vt-fmv" id="Vgy-YM-fwe"/>
                 <outlet property="containerView" destination="ALw-Ed-RWu" id="zwU-8V-ecP"/>
+                <outlet property="editOptionsButton" destination="8nx-z9-1uO" id="J7Y-4v-NfE"/>
                 <outlet property="likeButton" destination="HF8-IG-Dwm" id="unz-a3-hkU"/>
                 <outlet property="likeIndicator" destination="twI-4l-XTn" id="vqQ-g9-esj"/>
                 <outlet property="userDepartmentLabel" destination="oeF-lm-hH5" id="QUJ-Lb-EaH"/>
@@ -289,8 +296,9 @@
         </designable>
     </designables>
     <resources>
+        <image name="cff_dummyProfile" width="30" height="30"/>
+        <image name="cff_feedMore" width="22" height="22"/>
         <image name="cff_transparent_comment_like" width="32" height="32"/>
-        <image name="dummyProfile" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

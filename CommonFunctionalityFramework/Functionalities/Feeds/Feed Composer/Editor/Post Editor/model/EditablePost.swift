@@ -23,6 +23,7 @@ protocol EditablePostProtocol {
     var postableMediaMap : [Int : Data]? { get set}
     var postableLocalMediaUrls : [URL]? { get set}
     var remoteAttachedMedia: [MediaItemProtocol]?{get set}
+    var isShareWithSameDepartmentOnly : Bool {set get}
     var remotePostId : String?{get}
     func getEditablePostNetworkModel(_ baseUrl : String) -> EditablePostNetworkModel
     var postSharedChoice : SharePostOption {set get}
@@ -30,6 +31,9 @@ protocol EditablePostProtocol {
     func getCleanPollOptions() -> [String]?
     func isGifAttached() -> Bool
     func postSharedWith() -> (SharePostOption, FeedOrganisationDepartmentSelectionModel?)
+    var selectedEcardMediaItems : EcardListResponseValues? {set get}
+    func isECardAttached() -> Bool
+    var attachedGiflyGif : String?{set get}
 }
 
 
@@ -39,10 +43,18 @@ enum PostSharedChoice : Int {
     case CustomMultiOrgDepartment = 40
     
 }
-class EditablePost : EditablePostProtocol{
+struct EditablePost : EditablePostProtocol{
+    var selectedEcardMediaItems: EcardListResponseValues?
+    var attachedGiflyGif : String?
+    
+    
+    
+    func isECardAttached() -> Bool {
+        return selectedEcardMediaItems != nil
+    }
     
     func isGifAttached() -> Bool {
-        return attachedGif != nil
+        return attachedGiflyGif != nil
     }
     
     func getCleanPollOptions() -> [String]? {
@@ -51,6 +63,7 @@ class EditablePost : EditablePostProtocol{
         }
     }
     
+    var isShareWithSameDepartmentOnly: Bool
     var pollActiveDays: Int = 1
     var postSharedChoice: SharePostOption
     var deletedRemoteMediaArray = [Int]()
@@ -85,7 +98,7 @@ class EditablePost : EditablePostProtocol{
          remoteAttachedMedia: [MediaItemProtocol]? = nil,
          selectedMediaItems: [LocalSelectedMediaItem]? = nil,
          remotePostId: String? = nil,
-         selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel? = nil){
+         selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel? = nil, isShareWithSameDepartmentOnly: Bool? = nil){
         self.postSharedChoice = postSharedChoice
         self.postType = postType
         self.title = title
@@ -94,7 +107,7 @@ class EditablePost : EditablePostProtocol{
         self.selectedMediaItems = selectedMediaItems
         self.remotePostId = remotePostId
         self.selectedOrganisationsAndDepartments = selectedOrganisationsAndDepartments
-        
+        self.isShareWithSameDepartmentOnly = isShareWithSameDepartmentOnly ?? false
     }
     
     func getNetworkPostableFormat() -> [String : Any] {
@@ -103,7 +116,9 @@ class EditablePost : EditablePostProtocol{
         case .Poll:
             postableDictionary = getPollDictionary()
         case .Post:
-            postableDictionary = getPostDictionary()
+            return getPostDictionary()
+        case .Greeting:
+            return getPostDictionary()
         }
         postableDictionary["shared_with"] = postSharedChoice.rawValue
         if let unwrappedSelectedOrgAndDepartment = selectedOrganisationsAndDepartments{
@@ -134,12 +149,14 @@ class EditablePost : EditablePostProtocol{
         if let unwrappedDescription = postDesciption{
             postDictionary["description"] = unwrappedDescription
         }
-        if let unwrappedGif = attachedGif?.getGifMarkup(){
-            if let description = postDictionary["description"] as? String{
-                postDictionary["description"] = "\(description)\(unwrappedGif)"
-            }else{
-                postDictionary["description"] = "\(unwrappedGif)"
-            }
+        
+        if let unwrappedGif = attachedGiflyGif, !unwrappedGif.isEmpty {
+            postDictionary["gif"] = unwrappedGif
+        }
+        
+        
+        if let unwrappedECard = selectedEcardMediaItems{
+            postDictionary["ecard"] = "\(unwrappedECard.pk)"
         }
         
         if !deletedRemoteMediaArray.isEmpty{
@@ -165,11 +182,15 @@ class EditablePost : EditablePostProtocol{
                 return nil
             case .Post:
                 return URL(string: baseUrl + "feeds/api/posts/\(unwrappedRemotePostId)/")
+            case .Greeting:
+                return nil
             }
         }else{
             switch postType {
             case .Poll:
                 return URL(string: baseUrl + "feeds/api/posts/create_poll/")
+            case .Greeting:
+                return nil
             case .Post:
                 return URL(string: baseUrl + "feeds/api/posts/")
             }

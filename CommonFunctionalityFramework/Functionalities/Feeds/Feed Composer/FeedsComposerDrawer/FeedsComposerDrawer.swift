@@ -18,6 +18,8 @@ public class FeedsComposerDrawerError {
 
 class FeedsComposerDrawer: UIViewController {
     
+    @IBOutlet weak var pollImg: UIImageView!
+    @IBOutlet weak var postImg: UIImageView!
     @IBOutlet private weak var createPostButton : UIButton?
     @IBOutlet private weak var createPollButton : UIButton?
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
@@ -31,13 +33,15 @@ class FeedsComposerDrawer: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+       // setup()
+        pollImg.setImageColor(color: UIColor.getControlColor())
+        postImg.setImageColor(color: UIColor.getControlColor())
     }
     
     private func setup() {
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-        setupButtons()
+        //setupButtons()
     }
     
     private func setupButtons(){
@@ -53,7 +57,7 @@ class FeedsComposerDrawer: UIViewController {
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: 198.0)
+            slideInTransitioningDelegate.direction = .bottom(height: 228)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)

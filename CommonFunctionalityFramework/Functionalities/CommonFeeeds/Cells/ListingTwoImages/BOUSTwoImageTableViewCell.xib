@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="215" id="61F-aY-MHz" customClass="BOUSTwoImageTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="215"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="61F-aY-MHz" id="KAG-9H-kdI">
+                <rect key="frame" x="0.0" y="0.0" width="321" height="215"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Wg-b6-WHW">
+                        <rect key="frame" x="12" y="0.0" width="298" height="215"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M0L-JZ-isb">
+                                <rect key="frame" x="12" y="0.0" width="136" height="199"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3v-IG-3ME" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                <rect key="frame" x="12" y="0.0" width="278" height="199"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4dr-Zu-Sly">
+                                <rect key="frame" x="154" y="0.0" width="136" height="199"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="4dr-Zu-Sly" firstAttribute="width" secondItem="M0L-JZ-isb" secondAttribute="width" id="3wQ-Uu-hPN"/>
+                            <constraint firstItem="I3v-IG-3ME" firstAttribute="leading" secondItem="7Wg-b6-WHW" secondAttribute="leading" constant="12" id="9IX-n8-GNg"/>
+                            <constraint firstAttribute="bottom" secondItem="I3v-IG-3ME" secondAttribute="bottom" constant="16" id="9Vj-g9-2um"/>
+                            <constraint firstAttribute="bottom" secondItem="4dr-Zu-Sly" secondAttribute="bottom" constant="16" id="AJn-t2-F4a"/>
+                            <constraint firstItem="4dr-Zu-Sly" firstAttribute="leading" secondItem="M0L-JZ-isb" secondAttribute="trailing" constant="6" id="FBu-9N-1EC"/>
+                            <constraint firstAttribute="trailing" secondItem="4dr-Zu-Sly" secondAttribute="trailing" constant="8" id="FdE-Vl-Eu1"/>
+                            <constraint firstAttribute="bottom" secondItem="M0L-JZ-isb" secondAttribute="bottom" constant="16" id="JNa-l5-NlQ"/>
+                            <constraint firstItem="M0L-JZ-isb" firstAttribute="leading" secondItem="7Wg-b6-WHW" secondAttribute="leading" constant="12" id="LD2-bC-ZUf"/>
+                            <constraint firstItem="M0L-JZ-isb" firstAttribute="top" secondItem="7Wg-b6-WHW" secondAttribute="top" id="PLm-f8-OUk"/>
+                            <constraint firstItem="4dr-Zu-Sly" firstAttribute="top" secondItem="7Wg-b6-WHW" secondAttribute="top" id="VW8-eH-1fB"/>
+                            <constraint firstItem="I3v-IG-3ME" firstAttribute="top" secondItem="7Wg-b6-WHW" secondAttribute="top" id="b1c-9E-7xh"/>
+                            <constraint firstAttribute="trailing" secondItem="I3v-IG-3ME" secondAttribute="trailing" constant="8" id="qUz-1L-lRy"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="7Wg-b6-WHW" secondAttribute="trailing" constant="11" id="KFB-gx-yN0"/>
+                    <constraint firstItem="7Wg-b6-WHW" firstAttribute="top" secondItem="KAG-9H-kdI" secondAttribute="top" id="Kj7-M8-aSP"/>
+                    <constraint firstAttribute="bottom" secondItem="7Wg-b6-WHW" secondAttribute="bottom" id="Qkh-8G-HYv"/>
+                    <constraint firstItem="7Wg-b6-WHW" firstAttribute="leading" secondItem="KAG-9H-kdI" secondAttribute="leading" constant="12" id="jzg-nL-YPW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="lVP-CS-R1t"/>
+            <connections>
+                <outlet property="containerView" destination="7Wg-b6-WHW" id="S86-b9-4Xz"/>
+                <outlet property="feedImageView1" destination="M0L-JZ-isb" id="9FX-9U-H4M"/>
+                <outlet property="feedImageView2" destination="4dr-Zu-Sly" id="2Ac-7f-Dzu"/>
+                <outlet property="imageTapButton" destination="I3v-IG-3ME" id="mRc-h6-ufr"/>
+            </connections>
+            <point key="canvasLocation" x="138.40579710144928" y="143.63839285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="height" constant="22" id="L9e-Qy-gRb"/>
                                     <constraint firstAttribute="width" constant="22" id="cWi-lI-KzQ"/>
                                 </constraints>
-                                <state key="normal" image="cff_closeIcon"/>
+                                <state key="normal" image="icon_remove"/>
                             </button>
                         </subviews>
                         <constraints>
@@ -47,8 +47,8 @@
                             <constraint firstItem="Nnl-bg-nJK" firstAttribute="centerY" secondItem="cMC-EN-Igx" secondAttribute="centerY" id="Tj5-8S-o82"/>
                             <constraint firstAttribute="bottom" secondItem="bHT-LX-dbW" secondAttribute="bottom" id="eN2-Ez-YSc"/>
                             <constraint firstItem="bHT-LX-dbW" firstAttribute="leading" secondItem="cMC-EN-Igx" secondAttribute="leading" id="qRg-wX-mMD"/>
-                            <constraint firstItem="k3P-CW-dNK" firstAttribute="top" secondItem="cMC-EN-Igx" secondAttribute="top" constant="5" id="rbm-JK-zox"/>
-                            <constraint firstAttribute="trailing" secondItem="k3P-CW-dNK" secondAttribute="trailing" constant="5" id="zWN-Ro-BB8"/>
+                            <constraint firstItem="k3P-CW-dNK" firstAttribute="top" secondItem="cMC-EN-Igx" secondAttribute="top" constant="-2" id="rbm-JK-zox"/>
+                            <constraint firstAttribute="trailing" secondItem="k3P-CW-dNK" secondAttribute="trailing" id="zWN-Ro-BB8"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -70,7 +70,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cff_closeIcon" width="16" height="16"/>
         <image name="cff_playIcon" width="22" height="22"/>
+        <image name="icon_remove" width="18" height="18"/>
     </resources>
 </document>

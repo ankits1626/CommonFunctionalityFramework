@@ -23,13 +23,15 @@ class PollBottomTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+               // cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
-            cell.messageLabel?.textColor = .black
-            cell.messageLabel?.font = .Highlighter1
+           // cell.messageLabel?.textColor = .black
+            //cell.messageLabel?.font = .Highlighter1
             cell.messageLabel?.text = feed.getPoll()?.getPollInfo()
+            cell.daysLabel?.textColor = inputModel.themeManager?.getControlActiveColor()
+            cell.daysLabel?.text = feed.getPoll()?.getPollDate()
         }
     }
     

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol,MultipleImageFlowLayoutDelegate{
+    
+    func currentPageSelected(currentPage: Int) {
+        print(currentPage)
+    }
     var cellType: FeedCellTypeProtocol{
         return MultipleMediaTableViewCellType()
     }
@@ -17,7 +21,7 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
         let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
         if feed.hasOnlyMedia(){
-            return 114
+            return 190
         }else{
             switch feed.getMediaCountState() {
                 
@@ -26,9 +30,9 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
             case .OneMediaItemPresent(_):
                 return 0
             case .TwoMediaItemPresent:
-                return 122
+                return 190
             case .MoreThanTwoMediItemPresent:
-                return 89
+                return 190
             }
         }
         
@@ -39,10 +43,26 @@ class MultipleMediaTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+//                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+               // cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
+            let feedTitle = feed.getStrengthData()
+//            cell.containerView?.backgroundColor = Rgbconverter.HexToColor(feedTitle["badgeBackgroundColor"] as? String ?? "#FFFFFF", alpha: 1.0)
+            let backGroundColor = feedTitle["badgeBackgroundColor"] as? String ?? ""
+            let backGroundColorLite = feedTitle["background_color_lite"] as? String ?? ""
+            if let bgColor = UIColor(hex: backGroundColorLite) {
+                cell.containerView?.backgroundColor = bgColor
+            }else{
+                cell.containerView?.backgroundColor = Rgbconverter.HexToColor(backGroundColorLite)
+            }
+
+            cell.containerView?.clipsToBounds = true
+            cell.containerView?.layer.cornerRadius = 8
+            cell.containerView?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            cell.mediaCollectionView?.decelerationRate = .fast
+            (cell.mediaCollectionView?.collectionViewLayout as! MultipleImageFlowLayout).pageCollectionLayoutDelegate = self
+            cell.mediaCollectionView?.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             getMediaCoordinator(inputModel).loadCollectionView(targetCollectionView: cell.mediaCollectionView)
         }
     }

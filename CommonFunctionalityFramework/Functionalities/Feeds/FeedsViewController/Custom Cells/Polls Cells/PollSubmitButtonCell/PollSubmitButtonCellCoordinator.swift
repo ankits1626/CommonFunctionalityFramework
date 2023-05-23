@@ -14,23 +14,22 @@ class PollSubmitButtonCellCoordinator:  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 44
+        return 52
     }
-    
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? PollSubmitButtonCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             cell.containerView?.backgroundColor = UIColor.optionContainerBackGroundColor
             if feed.isPinToPost() && !inputModel.isFeedDetailPage {
-                cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
             cell.submitButton?.backgroundColor = inputModel.themeManager?.getControlActiveColor() ?? .black
-            cell.submitButton?.setTitle("SUBMIT".localized, for: .normal)
+            cell.submitButton?.setTitle("Submit".localized, for: .normal)
             cell.submitButton?.setTitleColor(.white, for: .normal)
-            cell.submitButton?.titleLabel?.font = .Highlighter1
+           // cell.submitButton?.titleLabel?.font = .Highlighter1
             let delegate = inputModel.delegate
             let feedIdentifier = feed.feedIdentifier
             cell.submitButton?.handleControlEvent(

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 enum FeedDetailSection : Int {
     case FeedInfo = 0
@@ -20,6 +21,7 @@ protocol FeedsDetailCommentsProviderProtocol{
 }
 class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate {
 
+
     var feedFetcher: CFFNetworkRequestCoordinatorProtocol!
     private var tagPicker : ASMentionSelectorViewController?
     @IBOutlet weak var commentBarView : ASChatBarview?
@@ -31,6 +33,11 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     weak var themeManager: CFFThemeManagerProtocol?
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    var selectedTab = ""
+    @IBOutlet weak var downloadCompletedView: UIView!
+    var isPostPollType : Bool = false
+    var is_download_choice_needed : Bool = false
+    var can_download : Bool = false
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
@@ -39,7 +46,9 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
             mediaFetcher: mediaFetcher,
             targetTableView: feedDetailTableView,
             themeManager: themeManager,
-            selectedOptionMapper: pollSelectedAnswerMapper
+            selectedOptionMapper: pollSelectedAnswerMapper,
+            selectedTab: selectedTab,
+            _isPostPoll: isPostPollType, mainAppCoordinator: mainAppCoordinator, canDownload: can_download
         )
     }()
     var pollSelectedAnswerMapper: SelectedPollAnswerMapper?
@@ -48,10 +57,16 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
+        IQKeyboardManager.shared.enableAutoToolbar = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        IQKeyboardManager.shared.enableAutoToolbar = true
+    }
     private func setup(){
-        view.backgroundColor = .viewBackgroundColor
+        view.backgroundColor = .white
         setupTableView()
         setupCommentBar()
         fetchClappedByUsers()
@@ -68,11 +83,32 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     
     private func setupCommentBar(){
         commentBarView?.backgroundColor = .commentBarBackgroundColor
-        commentBarView?.placeholder = "Enter your comments here".localized
-        commentBarView?.placeholderColor = .getPlaceholderTextColor()
-        commentBarView?.placeholderFont = .Body1
+//        commentBarView?.placeholder = "Enter your comments here".localized
+//        commentBarView?.placeholderColor = .getPlaceholderTextColor()
+//        commentBarView?.placeholderFont = .Body1
+        commentBarView?.themeManager = themeManager
+        commentBarView?.requestCoordinator = requestCoordinator
+        commentBarView?.mediaFetcher = mediaFetcher
+        commentBarView?.setupUserProfile()
+        commentBarView?.backgroundColor = .white
+        commentBarView?.sendBtnView.backgroundColor = UIColor.getControlColor()
+//        commentBarView?.leftUserImg.image = UIImage(named: "")
     }
     
+    
+    func updateProfilePic()  {
+        let pic = ""
+           if !pic.isEmpty {
+//               commentBarView?.leftUserImg?.sd_setImage(
+//                   with: URL(string: getServiceURL() + getProfilePic()),
+//                  placeholderImage: nil,
+//                  completed: nil
+//              )
+           }else{
+              // commentBarView?.leftUserImg?.setImageForName(getfullName(), circular: false, textAttributes: nil)
+           }
+       }
+ 
     private func setupTableView(){
         feedDetailTableView?.tableFooterView = UIView(frame: CGRect.zero)
         feedDetailTableView?.rowHeight = UITableView.automaticDimension
@@ -117,6 +153,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         clearAnyExistingFeedsData {[weak self] in
             ASMentionCoordinator.shared.delegate = self
             self?.initializeFRC()
+            self?.fetchFeedDetail()
             self?.setup()
             self?.fetchComments()
             ASChatBarview().setNeedsDisplay()
@@ -204,7 +241,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
                 if let results = result.fetchedLikes?["results"] as? [[String : Any]]{
                     results.forEach { (aRawLike) in
                         if let userInfo = aRawLike["user_info"] as? [String : Any]{
-                            likeList.append(ClappedByUser(userInfo))
+                            likeList.append(ClappedByUser(userInfo, reactionType: aRawLike["reaction_type"] as! Int ))
                         }
                     }
                 }
@@ -221,6 +258,28 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
         }
     }
     
+    private func fetchFeedDetail() {
+        FeedDetailsFetcherFormWorker(networkRequestCoordinator: requestCoordinator).getFeedDetailsFetcher(feedId: targetFeedItem.feedIdentifier) { (result) in
+            switch result{
+            case .Success(result: let result):
+                self.can_download = result["can_download"] as? Bool ?? false
+                self.is_download_choice_needed = result["is_download_choice_needed"] as? Bool ?? false
+                DispatchQueue.main.async {
+                    self.feedDetailSectionFactory.reloadDownloadCertificateButton(canDownload: self.can_download)
+                    self.feedDetailTableView?.reloadData()
+                }
+            case .SuccessWithNoResponseData:
+                fallthrough
+            case .Failure(error: _):
+                print("<<<<<<< error while fetching like list")
+            }
+        }
+    }
+    
+    func numberOfRowsIncrement(number: Int) {
+        
+    }
+    
     @objc private func reloadPost(notification: NSNotification){
         guard let userInfo = notification.userInfo else { return }
         if let updates = userInfo[NSUpdatedObjectsKey] as? Set<ManagedPost>,
@@ -232,6 +291,22 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     }
     
     func reloadTextViewContainingRow(indexpath: IndexPath) {
+    }
+    
+    func createdPostType(_ isEnabled: Bool?) {
+        
+    }
+    
+    func openPhotoLibrary() {
+        
+    }
+    
+    func openGif() {
+        
+    }
+    
+    func openECard() {
+        
     }
     
     func updatePostTitle(title: String?) {
@@ -250,6 +325,9 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     }
     
     func activeDaysForPollChanged(_ days: Int) {
+    }
+    
+    func removeAttachedECard() {
     }
 }
 
@@ -351,7 +429,74 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
     }
 }
 
-extension FeedsDetailViewController : FeedsDelegate{
+extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownload{
+ 
+    func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
+        print(commentedByPk)
+        var numberofElementsEnabled : CGFloat = 0.0
+        let drawer = EditCommentDrawer(nibName: "EditCommentDrawer", bundle: Bundle(for: EditCommentDrawer.self))
+        drawer.bottomsheetdelegate = self
+        drawer.commentFeedIdentifier = commentIdentifier
+        drawer.chatMessage = chatMessage
+        if mainAppCoordinator?.getUserPK() == commentedByPk {
+            drawer.isEditEnabled = true
+            numberofElementsEnabled = numberofElementsEnabled + 1
+        }else{
+            drawer.isEditEnabled = false
+        }
+        
+        if mainAppCoordinator?.getUserPK() == commentedByPk || self.mainAppCoordinator?.isUserAllowedToCreatePoll() == true{
+            numberofElementsEnabled = numberofElementsEnabled + 1
+            drawer.isDeleteEnabled = true
+        }else{
+            drawer.isDeleteEnabled = false
+        }
+        do{
+            try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
+    }
+    
+    func deleteComment(commentIdentifier : Int64) {
+        CommentDeleteWorker(networkRequestCoordinator: self.requestCoordinator).deleteComment(commentIdentifier) { (result) in
+            switch result{
+            case .Success(result: _):
+                DispatchQueue.main.async {[weak self] in
+                    if let feedItem = self?.targetFeedItem{
+                        CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                            if let comment = self?.getLikeableComment(commentIdentifier: commentIdentifier){
+                                let commentonPost = comment.getManagedObject() as! ManagedPostComment
+                                let post = ((feedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                                post.numberOfComments =  post.numberOfComments - 1
+                                self?.targetFeedItem = post.getRawObject() as! RawFeed
+                                CFFCoreDataManager.sharedInstance.manager.deleteManagedObject(managedObject: commentonPost, context: CFFCoreDataManager.sharedInstance.manager.privateQueueContext)
+                                CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                    print("<<<<<<<<<<<<<poll deleted suceessfully")
+                                    CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                    DispatchQueue.main.async {
+                                        ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            case .SuccessWithNoResponseData:
+                fallthrough
+            case .Failure(error: _):
+                print("<<<<< Unable to delete post")
+            }
+        }
+    }
+    
+    
+    func showPostReactions(feedIdentifier: Int64) {
+        
+    }
     
     func toggleLikeForComment(commentIdentifier: Int64) {
         if let comment = getLikeableComment(commentIdentifier: commentIdentifier){
@@ -377,6 +522,40 @@ extension FeedsDetailViewController : FeedsDelegate{
         }
     }
     
+    func postReaction(feedId: Int64, reactionType: String){
+            if let reactionId = reactionType as? String{
+                BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: Int(reactionId)!){ [weak self] (result) in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .Success(result: let result):
+
+                            CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                                                            if let likesResult =  result as? NSDictionary {
+                                                                post.numberOfLikes = likesResult["count"] as? Int64 ?? 0
+                                                                if let dataVal = likesResult["post_reactions"] as? NSArray {
+                                                                    post.reactionTypesData =  dataVal
+                                                                    post.messageType = Int64(likesResult.object(forKey: "reaction_type") as? Int ?? -1)
+                                                                }
+                                                            }
+                                                            CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                                                CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                                            }
+                                                        }
+                            
+                            break
+                        case .SuccessWithNoResponseData:
+                            fallthrough
+                        case .Failure(_):
+                            ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+                        }
+                    }
+                }
+                
+            }
+        
+    }
+    
     func pinToPost(feedIdentifier : Int64, isAlreadyPinned: Bool) {
         print("<<<<<<Feed identifier-\(feedIdentifier)")
         showPintoPostConfirmation(feedIdentifier, isAlreadyPinned: isAlreadyPinned)
@@ -395,14 +574,14 @@ extension FeedsDetailViewController : FeedsDelegate{
                     DispatchQueue.main.async {
                         switch result{
                         case .Success(_):
-                            ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "Post is unpinned successfully".localized : "Post is pinned successfully".localized, okActionHandler: { (_) in
+                            ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll") is unpinned successfully".localized : "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll")  is pinned successfully".localized, okActionHandler: { (_) in
                                 NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                 self.navigationController?.popViewController(animated: true)
                             })
                         case .SuccessWithNoResponseData:
                             fallthrough
                         case .Failure(_):
-                            ErrorDisplayer.showError(errorMsg: "Failed to pin post, please try again.".localized) { (_) in}
+                            ErrorDisplayer.showError(errorMsg: "Failed to pin poll, please try again.".localized) { (_) in}
                         }
                     }
                 }
@@ -413,6 +592,17 @@ extension FeedsDetailViewController : FeedsDelegate{
                 
             }
         }
+    
+    func showPostReactions() {
+        let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
+        let controller = storyboard.instantiateViewController(withIdentifier: "BOUSReactionsListViewController") as! BOUSReactionsListViewController
+        controller.postId = Int(targetFeedItem.feedIdentifier)
+        controller.requestCoordinator = requestCoordinator
+        controller.mediaFetcher = mediaFetcher
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     private func getLikeableComment(commentIdentifier: Int64) -> FeedComment?{
         let fetchRequest = NSFetchRequest<ManagedPostComment>(entityName: "ManagedPostComment")
@@ -509,35 +699,44 @@ extension FeedsDetailViewController : FeedsDelegate{
     }
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
-        var options = [FloatingMenuOption]()
-        if targetFeedItem.getFeedType() == .Post,
-            targetFeedItem.isFeedEditAllowed(){
-            options.append(
-                FloatingMenuOption(title: "EDIT".localized, action: {
-                    print("Edit post - \(feedIdentifier)")
-                    self.openFeedEditor(self.targetFeedItem)
-                }
-                )
-            )
-        }
-        if targetFeedItem.isFeedDeleteAllowed(){
-            options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
-                print("Delete post- \(feedIdentifier)")
-                self?.showDeletePostConfirmation(feedIdentifier)
-                }
-                )
-            )
-        }
+//        var options = [FloatingMenuOption]()
+//        if targetFeedItem.getFeedType() == .Post,
+//            targetFeedItem.isFeedEditAllowed(){
+//            options.append(
+//                FloatingMenuOption(title: "EDIT".localized, action: {
+//                    print("Edit post - \(feedIdentifier)")
+//                    self.openFeedEditor(self.targetFeedItem)
+//                }
+//                )
+//            )
+//        }
+//        if targetFeedItem.isFeedDeleteAllowed(){
+//            options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
+//                print("Delete post- \(feedIdentifier)")
+//                self?.showDeletePostConfirmation(feedIdentifier)
+//                }
+//                )
+//            )
+//        }
+        
         if targetFeedItem.isFeedReportAbuseAllowed(){
-            options.append( FloatingMenuOption(title: "REPORT ABUSE".localized, action: {[weak self] in
-                print("report abuse- \(feedIdentifier)")
-                self?.showReportAbuseConfirmation(feedIdentifier)
-                }
-                )
-            )
+            self.showReportAbuseConfirmation(feedIdentifier)
         }
-        FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
     }
+    
+    func didFinishSavingCertificate(didSave: Bool) {
+        if didSave {
+            didFinishSavingCertificate()
+        }
+        is_download_choice_needed = false
+    }
+    
+    func didFinishSavingCertificate() {
+          downloadCompletedView.animShow()
+          DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+              self.downloadCompletedView.animHide()
+          }
+      }
     
     private func openFeedEditor(_ feed : FeedsItemProtocol){
         FeedComposerCoordinator(
@@ -656,7 +855,6 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
     
     func rightButtonPressed(_ chatBar: ASChatBarview) {
         if let message = chatBar.messageTextView?.text{
-            print("post \(message)")
             FeedCommentPostWorker(networkRequestCoordinator: requestCoordinator).postComment(
                 comment: PostbaleComment(
                     feedId: targetFeedItem.feedIdentifier,
@@ -664,11 +862,12 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
-                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {[weak self] in
-                                    let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
-                                    post.numberOfComments =  post.numberOfComments + 1
+                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                    let post = ((self.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                                    post.numberOfComments =  chatBar.isEditCommentEnabled ? post.numberOfComments : post.numberOfComments + 1
+                                    chatBar.isEditCommentEnabled = false
                                     ASMentionCoordinator.shared.clearMentionsTextView()
-                                    self?.targetFeedItem = post.getRawObject() as! RawFeed
+                                    self.targetFeedItem = post.getRawObject() as! RawFeed
                                     let _ = FeedComment(input: result).getManagedObject() as! ManagedPostComment
                                     CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                                         CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
@@ -741,3 +940,29 @@ extension FeedsDetailViewController:  NSFetchedResultsControllerDelegate {
         feedDetailTableView?.endUpdates()
     }
 }
+extension FeedsDetailViewController : EditCommentTypeProtocol,DeleteCommentProtocol{
+    func deleteCommentPressed(commentID: Int64) {
+        deleteComment(commentIdentifier: commentID)
+    }
+    
+    func selectedFilterType(selectedType: EditCommentType, commentIdentifier: Int64, chatMessage: String) {
+        switch selectedType {
+        case .Edit:
+//            commentBarView?.placeholder = ""
+            commentBarView?.isEditCommentEnabled = true
+            commentBarView?.commentID = commentIdentifier
+            ASMentionCoordinator.shared.getPresentableMentionText(chatMessage, completion: { (attr) in
+                commentBarView?.messageTextView?.attributedText = attr
+            })
+            commentBarView?.becomeFirstResponder()
+        case .Delete:
+            let deleteBottomSheet = DeleteCommentDrawer(nibName: "DeleteCommentDrawer", bundle: Bundle(for: DeleteCommentDrawer.self))
+            deleteBottomSheet.delegate = self
+            deleteBottomSheet.commentId = commentIdentifier
+            deleteBottomSheet.modalPresentationStyle = .overCurrentContext
+            self.present(deleteBottomSheet, animated: true)
+            
+        }
+    }
+}
+

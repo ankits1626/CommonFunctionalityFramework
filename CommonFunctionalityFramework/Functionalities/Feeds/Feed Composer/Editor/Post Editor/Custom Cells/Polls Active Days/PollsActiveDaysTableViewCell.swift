@@ -12,7 +12,8 @@ class PollsActiveDaysTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var activeDaysLabel : UILabel?
     @IBOutlet weak var activeDaysStepper : Stepper?
-    
+    @IBOutlet var daysSelector : HorizontalScrollingOptions!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         activeDaysStepper?.minVal = 1

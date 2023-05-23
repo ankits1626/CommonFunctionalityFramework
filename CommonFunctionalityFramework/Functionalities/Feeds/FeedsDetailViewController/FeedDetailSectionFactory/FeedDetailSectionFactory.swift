@@ -20,28 +20,58 @@ import UIKit
 
 class FeedDetailSectionFactory {
     let feedDataSource : FeedsDatasource
+    var selectedTab : String
     private weak var feedDetailDelegate: FeedsDelegate?
     private var mediaFetcher: CFFMediaCoordinatorProtocol!
     private weak var selectedOptionMapper : SelectedPollAnswerMapper?
     private weak var targetTableView : UITableView?
     private var isLikedByCellIndexpath : IndexPath!
     private weak var themeManager: CFFThemeManagerProtocol?
+    var isPostPoll : Bool = false
+    var canDownload : Bool = false
+    private weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     lazy var cachedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
+        if isPostPoll {
+            return [
+                PostPollTopTableViewCellTableViewCellType().cellIdentifier : PostPollTableViewCellCordinator(),
+                PostPollTitleTableViewCellType().cellIdentifier : PostPollTitleCellCordinator(),
+                FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
+                SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
+                SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
+                MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
+                FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
+                PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
+                PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
+                PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
+                PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
+                ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
+                FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
+                FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator(),
+                BOUSTwoImageDetailTableViewCellType().cellIdentifier : BOUSTwoImageDetailCoordinator(),
+                BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator(),
+                BOUSAnniversaryTableViewCellType().cellIdentifier :
+                               BOUSAnniversaryBirthdayImageTableViewCellCoordinator()
+            ]
+        }
         return [
             FeedTopTableViewCellType().cellIdentifier : FeedTopTableViewCellCoordinator(),
             FeedTitleTableViewCellType().cellIdentifier : FeedTitleTableViewCellCoordinator(),
             FeedTextTableViewCellType().cellIdentifier : FeedTextTableViewCellCoordinator(),
-            SingleImageTableViewCellType().cellIdentifier : SingleImageTableViewCellCoordinator(),
+            SingleImageTableViewCellType().cellIdentifier : BousDetailSingleImageTableViewCellCoordinator(),
             SingleVideoTableViewCellType().cellIdentifier : SingleVideoTableViewCellCoordinator(),
             MultipleMediaTableViewCellType().cellIdentifier : MultipleMediaTableViewCellCoordinator(),
-            FeedGifTableViewCellType().cellIdentifier : FeedAttachedGifTableViewCellCoordinator(),
+            FeedGifTableViewCellType().cellIdentifier : BOUSFeedAttachedGifTableViewCellCoordinator(),
             PollOptionsTableViewCellType().cellIdentifier : PollOptionsTableViewCellCoordinator(),
             PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
             PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             ClappedByTableViewCellType().cellIdentifier : ClappedByTableViewCellCoordinator(),
             FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator(),
-            FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator()
+            FeedCommentTableViewCellType().cellIdentifier : FeedCommentTableViewCellCoordinator(),
+            FeedDetailOutstandingTableViewCellType().cellIdentifier :
+                BOUSDetailFeedOutstandingTableViewCellCoordinator(),
+            BOUSTwoImageDetailTableViewCellType().cellIdentifier : BOUSTwoImageDetailCoordinator(),
+            BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator()
         ]
     }()
     
@@ -50,13 +80,17 @@ class FeedDetailSectionFactory {
     }()
     
     
-    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?) {
+    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?, selectedTab : String, _isPostPoll : Bool, mainAppCoordinator : CFFMainAppInformationCoordinator?, canDownload: Bool = false) {
         self.feedDataSource = feedDataSource
+        self.selectedTab = selectedTab
         self.feedDetailDelegate = feedDetailDelegate
         self.mediaFetcher = mediaFetcher
         self.targetTableView = targetTableView
         self.themeManager = themeManager
         self.selectedOptionMapper = selectedOptionMapper
+        self.isPostPoll = _isPostPoll
+        self.canDownload = canDownload
+        self.mainAppCoordinator = mainAppCoordinator
         registerTableViewForAllPossibleCellTypes(targetTableView)
         registerTableViewForHeaderView(targetTableView)
     }
@@ -118,12 +152,12 @@ class FeedDetailSectionFactory {
             targetTableView: tableView,
             datasource: feedDataSource,
             isFeedDetailPage: true,
-            themeManager: themeManager
+            themeManager: themeManager, mainAppCoordinator: mainAppCoordinator
             )
         )
         cell.backgroundColor = .clear
         if let containerdCell = cell as? FeedsCustomCellProtcol{
-            containerdCell.containerView?.backgroundColor = .white
+          //  containerdCell.containerView?.backgroundColor = .white
         }
         return cell
     }
@@ -139,7 +173,7 @@ class FeedDetailSectionFactory {
                 delegate: feedDetailDelegate,
                 selectedoptionMapper: selectedOptionMapper,
                 themeManager: themeManager,
-                isFeedDetailPage: true
+                mainAppCoordinator: mainAppCoordinator, isFeedDetailPage: true, selectedTab: selectedTab, canDownload: self.canDownload
             )
         )
     }
@@ -177,6 +211,11 @@ class FeedDetailSectionFactory {
         targetTableView?.reloadRows(at: [isLikedByCellIndexpath], with: .none)
     }
     
+    func reloadDownloadCertificateButton(canDownload: Bool = false) {
+        self.canDownload = canDownload
+        targetTableView?.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
+    }
+    
     func reloadToCommentCountHeader() {
         if let header = targetTableView?.headerView(forSection: FeedDetailSection.Comments.rawValue) as? FeedDetailHeader{
             headerCoordinator.configureHeader(ConfigureHeaderInput(view: header, section: FeedDetailSection.Comments))
@@ -196,78 +235,188 @@ extension FeedDetailSectionFactory{
     }
     
     func getRowsToRepresentFeedDetail() -> [FeedDetailSection :  [FeedCellTypeProtocol]] {
-        let feed = feedDataSource.getFeedItem()
-        var map = [FeedDetailSection :  [FeedCellTypeProtocol]]()
-        var rows = [FeedCellTypeProtocol] ()
-        rows.append(FeedTopTableViewCellType())
-        if feed!.getFeedTitle() != nil {
-            rows.append(FeedTitleTableViewCellType())
-        }
-//        if feed!.getFeedDescription() != nil{
-//            rows.append(FeedTextTableViewCellType())
-//        }
-        if
-            let unwrappedFeed = feed{
-            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
-                feedId: unwrappedFeed.feedIdentifier,
-                description: unwrappedFeed.getFeedDescription())
-            if model?.displayableDescription.string != nil{
-                if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
-                            !disaplyableDescription.isEmpty{
-                //        if feed.getFeedDescription() != nil{
-                            rows.append(FeedTextTableViewCellType())
-                        }
-            }
-        }
+//         let feed = feedDataSource.getFeedItem()
+//         var map = [FeedDetailSection :  [FeedCellTypeProtocol]]()
+//         var rows = [FeedCellTypeProtocol] ()
+//         rows.append(FeedTopTableViewCellType())
+//         //if feed!.getFeedTitle() != nil {
         
-        switch feed!.getMediaCountState() {
-        case .None:
-            break
-        case .OneMediaItemPresent(let mediaType):
-            switch mediaType {
-            case .Image:
-                rows.append(SingleImageTableViewCellType())
-            case .Video:
-                rows.append(SingleVideoTableViewCellType())
-            case .Document:
-                debugPrint("documents not supported")
-            }
-        case .TwoMediaItemPresent:
-            fallthrough
-        case .MoreThanTwoMediItemPresent:
-            rows.append(MultipleMediaTableViewCellType())
-        }
-        if
-            let unwrappedFeed = feed{
-            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
-                feedId: unwrappedFeed.feedIdentifier,
-                description: unwrappedFeed.getFeedDescription())
-            if model?.attachedGif != nil{
-                rows.append(FeedGifTableViewCellType())
-            }
-        }
+//         if feed!.getPostType() == .Nomination {
+//             rows.append(FeedDetailOutstandingTableViewCellType())
+//         }else {
+//             rows.append(FeedTitleTableViewCellType())
+//         }
+//         //}
+// //        if feed!.getFeedDescription() != nil{
+// //            rows.append(FeedTextTableViewCellType())
+// //        }
+// //        if
+// //            let unwrappedFeed = feed{
+// //            let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+// //                feedId: unwrappedFeed.feedIdentifier,
+// //                description: unwrappedFeed.getFeedDescription())
+// //            if model?.displayableDescription.string != nil{
+// //                if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+// //                            !disaplyableDescription.isEmpty{
+// //                //        if feed.getFeedDescription() != nil{
+// //                            //rows.append(FeedTextTableViewCellType())
+// //                        }
+// //            }
+// //        }
         
-        if let poll = feed?.getPoll(){
-            if poll.isPollActive() && !poll.hasUserVoted(){
-                poll.getPollOptions().forEach { (_) in
-                    rows.append(PollOptionsTableViewCellType())
+//         switch feed!.getMediaCountState() {
+//         case .None:
+//             break
+//         case .OneMediaItemPresent(let mediaType):
+//             switch mediaType {
+//             case .Image:
+//                 rows.append(SingleImageTableViewCellType())
+//             case .Video:
+//                 rows.append(SingleVideoTableViewCellType())
+//             case .Document:
+//                 debugPrint("documents not supported")
+//             }
+//     //        if feed!.getFeedDescription() != nil{
+//     //            rows.append(FeedTextTableViewCellType())
+//     //        }
+//             if
+//                 let unwrappedFeed = feed{
+//                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+//                     feedId: unwrappedFeed.feedIdentifier,
+//                     description: unwrappedFeed.getFeedDescription())
+//                 if model?.displayableDescription.string != nil{
+//                     if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+//                                 !disaplyableDescription.isEmpty{
+//                     //        if feed.getFeedDescription() != nil{
+//                                 rows.append(FeedTextTableViewCellType())
+//                             }
+        if isPostPoll {
+            let feed = feedDataSource.getFeedItem()
+            var map = [FeedDetailSection :  [FeedCellTypeProtocol]]()
+            var rows = [FeedCellTypeProtocol] ()
+            rows.append(PostPollTopTableViewCellTableViewCellType())
+            if let greeting = feed?.getFeedType(), greeting == .Greeting {
+                rows.append(BOUSAnniversaryTableViewCellType())
+            }else {
+                if feed!.getFeedTitle() != nil {
+                    rows.append(PostPollTitleTableViewCellType())
                 }
-                rows.append(PollSubmitButtonCellType())
-            }else{
-                poll.getPollOptions().forEach { (_) in
-                    rows.append(PollOptionsVotedTableViewCellType())
+                if
+                    let unwrappedFeed = feed{
+                    let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+                        feedId: unwrappedFeed.feedIdentifier,
+                        description: unwrappedFeed.getFeedDescription())
+                    if model?.displayableDescription.string != nil{
+                        if let disaplyableDescription = model?.displayableDescription.string.trimmingCharacters(in: .whitespaces),
+                                    !disaplyableDescription.isEmpty{
+                        //        if feed.getFeedDescription() != nil{
+                                    rows.append(FeedTextTableViewCellType())
+                                }
+                    }
                 }
                 
+              
+                switch feed!.getMediaCountState() {
+                case .None:
+                    break
+                case .OneMediaItemPresent(let mediaType):
+                    switch mediaType {
+                    case .Image:
+                        rows.append(SingleImageTableViewCellType())
+                    case .Video:
+                        rows.append(SingleVideoTableViewCellType())
+                    case .Document:
+                        break
+                    }
+                case .TwoMediaItemPresent:
+                    rows.append(BOUSTwoImageDetailTableViewCellType())
+                case .MoreThanTwoMediItemPresent:
+                    rows.append(BOUSThreeImageDetailTableViewCellType())
+                }
+                if
+                    let unwrappedFeed = feed{
+                    if let unwrappedGify = unwrappedFeed.getGiphy(),
+                        !unwrappedGify.isEmpty {
+                        rows.append(FeedGifTableViewCellType())
+                    }
+                }
+
+                if let poll = feed?.getPoll(){
+                    rows.append(PollBottomTableViewCelType())
+                    if poll.isPollActive() && !poll.hasUserVoted(){
+                        poll.getPollOptions().forEach { (_) in
+                            rows.append(PollOptionsTableViewCellType())
+                        }
+                        rows.append(PollSubmitButtonCellType())
+                    }else{
+                        poll.getPollOptions().forEach { (_) in
+                            rows.append(PollOptionsVotedTableViewCellType())
+                        }
+                        
+                    }
+        //            poll.getPollOptions().forEach { (_) in
+        //                rows.append(PollOptionsVotedTableViewCellType())
+        //            }
+                   
+                }
             }
-//            poll.getPollOptions().forEach { (_) in
-//                rows.append(PollOptionsVotedTableViewCellType())
-//            }
-            rows.append(PollBottomTableViewCelType())
+    //        if feed!.getFeedDescription() != nil{
+    //            rows.append(FeedTextTableViewCellType())
+    //        }
+            rows.append(FeedBottomTableViewCellType())
+            isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)
+            map[.FeedInfo] = rows
+            return map
+        }else{
+            let feed = feedDataSource.getFeedItem()
+            var map = [FeedDetailSection :  [FeedCellTypeProtocol]]()
+            var rows = [FeedCellTypeProtocol] ()
+            rows.append(FeedTopTableViewCellType())
+            //if feed!.getFeedTitle() != nil {
+            
+            if feed!.getPostType() == .Nomination {
+                rows.append(FeedDetailOutstandingTableViewCellType())
+            }else {
+                rows.append(FeedTitleTableViewCellType())
+            }
+            switch feed!.getMediaCountState() {
+            case .None:
+                break
+            case .OneMediaItemPresent(let mediaType):
+                switch mediaType {
+                case .Image:
+                    rows.append(SingleImageTableViewCellType())
+                case .Video:
+                    rows.append(SingleVideoTableViewCellType())
+                case .Document:
+                    break
+                }
+            case .TwoMediaItemPresent:
+                rows.append(BOUSTwoImageDetailTableViewCellType())
+            case .MoreThanTwoMediItemPresent:
+                rows.append(BOUSThreeImageDetailTableViewCellType())
+            }
+            
+            if let gif = feed!.getGiphy() {
+                if !gif.isEmpty {
+                    rows.append(SingleImageTableViewCellType())
+                }
+            }
+            
+            if
+                let unwrappedFeed = feed{
+                let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(
+                    feedId: unwrappedFeed.feedIdentifier,
+                    description: unwrappedFeed.getFeedDescription())
+                if model?.attachedGif != nil{
+                    rows.append(FeedGifTableViewCellType())
+                }
+            }
+            rows.append(FeedBottomTableViewCellType())
+            isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)
+            map[.FeedInfo] = rows
+            return map
         }
-        rows.append(FeedBottomTableViewCellType())
-        isLikedByCellIndexpath = IndexPath(row: rows.count - 1 , section: FeedDetailSection.FeedInfo.rawValue)
-        map[.FeedInfo] = rows
-        return map
     }
     
 }

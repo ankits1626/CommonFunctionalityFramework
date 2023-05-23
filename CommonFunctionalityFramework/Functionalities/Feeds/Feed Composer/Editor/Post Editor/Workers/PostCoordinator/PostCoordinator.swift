@@ -11,6 +11,7 @@ import Foundation
 protocol PostObserver : AnyObject {
     func mediaAttachedToPost()
     func attachedMediaUpdated()
+    func attachedECardMediaUpdated()
     func allAttachedMediaRemovedFromPost()
     func removedAttachedMediaitemAtIndex(index : Int)
 }
@@ -75,15 +76,38 @@ class PostCoordinator {
         }
     }
     
+    func attachedEcardItems(_selectedECard : EcardListResponseValues) {
+        currentPost.attachedGif = nil
+        currentPost.selectedEcardMediaItems = _selectedECard
+        postObsever?.attachedECardMediaUpdated()
+    }
+    
     func attachGifItem(_ selectedGif: RawGif) {
         currentPost.selectedMediaItems = nil
+        currentPost.selectedEcardMediaItems = nil
         deleteAllRemoteAttachedMediaItems()
         currentPost.attachedGif = selectedGif
         postObsever?.allAttachedMediaRemovedFromPost()
     }
     
+    func attachGifyGifItem(_ selectedGif: String) {
+        currentPost.selectedMediaItems = nil
+        currentPost.selectedEcardMediaItems = nil
+        deleteAllRemoteAttachedMediaItems()
+        currentPost.attachedGiflyGif = selectedGif
+        postObsever?.allAttachedMediaRemovedFromPost()
+    }
+    
+    func removeAttachedECard() {
+        currentPost.selectedEcardMediaItems = nil
+    }
+    
     func removeAttachedGif() {
         currentPost.attachedGif = nil
+    }
+    
+    func removeAttachedGiflyGif() {
+        currentPost.attachedGiflyGif = nil
     }
     
     func updatePostTitle(title: String?) {
@@ -171,13 +195,14 @@ class PostCoordinator {
     func isPostWithSameDepartment() -> Bool {
         return currentPost.postSharedChoice == .MyDepartment
     }
-//    func isDepartmentSharedWithEditable() -> Bool{
-//        return false// getCurrentPost().remotePostId == nil
-//    }
     
-//    func updatePostWithSameDepartment(_ flag: Bool) {
-//        currentPost.isShareWithSameDepartmentOnly = flag
-//    }
+    func isDepartmentSharedWithEditable() -> Bool{
+        return false// getCurrentPost().remotePostId == nil
+    }
+    
+    func updatePostWithSameDepartment(_ flag: Bool) {
+        currentPost.isShareWithSameDepartmentOnly = flag
+    }
     
     func updatePostShareOption(_ shareOption: SharePostOption, selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?){
         currentPost.postSharedChoice = shareOption
@@ -198,6 +223,8 @@ class PostCoordinator {
             }else{
                 return "Post edited successfully.".localized
             }
+        case .Greeting:
+            return ""
         }
     }
 }
@@ -208,6 +235,8 @@ extension PostCoordinator{
         case .Poll:
             try checkIfPollReadyToBePosted()
         case .Post:
+            try checkIfPostReadyToBePosted()
+        case .Greeting:
             try checkIfPostReadyToBePosted()
         }
     }

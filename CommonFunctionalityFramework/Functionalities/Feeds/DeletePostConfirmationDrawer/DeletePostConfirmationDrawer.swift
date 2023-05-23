@@ -45,6 +45,8 @@ class DeletePostConfirmationDrawer: UIViewController {
             case .Post:
                 titleLabel?.text = "Delete Post".localized
                 messageLabel?.text = "Are you sure you want to delete the Post?".localized
+            case .Greeting:
+                break
             }
         }else{
             titleLabel?.text = "Delete Post".localized

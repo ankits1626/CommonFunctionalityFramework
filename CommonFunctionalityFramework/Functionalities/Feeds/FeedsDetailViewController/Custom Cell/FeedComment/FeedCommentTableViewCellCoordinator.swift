@@ -42,8 +42,8 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.commentDateLabel?.text = comment?.getCommentDate()
             cell.commentDateLabel?.font = .Caption1
             cell.commentDateLabel?.textColor = .getSubTitleTextColor()
-            cell.userDepartmentLabel?.text = comment?.getCommentUser().getAuthorDepartmentName()
-            cell.userDepartmentLabel?.font = UIFont.Caption1
+            cell.userDepartmentLabel?.text = comment?.getCommentDate()
+            cell.userDepartmentLabel?.font = .Caption1
             cell.userDepartmentLabel?.textColor = .getSubTitleTextColor()
             ASMentionCoordinator.shared.getPresentableMentionText(comment?.getCommentText(), completion: { (attr) in
                cell.commentLabel?.text = nil
@@ -79,6 +79,15 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                     event: .touchUpInside,
                     buttonActionBlock: {
                         inputModel.delegate?.toggleLikeForComment(commentIdentifier: commentId)
+                })
+            }
+            
+            if let commentId = comment?.getComentId(),
+                commentId != -1{
+                cell.editOptionsButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        inputModel.delegate?.editComment(commentIdentifier: commentId, chatMessage: comment?.getCommentText() ?? "", commentedByPk: comment?.getCommentUser().getCommentedUserPk() ?? 0)
                 })
             }
         }

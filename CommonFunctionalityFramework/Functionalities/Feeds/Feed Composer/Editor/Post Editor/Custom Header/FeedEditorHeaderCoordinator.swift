@@ -43,6 +43,12 @@ class FeedEditorHeaderCoordinator {
             fallthrough
         case .PollActiveForDays:
             fallthrough
+        case .PostType:
+            fallthrough
+        case .AddMedia:
+            fallthrough
+        case .ECardMedia:
+            fallthrough
         case .AttachedGif:
             return nil
         }
@@ -64,6 +70,12 @@ class FeedEditorHeaderCoordinator {
         case .PollOptions:
             fallthrough
         case .PollActiveForDays:
+            fallthrough
+        case .AddMedia:
+            fallthrough
+        case .PostType:
+            fallthrough
+        case .ECardMedia:
             fallthrough
         case .AttachedGif:
              return  0

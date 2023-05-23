@@ -24,7 +24,7 @@ class ASMention : ASMentionEntityProtocol{
     let email : String
     
     static let DisplayTagName = "display_name"
-    static let UidTagName = "pk"
+    static let UidTagName = "user_id"
     static let EmailTagName = "email_id"
     static let StartIndexTagName = "start_index"
     static let EndIndexTagName = "end_index"

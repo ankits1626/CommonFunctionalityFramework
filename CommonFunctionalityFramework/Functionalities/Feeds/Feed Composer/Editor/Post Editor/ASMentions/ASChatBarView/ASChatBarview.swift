@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Photos
+import IQKeyboardManagerSwift
 
 public class ASChatBarError {
     static let NoHeightConstraintSet : Error = NSError(
@@ -27,15 +27,9 @@ public class ASChatBarview : UIView {
     public var themeManager: CFFThemeManagerProtocol?
     @IBOutlet public weak var container : UIView?
     @IBOutlet public weak var attachImageButton : UIButton?
-    @IBOutlet public weak var attachImageWidthConstraint : NSLayoutConstraint?
-    public var isAttachmentButtonVisibile = false{
-        didSet{
-            attachImageWidthConstraint?.constant = isAttachmentButtonVisibile ? 40 : 0
-        }
-    }
-    @IBOutlet private weak var attachmentContainer : UIView?
-    @IBOutlet private weak var attachmentDisplayHeightConstraint : NSLayoutConstraint?
-    @IBOutlet private weak var sendButton : UIButton?
+    @IBOutlet weak var sendBtnView: UIView!
+    @IBOutlet public weak var sendButton : UIButton?
+    @IBOutlet weak var leftUserImg: UIImageView!
     @IBOutlet public weak var messageTextView : KMPlaceholderTextView?
     @IBOutlet private weak var placeholderLabel : UILabel?
     @IBOutlet public weak var delegate : ASChatBarViewDelegate?
@@ -45,6 +39,9 @@ public class ASChatBarview : UIView {
     @IBOutlet private weak var leftContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainerWidthConstraint : NSLayoutConstraint?
     var taggedMessaged : String = ""
+    var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
+    var mediaFetcher: CFFMediaCoordinatorProtocol!
+    weak var themeManager: CFFThemeManagerProtocol?
     public override var backgroundColor: UIColor?{
         didSet{
             container?.backgroundColor = backgroundColor
@@ -73,16 +70,7 @@ public class ASChatBarview : UIView {
     private let kAttachmentContainerTopInset : CGFloat = 5
     private let kAttachmentContainerBottomInset : CGFloat = 5
     private let kDefaultAttachmentContainerWidth : CGFloat = 44
-    private let kDefaultAttachmentContainerHeight  : CGFloat = 44
-    
-    private lazy var attachmentHandler: AttachmentHandler = {
-        return AttachmentHandler()
-    }()
-    
-    private lazy var attachmentDataManager: AttachmentDataManager = {
-        return AttachmentDataManager()
-    }()
-    private var attachmentView: ASChatBarAttachmentViewController?
+    private let kDefaultAttachmentContainerHeight  : CGFloat = 84
     
     public var placeholder: String?{
         didSet{
@@ -105,6 +93,9 @@ public class ASChatBarview : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonSetup()
+        leftContainerWidthConstraint?.constant = kDefaultAttachmentContainerWidth
+        leftContainerHeightConstraint?.constant = kDefaultAttachmentContainerHeight
+        heightConstraint?.constant = kDefaultAttachmentContainerHeight
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -117,20 +108,28 @@ public class ASChatBarview : UIView {
         commonSetup()
         setupCoordinator(messageTextView)
     }
+    
+    public func setupUserProfile() {
+        if let profileImageEndpoint = themeManager?.getLoggedInUserImage(), profileImageEndpoint.count > 0{
+            self.mediaFetcher.fetchImageAndLoad(self.leftUserImg, imageEndPoint: profileImageEndpoint)
+        }else{
+            self.leftUserImg.setImageForName(themeManager?.getLoggedInUserFullName() ?? "NN", circular: false, textAttributes: nil)
+        }
+    }
 
     private func registerForKeyboardNotifications(){
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeyboardAppearance),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleKeyboardAppearance),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(handleKeyboardAppearance),
+//            name: UIResponder.keyboardWillShowNotification,
+//            object: nil
+//        )
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(handleKeyboardAppearance),
+//            name: UIResponder.keyboardWillHideNotification,
+//            object: nil
+//        )
     }
 
     private func registerForTextChangeNotification(){
@@ -146,7 +145,8 @@ public class ASChatBarview : UIView {
         xibSetup()
         registerForKeyboardNotifications()
         registerForTextChangeNotification()
-        attachImageWidthConstraint?.constant = isAttachmentButtonVisibile ? 40 : 0
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
     
     func registerTextView() {
@@ -373,8 +373,8 @@ extension ASChatBarview{
     private func removeAttachedImageView(){
         //attachedImageView.removeFromSuperview()
         leftContainerWidthConstraint?.constant = kDefaultAttachmentContainerWidth
-        leftContainerHeightConstraint?.constant = kDefaultAttachmentContainerHeight
-        heightConstraint?.constant = kDefaultAttachmentContainerHeight
+        leftContainerHeightConstraint?.constant = 44
+        heightConstraint?.constant = 44
     }
 
 }
