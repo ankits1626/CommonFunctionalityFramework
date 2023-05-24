@@ -5,16 +5,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ASChatBarview" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
-                <outlet property="attachImageButton" destination="she-gs-Vjt" id="wSd-ek-aQ3"/>
-                <outlet property="attachImageWidthConstraint" destination="t1T-Nt-z35" id="Nfv-Ql-luy"/>
-                <outlet property="attachmentContainer" destination="y7p-o2-Cdv" id="VDD-rm-PeO"/>
-                <outlet property="attachmentDisplayHeightConstraint" destination="OPt-Gj-hXx" id="KX8-yw-Efh"/>
                 <outlet property="container" destination="12B-mP-0ea" id="enG-a5-7Ot"/>
                 <outlet property="leftContainer" destination="eDb-F4-4Cl" id="zDd-ZK-aS4"/>
                 <outlet property="leftUserImg" destination="bN7-kl-O4f" id="Hea-Mt-ynw"/>
@@ -91,12 +86,8 @@
                     <rect key="frame" x="0.0" y="40" width="5" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="she-gs-Vjt" firstAttribute="leading" secondItem="eDb-F4-4Cl" secondAttribute="leading" id="AKl-hw-hcf"/>
-                        <constraint firstAttribute="trailing" secondItem="she-gs-Vjt" secondAttribute="trailing" id="I9W-rT-BEi"/>
-                        <constraint firstAttribute="bottom" secondItem="she-gs-Vjt" secondAttribute="bottom" id="INY-ml-Iiy"/>
-                        <constraint firstItem="she-gs-Vjt" firstAttribute="top" secondItem="eDb-F4-4Cl" secondAttribute="top" id="cQk-ic-LAc"/>
                         <constraint firstAttribute="height" constant="44" id="etz-Yd-wmk"/>
-                        <constraint firstAttribute="width" constant="40" id="t1T-Nt-z35"/>
+                        <constraint firstAttribute="width" constant="5" id="t1T-Nt-z35"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Y3-rn-5QX">
@@ -128,13 +119,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7p-o2-Cdv" userLabel="attachmentContainer">
-                    <rect key="frame" x="0.0" y="0.0" width="405" height="0.0"/>
-                    <color key="backgroundColor" systemColor="systemGreenColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" id="OPt-Gj-hXx"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vMR-a9-sCy"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,13 +126,14 @@
                 <constraint firstItem="3Y3-rn-5QX" firstAttribute="centerY" secondItem="Afc-FB-r6e" secondAttribute="centerY" id="2Q5-Yu-NqO"/>
                 <constraint firstItem="eDb-F4-4Cl" firstAttribute="bottom" secondItem="vMR-a9-sCy" secondAttribute="bottom" id="HNy-bN-a4F"/>
                 <constraint firstItem="vMR-a9-sCy" firstAttribute="trailing" secondItem="3Y3-rn-5QX" secondAttribute="trailing" id="LJn-Kj-sTs"/>
+                <constraint firstItem="pDx-RX-Hx7" firstAttribute="top" secondItem="12B-mP-0ea" secondAttribute="top" id="SEu-nY-auE"/>
                 <constraint firstItem="eDb-F4-4Cl" firstAttribute="leading" secondItem="vMR-a9-sCy" secondAttribute="leading" id="T5s-Zb-8HR"/>
                 <constraint firstItem="pDx-RX-Hx7" firstAttribute="leading" secondItem="eDb-F4-4Cl" secondAttribute="trailing" id="vJF-dB-Kx0"/>
                 <constraint firstItem="3Y3-rn-5QX" firstAttribute="leading" secondItem="pDx-RX-Hx7" secondAttribute="trailing" constant="8" id="wyf-5d-pXI"/>
                 <constraint firstAttribute="bottom" secondItem="pDx-RX-Hx7" secondAttribute="bottom" id="y29-jG-esj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="106.5217391304348" y="-216.62946428571428"/>
+            <point key="canvasLocation" x="84.782608695652186" y="-242.41071428571428"/>
         </view>
     </objects>
     <designables>

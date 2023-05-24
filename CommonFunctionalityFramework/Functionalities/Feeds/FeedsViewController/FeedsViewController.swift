@@ -171,19 +171,6 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
                         if result.fetchedRawFeeds?.count == 0 {
                             self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                         }
-    //                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
-    //                        if resultCount.count == 0 {
-    //                            var emptyMessage : String!
-    //                            emptyMessage = "No Records Found!"
-    //                            self?.emptyResultView.showEmptyMessageView(
-    //                                message: emptyMessage,
-    //                                parentView: self!.emptyViewContainer!,
-    //                                parentViewController: self!
-    //                            )
-    //                        }else{
-    //                            self?.emptyResultView.hideEmptyMessageView()
-    //                        }
-    //                    }
                         if let resultData = result.fetchedRawFeeds as? NSDictionary {
                             if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
                                 self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
@@ -212,19 +199,6 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
                         if result.fetchedRawFeeds?.count == 0 {
                             self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                         }
-    //                    if let resultCount = result.fetchedRawFeeds?["results"] as? NSArray  {
-    //                        if resultCount.count == 0 {
-    //                            var emptyMessage : String!
-    //                            emptyMessage = "No Records Found!"
-    //                            self?.emptyResultView.showEmptyMessageView(
-    //                                message: emptyMessage,
-    //                                parentView: self!.emptyViewContainer!,
-    //                                parentViewController: self!
-    //                            )
-    //                        }else{
-    //                            self?.emptyResultView.hideEmptyMessageView()
-    //                        }
-    //                    }
                         if let resultData = result.fetchedRawFeeds as? NSDictionary {
                             if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
                                 self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
@@ -248,21 +222,10 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     
     
     func handleaddButton(fetchedfeeds : FetchedFeedModel) {
-        if fetchedfeeds.fetchedRawFeeds?.count == 0 {
-//            feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
-        }else if fetchedfeeds.fetchedRawFeeds?.count == 1 {
-//            feedCreateViewConstraints?.constant = UIScreen.main.bounds.height / 3 + 110
+        if #available(iOS 11.0, *) {
+            bottomSafeArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
         }else{
-            if #available(iOS 11.0, *) {
-                bottomSafeArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
-            }else{
-                bottomSafeArea = 0.0
-            }
-            if bottomSafeArea == 0.0 {
-//                feedCreateViewConstraints?.constant = 40
-            }else{
-//                feedCreateViewConstraints?.constant = 25
-            }
+            bottomSafeArea = 0.0
         }
     }
     
@@ -531,6 +494,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
                 UserDefaults.standard.setValue(false, forKey: "notRefreshFeedDetail")
                 let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
                 feedDetailVC.themeManager = themeManager
+                feedDetailVC.showDisplayOptions = .POSTPOLL
                 feedDetailVC.mainAppCoordinator = mainAppCoordinator
                 feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
                 feedDetailVC.mediaFetcher = mediaFetcher
