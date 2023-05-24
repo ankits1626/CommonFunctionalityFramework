@@ -119,7 +119,7 @@ class PostPreviewSectionFactory {
                 delegate: nil,
                 selectedoptionMapper: nil,
                 themeManager: initModel.themeManager,
-                isFeedDetailPage: true
+                isFeedDetailPage: true, selectedTab: ""
             )
         )
     }
