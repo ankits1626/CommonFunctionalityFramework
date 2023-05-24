@@ -358,6 +358,7 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
             UserDefaults.standard.setValue(false, forKey: "notRefreshFeedDetail")
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
             feedDetailVC.themeManager = themeManager
+            feedDetailVC.showDisplayOptions = .Appreciation
             feedDetailVC.mainAppCoordinator = mainAppCoordinator
             feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
             feedDetailVC.mediaFetcher = mediaFetcher
