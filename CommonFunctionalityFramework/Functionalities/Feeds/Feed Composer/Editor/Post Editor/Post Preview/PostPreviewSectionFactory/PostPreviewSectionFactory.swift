@@ -75,7 +75,10 @@ class PostPreviewSectionFactory {
             case .MyDepartment:
                 return 1
             case .MultiOrg:
-                return initModel.feedDataSource!.getPostSharedWithOrgAndDepartment()!.displayables().count
+                if initModel.feedDataSource?.getPostSharedWithOrgAndDepartment()?.displayables().count != nil {
+                    return initModel.feedDataSource!.getPostSharedWithOrgAndDepartment()!.displayables().count
+                }
+                return 0
             }
         }
     }

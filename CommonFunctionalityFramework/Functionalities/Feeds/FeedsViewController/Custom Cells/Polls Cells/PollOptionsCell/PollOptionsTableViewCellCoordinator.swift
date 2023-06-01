@@ -21,6 +21,13 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
         if let cell  = inputModel.targetCell as? PollOptionsTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             var delta = 2
+            let feedActive = feed.getPollState()
+            switch feedActive {
+                case .NotActive:
+                    delta = 2
+                default:
+                    delta = 1
+            }
             if !(feed.getFeedTitle()?.isEmpty ?? true){
                 delta = delta + 1
             }

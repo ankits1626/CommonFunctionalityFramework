@@ -15,6 +15,12 @@ enum FeedDetailSection : Int {
     case ClapsSection
     case Comments
 }
+
+enum DisplayFeedOptions {
+    case Appreciation
+    case POSTPOLL
+}
+
 protocol FeedsDetailCommentsProviderProtocol{
     func getNumberOfComments() -> Int
     func getComment(_ index : Int) -> FeedComment?
@@ -38,6 +44,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     var isPostPollType : Bool = false
     var is_download_choice_needed : Bool = false
     var can_download : Bool = false
+    var showDisplayOptions : DisplayFeedOptions?
     
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
@@ -699,28 +706,43 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
     }
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
-//        var options = [FloatingMenuOption]()
-//        if targetFeedItem.getFeedType() == .Post,
-//            targetFeedItem.isFeedEditAllowed(){
-//            options.append(
-//                FloatingMenuOption(title: "EDIT".localized, action: {
-//                    print("Edit post - \(feedIdentifier)")
-//                    self.openFeedEditor(self.targetFeedItem)
-//                }
-//                )
-//            )
-//        }
-//        if targetFeedItem.isFeedDeleteAllowed(){
-//            options.append( FloatingMenuOption(title: "DELETE".localized, action: {[weak self] in
-//                print("Delete post- \(feedIdentifier)")
-//                self?.showDeletePostConfirmation(feedIdentifier)
-//                }
-//                )
-//            )
-//        }
-        
-        if targetFeedItem.isFeedReportAbuseAllowed(){
-            self.showReportAbuseConfirmation(feedIdentifier)
+        if self.showDisplayOptions == .POSTPOLL {
+            var numberofElementsEnabled : CGFloat = 0.0
+            let drawer = PostPollSelfBottomSheet(nibName: "PostPollSelfBottomSheet", bundle: Bundle(for: PostPollSelfBottomSheet.self))
+            drawer.bottomsheetdelegate = self
+            drawer.feedIdentifier = feedIdentifier
+            drawer.isPostAlreadyPinned = targetFeedItem.isPinToPost()
+            if targetFeedItem.isFeedEditAllowed() && targetFeedItem.getFeedType() == .Post {
+                drawer.isEditEnabled = true
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }else{
+                drawer.isEditEnabled = false
+            }
+            
+            if targetFeedItem.isLoggedUserAdmin()  == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+            
+            if targetFeedItem.isFeedDeleteAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+            if targetFeedItem.isFeedReportAbuseAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+            drawer.isPintoPostEnabled = targetFeedItem.isLoggedUserAdmin()
+            drawer.isDeleteEnabled = targetFeedItem.isFeedDeleteAllowed()
+            drawer.isreportAbusedEnabled = targetFeedItem.isFeedReportAbuseAllowed()
+            do{
+                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+            }catch let error{
+                print("show error")
+                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                }
+            }
+        }else {
+            if targetFeedItem.isFeedReportAbuseAllowed(){
+                self.showReportAbuseConfirmation(feedIdentifier)
+            }
         }
     }
     
@@ -965,4 +987,17 @@ extension FeedsDetailViewController : EditCommentTypeProtocol,DeleteCommentProto
         }
     }
 }
-
+extension FeedsDetailViewController : Click3DotsByMeFilterTypeProtocol {
+    func selectedFilterType(selectedType: Click3DotsByMeFilterType, feedIdentifier: Int64, isPostAlreadyPinned: Bool) {
+        switch selectedType {
+        case .Edit:
+            self.openFeedEditor(targetFeedItem)
+        case .Pin:
+            self.pinToPost(feedIdentifier: feedIdentifier, isAlreadyPinned: isPostAlreadyPinned)
+        case .Delete:
+            self.showDeletePostConfirmation(feedIdentifier)
+        case .ReportAbuse:
+            self.showReportAbuseConfirmation(feedIdentifier)
+        }
+    }
+}
