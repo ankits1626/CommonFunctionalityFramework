@@ -387,7 +387,10 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
         print("show edit option")
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
-            self.showReportAbuseConfirmation(feedIdentifier)
+            if feed.isFeedReportAbuseAllowed(){
+                self.showReportAbuseConfirmation(feedIdentifier)
+            }
+            
         }
     }
     

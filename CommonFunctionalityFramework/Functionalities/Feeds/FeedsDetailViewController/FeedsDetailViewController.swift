@@ -880,16 +880,18 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
             FeedCommentPostWorker(networkRequestCoordinator: requestCoordinator).postComment(
                 comment: PostbaleComment(
                     feedId: targetFeedItem.feedIdentifier,
-                    commentText: chatBar.taggedMessaged)) { (result) in
+                    commentText: chatBar.taggedMessaged),
+                isPostEditing: chatBar.isEditCommentEnabled,
+                commentID: chatBar.commentID) { (result) in
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
-                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
-                                    let post = ((self.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
-                                    post.numberOfComments =  chatBar.isEditCommentEnabled ? post.numberOfComments : post.numberOfComments + 1
-                                    chatBar.isEditCommentEnabled = false
+                                chatBar.isEditCommentEnabled = false
+                                CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {[weak self] in
+                                    let post = ((self?.targetFeedItem as? RawObjectProtocol)?.getManagedObject() as! ManagedPost)
+                                    post.numberOfComments =  post.numberOfComments + 1
                                     ASMentionCoordinator.shared.clearMentionsTextView()
-                                    self.targetFeedItem = post.getRawObject() as! RawFeed
+                                    self?.targetFeedItem = post.getRawObject() as! RawFeed
                                     let _ = FeedComment(input: result).getManagedObject() as! ManagedPostComment
                                     CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
                                         CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
