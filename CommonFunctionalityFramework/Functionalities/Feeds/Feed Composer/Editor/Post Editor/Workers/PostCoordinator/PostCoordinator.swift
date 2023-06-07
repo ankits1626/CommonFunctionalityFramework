@@ -201,6 +201,11 @@ class PostCoordinator {
     }
     
     func updatePostWithSameDepartment(_ flag: Bool) {
+        if flag {
+            currentPost.postSharedChoice = .MyDepartment
+        }else {
+            currentPost.postSharedChoice = .MyOrg
+        }
         currentPost.isShareWithSameDepartmentOnly = flag
     }
     

@@ -162,6 +162,9 @@ struct EditablePost : EditablePostProtocol{
         if !deletedRemoteMediaArray.isEmpty{
             postDictionary["delete_image_ids"] = (deletedRemoteMediaArray.map{String($0)}).joined(separator: ",")
         }
+        
+        postDictionary["shared_with"] = postSharedChoice.rawValue
+        
         return postDictionary
     }
     
