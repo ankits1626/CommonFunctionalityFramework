@@ -220,11 +220,11 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         setupMessageGuidenceContainer()
         setupCheckbox()
         
-        if Bundle.main.bundleIdentifier == "com.rewardz.iOSabundantly" {
-            self.postWithContainerView.isHidden = true
-        }else {
+        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
             self.postWithContainerView.isHidden = false
             setupShareWithSegmentedControl()
+        }else {
+            self.postWithContainerView.isHidden = true
         }
     }
     
@@ -519,15 +519,37 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         postCoordinator.updateAttachedMediaItems(selectedMediaItems)
     }
     
-    @IBAction func createButtonPressed(){
-        if Bundle.main.bundleIdentifier == "com.rewardz.iOSabundantly" {
+    @IBAction func createButtonPressed() {
+        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
+            do{
+                //            createButton?.isUserInteractionEnabled  = false
+                try postCoordinator.checkIfPostReadyToPublish()
+                PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
+                    postCoordinator.getCurrentPost()) { localImageUrls, error in
+                        if let unwrappedUrls = localImageUrls{
+                            self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
+                        }
+                        if let unwrappedError = error{
+                            self.createButton?.isUserInteractionEnabled  = true
+                            ErrorDisplayer.showError(
+                                errorMsg: unwrappedError.localizedDescription) { _ in }
+                            print("<<<<<<<<<<<<<<<<<<< erorr observed \(unwrappedError)")
+                        }else{
+                            self.router.routeToNextScreenFromEditor()
+                        }
+                    }
+                
+            }catch let error{
+                createButton?.isUserInteractionEnabled  = true
+                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in}
+            }
+        }else {
             do{
                 createButton?.isUserInteractionEnabled  = false
                 try postCoordinator.checkIfPostReadyToPublish()
                 self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                 PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
                     self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
-                        print("here")
                         if let unwrappedUrls = localImageUrls{
                             self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
                         }
@@ -546,7 +568,12 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                                     DispatchQueue.main.async {
                                                         //                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                                         ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
-                                                            self?.dismiss(animated: true, completion: nil)
+                                                            if self?.navigationController?.viewControllers.first == self {
+                                                                self?.dismiss(animated: true, completion: nil)
+                                                            } else {
+                                                                self?.navigationController?.popViewController(animated: true)
+                                                            }
+                                                            //self?.dismiss(animated: true, completion: nil)
                                                         }
                                                     }
                                                 })
@@ -574,30 +601,6 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                     
                 }
             }
-        }else {
-            do{
-                //            createButton?.isUserInteractionEnabled  = false
-                try postCoordinator.checkIfPostReadyToPublish()
-                PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
-                    postCoordinator.getCurrentPost()) { localImageUrls, error in
-                        if let unwrappedUrls = localImageUrls{
-                            self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
-                        }
-                        if let unwrappedError = error{
-                            self.createButton?.isUserInteractionEnabled  = true
-                            ErrorDisplayer.showError(
-                                errorMsg: unwrappedError.localizedDescription) { _ in }
-                            print("<<<<<<<<<<<<<<<<<<< erorr observed \(unwrappedError)")
-                        }else{
-                            self.router.routeToNextScreenFromEditor()
-                        }
-                    }
-                
-            }catch let error{
-                createButton?.isUserInteractionEnabled  = true
-                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in}
-            }
-            
         }
         
         
