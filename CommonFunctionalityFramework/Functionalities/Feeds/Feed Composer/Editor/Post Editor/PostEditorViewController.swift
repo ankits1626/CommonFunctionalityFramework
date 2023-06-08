@@ -111,7 +111,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             targetTableView: postEditorTable,
             postImageMapper: imageMapper,
             themeManager: themeManager,
-            mediaFetcher: mediaFetcher
+            mediaFetcher: mediaFetcher,
+            mainAppCoordinator: self?.mainAppCoordinator
         )
         )
     }()
@@ -568,12 +569,11 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                                     DispatchQueue.main.async {
                                                         //                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                                         ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
-                                                            if self?.navigationController?.viewControllers.first == self {
-                                                                self?.dismiss(animated: true, completion: nil)
-                                                            } else {
+                                                            if self?.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
                                                                 self?.navigationController?.popViewController(animated: true)
+                                                            }else {
+                                                                self?.dismiss(animated: true, completion: nil)
                                                             }
-                                                            //self?.dismiss(animated: true, completion: nil)
                                                         }
                                                     }
                                                 })
@@ -625,8 +625,11 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                     NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                     ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
                                         self?.clearTagDelegation()
-                                        self?.navigationController?.popToRootViewController(animated: false)
-                                        //self?.dismiss(animated: true, completion: nil)
+                                        if self?.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
+                                            self?.navigationController?.popToRootViewController(animated: false)
+                                        }else {
+                                            self?.dismiss(animated: true, completion: nil)
+                                        }
                                     }
                                 }
                             })
