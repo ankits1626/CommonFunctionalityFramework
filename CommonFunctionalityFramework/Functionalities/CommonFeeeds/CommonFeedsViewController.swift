@@ -387,7 +387,10 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
         print("show edit option")
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
-            self.showReportAbuseConfirmation(feedIdentifier)
+            if feed.isFeedReportAbuseAllowed(){
+                self.showReportAbuseConfirmation(feedIdentifier)
+            }
+            
         }
     }
     
@@ -764,14 +767,18 @@ extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionView
          }else{
              cell.heroImageView?.setImageForName(heroData.getFullName(), circular: false, textAttributes: nil)
          }
-         cell.cancelFeedButton?.addTarget(self, action: #selector(cancelSelectedUserFilter), for: .touchUpInside)
+         cell.cancelParentFeedButton?.addTarget(self, action: #selector(cancelSelectedUserFilter), for: .touchUpInside)
          if selectedUserPk == heroData.heroPK {
              cell.cancelFeedButton?.isHidden = false
              cell.appreciationCountView?.isHidden = true
+             cell.appreciationCountLabel?.isHidden = true
+             cell.cancelParentFeedButton?.isHidden = false
              cell.heroImageView?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
          }else {
              cell.cancelFeedButton?.isHidden = true
              cell.appreciationCountView?.isHidden = false
+             cell.appreciationCountLabel?.isHidden = false
+             cell.cancelParentFeedButton?.isHidden = true
              cell.heroImageView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
          }
          

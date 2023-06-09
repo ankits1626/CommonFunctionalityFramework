@@ -60,11 +60,21 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="cff_GettersCancelButton"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ9-Wp-dnm">
+                                <rect key="frame" x="31" y="-8" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="8Hq-11-kAt"/>
+                                    <constraint firstAttribute="height" constant="40" id="YX9-kP-SOM"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="97A-u4-krt" firstAttribute="top" secondItem="3yn-Ix-XGT" secondAttribute="top" id="9IM-An-l1G"/>
                             <constraint firstAttribute="trailing" secondItem="Qcs-k4-Ilr" secondAttribute="trailing" constant="-15.67" id="D4E-rh-mz5"/>
+                            <constraint firstAttribute="trailing" secondItem="IJ9-Wp-dnm" secondAttribute="trailing" constant="-15" id="EpM-tg-3D0"/>
+                            <constraint firstItem="IJ9-Wp-dnm" firstAttribute="top" secondItem="3yn-Ix-XGT" secondAttribute="top" constant="-8" id="GYe-Es-M42"/>
                             <constraint firstItem="ePh-w3-Ksv" firstAttribute="top" secondItem="3yn-Ix-XGT" secondAttribute="top" constant="-6" id="Gop-em-1iN"/>
                             <constraint firstAttribute="height" constant="56" id="Ij6-gX-e3o"/>
                             <constraint firstAttribute="width" constant="56" id="X2g-qn-dze"/>
@@ -98,7 +108,8 @@
             <connections>
                 <outlet property="appreciationCountLabel" destination="V2z-8s-B8o" id="4um-du-kbR"/>
                 <outlet property="appreciationCountView" destination="ePh-w3-Ksv" id="djz-p0-ucF"/>
-                <outlet property="cancelFeedButton" destination="Qcs-k4-Ilr" id="bp6-FJ-inF"/>
+                <outlet property="cancelFeedButton" destination="Qcs-k4-Ilr" id="BB8-qp-LBT"/>
+                <outlet property="cancelParentFeedButton" destination="IJ9-Wp-dnm" id="uPP-71-zb6"/>
                 <outlet property="heroImageView" destination="97A-u4-krt" id="JrB-yN-wKD"/>
                 <outlet property="heroImageViewContainer" destination="3yn-Ix-XGT" id="iTU-TY-54L"/>
                 <outlet property="heroNameLabel" destination="EJN-qD-78O" id="Wl7-Ul-fVB"/>

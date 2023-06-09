@@ -880,7 +880,9 @@ extension FeedsDetailViewController : ASChatBarViewDelegate{
             FeedCommentPostWorker(networkRequestCoordinator: requestCoordinator).postComment(
                 comment: PostbaleComment(
                     feedId: targetFeedItem.feedIdentifier,
-                    commentText: chatBar.taggedMessaged)) { (result) in
+                    commentText: chatBar.taggedMessaged),
+                isPostEditing: chatBar.isEditCommentEnabled,
+                commentID: chatBar.commentID) { (result) in
                         DispatchQueue.main.async {
                             switch result{
                             case .Success(let result):
