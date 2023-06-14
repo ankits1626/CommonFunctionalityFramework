@@ -608,12 +608,10 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     
     private func postToNetwork(_ completion : @escaping ()-> Void){
         createButton?.isUserInteractionEnabled  = false
-        self.loader.showActivityIndicator(self.view)
         PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
             post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                 DispatchQueue.main.async {
                     completion()
-                    self?.loader.hideActivityIndicator(self?.view ?? UIView())
                     self?.createButton?.isUserInteractionEnabled  = true
                     switch callResult{
                     case .Success(let rawFeed):
