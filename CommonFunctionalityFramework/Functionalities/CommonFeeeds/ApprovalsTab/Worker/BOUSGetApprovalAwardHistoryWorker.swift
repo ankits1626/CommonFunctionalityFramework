@@ -47,7 +47,7 @@ class BOUSGetAprrovalAwardHistoryWorkerRequestGenerator: APIRequestGeneratorProt
     var apiRequest: URLRequest?{
         get{
             let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                url:  self.urlBuilder.getURL(endpoint: "finance/api/download_certificate/2108/?appreciation=1&attachment_type=image&attachment_id=2685&format_type=pdf", parameters: nil
+                url:  self.urlBuilder.getURL(endpoint: "nominations/api/nominations_history/?nomination=\(nominationId)", parameters: nil
                 ),
                 method: .GET ,
                 httpBodyDict: nil
