@@ -77,7 +77,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet private weak var messageGuidenceContainerHeightContraint: NSLayoutConstraint?
     @IBOutlet private weak var shareWithSegmentControl: UISegmentedControl?
     @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
-
+    
+    @IBOutlet weak var postWithContainerView: UIView!
     var loader = CommonLoader()
     var numberOfRows = 1
     var selectedGif = ""
@@ -110,8 +111,9 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
             targetTableView: postEditorTable,
             postImageMapper: imageMapper,
             themeManager: themeManager,
-            mediaFetcher: mediaFetcher
-            )
+            mediaFetcher: mediaFetcher,
+            mainAppCoordinator: self?.mainAppCoordinator
+        )
         )
     }()
     private weak var mediaFetcher: CFFMediaCoordinatorProtocol?
@@ -218,7 +220,13 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         postWithSameDepartmentContainer?.isHidden = editablePost?.remotePostId != nil
         setupMessageGuidenceContainer()
         setupCheckbox()
-        //setupShareWithSegmentedControl()
+        
+        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
+            self.postWithContainerView.isHidden = false
+            setupShareWithSegmentedControl()
+        }else {
+            self.postWithContainerView.isHidden = true
+        }
     }
     
     private func setupPostToLabel(){
@@ -248,7 +256,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         shareWithSegmentControl?.selectedSegmentIndex = 0
         shareWithSegmentControl?.tintColor = .getControlColor()
         shareWithSegmentControl?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for:
-            .selected)
+                .selected)
         shareWithSegmentControl?.selectedSegmentIndex = selectedIndex
         updatePostButton()
     }
@@ -276,13 +284,13 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         postWithSameDepartmentCheckBox?.borderLineWidth = 1
         postWithSameDepartmentCheckBox?.isEnabled = false// postCoordinator.isDepartmentSharedWithEditable()
         postWithSameDepartmentCheckBox?.checkmarkStyle = .tick
-//        postWithSameDepartmentCheckBox?.isChecked = postCoordinator.isPostWithSameDepartment()
-//        postWithSameDepartmentCheckBox?.valueChanged = {[weak self] (isChecked) in
-//            self?.postCoordinator.updatePostWithSameDepartment(isChecked)
-//        }
-//
-//        postWithSameDepartmentMessage?.text = "Post to my department only".localized
-//        postWithSameDepartmentMessage?.font = .Highlighter2
+        //        postWithSameDepartmentCheckBox?.isChecked = postCoordinator.isPostWithSameDepartment()
+        //        postWithSameDepartmentCheckBox?.valueChanged = {[weak self] (isChecked) in
+        //            self?.postCoordinator.updatePostWithSameDepartment(isChecked)
+        //        }
+        //
+        //        postWithSameDepartmentMessage?.text = "Post to my department only".localized
+        //        postWithSameDepartmentMessage?.font = .Highlighter2
         
     }
     
@@ -296,14 +304,14 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         postEditorTable?.reloadData()
     }
     
-//    private func setupCreateButton(){
-//        createButton?.setTitle(getCreateButtonTitle(), for: .normal)
-//        createButton?.titleLabel?.font = UIFont.Button
-//        createButton?.titleLabel?.tintColor = .buttonTextColor
-//        createButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .buttonColor
-//        createButton?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
-//
-//    }
+    //    private func setupCreateButton(){
+    //        createButton?.setTitle(getCreateButtonTitle(), for: .normal)
+    //        createButton?.titleLabel?.font = UIFont.Button
+    //        createButton?.titleLabel?.tintColor = .buttonTextColor
+    //        createButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .buttonColor
+    //        createButton?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
+    //
+    //    }
     
     private func setupCreateButton(){
         switch postType {
@@ -391,17 +399,17 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     
     private func initiateGifAttachment(){
         print("<<<<<<<< initiate gif attachment")
-//        let gifSelector = FeedsGIFSelectorViewController(nibName: "FeedsGIFSelectorViewController", bundle: Bundle(for: FeedsGIFSelectorViewController.self))
-//        gifSelector.requestCoordinator = requestCoordinator
-//        gifSelector.mediaFetcher = mediaFetcher
-//        gifSelector.feedsGIFSelectorDelegate = self
-//        do{
-//            try gifSelector.presentDrawer()
-//        }catch let error{
-//            print("show error")
-//            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
-//            }
-//        }
+        //        let gifSelector = FeedsGIFSelectorViewController(nibName: "FeedsGIFSelectorViewController", bundle: Bundle(for: FeedsGIFSelectorViewController.self))
+        //        gifSelector.requestCoordinator = requestCoordinator
+        //        gifSelector.mediaFetcher = mediaFetcher
+        //        gifSelector.feedsGIFSelectorDelegate = self
+        //        do{
+        //            try gifSelector.presentDrawer()
+        //        }catch let error{
+        //            print("show error")
+        //            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+        //            }
+        //        }
         
         let giphy = GiphyViewController()
         Giphy.configure(apiKey: "sUhGOw62fGSyGbWUT0hrlsfLL3gBMQ3h")
@@ -415,7 +423,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     
     @objc private func openImagePickerToComposePost(){
         let drawer = FeedsImageDrawer(nibName: "FeedsImageDrawer", bundle: Bundle(for: FeedsImageDrawer.self))
-//        drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
+        //        drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator
         drawer.mediaFetcher = mediaFetcher
         drawer.themeManager = themeManager
@@ -512,96 +520,98 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         postCoordinator.updateAttachedMediaItems(selectedMediaItems)
     }
     
-    //Commenting this as per BOUS flow
-//    @IBAction func createButtonPressed(){
-//        do{
-//            //            createButton?.isUserInteractionEnabled  = false
-//            try postCoordinator.checkIfPostReadyToPublish()
-//            PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
-//                postCoordinator.getCurrentPost()) { localImageUrls, error in
-//                    if let unwrappedUrls = localImageUrls{
-//                        self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
-//                    }
-//                    if let unwrappedError = error{
-//                        self.createButton?.isUserInteractionEnabled  = true
-//                        ErrorDisplayer.showError(
-//                            errorMsg: unwrappedError.localizedDescription) { _ in }
-//                        print("<<<<<<<<<<<<<<<<<<< erorr observed \(unwrappedError)")
-//                    }else{
-//                        self.router.routeToNextScreenFromEditor()
-//                    }
-//                }
-//
-//        }catch let error{
-//            createButton?.isUserInteractionEnabled  = true
-//            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in}
-//        }
-//    }
-    
-    @IBAction func createButtonPressed(){
-        do{
-            createButton?.isUserInteractionEnabled  = false
-            try postCoordinator.checkIfPostReadyToPublish()
-            self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-            PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
-            self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
-                 print("here")
-                if let unwrappedUrls = localImageUrls{
-                    self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
-                }
-                if error == nil{
-                    PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
-                    post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
-                        DispatchQueue.main.async {
-                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                            self?.createButton?.isUserInteractionEnabled  = true
-                            switch callResult{
-                            case .Success(let rawFeed):
-                                self?.feedOrderManager.insertFeeds(
-                                    rawFeeds: [rawFeed],
-                                    insertDirection: self?.editablePost?.remotePostId == nil ? .Top : .Bottom,
-                                    completion: {[weak self] in
-                                        DispatchQueue.main.async {
-//                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
-                                            ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
-                                                self?.dismiss(animated: true, completion: nil)
-                                            }
-                                        }
-                                })
-                                
-                            case .SuccessWithNoResponseData:
-                                ErrorDisplayer.showError(errorMsg: "Unable to post.".localized) { (_) in
-
-                                }
-                            case .Failure(let error):
-                                ErrorDisplayer.showError(errorMsg: "\("Unable to post due to".localized) \(error.displayableErrorMessage())") { (_) in
-
-                                }
-                            }
+    @IBAction func createButtonPressed() {
+        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
+            do{
+                //            createButton?.isUserInteractionEnabled  = false
+                try postCoordinator.checkIfPostReadyToPublish()
+                PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
+                    postCoordinator.getCurrentPost()) { localImageUrls, error in
+                        if let unwrappedUrls = localImageUrls{
+                            self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
+                        }
+                        if let unwrappedError = error{
+                            self.createButton?.isUserInteractionEnabled  = true
+                            ErrorDisplayer.showError(
+                                errorMsg: unwrappedError.localizedDescription) { _ in }
+                            print("<<<<<<<<<<<<<<<<<<< erorr observed \(unwrappedError)")
+                        }else{
+                            self.router.routeToNextScreenFromEditor()
                         }
                     }
-                }
-                else{
-                    self.createButton?.isUserInteractionEnabled  = true
-                    print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
-                }
-            }
-        }catch let error{
-            createButton?.isUserInteractionEnabled  = true
-            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
                 
+            }catch let error{
+                createButton?.isUserInteractionEnabled  = true
+                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in}
+            }
+        }else {
+            do{
+                createButton?.isUserInteractionEnabled  = false
+                try postCoordinator.checkIfPostReadyToPublish()
+                self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
+                    self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
+                        if let unwrappedUrls = localImageUrls{
+                            self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
+                        }
+                        if error == nil{
+                            PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
+                                post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
+                                    DispatchQueue.main.async {
+                                        self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                                        self?.createButton?.isUserInteractionEnabled  = true
+                                        switch callResult{
+                                        case .Success(let rawFeed):
+                                            self?.feedOrderManager.insertFeeds(
+                                                rawFeeds: [rawFeed],
+                                                insertDirection: self?.editablePost?.remotePostId == nil ? .Top : .Bottom,
+                                                completion: {[weak self] in
+                                                    DispatchQueue.main.async {
+                                                        //                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
+                                                        ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
+                                                            if self?.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
+                                                                self?.navigationController?.popViewController(animated: true)
+                                                            }else {
+                                                                self?.dismiss(animated: true, completion: nil)
+                                                            }
+                                                        }
+                                                    }
+                                                })
+                                            
+                                        case .SuccessWithNoResponseData:
+                                            ErrorDisplayer.showError(errorMsg: "Unable to post.".localized) { (_) in
+                                                
+                                            }
+                                        case .Failure(let error):
+                                            ErrorDisplayer.showError(errorMsg: "\("Unable to post due to".localized) \(error.displayableErrorMessage())") { (_) in
+                                                
+                                            }
+                                        }
+                                    }
+                                }
+                        }
+                        else{
+                            self.createButton?.isUserInteractionEnabled  = true
+                            print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
+                        }
+                    }
+            }catch let error{
+                createButton?.isUserInteractionEnabled  = true
+                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                    
+                }
             }
         }
+        
+        
     }
     
     private func postToNetwork(_ completion : @escaping ()-> Void){
         createButton?.isUserInteractionEnabled  = false
-        self.loader.showActivityIndicator(self.view)
         PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
             post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                 DispatchQueue.main.async {
                     completion()
-                    self?.loader.hideActivityIndicator(self?.view ?? UIView())
                     self?.createButton?.isUserInteractionEnabled  = true
                     switch callResult{
                     case .Success(let rawFeed):
@@ -613,7 +623,11 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                     NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                     ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
                                         self?.clearTagDelegation()
-                                        self?.dismiss(animated: true, completion: nil)
+                                        if self?.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
+                                            self?.navigationController?.popToRootViewController(animated: false)
+                                        }else {
+                                            self?.dismiss(animated: true, completion: nil)
+                                        }
                                     }
                                 }
                             })
@@ -792,7 +806,7 @@ extension PostEditorViewController{
     @IBAction func segmentControlSelectionChanged(){
         updatePostButton()
         if let selectedIndex = shareWithSegmentControl?.selectedSegmentIndex{
-           let selectedSharePostOption = SharePostOption.getOption(selectedIndex)
+            let selectedSharePostOption = SharePostOption.getOption(selectedIndex)
             switch selectedSharePostOption {
             case .MyOrg:
                 fallthrough

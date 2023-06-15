@@ -18,6 +18,7 @@
                 <outlet property="parentTableView" destination="97L-aH-bcr" id="dfb-fN-6p2"/>
                 <outlet property="postEditorTable" destination="KdF-ud-HFa" id="Zh3-ec-kQF"/>
                 <outlet property="postToLabel" destination="OIN-4N-oNy" id="1gM-Lu-6ol"/>
+                <outlet property="postWithContainerView" destination="otD-qF-Dgk" id="KSk-dP-2NO"/>
                 <outlet property="postWithSameDepartmentContainer" destination="E4M-yX-Qc1" id="PYG-Yb-Db2"/>
                 <outlet property="postWithSameDepartmentMessage" destination="3Xv-Ll-Q9u" id="zvm-ZH-rts"/>
                 <outlet property="shareWithSegmentControl" destination="fbP-fi-15g" id="AKo-Gt-K3S"/>
@@ -34,13 +35,13 @@
                     <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97L-aH-bcr" userLabel="TableContainer">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="773"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aD1-7E-f6D" userLabel="Table Background">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="773"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                     <subviews>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KdF-ud-HFa">
-                                            <rect key="frame" x="0.0" y="12" width="414" height="761"/>
+                                            <rect key="frame" x="0.0" y="12" width="414" height="660"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableView>
                                     </subviews>
@@ -62,7 +63,7 @@
                             </constraints>
                         </view>
                         <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uz-i0-rpJ" userLabel="Message">
-                            <rect key="frame" x="0.0" y="773" width="414" height="40"/>
+                            <rect key="frame" x="0.0" y="672" width="414" height="40"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbI-SE-oNC">
                                     <rect key="frame" x="16" y="8" width="382" height="32"/>
@@ -100,8 +101,8 @@
                                 <constraint firstAttribute="height" constant="40" id="w6U-FB-ItR"/>
                             </constraints>
                         </view>
-                        <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otD-qF-Dgk" userLabel="PostWith Container">
-                            <rect key="frame" x="0.0" y="773" width="414" height="101"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otD-qF-Dgk" userLabel="PostWith Container">
+                            <rect key="frame" x="0.0" y="672" width="414" height="101"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIN-4N-oNy">
                                     <rect key="frame" x="16" y="1" width="53.5" height="20.5"/>

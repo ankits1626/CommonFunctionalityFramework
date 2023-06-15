@@ -48,6 +48,7 @@ struct PostEditorCellLoadDataModel {
     var postImageMapper : EditablePostMediaRepository
     weak var themeManager: CFFThemeManagerProtocol?
     weak var mediaFetcher : CFFMediaCoordinatorProtocol!
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
 }
 
 struct PostEditorRemoveAttachedMediaDataModel {
@@ -83,6 +84,7 @@ struct InitPostEditorCellFactoryModel {
     weak var postImageMapper : EditablePostMediaRepository?
     weak var themeManager: CFFThemeManagerProtocol?
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
 }
 
 enum PostEditorSection : Int {
@@ -187,7 +189,8 @@ class PostEditorCellFactory {
                 localMediaManager: input.localMediaManager,
                 postImageMapper: input.postImageMapper!,
                 themeManager: input.themeManager,
-                mediaFetcher: input.mediaFetcher
+                mediaFetcher: input.mediaFetcher,
+                mainAppCoordinator: input.mainAppCoordinator
             )
         )
     }
