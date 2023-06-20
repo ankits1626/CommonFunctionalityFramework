@@ -40,32 +40,6 @@ class SingleImageTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
         }
     }
     
-//    func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-//        let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-//        if let getEcardUrl = feed.getEcardUrl() {
-//            if !getEcardUrl.isEmpty {
-//                let ecardHeight = FTImageSize.shared.getImageSize(serverUrl+getEcardUrl)
-//                return ecardHeight.height
-//            }else {
-//                return singleImgHeight
-//            }
-//        }
-//        if let mediaItem = feed.getMediaList()?.first,
-//           let mediaItemEndpoint = mediaItem.getCoverImageUrl(){
-//            let singleImageHeight = FTImageSize.shared.getImageSize(serverUrl+mediaItemEndpoint)
-//            return singleImageHeight.height
-//        }else if let gifItem = feed.getGiphy() {
-//            if !gifItem.isEmpty {
-//                let gifImageHeight = FTImageSize.shared.getImageSize(gifItem)
-//                return gifImageHeight.height
-//            }else {
-//                return singleImgHeight
-//            }
-//        }else{
-//            return singleImgHeight
-//        }
-//    }
-    
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? SingleImageTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)

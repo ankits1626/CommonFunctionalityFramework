@@ -248,8 +248,8 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         if let images = rawFeedDictionary["images"] as? [[String : Any]]{
             if images.count == 1 {
                 let singleImg = images[0] as? NSDictionary
-                let sImage = singleImg!["display_img_url"] as? String ?? ""
-                self.singleImageHeight = Float(FTImageSize.shared.getImageSize(serverUrl+sImage).height)
+                let sImage = singleImg!["image"] as? String ?? ""
+                self.singleImageHeight = Float(FTImageSize.shared.getImageSizeFromImageURL(serverUrl+sImage, perferdWidth: UIScreen.main.bounds.width).height)
             }else {
                 self.singleImageHeight = defaultFeedImageHeight
             }
@@ -261,7 +261,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             if ecardData.count == 1 {
                 let eCardImg = ecardData[0] as? NSDictionary
                 let eImage = eCardImg!["display_img_url"] as? String ?? ""
-                self.ecardImageHeight = Float(FTImageSize.shared.getImageSize(serverUrl+eImage).height)
+                self.ecardImageHeight =  Float(FTImageSize.shared.getImageSizeFromImageURL(serverUrl+eImage, perferdWidth: UIScreen.main.bounds.width).height)
             }else {
                 self.ecardImageHeight = defaultFeedImageHeight
             }
@@ -270,7 +270,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
 
         if let gifData = rawFeedDictionary["gif"] as? String, !gifData.isEmpty {
-            self.gifImageHeight = Float(FTImageSize.shared.getImageSize(gifData).height)
+            self.gifImageHeight =  Float(FTImageSize.shared.getImageSizeFromImageURL(gifData, perferdWidth: UIScreen.main.bounds.width).height)
         }else {
             self.gifImageHeight = defaultFeedImageHeight
         }
