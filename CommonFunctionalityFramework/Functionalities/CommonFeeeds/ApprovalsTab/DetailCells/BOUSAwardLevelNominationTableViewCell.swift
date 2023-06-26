@@ -14,8 +14,10 @@ class BOUSAwardLevelNominationTableViewCell: UITableViewCell {
     @IBOutlet weak var department: UILabel!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userImg: UIImageView!
+    @IBOutlet weak var nominationTitle : UILabel?
     override func awakeFromNib() {
         super.awakeFromNib()
+        nominationTitle?.text = "Nomination".localized
         // Initialization code
     }
 

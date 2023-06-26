@@ -136,7 +136,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                 cell.rightName.text = "\(jsonDataValues.created_by_user_info.full_name)"
                 cell.dateLbl.text =  getCreationDate(jsonDate: jsonDataValues.created_on)
                 let privacyTap = UITapGestureRecognizer(target: self, action: #selector(self.handlePrivacyTap(_:)))
-                cell.privacyTitle.text = self.privacyName
+                cell.privacyTitle.text = self.privacyName.localized
                 cell.privacyImg.image = UIImage(named: privacyImage)
                 cell.nomnationIcon.setImageColor(color: UIColor.getControlColor())
                 cell.accessLevelTapped.addGestureRecognizer(privacyTap)

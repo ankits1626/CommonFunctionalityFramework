@@ -22,9 +22,11 @@ class BOUSApprovalHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var rightArrowImg: UIImageView!
     @IBOutlet weak var accessLevelTapped: UIStackView!
+    @IBOutlet weak var nominatedByLabel : UILabel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        nominatedByLabel?.text = "nominated by".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

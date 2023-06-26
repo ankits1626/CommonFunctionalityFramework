@@ -30,7 +30,7 @@ class DeleteCommentDrawer: UIViewController {
         confirmButton?.backgroundColor = UIColor.getControlColor()
         deleteAddress.text = "Delete Comment".localized
         areYouSureLabel.text = "Are you sure you want to delete this comment?".localized
-        confirmButton.setTitle("Delete", for: .normal)
+        confirmButton.setTitle("Delete".localized, for: .normal)
         cancelButton.setTitle("Cancel".localized, for: .normal)
         cancelButton.setTitleColor(UIColor.getControlColor(), for: .normal)
         commentImg.setImageColor(color: UIColor.getControlColor())

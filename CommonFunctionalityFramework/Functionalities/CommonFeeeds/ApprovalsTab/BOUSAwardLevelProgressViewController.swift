@@ -121,9 +121,9 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
                 cell.awardLevelStatus.textColor = Rgbconverter.HexToColor(nom_color, alpha: 1.0)
             }
             if let level = dataValues.level as? Int{
-                cell.levelNumber.text = "Level \(level)"
+                cell.levelNumber.text = "\("Level".localized) \(level)"
             }else {
-                cell.levelNumber.text = "Level"
+                cell.levelNumber.text = "Level".localized
             }
             if dataValues.changes?.badges == nil {
                 cell.awardLevelStackView.isHidden = true
@@ -171,9 +171,9 @@ class BOUSAwardLevelProgressViewController: UIViewController,UITableViewDelegate
                 cell.userImg.setImageForName(fullName, circular: false, textAttributes: nil)
             }
             if let level = dataValues.level as? Int{
-                cell.levelTitle.text = "Level \(level)"
+                cell.levelTitle.text = "\("Level".localized) \(level)"
             }else {
-                cell.levelTitle.text = "Level"
+                cell.levelTitle.text = "Level".localized
             }
             return cell
         }else {

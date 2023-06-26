@@ -106,6 +106,7 @@ public class ASChatBarview : UIView {
     public override func awakeFromNib() {
         super.awakeFromNib()
         commonSetup()
+        messageTextView?.placeholder = "Enter your comments here".localized
         setupCoordinator(messageTextView)
     }
     
@@ -163,6 +164,7 @@ public class ASChatBarview : UIView {
     @objc private func textChanged(){
         registerTextView()
         if let txtview = messageTextView{
+            messageTextView?.placeholder = "Enter your comments here".localized
             placeholderLabel?.isHidden = !txtview.text.isEmpty
             attachImageButton?.isEnabled = !txtview.text.isEmpty
             sendButton?.isEnabled = !txtview.text.isEmpty

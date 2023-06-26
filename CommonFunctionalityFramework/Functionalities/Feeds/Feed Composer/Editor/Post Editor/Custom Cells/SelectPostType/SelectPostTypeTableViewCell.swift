@@ -12,12 +12,14 @@ class SelectPostTypeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var posttoDepartment : UISwitch?
+    @IBOutlet weak var departmentLabel : UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         posttoDepartment?.onTintColor = UIColor.getControlColor()
         posttoDepartment?.tintColor =  UIColor.getControlColor()
+        departmentLabel?.text = "Post to my department only".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

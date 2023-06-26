@@ -597,7 +597,7 @@ extension FeedsViewController : FeedsDelegate{
                     switch result{
                     case .Success(_):
                         
-                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll") is unpinned successfully".localized : "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll")  is pinned successfully".localized, okActionHandler: { (_) in
+                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll") is unpinned successfully".localized : "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll") is pinned successfully".localized, okActionHandler: { (_) in
                           NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                         })
                     case .SuccessWithNoResponseData:

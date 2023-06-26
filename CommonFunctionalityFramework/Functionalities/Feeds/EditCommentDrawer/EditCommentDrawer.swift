@@ -39,6 +39,8 @@ class EditCommentDrawer: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        editButton?.setTitle("Edit".localized, for: .normal)
+        deleteButton?.setTitle("Delete".localized, for: .normal)
         editButtonView?.isHidden = isEditEnabled == true ? false : true
         deleteButtonView?.isHidden = isDeleteEnabled == true ? false : true
     }

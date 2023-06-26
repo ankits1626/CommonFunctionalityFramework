@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,10 +18,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedsComposerDrawer" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
+                <outlet property="createNewLabel" destination="Opm-Yh-daI" id="wcw-Gn-Rbs"/>
                 <outlet property="createPollButton" destination="ALy-J9-9ey" id="Ftt-7J-NZ7"/>
                 <outlet property="createPostButton" destination="bV7-Sq-OZd" id="S1x-bF-YxT"/>
                 <outlet property="pollImg" destination="uRp-y9-Tcz" id="YAd-AG-ykk"/>
+                <outlet property="pollLabel" destination="V3M-SY-EDo" id="ehL-uB-fSe"/>
                 <outlet property="postImg" destination="2O9-qF-nfR" id="Q2Z-3m-hoM"/>
+                <outlet property="postLabel" destination="cPW-2R-JGE" id="VIl-7F-xdq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,10 +34,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="OFi-Mh-wYd">
-                    <rect key="frame" x="86.5" y="119" width="241" height="104"/>
+                    <rect key="frame" x="86.5" y="123" width="241" height="96"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="48o-l8-Jfj">
-                            <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                            <rect key="frame" x="0.0" y="0.0" width="104" height="96"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="development_so-description" translatesAutoresizingMaskIntoConstraints="NO" id="2O9-qF-nfR">
                                     <rect key="frame" x="40" y="27" width="24" height="24"/>
@@ -43,13 +46,13 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPW-2R-JGE">
-                                    <rect key="frame" x="8" y="59" width="88" height="21"/>
+                                    <rect key="frame" x="8" y="59" width="88" height="13"/>
                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bV7-Sq-OZd">
-                                    <rect key="frame" x="8" y="9" width="88" height="87"/>
+                                    <rect key="frame" x="8" y="9" width="88" height="79"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title=" "/>
@@ -80,7 +83,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3q0-c5-4qP">
-                            <rect key="frame" x="129" y="0.0" width="112" height="104"/>
+                            <rect key="frame" x="129" y="0.0" width="112" height="96"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="interface_so-mobile-signal" translatesAutoresizingMaskIntoConstraints="NO" id="uRp-y9-Tcz">
                                     <rect key="frame" x="40" y="27" width="24" height="24"/>
@@ -95,7 +98,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALy-J9-9ey">
-                                    <rect key="frame" x="8" y="8" width="96" height="88"/>
+                                    <rect key="frame" x="8" y="8" width="96" height="80"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title=" "/>
                                     <connections>
@@ -131,7 +134,7 @@
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opm-Yh-daI">
-                    <rect key="frame" x="156" y="75" width="102.5" height="21"/>
+                    <rect key="frame" x="161" y="79" width="92" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="ZTs-rD-pad"/>
                     </constraints>
@@ -140,7 +143,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4U-NO-LxY">
-                    <rect key="frame" x="167" y="53" width="80" height="5"/>
+                    <rect key="frame" x="167" y="57" width="80" height="5"/>
                     <color key="backgroundColor" red="0.67058825489999996" green="0.6784313917" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="5" id="p5m-Jd-MxX"/>

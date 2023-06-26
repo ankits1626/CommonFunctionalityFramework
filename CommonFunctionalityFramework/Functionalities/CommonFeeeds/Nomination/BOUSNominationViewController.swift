@@ -60,7 +60,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
              jsonDataValues =  jsonData.results
             if jsonDataValues.count == 0 {
                 var emptyMessage : String!
-                emptyMessage = "Opps! You dont have any nomination in \(statusType)."
+                emptyMessage = "\("Opps! You dont have any nomination in".localized) \(statusType)."
                 self.emptyResultView.showEmptyMessageView(
                     message: emptyMessage,
                     parentView: self.emptyViewContainer!,
@@ -97,7 +97,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         }
         
         
-        cell.nominatedUserName.attributedText =  getCreatorName(text: "For", userName: "\(dataValue.nomination.nominated_team_member.full_name)")
+        cell.nominatedUserName.attributedText =  getCreatorName(text: "For".localized, userName: "\(dataValue.nomination.nominated_team_member.full_name)")
         cell.nominatedDate.text = getCreationDate(jsonData: dataValue)
         cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
         
@@ -112,7 +112,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
             cell.userStrengthDescription.text = dataValue.description
         }
         cell.awardType.text = "\(dataValue.nomination.badges.name)"
-        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) Points"
+        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) \("Points".localized)"
         cell.timeRemaining.text = "\(dataValue.nomination.nom_status)"
         cell.timeRemaining.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 6.0)
         if let nom_color = dataValue.nomination.nom_status_color {

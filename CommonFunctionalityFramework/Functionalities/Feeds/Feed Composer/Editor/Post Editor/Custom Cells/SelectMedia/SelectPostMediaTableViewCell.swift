@@ -14,13 +14,19 @@ class SelectPostMediaTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var gifButton : UIButton?
     @IBOutlet weak var imageButton : UIButton?
     
+    @IBOutlet weak var ecardLabel : UILabel?
+    @IBOutlet weak var gifLabel : UILabel?
+    @IBOutlet weak var imageLabel : UILabel?
+    
     @IBOutlet weak var ecardButtonView : UIView?
     @IBOutlet weak var gifButtonView : UIView?
     @IBOutlet weak var imageButtonView : UIView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        ecardLabel?.text = "eCard".localized
+        gifLabel?.text = "GIF".localized
+        imageLabel?.text = "Image".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

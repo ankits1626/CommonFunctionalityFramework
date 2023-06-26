@@ -43,8 +43,7 @@ class PostPollLikeTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-       
+        commentsCountLabel?.text = "Comment".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

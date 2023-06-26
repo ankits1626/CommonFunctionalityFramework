@@ -23,9 +23,13 @@ class BOUSAwardLevel1TableViewCell: UITableViewCell {
     @IBOutlet weak var leftPrivacyLevel: UILabel!
     @IBOutlet weak var rightPrivacyLevel: UILabel!
     @IBOutlet weak var awardLevelStatus: UILabel!
+    @IBOutlet weak var modificationLabel : UILabel?
+    @IBOutlet weak var awardTitleLabel : UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        modificationLabel?.text = "Modification".localized
+        awardTitleLabel?.text = "Award Level".localized
         // Initialization code
     }
 

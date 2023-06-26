@@ -85,7 +85,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             cell.commentsLbl.setTitle("\(feed.getNumberOfComments())", for: .normal)
 
             cell.seperator?.backgroundColor = .seperatorColor
-            cell.commentsCountLabel?.text = "Comment"
+            cell.commentsCountLabel?.text = "Comment".localized
             cell.commentsCountLabel?.font = UIFont.Caption1
             cell.commentsCountLabel?.textColor = UIColor.getSubTitleTextColor()
             cell.clapsCountLabel?.text = feed.getNumberOfClaps()

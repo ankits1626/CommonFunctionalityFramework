@@ -43,7 +43,7 @@ class CommonPressLikeButtonTableViewCell: UITableViewCell, FeedsCustomCellProtco
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        commentsCountLabel?.text = "Comment".localized
        
     }
 

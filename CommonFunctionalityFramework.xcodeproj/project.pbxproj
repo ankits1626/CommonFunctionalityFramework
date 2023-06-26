@@ -112,7 +112,6 @@
 		0FABE5072A1DD29F00F5D855 /* PostShareOptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE4FB2A1DD29F00F5D855 /* PostShareOptionTableViewCellCoordinator.swift */; };
 		0FABE5082A1DD29F00F5D855 /* PostPreviewListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE4FD2A1DD29F00F5D855 /* PostPreviewListManager.swift */; };
 		0FABE5092A1DD29F00F5D855 /* PreviewablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE4FF2A1DD29F00F5D855 /* PreviewablePost.swift */; };
-		0FABE52F2A1DD37500F5D855 /* ASChatBarview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FABE52D2A1DD37500F5D855 /* ASChatBarview.xib */; };
 		0FABE5302A1DD37500F5D855 /* ASChatBarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE52E2A1DD37500F5D855 /* ASChatBarview.swift */; };
 		0FB1635529B71117000AA631 /* AnniversaryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1635229B71117000AA631 /* AnniversaryDetailTableViewCell.swift */; };
 		0FB1635629B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1635329B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift */; };
@@ -349,6 +348,8 @@
 		BEC2B28B26FDA1EF008417C3 /* FeedCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B28A26FDA1EF008417C3 /* FeedCommentTableViewCell.xib */; };
 		BEC2B28D26FDA254008417C3 /* ClappedByTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B28C26FDA254008417C3 /* ClappedByTableViewCell.xib */; };
 		BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B28E26FDA2AE008417C3 /* FeedsDetailViewController.xib */; };
+		BEC33A9D2A44A25800C936C6 /* ASChatBarview.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC33A9C2A44A25700C936C6 /* ASChatBarview.xib */; };
+		BEC33A9F2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC33A9E2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift */; };
 		BED3ADAE28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3ADAC28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift */; };
 		BED3ADAF28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */; };
 		BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */; };
@@ -467,7 +468,6 @@
 		0FABE4FB2A1DD29F00F5D855 /* PostShareOptionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostShareOptionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		0FABE4FD2A1DD29F00F5D855 /* PostPreviewListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPreviewListManager.swift; sourceTree = "<group>"; };
 		0FABE4FF2A1DD29F00F5D855 /* PreviewablePost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewablePost.swift; sourceTree = "<group>"; };
-		0FABE52D2A1DD37500F5D855 /* ASChatBarview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ASChatBarview.xib; path = ASChatBarView/ASChatBarview.xib; sourceTree = "<group>"; };
 		0FABE52E2A1DD37500F5D855 /* ASChatBarview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASChatBarview.swift; path = ASChatBarView/ASChatBarview.swift; sourceTree = "<group>"; };
 		0FB1635229B71117000AA631 /* AnniversaryDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnniversaryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		0FB1635329B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnniversaryTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -711,6 +711,8 @@
 		BEC2B28A26FDA1EF008417C3 /* FeedCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCommentTableViewCell.xib; sourceTree = "<group>"; };
 		BEC2B28C26FDA254008417C3 /* ClappedByTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClappedByTableViewCell.xib; sourceTree = "<group>"; };
 		BEC2B28E26FDA2AE008417C3 /* FeedsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsDetailViewController.xib; sourceTree = "<group>"; };
+		BEC33A9C2A44A25700C936C6 /* ASChatBarview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASChatBarview.xib; sourceTree = "<group>"; };
+		BEC33A9E2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		BED3ADAC28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppreciationSubjectTableViewCell.swift; sourceTree = "<group>"; };
 		BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonAppreciationSubjectTableViewCell.xib; sourceTree = "<group>"; };
 		BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppreciationSubjectTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 				0FB4AFCF28BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift */,
 				0FB4AFD128BDDC220020008B /* BOUSAwardLevel1TableViewCell.swift */,
 				0FB4AFD328BDDC390020008B /* BOUSAwardPendingTableViewCell.swift */,
+				BEC33A9E2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift */,
 			);
 			path = DetailCells;
 			sourceTree = "<group>";
@@ -1654,7 +1657,7 @@
 			isa = PBXGroup;
 			children = (
 				0FABE52E2A1DD37500F5D855 /* ASChatBarview.swift */,
-				0FABE52D2A1DD37500F5D855 /* ASChatBarview.xib */,
+				BEC33A9C2A44A25700C936C6 /* ASChatBarview.xib */,
 				BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */,
 				BEEF543B26FC978400327205 /* UIView+XibSetup.swift */,
 				987D0B922583DA58001A0F07 /* ASMentionCoordinator.swift */,
@@ -2389,7 +2392,6 @@
 				BE39BA4728A91856004ADA9E /* PostPollTopTableViewCellTableViewCell.xib in Resources */,
 				0FABE5062A1DD29F00F5D855 /* PostShareOptionTableViewCell.xib in Resources */,
 				BEC2B28B26FDA1EF008417C3 /* FeedCommentTableViewCell.xib in Resources */,
-				0FABE52F2A1DD37500F5D855 /* ASChatBarview.xib in Resources */,
 				0F6021AA2874157D00D852BD /* ReactionsListTableViewCell.xib in Resources */,
 				BEC2B25F26FD99A3008417C3 /* SingleImageTableViewCell.xib in Resources */,
 				BE39BA4F28A9260E004ADA9E /* PostPollTitleTableViewCell.xib in Resources */,
@@ -2434,6 +2436,7 @@
 				0FA1A5F82A1610EF00107B26 /* FeedOrgaisationTableViewHeader.xib in Resources */,
 				BEB0084828A76DF200E3F1B0 /* AddECardTableViewCell.xib in Resources */,
 				0F96195028E428C20003FE8D /* BOUSThreeImagesTableViewCell.xib in Resources */,
+				BEC33A9D2A44A25800C936C6 /* ASChatBarview.xib in Resources */,
 				BE9E234B28AB92A700281F86 /* PostPollSelfBottomSheet.xib in Resources */,
 				0F6021B928741C4F00D852BD /* CommentLikeWithCountCell.xib in Resources */,
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
@@ -2553,6 +2556,7 @@
 				0FA1A6002A1610EF00107B26 /* FeedOrganisationDepartmentSelectionModel.swift in Sources */,
 				0F96194F28E428C20003FE8D /* BOUSThreeImagesTableViewCell.swift in Sources */,
 				0F32907228897051008BF09D /* BOUSDetailFeedOutstandingTableViewCell.swift in Sources */,
+				BEC33A9F2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift in Sources */,
 				9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */,
 				987D0BA82583DA58001A0F07 /* ASMentionCoordinator.swift in Sources */,
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
