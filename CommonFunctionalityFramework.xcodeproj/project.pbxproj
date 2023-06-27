@@ -206,6 +206,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		424B4D77FA04D7F73F02820B /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		641ACE1C186B23B1DED89D15 /* Pods-CommonFunctionalityFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.debug.xcconfig"; path = "Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		87F900BFF38BBFDEDF9E0A13 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
 		980D121E2614295F00995F41 /* RewardzCommonComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RewardzCommonComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -425,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				980D121E2614295F00995F41 /* RewardzCommonComponents.framework */,
+				424B4D77FA04D7F73F02820B /* Pods_CommonFunctionalityFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

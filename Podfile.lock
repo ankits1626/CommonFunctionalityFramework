@@ -1,0 +1,51 @@
+PODS:
+  - ActiveLabel (1.1.5)
+  - FLAnimatedImage (1.0.17)
+  - KUIPopOver (1.1.2)
+  - Loaf (0.7.0)
+  - RewardzCommonComponents (0.0.6):
+    - KUIPopOver (= 1.1.2)
+  - SimpleCheckbox (2.1.0)
+
+DEPENDENCIES:
+  - ActiveLabel (from `https://github.com/ankits1626/ActiveLabel.swift`, branch `CFF_Customizations`)
+  - FLAnimatedImage (~> 1.0)
+  - KUIPopOver (= 1.1.2)
+  - Loaf
+  - RewardzCommonComponents (from `https://github.com/ankits1626/RewardzCommonComponents.git`, branch `enhancement/519_legrandRewardChanges`)
+  - SimpleCheckbox
+
+SPEC REPOS:
+  trunk:
+    - FLAnimatedImage
+    - KUIPopOver
+    - Loaf
+    - SimpleCheckbox
+
+EXTERNAL SOURCES:
+  ActiveLabel:
+    :branch: CFF_Customizations
+    :git: https://github.com/ankits1626/ActiveLabel.swift
+  RewardzCommonComponents:
+    :branch: enhancement/519_legrandRewardChanges
+    :git: https://github.com/ankits1626/RewardzCommonComponents.git
+
+CHECKOUT OPTIONS:
+  ActiveLabel:
+    :commit: ea733162acf07eded0c7e79affcf5d85fdddab11
+    :git: https://github.com/ankits1626/ActiveLabel.swift
+  RewardzCommonComponents:
+    :commit: e6ee435fb35ddc05b54b1def14360a169a6ec307
+    :git: https://github.com/ankits1626/RewardzCommonComponents.git
+
+SPEC CHECKSUMS:
+  ActiveLabel: d757b2404064bc63127c25c1a6beab0ca578bbaa
+  FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
+  KUIPopOver: fc7ccb3c1c1ada51f5251477a7993ec452e3eefb
+  Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
+  RewardzCommonComponents: c279b08e35926d5c8685a00185fb7f85d986407b
+  SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
+
+PODFILE CHECKSUM: 6806074eaa5639df22cce3b4af34aa36d6857f4b
+
+COCOAPODS: 1.11.3
