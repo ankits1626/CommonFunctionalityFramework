@@ -10,6 +10,13 @@ import Foundation
 import RewardzCommonComponents
 
 class CommentAttachedDocument : MediaItemProtocol{
+    func getGiphy() -> String? {
+        return ""
+    }
+    
+    func getImagePK() -> Int? {
+        return 0
+    }
     
     let rawAttachedDocument: [String : Any]
     
