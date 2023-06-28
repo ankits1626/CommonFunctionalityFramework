@@ -164,6 +164,7 @@ struct EditablePost : EditablePostProtocol{
         }
         
         postDictionary["shared_with"] = isShareWithSameDepartmentOnly ? PostSharedChoice.SelfDepartment.rawValue : PostSharedChoice.AllDepartment.rawValue
+
         return postDictionary
     }
     

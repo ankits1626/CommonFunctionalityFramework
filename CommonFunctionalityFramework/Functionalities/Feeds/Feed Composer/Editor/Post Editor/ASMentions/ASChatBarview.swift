@@ -33,14 +33,22 @@ public class ASChatBarview : UIView {
     @IBOutlet private weak var placeholderLabel : UILabel?
     @IBOutlet public weak var delegate : ASChatBarViewDelegate?
     var tagPicker : ASMentionSelectorViewController?
-    @IBOutlet private weak var heightConstraint : NSLayoutConstraint?
+    @IBOutlet public weak var heightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainer : UIView?
     @IBOutlet private weak var leftContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var leftContainerWidthConstraint : NSLayoutConstraint?
     var taggedMessaged : String = ""
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
-    weak var themeManager: CFFThemeManagerProtocol?
+    public var themeManager: CFFThemeManagerProtocol?
+    public var isAttachmentButtonVisibile = false{
+        didSet{
+            attachImageWidthConstraint?.constant = isAttachmentButtonVisibile ? 40 : 0
+        }
+    }
+    @IBOutlet public weak var attachImageWidthConstraint : NSLayoutConstraint?
+    public var containerSuperView: UIView?
+
     var isEditCommentEnabled : Bool = false
     var commentID : Int64 = 0
     public override var backgroundColor: UIColor?{
@@ -51,7 +59,10 @@ public class ASChatBarview : UIView {
     lazy var tap: UITapGestureRecognizer = {
         return UITapGestureRecognizer(target: self, action: #selector(dismiss))
     }()
-    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var attachmentContainer : UIView?
+    @IBOutlet private weak var attachmentDisplayHeightConstraint : NSLayoutConstraint?
+
+    @IBOutlet public var bottomConstraint: NSLayoutConstraint!
     lazy var maxHeight: NSLayoutConstraint = {
         let _bottomConstraint =   NSLayoutConstraint(
             item: messageTextView!,
@@ -64,7 +75,14 @@ public class ASChatBarview : UIView {
         _bottomConstraint.priority = UILayoutPriority.defaultHigh
         return _bottomConstraint
     }()
-
+    private lazy var attachmentHandler: AttachmentHandler = {
+        return AttachmentHandler()
+    }()
+    
+    private lazy var attachmentDataManager: AttachmentDataManager = {
+        return AttachmentDataManager()
+    }()
+    private var attachmentView: ASChatBarAttachmentViewController?
     private let kAttachmentContainerWidth : CGFloat = 100
     private let kAttachmentContainerHeight : CGFloat = 80
     private let kAttachmentContainerTopInset : CGFloat = 5
@@ -182,6 +200,69 @@ public class ASChatBarview : UIView {
                     txtview.invalidateIntrinsicContentSize()
                 }
             }
+        }
+    }
+    
+    private func enableSendButtonIfRequired(){
+        if let isMessageEmpty = messageTextView?.text.isEmpty,
+            !isMessageEmpty{
+            sendButton?.isEnabled = true
+        }else{
+            if attachmentDataManager.getNumberOfAttachments() > 0{
+                sendButton?.isEnabled = true
+            }else{
+                sendButton?.isEnabled = false
+            }
+        }
+    }
+    
+    var orignalHeight : CGFloat!
+    private func adjustHeight(){
+        messageTextView?.isScrollEnabled = true
+        let textView = messageTextView!
+        let fixedWidth = textView.frame.size.width
+        
+        /// Here we need to get The height as Greatest that we can have or expected
+        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        
+        /// Get New Size
+        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        
+        /// New Frame
+        var newFrame = textView.frame
+        var maxHeight : Int = 100
+        if let attachmentHeight = attachmentDataManager.getRequiredAttachmentHeight(){
+            maxHeight = maxHeight + attachmentHeight + 40
+            newFrame.size = CGSize(
+                width: max(newSize.width, fixedWidth),
+                height: newSize.height + CGFloat(attachmentHeight)
+            )
+        }else{
+            newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        }
+        
+        
+        /// Orignal height is height that is assigned to TextView for first time and 100 is maximum height that textview can increase
+        self.heightConstraint?.constant = CGFloat(
+            min(
+                maxHeight,
+                max(
+                    Int(newFrame.size.height),
+                    Int(self.orignalHeight!)
+                   )
+            )
+        )
+        
+        scrollTextViewToBottom(textView: messageTextView!)
+        
+        //                bookSessionStruct.sessionTopicDiscussion = textView.text!.trimmed()
+    }
+    
+    func scrollTextViewToBottom(textView: UITextView) {
+        if textView.text.count > 0 {
+            let location = textView.text.count
+            let bottom = NSMakeRange(location, 1)
+            textView.scrollRangeToVisible(bottom)
         }
     }
     
@@ -305,13 +386,67 @@ extension ASChatBarview{
 
 }
 
-extension ASChatBarview{
-    func clearChatBar() {
-    
-    }
-}
 extension ASChatBarview : ASMentionCoordinatortextUpdateListener{
     func textUpdated() {
         taggedMessaged = ASMentionCoordinator.shared.getPostableTaggedText() ?? ""
     }
+}
+
+extension ASChatBarview : AttachmentHandlerDelegate{
+    public func finishedSelectionfFile(documentUrl: URL) {
+        attachmentDataManager.addSelectedDocument(documentUrl: documentUrl) {[weak self] in
+            self?.toggleAttachmentContainer()
+            self?.enableSendButtonIfRequired()
+        }
+    }
+    
+    public func finishedSelectionfImage(images: [LocalSelectedMediaItem]?) {
+        attachmentDataManager.addSelectedImages(images: images) {[weak self] in
+            self?.toggleAttachmentContainer()
+            self?.enableSendButtonIfRequired()
+        }
+    }
+    
+    private func toggleAttachmentContainer(){
+        updateAttachmentView()
+        adjustHeight()
+    }
+    
+    private func updateAttachmentView(){
+        if attachmentView == nil{
+            let attachmentVC = ASChatBarAttachmentViewController(
+                nibName: "ASChatBarAttachmentViewController",
+                bundle: Bundle(for: ASChatBarAttachmentViewController.self))
+            attachmentVC.parentContainerHeightConstraint = attachmentDisplayHeightConstraint
+            attachmentVC.attachmentDataManager = attachmentDataManager
+            attachmentVC.delegate = self
+            attachmentContainer?.addSubview(attachmentVC.view)
+            self.attachmentView = attachmentVC
+        }
+        attachmentView?.updateHeight()
+    }
+    
+    public func finishedDeletingDocument() {
+        adjustHeight()
+        enableSendButtonIfRequired()
+    }
+    
+    public func getNetworkPostableCommentModel() -> NetworkPostableCommentModel?{
+        if (messageTextView?.text != nil) || (attachmentDataManager.getNumberOfAttachments()>0){
+            return NetworkPostableCommentModel(
+                commentText: messageTextView?.text,
+                postableLocalMediaUrls: attachmentDataManager.getAllAttachedImageUrl(),
+                postableLocalDocumentUrls: attachmentDataManager.getAllAttachedDocumentUrl())
+        }else{
+            return nil
+        }
+    }
+    
+    public func clearChatBar(){
+        self.messageTextView?.text = nil
+        self.attachmentDataManager.clearDataManager()
+        adjustHeight()
+        enableSendButtonIfRequired()
+    }
+    
 }
