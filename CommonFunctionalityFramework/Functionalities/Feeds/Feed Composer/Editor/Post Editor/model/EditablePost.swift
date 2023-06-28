@@ -34,6 +34,7 @@ protocol EditablePostProtocol {
     var selectedEcardMediaItems : EcardListResponseValues? {set get}
     func isECardAttached() -> Bool
     var attachedGiflyGif : String?{set get}
+    var currentEcardPK : Int? { get set }
 }
 
 
@@ -44,6 +45,7 @@ enum PostSharedChoice : Int {
     
 }
 struct EditablePost : EditablePostProtocol{
+    var currentEcardPK: Int?
     var selectedEcardMediaItems: EcardListResponseValues?
     var attachedGiflyGif : String?
     
@@ -72,7 +74,6 @@ struct EditablePost : EditablePostProtocol{
     var attachedGif : RawGif?
     var selectedOrganisationsAndDepartments: FeedOrganisationDepartmentSelectionModel?
     var postType: FeedType
-    
     var pollOptions: [String]?
     
     var title: String?
@@ -120,7 +121,6 @@ struct EditablePost : EditablePostProtocol{
         case .Greeting:
             return getPostDictionary()
         }
-        postableDictionary["shared_with"] = postSharedChoice.rawValue
         if let unwrappedSelectedOrgAndDepartment = selectedOrganisationsAndDepartments{
             unwrappedSelectedOrgAndDepartment.getupdatePostDictionary(&postableDictionary)
         }
@@ -157,6 +157,11 @@ struct EditablePost : EditablePostProtocol{
         
         if let unwrappedECard = selectedEcardMediaItems{
             postDictionary["ecard"] = "\(unwrappedECard.pk)"
+        }
+        
+        if let cardValue = currentEcardPK,
+           cardValue > 0 {
+            postDictionary["ecard"] = "\(cardValue)"
         }
         
         if !deletedRemoteMediaArray.isEmpty{

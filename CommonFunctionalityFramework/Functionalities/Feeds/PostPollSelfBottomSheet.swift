@@ -54,7 +54,6 @@ class PostPollSelfBottomSheet: UIViewController {
         reportButtonView?.isHidden = isreportAbusedEnabled == true ? false : true
         
         editButton?.setTitle("Edit".localized, for: .normal)
-        pinButton?.setTitle("Pin Post".localized, for: .normal)
         deleteButton?.setTitle("Delete".localized, for: .normal)
         reportButton?.setTitle("Report Abuse".localized, for: .normal)
 

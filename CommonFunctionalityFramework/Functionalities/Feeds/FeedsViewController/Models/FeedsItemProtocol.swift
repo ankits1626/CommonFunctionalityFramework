@@ -38,7 +38,12 @@ struct FeedVideoItem :  MediaItemProtocol{
 
 struct FeedImageItem :  MediaItemProtocol{
     func getRemoteId() -> Int {
-        return rawImage["id"] as! Int
+        if let remoteID = rawImage["id"] as? Int {
+            return remoteID
+        }else {
+            return rawImage["pk"] as! Int
+        }
+        
     }
     
     private let rawImage : [String : Any]

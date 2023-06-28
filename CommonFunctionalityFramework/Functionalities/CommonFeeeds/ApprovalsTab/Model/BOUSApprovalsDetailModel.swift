@@ -31,7 +31,7 @@ struct userStrength : Decodable {
 }
 
 struct nominationKey : Decodable {
-    let message_to_reviewer : String
+    let message_to_reviewer : String?
     let id : Int
     let nominator_name : String
     enum CodingValue : String, CodingKey {
