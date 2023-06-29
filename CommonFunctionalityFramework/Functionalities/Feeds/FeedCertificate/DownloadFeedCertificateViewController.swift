@@ -246,9 +246,7 @@ class DownloadFeedCertificateViewController: UIViewController {
                                 self.pdfBtn.isUserInteractionEnabled = true
                                 let activityViewController = UIActivityViewController(activityItems: [contents[indexx]], applicationActivities: nil)
                                 if #available(iOS 15.4, *) {
-                                    activityViewController.excludedActivityTypes = [.postToFacebook, .postToTwitter, .postToWeibo, .mail, .print, .copyToPasteboard, .assignToContact, .addToReadingList, .postToFlickr, .postToVimeo, .postToTencentWeibo, .airDrop, .openInIBooks, .markupAsPDF, .sharePlay, .saveToCameraRoll, .message]
-                                } else {
-
+                                    activityViewController.excludedActivityTypes = [.postToFacebook, .postToTwitter, .postToWeibo, .mail, .print, .copyToPasteboard, .assignToContact, .addToReadingList, .postToFlickr, .postToVimeo, .postToTencentWeibo, .airDrop, .openInIBooks, .markupAsPDF, .sharePlay, .saveToCameraRoll]
                                 }
                                 activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
                                     if !completed {
