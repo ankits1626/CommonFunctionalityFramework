@@ -112,7 +112,6 @@
 		0FABE5072A1DD29F00F5D855 /* PostShareOptionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE4FB2A1DD29F00F5D855 /* PostShareOptionTableViewCellCoordinator.swift */; };
 		0FABE5082A1DD29F00F5D855 /* PostPreviewListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE4FD2A1DD29F00F5D855 /* PostPreviewListManager.swift */; };
 		0FABE5092A1DD29F00F5D855 /* PreviewablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE4FF2A1DD29F00F5D855 /* PreviewablePost.swift */; };
-		0FABE5302A1DD37500F5D855 /* ASChatBarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE52E2A1DD37500F5D855 /* ASChatBarview.swift */; };
 		0FB1635529B71117000AA631 /* AnniversaryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1635229B71117000AA631 /* AnniversaryDetailTableViewCell.swift */; };
 		0FB1635629B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1635329B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift */; };
 		0FB1635729B71117000AA631 /* AnniversaryDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FB1635429B71117000AA631 /* AnniversaryDetailTableViewCell.xib */; };
@@ -137,8 +136,6 @@
 		0FD47F432A25BCDD0096B30C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD47F352A25BCDD0096B30C /* AvailableAttachmentOptionsDrawerViewController.xib */; };
 		0FD47F442A25BCDD0096B30C /* ImageAttachmentOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD47F372A25BCDD0096B30C /* ImageAttachmentOptionsViewController.xib */; };
 		0FD47F452A25BCDD0096B30C /* ImageAttachmentOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD47F382A25BCDD0096B30C /* ImageAttachmentOptionsViewController.swift */; };
-		0FD47F4D2A25BE6C0096B30C /* ASChatBarview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD47F4B2A25BE6C0096B30C /* ASChatBarview.xib */; };
-		0FD47F4E2A25BE6C0096B30C /* ASChatBarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD47F4C2A25BE6C0096B30C /* ASChatBarview.swift */; };
 		0FEB520E286C2BCA00BA8ACF /* ImageViewSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEB520D286C2BCA00BA8ACF /* ImageViewSectionCell.xib */; };
 		0FEB5210286C2C0B00BA8ACF /* ImageViewSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB520F286C2C0B00BA8ACF /* ImageViewSectionCell.swift */; };
 		0FEB5212286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB5211286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift */; };
@@ -302,6 +299,7 @@
 		BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */; };
 		BE7C9AFF288AD0CA00E7CAE4 /* NoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C9AFD288AD0CA00E7CAE4 /* NoEntryViewController.swift */; };
 		BE7C9B00288AD0CA00E7CAE4 /* NoEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7C9AFE288AD0CA00E7CAE4 /* NoEntryViewController.xib */; };
+		BE817B182A4C4BE400D92C95 /* ASChatBarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FABE52E2A1DD37500F5D855 /* ASChatBarview.swift */; };
 		BE94C30828212E4600E323E1 /* CommonFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE94C30628212E4600E323E1 /* CommonFeedsViewController.swift */; };
 		BE94C30928212E4600E323E1 /* CommonFeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE94C30728212E4600E323E1 /* CommonFeedsViewController.xib */; };
 		BE94C30B28213F7D00E323E1 /* CommonFeedsSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE94C30A28213F7C00E323E1 /* CommonFeedsSectionFactory.swift */; };
@@ -506,8 +504,6 @@
 		0FD47F352A25BCDD0096B30C /* AvailableAttachmentOptionsDrawerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvailableAttachmentOptionsDrawerViewController.xib; sourceTree = "<group>"; };
 		0FD47F372A25BCDD0096B30C /* ImageAttachmentOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAttachmentOptionsViewController.xib; sourceTree = "<group>"; };
 		0FD47F382A25BCDD0096B30C /* ImageAttachmentOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAttachmentOptionsViewController.swift; sourceTree = "<group>"; };
-		0FD47F4B2A25BE6C0096B30C /* ASChatBarview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASChatBarview.xib; sourceTree = "<group>"; };
-		0FD47F4C2A25BE6C0096B30C /* ASChatBarview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASChatBarview.swift; sourceTree = "<group>"; };
 		0FEB520D286C2BCA00BA8ACF /* ImageViewSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewSectionCell.xib; sourceTree = "<group>"; };
 		0FEB520F286C2C0B00BA8ACF /* ImageViewSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSectionCell.swift; sourceTree = "<group>"; };
 		0FEB5211286C2C6900BA8ACF /* ImageViewSectionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewSectionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -2513,7 +2509,6 @@
 				0FD47F432A25BCDD0096B30C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */,
 				BEC2B24F26FD9573008417C3 /* DropDownTableViewCell.xib in Resources */,
 				0FABE4EE2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.xib in Resources */,
-				0FD47F4D2A25BE6C0096B30C /* ASChatBarview.xib in Resources */,
 				BEBFD1E828A9F167006E5D8B /* PostPollLikeTableViewCell.xib in Resources */,
 				0FD47F3D2A25BCDD0096B30C /* ASChatBarAttachmentViewController.xib in Resources */,
 				BEC2B27726FD9EB8008417C3 /* FeedsGIFSelectorViewController.xib in Resources */,
@@ -2652,6 +2647,7 @@
 				0FEB5210286C2C0B00BA8ACF /* ImageViewSectionCell.swift in Sources */,
 				980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */,
 				9873D62C24B808DF0041504C /* RawGif.swift in Sources */,
+				BE817B182A4C4BE400D92C95 /* ASChatBarview.swift in Sources */,
 				983C4F8D2462F09E00FDEB76 /* PostDeleteWorker.swift in Sources */,
 				9868C0B5241205D400B12321 /* FeedsMediaCollectionCoordinator.swift in Sources */,
 				0F602184286EBB8800D852BD /* BOUSCommonBlurViewController.swift in Sources */,
@@ -2724,7 +2720,6 @@
 				0F7AA82B29D86859006DF6FE /* SaveCertificateNetworkHandler.swift in Sources */,
 				BEBFD1E428A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift in Sources */,
 				0F7AA81E29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.swift in Sources */,
-				0FD47F4E2A25BE6C0096B30C /* ASChatBarview.swift in Sources */,
 				0F96194828E416F00003FE8D /* BOUSTwoImageTableViewCell.swift in Sources */,
 				987D0BAB2583DA58001A0F07 /* ASMentionText.swift in Sources */,
 				0FED7EF3287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift in Sources */,

@@ -79,6 +79,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "FeedsScroll"), object: nil)
         UserDefaults.standard.setValue(selectedTabType, forKey: "selectedTab")
         UserDefaults.standard.synchronize()
+        self.hideTopLeaderboard = true
         if hideTopLeaderboard {
             topLeaderboardHeightConstraints?.constant = 0
             clearAnyExistingFeedsData {[weak self] in
