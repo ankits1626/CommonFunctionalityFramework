@@ -32,7 +32,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
             let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
             
             if selectedtabValue == "received" {
-                cell.userName?.text =  "From \(feed.getUserName() ?? "")"
+                cell.userName?.text =  "\("From".localized) \(feed.getUserName() ?? "")"
                 cell.appraacitedBy.isHidden = true
                 cell.dot.isHidden = true
                 if let profileImageEndpoint = feed.getUserImageUrl(){
@@ -42,7 +42,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                 }
             }else if selectedtabValue == "SearchFromHome" {
                 if let nominatedName = feed.getHomeUserCreatedName() {
-                    cell.appraacitedBy.text = "From \(nominatedName)"
+                    cell.appraacitedBy.text = "\("From".localized) \(nominatedName)"
                 }
                 cell.userName?.text = "\(feed.getHomeUserReceivedName() ?? "")"
                 
@@ -56,7 +56,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                 }
             }else {
                 if let toUserName = feed.toUserName() {
-                    cell.userName?.text = "To \(toUserName)"
+                    cell.userName?.text = "\("To".localized) \(toUserName)"
                     cell.appraacitedBy.isHidden = true
                     cell.dot.isHidden = true
                 }

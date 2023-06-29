@@ -318,7 +318,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         case .Poll:
             createButton?.setTitle("Create".localized, for: .normal)
         case .Post:
-            createButton?.setTitle("Post".localized, for: .normal)
+            createButton?.setTitle("POST".localized, for: .normal)
         case .Greeting:
             break
         }

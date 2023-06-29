@@ -1,20 +1,19 @@
 //
-//  BOUSApprovalMessageTableViewCell.swift
+//  BOUSAwardHistoryTableViewCell.swift
 //  CommonFunctionalityFramework
 //
-//  Created by Puneeeth on 21/07/22.
-//  Copyright © 2022 Rewardz. All rights reserved.
+//  Created by Suyesh Kandpal on 23/06/23.
+//  Copyright © 2023 Rewardz. All rights reserved.
 //
 
 import UIKit
 
-class BOUSApprovalMessageTableViewCell: UITableViewCell {
+class BOUSAwardHistoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var messageLbl: UILabel!
-    @IBOutlet weak var messageDescription: UILabel!
+    @IBOutlet weak var awardHistoryLabel : UILabel?
     override func awakeFromNib() {
         super.awakeFromNib()
-        messageLbl?.text = "Message to Approver".localized
+        awardHistoryLabel?.text = "Award History".localized
         // Initialization code
     }
 

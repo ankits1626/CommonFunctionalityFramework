@@ -20,6 +20,9 @@ class FeedsComposerDrawer: UIViewController {
     
     @IBOutlet weak var pollImg: UIImageView!
     @IBOutlet weak var postImg: UIImageView!
+    @IBOutlet weak var createNewLabel : UILabel?
+    @IBOutlet weak var postLabel : UILabel?
+    @IBOutlet weak var pollLabel : UILabel?
     @IBOutlet private weak var createPostButton : UIButton?
     @IBOutlet private weak var createPollButton : UIButton?
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
@@ -36,6 +39,9 @@ class FeedsComposerDrawer: UIViewController {
        // setup()
         pollImg.setImageColor(color: UIColor.getControlColor())
         postImg.setImageColor(color: UIColor.getControlColor())
+        createNewLabel?.text = "Create new".localized
+        postLabel?.text = "POST".localized
+        pollLabel?.text = "POLL".localized
     }
     
     private func setup() {

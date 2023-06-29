@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -89,7 +89,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="72" id="66R-jE-mdY" customClass="BOUSReactionListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="393" height="72"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="66R-jE-mdY" id="2v1-7O-ZJe">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="72"/>
@@ -255,6 +255,7 @@
                         <outlet property="collectionView" destination="TMF-nx-dWd" id="SjM-oI-DbQ"/>
                         <outlet property="curveHeader" destination="8wg-Ca-dEG" id="mfl-AH-ZvZ"/>
                         <outlet property="holderView" destination="SR6-bu-bWq" id="Dh1-y5-4hv"/>
+                        <outlet property="reactionLabel" destination="iNj-RT-xAS" id="qS1-mp-Rqw"/>
                         <outlet property="tableView" destination="oXg-7D-fOG" id="glp-DM-lEa"/>
                     </connections>
                 </viewController>
@@ -311,7 +312,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="265" id="Ytu-Eq-QIE">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="265"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="265"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ytu-Eq-QIE" id="UBC-ax-Yxk">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
@@ -387,7 +388,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="113" id="B7k-OF-YaJ">
-                                        <rect key="frame" x="0.0" y="309.5" width="414" height="113"/>
+                                        <rect key="frame" x="0.0" y="315" width="414" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B7k-OF-YaJ" id="Sjf-Zf-3j5">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
@@ -436,7 +437,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell3" rowHeight="218" id="bhA-gR-FeO">
-                                        <rect key="frame" x="0.0" y="422.5" width="414" height="218"/>
+                                        <rect key="frame" x="0.0" y="428" width="414" height="218"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bhA-gR-FeO" id="bzg-YL-WZC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="218"/>
@@ -580,7 +581,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="59" id="HIp-CS-ynu">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="59"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="59"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HIp-CS-ynu" id="4dJ-Tf-jPa">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
@@ -685,7 +686,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="310" id="w1x-hI-asq" customClass="BOUSApprovalHeaderTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="310"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="310"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w1x-hI-asq" id="ghb-2b-9x0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
@@ -726,7 +727,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-NH-tNm">
                                                             <rect key="frame" x="35" y="3" width="50" height="50"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="nXW-bM-WBI">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nXW-bM-WBI">
                                                                     <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -755,7 +756,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otD-i6-sOX">
                                                             <rect key="frame" x="175" y="3" width="50" height="50"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="meT-Z3-rlq">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="meT-Z3-rlq">
                                                                     <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -903,6 +904,7 @@
                                             <outlet property="dateLbl" destination="6bs-lq-fo6" id="Hpk-R4-FCW"/>
                                             <outlet property="leftImg" destination="nXW-bM-WBI" id="07Q-M5-Eja"/>
                                             <outlet property="leftName" destination="Zdj-QN-eTs" id="ElU-rF-xRu"/>
+                                            <outlet property="nominatedByLabel" destination="xdO-DK-43P" id="bcq-iV-EYT"/>
                                             <outlet property="nomnationIcon" destination="N8c-Lw-Zyv" id="Kj3-l9-t07"/>
                                             <outlet property="privacyImg" destination="hdO-H4-TvR" id="XY6-KX-nVK"/>
                                             <outlet property="privacyTitle" destination="veR-U7-DHX" id="T1i-tG-vha"/>
@@ -913,7 +915,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell2" rowHeight="86" id="P2X-wj-0pC" customClass="BOUSApprovalDescriptionTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="354.5" width="414" height="86"/>
+                                        <rect key="frame" x="0.0" y="360" width="414" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P2X-wj-0pC" id="MmK-UV-7hn">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
@@ -938,7 +940,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell3" rowHeight="87" id="xM9-re-KPd" customClass="BOUSApprovalAwardLevelTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="440.5" width="414" height="87"/>
+                                        <rect key="frame" x="0.0" y="446" width="414" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xM9-re-KPd" id="Dxi-VH-9fe">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
@@ -997,6 +999,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="awardTitleLabel" destination="001-pq-vAS" id="eKn-Gh-nFj"/>
                                             <outlet property="awardType" destination="6IN-8Y-EfW" id="lDp-bd-dMO"/>
                                             <outlet property="editBtn" destination="Ioj-ca-qvu" id="S7N-DU-AzR"/>
                                             <outlet property="leftImg" destination="9sn-b3-G3v" id="IiT-uW-59g"/>
@@ -1004,7 +1007,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell4" rowHeight="109" id="2qg-Bz-tio" customClass="BOUSApprovalMessageTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="527.5" width="414" height="109"/>
+                                        <rect key="frame" x="0.0" y="533" width="414" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2qg-Bz-tio" id="ndG-L5-bgt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
@@ -1040,8 +1043,8 @@
                                             <outlet property="messageLbl" destination="wTT-jO-67H" id="AAv-7L-WuT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell5" rowHeight="44" id="adf-O8-yn8">
-                                        <rect key="frame" x="0.0" y="636.5" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell5" rowHeight="44" id="adf-O8-yn8" customClass="BOUSAwardHistoryTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="642" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="adf-O8-yn8" id="zrV-PZ-iLk">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -1071,6 +1074,9 @@
                                                 <constraint firstItem="zxZ-cR-Due" firstAttribute="top" secondItem="zrV-PZ-iLk" secondAttribute="top" constant="14" id="wdh-N8-MlY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="awardHistoryLabel" destination="zxZ-cR-Due" id="Pq9-u7-jJY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1417,7 +1423,7 @@ nominations?</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="127" id="3XF-JZ-EZA">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="127"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3XF-JZ-EZA" id="A0I-Z7-vX2">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
@@ -1480,7 +1486,7 @@ nominations?</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="81" id="28s-NR-5E7">
-                                        <rect key="frame" x="0.0" y="171.5" width="414" height="81"/>
+                                        <rect key="frame" x="0.0" y="177" width="414" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="28s-NR-5E7" id="7Sg-Bq-RzN">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
@@ -1503,7 +1509,7 @@ nominations?</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="267" id="KLq-UI-fQm">
-                                        <rect key="frame" x="0.0" y="252.5" width="414" height="267"/>
+                                        <rect key="frame" x="0.0" y="258" width="414" height="267"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KLq-UI-fQm" id="J37-xi-jrP">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="267"/>
@@ -1746,7 +1752,7 @@ nominations?</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="252" id="dGN-kg-wrm" customClass="BOUSApprovalsListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="252"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="252"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dGN-kg-wrm" id="SxB-cq-WJx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="252"/>
@@ -1946,23 +1952,23 @@ nominations?</string>
         <scene sceneID="lRA-A8-nME">
             <objects>
                 <viewController storyboardIdentifier="BOUSAwardLevelProgressViewController" id="b65-PC-dsQ" customClass="BOUSAwardLevelProgressViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="IVw-cb-aSN">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" ambiguous="YES" id="IVw-cb-aSN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.43999999761581421" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Zi-5Hi">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.43999999761581421" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rwq-Zi-5Hi">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eb-s1-sjO">
-                                <rect key="frame" x="0.0" y="179" width="414" height="717"/>
+                                <rect key="frame" x="0.0" y="183" width="414" height="717"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="99" estimatedRowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="d4b-0Q-zOK">
                                         <rect key="frame" x="0.0" y="39" width="414" height="678"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="106" id="gIn-id-t00" customClass="BOUSAwardLevelNominationTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="106"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="106"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gIn-id-t00" id="pKU-kD-csW">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="106"/>
@@ -2065,12 +2071,13 @@ nominations?</string>
                                                 <connections>
                                                     <outlet property="date" destination="Scr-7J-3KA" id="Vt2-gz-xbR"/>
                                                     <outlet property="department" destination="oVa-2i-3xi" id="CXp-qM-jv5"/>
+                                                    <outlet property="nominationTitle" destination="qwJ-FN-cwU" id="Xig-Ec-iDq"/>
                                                     <outlet property="userImg" destination="22w-wz-aXW" id="49c-mF-i8F"/>
                                                     <outlet property="userName" destination="AHc-ha-T1h" id="Ekt-iF-ayK"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="254" id="oxy-0L-JSv" customClass="BOUSAwardLevel1TableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="150.5" width="414" height="254"/>
+                                                <rect key="frame" x="0.0" y="156" width="414" height="254"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oxy-0L-JSv" id="Us1-oT-wwA">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="254"/>
@@ -2366,11 +2373,13 @@ nominations?</string>
                                                 <connections>
                                                     <outlet property="awardLevelStackView" destination="jfL-xa-6dG" id="w2U-Ly-sik"/>
                                                     <outlet property="awardLevelStatus" destination="PX9-zt-SDT" id="EEy-K5-s3T"/>
+                                                    <outlet property="awardTitleLabel" destination="uAe-mV-Vg9" id="GFq-qE-hZi"/>
                                                     <outlet property="date" destination="E9U-1d-BRq" id="pze-UO-KC8"/>
                                                     <outlet property="department" destination="syJ-5P-PKF" id="uAY-XA-AWR"/>
                                                     <outlet property="leftAwardLevel" destination="LLZ-WS-Ncy" id="kVQ-fi-coL"/>
                                                     <outlet property="leftPrivacyLevel" destination="RdP-TV-F4W" id="zN7-s1-IBk"/>
                                                     <outlet property="levelNumber" destination="t06-ij-rCb" id="Fxh-Fb-3fL"/>
+                                                    <outlet property="modificationLabel" destination="BCU-Ig-ZH5" id="WbL-6M-NvD"/>
                                                     <outlet property="privacyLevelStackView" destination="Jku-do-rwu" id="wJB-OD-dUD"/>
                                                     <outlet property="rightAwardLevel" destination="bhn-qm-IJl" id="xdQ-pl-AEp"/>
                                                     <outlet property="rightPrivacyLevel" destination="5Zq-oS-AoX" id="yNu-zb-SCf"/>
@@ -2380,7 +2389,7 @@ nominations?</string>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell3" rowHeight="99" id="m6Q-zX-TJK" customClass="BOUSAwardPendingTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="404.5" width="414" height="99"/>
+                                                <rect key="frame" x="0.0" y="410" width="414" height="99"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m6Q-zX-TJK" id="ynn-kZ-KyE">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
@@ -2667,7 +2676,7 @@ nominations?</string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="210" id="1q4-Tf-hCl" customClass="BOUSApprovalsListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="210"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="210"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1q4-Tf-hCl" id="LFb-Rl-Vzx">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
@@ -2904,7 +2913,7 @@ nominations?</string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="202" id="CWF-rx-yrh" customClass="BOUSApprovalsListTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="202"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="202"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CWF-rx-yrh" id="f3C-1B-Ajd">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="202"/>
@@ -3242,7 +3251,7 @@ nominations?</string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" rowHeight="59" id="orI-bs-nmL" customClass="BOUSAppreciationPrivacyTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="59"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="59"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="orI-bs-nmL" id="Ftp-1E-G4x">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
@@ -3305,7 +3314,7 @@ nominations?</string>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell2" rowHeight="59" id="mWK-i5-Nyc" customClass="BOUSAppreciationPrivacyTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="103.5" width="414" height="59"/>
+                                                <rect key="frame" x="0.0" y="109" width="414" height="59"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mWK-i5-Nyc" id="ohO-cY-4rj">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
@@ -3444,7 +3453,7 @@ nominations?</string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="82" id="pnh-AN-lP5" customClass="BOUSApprovalPrivacyTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="82"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="82"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pnh-AN-lP5" id="iqE-9b-1r3">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
@@ -3783,7 +3792,6 @@ nominations?</string>
         <image name="approverLine_5" width="13" height="26"/>
         <image name="bg_approval_detail" width="187" height="36"/>
         <image name="brand_br-telegram" width="24" height="24"/>
-        <image name="cff_dummyProfile" width="30" height="30"/>
         <image name="design_so-pencil" width="22" height="22"/>
         <image name="design_so-pencil-2" width="16" height="16"/>
         <image name="icon_back_white" width="36" height="36"/>
@@ -3805,7 +3813,7 @@ nominations?</string>
         <image name="no_user_image_profilepage" width="119" height="119"/>
         <image name="small_icon_checkbox_unselected" width="24" height="24"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

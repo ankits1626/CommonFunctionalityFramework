@@ -376,6 +376,15 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 post.attachedGif = RawGif(sourceUrl: unwrappedGifSource)
             }
             
+            if let giphy = getGiphy(),
+                     !giphy.isEmpty{
+                post.attachedGiflyGif = giphy
+            }
+            if let cardPK = getEcardPK(),
+               cardPK > 0 {
+                post.currentEcardPK = cardPK
+            }
+            
             return post
             
         }else{
@@ -392,6 +401,14 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
                 selectedOrganisationsAndDepartments: getSharedOption()
             )
             post.parentFeedItem = self
+            if let giphy = getGiphy(),
+                     !giphy.isEmpty{
+                post.attachedGiflyGif = giphy
+            }
+            if let cardPK = getEcardPK(),
+               cardPK > 0 {
+                post.currentEcardPK = cardPK
+            }
             return post
         }
         
@@ -452,6 +469,10 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getGiphy() -> String?  {
         return  rawFeedDictionary["gif"] as? String
+    }
+    
+    func getEcardPK() -> Int?  {
+        return  rawFeedDictionary["ecard"] as? Int ?? 0
     }
     
     func getEcardUrl() -> String? {

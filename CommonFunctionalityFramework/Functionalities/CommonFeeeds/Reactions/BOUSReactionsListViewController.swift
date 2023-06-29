@@ -12,6 +12,7 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var curveHeader: UIView!
+    @IBOutlet weak var reactionLabel : UILabel?
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     var tableViewArrayHolder = [BOUSReactionListDataResponseValues]()
@@ -24,7 +25,7 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        reactionLabel?.text = "Reactions".localized
         curveHeader.clipsToBounds = true
         curveHeader.layer.cornerRadius = 10
         curveHeader.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -87,7 +88,7 @@ class BOUSReactionsListViewController: UIViewController,UITableViewDelegate, UIT
             print(dataValues)
             if dataValues.reaction_type == 7 {
                 cell.leftImg.isHidden = true
-                cell.TxtLbl.text = "All \(dataValues.reaction_count)"
+                cell.TxtLbl.text = "\("All".localized) \(dataValues.reaction_count)"
             }else {
                 cell.TxtLbl.text = "\(dataValues.reaction_count)"
                 cell.leftImg.isHidden = false

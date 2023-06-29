@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,6 +26,8 @@
                 <outlet property="confirmButton" destination="mL9-dW-bCT" id="Lii-1w-X0i"/>
                 <outlet property="descriptionText" destination="4rw-fp-GRa" id="INy-vo-rJ9"/>
                 <outlet property="reportAbuseImg" destination="X1y-U2-fIc" id="EQX-ig-u2K"/>
+                <outlet property="reportAbuseSubTitleLabel" destination="neu-Mz-XSP" id="VKQ-0P-tIy"/>
+                <outlet property="reportAbuseTitleLabel" destination="3Zy-9P-Wiw" id="Ldf-Nr-QFP"/>
                 <outlet property="view" destination="Ggt-c9-NsE" id="zUw-VW-r0T"/>
             </connections>
         </placeholder>
@@ -35,7 +37,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhI-xP-ra7">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="504"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="470"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJg-6D-WCO">
                             <rect key="frame" x="167" y="8" width="80" height="5"/>
@@ -72,7 +74,7 @@ Please share below</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4rw-fp-GRa" customClass="KMPlaceholderTextView" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-                            <rect key="frame" x="26" y="281" width="362" height="77"/>
+                            <rect key="frame" x="26" y="281" width="362" height="43"/>
                             <color key="backgroundColor" red="0.93333333330000001" green="0.94117647410000005" blue="0.99607843159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="textColor" red="0.66666668650000005" green="0.6784313917" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -84,7 +86,7 @@ Please share below</string>
                             </userDefinedRuntimeAttributes>
                         </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mL9-dW-bCT">
-                            <rect key="frame" x="26" y="376" width="362" height="48"/>
+                            <rect key="frame" x="26" y="342" width="362" height="48"/>
                             <color key="backgroundColor" red="0.099364854399999994" green="0.1258053184" blue="0.35084748269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="aYl-rx-8e6"/>
@@ -103,7 +105,7 @@ Please share below</string>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZr-3z-IlJ">
-                            <rect key="frame" x="26" y="432" width="362" height="48"/>
+                            <rect key="frame" x="26" y="398" width="362" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="VBi-EX-5z2"/>

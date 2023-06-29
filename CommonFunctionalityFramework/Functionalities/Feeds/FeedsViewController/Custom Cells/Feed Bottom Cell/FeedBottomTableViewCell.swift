@@ -18,6 +18,7 @@ class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var commentsCountLabel : UILabel?
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var seperator : UIView?
+    @IBOutlet weak var commentLabel : UILabel?
     @IBOutlet weak var reactionView: ReactionButton! {
         didSet {
             reactionView.reactionSelector = ReactionSelector()
@@ -35,6 +36,7 @@ class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        commentLabel?.text = "Comment".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

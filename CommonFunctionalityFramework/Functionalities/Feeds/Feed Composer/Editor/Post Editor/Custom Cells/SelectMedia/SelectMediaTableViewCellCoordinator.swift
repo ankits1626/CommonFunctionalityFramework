@@ -18,7 +18,7 @@ class SelectMediaTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorPr
         themeManager = inputModel.themeManager
         if let cell = inputModel.targetCell as? SelectPostMediaTableViewCell{
             if let shouldDisplayECard = inputModel.datasource.getTargetPost()?.isECardAttached(),
-               shouldDisplayECard{
+               shouldDisplayECard || inputModel.datasource.getTargetPost()?.remoteAttachedMedia?.count ?? 0 > 0{
                 cell.gifButtonView?.alpha = 0.3
                 cell.gifButtonView?.alpha = 0.3
                 cell.gifButton?.isUserInteractionEnabled = false

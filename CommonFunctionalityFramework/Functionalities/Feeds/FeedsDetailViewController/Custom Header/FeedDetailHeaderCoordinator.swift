@@ -63,9 +63,9 @@ class FeedDetailHeaderCoordinator {
     private func configureCommentsHeader(_ view : FeedDetailHeader?){
         if let commentsCount =  feedDataSource.getCommentProvider()?.getNumberOfComments() {
             if commentsCount > 1 {
-                view?.headerTitleLabel?.text = "\(commentsCount) Comments".localized
+                view?.headerTitleLabel?.text = "\(commentsCount) \("Comments".localized)".localized
             }else {
-                view?.headerTitleLabel?.text = "\(commentsCount) Comment".localized
+                view?.headerTitleLabel?.text = "\(commentsCount) \("Comment".localized)".localized
             }
         }
         
@@ -76,9 +76,9 @@ class FeedDetailHeaderCoordinator {
     private func configureClapsHeader(_ view : FeedDetailHeader?){
         if let reactionCount = feedDataSource.getClappedByUsers() {
             if reactionCount.count > 1 {
-                view?.headerTitleLabel?.text = "\(reactionCount.count) Reactions".localized
+                view?.headerTitleLabel?.text = "\(reactionCount.count) \("Reactions".localized)".localized
             }else {
-                view?.headerTitleLabel?.text = "\(reactionCount.count) Reaction".localized
+                view?.headerTitleLabel?.text = "\(reactionCount.count) \("Reaction".localized)".localized
             }
             
         }

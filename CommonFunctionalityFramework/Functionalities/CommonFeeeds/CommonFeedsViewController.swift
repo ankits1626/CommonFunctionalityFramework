@@ -38,6 +38,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     private var fetchedData = TopHeroesFetchedData()
     var selectedTopUserPk : Int = 0
     var selectedUserPk : Int = 0
+    @IBOutlet weak var topGettersMonthLabel : UILabel?
     
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
@@ -78,6 +79,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "FeedsScroll"), object: nil)
         UserDefaults.standard.setValue(selectedTabType, forKey: "selectedTab")
         UserDefaults.standard.synchronize()
+        self.hideTopLeaderboard = true
         if hideTopLeaderboard {
             topLeaderboardHeightConstraints?.constant = 0
             clearAnyExistingFeedsData {[weak self] in
@@ -102,6 +104,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     func registerCollectionViewCell()  {
+        topGettersMonthLabel?.text = "Top Getters of the month".localized
         let xib = UINib(nibName: "TopMonthlyCollectionViewCell", bundle: Bundle(for: TopMonthlyCollectionViewCell.self))
         topLeaderboardCollectionView?.register(xib, forCellWithReuseIdentifier: "TopMonthlyCollectionViewCell")
         self.getTopGetters()
@@ -125,8 +128,8 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         case .Success(let successResult):
             self.clearAnyExistingFeedsData {[weak self] in
                 self?.loadFetchedHeroes(successResult.fetchedHeroes)
-                self?.remainingPoints?.text = "You have \(successResult.userRemainingPoints) Points"
-                self?.monthlyAppreicationLimit?.text = "Monthly appreciation remaining : \(successResult.userMonthlyAppreciationLimit)"
+                self?.remainingPoints?.text = "\("You have".localized) \(successResult.userRemainingPoints) \("Points".localized)"
+                self?.monthlyAppreicationLimit?.text = "\("Monthly appreciation remaining".localized) : \(successResult.userMonthlyAppreciationLimit)"
                 self?.initializeFRC()
                 self?.setup()
                 self?.loadFeeds()

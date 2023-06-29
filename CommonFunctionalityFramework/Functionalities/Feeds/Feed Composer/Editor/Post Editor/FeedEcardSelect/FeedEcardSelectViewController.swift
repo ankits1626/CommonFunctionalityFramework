@@ -21,7 +21,7 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var orgHeaderView: UIView!
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher: CFFMediaCoordinatorProtocol?
-
+    @IBOutlet weak var eCardLabel : UILabel?
     var arrayHolder = [EcardCategoryResponseValues]()
     var selectedTab = ""
     let loader = MFLoader()
@@ -35,7 +35,8 @@ class FeedEcardSelectViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        eCardLabel?.text = "Add eCard".localized
+        searchBar.placeholder = "Search".localized
         if #available(iOS 13.0, *) {
             let imageView = UIImageView(image: UIImage(named: "searchnewicon"))
             imageView.contentMode = UIView.ContentMode.center
