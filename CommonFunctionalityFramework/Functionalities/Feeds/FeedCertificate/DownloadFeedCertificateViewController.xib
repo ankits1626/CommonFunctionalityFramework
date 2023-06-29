@@ -23,6 +23,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadFeedCertificateViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="2Va-ui-yWc" id="0uD-NB-wmU"/>
+                <outlet property="bottomHolderView" destination="2eK-AW-lIr" id="gUk-xn-Jax"/>
+                <outlet property="bottomViewHeightConstraint" destination="2kG-Xn-PEe" id="62Q-xe-Xup"/>
                 <outlet property="collectionView" destination="Ncj-Vs-KD0" id="E7p-MO-9ht"/>
                 <outlet property="collectionViewHolderHeight" destination="tRp-bX-zCw" id="64q-jn-zrc"/>
                 <outlet property="downloadAsLbl" destination="5YE-fQ-JeI" id="6dB-1X-yaV"/>
@@ -186,7 +188,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your configuration will be saved as the default setting for similar actions in the future." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zq8-sd-N33">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The selected picture will become the default and cannot be changed after downloading." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zq8-sd-N33">
                             <rect key="frame" x="8" y="37" width="358" height="53"/>
                             <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                             <nil key="textColor"/>

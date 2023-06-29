@@ -36,8 +36,9 @@ public struct GetFeedsViewModel{
     var coreValuePk : Int = 0
     var isGreetingType = false
     var greetingId = 0
+    var isDesklessEnabled : Bool = false
 
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0){
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0,  _isDesklessEnabled : Bool = false){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -53,6 +54,7 @@ public struct GetFeedsViewModel{
         self.coreValuePk = _coreValuePk
         self.isGreetingType = _isGreetingType
         self.greetingId = _greetingId
+        self.isDesklessEnabled = _isDesklessEnabled
     }
 }
 
@@ -123,6 +125,7 @@ public class FeedsCoordinator {
                         feedDetailVC.mainAppCoordinator = inputModel.mainAppCoordinator
                         feedDetailVC.requestCoordinator = inputModel.networkRequestCoordinator
                         feedDetailVC.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
+                        feedDetailVC.isDesklessEnabled = inputModel.isDesklessEnabled
                         feedDetailVC.pollSelectedAnswerMapper = SelectedPollAnswerMapper()
                         if inputModel.isGreetingType {
                             feedDetailVC.selectedTab = "GreetingsFeed"

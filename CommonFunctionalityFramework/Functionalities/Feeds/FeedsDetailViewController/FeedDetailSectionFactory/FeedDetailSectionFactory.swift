@@ -29,6 +29,7 @@ class FeedDetailSectionFactory {
     private weak var themeManager: CFFThemeManagerProtocol?
     var isPostPoll : Bool = false
     var canDownload : Bool = false
+    var isDesklessEnabled : Bool = false
     private weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     lazy var cachedCellCoordinators: [String : FeedCellCoordinatorProtocol] = {
         if isPostPoll {
@@ -80,7 +81,7 @@ class FeedDetailSectionFactory {
     }()
     
     
-    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?, selectedTab : String, _isPostPoll : Bool, mainAppCoordinator : CFFMainAppInformationCoordinator?, canDownload: Bool = false) {
+    init(_ feedDataSource : FeedsDatasource, feedDetailDelegate: FeedsDelegate, mediaFetcher: CFFMediaCoordinatorProtocol!, targetTableView : UITableView?, themeManager: CFFThemeManagerProtocol?, selectedOptionMapper : SelectedPollAnswerMapper?, selectedTab : String, _isPostPoll : Bool, mainAppCoordinator : CFFMainAppInformationCoordinator?, canDownload: Bool = false, isDesklessEnabled: Bool = false) {
         self.feedDataSource = feedDataSource
         self.selectedTab = selectedTab
         self.feedDetailDelegate = feedDetailDelegate
@@ -90,6 +91,7 @@ class FeedDetailSectionFactory {
         self.selectedOptionMapper = selectedOptionMapper
         self.isPostPoll = _isPostPoll
         self.canDownload = canDownload
+        self.isDesklessEnabled = isDesklessEnabled
         self.mainAppCoordinator = mainAppCoordinator
         registerTableViewForAllPossibleCellTypes(targetTableView)
         registerTableViewForHeaderView(targetTableView)
@@ -173,7 +175,7 @@ class FeedDetailSectionFactory {
                 delegate: feedDetailDelegate,
                 selectedoptionMapper: selectedOptionMapper,
                 themeManager: themeManager,
-                mainAppCoordinator: mainAppCoordinator, isFeedDetailPage: true, selectedTab: selectedTab, canDownload: self.canDownload
+                mainAppCoordinator: mainAppCoordinator, isFeedDetailPage: true, selectedTab: selectedTab, canDownload: self.canDownload, isDesklessEnabled: isDesklessEnabled
             )
         )
     }

@@ -45,7 +45,8 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     var is_download_choice_needed : Bool = false
     var can_download : Bool = false
     var showDisplayOptions : DisplayFeedOptions?
-    
+    var isDesklessEnabled : Bool = false
+
     lazy var feedDetailSectionFactory: FeedDetailSectionFactory = {
         return FeedDetailSectionFactory(
             self,
@@ -55,7 +56,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
             themeManager: themeManager,
             selectedOptionMapper: pollSelectedAnswerMapper,
             selectedTab: selectedTab,
-            _isPostPoll: isPostPollType, mainAppCoordinator: mainAppCoordinator, canDownload: can_download
+            _isPostPoll: isPostPollType, mainAppCoordinator: mainAppCoordinator, canDownload: can_download, isDesklessEnabled: isDesklessEnabled
         )
     }()
     var pollSelectedAnswerMapper: SelectedPollAnswerMapper?
@@ -706,42 +707,69 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
     }
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
-        if self.showDisplayOptions == .POSTPOLL {
-            var numberofElementsEnabled : CGFloat = 0.0
-            let drawer = PostPollSelfBottomSheet(nibName: "PostPollSelfBottomSheet", bundle: Bundle(for: PostPollSelfBottomSheet.self))
-            drawer.bottomsheetdelegate = self
-            drawer.feedIdentifier = feedIdentifier
-            drawer.isPostAlreadyPinned = targetFeedItem.isPinToPost()
-            if targetFeedItem.isFeedEditAllowed() && targetFeedItem.getFeedType() == .Post {
-                drawer.isEditEnabled = true
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }else{
-                drawer.isEditEnabled = false
-            }
-            
-            if targetFeedItem.isLoggedUserAdmin()  == true{
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }
-            
-            if targetFeedItem.isFeedDeleteAllowed() == true{
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }
-            if targetFeedItem.isFeedReportAbuseAllowed() == true{
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }
-            drawer.isPintoPostEnabled = targetFeedItem.isLoggedUserAdmin()
-            drawer.isDeleteEnabled = targetFeedItem.isFeedDeleteAllowed()
-            drawer.isreportAbusedEnabled = targetFeedItem.isFeedReportAbuseAllowed()
-            do{
-                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
-            }catch let error{
-                print("show error")
-                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+        if isDesklessEnabled {
+            if isPostPollType {
+                if targetFeedItem.isFeedReportAbuseAllowed(){
+                    self.showReportAbuseConfirmation(feedIdentifier)
+               }
+            }else {
+                if targetFeedItem.getPostType() == .Appreciation {
+                    let downloadFeedCertificateViewController = DownloadFeedCertificateViewController(nibName: "DownloadFeedCertificateViewController", bundle: Bundle(for: DownloadFeedCertificateViewController.self))
+                    downloadFeedCertificateViewController.targetFeed = targetFeedItem
+                    downloadFeedCertificateViewController.mediaFetcher = mediaFetcher
+                    downloadFeedCertificateViewController.themeManager = themeManager
+                    downloadFeedCertificateViewController.is_download_choice_needed = is_download_choice_needed
+                    downloadFeedCertificateViewController.requestCoordinator = requestCoordinator
+                    downloadFeedCertificateViewController.delegate = self
+                    do{
+                        try downloadFeedCertificateViewController.presentDrawer()
+                    }catch {
+                        
+                    }
+                }else {
+                    if targetFeedItem.isFeedReportAbuseAllowed(){
+                        self.showReportAbuseConfirmation(feedIdentifier)
+                    }
                 }
             }
         }else {
-            if targetFeedItem.isFeedReportAbuseAllowed(){
-                self.showReportAbuseConfirmation(feedIdentifier)
+            if self.showDisplayOptions == .POSTPOLL {
+                var numberofElementsEnabled : CGFloat = 0.0
+                let drawer = PostPollSelfBottomSheet(nibName: "PostPollSelfBottomSheet", bundle: Bundle(for: PostPollSelfBottomSheet.self))
+                drawer.bottomsheetdelegate = self
+                drawer.feedIdentifier = feedIdentifier
+                drawer.isPostAlreadyPinned = targetFeedItem.isPinToPost()
+                if targetFeedItem.isFeedEditAllowed() && targetFeedItem.getFeedType() == .Post {
+                    drawer.isEditEnabled = true
+                    numberofElementsEnabled = numberofElementsEnabled + 1
+                }else{
+                    drawer.isEditEnabled = false
+                }
+                
+                if targetFeedItem.isLoggedUserAdmin()  == true{
+                    numberofElementsEnabled = numberofElementsEnabled + 1
+                }
+                
+                if targetFeedItem.isFeedDeleteAllowed() == true{
+                    numberofElementsEnabled = numberofElementsEnabled + 1
+                }
+                if targetFeedItem.isFeedReportAbuseAllowed() == true{
+                    numberofElementsEnabled = numberofElementsEnabled + 1
+                }
+                drawer.isPintoPostEnabled = targetFeedItem.isLoggedUserAdmin()
+                drawer.isDeleteEnabled = targetFeedItem.isFeedDeleteAllowed()
+                drawer.isreportAbusedEnabled = targetFeedItem.isFeedReportAbuseAllowed()
+                do{
+                    try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+                }catch let error{
+                    print("show error")
+                    ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                    }
+                }
+            }else {
+                if targetFeedItem.isFeedReportAbuseAllowed(){
+                    self.showReportAbuseConfirmation(feedIdentifier)
+                }
             }
         }
     }

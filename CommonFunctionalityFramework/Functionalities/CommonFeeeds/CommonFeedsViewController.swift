@@ -56,7 +56,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     let currentWindow: UIWindow? = UIApplication.shared.keyWindow!
     private var lastFetchedFeeds : FetchedFeedModel?
     var hideTopLeaderboard : Bool = false
-    
+    var isDesklessEnabled : Bool = false
     private lazy var refreshControl : UIRefreshControl  = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshFeeds), for: .valueChanged)
@@ -367,6 +367,7 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
             feedDetailVC.mediaFetcher = mediaFetcher
             feedDetailVC.selectedTab = selectedTabType
             feedDetailVC.requestCoordinator = requestCoordinator
+            feedDetailVC.isDesklessEnabled = isDesklessEnabled
             //feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate as! FeedsCoordinatorDelegate
             feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
             feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
