@@ -30,6 +30,7 @@ struct FeedCellLoadDataModel {
     var isFeedDetailPage : Bool
     var selectedTab : String
     var canDownload : Bool = false
+    var isDesklessEnabled : Bool = false
 }
 
 struct FeedCellGetHeightModel {
@@ -160,16 +161,34 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                 }
             )
             
-            cell.editFeedButton?.handleControlEvent(
-                event: .touchUpInside,
-                buttonActionBlock: {
-                    inputModel.delegate?.showFeedEditOptions(
-                        targetView: cell.editFeedButton,
-                        feedIdentifier: feed.feedIdentifier
-                    )
-            })
-            
+            if inputModel.isDesklessEnabled {
+                if  feed.getPostType() == .Appreciation {
+                    if inputModel.canDownload {
+                        cell.editFeedButton?.layer.borderWidth = 0
+                        cell.editFeedButton?.setImage(UIImage(named: "icon_setasdefault-2"), for: .normal)
+                        cell.editFeedButton?.isHidden = false
+                        cell.editFeedButton?.handleControlEvent(
+                            event: .touchUpInside,
+                            buttonActionBlock: {
+                                inputModel.delegate?.showFeedEditOptions(
+                                    targetView: cell.editFeedButton,
+                                    feedIdentifier: feed.feedIdentifier
+                                )
+                            })
+                    }else {
+                        cell.editFeedButton?.isHidden = true
+                    }
+                }
+            }else {
+                cell.editFeedButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        inputModel.delegate?.showFeedEditOptions(
+                            targetView: cell.editFeedButton,
+                            feedIdentifier: feed.feedIdentifier
+                        )
+                    })
+            }
         }
     }
-    
 }

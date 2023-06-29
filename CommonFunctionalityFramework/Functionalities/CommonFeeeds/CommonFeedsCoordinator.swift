@@ -26,8 +26,9 @@ public struct GetCommonFeedsViewModel{
     var coreValuePk : Int = 0
     var isCreationButtonRequired : Bool = false
     var hideTopLeaderboard : Bool = false
-    
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int, _isCreationButtonRequired : Bool = false, _hideTopLeaderboard : Bool = false){
+    var isDesklessEnabled : Bool = false
+
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int, _isCreationButtonRequired : Bool = false, _hideTopLeaderboard : Bool = false, _isDesklessEnabled : Bool = false){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -42,6 +43,7 @@ public struct GetCommonFeedsViewModel{
         self.coreValuePk = _coreValuePk
         self.isCreationButtonRequired = _isCreationButtonRequired
         self.hideTopLeaderboard = _hideTopLeaderboard
+        self.isDesklessEnabled = _isDesklessEnabled
     }
 }
 
@@ -73,6 +75,7 @@ public class CommonFeedsCoordinator {
         feedsVc.dateRangePK = inputModel.dateRangePK
         feedsVc.coreValuePk = inputModel.coreValuePk
         feedsVc.hideTopLeaderboard = inputModel.hideTopLeaderboard
+        feedsVc.isDesklessEnabled = inputModel.isDesklessEnabled
         feedsVc.isCreationButtonRequired = inputModel.isCreationButtonRequired
         return feedsVc
     }
@@ -144,6 +147,7 @@ public class CommonFeedsCoordinator {
                         feedDetailVC.mainAppCoordinator = inputModel.mainAppCoordinator
                         feedDetailVC.requestCoordinator = inputModel.networkRequestCoordinator
                         feedDetailVC.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
+                        feedDetailVC.isDesklessEnabled = inputModel.isDesklessEnabled
                         feedDetailVC.pollSelectedAnswerMapper = SelectedPollAnswerMapper()
                         inputModel.feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
                     }

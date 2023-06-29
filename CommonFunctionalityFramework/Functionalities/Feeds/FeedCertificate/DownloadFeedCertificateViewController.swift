@@ -35,6 +35,8 @@ class DownloadFeedCertificateViewController: UIViewController {
     @IBOutlet weak var impLbl: UILabel!
     @IBOutlet weak var warningLbl: UILabel!
     @IBOutlet weak var collectionViewHolderHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomHolderView: UIView!
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     @IBOutlet weak var pdfBtn: UIButton!
     @IBOutlet weak var jpgBtn: UIButton!
@@ -96,10 +98,10 @@ class DownloadFeedCertificateViewController: UIViewController {
     func setUpCollectionViewForGifIfPresent() {
         if let giphy = targetFeed?.getGiphy(), !giphy.isEmpty {
             self.selectedIndex = 0
-            self.imageHolderView.isHidden = true
-        }else {
-            self.imageHolderView.isHidden = true
         }
+        self.imageHolderView.isHidden = true
+        self.bottomHolderView.isHidden = true
+        self.bottomViewHeightConstraint.constant = 0
     }
     
     //Preenting drawer and setting height based on image count
@@ -131,7 +133,7 @@ class DownloadFeedCertificateViewController: UIViewController {
     
     //Heigt for gif view
     func setUpViewHeightForGif() {
-        slideInTransitioningDelegate.direction = .bottom(height: 340)
+        slideInTransitioningDelegate.direction = .bottom(height: 280)
     }
     
     override public func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
@@ -222,7 +224,7 @@ class DownloadFeedCertificateViewController: UIViewController {
     //Using the generated url to download certificate
     func saveCertificate(fetchedImageUrl: String) {
         let url = URL(string: fetchedImageUrl)
-        let fileName = String((randomString(length: 10) + url!.lastPathComponent)) as NSString
+        let fileName = String((randomString(length: 4) + "-" + url!.lastPathComponent)) as NSString
         // Create destination URL
         let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
         let destinationFileUrl = documentsUrl.appendingPathComponent("\(fileName)")
@@ -244,7 +246,7 @@ class DownloadFeedCertificateViewController: UIViewController {
                                 self.pdfBtn.isUserInteractionEnabled = true
                                 let activityViewController = UIActivityViewController(activityItems: [contents[indexx]], applicationActivities: nil)
                                 if #available(iOS 15.4, *) {
-                                    activityViewController.excludedActivityTypes = [.postToFacebook, .postToTwitter, .postToWeibo, .message, .mail, .print, .copyToPasteboard, .assignToContact, .addToReadingList, .postToFlickr, .postToVimeo, .postToTencentWeibo, .airDrop, .openInIBooks, .markupAsPDF, .sharePlay, .saveToCameraRoll]
+                                    activityViewController.excludedActivityTypes = [.postToFacebook, .postToTwitter, .postToWeibo, .mail, .print, .copyToPasteboard, .assignToContact, .addToReadingList, .postToFlickr, .postToVimeo, .postToTencentWeibo, .airDrop, .openInIBooks, .markupAsPDF, .sharePlay, .saveToCameraRoll, .message]
                                 } else {
 
                                 }
@@ -266,25 +268,33 @@ class DownloadFeedCertificateViewController: UIViewController {
                         }
                     }
                 }
-                catch (let err) {
-                    self.activityIndicator.stopAnimating()
-                    print("error: \(err)")
+                catch ( _) {
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.showAlert(title: "", message: "Something went wrong. Try again later!") {_ in
+                            self.dismiss(animated: true)
+                        }
+                    }
                 }
-            } catch (let writeError) {
-                self.activityIndicator.stopAnimating()
-                print("Error creating a file \(destinationFileUrl) : \(writeError)")
+            } catch ( _) {
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.showAlert(title: "", message: "File already exists!") {_ in
+                        self.dismiss(animated: true)
+                    }
+                }
             }
         }).resume()
     }
     
     //Random string to append with filename
     private func randomString(length: Int) -> String {
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let len = UInt32(letters.length)
+        let numbers : NSString = "0123"
+        let len = UInt32(numbers.length)
         var randomString = ""
         for _ in 0 ..< length {
             let rand = arc4random_uniform(len)
-            var nextChar = letters.character(at: Int(rand))
+            var nextChar = numbers.character(at: Int(rand))
             randomString += NSString(characters: &nextChar, length: 1) as String
         }
         return randomString
