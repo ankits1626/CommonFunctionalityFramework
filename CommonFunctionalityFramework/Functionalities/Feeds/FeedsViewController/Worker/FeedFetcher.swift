@@ -184,10 +184,26 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     
     private func appendFeedType(_ baseEndpoint : String) -> String{
         if self.feedTypePk != 0 {
-            if baseEndpoint.contains("?") {
-                return "\(baseEndpoint)&post_type=\(self.feedTypePk)"
-            }else{
-                return "\(baseEndpoint)?post_type=\(self.feedTypePk)"
+            if feedType == "postPoll" {
+                if baseEndpoint.contains("?") {
+                   if self.feedTypePk == 1 {
+                       return "\(baseEndpoint)&post_polls_filter=post"
+                   }else {
+                       return "\(baseEndpoint)&post_polls_filter=poll"
+                   }
+               }else{
+                   if self.feedTypePk == 1 {
+                       return "\(baseEndpoint)?post_polls_filter=post"
+                   }else {
+                       return "\(baseEndpoint)?post_polls_filter=poll"
+                   }
+               }
+            }else {
+                if baseEndpoint.contains("?") {
+                    return "\(baseEndpoint)&post_type=\(self.feedTypePk)"
+                }else{
+                    return "\(baseEndpoint)?post_type=\(self.feedTypePk)"
+                }
             }
         }
         return baseEndpoint
