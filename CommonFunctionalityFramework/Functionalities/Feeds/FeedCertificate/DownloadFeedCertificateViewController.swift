@@ -92,6 +92,10 @@ class DownloadFeedCertificateViewController: UIViewController {
         
         pdfImg.setImageColor(color: UIColor.getControlColor())
         jpgImg.setImageColor(color: UIColor.getControlColor())
+        self.selectPictureLbl.text = "Select picture to download".localized
+        self.downloadAsLbl.text = "Download as".localized
+        self.impLbl.text = "Important".localized
+        self.warningLbl.text = "The selected picture will become the default and cannot be changed after downloading.".localized
     }
     
     //Checking if gif is available
