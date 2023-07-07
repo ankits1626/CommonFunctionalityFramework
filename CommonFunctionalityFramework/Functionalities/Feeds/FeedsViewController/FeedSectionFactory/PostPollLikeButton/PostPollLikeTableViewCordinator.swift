@@ -129,11 +129,11 @@ class PostPollLikeTableViewCordinator :  FeedCellCoordinatorProtocol{
             }else {
                 cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .gray, icon: UIImage(named: "icon_like_gray")!)
             }
-            
+            self.reactionBtn = cell.reactionView
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .touchUpInside)
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .valueChanged)
             cell.reactionView.tag = inputModel.targetIndexpath.section
-            self.reactionBtn = cell.reactionView
+            
         }
     }
     

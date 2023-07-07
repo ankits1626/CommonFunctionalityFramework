@@ -117,22 +117,21 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             
             if feed.getUserReactionType() == 0 {
                 cell.reactionView.reaction  = Reaction.facebook.like
-            }else if feed.getUserReactionType() == 1 {
-                cell.reactionView.reaction  = Reaction.facebook.love
-            }else if feed.getUserReactionType() == 2 {
-                cell.reactionView.reaction  = Reaction.facebook.haha
             }else if feed.getUserReactionType() == 3 {
+                cell.reactionView.reaction  = Reaction.facebook.love
+            }else if feed.getUserReactionType() == 6 {
+                cell.reactionView.reaction  = Reaction.facebook.haha
+            }else if feed.getUserReactionType() == 1 {
                 cell.reactionView.reaction  = Reaction.facebook.wow
-            }else if feed.getUserReactionType() == 4 {
+            }else if feed.getUserReactionType() == 2 {
                 cell.reactionView.reaction  = Reaction.facebook.sad
             }else {
                 cell.reactionView.reaction  = Reaction.init(id: "", title: "Like", color: .gray, icon: UIImage(named: "icon_like_gray")!)
             }
-            
+            self.reactionBtn = cell.reactionView
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .touchUpInside)
             cell.reactionView.addTarget(self, action: #selector(facebookButtonReactionTouchedUpAction(_:)), for: .valueChanged)
             cell.reactionView.tag = inputModel.targetIndexpath.section
-            self.reactionBtn = cell.reactionView
         }
     }
     
