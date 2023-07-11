@@ -19,6 +19,7 @@ class Top3UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userDepartment0 : UILabel?
     @IBOutlet weak var userReceivedAppreciation0 : UILabel?
     @IBOutlet weak var crownImage0 : UIImageView?
+    @IBOutlet weak var crownImageContainerView : UIView?
     
     @IBOutlet weak var secondUserBgColor : UIView?
     @IBOutlet weak var userProfilePic1 : UIImageView?
@@ -28,7 +29,8 @@ class Top3UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userFullName1 : UILabel?
     @IBOutlet weak var userDepartment1 : UILabel?
     @IBOutlet weak var userReceivedAppreciation1 : UILabel?
-    @IBOutlet weak var crownImage1 : UIImageView?
+    @IBOutlet weak var bottomWhiteCurvedContainer : UIView?
+    
     
     @IBOutlet weak var thirdUserBgColor : UIView?
     @IBOutlet weak var userProfilePic2 : UIImageView?
@@ -38,7 +40,6 @@ class Top3UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userFullName2 : UILabel?
     @IBOutlet weak var userDepartment2 : UILabel?
     @IBOutlet weak var userReceivedAppreciation2 : UILabel?
-    @IBOutlet weak var crownImage2 : UIImageView?
     
     @IBOutlet weak var firstUserButton : UIButton?
     @IBOutlet weak var secondUserButton : UIButton?
@@ -46,14 +47,22 @@ class Top3UsersTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        firstUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 25)
-        secondUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 25)
-        thirdUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 25)
+        firstUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 10)
+        secondUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 10)
+        thirdUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 10)
+        crownImageContainerView?.backgroundColor = UIColor.getControlColor()
         
         firstUserBgColor?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
         secondUserBgColor?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
         thirdUserBgColor?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
-        // Initialization code
+        crownImageContainerView?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
+        
+        bottomWhiteCurvedContainer?.clipsToBounds = true
+        bottomWhiteCurvedContainer?.layer.cornerRadius = 8
+        bottomWhiteCurvedContainer?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        firstUserButton?.tag = -1
+        secondUserButton?.tag = -1
+        thirdUserButton?.tag = -1
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

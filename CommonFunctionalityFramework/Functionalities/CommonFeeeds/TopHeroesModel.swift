@@ -27,6 +27,16 @@ struct TopHeroesFetchedData {
     func getHeroes () -> [TopRecognitionHero]  {
         return heroes
     }
+    
+    func getNumberOfHeroes() -> Int {
+        if heroes.count == 0  || heroes.count == 1{
+            return heroes.count
+        }
+        if heroes.count == 2 {
+            return heroes.count - 1
+        }
+        return heroes.count - 2
+    }
 }
 
 struct TopHeroesCategory {

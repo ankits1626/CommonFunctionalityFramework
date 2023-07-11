@@ -84,8 +84,6 @@ extension LeaderboardCellAdapter{
         switch indexPath.row {
         case 0:
             return .Top3User
-        case 1:
-            return .FirstUser
         default:
             return .Remaining
         }

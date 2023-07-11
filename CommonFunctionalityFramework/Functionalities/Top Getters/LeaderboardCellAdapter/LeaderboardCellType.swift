@@ -9,7 +9,6 @@ import Foundation
 
 enum LeaderboardCellType : Int, CaseIterable{
     case Top3User = 0
-    case FirstUser
     case Remaining
     
     
@@ -29,8 +28,6 @@ enum LeaderboardCellType : Int, CaseIterable{
         switch self {
         case .Top3User:
             return Top3userCellConfigurator(InitTopLeadersConfiguratorModel(mediaFetcher: mediaFetcher, networkRequestCoordinator: networkRequestCoordinator))
-        case .FirstUser:
-            return FirstCellConfigurator(InitTopLeadersConfiguratorModel(mediaFetcher: mediaFetcher, networkRequestCoordinator: networkRequestCoordinator))
         case .Remaining:
             return RemainingLeaderboardConfigurator(InitTopLeadersConfiguratorModel(mediaFetcher: mediaFetcher, networkRequestCoordinator: networkRequestCoordinator))
         }

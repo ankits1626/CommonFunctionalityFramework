@@ -44,7 +44,10 @@ class Top3userCellConfigurator:BaseCellConfigurator, LeaderboardCellConfigurator
     }
     
     func getHeightOfCell(_ inputModel: LeaderboardCellConfigurationBaseInputModel) -> CGFloat {
-        return 263
+        if inputModel.datasource.getTopHeroData().getNumberOfHeroes() == 1 {
+            return 525
+        }
+        return 273
     }
     
     private func configureRewardUseNowTableViewCellCell(_ cell : Top3UsersTableViewCell, datasource: LeaderboardAdapterDatasource, indexpath : IndexPath){

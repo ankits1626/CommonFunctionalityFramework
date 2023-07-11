@@ -18,7 +18,6 @@ class TopGettersLeaderboardViewController: UIViewController {
     var filterperiod : String = "overall"
     private var fetchedData = TopHeroesFetchedData()
     @IBOutlet weak var tableViewContainer : UIView?
-    @IBOutlet private weak var resultContainer : UIView?
     @IBOutlet weak var headerView : UIView?
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
@@ -44,8 +43,6 @@ class TopGettersLeaderboardViewController: UIViewController {
         self.headerView?.backgroundColor = UIColor.getControlColor()
         self.view.backgroundColor = UIColor.getControlColor()
         self.tableViewContainer?.backgroundColor = UIColor.getControlColor()
-        self.resultContainer?.backgroundColor = UIColor.getControlColor()
-        self.topGettersTableView?.backgroundColor = UIColor.getControlColor()
         getTopGetters()
     }
     
@@ -67,6 +64,7 @@ class TopGettersLeaderboardViewController: UIViewController {
         switch result{
         case .Success(let successResult):
             fetchedData.setHeroes(successResult.fetchedHeroes)
+            self.topGettersTableView?.backgroundColor = .clear
             self.topGettersTableView?.delegate = self
             self.topGettersTableView?.dataSource = self
             self.topGettersTableView?.reloadData()
@@ -123,22 +121,22 @@ extension TopGettersLeaderboardViewController : LeaderboardAdapterDatasource {
     }
     
     func getNumberOfRedemptions() -> Int {
-        return fetchedData.getHeroes().count - 2
+        return fetchedData.getNumberOfHeroes()
     }
 }
 
 
 extension TopGettersLeaderboardViewController : LeaderboardCellAdapterDelegate {
     func getSelectedUserIndexPath(_ sender : UIButton) {
-        print("indexpath")
-        print(sender.tag)
-        let showSelectedUser = ShowSelectedUserRecognition(nibName: "ShowSelectedUserRecognition", bundle: Bundle(for: ShowSelectedUserRecognition.self))
-        showSelectedUser.requestCoordinator = self.requestCoordinator
-        showSelectedUser.mediaFetcher = self.mediaFetcher
-        showSelectedUser.themeManager = self.themeManager
-        showSelectedUser.mainAppCoordinator = self.mainAppCoordinator
-        showSelectedUser.feedScreenType = .Received
-        self.navigationController?.pushViewController(showSelectedUser, animated: true)
+        if sender.tag >= 0 {
+            let showSelectedUser = ShowSelectedUserRecognition(nibName: "ShowSelectedUserRecognition", bundle: Bundle(for: ShowSelectedUserRecognition.self))
+            showSelectedUser.requestCoordinator = self.requestCoordinator
+            showSelectedUser.mediaFetcher = self.mediaFetcher
+            showSelectedUser.themeManager = self.themeManager
+            showSelectedUser.mainAppCoordinator = self.mainAppCoordinator
+            showSelectedUser.feedScreenType = .Received
+            self.navigationController?.pushViewController(showSelectedUser, animated: true)
+        }
     }
 }
 

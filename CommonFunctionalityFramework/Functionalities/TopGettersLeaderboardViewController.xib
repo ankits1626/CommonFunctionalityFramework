@@ -8,19 +8,10 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SF-Pro-Text-Bold.otf">
-            <string>SFProText-Bold</string>
-        </array>
-        <array key="SF-Pro-Text-Regular.otf">
-            <string>SFProText-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopGettersLeaderboardViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="headerView" destination="Eqg-p7-WvU" id="w1m-yB-3Np"/>
-                <outlet property="resultContainer" destination="JJa-A2-m8S" id="S68-W4-VPc"/>
                 <outlet property="tableViewContainer" destination="qrO-60-sbh" id="DCz-z8-D1V"/>
                 <outlet property="topGettersTableView" destination="Gpl-bS-FHP" id="wm8-lJ-KRa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -107,66 +98,39 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrO-60-sbh">
                     <rect key="frame" x="0.0" y="143" width="414" height="719"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OvG-L7-9Q1">
+                            <rect key="frame" x="0.0" y="399" width="414" height="320"/>
+                            <color key="backgroundColor" red="0.96078431372549022" green="0.97254901960784312" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="320" id="IR9-7b-OFU"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="320" id="rCP-q7-A2Q"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h9l-JM-lhb">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJa-A2-m8S">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Gpl-bS-FHP">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_Notification_Empty" translatesAutoresizingMaskIntoConstraints="NO" id="hsQ-fi-bWa">
-                                            <rect key="frame" x="157" y="154" width="100" height="118"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Notification Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQA-bH-eRc">
-                                            <rect key="frame" x="119.5" y="295" width="175" height="19.5"/>
-                                            <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnT-NZ-ZFW">
-                                            <rect key="frame" x="38" y="322" width="338" height="49"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="49" id="FTX-bG-TCG"/>
-                                            </constraints>
-                                            <string key="text">You don’t have any notification
-in your list.</string>
-                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
-                                            <color key="textColor" red="0.41176470590000003" green="0.41568627450000001" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Gpl-bS-FHP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </tableView>
-                                    </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="XnT-NZ-ZFW" secondAttribute="trailing" constant="38" id="2gO-Pc-2ej"/>
-                                        <constraint firstItem="yQA-bH-eRc" firstAttribute="centerX" secondItem="JJa-A2-m8S" secondAttribute="centerX" id="4Q3-q6-h1e"/>
-                                        <constraint firstAttribute="trailing" secondItem="Gpl-bS-FHP" secondAttribute="trailing" id="55M-Io-P5B"/>
-                                        <constraint firstItem="Gpl-bS-FHP" firstAttribute="top" secondItem="JJa-A2-m8S" secondAttribute="top" id="JZj-nh-brN"/>
-                                        <constraint firstItem="hsQ-fi-bWa" firstAttribute="centerX" secondItem="JJa-A2-m8S" secondAttribute="centerX" id="bon-GR-rmY"/>
-                                        <constraint firstAttribute="bottom" secondItem="Gpl-bS-FHP" secondAttribute="bottom" id="cFb-Sv-owS"/>
-                                        <constraint firstItem="XnT-NZ-ZFW" firstAttribute="top" secondItem="yQA-bH-eRc" secondAttribute="bottom" constant="7.5" id="lov-wh-mtz"/>
-                                        <constraint firstItem="Gpl-bS-FHP" firstAttribute="leading" secondItem="JJa-A2-m8S" secondAttribute="leading" id="pRB-ni-fiG"/>
-                                        <constraint firstItem="hsQ-fi-bWa" firstAttribute="top" secondItem="JJa-A2-m8S" secondAttribute="top" constant="154" id="utR-NQ-Iho"/>
-                                        <constraint firstItem="XnT-NZ-ZFW" firstAttribute="leading" secondItem="JJa-A2-m8S" secondAttribute="leading" constant="38" id="vBv-tU-Sdi"/>
-                                        <constraint firstItem="yQA-bH-eRc" firstAttribute="top" secondItem="hsQ-fi-bWa" secondAttribute="bottom" constant="23" id="xbj-Zw-aGC"/>
-                                    </constraints>
-                                </view>
+                                </tableView>
                             </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="OvG-L7-9Q1" secondAttribute="bottom" id="LHR-Yb-3ow"/>
                         <constraint firstItem="h9l-JM-lhb" firstAttribute="top" secondItem="qrO-60-sbh" secondAttribute="top" id="QbL-Kq-inB"/>
                         <constraint firstAttribute="trailing" secondItem="h9l-JM-lhb" secondAttribute="trailing" id="RSZ-a9-QYA"/>
                         <constraint firstItem="h9l-JM-lhb" firstAttribute="leading" secondItem="qrO-60-sbh" secondAttribute="leading" id="VMC-h4-PMi"/>
+                        <constraint firstItem="OvG-L7-9Q1" firstAttribute="leading" secondItem="qrO-60-sbh" secondAttribute="leading" id="arI-3F-Cqh"/>
                         <constraint firstAttribute="bottom" secondItem="h9l-JM-lhb" secondAttribute="bottom" id="b3Q-Ds-cL3"/>
+                        <constraint firstAttribute="trailing" secondItem="OvG-L7-9Q1" secondAttribute="trailing" id="sro-Ng-Ww6"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvm-PR-kID">
                     <rect key="frame" x="0.0" y="862" width="414" height="34"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.97254901960784312" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -189,7 +153,6 @@ in your list.</string>
         </view>
     </objects>
     <resources>
-        <image name="black_Notification_Empty" width="100" height="118"/>
         <image name="cff_appreciationFilter" width="36" height="36"/>
         <image name="newBOUSBackButton" width="36" height="36"/>
         <systemColor name="systemBackgroundColor">
