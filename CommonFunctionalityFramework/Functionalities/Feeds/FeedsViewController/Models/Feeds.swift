@@ -245,28 +245,20 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         isPriority = rawFeedDictionary["priority"] as? Bool ?? false
         isAdminUser = rawFeedDictionary["is_admin"] as? Bool ?? false
         reactionType = rawFeedDictionary["user_reaction_type"] as? Int64 ?? -1 // -1 indicates no reaction
-        if let images = rawFeedDictionary["images"] as? [[String : Any]]{
-            if images.count == 1 {
-                let singleImg = images[0] as? NSDictionary
-                let sImage = singleImg!["image"] as? String ?? ""
-                self.singleImageHeight = Float(FTImageSize.shared.getImageSizeFromImageURL(serverUrl+sImage, perferdWidth: UIScreen.main.bounds.width).height)
-            }else {
-                self.singleImageHeight = defaultFeedImageHeight
-            }
-        }else {
-            self.singleImageHeight = defaultFeedImageHeight
-        }
 
         if let ecardData = rawFeedDictionary["images_with_ecard"] as? [[String : Any]] {
             if ecardData.count == 1 {
                 let eCardImg = ecardData[0] as? NSDictionary
                 let eImage = eCardImg!["display_img_url"] as? String ?? ""
                 self.ecardImageHeight =  Float(FTImageSize.shared.getImageSizeFromImageURL(serverUrl+eImage, perferdWidth: UIScreen.main.bounds.width).height)
+                self.singleImageHeight = self.ecardImageHeight
             }else {
                 self.ecardImageHeight = defaultFeedImageHeight
+                self.singleImageHeight = defaultFeedImageHeight
             }
         }else {
             self.ecardImageHeight = defaultFeedImageHeight
+            self.singleImageHeight = defaultFeedImageHeight
         }
 
         if let gifData = rawFeedDictionary["gif"] as? String, !gifData.isEmpty {
