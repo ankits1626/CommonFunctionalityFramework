@@ -99,12 +99,12 @@ public class CommonFeedsCoordinator {
 
     }
     
-    public func getTopHeroView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
+    public func getTopHeroView(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol,themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?) -> UIViewController{
         let topHeroVc = TopGettersLeaderboardViewController(nibName: "TopGettersLeaderboardViewController", bundle: Bundle(for: TopGettersLeaderboardViewController.self))
-        topHeroVc.requestCoordinator = inputModel.networkRequestCoordinator
-        topHeroVc.mediaFetcher = inputModel.mediaCoordinator
-        topHeroVc.mainAppCoordinator = inputModel.mainAppCoordinator
-        topHeroVc.themeManager = inputModel.themeManager
+        topHeroVc.requestCoordinator = networkRequestCoordinator
+        topHeroVc.mediaFetcher = mediaCoordinator
+        topHeroVc.mainAppCoordinator = mainAppCoordinator
+        topHeroVc.themeManager = themeManager
         return topHeroVc
     }
     

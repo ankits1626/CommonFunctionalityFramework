@@ -21,6 +21,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     @IBOutlet private weak var feedCreateView : UIButton?
+    @IBOutlet private weak var appreciationiconContainer : UIView?
     @IBOutlet private weak var creationButtonView : UIView?
     @IBOutlet private weak var noRecordsLabel : UILabel?
     @IBOutlet private weak var topGettersContainerView : UIView?
@@ -94,6 +95,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         topLeaderboardHeightConstraints?.constant = isRecognitionBannerHide ? 0 : 92
         topGettersContainerView?.backgroundColor = UIColor.getControlColor()
         topGettersContainerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0 )
+        appreciationiconContainer?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0 )
     }
     
     @objc func scrollTableView(notification: NSNotification) {
@@ -110,6 +112,11 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     
     deinit {
         print("Notification deinit")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "showMenuButton"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -284,7 +291,10 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         let topHeroVc = TopGettersLeaderboardViewController(nibName: "TopGettersLeaderboardViewController", bundle: Bundle(for: TopGettersLeaderboardViewController.self))
         topHeroVc.requestCoordinator = requestCoordinator
         topHeroVc.mediaFetcher = mediaFetcher
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
         self.navigationController?.pushViewController(topHeroVc, animated: true)
+        
     }
 }
 

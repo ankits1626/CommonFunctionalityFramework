@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommonFeedsViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="activityLoader" destination="ASA-jd-VAa" id="0lG-OR-cKk"/>
+                <outlet property="appreciationiconContainer" destination="u1D-M5-8EV" id="leV-bP-tGW"/>
                 <outlet property="creationButtonView" destination="0TY-9x-aQk" id="Rud-cd-zHS"/>
                 <outlet property="emptyViewContainer" destination="pi0-Sz-Fel" id="SrK-n4-n1s"/>
                 <outlet property="feedCreateView" destination="rNJ-JM-vGW" id="gbi-dg-9bw"/>
@@ -48,14 +49,14 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-jb-DdI">
                                     <rect key="frame" x="16" y="15" width="343" height="54"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1K1-aa-rhP">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_backgroundSparkle" translatesAutoresizingMaskIntoConstraints="NO" id="1K1-aa-rhP">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="54"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1D-M5-8EV">
                                             <rect key="frame" x="9" y="11" width="32" height="32"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PIb-7B-PWf">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_appreciationTopGettersicon" translatesAutoresizingMaskIntoConstraints="NO" id="PIb-7B-PWf">
                                                     <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                                 </imageView>
                                             </subviews>
@@ -205,6 +206,8 @@
     </objects>
     <resources>
         <image name="black_MyFeed_Given_Empty" width="100" height="118"/>
+        <image name="cff_appreciationTopGettersicon" width="32" height="34.5"/>
+        <image name="cff_backgroundSparkle" width="344" height="54"/>
         <image name="createAppreciation" width="18.5" height="20.5"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

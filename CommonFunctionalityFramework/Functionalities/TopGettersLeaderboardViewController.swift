@@ -22,6 +22,11 @@ class TopGettersLeaderboardViewController: UIViewController {
     @IBOutlet weak var headerView : UIView?
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    lazy var filterCoordinators: TopGettersFilterCoordinator = {
+        return TopGettersFilterCoordinator()
+    }()
+    var heroSelectedData : TopGettersFilterOption?
+    var recognitionSelectedData : TopGettersFilterOption?
     
     lazy var cellAdapter: LeaderboardCellAdapter = {
         return LeaderboardCellAdapter(
@@ -78,7 +83,8 @@ class TopGettersLeaderboardViewController: UIViewController {
     }
     
     @IBAction func filterButtonPressed(sender : UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        let topGetterVC = TopGettersFilterViewController(filterCoordinator: filterCoordinators, delegate: self)
+        self.navigationController?.pushViewController(topGetterVC, animated: true)
     }
 }
 //MARK: UITableViewDelegate/UITableViewDataSource
@@ -133,5 +139,18 @@ extension TopGettersLeaderboardViewController : LeaderboardCellAdapterDelegate {
         showSelectedUser.mainAppCoordinator = self.mainAppCoordinator
         showSelectedUser.feedScreenType = .Received
         self.navigationController?.pushViewController(showSelectedUser, animated: true)
+    }
+}
+
+extension TopGettersLeaderboardViewController : TopGettersFilterDelegate {
+    func finishedFilterSelection(selectedRecognitionType: TopGettersFilterOption?, selectedRecognitionIndex: [Int]?, selectedHeroType: TopGettersFilterOption?, selectedHeroIndex: [Int]?) {
+        
+        if let unwrappedRecognitionData = selectedRecognitionType {
+            recognitionSelectedData = unwrappedRecognitionData
+        }
+        
+        if let unwrappedHeroData = selectedHeroType {
+            heroSelectedData = unwrappedHeroData
+        }
     }
 }

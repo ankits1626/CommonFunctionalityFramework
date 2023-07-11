@@ -386,6 +386,18 @@
 		BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC2B28E26FDA2AE008417C3 /* FeedsDetailViewController.xib */; };
 		BEC33A9D2A44A25800C936C6 /* ASChatBarview.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC33A9C2A44A25700C936C6 /* ASChatBarview.xib */; };
 		BEC33A9F2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC33A9E2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift */; };
+		BEC74DDB2A5D4C050074324B /* TopGettersFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DD92A5D4C050074324B /* TopGettersFilterViewController.swift */; };
+		BEC74DDC2A5D4C050074324B /* TopGettersFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC74DDA2A5D4C050074324B /* TopGettersFilterViewController.xib */; };
+		BEC74DE02A5D4EF40074324B /* TopGetterListFilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DDF2A5D4EF30074324B /* TopGetterListFilterCoordinator.swift */; };
+		BEC74DE32A5D4F5E0074324B /* FilterSectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DE22A5D4F5E0074324B /* FilterSectionAdapter.swift */; };
+		BEC74DE62A5D59D80074324B /* RecognitionSecionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DE52A5D59D80074324B /* RecognitionSecionAdapter.swift */; };
+		BEC74DEB2A5D5A960074324B /* TopGettersFilterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DE92A5D5A960074324B /* TopGettersFilterHeader.swift */; };
+		BEC74DEC2A5D5A960074324B /* TopGettersFilterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC74DEA2A5D5A960074324B /* TopGettersFilterHeader.xib */; };
+		BEC74DEF2A5D60B90074324B /* HeroMonthSectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DEE2A5D60B90074324B /* HeroMonthSectionAdapter.swift */; };
+		BEC74DF52A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DF32A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.swift */; };
+		BEC74DF62A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC74DF42A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.xib */; };
+		BEC74DF82A5D62170074324B /* RecognitionSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DF72A5D62170074324B /* RecognitionSeparator.swift */; };
+		BEC74DFA2A5D623F0074324B /* HeroMonthSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC74DF92A5D623F0074324B /* HeroMonthSeparator.swift */; };
 		BED3ADAE28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3ADAC28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift */; };
 		BED3ADAF28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */; };
 		BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */; };
@@ -785,6 +797,18 @@
 		BEC2B28E26FDA2AE008417C3 /* FeedsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedsDetailViewController.xib; sourceTree = "<group>"; };
 		BEC33A9C2A44A25700C936C6 /* ASChatBarview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASChatBarview.xib; sourceTree = "<group>"; };
 		BEC33A9E2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		BEC74DD92A5D4C050074324B /* TopGettersFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGettersFilterViewController.swift; sourceTree = "<group>"; };
+		BEC74DDA2A5D4C050074324B /* TopGettersFilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopGettersFilterViewController.xib; sourceTree = "<group>"; };
+		BEC74DDF2A5D4EF30074324B /* TopGetterListFilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGetterListFilterCoordinator.swift; sourceTree = "<group>"; };
+		BEC74DE22A5D4F5E0074324B /* FilterSectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSectionAdapter.swift; sourceTree = "<group>"; };
+		BEC74DE52A5D59D80074324B /* RecognitionSecionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionSecionAdapter.swift; sourceTree = "<group>"; };
+		BEC74DE92A5D5A960074324B /* TopGettersFilterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGettersFilterHeader.swift; sourceTree = "<group>"; };
+		BEC74DEA2A5D5A960074324B /* TopGettersFilterHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopGettersFilterHeader.xib; sourceTree = "<group>"; };
+		BEC74DEE2A5D60B90074324B /* HeroMonthSectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroMonthSectionAdapter.swift; sourceTree = "<group>"; };
+		BEC74DF32A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGettersSeparatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		BEC74DF42A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopGettersSeparatorCollectionViewCell.xib; sourceTree = "<group>"; };
+		BEC74DF72A5D62170074324B /* RecognitionSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionSeparator.swift; sourceTree = "<group>"; };
+		BEC74DF92A5D623F0074324B /* HeroMonthSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroMonthSeparator.swift; sourceTree = "<group>"; };
 		BED3ADAC28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppreciationSubjectTableViewCell.swift; sourceTree = "<group>"; };
 		BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonAppreciationSubjectTableViewCell.xib; sourceTree = "<group>"; };
 		BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppreciationSubjectTableViewCellCoordinator.swift; sourceTree = "<group>"; };
@@ -2322,6 +2346,7 @@
 		BE6725052A5801E300AEFFEB /* Top Getters */ = {
 			isa = PBXGroup;
 			children = (
+				BEC74DD82A5D4BEC0074324B /* TopGetters Filters */,
 				BE6725062A58021900AEFFEB /* LeaderboardCell */,
 				BE67251B2A58021900AEFFEB /* LeaderboardCellAdapter */,
 				BE6725132A58021900AEFFEB /* LeaderboardCellConfigurator */,
@@ -2479,6 +2504,49 @@
 			path = PostPollLikeButton;
 			sourceTree = "<group>";
 		};
+		BEC74DD82A5D4BEC0074324B /* TopGetters Filters */ = {
+			isa = PBXGroup;
+			children = (
+				BEC74DE12A5D4F3C0074324B /* Sections */,
+				BEC74DD92A5D4C050074324B /* TopGettersFilterViewController.swift */,
+				BEC74DDA2A5D4C050074324B /* TopGettersFilterViewController.xib */,
+				BEC74DDF2A5D4EF30074324B /* TopGetterListFilterCoordinator.swift */,
+			);
+			path = "TopGetters Filters";
+			sourceTree = "<group>";
+		};
+		BEC74DE12A5D4F3C0074324B /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				BEC74DED2A5D60AA0074324B /* HeroMonthSectionAdapter */,
+				BEC74DE42A5D59BA0074324B /* RecognitionSecionAdapter */,
+				BEC74DE22A5D4F5E0074324B /* FilterSectionAdapter.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		BEC74DE42A5D59BA0074324B /* RecognitionSecionAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				BEC74DE52A5D59D80074324B /* RecognitionSecionAdapter.swift */,
+				BEC74DE92A5D5A960074324B /* TopGettersFilterHeader.swift */,
+				BEC74DEA2A5D5A960074324B /* TopGettersFilterHeader.xib */,
+				BEC74DF32A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.swift */,
+				BEC74DF42A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.xib */,
+				BEC74DF72A5D62170074324B /* RecognitionSeparator.swift */,
+			);
+			path = RecognitionSecionAdapter;
+			sourceTree = "<group>";
+		};
+		BEC74DED2A5D60AA0074324B /* HeroMonthSectionAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				BEC74DEE2A5D60B90074324B /* HeroMonthSectionAdapter.swift */,
+				BEC74DF92A5D623F0074324B /* HeroMonthSeparator.swift */,
+			);
+			path = HeroMonthSectionAdapter;
+			sourceTree = "<group>";
+		};
 		BED3ADAB28227F99004F58AC /* Appreciation Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -2624,6 +2692,7 @@
 				0F961A1428E457550003FE8D /* BOUSTwoImageDetailTableViewCell.xib in Resources */,
 				BEC2B26D26FD9C27008417C3 /* LikedByTableViewCell.xib in Resources */,
 				BE6725352A58026C00AEFFEB /* TopGettersLeaderboardViewController.xib in Resources */,
+				BEC74DF62A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.xib in Resources */,
 				BEC2B27F26FD9FD1008417C3 /* FeedGifTableViewCell.xib in Resources */,
 				0F7AA81929D7F2B9006DF6FE /* DownloadFeedCertificateViewController.xib in Resources */,
 				BEC2B26126FD99DC008417C3 /* FeedBottomTableViewCell.xib in Resources */,
@@ -2635,6 +2704,7 @@
 				BE39BA4F28A9260E004ADA9E /* PostPollTitleTableViewCell.xib in Resources */,
 				0F6021B12874162700D852BD /* CommentsTableViewCell.xib in Resources */,
 				BE6725262A58021900AEFFEB /* Top3UsersTableViewCell.xib in Resources */,
+				BEC74DEC2A5D5A960074324B /* TopGettersFilterHeader.xib in Resources */,
 				0FB1635729B71117000AA631 /* AnniversaryDetailTableViewCell.xib in Resources */,
 				BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */,
 				BEC2B25B26FD992A008417C3 /* MultipleMediaTableViewCell.xib in Resources */,
@@ -2686,6 +2756,7 @@
 				0F6021B928741C4F00D852BD /* CommentLikeWithCountCell.xib in Resources */,
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
 				BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */,
+				BEC74DDC2A5D4C050074324B /* TopGettersFilterViewController.xib in Resources */,
 				BE94C30928212E4600E323E1 /* CommonFeedsViewController.xib in Resources */,
 				BEC2B28326FDA04A008417C3 /* FeedEditorTitleTableViewCell.xib in Resources */,
 				BE66CCBA28A65A0800C7CE83 /* SelectPostTypeTableViewCell.xib in Resources */,
@@ -2737,6 +2808,8 @@
 				BE500D812822962800423E5A /* LikesSectionTableViewCellCoordinator.swift in Sources */,
 				BE67252A2A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift in Sources */,
 				98722672246176E700809D7A /* ManagedPost+CoreDataClass.swift in Sources */,
+				BEC74DEF2A5D60B90074324B /* HeroMonthSectionAdapter.swift in Sources */,
+				BEC74DE62A5D59D80074324B /* RecognitionSecionAdapter.swift in Sources */,
 				0F94B74F2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift in Sources */,
 				0F32906428895E5F008BF09D /* BOUSReactionsListViewController.swift in Sources */,
 				0F60218C28716A6400D852BD /* CommonNominationCountCellCoordinator.swift in Sources */,
@@ -2778,12 +2851,14 @@
 				98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */,
 				BE6725202A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift in Sources */,
 				0FABE4ED2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.swift in Sources */,
+				BEC74DF52A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.swift in Sources */,
 				0FA1A6012A1610EF00107B26 /* FeedOrganisationListManager.swift in Sources */,
 				0FB4AFD028BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift in Sources */,
 				BE94C30D282140AC00E323E1 /* CommonFeedContentCoordinatorProtocol.swift in Sources */,
 				0F94B75128883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift in Sources */,
 				BEAFDF2A29E541CF00C04FC4 /* TopHeroesModel.swift in Sources */,
 				BE39BA4A28A925B7004ADA9E /* PostPollTitleCellCordinator.swift in Sources */,
+				BEC74DDB2A5D4C050074324B /* TopGettersFilterViewController.swift in Sources */,
 				0FEB5210286C2C0B00BA8ACF /* ImageViewSectionCell.swift in Sources */,
 				980F563F245C03920093AFE7 /* FeedAuthor.swift in Sources */,
 				9873D62C24B808DF0041504C /* RawGif.swift in Sources */,
@@ -2845,6 +2920,7 @@
 				980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */,
 				987D0BB42583DA58001A0F07 /* ASMentionPresenter.swift in Sources */,
 				0F9C4A7928B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift in Sources */,
+				BEC74DE32A5D4F5E0074324B /* FilterSectionAdapter.swift in Sources */,
 				BE66CCB628A659F700C7CE83 /* SelectPostTypeTableCellCordinator.swift in Sources */,
 				0FB4AFC428BCF5D30020008B /* BOUSApprovalHistory.swift in Sources */,
 				9868C047240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift in Sources */,
@@ -2901,9 +2977,11 @@
 				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
 				0FABE5082A1DD29F00F5D855 /* PostPreviewListManager.swift in Sources */,
 				0FB1636129B71625000AA631 /* GreetingsAnniAndBday.swift in Sources */,
+				BEC74DE02A5D4EF40074324B /* TopGetterListFilterCoordinator.swift in Sources */,
 				987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */,
 				BE7C9AFF288AD0CA00E7CAE4 /* NoEntryViewController.swift in Sources */,
 				BE67251F2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift in Sources */,
+				BEC74DEB2A5D5A960074324B /* TopGettersFilterHeader.swift in Sources */,
 				987D0BAF2583DA58001A0F07 /* TagUserTableViewCell.swift in Sources */,
 				9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
@@ -2946,6 +3024,7 @@
 				0F32908928898F65008BF09D /* BOUSNominationAppoveRejectWorker.swift in Sources */,
 				98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */,
 				BE6725242A58021900AEFFEB /* FirstCellConfigurator.swift in Sources */,
+				BEC74DF82A5D62170074324B /* RecognitionSeparator.swift in Sources */,
 				0FD47F3F2A25BCDD0096B30C /* CommentAttachedDocument.swift in Sources */,
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				BED3ADAE28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift in Sources */,
@@ -2986,6 +3065,7 @@
 				9873D63C24BAC1200041504C /* CFFGifCacheManager.swift in Sources */,
 				9868C03F240F9CFD00B12321 /* FeedTextTableViewCellCoordinator.swift in Sources */,
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,
+				BEC74DFA2A5D623F0074324B /* HeroMonthSeparator.swift in Sources */,
 				BE94C31C2821743C00E323E1 /* CommonFeedsTopTableViewCell.swift in Sources */,
 				98BC8A14241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift in Sources */,
 				0F32906B2889630B008BF09D /* BOUSReactionsListModel.swift in Sources */,
