@@ -23,8 +23,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet private weak var feedCreateView : UIButton?
     @IBOutlet private weak var creationButtonView : UIView?
     @IBOutlet private weak var noRecordsLabel : UILabel?
-    @IBOutlet private weak var remainingPoints : UILabel?
-    @IBOutlet private weak var monthlyAppreicationLimit : UILabel?
+    @IBOutlet private weak var topGettersContainerView : UIView?
     var selectedTabType = ""
     var searchText : String?
     var feedTypePk : Int = 0
@@ -33,12 +32,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var dateRangePK : Int = 0
     var coreValuePk : Int = 0
     var isCreationButtonRequired : Bool = false
-    @IBOutlet weak var topLeaderboardCollectionView : UICollectionView?
-    @IBOutlet weak var topLeaderboardHeightConstraints : NSLayoutConstraint?
-    private var fetchedData = TopHeroesFetchedData()
-    var selectedTopUserPk : Int = 0
-    var selectedUserPk : Int = 0
-    @IBOutlet weak var topGettersMonthLabel : UILabel?
+    var isRecognitionBannerHide : Bool = false
     
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
@@ -55,7 +49,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }()
     let currentWindow: UIWindow? = UIApplication.shared.keyWindow!
     private var lastFetchedFeeds : FetchedFeedModel?
-    var hideTopLeaderboard : Bool = false
+    @IBOutlet weak var topLeaderboardHeightConstraints : NSLayoutConstraint?
     var isDesklessEnabled : Bool = false
     private lazy var refreshControl : UIRefreshControl  = {
         let refreshControl = UIRefreshControl()
@@ -79,23 +73,16 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "FeedsScroll"), object: nil)
         UserDefaults.standard.setValue(selectedTabType, forKey: "selectedTab")
         UserDefaults.standard.synchronize()
-        self.hideTopLeaderboard = true
-        if hideTopLeaderboard {
-            topLeaderboardHeightConstraints?.constant = 0
-            clearAnyExistingFeedsData {[weak self] in
-                self?.initializeFRC()
-                self?.setup()
-                self?.loadFeeds()
-            }
-        }else{
-            topLeaderboardHeightConstraints?.constant = 200
-            registerCollectionViewCell()
+        clearAnyExistingFeedsData {[weak self] in
+            self?.initializeFRC()
+            self?.setup()
+            self?.loadFeeds()
         }
         if selectedTabType == "SearchFromHome" {
             self.feedsTable?.alwaysBounceVertical = false
             self.feedsTable?.showsVerticalScrollIndicator = false
         }
-        
+        setupView()
         feedCreateView?.layer.cornerRadius = (feedCreateView?.frame.size.width)!/2
         feedCreateView?.clipsToBounds = true
         feedCreateView?.backgroundColor = UIColor.getControlColor()
@@ -103,49 +90,10 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         self.noRecordsLabel?.text = "No Records Found!".localized
     }
     
-    func registerCollectionViewCell()  {
-        topGettersMonthLabel?.text = "Top Getters of the month".localized
-        let xib = UINib(nibName: "TopMonthlyCollectionViewCell", bundle: Bundle(for: TopMonthlyCollectionViewCell.self))
-        topLeaderboardCollectionView?.register(xib, forCellWithReuseIdentifier: "TopMonthlyCollectionViewCell")
-        self.getTopGetters()
-    }
-    
-    func getTopGetters() {
-        //        self.loader.showActivityIndicator(self.view)
-        TopMonthlyHeroesWorker("monthly", networkRequestCoordinator: requestCoordinator).fetchHeroes {[weak self]  (result) in
-            DispatchQueue.main.async {
-                if let unwrappedSelf = self{
-                    print("<<<<<<<<<<<<<<<< fetchHeroesForCategory \(unwrappedSelf)")
-                    unwrappedSelf.loader.hideActivityIndicator(unwrappedSelf.view)
-                    unwrappedSelf.handleHeroesFetchRespone(result)
-                }
-            }
-        }
-    }
-    
-    private func handleHeroesFetchRespone(_ result : APICallResult<(fetchedHeroes:[TopRecognitionHero], slug: String, userRemainingPoints : Double, userMonthlyAppreciationLimit : Int)>){
-        switch result{
-        case .Success(let successResult):
-            self.clearAnyExistingFeedsData {[weak self] in
-                self?.loadFetchedHeroes(successResult.fetchedHeroes)
-                self?.remainingPoints?.text = "\("You have".localized) \(successResult.userRemainingPoints) \("Points".localized)"
-                self?.monthlyAppreicationLimit?.text = "\("Monthly appreciation remaining".localized) : \(successResult.userMonthlyAppreciationLimit)"
-                self?.initializeFRC()
-                self?.setup()
-                self?.loadFeeds()
-            }
-        case .SuccessWithNoResponseData:
-            ErrorDisplayer.showError(errorMsg: "Unexpected empty response".localized) { (_) in}
-        case .Failure(let error):
-            ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
-        }
-    }
-    
-    private func loadFetchedHeroes(_ fetchedHeroes: [TopRecognitionHero]){
-        fetchedData.setHeroes(fetchedHeroes)
-        topLeaderboardCollectionView?.delegate = self
-        topLeaderboardCollectionView?.dataSource = self
-        topLeaderboardCollectionView?.reloadData()
+    func setupView() {
+        topLeaderboardHeightConstraints?.constant = isRecognitionBannerHide ? 0 : 92
+        topGettersContainerView?.backgroundColor = UIColor.getControlColor()
+        topGettersContainerView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0 )
     }
     
     @objc func scrollTableView(notification: NSNotification) {
@@ -221,7 +169,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         //loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk,selectedTopGetterPk: self.selectedTopUserPk) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk) {[weak self] (result) in
                 DispatchQueue.main.async {
                     // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()
@@ -330,6 +278,13 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     
     @IBAction func createNominationView() {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "openThanksView"), object: nil, userInfo: nil)
+    }
+    
+    @IBAction func openTopGettersUsersBtnPressed() {
+        let topHeroVc = TopGettersLeaderboardViewController(nibName: "TopGettersLeaderboardViewController", bundle: Bundle(for: TopGettersLeaderboardViewController.self))
+        topHeroVc.requestCoordinator = requestCoordinator
+        topHeroVc.mediaFetcher = mediaFetcher
+        self.navigationController?.pushViewController(topHeroVc, animated: true)
     }
 }
 
@@ -754,71 +709,3 @@ extension CommonFeedsViewController:  NSFetchedResultsControllerDelegate {
         feedsTable?.endUpdates()
     }
 }
-extension CommonFeedsViewController : UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return self.fetchedData.getHeroes().count
-     }
-
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "TopMonthlyCollectionViewCell", for: indexPath) as! TopMonthlyCollectionViewCell
-         let heroData = self.fetchedData.getHeroes()[indexPath.row]
-         cell.heroNameLabel?.text = heroData.name
-         cell.appreciationCountLabel?.text = heroData.appreciationRatio.received
-        
-         if let userProfile = heroData.getProfileImageUrl(),
-                !userProfile.isEmpty {
-             mediaFetcher.fetchImageAndLoad(cell.heroImageView, imageEndPoint: userProfile)
-         }else{
-             cell.heroImageView?.setImageForName(heroData.getFullName(), circular: false, textAttributes: nil)
-         }
-         cell.cancelParentFeedButton?.addTarget(self, action: #selector(cancelSelectedUserFilter), for: .touchUpInside)
-         if selectedUserPk == heroData.heroPK {
-             cell.cancelFeedButton?.isHidden = false
-             cell.appreciationCountView?.isHidden = true
-             cell.appreciationCountLabel?.isHidden = true
-             cell.cancelParentFeedButton?.isHidden = false
-             cell.heroImageView?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
-         }else {
-             cell.cancelFeedButton?.isHidden = true
-             cell.appreciationCountView?.isHidden = false
-             cell.appreciationCountLabel?.isHidden = false
-             cell.cancelParentFeedButton?.isHidden = true
-             cell.heroImageView?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0)
-         }
-         
-         return cell
-     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 78, height: 88)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
-    func getSizeOfItem(collectionView : UICollectionView, indexPath : IndexPath) -> CGSize {
-        return CGSize(width: 78, height: 88)//copying this from oakley branch as tester said its fine there.
-    }
-    
-    @objc private func cancelSelectedUserFilter(){
-        self.selectedUserPk = 0
-        topLeaderboardCollectionView?.reloadData()
-        self.clearAnyExistingFeedsData {[weak self] in
-            self?.lastFetchedFeeds?.nextPageUrl = nil
-            self?.selectedTopUserPk = self?.selectedUserPk ?? 0
-            self?.loadFeeds()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let heroData = self.fetchedData.getHeroes()[indexPath.row]
-        self.selectedUserPk = heroData.heroPK
-        topLeaderboardCollectionView?.reloadData()
-        self.clearAnyExistingFeedsData {[weak self] in
-            self?.lastFetchedFeeds?.nextPageUrl = nil
-            self?.selectedTopUserPk = self?.selectedUserPk ?? 0
-            self?.loadFeeds()
-        }
-    }
- }

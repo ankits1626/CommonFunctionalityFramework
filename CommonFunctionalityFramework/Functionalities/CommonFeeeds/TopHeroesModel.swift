@@ -122,6 +122,10 @@ struct TopRecognitionHero {
         if !self.lastName.isEmpty {
             fullName = fullName + self.lastName
         }
+        
+        if fullName.isEmpty {
+            return self.email ?? ""
+        }
         return fullName
     }
     

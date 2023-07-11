@@ -296,6 +296,31 @@
 		BE66CCC528A672DE00C7CE83 /* GetFeedEcardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCC428A672DE00C7CE83 /* GetFeedEcardWorker.swift */; };
 		BE66CCC728A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCC628A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift */; };
 		BE66CCC928A6743E00C7CE83 /* FeedEcardListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCC828A6743E00C7CE83 /* FeedEcardListTableViewCell.swift */; };
+		BE67251F2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725082A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift */; };
+		BE6725202A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725092A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift */; };
+		BE6725212A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE67250A2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib */; };
+		BE6725222A58021900AEFFEB /* FirstUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67250C2A58021900AEFFEB /* FirstUserTableViewCell.swift */; };
+		BE6725232A58021900AEFFEB /* FirstUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE67250D2A58021900AEFFEB /* FirstUserTableViewCell.xib */; };
+		BE6725242A58021900AEFFEB /* FirstCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67250E2A58021900AEFFEB /* FirstCellConfigurator.swift */; };
+		BE6725252A58021900AEFFEB /* Top3UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725102A58021900AEFFEB /* Top3UsersTableViewCell.swift */; };
+		BE6725262A58021900AEFFEB /* Top3UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6725112A58021900AEFFEB /* Top3UsersTableViewCell.xib */; };
+		BE6725272A58021900AEFFEB /* Top3userCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725122A58021900AEFFEB /* Top3userCellConfigurator.swift */; };
+		BE6725282A58021900AEFFEB /* LeaderboardCellConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725142A58021900AEFFEB /* LeaderboardCellConfiguratorProtocol.swift */; };
+		BE6725292A58021900AEFFEB /* LeaderboardAdapterDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725152A58021900AEFFEB /* LeaderboardAdapterDatasource.swift */; };
+		BE67252A2A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725162A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift */; };
+		BE67252B2A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725172A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift */; };
+		BE67252C2A58021900AEFFEB /* LeaderboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725182A58021900AEFFEB /* LeaderboardModel.swift */; };
+		BE67252D2A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725192A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift */; };
+		BE67252E2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67251A2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift */; };
+		BE67252F2A58021900AEFFEB /* LeaderboardCellAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67251C2A58021900AEFFEB /* LeaderboardCellAdapter.swift */; };
+		BE6725302A58021900AEFFEB /* LeaderboardCellAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67251D2A58021900AEFFEB /* LeaderboardCellAdapterDelegate.swift */; };
+		BE6725312A58021900AEFFEB /* LeaderboardCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67251E2A58021900AEFFEB /* LeaderboardCellType.swift */; };
+		BE6725342A58026C00AEFFEB /* TopGettersLeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725322A58026C00AEFFEB /* TopGettersLeaderboardViewController.swift */; };
+		BE6725352A58026C00AEFFEB /* TopGettersLeaderboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6725332A58026C00AEFFEB /* TopGettersLeaderboardViewController.xib */; };
+		BE6725622A5C284900AEFFEB /* ShowSelectedUserRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725602A5C284900AEFFEB /* ShowSelectedUserRecognition.swift */; };
+		BE6725632A5C284900AEFFEB /* ShowSelectedUserRecognition.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6725612A5C284900AEFFEB /* ShowSelectedUserRecognition.xib */; };
+		BE6725662A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725642A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.swift */; };
+		BE6725672A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6725652A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.xib */; };
 		BE73649E2705EC05002FC49E /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */; };
 		BE7C9AFF288AD0CA00E7CAE4 /* NoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C9AFD288AD0CA00E7CAE4 /* NoEntryViewController.swift */; };
 		BE7C9B00288AD0CA00E7CAE4 /* NoEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7C9AFE288AD0CA00E7CAE4 /* NoEntryViewController.xib */; };
@@ -670,6 +695,31 @@
 		BE66CCC428A672DE00C7CE83 /* GetFeedEcardWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFeedEcardWorker.swift; sourceTree = "<group>"; };
 		BE66CCC628A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEcardCategoryListCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE66CCC828A6743E00C7CE83 /* FeedEcardListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEcardListTableViewCell.swift; sourceTree = "<group>"; };
+		BE6725082A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemainingLeaderbaordTableViewCell.swift; sourceTree = "<group>"; };
+		BE6725092A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemainingLeaderboardConfigurator.swift; sourceTree = "<group>"; };
+		BE67250A2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemainingLeaderbaordTableViewCell.xib; sourceTree = "<group>"; };
+		BE67250C2A58021900AEFFEB /* FirstUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstUserTableViewCell.swift; sourceTree = "<group>"; };
+		BE67250D2A58021900AEFFEB /* FirstUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstUserTableViewCell.xib; sourceTree = "<group>"; };
+		BE67250E2A58021900AEFFEB /* FirstCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstCellConfigurator.swift; sourceTree = "<group>"; };
+		BE6725102A58021900AEFFEB /* Top3UsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top3UsersTableViewCell.swift; sourceTree = "<group>"; };
+		BE6725112A58021900AEFFEB /* Top3UsersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Top3UsersTableViewCell.xib; sourceTree = "<group>"; };
+		BE6725122A58021900AEFFEB /* Top3userCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top3userCellConfigurator.swift; sourceTree = "<group>"; };
+		BE6725142A58021900AEFFEB /* LeaderboardCellConfiguratorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellConfiguratorProtocol.swift; sourceTree = "<group>"; };
+		BE6725152A58021900AEFFEB /* LeaderboardAdapterDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardAdapterDatasource.swift; sourceTree = "<group>"; };
+		BE6725162A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellAdapterInputModel.swift; sourceTree = "<group>"; };
+		BE6725172A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellConfigurationInputModel.swift; sourceTree = "<group>"; };
+		BE6725182A58021900AEFFEB /* LeaderboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardModel.swift; sourceTree = "<group>"; };
+		BE6725192A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellConfigurationBaseInputModel.swift; sourceTree = "<group>"; };
+		BE67251A2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardConfigurationCellDequeueInputModel.swift; sourceTree = "<group>"; };
+		BE67251C2A58021900AEFFEB /* LeaderboardCellAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellAdapter.swift; sourceTree = "<group>"; };
+		BE67251D2A58021900AEFFEB /* LeaderboardCellAdapterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellAdapterDelegate.swift; sourceTree = "<group>"; };
+		BE67251E2A58021900AEFFEB /* LeaderboardCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellType.swift; sourceTree = "<group>"; };
+		BE6725322A58026C00AEFFEB /* TopGettersLeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGettersLeaderboardViewController.swift; sourceTree = "<group>"; };
+		BE6725332A58026C00AEFFEB /* TopGettersLeaderboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopGettersLeaderboardViewController.xib; sourceTree = "<group>"; };
+		BE6725602A5C284900AEFFEB /* ShowSelectedUserRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSelectedUserRecognition.swift; sourceTree = "<group>"; };
+		BE6725612A5C284900AEFFEB /* ShowSelectedUserRecognition.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowSelectedUserRecognition.xib; sourceTree = "<group>"; };
+		BE6725642A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedRecognitionDetailViewController.swift; sourceTree = "<group>"; };
+		BE6725652A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedRecognitionDetailViewController.xib; sourceTree = "<group>"; };
 		BE73649D2705EC05002FC49E /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		BE7C9AFD288AD0CA00E7CAE4 /* NoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEntryViewController.swift; sourceTree = "<group>"; };
 		BE7C9AFE288AD0CA00E7CAE4 /* NoEntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoEntryViewController.xib; sourceTree = "<group>"; };
@@ -1902,9 +1952,14 @@
 		98B90DEA240CAD010013E9D2 /* Functionalities */ = {
 			isa = PBXGroup;
 			children = (
+				BE6725052A5801E300AEFFEB /* Top Getters */,
 				BEF402162820120F001B9D7E /* CommonFeeeds */,
 				98B90DEB240CAD010013E9D2 /* Feeds */,
 				9868C0812410B13A00B12321 /* DummyFeedProvider.swift */,
+				BE6725322A58026C00AEFFEB /* TopGettersLeaderboardViewController.swift */,
+				BE6725332A58026C00AEFFEB /* TopGettersLeaderboardViewController.xib */,
+				BE6725602A5C284900AEFFEB /* ShowSelectedUserRecognition.swift */,
+				BE6725612A5C284900AEFFEB /* ShowSelectedUserRecognition.xib */,
 			);
 			path = Functionalities;
 			sourceTree = "<group>";
@@ -2264,6 +2319,82 @@
 			path = FeedEcardSelect;
 			sourceTree = "<group>";
 		};
+		BE6725052A5801E300AEFFEB /* Top Getters */ = {
+			isa = PBXGroup;
+			children = (
+				BE6725062A58021900AEFFEB /* LeaderboardCell */,
+				BE67251B2A58021900AEFFEB /* LeaderboardCellAdapter */,
+				BE6725132A58021900AEFFEB /* LeaderboardCellConfigurator */,
+				BE6725642A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.swift */,
+				BE6725652A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.xib */,
+			);
+			path = "Top Getters";
+			sourceTree = "<group>";
+		};
+		BE6725062A58021900AEFFEB /* LeaderboardCell */ = {
+			isa = PBXGroup;
+			children = (
+				BE6725072A58021900AEFFEB /* RemainingCell */,
+				BE67250B2A58021900AEFFEB /* FirstUserCell */,
+				BE67250F2A58021900AEFFEB /* Top3UserCell */,
+			);
+			path = LeaderboardCell;
+			sourceTree = "<group>";
+		};
+		BE6725072A58021900AEFFEB /* RemainingCell */ = {
+			isa = PBXGroup;
+			children = (
+				BE6725082A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift */,
+				BE6725092A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift */,
+				BE67250A2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib */,
+			);
+			path = RemainingCell;
+			sourceTree = "<group>";
+		};
+		BE67250B2A58021900AEFFEB /* FirstUserCell */ = {
+			isa = PBXGroup;
+			children = (
+				BE67250C2A58021900AEFFEB /* FirstUserTableViewCell.swift */,
+				BE67250D2A58021900AEFFEB /* FirstUserTableViewCell.xib */,
+				BE67250E2A58021900AEFFEB /* FirstCellConfigurator.swift */,
+			);
+			path = FirstUserCell;
+			sourceTree = "<group>";
+		};
+		BE67250F2A58021900AEFFEB /* Top3UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				BE6725102A58021900AEFFEB /* Top3UsersTableViewCell.swift */,
+				BE6725112A58021900AEFFEB /* Top3UsersTableViewCell.xib */,
+				BE6725122A58021900AEFFEB /* Top3userCellConfigurator.swift */,
+			);
+			path = Top3UserCell;
+			sourceTree = "<group>";
+		};
+		BE6725132A58021900AEFFEB /* LeaderboardCellConfigurator */ = {
+			isa = PBXGroup;
+			children = (
+				BE6725142A58021900AEFFEB /* LeaderboardCellConfiguratorProtocol.swift */,
+				BE6725152A58021900AEFFEB /* LeaderboardAdapterDatasource.swift */,
+				BE6725162A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift */,
+				BE6725172A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift */,
+				BE6725182A58021900AEFFEB /* LeaderboardModel.swift */,
+				BE6725192A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift */,
+				BE67251A2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift */,
+			);
+			path = LeaderboardCellConfigurator;
+			sourceTree = "<group>";
+		};
+		BE67251B2A58021900AEFFEB /* LeaderboardCellAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				BE67251C2A58021900AEFFEB /* LeaderboardCellAdapter.swift */,
+				BE67251D2A58021900AEFFEB /* LeaderboardCellAdapterDelegate.swift */,
+				BE67251E2A58021900AEFFEB /* LeaderboardCellType.swift */,
+			);
+			path = LeaderboardCellAdapter;
+			sourceTree = "<group>";
+		};
 		BE94C312282170F800E323E1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -2492,6 +2623,7 @@
 				0F329090288A536C008BF09D /* BOUSReactionsScrollListTableViewCell.xib in Resources */,
 				0F961A1428E457550003FE8D /* BOUSTwoImageDetailTableViewCell.xib in Resources */,
 				BEC2B26D26FD9C27008417C3 /* LikedByTableViewCell.xib in Resources */,
+				BE6725352A58026C00AEFFEB /* TopGettersLeaderboardViewController.xib in Resources */,
 				BEC2B27F26FD9FD1008417C3 /* FeedGifTableViewCell.xib in Resources */,
 				0F7AA81929D7F2B9006DF6FE /* DownloadFeedCertificateViewController.xib in Resources */,
 				BEC2B26126FD99DC008417C3 /* FeedBottomTableViewCell.xib in Resources */,
@@ -2502,6 +2634,7 @@
 				BEC2B25F26FD99A3008417C3 /* SingleImageTableViewCell.xib in Resources */,
 				BE39BA4F28A9260E004ADA9E /* PostPollTitleTableViewCell.xib in Resources */,
 				0F6021B12874162700D852BD /* CommentsTableViewCell.xib in Resources */,
+				BE6725262A58021900AEFFEB /* Top3UsersTableViewCell.xib in Resources */,
 				0FB1635729B71117000AA631 /* AnniversaryDetailTableViewCell.xib in Resources */,
 				BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */,
 				BEC2B25B26FD992A008417C3 /* MultipleMediaTableViewCell.xib in Resources */,
@@ -2511,11 +2644,14 @@
 				0FABE4EE2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.xib in Resources */,
 				BEBFD1E828A9F167006E5D8B /* PostPollLikeTableViewCell.xib in Resources */,
 				0FD47F3D2A25BCDD0096B30C /* ASChatBarAttachmentViewController.xib in Resources */,
+				BE6725632A5C284900AEFFEB /* ShowSelectedUserRecognition.xib in Resources */,
 				BEC2B27726FD9EB8008417C3 /* FeedsGIFSelectorViewController.xib in Resources */,
+				BE6725672A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.xib in Resources */,
 				0F60218828716A3600D852BD /* CommonNominationCountCell.xib in Resources */,
 				0F32908228897B1B008BF09D /* BOUSMultipleImageTableViewCell.xib in Resources */,
 				BEC2B27D26FD9F83008417C3 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
 				BEC2B28126FDA010008417C3 /* FeedEditorDescriptionTableViewCell.xib in Resources */,
+				BE6725212A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib in Resources */,
 				BE66CCB328A6543F00C7CE83 /* SelectPostMediaTableViewCell.xib in Resources */,
 				0F32907B28897717008BF09D /* BOUSSingleImageTableViewCell.xib in Resources */,
 				BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */,
@@ -2527,6 +2663,7 @@
 				BEC2B26726FD9A81008417C3 /* PollSubmitButtonCell.xib in Resources */,
 				BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */,
 				BEC2B28726FDA153008417C3 /* FeedsComposerDrawer.xib in Resources */,
+				BE6725232A58021900AEFFEB /* FirstUserTableViewCell.xib in Resources */,
 				BE500D8628229B5500423E5A /* CommonPressLikeButtonTableViewCell.xib in Resources */,
 				BEC2B25726FD989D008417C3 /* FeedTitleTableViewCell.xib in Resources */,
 				BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */,
@@ -2598,6 +2735,7 @@
 			files = (
 				98722671246176E700809D7A /* ManagedPostComment+CoreDataClass.swift in Sources */,
 				BE500D812822962800423E5A /* LikesSectionTableViewCellCoordinator.swift in Sources */,
+				BE67252A2A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift in Sources */,
 				98722672246176E700809D7A /* ManagedPost+CoreDataClass.swift in Sources */,
 				0F94B74F2888399E003AC4C8 /* BOUSApprovalsDetailModel.swift in Sources */,
 				0F32906428895E5F008BF09D /* BOUSReactionsListViewController.swift in Sources */,
@@ -2621,6 +2759,7 @@
 				0F6021A72874151E00D852BD /* CommonFeedDescriptionTableViewCellCoordinator.swift in Sources */,
 				0F96194B28E4170E0003FE8D /* BOUSTwoImagesCoordinator.swift in Sources */,
 				BE39BA4228A917E6004ADA9E /* PostPollTableViewCellCordinator.swift in Sources */,
+				BE6725292A58021900AEFFEB /* LeaderboardAdapterDatasource.swift in Sources */,
 				9868C0EA24125E1900B12321 /* ClappedByUser.swift in Sources */,
 				9868C0FF2419EB2D00B12321 /* FeedsComposerDrawer.swift in Sources */,
 				9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */,
@@ -2637,6 +2776,7 @@
 				BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */,
 				BEAFDF2B29E541CF00C04FC4 /* TopMonthlyHeroesWorker.swift in Sources */,
 				98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */,
+				BE6725202A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift in Sources */,
 				0FABE4ED2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.swift in Sources */,
 				0FA1A6012A1610EF00107B26 /* FeedOrganisationListManager.swift in Sources */,
 				0FB4AFD028BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift in Sources */,
@@ -2661,12 +2801,15 @@
 				0FED7F012880438600D490BB /* BOUSGrayDividerCoordinator.swift in Sources */,
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
+				BE67252E2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift in Sources */,
+				BE6725252A58021900AEFFEB /* Top3UsersTableViewCell.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
 				0F32906628895F4F008BF09D /* BOUSReactionListWorker.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
 				0FA1A6002A1610EF00107B26 /* FeedOrganisationDepartmentSelectionModel.swift in Sources */,
 				0F96194F28E428C20003FE8D /* BOUSThreeImagesTableViewCell.swift in Sources */,
+				BE6725302A58021900AEFFEB /* LeaderboardCellAdapterDelegate.swift in Sources */,
 				0F32907228897051008BF09D /* BOUSDetailFeedOutstandingTableViewCell.swift in Sources */,
 				BEC33A9F2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift in Sources */,
 				9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */,
@@ -2708,14 +2851,18 @@
 				9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */,
 				98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */,
 				987D0BAE2583DA58001A0F07 /* ASMentionSelectorViewController.swift in Sources */,
+				BE67252D2A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift in Sources */,
 				BE66CCC728A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift in Sources */,
 				987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */,
+				BE6725312A58021900AEFFEB /* LeaderboardCellType.swift in Sources */,
 				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
 				0FA1A67B2A1629CA00107B26 /* CommentDeleteWorker.swift in Sources */,
 				BE9E234A28AB92A700281F86 /* PostPollSelfBottomSheet.swift in Sources */,
+				BE6725342A58026C00AEFFEB /* TopGettersLeaderboardViewController.swift in Sources */,
 				0F9C4A7B28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift in Sources */,
 				0FABE5042A1DD29F00F5D855 /* PostPreviewHeaderCoordinator.swift in Sources */,
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
+				BE6725222A58021900AEFFEB /* FirstUserTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				0F7AA82B29D86859006DF6FE /* SaveCertificateNetworkHandler.swift in Sources */,
 				BEBFD1E428A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift in Sources */,
@@ -2729,6 +2876,7 @@
 				9873D62724B808850041504C /* ManagedGifs+CoreDataClass.swift in Sources */,
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				BEBFD1E728A9F167006E5D8B /* PostPollLikeTableViewCell.swift in Sources */,
+				BE6725272A58021900AEFFEB /* Top3userCellConfigurator.swift in Sources */,
 				0F961A1328E457550003FE8D /* BOUSTwoImageDetailTableViewCell.swift in Sources */,
 				0F72619528E6D5CF00EECB50 /* FTImageSize.swift in Sources */,
 				0FB1635629B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift in Sources */,
@@ -2741,17 +2889,21 @@
 				987D0BA92583DA58001A0F07 /* ASMention+Extensions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
+				BE67252C2A58021900AEFFEB /* LeaderboardModel.swift in Sources */,
 				0FB1635F29B7159A000AA631 /* BOUSAnniversaryTableViewCellCoordinator.swift in Sources */,
 				0F602221287E7EDC00D852BD /* BOUSApprovalDetailViewController.swift in Sources */,
 				0F32908128897B1B008BF09D /* BOUSMultipleImageTableViewCell.swift in Sources */,
 				0F32907A28897717008BF09D /* BOUSSingleImageTableViewCell.swift in Sources */,
+				BE67252F2A58021900AEFFEB /* LeaderboardCellAdapter.swift in Sources */,
 				0FD47F412A25BCDD0096B30C /* AttachmentHandler.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
+				BE6725662A5C3AE300AEFFEB /* SelectedRecognitionDetailViewController.swift in Sources */,
 				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
 				0FABE5082A1DD29F00F5D855 /* PostPreviewListManager.swift in Sources */,
 				0FB1636129B71625000AA631 /* GreetingsAnniAndBday.swift in Sources */,
 				987D0BAC2583DA58001A0F07 /* ASMentionTextParser.swift in Sources */,
 				BE7C9AFF288AD0CA00E7CAE4 /* NoEntryViewController.swift in Sources */,
+				BE67251F2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift in Sources */,
 				987D0BAF2583DA58001A0F07 /* TagUserTableViewCell.swift in Sources */,
 				9830E84E246EC9D700FEFC0F /* FeedEditorHeaderCoordinator.swift in Sources */,
 				98C648B6241BB505006689E9 /* FeedEditorPollOptionTableViewCellCoordinator.swift in Sources */,
@@ -2789,9 +2941,11 @@
 				9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */,
 				BE39BA4628A91856004ADA9E /* PostPollTopTableViewCellTableViewCell.swift in Sources */,
 				0FABE4E92A1DD26000F5D855 /* EditCommentDrawer.swift in Sources */,
+				BE6725282A58021900AEFFEB /* LeaderboardCellConfiguratorProtocol.swift in Sources */,
 				0FABE5002A1DD29F00F5D855 /* PostEditorRouter.swift in Sources */,
 				0F32908928898F65008BF09D /* BOUSNominationAppoveRejectWorker.swift in Sources */,
 				98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */,
+				BE6725242A58021900AEFFEB /* FirstCellConfigurator.swift in Sources */,
 				0FD47F3F2A25BCDD0096B30C /* CommentAttachedDocument.swift in Sources */,
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				BED3ADAE28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift in Sources */,
@@ -2821,6 +2975,7 @@
 				987D0BA72583DA58001A0F07 /* ASMentionStore.swift in Sources */,
 				BE66CCC928A6743E00C7CE83 /* FeedEcardListTableViewCell.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
+				BE6725622A5C284900AEFFEB /* ShowSelectedUserRecognition.swift in Sources */,
 				0FABE5052A1DD29F00F5D855 /* PostShareOptionTableViewCell.swift in Sources */,
 				980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */,
 				9820C109243F5C5100A6A30A /* FeedCommentPostWorker.swift in Sources */,
@@ -2859,6 +3014,7 @@
 				9868C01A240F78E500B12321 /* FeedTextTableViewCell.swift in Sources */,
 				BE66CCB228A6543F00C7CE83 /* SelectPostMediaTableViewCell.swift in Sources */,
 				983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */,
+				BE67252B2A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift in Sources */,
 				BEF4021828201248001B9D7E /* CommonFeedsCoordinator.swift in Sources */,
 				980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */,
 				0FED7EEF287EB21800D490BB /* BOUSApproveRejectPopViewController.swift in Sources */,

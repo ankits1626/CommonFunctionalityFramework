@@ -74,9 +74,9 @@ public class CommonFeedsCoordinator {
         feedsVc.departmentPK = inputModel.departmentPK
         feedsVc.dateRangePK = inputModel.dateRangePK
         feedsVc.coreValuePk = inputModel.coreValuePk
-        feedsVc.hideTopLeaderboard = inputModel.hideTopLeaderboard
         feedsVc.isDesklessEnabled = inputModel.isDesklessEnabled
         feedsVc.isCreationButtonRequired = inputModel.isCreationButtonRequired
+        feedsVc.isRecognitionBannerHide = inputModel.hideTopLeaderboard
         return feedsVc
     }
     
@@ -97,6 +97,15 @@ public class CommonFeedsCoordinator {
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         return feedsVc
 
+    }
+    
+    public func getTopHeroView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
+        let topHeroVc = TopGettersLeaderboardViewController(nibName: "TopGettersLeaderboardViewController", bundle: Bundle(for: TopGettersLeaderboardViewController.self))
+        topHeroVc.requestCoordinator = inputModel.networkRequestCoordinator
+        topHeroVc.mediaFetcher = inputModel.mediaCoordinator
+        topHeroVc.mainAppCoordinator = inputModel.mainAppCoordinator
+        topHeroVc.themeManager = inputModel.themeManager
+        return topHeroVc
     }
     
     public func showApprovalsDetail(_ inputModel : GetCommonFeedsViewModel, approvalsId: Int)  -> UIViewController{
