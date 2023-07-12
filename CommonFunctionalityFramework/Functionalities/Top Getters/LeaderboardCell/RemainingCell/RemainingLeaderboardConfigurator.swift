@@ -7,6 +7,12 @@
 
 import Foundation
 import UIKit
+import RewardzCommonComponents
+
+struct InitTopLeadersConfiguratorModel {
+    let mediaFetcher : CFFMediaCoordinatorProtocol
+    let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
+}
 
 class RemainingLeaderboardConfigurator:BaseCellConfigurator, LeaderboardCellConfiguratorProtocol{
     
@@ -44,17 +50,25 @@ class RemainingLeaderboardConfigurator:BaseCellConfigurator, LeaderboardCellConf
     }
     
     func getHeightOfCell(_ inputModel: LeaderboardCellConfigurationBaseInputModel) -> CGFloat {
-        return 96
+        return 88
     }
     
     private func configureRewardUseNowTableViewCellCell(_ cell : RemainingLeaderbaordTableViewCell, datasource: LeaderboardAdapterDatasource, indexpath : IndexPath){
-        print("Default ****** \(indexpath.row + 2)")
         cell.remainingUserButton?.tag = indexpath.row + 2
         cell.remainingUserButton?.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
-        let data = datasource.getRedemption(index: indexpath.row + 2)
-        cell.userFullName?.text = data.getHeroes()[indexpath.row + 2].getFullName()
-        cell.userRankLabel?.text = "\(indexpath.row + 2)"
+        let data = datasource.getTopGetters(index: indexpath.row + 2)
+        let userData = data.getHeroes()[indexpath.row + 2]
+        cell.userFullName?.text = userData.getFullName()
+        cell.userRankLabel?.text = "\(indexpath.row + 3)"
         cell.userRankLabel?.backgroundColor = UIColor.getControlColor()
+        if let unwrappedImage = userData.getProfileImageUrl(),
+           !unwrappedImage.absoluteString.isEmpty {
+            input.mediaFetcher.fetchImageAndLoad(cell.userProfilePic, imageEndPoint: unwrappedImage)
+        }else{
+            cell.userProfilePic?.setImageForName(userData.getFullName(), circular: false, textAttributes: nil)
+        }
+        cell.userDepartment?.text = userData.departmentName
+        cell.userAppreciationReceivedLbl?.text = userData.getAppreciationRatio()
     } 
     
     @objc private func editButtonPressed(sender : UIButton){

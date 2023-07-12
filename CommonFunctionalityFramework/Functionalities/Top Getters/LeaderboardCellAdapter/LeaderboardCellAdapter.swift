@@ -55,7 +55,7 @@ class LeaderboardCellAdapter{
     }
     
     func getNumberOfRows() -> Int {
-        return inputModel.datasource.getNumberOfRedemptions()
+        return inputModel.datasource.getNumberOfTopGetters()
     }
     
     deinit {

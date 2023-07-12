@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RewardzCommonComponents
 
 struct TopHeroesFetchedData {
     private var categories = [TopHeroesCategory]()
@@ -86,7 +87,9 @@ struct TopRecognitionHero {
   var heroPK : Int
   var email : String?
   var profileImage : String?
+  var departmentName : String?
   var appreciationRatio: AppreciationRatio
+  var recognitionType : String?
   var category: String = ""
   var remainingPoints : Double?
   var monthlyAppreciationLimit : Int?
@@ -99,12 +102,14 @@ struct TopRecognitionHero {
     }
   }
     
-    init(_ rawHero : [String : Any]) {
+    init(_ rawHero : [String : Any], recognitionTye : String) {
       self.firstName = rawHero["first_name"] as? String ?? "-"
       self.lastName = rawHero["last_name"] as? String ?? "-"
       self.employeeId = rawHero["employee_id"] as? String ?? "-"
       self.email = rawHero["email"] as? String
       self.profileImage = rawHero["profile_pic_url"] as? String
+      self.departmentName = rawHero["department_name"] as? String ?? "N/A"
+        self.recognitionType = recognitionTye
       if let data = try? JSONSerialization.data(withJSONObject: rawHero["appreciation_ratio"] as! [String: Any], options: .prettyPrinted) {
 //        let decoded = try! JSONSerialization.jsonObject(with: jsonData, options: [])
         let ratio = try! JSONDecoder().decode(AppreciationRatio.self, from: data)
@@ -115,12 +120,24 @@ struct TopRecognitionHero {
       self.heroPK = rawHero["pk"] as? Int ?? -1
     }
     
-    func getProfileImageUrl() -> String? {
+    func getAppreciationRatio() -> String {
+        if self.recognitionType == "given" {
+            return self.appreciationRatio.given
+        }else if self.recognitionType == "received" {
+            return self.appreciationRatio.received
+        }else {
+            let total = (Int(self.appreciationRatio.given) ?? 0) + (Int(self.appreciationRatio.received) ?? 0)
+            return "\(total)"
+        }
+    }
+    
+    func getProfileImageUrl() -> URL? {
         if let profileImage = self.profileImage,
             !profileImage.isEmpty{
-            return profileImage
+            let serverUrl = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
+            return URL(string: serverUrl+profileImage)
         }else{
-            return ""
+            return nil
         }
     }
     

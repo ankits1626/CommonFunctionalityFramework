@@ -26,7 +26,7 @@ class ShowSelectedUserRecognition: UIViewController{
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
-    
+    var selectedUserPk : Int = 0
     var feedTypePk : Int = 0
     var organisationPK : Int = 0
     var departmentPK : Int = 0

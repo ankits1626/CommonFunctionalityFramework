@@ -107,8 +107,8 @@ class TopGettersFilterViewController: UIViewController {
     @IBAction func clearAllSearched(sender : UIButton) {
         if let filterC = self.filterCoordinator {
             filterC.clearFilters()
-            filterC.isHeroExpanded = false
-            filterC.isRecognitionExpanded = false
+            filterC.isHeroExpanded = true
+            filterC.isRecognitionExpanded = true
             delegate?.finishedFilterSelection(selectedRecognitionType: nil, selectedRecognitionIndex: nil, selectedHeroType: nil, selectedHeroIndex: nil)
         }
         navigationController?.popViewController(animated: true)

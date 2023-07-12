@@ -54,10 +54,11 @@ class Top3userCellConfigurator:BaseCellConfigurator, LeaderboardCellConfigurator
         for (index,data) in datasource.getTopHeroData().getHeroes().prefix(3).enumerated() {
             self.fillTop3GettersData(index: index, data: data, cell: cell)
         }
-        
+        cell.emptyContainerView?.isHidden = datasource.getTopHeroData().getNumberOfHeroes() == 1 ? false : true
         cell.firstUserButton?.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
         cell.secondUserButton?.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
         cell.thirdUserButton?.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
+        
     }
     
     func fillTop3GettersData(index : Int, data : TopRecognitionHero, cell : Top3UsersTableViewCell) {
@@ -65,12 +66,39 @@ class Top3userCellConfigurator:BaseCellConfigurator, LeaderboardCellConfigurator
         case 0:
             cell.userFullName0?.text = data.getFullName()
             cell.firstUserButton?.tag = index
+            cell.userRankLabelParentView0?.isHidden = false
+            if let unwrappedImage = data.getProfileImageUrl(),
+               !unwrappedImage.absoluteString.isEmpty {
+                input.mediaFetcher.fetchImageAndLoad(cell.userProfilePic0, imageEndPoint: unwrappedImage)
+            }else{
+                cell.userProfilePic0?.setImageForName(data.getFullName(), circular: false, textAttributes: nil)
+            }
+            cell.userDepartment0?.text = data.departmentName
+            cell.userReceivedAppreciation0?.text = data.getAppreciationRatio()
         case 1:
             cell.userFullName1?.text = data.getFullName()
             cell.secondUserButton?.tag = index
+            cell.userRankLabelParentView1?.isHidden = false
+            if let unwrappedImage = data.getProfileImageUrl(),
+               !unwrappedImage.absoluteString.isEmpty {
+                input.mediaFetcher.fetchImageAndLoad(cell.userProfilePic1, imageEndPoint: unwrappedImage)
+            }else{
+                cell.userProfilePic1?.setImageForName(data.getFullName(), circular: false, textAttributes: nil)
+            }
+            cell.userDepartment1?.text = data.departmentName
+            cell.userReceivedAppreciation1?.text = data.getAppreciationRatio()
         case 2:
             cell.userFullName2?.text = data.getFullName()
             cell.thirdUserButton?.tag = index
+            cell.userRankLabelParentView2?.isHidden = false
+            if let unwrappedImage = data.getProfileImageUrl(),
+               !unwrappedImage.absoluteString.isEmpty {
+                input.mediaFetcher.fetchImageAndLoad(cell.userProfilePic2, imageEndPoint: unwrappedImage)
+            }else{
+                cell.userProfilePic2?.setImageForName(data.getFullName(), circular: false, textAttributes: nil)
+            }
+            cell.userDepartment2?.text = data.departmentName
+            cell.userReceivedAppreciation2?.text = data.getAppreciationRatio()
         default:
             break
         }

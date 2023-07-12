@@ -23,7 +23,9 @@ class RemainingLeaderbaordTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        userRankLabelContainer?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0 )
+        userRankLabelContainer?.curvedUIBorderedControl(borderColor: .white, borderWidth: 1.0, cornerRadius: 8.0 )
+        userProfilePic?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0 )
+        parentViewContainer?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0 )
         // Initialization code
     }
 

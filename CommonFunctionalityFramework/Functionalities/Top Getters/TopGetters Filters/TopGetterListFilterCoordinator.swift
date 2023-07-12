@@ -16,6 +16,7 @@ struct FilterSelectionResult {
 struct TopGettersFilterOption : Equatable {
     var displayName : String
     var slug : String
+    
 }
 
 protocol TopGettersFilterCoordinatorDelegate : AnyObject {
@@ -33,22 +34,22 @@ class TopGettersFilterCoordinator {
         TopGettersFilterOption(displayName: "Overall", slug: "overall"),
     ]
     
-    var selectedRecognitionOptionsIndex = [Int]()
-    var selectedSortOption = [Int]()
+    var selectedRecognitionOptionsIndex : [Int] = [0]
+    var selectedSortOption : [Int] = [0]
     var selectedRecognitionData : TopGettersFilterOption?
     var selectedHeroData : TopGettersFilterOption?
     weak var delegate : TopGettersFilterCoordinatorDelegate?
     private var previouslySelectedFilter : FilterSelectionResult?
 
-    var isRecognitionExpanded : Bool = false
-    var isHeroExpanded : Bool = false
+    var isRecognitionExpanded : Bool = true
+    var isHeroExpanded : Bool = true
     func restoreFilterAndSortOptions() {
         if let unwrappedPreviouslySelectedFilter = previouslySelectedFilter{
             selectedRecognitionOptionsIndex = unwrappedPreviouslySelectedFilter.selectedFilterOptionsIndicies
             selectedSortOption = unwrappedPreviouslySelectedFilter.selectedSortOption
         }else{
-            selectedRecognitionOptionsIndex = [Int]()
-            selectedSortOption = [Int]()
+            selectedRecognitionOptionsIndex.append(0)
+            selectedSortOption.append(0)
         }
     }
     
@@ -61,8 +62,10 @@ class TopGettersFilterCoordinator {
     }
     
     func clearFilters(){
-        selectedRecognitionOptionsIndex = [Int]()
-        selectedSortOption = [Int]()
+        selectedRecognitionOptionsIndex.removeAll()
+        selectedSortOption.removeAll()
+        selectedRecognitionOptionsIndex.append(0)
+        selectedSortOption.append(0)
         self.selectedRecognitionData = nil
         self.selectedHeroData = nil
         delegate?.manageItemSelectionToggle(nil, delectedIndex: nil, filterSection: .RecognitionType)

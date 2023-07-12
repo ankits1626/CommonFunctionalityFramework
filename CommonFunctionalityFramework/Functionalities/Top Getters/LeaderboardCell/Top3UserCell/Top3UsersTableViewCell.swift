@@ -44,13 +44,25 @@ class Top3UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var firstUserButton : UIButton?
     @IBOutlet weak var secondUserButton : UIButton?
     @IBOutlet weak var thirdUserButton : UIButton?
-
+    @IBOutlet weak var emptyContainerView : UIView?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         firstUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 10)
         secondUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 10)
         thirdUserBgColor?.backgroundColor = UIColor.getControlColor().lighter(by: 10)
         crownImageContainerView?.backgroundColor = UIColor.getControlColor()
+        userProfilePic0?.backgroundColor = UIColor.getControlColor()
+        userProfilePic1?.backgroundColor = UIColor.getControlColor()
+        userProfilePic2?.backgroundColor = UIColor.getControlColor()
+        
+        userProfilePic0?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0 )
+        userProfilePic1?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0 )
+        userProfilePic2?.curvedUIBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 8.0 )
+        
+        userRankLabelParentView0?.curvedUIBorderedControl(borderColor: .white, borderWidth: 1.0, cornerRadius: 8.0 )
+        userRankLabelParentView1?.curvedUIBorderedControl(borderColor: .white, borderWidth: 1.0, cornerRadius: 8.0 )
+        userRankLabelParentView2?.curvedUIBorderedControl(borderColor: .white, borderWidth: 1.0, cornerRadius: 8.0 )
         
         firstUserBgColor?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
         secondUserBgColor?.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LeaderboardAdapterDatasource : class {
-    func getNumberOfRedemptions() -> Int
-    func getRedemption(index : Int) -> TopHeroesFetchedData
+    func getNumberOfTopGetters() -> Int
     func getTopHeroData() -> TopHeroesFetchedData
+    func getTopGetters(index: Int) -> TopHeroesFetchedData
 }

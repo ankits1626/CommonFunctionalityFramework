@@ -299,9 +299,6 @@
 		BE67251F2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725082A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift */; };
 		BE6725202A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725092A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift */; };
 		BE6725212A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE67250A2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib */; };
-		BE6725222A58021900AEFFEB /* FirstUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67250C2A58021900AEFFEB /* FirstUserTableViewCell.swift */; };
-		BE6725232A58021900AEFFEB /* FirstUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE67250D2A58021900AEFFEB /* FirstUserTableViewCell.xib */; };
-		BE6725242A58021900AEFFEB /* FirstCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67250E2A58021900AEFFEB /* FirstCellConfigurator.swift */; };
 		BE6725252A58021900AEFFEB /* Top3UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725102A58021900AEFFEB /* Top3UsersTableViewCell.swift */; };
 		BE6725262A58021900AEFFEB /* Top3UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE6725112A58021900AEFFEB /* Top3UsersTableViewCell.xib */; };
 		BE6725272A58021900AEFFEB /* Top3userCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725122A58021900AEFFEB /* Top3userCellConfigurator.swift */; };
@@ -710,9 +707,6 @@
 		BE6725082A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemainingLeaderbaordTableViewCell.swift; sourceTree = "<group>"; };
 		BE6725092A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemainingLeaderboardConfigurator.swift; sourceTree = "<group>"; };
 		BE67250A2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemainingLeaderbaordTableViewCell.xib; sourceTree = "<group>"; };
-		BE67250C2A58021900AEFFEB /* FirstUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstUserTableViewCell.swift; sourceTree = "<group>"; };
-		BE67250D2A58021900AEFFEB /* FirstUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstUserTableViewCell.xib; sourceTree = "<group>"; };
-		BE67250E2A58021900AEFFEB /* FirstCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstCellConfigurator.swift; sourceTree = "<group>"; };
 		BE6725102A58021900AEFFEB /* Top3UsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top3UsersTableViewCell.swift; sourceTree = "<group>"; };
 		BE6725112A58021900AEFFEB /* Top3UsersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Top3UsersTableViewCell.xib; sourceTree = "<group>"; };
 		BE6725122A58021900AEFFEB /* Top3userCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top3userCellConfigurator.swift; sourceTree = "<group>"; };
@@ -2360,7 +2354,6 @@
 			isa = PBXGroup;
 			children = (
 				BE6725072A58021900AEFFEB /* RemainingCell */,
-				BE67250B2A58021900AEFFEB /* FirstUserCell */,
 				BE67250F2A58021900AEFFEB /* Top3UserCell */,
 			);
 			path = LeaderboardCell;
@@ -2374,16 +2367,6 @@
 				BE67250A2A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib */,
 			);
 			path = RemainingCell;
-			sourceTree = "<group>";
-		};
-		BE67250B2A58021900AEFFEB /* FirstUserCell */ = {
-			isa = PBXGroup;
-			children = (
-				BE67250C2A58021900AEFFEB /* FirstUserTableViewCell.swift */,
-				BE67250D2A58021900AEFFEB /* FirstUserTableViewCell.xib */,
-				BE67250E2A58021900AEFFEB /* FirstCellConfigurator.swift */,
-			);
-			path = FirstUserCell;
 			sourceTree = "<group>";
 		};
 		BE67250F2A58021900AEFFEB /* Top3UserCell */ = {
@@ -2733,7 +2716,6 @@
 				BEC2B26726FD9A81008417C3 /* PollSubmitButtonCell.xib in Resources */,
 				BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */,
 				BEC2B28726FDA153008417C3 /* FeedsComposerDrawer.xib in Resources */,
-				BE6725232A58021900AEFFEB /* FirstUserTableViewCell.xib in Resources */,
 				BE500D8628229B5500423E5A /* CommonPressLikeButtonTableViewCell.xib in Resources */,
 				BEC2B25726FD989D008417C3 /* FeedTitleTableViewCell.xib in Resources */,
 				BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */,
@@ -2938,7 +2920,6 @@
 				0F9C4A7B28B7A71F000A99A2 /* BOUSApprovalAwardLevelCollectionViewCell.swift in Sources */,
 				0FABE5042A1DD29F00F5D855 /* PostPreviewHeaderCoordinator.swift in Sources */,
 				98BC8A0E241A1775007C175D /* FeedEditorTitleTableViewCell.swift in Sources */,
-				BE6725222A58021900AEFFEB /* FirstUserTableViewCell.swift in Sources */,
 				9868C033240F7A3C00B12321 /* FeedBottomTableViewCell.swift in Sources */,
 				0F7AA82B29D86859006DF6FE /* SaveCertificateNetworkHandler.swift in Sources */,
 				BEBFD1E428A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift in Sources */,
@@ -3023,7 +3004,6 @@
 				0FABE5002A1DD29F00F5D855 /* PostEditorRouter.swift in Sources */,
 				0F32908928898F65008BF09D /* BOUSNominationAppoveRejectWorker.swift in Sources */,
 				98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */,
-				BE6725242A58021900AEFFEB /* FirstCellConfigurator.swift in Sources */,
 				BEC74DF82A5D62170074324B /* RecognitionSeparator.swift in Sources */,
 				0FD47F3F2A25BCDD0096B30C /* CommentAttachedDocument.swift in Sources */,
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,

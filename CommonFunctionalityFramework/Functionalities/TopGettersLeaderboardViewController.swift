@@ -15,17 +15,19 @@ class TopGettersLeaderboardViewController: UIViewController {
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var loader = MFLoader()
     var mediaFetcher: CFFMediaCoordinatorProtocol!
-    var filterperiod : String = "overall"
+    var filterperiod : String = "monthly"
+    var recognitionType : String = "received"
     private var fetchedData = TopHeroesFetchedData()
     @IBOutlet weak var tableViewContainer : UIView?
     @IBOutlet weak var headerView : UIView?
+    @IBOutlet weak var bottomContainerView : UIView?
+    @IBOutlet weak var emptyContainerView : UIView?
+    var showFeedScreen : ShowSelectedUserTypeContainer!
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     lazy var filterCoordinators: TopGettersFilterCoordinator = {
         return TopGettersFilterCoordinator()
     }()
-    var heroSelectedData : TopGettersFilterOption?
-    var recognitionSelectedData : TopGettersFilterOption?
     
     lazy var cellAdapter: LeaderboardCellAdapter = {
         return LeaderboardCellAdapter(
@@ -49,7 +51,7 @@ class TopGettersLeaderboardViewController: UIViewController {
     
     func getTopGetters() {
         self.loader.showActivityIndicator(self.view)
-        TopMonthlyHeroesWorker(filterperiod, networkRequestCoordinator: requestCoordinator).fetchHeroes {[weak self]  (result) in
+        TopMonthlyHeroesWorker(filterperiod, networkRequestCoordinator: requestCoordinator, _recognitionType: recognitionType).fetchHeroes {[weak self]  (result) in
             DispatchQueue.main.async {
                 if let unwrappedSelf = self{
                     print("<<<<<<<<<<<<<<<< fetchHeroesForCategory \(unwrappedSelf)")
@@ -64,6 +66,9 @@ class TopGettersLeaderboardViewController: UIViewController {
         switch result{
         case .Success(let successResult):
             fetchedData.setHeroes(successResult.fetchedHeroes)
+            self.bottomContainerView?.isHidden = successResult.fetchedHeroes.count > 0 ? false : true
+            self.tableViewContainer?.backgroundColor = successResult.fetchedHeroes.count > 0 ? UIColor.getControlColor() : Rgbconverter.HexToColor("#F5F8FF")
+            self.emptyContainerView?.isHidden = successResult.fetchedHeroes.count > 0 ? true : false
             self.topGettersTableView?.backgroundColor = .clear
             self.topGettersTableView?.delegate = self
             self.topGettersTableView?.dataSource = self
@@ -112,7 +117,7 @@ extension TopGettersLeaderboardViewController : UITableViewDataSource, UITableVi
 }
 
 extension TopGettersLeaderboardViewController : LeaderboardAdapterDatasource {
-    func getRedemption(index: Int) -> TopHeroesFetchedData {
+    func getTopGetters(index: Int) -> TopHeroesFetchedData {
         return fetchedData
     }
     
@@ -120,7 +125,7 @@ extension TopGettersLeaderboardViewController : LeaderboardAdapterDatasource {
         return fetchedData
     }
     
-    func getNumberOfRedemptions() -> Int {
+    func getNumberOfTopGetters() -> Int {
         return fetchedData.getNumberOfHeroes()
     }
 }
@@ -134,7 +139,10 @@ extension TopGettersLeaderboardViewController : LeaderboardCellAdapterDelegate {
             showSelectedUser.mediaFetcher = self.mediaFetcher
             showSelectedUser.themeManager = self.themeManager
             showSelectedUser.mainAppCoordinator = self.mainAppCoordinator
-            showSelectedUser.feedScreenType = .Received
+            showSelectedUser.selectedUserPk = fetchedData.getHeroes()[sender.tag].heroPK
+            if showFeedScreen != nil {
+                showSelectedUser.feedScreenType = showFeedScreen
+            }
             self.navigationController?.pushViewController(showSelectedUser, animated: true)
         }
     }
@@ -144,11 +152,18 @@ extension TopGettersLeaderboardViewController : TopGettersFilterDelegate {
     func finishedFilterSelection(selectedRecognitionType: TopGettersFilterOption?, selectedRecognitionIndex: [Int]?, selectedHeroType: TopGettersFilterOption?, selectedHeroIndex: [Int]?) {
         
         if let unwrappedRecognitionData = selectedRecognitionType {
-            recognitionSelectedData = unwrappedRecognitionData
+            recognitionType = unwrappedRecognitionData.slug
+            showFeedScreen = ShowSelectedUserTypeContainer(rawValue: (selectedRecognitionIndex?[0])!)
+        }else{
+            recognitionType = "received"
+            showFeedScreen = nil
         }
         
         if let unwrappedHeroData = selectedHeroType {
-            heroSelectedData = unwrappedHeroData
+            filterperiod = unwrappedHeroData.slug
+        }else{
+            filterperiod = "monthly"
         }
+        self.getTopGetters()
     }
 }
