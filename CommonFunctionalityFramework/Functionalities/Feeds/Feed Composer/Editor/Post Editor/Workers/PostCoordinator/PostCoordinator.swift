@@ -285,6 +285,12 @@ extension PostCoordinator{
         }else if let remoteMediaItems  = currentPost.remoteAttachedMedia,
             !remoteMediaItems.isEmpty{
             return
+        }else if let remoteEcardItems  = currentPost.selectedEcardMediaItems,
+                 remoteEcardItems.pk != 0{
+                 return
+        }else if let remoteGifItems  = currentPost.attachedGiflyGif,
+                 !remoteGifItems.isEmpty{
+                 return
         }
         else{
             throw PostCoordinatorError.PostNotReadyToBePosted

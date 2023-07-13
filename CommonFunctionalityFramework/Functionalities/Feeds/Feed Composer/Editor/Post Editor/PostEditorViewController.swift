@@ -559,7 +559,6 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                 post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
                                     DispatchQueue.main.async {
                                         self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                                        self?.createButton?.isUserInteractionEnabled  = true
                                         switch callResult{
                                         case .Success(let rawFeed):
                                             self?.feedOrderManager.insertFeeds(
@@ -569,6 +568,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                                     DispatchQueue.main.async {
                                                         //                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                                         ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
+                                                            self?.createButton?.isUserInteractionEnabled  = true
                                                             if self?.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
                                                                 self?.navigationController?.popViewController(animated: true)
                                                             }else {
@@ -579,10 +579,12 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                                 })
                                             
                                         case .SuccessWithNoResponseData:
+                                            self?.createButton?.isUserInteractionEnabled  = true
                                             ErrorDisplayer.showError(errorMsg: "Unable to post.".localized) { (_) in
                                                 
                                             }
                                         case .Failure(let error):
+                                            self?.createButton?.isUserInteractionEnabled  = true
                                             ErrorDisplayer.showError(errorMsg: "\("Unable to post due to".localized) \(error.displayableErrorMessage())") { (_) in
                                                 
                                             }

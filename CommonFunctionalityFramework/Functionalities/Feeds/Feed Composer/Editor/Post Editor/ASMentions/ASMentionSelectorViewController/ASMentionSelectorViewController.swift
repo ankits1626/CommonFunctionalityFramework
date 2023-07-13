@@ -131,7 +131,7 @@ class ASMentionSelectorViewController: UIViewController {
         if viewY > keyboardY{
             y_cord = CGRect(
                 x: x,
-                y: convertedRect.origin.y - delta - pickerHeight,
+                y: abs(convertedRect.origin.y - delta - pickerHeight),
                 width: 200,
                 height: pickerHeight)
         }else{
