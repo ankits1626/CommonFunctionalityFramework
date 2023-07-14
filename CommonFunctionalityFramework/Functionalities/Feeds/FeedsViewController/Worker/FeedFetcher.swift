@@ -154,7 +154,6 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
                 endPoints = appendFeedDateRange(endPoints)
                 endPoints = appendFeedCoreValue(endPoints)
                 endPoints = appendTopGettersPk(endPoints)
-                endPoints = appendTodayDate(endPoints)
                 
                 if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                     let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
@@ -256,20 +255,9 @@ class FeedFetchRequestGenerator: APIRequestGeneratorProtocol  {
     private func appendTopGettersPk(_ baseEndpoint : String) -> String{
         if self.selectedFeedPk != 0 {
             if baseEndpoint.contains("?") {
-                return "\(baseEndpoint)&user=\(self.selectedFeedPk)"
+                return "\(baseEndpoint)&user_id=\(self.selectedFeedPk)"
             }else{
-                return "\(baseEndpoint)?user=\(self.selectedFeedPk)"
-            }
-        }
-        return baseEndpoint
-    }
-    
-    private func appendTodayDate(_ baseEndpoint : String) -> String{
-        if self.selectedFeedPk != 0 {
-            if baseEndpoint.contains("?") {
-                return "\(baseEndpoint)&created_on_after=\(Date().startOfMonth().string(format: "yyyy-MM-dd"))"
-            }else{
-                return "\(baseEndpoint)?created_on_after=\(Date().startOfMonth().string(format: "yyyy-MM-dd"))"
+                return "\(baseEndpoint)?user_id=\(self.selectedFeedPk)"
             }
         }
         return baseEndpoint

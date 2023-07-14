@@ -51,6 +51,7 @@ class Top3userCellConfigurator:BaseCellConfigurator, LeaderboardCellConfigurator
     }
     
     private func configureRewardUseNowTableViewCellCell(_ cell : Top3UsersTableViewCell, datasource: LeaderboardAdapterDatasource, indexpath : IndexPath){
+        setupTopUserData(cell: cell)
         for (index,data) in datasource.getTopHeroData().getHeroes().prefix(3).enumerated() {
             self.fillTop3GettersData(index: index, data: data, cell: cell)
         }
@@ -58,7 +59,6 @@ class Top3userCellConfigurator:BaseCellConfigurator, LeaderboardCellConfigurator
         cell.firstUserButton?.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
         cell.secondUserButton?.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
         cell.thirdUserButton?.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
-        
     }
     
     func fillTop3GettersData(index : Int, data : TopRecognitionHero, cell : Top3UsersTableViewCell) {
@@ -102,6 +102,30 @@ class Top3userCellConfigurator:BaseCellConfigurator, LeaderboardCellConfigurator
         default:
             break
         }
+    }
+    
+    func setupTopUserData(cell : Top3UsersTableViewCell) {
+        //need to do cleanup here
+        cell.userFullName0?.text = ""
+        cell.firstUserButton?.tag = -1
+        cell.userRankLabelParentView0?.isHidden = true
+        cell.userProfilePic0?.image = UIImage(named: "cff_topGettersPlaceholder")
+        cell.userDepartment0?.text = ""
+        cell.userReceivedAppreciation0?.text = ""
+        
+        cell.userFullName1?.text = ""
+        cell.secondUserButton?.tag = -1
+        cell.userRankLabelParentView1?.isHidden = true
+        cell.userProfilePic1?.image = UIImage(named: "cff_topGettersPlaceholder")
+        cell.userDepartment1?.text = ""
+        cell.userReceivedAppreciation1?.text = ""
+        
+        cell.userFullName2?.text = ""
+        cell.thirdUserButton?.tag = -1
+        cell.userRankLabelParentView2?.isHidden = true
+        cell.userProfilePic2?.image = UIImage(named: "cff_topGettersPlaceholder")
+        cell.userDepartment2?.text = ""
+        cell.userReceivedAppreciation2?.text = ""
     }
     
     @objc private func editButtonPressed(sender : UIButton){

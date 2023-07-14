@@ -27,8 +27,9 @@ public struct GetCommonFeedsViewModel{
     var isCreationButtonRequired : Bool = false
     var hideTopLeaderboard : Bool = false
     var isDesklessEnabled : Bool = false
+    var selectedTopGettersUserPK : Int = 0
 
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int, _isCreationButtonRequired : Bool = false, _hideTopLeaderboard : Bool = false, _isDesklessEnabled : Bool = false){
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int, _isCreationButtonRequired : Bool = false, _hideTopLeaderboard : Bool = false, _isDesklessEnabled : Bool = false, _selectedTopGettersUserPK : Int = 0){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -44,6 +45,7 @@ public struct GetCommonFeedsViewModel{
         self.isCreationButtonRequired = _isCreationButtonRequired
         self.hideTopLeaderboard = _hideTopLeaderboard
         self.isDesklessEnabled = _isDesklessEnabled
+        self.selectedTopGettersUserPK = _selectedTopGettersUserPK
     }
 }
 
@@ -77,6 +79,7 @@ public class CommonFeedsCoordinator {
         feedsVc.isDesklessEnabled = inputModel.isDesklessEnabled
         feedsVc.isCreationButtonRequired = inputModel.isCreationButtonRequired
         feedsVc.isRecognitionBannerHide = inputModel.hideTopLeaderboard
+        feedsVc.selectedTopGettersPK = inputModel.selectedTopGettersUserPK
         return feedsVc
     }
     

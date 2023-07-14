@@ -34,6 +34,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     var coreValuePk : Int = 0
     var isCreationButtonRequired : Bool = false
     var isRecognitionBannerHide : Bool = false
+    var selectedTopGettersPK : Int = 0
     
     lazy var feedSectionFactory: CommonFeedsSectionFactory = {
         return CommonFeedsSectionFactory(
@@ -115,8 +116,10 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "showMenuButton"), object: nil)
+        if (selectedTopGettersPK == 0) {
+            self.tabBarController?.tabBar.isHidden = false
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "showMenuButton"), object: nil)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -176,7 +179,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         //loader.showActivityIndicator(self.currentWindow!)
         FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk) {[weak self] (result) in
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk,selectedTopGetterPk: self.selectedTopGettersPK) {[weak self] (result) in
                 DispatchQueue.main.async {
                     // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()

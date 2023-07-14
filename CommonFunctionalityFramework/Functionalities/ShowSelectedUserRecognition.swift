@@ -21,6 +21,8 @@ class ShowSelectedUserRecognition: UIViewController{
     @IBOutlet weak var recognitionSegmentView : UISegmentedControl?
     @IBOutlet private var segmentContainerView : UIView?
     @IBOutlet private var segmentParentView : UIView?
+    @IBOutlet private var feedScreenTitle : UILabel?
+    var selectedUserName : String = ""
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var loader = MFLoader()
     var mediaFetcher: CFFMediaCoordinatorProtocol!
@@ -46,6 +48,7 @@ class ShowSelectedUserRecognition: UIViewController{
         self.headerView?.backgroundColor = UIColor.getControlColor()
         self.view.backgroundColor = UIColor.getControlColor()
         setupContainerView()
+        feedScreenTitle?.text = "\(selectedUserName)'s \("Feed".localized)"
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -84,14 +87,14 @@ class ShowSelectedUserRecognition: UIViewController{
         removeExistingContainer()
         switch selectedContainer! {
         case .Given:
-            showReceivedTab(type: "given")
+            showTopGettersFeedData(type: "given")
         case .Received:
-            showReceivedTab(type: "received")
+            showTopGettersFeedData(type: "received")
         }
     }
     
     
-    func showReceivedTab(type : String) {
+    func showTopGettersFeedData(type : String) {
         removeExistingContainer()
         addViewControllerToContainer(CommonFeedsCoordinator().getFeedsView(
             GetCommonFeedsViewModel(
@@ -108,7 +111,8 @@ class ShowSelectedUserRecognition: UIViewController{
                 _coreValuePk: self.coreValuePk,
                 _isCreationButtonRequired: self.isCreationIconRequired,
                 _hideTopLeaderboard: true,
-                _isDesklessEnabled: false
+                _isDesklessEnabled: false,
+                _selectedTopGettersUserPK: self.selectedUserPk
             )
         ))
     }

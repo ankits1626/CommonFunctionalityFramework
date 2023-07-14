@@ -34,7 +34,7 @@ class TopGettersFilterCoordinator {
         TopGettersFilterOption(displayName: "Overall", slug: "overall"),
     ]
     
-    var selectedRecognitionOptionsIndex : [Int] = [0]
+    var selectedRecognitionOptionsIndex : [Int] = [1]
     var selectedSortOption : [Int] = [0]
     var selectedRecognitionData : TopGettersFilterOption?
     var selectedHeroData : TopGettersFilterOption?
@@ -48,7 +48,7 @@ class TopGettersFilterCoordinator {
             selectedRecognitionOptionsIndex = unwrappedPreviouslySelectedFilter.selectedFilterOptionsIndicies
             selectedSortOption = unwrappedPreviouslySelectedFilter.selectedSortOption
         }else{
-            selectedRecognitionOptionsIndex.append(0)
+            selectedRecognitionOptionsIndex.append(1)
             selectedSortOption.append(0)
         }
     }
@@ -64,7 +64,7 @@ class TopGettersFilterCoordinator {
     func clearFilters(){
         selectedRecognitionOptionsIndex.removeAll()
         selectedSortOption.removeAll()
-        selectedRecognitionOptionsIndex.append(0)
+        selectedRecognitionOptionsIndex.append(1)
         selectedSortOption.append(0)
         self.selectedRecognitionData = nil
         self.selectedHeroData = nil

@@ -140,6 +140,7 @@ extension TopGettersLeaderboardViewController : LeaderboardCellAdapterDelegate {
             showSelectedUser.themeManager = self.themeManager
             showSelectedUser.mainAppCoordinator = self.mainAppCoordinator
             showSelectedUser.selectedUserPk = fetchedData.getHeroes()[sender.tag].heroPK
+            showSelectedUser.selectedUserName = fetchedData.getHeroes()[sender.tag].getFullName()
             if showFeedScreen != nil {
                 showSelectedUser.feedScreenType = showFeedScreen
             }
