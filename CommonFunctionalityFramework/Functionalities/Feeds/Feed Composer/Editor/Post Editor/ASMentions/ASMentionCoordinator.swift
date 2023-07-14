@@ -106,8 +106,8 @@ extension ASMentionCoordinator : UITextViewDelegate{
     
     func textViewDidChangeSelection(_ textView: UITextView) {
         print("<<<<<<<< changed selection")
-//        hideTagPickerIfRequired(textView: textView)
-//        delegate?.updateTagPickerFrame(textView)
+        hideTagPickerIfRequired(textView: textView)
+        delegate?.updateTagPickerFrame(textView)
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -119,7 +119,7 @@ extension ASMentionCoordinator : UITextViewDelegate{
         let r = textView.selectedRange
         updateTextView()
         textView.selectedRange = NSMakeRange(r.location , 0)
-//        textUpdateListener?.textUpdated()
+        textUpdateListener?.textUpdated()
         self.showTagPickerIfRequired(textView: textView)
     }
     
