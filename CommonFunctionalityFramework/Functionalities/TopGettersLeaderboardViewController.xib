@@ -78,7 +78,7 @@
                                 <constraint firstItem="7ox-c6-Y0Q" firstAttribute="leading" secondItem="0jQ-px-A0W" secondAttribute="leading" id="s1o-Gt-pl9"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recognition Heroes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffO-Jf-CdW">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recognition Heroes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="ffO-Jf-CdW">
                             <rect key="frame" x="16" y="52" width="382" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="Dr2-ps-rjO"/>

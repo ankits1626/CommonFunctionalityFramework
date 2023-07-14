@@ -71,7 +71,7 @@
                                                 <constraint firstAttribute="height" constant="32" id="pG0-zm-EYT"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Recognition Hero’s of this month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVX-X5-wsu">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Recognition Hero’s of this month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="mVX-X5-wsu">
                                             <rect key="frame" x="51" y="18.5" width="282" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="I1E-Gy-cMA"/>
