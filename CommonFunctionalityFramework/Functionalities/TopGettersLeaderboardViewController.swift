@@ -21,6 +21,9 @@ class TopGettersLeaderboardViewController: UIViewController {
     @IBOutlet weak var tableViewContainer : UIView?
     @IBOutlet weak var headerView : UIView?
     @IBOutlet weak var bottomContainerView : UIView?
+    @IBOutlet weak var recognitionTitleLabel : UILabel?
+    @IBOutlet weak var leaderboardInProgressLabel : UILabel?
+    @IBOutlet weak var leaderboardInProgressSubLabel : UILabel?
     @IBOutlet weak var emptyContainerView : UIView?
     var showFeedScreen : ShowSelectedUserTypeContainer!
     var themeManager : CFFThemeManagerProtocol?
@@ -46,6 +49,9 @@ class TopGettersLeaderboardViewController: UIViewController {
         self.view.backgroundColor = UIColor.getControlColor()
         self.tableViewContainer?.backgroundColor = UIColor.getControlColor()
         getTopGetters()
+        recognitionTitleLabel?.text = "Recognition Heroes".localized
+        leaderboardInProgressLabel?.text = "Leaderboard in progress".localized
+        leaderboardInProgressSubLabel?.text = "Earn recognitions and climb up the list".localized
     }
     
     

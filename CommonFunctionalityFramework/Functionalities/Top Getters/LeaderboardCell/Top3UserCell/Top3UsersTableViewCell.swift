@@ -40,6 +40,8 @@ class Top3UsersTableViewCell: UITableViewCell {
     @IBOutlet weak var userFullName2 : UILabel?
     @IBOutlet weak var userDepartment2 : UILabel?
     @IBOutlet weak var userReceivedAppreciation2 : UILabel?
+    @IBOutlet weak var leaderboardProgressLbl : UILabel?
+    @IBOutlet weak var leaderboardProgressSubLbl : UILabel?
     
     @IBOutlet weak var firstUserButton : UIButton?
     @IBOutlet weak var secondUserButton : UIButton?
@@ -75,6 +77,8 @@ class Top3UsersTableViewCell: UITableViewCell {
         firstUserButton?.tag = -1
         secondUserButton?.tag = -1
         thirdUserButton?.tag = -1
+        leaderboardProgressLbl?.text = "Leaderboard in progress".localized
+        leaderboardProgressSubLbl?.text = "Earn recognitions and climb up the list".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -25,6 +25,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet private weak var creationButtonView : UIView?
     @IBOutlet private weak var noRecordsLabel : UILabel?
     @IBOutlet private weak var topGettersContainerView : UIView?
+    @IBOutlet private weak var viewRecognitionLabel : UILabel?
     var selectedTabType = ""
     var searchText : String?
     var feedTypePk : Int = 0
@@ -90,6 +91,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
         feedCreateView?.backgroundColor = UIColor.getControlColor()
         self.creationButtonView?.isHidden = !isCreationButtonRequired
         self.noRecordsLabel?.text = "No Records Found!".localized
+        viewRecognitionLabel?.text = "View Recognition Hero’s of this month".localized
     }
     
     func setupView() {

@@ -14,6 +14,9 @@
                 <outlet property="bottomContainerView" destination="OvG-L7-9Q1" id="n2O-pP-NBn"/>
                 <outlet property="emptyContainerView" destination="ewP-dA-nKY" id="Rtz-7Z-JDL"/>
                 <outlet property="headerView" destination="Eqg-p7-WvU" id="w1m-yB-3Np"/>
+                <outlet property="leaderboardInProgressLabel" destination="bFo-g2-uxo" id="rQn-jT-u8u"/>
+                <outlet property="leaderboardInProgressSubLabel" destination="z0t-GA-vEt" id="XKT-EC-Zkc"/>
+                <outlet property="recognitionTitleLabel" destination="ffO-Jf-CdW" id="heb-1X-Wuz"/>
                 <outlet property="tableViewContainer" destination="qrO-60-sbh" id="DCz-z8-D1V"/>
                 <outlet property="topGettersTableView" destination="Gpl-bS-FHP" id="wm8-lJ-KRa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

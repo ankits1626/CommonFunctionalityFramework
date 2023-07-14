@@ -455,6 +455,8 @@
                 <outlet property="emptyContainerView" destination="7Ge-Hy-O6U" id="Q0H-q8-NIv"/>
                 <outlet property="firstUserBgColor" destination="4I2-2P-IVE" id="VUS-Gr-F7H"/>
                 <outlet property="firstUserButton" destination="BKB-PO-0N8" id="vb9-6O-Syp"/>
+                <outlet property="leaderboardProgressLbl" destination="cNy-dy-pbR" id="4DZ-QI-vyB"/>
+                <outlet property="leaderboardProgressSubLbl" destination="uxd-S7-Ic5" id="jcF-eQ-gVq"/>
                 <outlet property="secondUserBgColor" destination="evg-oQ-qzU" id="GBA-Zq-85Q"/>
                 <outlet property="secondUserButton" destination="SmF-gI-SU5" id="cLC-ho-2va"/>
                 <outlet property="thirdUserBgColor" destination="88E-Cs-BUa" id="Jz0-de-pa8"/>

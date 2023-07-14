@@ -25,13 +25,13 @@ protocol TopGettersFilterCoordinatorDelegate : AnyObject {
 
 class TopGettersFilterCoordinator {
     let recogitionOptions = [
-        TopGettersFilterOption(displayName: "Given", slug: "given"),
-        TopGettersFilterOption(displayName: "Received", slug: "received"),
+        TopGettersFilterOption(displayName: "Given".localized, slug: "given"),
+        TopGettersFilterOption(displayName: "Received".localized, slug: "received"),
     ]
     
     let heroOptions = [
-        TopGettersFilterOption(displayName: "Monthly", slug: "monthly"),
-        TopGettersFilterOption(displayName: "Overall", slug: "overall"),
+        TopGettersFilterOption(displayName: "Monthly".localized, slug: "monthly"),
+        TopGettersFilterOption(displayName: "Overall".localized, slug: "overall"),
     ]
     
     var selectedRecognitionOptionsIndex : [Int] = [1]
