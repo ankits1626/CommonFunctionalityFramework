@@ -267,6 +267,10 @@
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
+		BC5240722A6232DD00178F05 /* CommonDropDownPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5240702A6232DD00178F05 /* CommonDropDownPickerViewController.xib */; };
+		BC5240732A6232DD00178F05 /* CommonDropDownPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */; };
+		BC5240772A62334900178F05 /* BousLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5240752A62334800178F05 /* BousLanguageTableViewCell.xib */; };
+		BC5240782A62334900178F05 /* BousLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5240762A62334800178F05 /* BousLanguageTableViewCell.swift */; };
 		BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE202E9628A6788D0021E112 /* FeedEcard.storyboard */; };
 		BE2DDBC72898434F007E2FC0 /* MultipleImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2DDBC62898434E007E2FC0 /* MultipleImageFlowLayout.swift */; };
 		BE39BA4228A917E6004ADA9E /* PostPollTableViewCellCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39BA4128A917E6004ADA9E /* PostPollTableViewCellCordinator.swift */; };
@@ -643,6 +647,10 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		BC5240702A6232DD00178F05 /* CommonDropDownPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonDropDownPickerViewController.xib; sourceTree = "<group>"; };
+		BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDropDownPickerViewController.swift; sourceTree = "<group>"; };
+		BC5240752A62334800178F05 /* BousLanguageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BousLanguageTableViewCell.xib; sourceTree = "<group>"; };
+		BC5240762A62334800178F05 /* BousLanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BousLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		BE202E9628A6788D0021E112 /* FeedEcard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedEcard.storyboard; sourceTree = "<group>"; };
 		BE2DDBC62898434E007E2FC0 /* MultipleImageFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImageFlowLayout.swift; sourceTree = "<group>"; };
 		BE39BA4128A917E6004ADA9E /* PostPollTableViewCellCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPollTableViewCellCordinator.swift; sourceTree = "<group>"; };
@@ -1918,6 +1926,7 @@
 		98B90DEA240CAD010013E9D2 /* Functionalities */ = {
 			isa = PBXGroup;
 			children = (
+				BC52406F2A62329E00178F05 /* LanguagePicker */,
 				BEF402162820120F001B9D7E /* CommonFeeeds */,
 				98B90DEB240CAD010013E9D2 /* Feeds */,
 				9868C0812410B13A00B12321 /* DummyFeedProvider.swift */,
@@ -2158,6 +2167,25 @@
 				98F62691265787C50086B818 /* CFFLoadControl.swift */,
 			);
 			path = UILoadControl;
+			sourceTree = "<group>";
+		};
+		BC52406F2A62329E00178F05 /* LanguagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				BC5240742A62332500178F05 /* Custom Cell */,
+				BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */,
+				BC5240702A6232DD00178F05 /* CommonDropDownPickerViewController.xib */,
+			);
+			path = LanguagePicker;
+			sourceTree = "<group>";
+		};
+		BC5240742A62332500178F05 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BC5240762A62334800178F05 /* BousLanguageTableViewCell.swift */,
+				BC5240752A62334800178F05 /* BousLanguageTableViewCell.xib */,
+			);
+			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		BE048C3528C6226F008E9565 /* EditCommentDrawer */ = {
@@ -2520,6 +2548,7 @@
 				BEC2B25F26FD99A3008417C3 /* SingleImageTableViewCell.xib in Resources */,
 				BE39BA4F28A9260E004ADA9E /* PostPollTitleTableViewCell.xib in Resources */,
 				0F6021B12874162700D852BD /* CommentsTableViewCell.xib in Resources */,
+				BC5240722A6232DD00178F05 /* CommonDropDownPickerViewController.xib in Resources */,
 				0FB1635729B71117000AA631 /* AnniversaryDetailTableViewCell.xib in Resources */,
 				BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */,
 				BEC2B25B26FD992A008417C3 /* MultipleMediaTableViewCell.xib in Resources */,
@@ -2546,6 +2575,7 @@
 				BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */,
 				BEC2B28726FDA153008417C3 /* FeedsComposerDrawer.xib in Resources */,
 				BE500D8628229B5500423E5A /* CommonPressLikeButtonTableViewCell.xib in Resources */,
+				BC5240772A62334900178F05 /* BousLanguageTableViewCell.xib in Resources */,
 				BEC2B25726FD989D008417C3 /* FeedTitleTableViewCell.xib in Resources */,
 				BEC2B25526FD982D008417C3 /* FeedTopTableViewCell.xib in Resources */,
 				0F602181286EB7A700D852BD /* CommonFeeds.storyboard in Resources */,
@@ -2680,6 +2710,7 @@
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
+				BC5240732A6232DD00178F05 /* CommonDropDownPickerViewController.swift in Sources */,
 				0F32906628895F4F008BF09D /* BOUSReactionListWorker.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				983500F6241A0041009084D4 /* EditorContainerProtocol.swift in Sources */,
@@ -2765,6 +2796,7 @@
 				0F602221287E7EDC00D852BD /* BOUSApprovalDetailViewController.swift in Sources */,
 				0F32908128897B1B008BF09D /* BOUSMultipleImageTableViewCell.swift in Sources */,
 				0F32907A28897717008BF09D /* BOUSSingleImageTableViewCell.swift in Sources */,
+				BC5240782A62334900178F05 /* BousLanguageTableViewCell.swift in Sources */,
 				0FD47F412A25BCDD0096B30C /* AttachmentHandler.swift in Sources */,
 				9868C08D2410B56100B12321 /* FeedsDetailViewController.swift in Sources */,
 				9873D63824BAC0180041504C /* FeedGifTableViewCell.swift in Sources */,
