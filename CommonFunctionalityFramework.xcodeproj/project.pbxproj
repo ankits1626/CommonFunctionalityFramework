@@ -328,6 +328,7 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		AACA3328FDC7A631DA7FB7A3 /* Pods_CommonFunctionalityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonFunctionalityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC37F297288945D50075E7CB /* FeedOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisation.swift; sourceTree = "<group>"; };
 		BC37F299288945E10075E7CB /* FeedDepartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDepartment.swift; sourceTree = "<group>"; };
 		BC37F29B288947020075E7CB /* FeedOrganisationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrganisationDataManager.swift; sourceTree = "<group>"; };
@@ -425,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				980D121E2614295F00995F41 /* RewardzCommonComponents.framework */,
+				AACA3328FDC7A631DA7FB7A3 /* Pods_CommonFunctionalityFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
