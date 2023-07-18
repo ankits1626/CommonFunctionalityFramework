@@ -56,7 +56,10 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
             themeManager: themeManager,
             selectedOptionMapper: pollSelectedAnswerMapper,
             selectedTab: selectedTab,
-            _isPostPoll: isPostPollType, mainAppCoordinator: mainAppCoordinator, canDownload: can_download, isDesklessEnabled: isDesklessEnabled
+            _isPostPoll: isPostPollType,
+            mainAppCoordinator: mainAppCoordinator,
+            canDownload: can_download,
+            isDesklessEnabled: isDesklessEnabled
         )
     }()
     var pollSelectedAnswerMapper: SelectedPollAnswerMapper?

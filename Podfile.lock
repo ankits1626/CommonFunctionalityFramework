@@ -18,6 +18,9 @@ PODS:
   - Reactions (3.0.0)
   - RewardzCommonComponents (0.0.6):
     - KUIPopOver (= 1.1.2)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
   - SimpleCheckbox (2.1.0)
 
 DEPENDENCIES:
@@ -29,6 +32,7 @@ DEPENDENCIES:
   - Loaf
   - Reactions (~> 3.0.0)
   - RewardzCommonComponents (from `https://github.com/ankits1626/RewardzCommonComponents.git`, branch `dev`)
+  - SDWebImage (= 5.1.0)
   - SimpleCheckbox
 
 SPEC REPOS:
@@ -40,6 +44,7 @@ SPEC REPOS:
     - libwebp
     - Loaf
     - Reactions
+    - SDWebImage
     - SimpleCheckbox
 
 EXTERNAL SOURCES:
@@ -68,8 +73,9 @@ SPEC CHECKSUMS:
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
   Reactions: 4994c6bb3e7c6b75756a0b26a4d4f5bde1a47dc7
   RewardzCommonComponents: c279b08e35926d5c8685a00185fb7f85d986407b
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: e5cb8d37880ee88d75f193988584dde246c46863
+PODFILE CHECKSUM: 8febfb4bc5e4488ad7e4562849785124b7e09d7c
 
 COCOAPODS: 1.11.3

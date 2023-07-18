@@ -74,7 +74,11 @@ extension CommonDropDownPickerViewController : UITableViewDelegate, UITableViewD
         cell.titleLabel?.text = languages.title
 //        get_backgroundColor()
         let borderColor = languages.slug == self.selectedSlug ? "#0066ff"  : "#EDF0FF"
-        cell.languageconatiner?.curvedUIBorderedControl(borderColor: Rgbconverter.HexToColor(borderColor), borderWidth: 1.0, cornerRadius: 8.0)
+        cell.languageconatiner?.curvedUIBorderedControl(
+            borderColor: .getControlColor(), // Rgbconverter.HexToColor(borderColor),
+            borderWidth: 1.0,
+            cornerRadius: 8.0
+        )
         cell.languageconatiner?.backgroundColor = languages.slug == self.selectedSlug ? Rgbconverter.HexToColor("#F5F8FF") : .white
         return cell
     }
