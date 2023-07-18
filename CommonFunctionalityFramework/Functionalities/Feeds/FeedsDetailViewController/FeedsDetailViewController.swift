@@ -340,6 +340,9 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     
     func removeAttachedECard() {
     }
+    
+    func triggerAmplify() {
+    }
 }
 
 extension FeedsDetailViewController : FeedsDetailCommentsProviderProtocol{
