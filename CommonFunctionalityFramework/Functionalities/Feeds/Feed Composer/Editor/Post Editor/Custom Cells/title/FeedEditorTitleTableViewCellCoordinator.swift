@@ -44,11 +44,16 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         if let cell = inputModel.targetCell as? FeedEditorTitleTableViewCell{
             cell.selectionStyle = .none
             cell.titleText?.delegate = self
+            cell.amplifyButton?.isHidden = true
             switch post!.postType {
             case .Poll:
                 cell.titleText?.placeholder = "Write Your Question".localized
                 max_title_length = POLL_MAX_CHARACTER_LENGTH
                 cell.maxCharacterLabel?.isHidden = false
+                cell.amplifyButton?.isHidden = false
+                cell.amplifyButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+                    self?.delegate?.triggerAmplify()
+                })
             case .Post:
                 cell.titleText?.placeholder = "Title".localized
                 cell.titleText?.font = .Title1

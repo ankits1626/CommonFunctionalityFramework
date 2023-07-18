@@ -723,7 +723,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     }
     
     func reloadTextViewContainingRow(indexpath: IndexPath) {
-        print("<< reload text view \(indexpath)")
+        print("<< PostEditorViewController reload text view \(indexpath)")
         UIView.setAnimationsEnabled(false)
         postEditorTable?.beginUpdates()
         postEditorTable?.endUpdates()
@@ -736,7 +736,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
             let caretPosition = textView.caretRect(for: confirmedTextViewCursorPosition)
             var textViewActualPosition = textView.convert(caretPosition, to: postEditorTable)
             textViewActualPosition.size.height +=  textViewActualPosition.size.height/2
-            print( "<<<<<<<<< sroll \(textViewActualPosition)")
+            print( "<<<<<<<<< PostEditorViewController scroll \(textViewActualPosition)")
             postEditorTable?.scrollRectToVisible(textViewActualPosition, animated: false)
             updateTagPickerFrame(textView)
             tagPicker?.updateShadow()
@@ -772,6 +772,10 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     
     func dismissUserListForTagging(completion :(() -> Void)){
         tagPicker?.dismissTagSelector(completion)
+    }
+    
+    func triggerAmplify() {
+        debugPrint("<<<<<<< trigger amplify")
     }
 }
 

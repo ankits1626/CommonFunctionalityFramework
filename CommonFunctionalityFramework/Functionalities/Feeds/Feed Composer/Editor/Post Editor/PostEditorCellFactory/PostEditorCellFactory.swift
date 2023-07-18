@@ -29,6 +29,7 @@ protocol PostEditorCellFactoryDelegate : AnyObject {
     func openECard()
     func removeAttachedECard()
     func numberOfRowsIncrement(number: Int)
+    func triggerAmplify()
 }
 
 struct PostEditorCellDequeueModel {

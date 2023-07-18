@@ -11,6 +11,8 @@ import UIKit
 class FeedEditorDescriptionTableViewCell: UITableViewCell,FeedsCustomCellProtcol {
     @IBOutlet weak var descriptionText : KMPlaceholderTextView?
     @IBOutlet weak var containerView : UIView?
+    @IBOutlet weak var amplifyButton : BlockButton?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
