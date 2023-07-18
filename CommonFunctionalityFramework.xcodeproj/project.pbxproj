@@ -271,6 +271,12 @@
 		BC5240732A6232DD00178F05 /* CommonDropDownPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */; };
 		BC5240772A62334900178F05 /* BousLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5240752A62334800178F05 /* BousLanguageTableViewCell.xib */; };
 		BC5240782A62334900178F05 /* BousLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5240762A62334800178F05 /* BousLanguageTableViewCell.swift */; };
+		BC5240BF2A6244FF00178F05 /* InpireMeErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5240BE2A6244FE00178F05 /* InpireMeErrorViewController.swift */; };
+		BC5240C12A6247EE00178F05 /* InpireMeErrorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5240C02A6247EE00178F05 /* InpireMeErrorView.storyboard */; };
+		BCC705242A62533E000413E3 /* InspireMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC705232A62533E000413E3 /* InspireMeViewController.swift */; };
+		BCC7052E2A625C93000413E3 /* InpiremeOptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7052D2A625C92000413E3 /* InpiremeOptionCollectionViewCell.swift */; };
+		BCC705302A625D55000413E3 /* InspireMeNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC7052F2A625D55000413E3 /* InspireMeNetworkHandler.swift */; };
+		BCC705342A6281E0000413E3 /* InspireMeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCC705332A6281E0000413E3 /* InspireMeView.storyboard */; };
 		BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE202E9628A6788D0021E112 /* FeedEcard.storyboard */; };
 		BE2DDBC72898434F007E2FC0 /* MultipleImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2DDBC62898434E007E2FC0 /* MultipleImageFlowLayout.swift */; };
 		BE39BA4228A917E6004ADA9E /* PostPollTableViewCellCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39BA4128A917E6004ADA9E /* PostPollTableViewCellCordinator.swift */; };
@@ -651,6 +657,12 @@
 		BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDropDownPickerViewController.swift; sourceTree = "<group>"; };
 		BC5240752A62334800178F05 /* BousLanguageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BousLanguageTableViewCell.xib; sourceTree = "<group>"; };
 		BC5240762A62334800178F05 /* BousLanguageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BousLanguageTableViewCell.swift; sourceTree = "<group>"; };
+		BC5240BE2A6244FE00178F05 /* InpireMeErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InpireMeErrorViewController.swift; sourceTree = "<group>"; };
+		BC5240C02A6247EE00178F05 /* InpireMeErrorView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InpireMeErrorView.storyboard; sourceTree = "<group>"; };
+		BCC705232A62533E000413E3 /* InspireMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspireMeViewController.swift; sourceTree = "<group>"; };
+		BCC7052D2A625C92000413E3 /* InpiremeOptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InpiremeOptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		BCC7052F2A625D55000413E3 /* InspireMeNetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspireMeNetworkHandler.swift; sourceTree = "<group>"; };
+		BCC705332A6281E0000413E3 /* InspireMeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InspireMeView.storyboard; sourceTree = "<group>"; };
 		BE202E9628A6788D0021E112 /* FeedEcard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedEcard.storyboard; sourceTree = "<group>"; };
 		BE2DDBC62898434E007E2FC0 /* MultipleImageFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImageFlowLayout.swift; sourceTree = "<group>"; };
 		BE39BA4128A917E6004ADA9E /* PostPollTableViewCellCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPollTableViewCellCordinator.swift; sourceTree = "<group>"; };
@@ -1926,6 +1938,7 @@
 		98B90DEA240CAD010013E9D2 /* Functionalities */ = {
 			isa = PBXGroup;
 			children = (
+				BC5240BD2A6244DB00178F05 /* Amplify */,
 				BC52406F2A62329E00178F05 /* LanguagePicker */,
 				BEF402162820120F001B9D7E /* CommonFeeeds */,
 				98B90DEB240CAD010013E9D2 /* Feeds */,
@@ -2186,6 +2199,19 @@
 				BC5240752A62334800178F05 /* BousLanguageTableViewCell.xib */,
 			);
 			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		BC5240BD2A6244DB00178F05 /* Amplify */ = {
+			isa = PBXGroup;
+			children = (
+				BC5240BE2A6244FE00178F05 /* InpireMeErrorViewController.swift */,
+				BCC7052F2A625D55000413E3 /* InspireMeNetworkHandler.swift */,
+				BC5240C02A6247EE00178F05 /* InpireMeErrorView.storyboard */,
+				BCC705232A62533E000413E3 /* InspireMeViewController.swift */,
+				BCC7052D2A625C92000413E3 /* InpiremeOptionCollectionViewCell.swift */,
+				BCC705332A6281E0000413E3 /* InspireMeView.storyboard */,
+			);
+			path = Amplify;
 			sourceTree = "<group>";
 		};
 		BE048C3528C6226F008E9565 /* EditCommentDrawer */ = {
@@ -2553,6 +2579,7 @@
 				BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */,
 				BEC2B25B26FD992A008417C3 /* MultipleMediaTableViewCell.xib in Resources */,
 				0F6021A3287414F800D852BD /* CommonFeedDescriptionTableViewCell.xib in Resources */,
+				BCC705342A6281E0000413E3 /* InspireMeView.storyboard in Resources */,
 				0FD47F432A25BCDD0096B30C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */,
 				BEC2B24F26FD9573008417C3 /* DropDownTableViewCell.xib in Resources */,
 				0FABE4EE2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.xib in Resources */,
@@ -2567,6 +2594,7 @@
 				0F32907B28897717008BF09D /* BOUSSingleImageTableViewCell.xib in Resources */,
 				BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */,
 				0FED7EFD288042F300D490BB /* BOUSFeedGrayDivider.xib in Resources */,
+				BC5240C12A6247EE00178F05 /* InpireMeErrorView.storyboard in Resources */,
 				BEC2B28926FDA1B4008417C3 /* FeedDetailHeader.xib in Resources */,
 				0FEB520E286C2BCA00BA8ACF /* ImageViewSectionCell.xib in Resources */,
 				0FABE5022A1DD29F00F5D855 /* PostPreviewViewController.xib in Resources */,
@@ -2660,6 +2688,7 @@
 				BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */,
 				0FABE5012A1DD29F00F5D855 /* PostPreviewSectionFactory.swift in Sources */,
 				BE514A1A28894BB4002EA271 /* GetBOUSNominationWorker.swift in Sources */,
+				BCC7052E2A625C93000413E3 /* InpiremeOptionCollectionViewCell.swift in Sources */,
 				BE66CCAF28A6540500C7CE83 /* SelectMediaTableViewCellCoordinator.swift in Sources */,
 				0F60218A28716A4A00D852BD /* CommonNominationCountCell.swift in Sources */,
 				BE500D7E2822960600423E5A /* CommonLikesSectionTableViewCell.swift in Sources */,
@@ -2688,6 +2717,7 @@
 				0FABE4ED2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.swift in Sources */,
 				0FA1A6012A1610EF00107B26 /* FeedOrganisationListManager.swift in Sources */,
 				0FB4AFD028BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift in Sources */,
+				BCC705242A62533E000413E3 /* InspireMeViewController.swift in Sources */,
 				BE94C30D282140AC00E323E1 /* CommonFeedContentCoordinatorProtocol.swift in Sources */,
 				0F94B75128883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift in Sources */,
 				BEAFDF2A29E541CF00C04FC4 /* TopHeroesModel.swift in Sources */,
@@ -2759,6 +2789,7 @@
 				9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */,
 				98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */,
 				987D0BAE2583DA58001A0F07 /* ASMentionSelectorViewController.swift in Sources */,
+				BCC705302A625D55000413E3 /* InspireMeNetworkHandler.swift in Sources */,
 				BE66CCC728A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift in Sources */,
 				987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */,
 				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
@@ -2864,6 +2895,7 @@
 				98C648A8241B89A5006689E9 /* PollOptionsTableViewCellCoordinator.swift in Sources */,
 				0F7AA81829D7F2B9006DF6FE /* DownloadFeedCertificateViewController.swift in Sources */,
 				BEAAD20626FB03060069C5C1 /* ItemsDropDown.swift in Sources */,
+				BC5240BF2A6244FF00178F05 /* InpireMeErrorViewController.swift in Sources */,
 				0FABE5072A1DD29F00F5D855 /* PostShareOptionTableViewCellCoordinator.swift in Sources */,
 				BE500D8528229B5500423E5A /* CommonPressLikeButtonTableViewCell.swift in Sources */,
 				9873D62924B808A40041504C /* ManagedGifs+RawRepresentable.swift in Sources */,
@@ -3068,7 +3100,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rewardz.-CommonFunctionalityFramework.CommonFunctionalityFramework";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rewardz.CommonFunctionalityFramework.CommonFunctionalityFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -3093,7 +3125,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rewardz.-CommonFunctionalityFramework.CommonFunctionalityFramework";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rewardz.CommonFunctionalityFramework.CommonFunctionalityFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
