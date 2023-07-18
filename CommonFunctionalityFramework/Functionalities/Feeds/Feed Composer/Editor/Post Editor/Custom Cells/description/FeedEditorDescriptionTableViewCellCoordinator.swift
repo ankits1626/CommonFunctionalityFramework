@@ -46,6 +46,9 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
             }
            
             cell.containerView?.clipsToBounds = true
+            cell.amplifyButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+                self?.delegate?.triggerAmplify()
+            })
         }
     }
     
