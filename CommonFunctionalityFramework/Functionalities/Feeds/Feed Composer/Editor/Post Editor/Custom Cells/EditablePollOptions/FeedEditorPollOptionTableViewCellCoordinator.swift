@@ -12,7 +12,7 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
     var delegate : PostEditorCellFactoryDelegate?
     var indexpathMaps = [Int : IndexPath]()
     private weak var targetTableView : UITableView?
-    private let MAX_CHARACTER_LENGTH = 25
+    private let MAX_CHARACTER_LENGTH = 100
     var numberOfRows:Int!
     
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
@@ -36,6 +36,7 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
             cell.descriptionText?.placeholder = targetIndexPath.row > 1 ? " \("+ Add Option".localized) \("(Optional)".localized)" : "\("+ Add Option".localized) \(targetIndexPath.row + 1)"
             numberOfRows = inputModel.targetTableView?.numberOfRows(inSection: 1)
             cell.descriptionText?.tag = targetIndexPath.item
+            cell.descriptionText?.text = inputModel.datasource.getTargetPost()?.pollOptions?[safe: targetIndexPath.row]
             cell.descriptionText?.placeholderFont = .Body2
             cell.descriptionText?.placeholderColor = UIColor.getPlaceholderTextColor()
             cell.maxCharacterLabel?.textColor = UIColor.getPlaceholderTextColor()
@@ -80,6 +81,9 @@ extension FeedEditorPollOptionTableViewCellCoordinator : UITextViewDelegate{
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text.isEmpty {
+                return true // Allow the deletion
+        }
         if text == "\n"{
             textView.resignFirstResponder()
             return false

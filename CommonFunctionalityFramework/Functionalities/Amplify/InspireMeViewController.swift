@@ -29,7 +29,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var loaderGif: UIImageView!
     @IBOutlet weak var regenerateBtn: UIButton!
-    public var userText = ""
+    public var inputModel : AmplifyRequestHelperProtocol!
     var aiMessage = ""
     public var delegate : InspireMeDelegate?
     @IBOutlet weak var blurImg: UIImageView!
@@ -44,7 +44,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     var useEmojiMessage = ""
     var selectedIndex : Int!
     var messageTone = ""
-    public var selectedCoreValue = ""
+   
     let margin: CGFloat = 10
     let defaultMessageTone = "One paragraph casual tone"
     var firstFetchedOriginalText = ""
@@ -78,7 +78,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
         self.holderView.layer.cornerRadius = 8.0
         loadGIF()
         showLoaderByHidingElements(shouldHide: true)
-        loadInspireMeText(userText: userText, messageTone: defaultMessageTone)
+        loadInspireMeText(userText: inputModel.getUserInputText(), messageTone: defaultMessageTone)
         self.selectedIndex = 0
         //self.drawToolTip(toolTipButton: useThisBtn, text: "Copied!")
         guard let collectionView = collectionVIew, let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
@@ -136,9 +136,9 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     func loadInspireMeText(userText: String, messageTone: String){
+        
         InspireMeFormWorker(networkRequestCoordinator: networkRequestCoordinator).getInspireMe(
-            coreValue: selectedCoreValue,
-            userText: userText,
+            model: inputModel,
             messageTone: messageTone,
             language: mainAppCoordinator.getLaguageNameFromSlug(currentlySelectedLanguageSlug)
         ) { (result) in
@@ -236,7 +236,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
         let dataValues = arrayHolder[indexPath.row]
         selectedIndex = indexPath.row
         messageTone = dataValues
-        let userStringORAiString = shouldUsefirstFetchedOriginalText ? firstFetchedOriginalText : userText
+        let userStringORAiString = shouldUsefirstFetchedOriginalText ? firstFetchedOriginalText : inputModel.getUserInputText()
         if dataValues == "Expressive" && !defaultMessage.isEmpty {
             self.inspireMeGeneratedTxtField.text = defaultMessage
             self.aiMessage = defaultMessage
