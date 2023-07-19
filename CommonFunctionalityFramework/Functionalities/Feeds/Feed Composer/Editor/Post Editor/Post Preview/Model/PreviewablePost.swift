@@ -127,17 +127,16 @@ class PreviewablePost : FeedsItemProtocol{
     
     func geteCardHeight() -> CGFloat {
         if let ecardImageUrl = editablePost.getNetworkPostableFormat()["ecardImageUrl"] as? String {
-            return CGFloat(FTImageSize.shared.getImageSizeFromImageURL(ecardImageUrl, perferdWidth: UIScreen.main.bounds.width).height)
+            return CGFloat(imageDimenssions(url: ecardImageUrl))
         }
         return 250
     }
     
     func getSingleImageHeight() -> CGFloat {
-        
         if let mediaList = mediaRepository?.getMediaListForPreview(editablePost){
             if mediaList.count == 1 {
-                if let imageUrl = mediaList[0].getCoverImageUrl() as? String{
-                    return CGFloat(FTImageSize.shared.getImageSizeFromImageURL(imageUrl, perferdWidth: UIScreen.main.bounds.width).height)
+                if let imageUrl = mediaList[0].getCoverImageUrl() as? String {
+                    return CGFloat(imageDimenssions(url: imageUrl))
                 }
             }
         }
@@ -146,13 +145,23 @@ class PreviewablePost : FeedsItemProtocol{
     
     func getGifImageHeight() -> CGFloat {
         if let gifUrl = editablePost.getNetworkPostableFormat()["gif"] as? String {
-            return CGFloat(FTImageSize.shared.getImageSizeFromImageURL(gifUrl, perferdWidth: UIScreen.main.bounds.width).height)
+            return CGFloat(imageDimenssions(url: gifUrl))
         }
         return 250
     }
     
     func getGreeting() -> GreetingAnniAndBday? {
         return nil
+    }
+    
+    func imageDimenssions(url: String) -> CGFloat{
+        if let imageSource = CGImageSourceCreateWithURL(URL(string: url)! as CFURL, nil) {
+            if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+                let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
+                return pixelHeight
+            }
+        }
+        return 0.0
     }
     
     var feedIdentifier: Int64
