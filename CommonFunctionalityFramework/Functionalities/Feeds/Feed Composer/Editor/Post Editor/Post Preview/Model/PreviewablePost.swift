@@ -8,6 +8,7 @@
 
 import Foundation
 import RewardzCommonComponents
+import UIKit
 
 
 
@@ -89,11 +90,11 @@ class PreviewablePost : FeedsItemProtocol{
     }
     
     func getGiphy() -> String? {
-        return ""
+        return editablePost.getNetworkPostableFormat()["gif"] as? String
     }
     
     func getEcardUrl() -> String? {
-        return ""
+        return editablePost.getNetworkPostableFormat()["ecardImageUrl"] as? String
     }
     
     func getStrengthData() -> NSDictionary {
@@ -109,7 +110,7 @@ class PreviewablePost : FeedsItemProtocol{
     }
     
     func getUserReactionType() -> Int {
-        return 0
+        return -1
     }
     
     func getReactionsData() -> NSArray? {
@@ -125,19 +126,42 @@ class PreviewablePost : FeedsItemProtocol{
     }
     
     func geteCardHeight() -> CGFloat {
-        return 0
+        if let ecardImageUrl = editablePost.getNetworkPostableFormat()["ecardImageUrl"] as? String {
+            return CGFloat(imageDimenssions(url: ecardImageUrl))
+        }
+        return 250
     }
     
     func getSingleImageHeight() -> CGFloat {
-        return 0
+        if let mediaList = mediaRepository?.getMediaListForPreview(editablePost){
+            if mediaList.count == 1 {
+                if let imageUrl = mediaList[0].getCoverImageUrl() as? String {
+                    return CGFloat(imageDimenssions(url: imageUrl))
+                }
+            }
+        }
+        return 250
     }
     
     func getGifImageHeight() -> CGFloat {
-        return 0
+        if let gifUrl = editablePost.getNetworkPostableFormat()["gif"] as? String {
+            return CGFloat(imageDimenssions(url: gifUrl))
+        }
+        return 250
     }
     
     func getGreeting() -> GreetingAnniAndBday? {
         return nil
+    }
+    
+    func imageDimenssions(url: String) -> CGFloat{
+        if let imageSource = CGImageSourceCreateWithURL(URL(string: url)! as CFURL, nil) {
+            if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary? {
+                let pixelHeight = imageProperties[kCGImagePropertyPixelHeight] as? CGFloat ?? 0.0
+                return pixelHeight
+            }
+        }
+        return 0.0
     }
     
     var feedIdentifier: Int64

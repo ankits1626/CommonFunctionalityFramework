@@ -125,6 +125,9 @@
 		0FB4AFD028BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB4AFCF28BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift */; };
 		0FB4AFD228BDDC220020008B /* BOUSAwardLevel1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB4AFD128BDDC220020008B /* BOUSAwardLevel1TableViewCell.swift */; };
 		0FB4AFD428BDDC390020008B /* BOUSAwardPendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB4AFD328BDDC390020008B /* BOUSAwardPendingTableViewCell.swift */; };
+		0FC40A312A650F6200B921BE /* eCardImageTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC40A2E2A650F6100B921BE /* eCardImageTableViewCellCoordinator.swift */; };
+		0FC40A322A650F6200B921BE /* eCardImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC40A2F2A650F6100B921BE /* eCardImageTableViewCell.xib */; };
+		0FC40A332A650F6200B921BE /* eCardImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC40A302A650F6200B921BE /* eCardImageTableViewCell.swift */; };
 		0FD47F3B2A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD47F292A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.swift */; };
 		0FD47F3C2A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD47F2A2A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.xib */; };
 		0FD47F3D2A25BCDD0096B30C /* ASChatBarAttachmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD47F2B2A25BCDD0096B30C /* ASChatBarAttachmentViewController.xib */; };
@@ -493,6 +496,9 @@
 		0FB4AFCF28BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardLevelNominationTableViewCell.swift; sourceTree = "<group>"; };
 		0FB4AFD128BDDC220020008B /* BOUSAwardLevel1TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardLevel1TableViewCell.swift; sourceTree = "<group>"; };
 		0FB4AFD328BDDC390020008B /* BOUSAwardPendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOUSAwardPendingTableViewCell.swift; sourceTree = "<group>"; };
+		0FC40A2E2A650F6100B921BE /* eCardImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eCardImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		0FC40A2F2A650F6100B921BE /* eCardImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = eCardImageTableViewCell.xib; sourceTree = "<group>"; };
+		0FC40A302A650F6200B921BE /* eCardImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eCardImageTableViewCell.swift; sourceTree = "<group>"; };
 		0FD47F292A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentAttachedDocumentCollectionViewCell.swift; sourceTree = "<group>"; };
 		0FD47F2A2A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComentAttachedDocumentCollectionViewCell.xib; sourceTree = "<group>"; };
 		0FD47F2B2A25BCDD0096B30C /* ASChatBarAttachmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASChatBarAttachmentViewController.xib; sourceTree = "<group>"; };
@@ -1130,6 +1136,16 @@
 				0FB1635C29B7159A000AA631 /* BOUSAnniversaryTableViewCellCoordinator.swift */,
 			);
 			path = "Anniversary Cell";
+			sourceTree = "<group>";
+		};
+		0FC40A2D2A650F5000B921BE /* eCardImage */ = {
+			isa = PBXGroup;
+			children = (
+				0FC40A302A650F6200B921BE /* eCardImageTableViewCell.swift */,
+				0FC40A2F2A650F6100B921BE /* eCardImageTableViewCell.xib */,
+				0FC40A2E2A650F6100B921BE /* eCardImageTableViewCellCoordinator.swift */,
+			);
+			path = eCardImage;
 			sourceTree = "<group>";
 		};
 		0FD47F242A25BCDD0096B30C /* ASChatBarView */ = {
@@ -1948,6 +1964,7 @@
 		98B90DED240CAD010013E9D2 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0FC40A2D2A650F5000B921BE /* eCardImage */,
 				0FB1635129B7110B000AA631 /* AnniversayCell */,
 				0F32907028897025008BF09D /* OutStandingCell */,
 				9868C00F240F774900B12321 /* Polls Cells */,
@@ -2477,6 +2494,7 @@
 			files = (
 				BEC2B25D26FD996F008417C3 /* SingleVideoTableViewCell.xib in Resources */,
 				0F3132632862D8470017B28C /* CommonOutastandingImageTableViewCell.xib in Resources */,
+				0FC40A322A650F6200B921BE /* eCardImageTableViewCell.xib in Resources */,
 				BEC2B25926FD98D8008417C3 /* FeedTextTableViewCell.xib in Resources */,
 				0F7AA81F29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.xib in Resources */,
 				BEC2B26F26FD9CE0008417C3 /* LikeListViewController.xib in Resources */,
@@ -2673,6 +2691,7 @@
 				987D0BA82583DA58001A0F07 /* ASMentionCoordinator.swift in Sources */,
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
+				0FC40A332A650F6200B921BE /* eCardImageTableViewCell.swift in Sources */,
 				BE94C30B28213F7D00E323E1 /* CommonFeedsSectionFactory.swift in Sources */,
 				9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */,
 				987D0BB22583DA58001A0F07 /* KeyboardService.swift in Sources */,
@@ -2700,6 +2719,7 @@
 				9872266824616BBE00809D7A /* ManagedPost+RawRepresentable.swift in Sources */,
 				0FD47F3E2A25BCDD0096B30C /* ASChatBarAttachmentViewController.swift in Sources */,
 				980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */,
+				0FC40A312A650F6200B921BE /* eCardImageTableViewCellCoordinator.swift in Sources */,
 				987D0BB42583DA58001A0F07 /* ASMentionPresenter.swift in Sources */,
 				0F9C4A7928B7A01C000A99A2 /* BOUSApprovalAwardViewController.swift in Sources */,
 				BE66CCB628A659F700C7CE83 /* SelectPostTypeTableCellCordinator.swift in Sources */,
