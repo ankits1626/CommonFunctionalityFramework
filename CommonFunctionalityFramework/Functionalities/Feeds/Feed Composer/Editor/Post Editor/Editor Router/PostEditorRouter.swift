@@ -107,6 +107,55 @@ class PostEditorRouter{
     func routeToMultiOrgPickerFromPreview(){
         initModel.baseNavigationController?.popViewController(animated: true)
     }
+    
+    func routeToAmplifyScreen(_ amplifyInputModel: AmplifyRequestHelperProtocol, delegate: InspireMeDelegate?){
+        let storyboard = UIStoryboard(
+            name: "InspireMeView",
+            bundle: Bundle(for: InspireMeViewController.self)
+        )
+        let vc = storyboard.instantiateViewController(withIdentifier: "InspireMeViewController") as! InspireMeViewController
+        vc.networkRequestCoordinator = initModel.requestCoordinator
+        vc.mainAppCoordinator = initModel.mainAppCoordinator
+        vc.themeManager = initModel.themeManager
+        vc.mediaCoordinator = initModel.mediaFetcher
+        vc.inputModel = amplifyInputModel
+        vc.delegate = delegate
+//        vc.userText = "test"
+        var topViewController = UIApplication.shared.keyWindow?.rootViewController
+        while topViewController?.presentedViewController != nil
+        {
+            topViewController = topViewController?.presentedViewController
+        }
+        topViewController?.present(vc, animated: false) {
+            debugPrint("<<<<<<<<<<, completed presenting inspire me")
+        }
+    }
+    
+    func routeToAmplifyErrorScreen(){
+        var storyboardVcIdentifier = "AmplifyPostErrorScreen"
+        var forExTextMessage : String?
+        switch (initModel.datasource?.getTargetPost()?.postType)!{
+        case .Poll:
+            storyboardVcIdentifier = "AmplifyPollErrorScreen"
+            forExTextMessage = "For example: choose your views on the new policy."
+        case .Post:
+            storyboardVcIdentifier = "AmplifyPostErrorScreen"
+            forExTextMessage = "For example: We have a new teammate, Jacob Floyd.  Call him Jacob. He is joining us on  June19."
+        case .Greeting:
+            storyboardVcIdentifier = "AmplifyPostErrorScreen"
+        }
+        let storyboard = UIStoryboard(
+            name: "InpireMeErrorView",
+            bundle: Bundle(for: InpireMeErrorViewController.self))
+        let vc = storyboard.instantiateViewController(withIdentifier: storyboardVcIdentifier) as! InpireMeErrorViewController
+        vc.forExTextMessage = forExTextMessage
+        var topViewController = UIApplication.shared.keyWindow?.rootViewController
+        while topViewController?.presentedViewController != nil
+        {
+            topViewController = topViewController?.presentedViewController
+        }
+        topViewController?.present(vc, animated: false, completion: nil)
+    }
 }
 
 
