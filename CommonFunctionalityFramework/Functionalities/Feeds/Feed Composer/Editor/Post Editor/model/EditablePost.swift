@@ -159,6 +159,10 @@ struct EditablePost : EditablePostProtocol{
             postDictionary["ecard"] = "\(unwrappedECard.pk)"
         }
         
+        if let unwrappedECardUrl = selectedEcardMediaItems{
+            postDictionary["ecardImageUrl"] = "\(unwrappedECardUrl.image)"
+        }
+        
         if let cardValue = currentEcardPK,
            cardValue > 0 {
             postDictionary["ecard"] = "\(cardValue)"
