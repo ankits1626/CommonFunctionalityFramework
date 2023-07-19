@@ -776,6 +776,35 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     
     func triggerAmplify() {
         debugPrint("<<<<<<< trigger amplify")
+        if let amplifyInputModel = postCoordinator.getAmplifyInputModel(){
+            router.routeToAmplifyScreen(amplifyInputModel, delegate: self)
+        }else{
+            router.routeToAmplifyErrorScreen()
+        }
+    }
+}
+
+extension PostEditorViewController : InspireMeDelegate{
+
+    
+    private func triggerAmplifyFeed(_ amplifyInputModel: AmplifyRequestHelperProtocol){
+        
+    }
+    
+    func aiText(userText: String){
+        postCoordinator.parseAmplifiedtext(userText) {[weak self] in
+            self?.updatePollOptionsAfterAmplifyIfRequired()
+        }
+        postEditorTable?.reloadData()
+    }
+    
+    private func updatePollOptionsAfterAmplifyIfRequired(){
+        if postCoordinator.postType == .Poll{
+            numberOfRows = postCoordinator.getCurrentPost().pollOptions?.count ?? 0
+            numberOfRows  = min(4, numberOfRows + 1) 
+            postEditorTable?.reloadData()
+//            numberOfRowsIncrement(number: numberOfRows + 1)
+        }
     }
 }
 

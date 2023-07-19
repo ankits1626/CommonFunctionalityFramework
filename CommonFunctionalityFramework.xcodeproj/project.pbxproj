@@ -267,6 +267,7 @@
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
+		BC4EE0C32A66CF680082A75F /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4EE0C22A66CF680082A75F /* AmplifyModels.swift */; };
 		BC5240722A6232DD00178F05 /* CommonDropDownPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5240702A6232DD00178F05 /* CommonDropDownPickerViewController.xib */; };
 		BC5240732A6232DD00178F05 /* CommonDropDownPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */; };
 		BC5240772A62334900178F05 /* BousLanguageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5240752A62334800178F05 /* BousLanguageTableViewCell.xib */; };
@@ -653,6 +654,7 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		BC4EE0C22A66CF680082A75F /* AmplifyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyModels.swift; sourceTree = "<group>"; };
 		BC5240702A6232DD00178F05 /* CommonDropDownPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonDropDownPickerViewController.xib; sourceTree = "<group>"; };
 		BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDropDownPickerViewController.swift; sourceTree = "<group>"; };
 		BC5240752A62334800178F05 /* BousLanguageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BousLanguageTableViewCell.xib; sourceTree = "<group>"; };
@@ -2182,6 +2184,14 @@
 			path = UILoadControl;
 			sourceTree = "<group>";
 		};
+		BC4EE0C42A66D25C0082A75F /* workers */ = {
+			isa = PBXGroup;
+			children = (
+				BCC7052F2A625D55000413E3 /* InspireMeNetworkHandler.swift */,
+			);
+			path = workers;
+			sourceTree = "<group>";
+		};
 		BC52406F2A62329E00178F05 /* LanguagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -2204,12 +2214,13 @@
 		BC5240BD2A6244DB00178F05 /* Amplify */ = {
 			isa = PBXGroup;
 			children = (
+				BC4EE0C42A66D25C0082A75F /* workers */,
 				BC5240BE2A6244FE00178F05 /* InpireMeErrorViewController.swift */,
-				BCC7052F2A625D55000413E3 /* InspireMeNetworkHandler.swift */,
 				BC5240C02A6247EE00178F05 /* InpireMeErrorView.storyboard */,
 				BCC705232A62533E000413E3 /* InspireMeViewController.swift */,
 				BCC7052D2A625C92000413E3 /* InpiremeOptionCollectionViewCell.swift */,
 				BCC705332A6281E0000413E3 /* InspireMeView.storyboard */,
+				BC4EE0C22A66CF680082A75F /* AmplifyModels.swift */,
 			);
 			path = Amplify;
 			sourceTree = "<group>";
@@ -2886,6 +2897,7 @@
 				BE500D8828229E2D00423E5A /* CommonLikesTableViewCellCoordinator.swift in Sources */,
 				980F5641245C03AB0093AFE7 /* Poll.swift in Sources */,
 				9830E849246323A100FEFC0F /* PostLikeListFetcher.swift in Sources */,
+				BC4EE0C32A66CF680082A75F /* AmplifyModels.swift in Sources */,
 				0F6021A52874150800D852BD /* CommonFeedDescriptionTableViewCell.swift in Sources */,
 				0F9C4A7728B79CE2000A99A2 /* ApprovalAwardCategoryWorker.swift in Sources */,
 				BEDA6B3728CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift in Sources */,

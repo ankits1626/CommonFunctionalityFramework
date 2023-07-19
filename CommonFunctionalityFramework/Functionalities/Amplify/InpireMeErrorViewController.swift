@@ -10,15 +10,16 @@ import UIKit
 
 public class InpireMeErrorViewController: UIViewController {
     
-    @IBOutlet public weak var blurImg: UIImageView!
-    @IBOutlet public weak var holderView: UIView!
-    @IBOutlet public weak var numberLbl1: UILabel!
-    @IBOutlet public weak var numberLbl2: UILabel!
-    @IBOutlet public weak var numberLbl3: UILabel!
-    @IBOutlet public weak var numberLbl4: UILabel!
-    @IBOutlet public weak var okBtn: UIButton!
-    @IBOutlet public weak var forExText: UITextView!
+    @IBOutlet private weak var blurImg: UIImageView!
+    @IBOutlet private weak var holderView: UIView!
+    @IBOutlet private weak var numberLbl1: UILabel?
+    @IBOutlet private weak var numberLbl2: UILabel?
+    @IBOutlet private weak var numberLbl3: UILabel?
+    @IBOutlet private weak var numberLbl4: UILabel?
+    @IBOutlet private weak var okBtn: UIButton?
+    @IBOutlet private weak var forExText: UITextView?
     
+    var forExTextMessage : String?
     public override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,16 +27,19 @@ public class InpireMeErrorViewController: UIViewController {
     }
 
     func setUpUI() {
-        self.numberLbl1.backgroundColor = UIColor.getControlColor()
-        self.numberLbl2.backgroundColor = UIColor.getControlColor()
-        self.numberLbl3.backgroundColor = UIColor.getControlColor()
-        self.numberLbl4.backgroundColor = UIColor.getControlColor()
-        self.okBtn.backgroundColor = .getControlColor()
+        self.numberLbl1?.backgroundColor = UIColor.getControlColor()
+        self.numberLbl2?.backgroundColor = UIColor.getControlColor()
+        self.numberLbl3?.backgroundColor = UIColor.getControlColor()
+        self.numberLbl4?.backgroundColor = UIColor.getControlColor()
+        self.okBtn?.backgroundColor = .getControlColor()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         blurImg.isUserInteractionEnabled = true
         blurImg.addGestureRecognizer(tapGestureRecognizer)
         self.holderView.layer.cornerRadius = 8.0
-        self.forExText.attributedText = attributedText(text: "For example: Sheila, thanks for catching that accounting error. Because of that, we saved 10 hours of work recovering from a bad invoice.", toMediumFont: "For example")
+        self.forExText?.attributedText = attributedText(
+            text: forExTextMessage ??  "For example: Sheila, thanks for catching that accounting error. Because of that, we saved 10 hours of work recovering from a bad invoice.",
+            toMediumFont: "For example"
+        )
     }
     
     func attributedText(text: String, toMediumFont: String) -> NSAttributedString {

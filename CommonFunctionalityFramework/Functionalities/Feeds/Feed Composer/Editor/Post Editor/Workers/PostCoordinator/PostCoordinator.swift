@@ -298,3 +298,74 @@ extension PostCoordinator{
         
     }
 }
+
+extension PostCoordinator {
+    private func getPollAmplifyInputModel() -> AmplifyRequestHelperProtocol?{
+        if let title = currentPost.title,
+           !title.isEmpty{
+            return PollAmplifyInputModel(userText: title)
+        }else{
+            return nil
+        }
+    }
+    
+    private func getPostAmplifyInputModel() -> AmplifyRequestHelperProtocol?{
+        if let description = currentPost.postDesciption,
+           !description.isEmpty{
+            return PostAmplifyInputModel(userText: currentPost.title ?? "", userInputText2: description)
+        }else{
+            return nil
+        }
+        
+    }
+    
+    private func getGreetingAmplifyInputModel() -> AmplifyRequestHelperProtocol?{
+        return nil
+    }
+    
+    func getAmplifyInputModel() -> AmplifyRequestHelperProtocol?{
+        switch postType{
+        case .Poll:
+            return getPollAmplifyInputModel()
+        case .Post:
+            return getPostAmplifyInputModel()
+        case .Greeting:
+            return getGreetingAmplifyInputModel()
+        }
+    }
+    
+    
+    private func parsePoll(_ amplifiedText: String){
+        let quotesRemoved = amplifiedText.replacingOccurrences(of: "\"", with: "")
+        let components = quotesRemoved.components(separatedBy: "#")
+        updatePostTitle(title: components.first)
+        let pollOptions = Array(components[1...]).prefix(4)
+        for (index , pollOption) in pollOptions.enumerated(){
+            if !pollOption.isEmpty{
+                savePostOption(index: index, option: pollOption)
+            }
+        }
+    }
+    
+    private func parsePost(_ amplifiedText: String){
+        let components = amplifiedText.components(separatedBy: "#")
+        updatePostTitle(title:components.count == 2 ? components.first : nil)
+        updatePostDescription(decription: components.count == 2 ? components[safe: 1] : components.first)
+    }
+    
+    private func parseGreeting(_ amplifiedText: String){
+        
+    }
+        
+    func parseAmplifiedtext(_ amplifiedText: String, completion: () -> Void){
+        switch postType{
+        case .Poll:
+            parsePoll(amplifiedText)
+            completion()
+        case .Post:
+            parsePost(amplifiedText)
+        case .Greeting:
+            parseGreeting(amplifiedText)
+        }
+    }
+}
