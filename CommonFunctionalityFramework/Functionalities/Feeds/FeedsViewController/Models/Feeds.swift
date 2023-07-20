@@ -260,19 +260,19 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             self.ecardImageHeight = defaultFeedImageHeight
             self.singleImageHeight = defaultFeedImageHeight
         }
-//
+        
         if let gifData = rawFeedDictionary["gif"] as? String, !gifData.isEmpty {
             self.gifImageHeight =  Float(FTImageSize.shared.getImageSizeFromImageURL(gifData, perferdWidth: UIScreen.main.bounds.width).height)
         }else {
             self.gifImageHeight = defaultFeedImageHeight
         }
-//
+
         if let likesCount = rawFeedDictionary["appreciation_count"] as? Int64{
             numberOfLikes = likesCount
         }else {
             numberOfLikes = 0
         }
-//
+
         if let reactionData = rawFeedDictionary["reaction_type"] as? NSArray{
             reactionTypeData = reactionData
         }else{

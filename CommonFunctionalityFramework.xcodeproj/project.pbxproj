@@ -150,7 +150,6 @@
 		0FED7EFF2880430100D490BB /* BOUSFeedGrayDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7EFE2880430100D490BB /* BOUSFeedGrayDivider.swift */; };
 		0FED7F012880438600D490BB /* BOUSGrayDividerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED7F002880438600D490BB /* BOUSGrayDividerCoordinator.swift */; };
 		0FF47D7429DBF2FB00767A42 /* FeedFetchDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF47D7329DBF2FB00767A42 /* FeedFetchDetailsWorker.swift */; };
-		4045BB162020140DF2960EDA /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709CFF4C44E33011CC7ED079 /* Pods_CommonFunctionalityFramework.framework */; };
 		980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 980D121E2614295F00995F41 /* RewardzCommonComponents.framework */; };
 		980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F5638245BFC680093AFE7 /* PollSubmitButtonCell.swift */; };
 		980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980F563C245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift */; };
@@ -321,7 +320,6 @@
 		BE6725292A58021900AEFFEB /* LeaderboardAdapterDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725152A58021900AEFFEB /* LeaderboardAdapterDatasource.swift */; };
 		BE67252A2A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725162A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift */; };
 		BE67252B2A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725172A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift */; };
-		BE67252C2A58021900AEFFEB /* LeaderboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725182A58021900AEFFEB /* LeaderboardModel.swift */; };
 		BE67252D2A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6725192A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift */; };
 		BE67252E2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67251A2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift */; };
 		BE67252F2A58021900AEFFEB /* LeaderboardCellAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67251C2A58021900AEFFEB /* LeaderboardCellAdapter.swift */; };
@@ -743,7 +741,6 @@
 		BE6725152A58021900AEFFEB /* LeaderboardAdapterDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardAdapterDatasource.swift; sourceTree = "<group>"; };
 		BE6725162A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellAdapterInputModel.swift; sourceTree = "<group>"; };
 		BE6725172A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellConfigurationInputModel.swift; sourceTree = "<group>"; };
-		BE6725182A58021900AEFFEB /* LeaderboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardModel.swift; sourceTree = "<group>"; };
 		BE6725192A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellConfigurationBaseInputModel.swift; sourceTree = "<group>"; };
 		BE67251A2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardConfigurationCellDequeueInputModel.swift; sourceTree = "<group>"; };
 		BE67251C2A58021900AEFFEB /* LeaderboardCellAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardCellAdapter.swift; sourceTree = "<group>"; };
@@ -849,7 +846,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */,
-				4045BB162020140DF2960EDA /* Pods_CommonFunctionalityFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2470,7 +2466,6 @@
 				BE6725152A58021900AEFFEB /* LeaderboardAdapterDatasource.swift */,
 				BE6725162A58021900AEFFEB /* LeaderboardCellAdapterInputModel.swift */,
 				BE6725172A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift */,
-				BE6725182A58021900AEFFEB /* LeaderboardModel.swift */,
 				BE6725192A58021900AEFFEB /* LeaderboardCellConfigurationBaseInputModel.swift */,
 				BE67251A2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift */,
 			);
@@ -3041,7 +3036,6 @@
 				987D0BA92583DA58001A0F07 /* ASMention+Extensions.swift in Sources */,
 				9868C03B240F9C3F00B12321 /* FeedTopTableViewCellCoordinator.swift in Sources */,
 				98C648BC241F8C99006689E9 /* FeedDetailHeader.swift in Sources */,
-				BE67252C2A58021900AEFFEB /* LeaderboardModel.swift in Sources */,
 				0FB1635F29B7159A000AA631 /* BOUSAnniversaryTableViewCellCoordinator.swift in Sources */,
 				0F602221287E7EDC00D852BD /* BOUSApprovalDetailViewController.swift in Sources */,
 				0F32908128897B1B008BF09D /* BOUSMultipleImageTableViewCell.swift in Sources */,
