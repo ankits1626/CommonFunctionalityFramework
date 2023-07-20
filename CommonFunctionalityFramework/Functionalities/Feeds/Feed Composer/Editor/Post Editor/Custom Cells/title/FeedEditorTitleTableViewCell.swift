@@ -12,6 +12,8 @@ class FeedEditorTitleTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var titleText : KMPlaceholderTextView?
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var maxCharacterLabel : UILabel?
+    @IBOutlet weak var amplifyButton : BlockButton?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

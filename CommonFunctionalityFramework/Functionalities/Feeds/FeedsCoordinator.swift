@@ -16,6 +16,9 @@ public protocol CFFMainAppInformationCoordinator : AnyObject {
     func getCurrenUserProfilePicUrl() -> String
     func getCurrentUserDepartment() -> String
     func getUserPK() -> Int
+    func getCurrentAppLanguage() -> String
+    func getAllAvailableLanguages() -> [LanguageOptionProtocol]
+    func getLaguageNameFromSlug(_ slug: String)  -> String
 }
 
 

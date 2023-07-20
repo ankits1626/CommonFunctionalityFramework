@@ -723,7 +723,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     }
     
     func reloadTextViewContainingRow(indexpath: IndexPath) {
-        print("<< reload text view \(indexpath)")
+        print("<< PostEditorViewController reload text view \(indexpath)")
         UIView.setAnimationsEnabled(false)
         postEditorTable?.beginUpdates()
         postEditorTable?.endUpdates()
@@ -736,7 +736,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
             let caretPosition = textView.caretRect(for: confirmedTextViewCursorPosition)
             var textViewActualPosition = textView.convert(caretPosition, to: postEditorTable)
             textViewActualPosition.size.height +=  textViewActualPosition.size.height/2
-            print( "<<<<<<<<< sroll \(textViewActualPosition)")
+            print( "<<<<<<<<< PostEditorViewController scroll \(textViewActualPosition)")
             postEditorTable?.scrollRectToVisible(textViewActualPosition, animated: false)
             updateTagPickerFrame(textView)
             tagPicker?.updateShadow()
@@ -772,6 +772,39 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     
     func dismissUserListForTagging(completion :(() -> Void)){
         tagPicker?.dismissTagSelector(completion)
+    }
+    
+    func triggerAmplify() {
+        debugPrint("<<<<<<< trigger amplify")
+        if let amplifyInputModel = postCoordinator.getAmplifyInputModel(){
+            router.routeToAmplifyScreen(amplifyInputModel, delegate: self)
+        }else{
+            router.routeToAmplifyErrorScreen()
+        }
+    }
+}
+
+extension PostEditorViewController : InspireMeDelegate{
+
+    
+    private func triggerAmplifyFeed(_ amplifyInputModel: AmplifyRequestHelperProtocol){
+        
+    }
+    
+    func aiText(userText: String){
+        postCoordinator.parseAmplifiedtext(userText) {[weak self] in
+            self?.updatePollOptionsAfterAmplifyIfRequired()
+        }
+        postEditorTable?.reloadData()
+    }
+    
+    private func updatePollOptionsAfterAmplifyIfRequired(){
+        if postCoordinator.postType == .Poll{
+            numberOfRows = postCoordinator.getCurrentPost().pollOptions?.count ?? 0
+            numberOfRows  = min(4, numberOfRows + 1) 
+            postEditorTable?.reloadData()
+//            numberOfRowsIncrement(number: numberOfRows + 1)
+        }
     }
 }
 
