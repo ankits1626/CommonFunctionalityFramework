@@ -26,5 +26,5 @@ struct EcardCategory: Decodable {
 struct EcardCategoryResponseValues : Decodable {
     let pk: Int
     let name: String
-    let organization: Int
+    let organization: Int?
 }
