@@ -78,6 +78,15 @@ enum FeedPostType : Int{
 }
 
 
+enum NewFeedPostType : Int{
+    case Post = 1
+    case Poll = 2
+    case Appreciation = 6
+    case Nomination = 7
+    case Greeting = 9
+}
+
+
 
 enum MediaCountState {
     case None

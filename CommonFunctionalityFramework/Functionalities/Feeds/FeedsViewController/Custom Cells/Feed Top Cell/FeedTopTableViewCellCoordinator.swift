@@ -125,13 +125,13 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
             cell.pinPostButton?.isHidden = true
             cell.containerView?.clipsToBounds = true
              if !inputModel.datasource!.shouldShowMenuOptionForFeed(){
-                cell.editFeedButton?.isHidden = true
+                cell.editFeedButton?.isHidden = (feed.getNewFeedType() == .Poll || feed.getNewFeedType() == .Post) ? true : !feed.isFeedReportAbuseAllowed()
             }else{
                 cell.editFeedButton?.layer.borderWidth = 1
                 cell.editFeedButton?.layer.masksToBounds = true
                 cell.editFeedButton?.layer.cornerRadius = 8
                 cell.editFeedButton?.layer.borderColor = #colorLiteral(red: 0.9294112921, green: 0.9411767125, blue: 0.9999989867, alpha: 1)
-                cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+                cell.editFeedButton?.isHidden = (feed.getNewFeedType() == .Poll || feed.getNewFeedType() == .Post) ?  !feed.isActionsAllowed() : !feed.isFeedReportAbuseAllowed()
             }
             if let unwrappedDelegate = inputModel.delegate{
                 cell.pinPostButton?.handleControlEvent(

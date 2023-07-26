@@ -2804,10 +2804,10 @@ nominations?</string>
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bug-LV-oSQ">
-                                                            <rect key="frame" x="60" y="41" width="64.5" height="16"/>
+                                                            <rect key="frame" x="60" y="41" width="68.5" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1h-7C-jLg">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="64.5" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="68.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                                     <color key="textColor" red="0.41176470590000003" green="0.41568627450000001" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -3002,22 +3002,22 @@ nominations?</string>
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="WyP-4E-k5G">
-                                                            <rect key="frame" x="60" y="31" width="178" height="16"/>
+                                                            <rect key="frame" x="60" y="31" width="186" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Jane Cooper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwr-EK-T1k">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="94" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="97.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                     <color key="textColor" red="0.41176470590000003" green="0.41568627450000001" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dot" translatesAutoresizingMaskIntoConstraints="NO" id="nX8-uw-zRv">
-                                                                    <rect key="frame" x="97" y="0.0" width="8" height="16"/>
+                                                                    <rect key="frame" x="100.5" y="0.0" width="8" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="8" id="xfh-At-iI4"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="February 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jI0-h7-lcW">
-                                                                    <rect key="frame" x="108" y="0.0" width="70" height="16"/>
+                                                                    <rect key="frame" x="111.5" y="0.0" width="74.5" height="16"/>
                                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
                                                                     <color key="textColor" red="0.41176470590000003" green="0.41568627450000001" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -3775,11 +3775,11 @@ nominations?</string>
     </scenes>
     <designables>
         <designable name="6c4-PV-ghr">
-            <size key="intrinsicContentSize" width="946" height="16.5"/>
+            <size key="intrinsicContentSize" width="1003" height="17"/>
         </designable>
         <designable name="Bgg-eN-g5z"/>
         <designable name="X0m-7V-LTP">
-            <size key="intrinsicContentSize" width="946" height="16.5"/>
+            <size key="intrinsicContentSize" width="1003" height="17"/>
         </designable>
     </designables>
     <resources>

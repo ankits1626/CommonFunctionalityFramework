@@ -36,7 +36,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         
         approvalsCountLbl.text = ""
         self.selectAllView.isHidden = true
-        self.selectAllViewHeightConstraint.constant = 60
+        self.selectAllViewHeightConstraint.constant = 80
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
         //self.selectAllBtn.setImage(UIImage(named: "small_icon_checkbox_unselected"), for: .normal)
@@ -217,7 +217,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     @IBAction func selectAllPressed(_ sender: Any) {
         if isSelectedAll {
             self.isSelectedAll = false
-            self.selectAllViewHeightConstraint.constant = 60
+            self.selectAllViewHeightConstraint.constant = 80
             self.approveBtn.isHidden = true
             self.rejectButton.isHidden = true
             if self.jsonDataValues.count > 1 {
@@ -296,7 +296,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     
     func popToVC() {
         self.isSelectedAll = false
-        self.selectAllViewHeightConstraint.constant = 60
+        self.selectAllViewHeightConstraint.constant = 80
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
         loadApprovalsList(isFromApproval: true)
@@ -304,7 +304,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     
     func popToApprovalsAndReload() {
         self.isSelectedAll = false
-        self.selectAllViewHeightConstraint.constant = 60
+        self.selectAllViewHeightConstraint.constant = 80
         self.approveBtn.isHidden = true
         self.rejectButton.isHidden = true
         loadApprovalsList(isFromApproval: true)

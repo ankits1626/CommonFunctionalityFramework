@@ -69,9 +69,9 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
             
             cell.dateLabel?.text = feed.getAppreciationCreationMonthDate()
             if !inputModel.datasource.shouldShowMenuOptionForFeed(){
-                cell.editFeedButton?.isHidden = true
+                cell.editFeedButton?.isHidden = (feed.getNewFeedType() == .Poll || feed.getNewFeedType() == .Post) ? true : !feed.isFeedReportAbuseAllowed()
             }else{
-                cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+                cell.editFeedButton?.isHidden = (feed.getNewFeedType() == .Poll || feed.getNewFeedType() == .Post) ?  !feed.isActionsAllowed() : !feed.isFeedReportAbuseAllowed()
             }
             
             cell.editFeedButton?.handleControlEvent(
