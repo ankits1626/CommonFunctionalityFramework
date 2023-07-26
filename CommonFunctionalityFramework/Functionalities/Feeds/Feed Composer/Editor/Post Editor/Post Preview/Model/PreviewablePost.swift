@@ -41,6 +41,10 @@ class PreviewableLocalMediaItem : MediaItemProtocol{
 
 
 class PreviewablePost : FeedsItemProtocol{
+    func getNewFeedType() -> NewFeedPostType {
+        return .Appreciation
+    }
+    
     func getOrganizationName() -> String? {
         return ""
     }

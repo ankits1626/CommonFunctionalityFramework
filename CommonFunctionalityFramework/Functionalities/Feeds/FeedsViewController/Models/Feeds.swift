@@ -53,6 +53,7 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func isLoggedUserAdmin() -> Bool
     func getStrengthData() -> NSDictionary
     func getPostType() -> FeedPostType
+    func getNewFeedType() -> NewFeedPostType 
     func getBadgesData() -> NSDictionary
     func getUserReactionType() -> Int
     func getReactionsData() -> NSArray?
@@ -505,6 +506,15 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             }
         }else{
             return .Appreciation
+        }
+    }
+    
+    func getNewFeedType() -> NewFeedPostType {
+        if let type = rawFeedDictionary["post_type"] as? Int,
+           let pollType = NewFeedPostType(rawValue: type){
+            return pollType
+        }else{
+            return .Nomination
         }
     }
     

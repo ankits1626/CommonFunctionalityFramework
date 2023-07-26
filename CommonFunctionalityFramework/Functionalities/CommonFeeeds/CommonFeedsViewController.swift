@@ -199,31 +199,13 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
                             }
                             
                             if let resultCount = resultData["count"] as? Int  {
-                                if resultCount == 0 && self?.selectedTabType == "given" {
-                                    self?.feedsTable?.isHidden = true
-                                    var emptyMessage : String!
-                                    emptyMessage = ""
-                                }else{
-                                    self?.feedsTable?.isHidden = false
-                                }
-                                
-                                if resultCount == 0 && self?.selectedTabType == "SearchFromHome" {
-                                    var emptyMessage : String!
-                                    emptyMessage = ""
-//                                    self?.emptyResultView.showEmptyMessageView(
-//                                        message: emptyMessage,
-//                                        parentView: self!.emptyViewContainer!,
-//                                        parentViewController: self!
-//                                    )
+                                if resultCount == 0 {
                                     self?.feedsTable?.isHidden = true
                                 }else{
                                     self?.feedsTable?.isHidden = false
-//                                    self?.emptyResultView.hideEmptyMessageView()
                                 }
                             }
-                            
                         }
-                        
                         if result.fetchedRawFeeds?.count == 0 {
                             self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                         }

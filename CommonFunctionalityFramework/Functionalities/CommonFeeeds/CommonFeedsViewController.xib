@@ -207,7 +207,7 @@
     </objects>
     <resources>
         <image name="black_MyFeed_Given_Empty" width="100" height="118"/>
-        <image name="cff_appreciationFeedIcon" width="14" height="15"/>
+        <image name="cff_appreciationFeedIcon" width="32" height="32"/>
         <image name="cff_appreciationTopGettersicon" width="32" height="34.5"/>
         <image name="cff_backgroundSparkle" width="343.5" height="54"/>
         <systemColor name="labelColor">
