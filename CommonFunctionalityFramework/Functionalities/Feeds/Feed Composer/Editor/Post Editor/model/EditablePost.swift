@@ -136,7 +136,8 @@ struct EditablePost : EditablePostProtocol{
         if let options = getCleanPollOptions(){
            pollDictionary["answers"] = options
         }
-        pollDictionary["shared_with"] = isShareWithSameDepartmentOnly ? PostSharedChoice.SelfDepartment.rawValue : PostSharedChoice.AllDepartment.rawValue
+        
+        pollDictionary["shared_with"] = postSharedChoice.rawValue
         pollDictionary["active_days"] = pollActiveDays
         return pollDictionary
     }
@@ -172,8 +173,12 @@ struct EditablePost : EditablePostProtocol{
             postDictionary["delete_image_ids"] = (deletedRemoteMediaArray.map{String($0)}).joined(separator: ",")
         }
         
-        postDictionary["shared_with"] = isShareWithSameDepartmentOnly ? PostSharedChoice.SelfDepartment.rawValue : PostSharedChoice.AllDepartment.rawValue
+        postDictionary["shared_with"] = postSharedChoice.rawValue
 
+        if let unwrappedSelectedOrgAndDepartment = selectedOrganisationsAndDepartments{
+            unwrappedSelectedOrgAndDepartment.getupdatePostDictionary(&postDictionary)
+        }
+        
         return postDictionary
     }
     
