@@ -68,6 +68,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     func setUpUI() {
+        yourMessageLbl.text = "Your message..... Amplified!".localized
         currentlySelectedLanguageSlug = mainAppCoordinator.getCurrentAppLanguage()
         self.useThisBtn.setTitle("Use".localized, for: .normal)
         self.regenerateBtn.setTitle("Regenerate".localized, for: .normal)
