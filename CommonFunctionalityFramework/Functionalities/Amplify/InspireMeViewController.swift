@@ -68,9 +68,10 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     func setUpUI() {
+        yourMessageLbl.text = "Your message..... Amplified!".localized
         currentlySelectedLanguageSlug = mainAppCoordinator.getCurrentAppLanguage()
-        self.useThisBtn.setTitle("Use", for: .normal)
-        self.regenerateBtn.setTitle("Regenerate", for: .normal)
+        self.useThisBtn.setTitle("Use".localized, for: .normal)
+        self.regenerateBtn.setTitle("Regenerate".localized, for: .normal)
 //        self.regenerateBtn.isHidden = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         blurImg.isUserInteractionEnabled = true
@@ -96,7 +97,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
         let arrayOfObjects = mainAppCoordinator.getAllAvailableLanguages()
         let matchedObject = arrayOfObjects.first { $0.slug == currentlySelectedLanguageSlug }!
         if currentlySelectedLanguageSlug == mainAppCoordinator.getCurrentAppLanguage(){
-            selectedLanguageLabel?.text = "\(matchedObject.title) (\("Default Address".localized))"
+            selectedLanguageLabel?.text = "\(matchedObject.title) (\("Default".localized))"
         }else{
             selectedLanguageLabel?.text = matchedObject.title
         }
@@ -157,9 +158,9 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                     }
                     self.collectionVIew.reloadData()
                 case .Failure(_):
-                    self.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.")
+                    self.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
                 case .SuccessWithNoResponseData:
-                    self.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.")
+                    self.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
                 }
             }
         }
@@ -217,7 +218,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! InpiremeOptionCollectionViewCell
         let dataValues = arrayHolder[indexPath.row]
-        cell.inspireMeOptionLbl.text = dataValues
+        cell.inspireMeOptionLbl.text = dataValues.localized
         cell.layer.cornerRadius = 8.0
         if selectedIndex == indexPath.row {
             cell.backgroundColor = UIColor.getControlColor()

@@ -19,10 +19,17 @@ public class InpireMeErrorViewController: UIViewController {
     @IBOutlet private weak var okBtn: UIButton?
     @IBOutlet private weak var forExText: UITextView?
     
+    @IBOutlet private weak var amplifyLabel: UILabel?
+    @IBOutlet private weak var howToAmplifyTextView: UITextView?
+    @IBOutlet private weak var step1TextView: UITextView?
+    @IBOutlet private weak var step2TextView: UITextView?
+    @IBOutlet private weak var step3TextView: UITextView?
+    @IBOutlet private weak var step4Label: UILabel?
+    @IBOutlet private weak var step4AmplifyLabel: UILabel?
+    
     var forExTextMessage : String?
     public override func viewDidLoad() {
         super.viewDidLoad()
-
         setUpUI()
     }
 
@@ -36,9 +43,17 @@ public class InpireMeErrorViewController: UIViewController {
         blurImg.isUserInteractionEnabled = true
         blurImg.addGestureRecognizer(tapGestureRecognizer)
         self.holderView.layer.cornerRadius = 8.0
+        amplifyLabel?.text = "Amplify".localized
+        howToAmplifyTextView?.text = "How to Amplify Your Message".localized
+        step1TextView?.text = "Select a Core Value".localized
+        step2TextView?.text = "Write exactly what you are thanking the recipient for. (e.g. catching an accounting error.)".localized
+        step3TextView?.text = "Write the positive outcome of their effort. (e.g. saved over 10 hours of recovering from a bad invoice.)".localized
+        step4Label?.text = "Then click on the button".localized
+        step4AmplifyLabel?.text = "Amplify".localized
+        okBtn?.setTitle("Okay".localized, for: .normal)
         self.forExText?.attributedText = attributedText(
-            text: forExTextMessage ??  "For example: Sheila, thanks for catching that accounting error. Because of that, we saved 10 hours of work recovering from a bad invoice.",
-            toMediumFont: "For example"
+            text: forExTextMessage ??  "For example: Sheila, thanks for catching that accounting error. Because of that, we saved 10 hours of work recovering from a bad invoice.".localized,
+            toMediumFont: "For example".localized
         )
     }
     

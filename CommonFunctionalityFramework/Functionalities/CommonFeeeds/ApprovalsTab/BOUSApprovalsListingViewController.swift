@@ -102,9 +102,9 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
             
             DispatchQueue.main.async {
                 if self.jsonDataValues.count > 1 {
-                    self.approvalsCountLbl.text = "\(self.jsonDataValues.count) Approvals Pending"
+                    self.approvalsCountLbl.text = "\(self.jsonDataValues.count) \("Approvals Pending".localized)"
                 }else {
-                    self.approvalsCountLbl.text = "\(self.jsonDataValues.count) Approval Pending"
+                    self.approvalsCountLbl.text = "\(self.jsonDataValues.count) \("Approval Pending".localized)"
                 }
                 
                 if self.searchText != nil {
