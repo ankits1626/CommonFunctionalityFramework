@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -285,14 +285,21 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="amplifyLabel" destination="Rwb-gh-ObC" id="cdJ-hM-4Ij"/>
                         <outlet property="blurImg" destination="sSC-8g-mFa" id="kQy-4X-OfO"/>
                         <outlet property="forExText" destination="Bhd-fG-xmm" id="knE-mT-Jsy"/>
                         <outlet property="holderView" destination="Lzk-jD-BxF" id="mo5-wv-1Iz"/>
+                        <outlet property="howToAmplifyTextView" destination="dKd-DC-Lpv" id="Km7-Wm-6NW"/>
                         <outlet property="numberLbl1" destination="2ce-As-reo" id="Cy1-wU-Y8M"/>
                         <outlet property="numberLbl2" destination="rVM-Qm-nQe" id="U2p-e0-xgO"/>
                         <outlet property="numberLbl3" destination="xep-f8-Ddm" id="5An-nP-NYJ"/>
                         <outlet property="numberLbl4" destination="aVt-uf-bmh" id="kcv-BM-FRg"/>
                         <outlet property="okBtn" destination="8Kl-wD-Zhs" id="j8V-Wb-q1n"/>
+                        <outlet property="step1TextView" destination="oWa-9S-lv1" id="doD-PT-Q5M"/>
+                        <outlet property="step2TextView" destination="fcA-7U-TKf" id="XaJ-1g-cWx"/>
+                        <outlet property="step3TextView" destination="GA8-Bx-QlS" id="nsH-7V-M1V"/>
+                        <outlet property="step4AmplifyLabel" destination="XSw-YV-qxG" id="0ld-cg-7cm"/>
+                        <outlet property="step4Label" destination="jlG-bS-Vde" id="vTb-48-SQP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRX-pJ-NCw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

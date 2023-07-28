@@ -34,6 +34,7 @@ public class CommonDropDownPickerViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         registerDropDownCell()
+        titleLabel.text = "Choose the Language".localized
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         viewConatinerView?.isUserInteractionEnabled = true
         viewConatinerView?.addGestureRecognizer(tapGestureRecognizer)
