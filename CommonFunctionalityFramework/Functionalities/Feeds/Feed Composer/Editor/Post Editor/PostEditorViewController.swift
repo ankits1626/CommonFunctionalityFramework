@@ -21,11 +21,11 @@ enum SharePostOption : Int{
     func displayableTitle() -> String{
         switch self {
         case .MyOrg:
-            return "My Org"
+            return "My Org".localized
         case .MyDepartment:
-            return "My Department"
+            return "My Department".localized
         case .MultiOrg:
-            return "Custom"
+            return "Custom".localized
         }
     }
     
@@ -183,6 +183,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        postToLabel?.text = "Post to".localized
         setup()
     }
     

@@ -36,9 +36,9 @@ class PostShareOptionTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
         switch datasource.getPostShareOption(){
             
         case .MyOrg:
-            cell.selectedOrgDepartmentLbl?.text = "My organisation"
+            cell.selectedOrgDepartmentLbl?.text = "My organisation".localized
         case .MyDepartment:
-            cell.selectedOrgDepartmentLbl?.text = "My department"
+            cell.selectedOrgDepartmentLbl?.text = "My department".localized
         case .MultiOrg:
             let displayable = datasource.getPostSharedWithOrgAndDepartment()!.displayables()[targetIndexpath.row]
             cell.selectedOrgDepartmentLbl?.text = displayable

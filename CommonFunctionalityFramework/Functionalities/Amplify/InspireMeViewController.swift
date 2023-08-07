@@ -25,6 +25,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var holderImg: UIImageView!
     @IBOutlet weak var inspireMeGeneratedTxtField: UITextView!
     @IBOutlet weak var yourMessageLbl: UILabel!
+    @IBOutlet weak var aspireMeLoadingText: UILabel?
     @IBOutlet weak var useThisBtn: UIButton!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var loaderGif: UIImageView!
@@ -72,6 +73,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
         currentlySelectedLanguageSlug = mainAppCoordinator.getCurrentAppLanguage()
         self.useThisBtn.setTitle("Use".localized, for: .normal)
         self.regenerateBtn.setTitle("Regenerate".localized, for: .normal)
+        aspireMeLoadingText?.text = "Amplifying message...".localized
 //        self.regenerateBtn.isHidden = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         blurImg.isUserInteractionEnabled = true

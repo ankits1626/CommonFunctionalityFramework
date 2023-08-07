@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -24,7 +24,7 @@
         <!--Inspire Me View Controller-->
         <scene sceneID="8Bq-Ed-sDd">
             <objects>
-                <viewController storyboardIdentifier="InspireMeViewController" id="zWI-yg-MV0" customClass="InspireMeViewController" customModule="AIA_Pride" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InspireMeViewController" id="zWI-yg-MV0" customClass="InspireMeViewController" customModule="CommonFunctionalityFramework" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="e2q-12-hgK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,7 +159,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="w9P-gc-bdW" customClass="InpiremeOptionCollectionViewCell" customModule="AIA_Pride" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="w9P-gc-bdW" customClass="InpiremeOptionCollectionViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="14" width="106" height="28"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nLF-nC-BwT">
@@ -314,6 +314,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="aspireMeLoadingText" destination="Cks-l2-fwO" id="Gga-nY-g1v"/>
                         <outlet property="blurImg" destination="lck-BK-k34" id="DyU-Hv-wgV"/>
                         <outlet property="changeLanguageContainer" destination="ps0-Ps-hDJ" id="vqo-wc-1si"/>
                         <outlet property="collectionVIew" destination="0W7-jt-K7r" id="cmQ-k6-eG4"/>
