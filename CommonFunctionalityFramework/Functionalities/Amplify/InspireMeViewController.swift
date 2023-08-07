@@ -14,6 +14,44 @@ public protocol InspireMeDelegate {
     func aiText(userText: String)
 }
 
+enum AmpliFyMessageTone : Int, CaseIterable{
+    case DEFAULT = 0
+    case Casual
+    case Formal
+    case Shorter
+    case Emoji
+    
+    func representation() -> String{
+        switch self {
+        case .DEFAULT:
+            return "Expressive"
+        case .Casual:
+            return "Casual"
+        case .Formal:
+            return "Formal"
+        case .Shorter:
+            return "Shorter"
+        case .Emoji:
+            return "Emoji"
+        }
+    }
+    
+    func getToneDetails() -> String{
+        switch self {
+        case .DEFAULT:
+            return "One paragraph casual tone"
+        case .Casual:
+            return "Casual"
+        case .Formal:
+            return "Formal"
+        case .Shorter:
+            return "Shorter"
+        case .Emoji:
+            return "Append a few relevant emojis to the end of the paragraph or within sentences to enhance the emotion of the message"
+        }
+    }
+}
+
 public class InspireMeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     public var themeManager: CFFThemeManagerProtocol!
@@ -36,15 +74,6 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var holderView: UIView!
     var label : ToolTip!
     var labelTransform : CGAffineTransform!
-    var arrayHolder = ["Expressive", "Casual", "Formal", "Shorter", "Use Emojis"]
-    var defaultMessage = ""
-    var casualMessage = ""
-    var formalMessage = ""
-    var shorterMessage = ""
-    var useEmojiMessage = ""
-    var selectedIndex : Int!
-    var messageTone = ""
-   
     let margin: CGFloat = 10
     let defaultMessageTone = "One paragraph casual tone"
     var firstFetchedOriginalText = ""
@@ -61,6 +90,10 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
         super.viewWillAppear(animated)
         debugPrint("<<<<<<<< InspireMeViewController launched")
     }
+    
+    private var editToneInputModel : AmplifyRequestHelperProtocol!
+    private var generatedMessageRepository = [AmpliFyMessageTone : String]()
+    private var currentMessageTone : AmpliFyMessageTone = .DEFAULT
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,9 +112,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
         self.holderView.layer.cornerRadius = 8.0
         loadGIF()
         showLoaderByHidingElements(shouldHide: true)
-        loadInspireMeText(userText: inputModel.getUserInputText(), messageTone: defaultMessageTone)
-        self.selectedIndex = 0
-        //self.drawToolTip(toolTipButton: useThisBtn, text: "Copied!")
+        loadInspireMeText(callAmplifyModel: inputModel)
         guard let collectionView = collectionVIew, let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         flowLayout.minimumInteritemSpacing = margin
         flowLayout.minimumLineSpacing = margin
@@ -140,54 +171,38 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
         }
     }
     
-    func loadInspireMeText(userText: String, messageTone: String){
+    private func loadInspireMeText(callAmplifyModel : AmplifyRequestHelperProtocol?){
         
         InspireMeFormWorker(networkRequestCoordinator: networkRequestCoordinator).getInspireMe(
-            model: inputModel,
-            messageTone: messageTone,
+            model: callAmplifyModel ?? inputModel,
             language: mainAppCoordinator.getLaguageNameFromSlug(currentlySelectedLanguageSlug)
-        ) { (result) in
+        ) { [weak self] (result) in
             DispatchQueue.main.async {
+                guard let unwrappedSelf = self else {
+                    return
+                }
                 switch result{
                 case .Success(result: let response):
-                    self.showLoaderByHidingElements(shouldHide: false)
+                    unwrappedSelf.showLoaderByHidingElements(shouldHide: false)
                     if let aiMessage = response["ai_message"] as? String {
-                        if self.firstMessageCount == 0 {
-                            self.firstFetchedOriginalText = aiMessage
-                            self.firstMessageCount = 1
+                        if unwrappedSelf.firstMessageCount == 0 {
+                            unwrappedSelf.firstFetchedOriginalText = aiMessage
+                            unwrappedSelf.firstMessageCount = 1
                         }
-                        self.storeLocalMessageGenerated(messageTone: messageTone, aiMessage: aiMessage)
-                        self.aiMessage = aiMessage
-                        self.inspireMeGeneratedTxtField.text = aiMessage
+                        unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = aiMessage
+                        unwrappedSelf.aiMessage = aiMessage
+                        unwrappedSelf.inspireMeGeneratedTxtField.text = aiMessage
                     }
-                    self.collectionVIew.reloadData()
+                    unwrappedSelf.collectionVIew.reloadData()
                 case .Failure(_):
-                    self.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
+                    unwrappedSelf.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
                 case .SuccessWithNoResponseData:
-                    self.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
+                    unwrappedSelf.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
                 }
             }
         }
     }
     
-    func storeLocalMessageGenerated(messageTone: String, aiMessage: String) {
-        if messageTone == defaultMessageTone {
-            defaultMessage = aiMessage
-        }
-            
-        if messageTone == "Casual" {
-            casualMessage = aiMessage
-        }
-        if messageTone == "Formal" {
-            formalMessage = aiMessage
-        }
-        if messageTone == "Shorter" {
-            shorterMessage = aiMessage
-        }
-        if messageTone == "Use Emojis" {
-            useEmojiMessage = aiMessage
-        }
-    }
     
     @IBAction func useThisBtnPressed(_ sender: Any) {
         //        commonToolTipDisplay(toolTipLbl: label, transformLbl: labelTransform, disableToolTip: label, disableTransformLbl: labelTransform)
@@ -197,34 +212,33 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     @IBAction func regenerateBtnPressed(_ sender: Any) {
-        // self.dismiss(animated: true)
+        
         shouldUsefirstFetchedOriginalText = true
-        casualMessage = ""
-        formalMessage = ""
-        shorterMessage = ""
-        useEmojiMessage = ""
-        let dataValues = arrayHolder[selectedIndex]
-        if dataValues == "Default" {
-            messageTone = dataValues
+        generatedMessageRepository = [AmpliFyMessageTone: String]()
+        if currentMessageTone == .DEFAULT{
             showLoaderByHidingElements(shouldHide: true)
-            loadInspireMeText(userText: firstFetchedOriginalText, messageTone: defaultMessageTone)
+            loadInspireMeText(callAmplifyModel: nil)
         }else {
-            messageTone = dataValues
             showLoaderByHidingElements(shouldHide: true)
-            loadInspireMeText(userText: firstFetchedOriginalText, messageTone: messageTone)
+            loadInspireMeText(
+                callAmplifyModel: EditToneAmplifyInputModel(
+                    firstFetchedOriginalText,
+                    messageTone: currentMessageTone.getToneDetails()
+                )
+            )
         }
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayHolder.count
+        return AmpliFyMessageTone.allCases.count //arrayHolder.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! InpiremeOptionCollectionViewCell
-        let dataValues = arrayHolder[indexPath.row]
-        cell.inspireMeOptionLbl.text = dataValues.localized
+        let messageTone = AmpliFyMessageTone.allCases[indexPath.row]
+        cell.inspireMeOptionLbl.text = messageTone.representation().localized //dataValues.localized
         cell.layer.cornerRadius = 8.0
-        if selectedIndex == indexPath.row {
+        if  currentMessageTone == messageTone {
             cell.backgroundColor = UIColor.getControlColor()
             cell.inspireMeOptionLbl.textColor = .white
         }else {
@@ -238,52 +252,23 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let dataValues = arrayHolder[indexPath.row]
-        selectedIndex = indexPath.row
-        messageTone = dataValues
+        currentMessageTone = AmpliFyMessageTone.allCases[indexPath.row]
         let userStringORAiString = shouldUsefirstFetchedOriginalText ? firstFetchedOriginalText : inputModel.getUserInputText()
-        if dataValues == "Expressive" && !defaultMessage.isEmpty {
-            self.inspireMeGeneratedTxtField.text = defaultMessage
-            self.aiMessage = defaultMessage
+        if let cachedMessage = generatedMessageRepository[currentMessageTone]{
+            self.inspireMeGeneratedTxtField.text = cachedMessage
+            self.aiMessage = cachedMessage
             self.collectionVIew.reloadData()
-        }else if dataValues == "Expressive" && defaultMessage.isEmpty {
-            loadInspireMeText(userText: userStringORAiString, messageTone: defaultMessageTone)
-            showLoaderByHidingElements(shouldHide: true)
-        }
-        
-        if dataValues == "Casual" && !casualMessage.isEmpty {
-            self.inspireMeGeneratedTxtField.text = casualMessage
-            self.aiMessage = casualMessage
-            self.collectionVIew.reloadData()
-        }else if dataValues == "Casual" && casualMessage.isEmpty {
-            loadInspireMeText(userText: userStringORAiString, messageTone: messageTone)
-            showLoaderByHidingElements(shouldHide: true)
-        }
-        
-        if dataValues == "Formal" && !formalMessage.isEmpty {
-            self.inspireMeGeneratedTxtField.text = formalMessage
-            self.aiMessage = formalMessage
-            self.collectionVIew.reloadData()
-        }else if dataValues == "Formal" && formalMessage.isEmpty {
-            loadInspireMeText(userText: userStringORAiString, messageTone: messageTone)
-            showLoaderByHidingElements(shouldHide: true)
-        }
-        
-        if dataValues == "Shorter" && !shorterMessage.isEmpty {
-            self.inspireMeGeneratedTxtField.text = shorterMessage
-            self.aiMessage = shorterMessage
-            self.collectionVIew.reloadData()
-        }else if dataValues == "Shorter" && shorterMessage.isEmpty {
-            loadInspireMeText(userText: userStringORAiString, messageTone: messageTone)
-            showLoaderByHidingElements(shouldHide: true)
-        }
-        
-        if dataValues == "Use Emojis" && !useEmojiMessage.isEmpty {
-            self.inspireMeGeneratedTxtField.text = useEmojiMessage
-            self.aiMessage = useEmojiMessage
-            self.collectionVIew.reloadData()
-        }else if dataValues == "Use Emojis" && useEmojiMessage.isEmpty {
-            loadInspireMeText(userText: userStringORAiString, messageTone: "Append a few relevant emojis to the end of the paragraph or within sentences to enhance the emotion of the message")
+        }else{
+            if currentMessageTone == .DEFAULT{
+                loadInspireMeText(callAmplifyModel: inputModel)
+            }else{
+                loadInspireMeText(
+                    callAmplifyModel: EditToneAmplifyInputModel(
+                        userStringORAiString,
+                        messageTone: currentMessageTone.getToneDetails()
+                    )
+                )
+            }
             showLoaderByHidingElements(shouldHide: true)
         }
     }

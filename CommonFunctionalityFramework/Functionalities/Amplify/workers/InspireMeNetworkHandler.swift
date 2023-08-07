@@ -18,11 +18,11 @@ class  InspireMeFormWorker  {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     
-    func getInspireMe(model: AmplifyRequestHelperProtocol, messageTone: String, language: String, completionHandler: @escaping InspireMeFormWorkerCompletionHandler) {
+    func getInspireMe(model: AmplifyRequestHelperProtocol, language: String, completionHandler: @escaping InspireMeFormWorkerCompletionHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
-                apiRequestProvider:  InspireMeFormWorkerRequestGenerator(model: model,
-                    messageTone: messageTone,
+                apiRequestProvider:  InspireMeFormWorkerRequestGenerator(
+                    model: model,
                     language: language,
                     networkRequestCoordinator: networkRequestCoordinator
                 ),
@@ -40,7 +40,6 @@ class  InspireMeFormWorker  {
 class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
-    var messageTone = ""
     var language = ""
     var model: AmplifyRequestHelperProtocol
 
@@ -49,9 +48,8 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     var productionInspireMeURL = "https://api.inspireme.ai/b2b/api/v1.1/lan/generate-ai"
 //    var productionInspireEditToneURL = "https://api.inspireme.ai/b2b/api/v1.1/lan/generate-ai/edit-employee-recognition-tone"
     
-    init(model: AmplifyRequestHelperProtocol, messageTone: String, language: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    init(model: AmplifyRequestHelperProtocol, language: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.model = model
-        self.messageTone = messageTone
         self.language = language
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
@@ -60,44 +58,24 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     var apiRequest: URLRequest?{
         get{
             let urlStr = String(format: "%@/%@", productionInspireMeURL, model.endPoint)
-            if messageTone == "One paragraph casual tone" {
-                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParamsForInspireMe(
-                    url:  URL(string: urlStr),
-                    method: .POST ,
-                    httpBodyDict: prepareHttpBodyDict() as NSDictionary
-                )
-                return req
-            } else {
-                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParamsForInspireMe(
-                    url:  URL(string: urlStr),
-                    method: .POST ,
-                    httpBodyDict: prepareMessageToneHttpBodyDict() as NSDictionary
-                )
-                return req
-            }
+            let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParamsForInspireMe(
+                url:  URL(string: urlStr),
+                method: .POST ,
+                httpBodyDict: prepareHttpBodyDict() as NSDictionary
+            )
+            return req
         }
     }
     
     private func prepareHttpBodyDict() -> NSDictionary{
         var mutableBodyDict = model.requestParamas //NSMutableDictionary()
-//        mutableBodyDict.setValue(coreValue, forKey: "companyCoreValue")
-        mutableBodyDict["messageTone"] = messageTone //.setValue(messageTone, forKey: "messageTone")
+        if mutableBodyDict["messageTone"] == nil{
+            mutableBodyDict["messageTone"] = "One paragraph casual tone"
+        }
         mutableBodyDict["language"] = language
-//        mutableBodyDict.setValue(userText, forKey: "userInputText")
-//        mutableBodyDict.setValue(language, forKey: "language")
         return NSDictionary(dictionary: mutableBodyDict)
     }
     
-    private func prepareMessageToneHttpBodyDict() -> NSDictionary{
-        var mutableBodyDict = model.requestParamas // NSMutableDictionary()
-        mutableBodyDict["messageTone"] = messageTone
-        mutableBodyDict["language"] = language
-//        mutableBodyDict["language"] = language
-//        mutableBodyDict.setValue(messageTone, forKey: "messageTone")
-//        mutableBodyDict.setValue(userText, forKey: "textToEdit")
-//        mutableBodyDict.setValue(language, forKey: "language")
-        return NSDictionary(dictionary: mutableBodyDict)
-    }
 }
 
 class InspireMeFormDataParser: DataParserProtocol {
