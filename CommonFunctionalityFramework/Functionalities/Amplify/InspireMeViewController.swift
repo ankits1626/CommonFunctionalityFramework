@@ -92,6 +92,10 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     public func setupLanguageSelectionView(){
+        /**
+         we have decided to hde language selection on amplify view
+         lets just keep it for a while and then emove it all together in future releases
+         */
         languageLabel?.text = "Language".localized
         languageLabel?.font = .sf16Bold
         let arrayOfObjects = mainAppCoordinator.getAllAvailableLanguages()
