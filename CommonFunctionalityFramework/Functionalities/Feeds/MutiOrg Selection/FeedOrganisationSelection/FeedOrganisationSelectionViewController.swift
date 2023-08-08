@@ -74,6 +74,7 @@ class FeedOrganisationSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupOnViewDidLoad()
+        proceedButton?.setTitle("PROCEED".localized, for: .normal)
     }
 
 }
@@ -100,6 +101,7 @@ extension FeedOrganisationSelectionViewController{
     private func setupTopInfoLabel(){
         topInfoLabel?.font = .Caption1
         topInfoLabel?.textColor = .black35
+        topInfoLabel?.text = "Select Organizations/Departments who can view your post".localized
     }
     
     private func configureSearchBar(){

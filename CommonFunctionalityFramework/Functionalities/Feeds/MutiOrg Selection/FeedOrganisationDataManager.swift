@@ -168,7 +168,7 @@ extension FeedOrganisationDataManager{
  
     func getSelectionDetails(_ organisation: FeedOrganisation) -> String?{
         if checkIfOrganisationIsSelected(organisation){
-            return "All departments selected"
+            return "All departments selected".localized
         }else{
             var filteredSelectedDepartments = [FeedDepartment]()
             for department in organisation.departments{
@@ -183,7 +183,7 @@ extension FeedOrganisationDataManager{
                     retval =  "\(firstDepartment.getDisplayName())"
                 }
                 if filteredSelectedDepartments.count > 1{
-                    retval = retval! + " + \(filteredSelectedDepartments.count - 1) selected"
+                    retval = retval! + " + \(filteredSelectedDepartments.count - 1) \("selected".localized)"
                 }
                 return retval
             }
