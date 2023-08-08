@@ -88,3 +88,27 @@ public struct PollAmplifyInputModel : AmplifyRequestHelperProtocol{
     }
 }
 
+public struct EditToneAmplifyInputModel : AmplifyRequestHelperProtocol{
+    public var endPoint: String{
+        return "edit-tone"
+    }
+    
+    public var requestParamas: [String : String]{
+        return [
+            "messageTone" : messageTone,
+            "textToEdit" : textToEdit
+        ]
+    }
+    
+    private var textToEdit : String
+    private var messageTone : String
+   
+    public init(_ textToEdit: String, messageTone: String) {
+        self.textToEdit = textToEdit
+        self.messageTone = messageTone
+    }
+    
+    public func getUserInputText() -> String{
+        return textToEdit
+    }
+}
