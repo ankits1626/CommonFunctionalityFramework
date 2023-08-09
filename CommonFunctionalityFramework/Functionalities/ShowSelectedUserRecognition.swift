@@ -48,7 +48,7 @@ class ShowSelectedUserRecognition: UIViewController{
         self.headerView?.backgroundColor = UIColor.getControlColor()
         self.view.backgroundColor = UIColor.getControlColor()
         setupContainerView()
-        feedScreenTitle?.text = "\(selectedUserName)'s \("Feed".localized)"
+        feedScreenTitle?.text = "\("feedPrefix".localized) \(selectedUserName)\("'".localized)\("s".localized) \("feedSuffix".localized)"
         self.recognitionSegmentView?.setTitle("Given".localized, forSegmentAt: 0)
         self.recognitionSegmentView?.setTitle("Received".localized, forSegmentAt: 1)
     }
