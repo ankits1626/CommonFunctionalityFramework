@@ -267,6 +267,10 @@
 		98DF76DA2433CEA100B9B8A1 /* PostImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */; };
 		98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */; };
 		98F62692265787C50086B818 /* CFFLoadControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F62691265787C50086B818 /* CFFLoadControl.swift */; };
+		BC4E6B9C2A91E1850023E99D /* JoyeAppInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E6B9B2A91E1850023E99D /* JoyeAppInterface.swift */; };
+		BC4E6B9F2A91E4F70023E99D /* AuthenticateJoySDKWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E6B9E2A91E4F70023E99D /* AuthenticateJoySDKWorker.swift */; };
+		BC4E6BA32A91FADA0023E99D /* JoyAppWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E6BA12A91FAD90023E99D /* JoyAppWebViewController.swift */; };
+		BC4E6BA42A91FADA0023E99D /* JoyAppWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC4E6BA22A91FAD90023E99D /* JoyAppWebViewController.xib */; };
 		BC4EE0C32A66CF680082A75F /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4EE0C22A66CF680082A75F /* AmplifyModels.swift */; };
 		BC5240722A6232DD00178F05 /* CommonDropDownPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5240702A6232DD00178F05 /* CommonDropDownPickerViewController.xib */; };
 		BC5240732A6232DD00178F05 /* CommonDropDownPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */; };
@@ -689,6 +693,10 @@
 		98DF76D92433CEA100B9B8A1 /* PostImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDataMapper.swift; sourceTree = "<group>"; };
 		98F056052462C1FD0000DEF0 /* FeedOrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedOrderManager.swift; sourceTree = "<group>"; };
 		98F62691265787C50086B818 /* CFFLoadControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFFLoadControl.swift; sourceTree = "<group>"; };
+		BC4E6B9B2A91E1850023E99D /* JoyeAppInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoyeAppInterface.swift; sourceTree = "<group>"; };
+		BC4E6B9E2A91E4F70023E99D /* AuthenticateJoySDKWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateJoySDKWorker.swift; sourceTree = "<group>"; };
+		BC4E6BA12A91FAD90023E99D /* JoyAppWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoyAppWebViewController.swift; sourceTree = "<group>"; };
+		BC4E6BA22A91FAD90023E99D /* JoyAppWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JoyAppWebViewController.xib; sourceTree = "<group>"; };
 		BC4EE0C22A66CF680082A75F /* AmplifyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyModels.swift; sourceTree = "<group>"; };
 		BC5240702A6232DD00178F05 /* CommonDropDownPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonDropDownPickerViewController.xib; sourceTree = "<group>"; };
 		BC5240712A6232DD00178F05 /* CommonDropDownPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDropDownPickerViewController.swift; sourceTree = "<group>"; };
@@ -2010,6 +2018,7 @@
 		98B90DEA240CAD010013E9D2 /* Functionalities */ = {
 			isa = PBXGroup;
 			children = (
+				BC4E6B9A2A91E1390023E99D /* Joye */,
 				BE6725052A5801E300AEFFEB /* Top Getters */,
 				BC5240BD2A6244DB00178F05 /* Amplify */,
 				BC52406F2A62329E00178F05 /* LanguagePicker */,
@@ -2257,6 +2266,33 @@
 				98F62691265787C50086B818 /* CFFLoadControl.swift */,
 			);
 			path = UILoadControl;
+			sourceTree = "<group>";
+		};
+		BC4E6B9A2A91E1390023E99D /* Joye */ = {
+			isa = PBXGroup;
+			children = (
+				BC4E6BA02A91FAB20023E99D /* JoyAppWebViewController */,
+				BC4E6B9D2A91E4E20023E99D /* worker */,
+				BC4E6B9B2A91E1850023E99D /* JoyeAppInterface.swift */,
+			);
+			path = Joye;
+			sourceTree = "<group>";
+		};
+		BC4E6B9D2A91E4E20023E99D /* worker */ = {
+			isa = PBXGroup;
+			children = (
+				BC4E6B9E2A91E4F70023E99D /* AuthenticateJoySDKWorker.swift */,
+			);
+			path = worker;
+			sourceTree = "<group>";
+		};
+		BC4E6BA02A91FAB20023E99D /* JoyAppWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC4E6BA12A91FAD90023E99D /* JoyAppWebViewController.swift */,
+				BC4E6BA22A91FAD90023E99D /* JoyAppWebViewController.xib */,
+			);
+			path = JoyAppWebViewController;
 			sourceTree = "<group>";
 		};
 		BC4EE0C42A66D25C0082A75F /* workers */ = {
@@ -2762,6 +2798,7 @@
 				BEC2B26D26FD9C27008417C3 /* LikedByTableViewCell.xib in Resources */,
 				BE6725352A58026C00AEFFEB /* TopGettersLeaderboardViewController.xib in Resources */,
 				BEC74DF62A5D61CF0074324B /* TopGettersSeparatorCollectionViewCell.xib in Resources */,
+				BC4E6BA42A91FADA0023E99D /* JoyAppWebViewController.xib in Resources */,
 				BEC2B27F26FD9FD1008417C3 /* FeedGifTableViewCell.xib in Resources */,
 				0F7AA81929D7F2B9006DF6FE /* DownloadFeedCertificateViewController.xib in Resources */,
 				BEC2B26126FD99DC008417C3 /* FeedBottomTableViewCell.xib in Resources */,
@@ -2949,6 +2986,7 @@
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
 				BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */,
 				0FED7F012880438600D490BB /* BOUSGrayDividerCoordinator.swift in Sources */,
+				BC4E6B9C2A91E1850023E99D /* JoyeAppInterface.swift in Sources */,
 				9868C0F62419489300B12321 /* ClappedByTableViewCell.swift in Sources */,
 				983500EE2419FDA0009084D4 /* PostEditorViewController.swift in Sources */,
 				BE67252E2A58021900AEFFEB /* LeaderboardConfigurationCellDequeueInputModel.swift in Sources */,
@@ -2970,6 +3008,7 @@
 				0FC40A332A650F6200B921BE /* eCardImageTableViewCell.swift in Sources */,
 				BE94C30B28213F7D00E323E1 /* CommonFeedsSectionFactory.swift in Sources */,
 				9820C10B243F618A00A6A30A /* FeedCommentsFetcher.swift in Sources */,
+				BC4E6BA32A91FADA0023E99D /* JoyAppWebViewController.swift in Sources */,
 				987D0BB22583DA58001A0F07 /* KeyboardService.swift in Sources */,
 				BEAAD1FE26FAE87B0069C5C1 /* PintoTopConfirmationDrawer.swift in Sources */,
 				9873D62224B6C5C00041504C /* GifCollectionViewCell.swift in Sources */,
@@ -3022,6 +3061,7 @@
 				0F7AA82B29D86859006DF6FE /* SaveCertificateNetworkHandler.swift in Sources */,
 				BEBFD1E428A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift in Sources */,
 				0F7AA81E29D7F81F006DF6FE /* MediaForCertificateDownloadCollectionViewCell.swift in Sources */,
+				BC4E6B9F2A91E4F70023E99D /* AuthenticateJoySDKWorker.swift in Sources */,
 				0F96194828E416F00003FE8D /* BOUSTwoImageTableViewCell.swift in Sources */,
 				987D0BAB2583DA58001A0F07 /* ASMentionText.swift in Sources */,
 				0FED7EF3287EEAFF00D490BB /* BOUSGetApprovalsListWorker.swift in Sources */,
