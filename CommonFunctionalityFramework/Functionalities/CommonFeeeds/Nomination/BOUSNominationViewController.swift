@@ -99,7 +99,12 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         
         cell.nominatedUserName.attributedText =  getCreatorName(text: "For".localized, userName: "\(dataValue.nomination.nominated_team_member.full_name)")
         cell.nominatedDate.text = getCreationDate(jsonData: dataValue)
-        cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
+        if let unwrappedUserStength = dataValue.nomination.user_strength {
+            cell.userStrengthTitle.text = "\(unwrappedUserStength.name)"
+        }else {
+            cell.userStrengthTitle.text = ""
+        }
+
         
         
         if let unwrappedText = dataValue.description as? String{

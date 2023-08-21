@@ -31,7 +31,7 @@ struct nomination : Decodable {
         case nominated_teamMember = "nominated_team_member"
     }
     let badges : badges
-    let user_strength : user_strength
+    let user_strength : user_strength?
     let nominated_team_member : nominated_teamMember
     let nom_status : String
     let nom_status_color : String?
