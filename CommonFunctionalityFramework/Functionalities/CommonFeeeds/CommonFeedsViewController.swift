@@ -341,12 +341,33 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
 extension CommonFeedsViewController : CommonFeedsDelegate{
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
-        print("show edit option")
+        var numberofElementsEnabled : CGFloat = 0.0
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
-            if feed.isFeedReportAbuseAllowed(){
-                self.showReportAbuseConfirmation(feedIdentifier)
+            let drawer = AppreciationBottomSheet(nibName: "AppreciationBottomSheet", bundle: Bundle(for: AppreciationBottomSheet.self))
+            drawer.bottomsheetdelegate = self
+            drawer.feedIdentifier = feedIdentifier
+
+            
+            if feed.isLoggedUserAdmin()  == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+
+            if feed.isFeedDeleteAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+            if feed.isFeedReportAbuseAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
             }
             
+            drawer.isDeleteFlagEnabled = feed.isFeedDeleteAllowed()
+            drawer.isreportAbusedEnabled = feed.isFeedReportAbuseAllowed()
+            do{
+                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+            }catch let error{
+                print("show error")
+                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                }
+            }
         }
     }
     
@@ -704,5 +725,15 @@ extension CommonFeedsViewController:  NSFetchedResultsControllerDelegate {
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         feedsTable?.endUpdates()
+    }
+}
+extension CommonFeedsViewController : AppreciationBottomSheetTypeProtocol {
+    func selectedFilterType(selectedType: AppreciationBottomSheetType, feedIdentifier: Int64) {
+        switch selectedType {
+        case .Delete:
+            self.showDeletePostConfirmation(feedIdentifier)
+        case .ReportAbuse:
+            self.showReportAbuseConfirmation(feedIdentifier)
+        }
     }
 }

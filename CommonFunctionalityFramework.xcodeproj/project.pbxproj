@@ -298,6 +298,8 @@
 		BE514A1A28894BB4002EA271 /* GetBOUSNominationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE514A1928894BB4002EA271 /* GetBOUSNominationWorker.swift */; };
 		BE54420D27F30BFF00CBF6D9 /* FeedsImageDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */; };
 		BE54420E27F30BFF00CBF6D9 /* FeedsImageDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */; };
+		BE5FA3752A9315EC008EE532 /* AppreciationBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5FA3732A9315EC008EE532 /* AppreciationBottomSheet.swift */; };
+		BE5FA3762A9315EC008EE532 /* AppreciationBottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5FA3742A9315EC008EE532 /* AppreciationBottomSheet.xib */; };
 		BE66CCAF28A6540500C7CE83 /* SelectMediaTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCAE28A6540500C7CE83 /* SelectMediaTableViewCellCoordinator.swift */; };
 		BE66CCB228A6543F00C7CE83 /* SelectPostMediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE66CCB028A6543F00C7CE83 /* SelectPostMediaTableViewCell.swift */; };
 		BE66CCB328A6543F00C7CE83 /* SelectPostMediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE66CCB128A6543F00C7CE83 /* SelectPostMediaTableViewCell.xib */; };
@@ -719,6 +721,8 @@
 		BE514A1928894BB4002EA271 /* GetBOUSNominationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBOUSNominationWorker.swift; sourceTree = "<group>"; };
 		BE54420B27F30BFF00CBF6D9 /* FeedsImageDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsImageDrawer.swift; sourceTree = "<group>"; };
 		BE54420C27F30BFF00CBF6D9 /* FeedsImageDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsImageDrawer.xib; sourceTree = "<group>"; };
+		BE5FA3732A9315EC008EE532 /* AppreciationBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppreciationBottomSheet.swift; sourceTree = "<group>"; };
+		BE5FA3742A9315EC008EE532 /* AppreciationBottomSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppreciationBottomSheet.xib; sourceTree = "<group>"; };
 		BE66CCAE28A6540500C7CE83 /* SelectMediaTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMediaTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		BE66CCB028A6543F00C7CE83 /* SelectPostMediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPostMediaTableViewCell.swift; sourceTree = "<group>"; };
 		BE66CCB128A6543F00C7CE83 /* SelectPostMediaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectPostMediaTableViewCell.xib; sourceTree = "<group>"; };
@@ -2644,6 +2648,8 @@
 				0F5BF69E289AA90300920224 /* BOUSFeedsDotPopUpViewController.swift */,
 				BEAFDF2C29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.swift */,
 				BEAFDF2D29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.xib */,
+				BE5FA3732A9315EC008EE532 /* AppreciationBottomSheet.swift */,
+				BE5FA3742A9315EC008EE532 /* AppreciationBottomSheet.xib */,
 			);
 			path = CommonFeeeds;
 			sourceTree = "<group>";
@@ -2785,6 +2791,7 @@
 				0F60218828716A3600D852BD /* CommonNominationCountCell.xib in Resources */,
 				0F32908228897B1B008BF09D /* BOUSMultipleImageTableViewCell.xib in Resources */,
 				BEC2B27D26FD9F83008417C3 /* FeedEditorPollOptionTableViewCell.xib in Resources */,
+				BE5FA3762A9315EC008EE532 /* AppreciationBottomSheet.xib in Resources */,
 				BEC2B28126FDA010008417C3 /* FeedEditorDescriptionTableViewCell.xib in Resources */,
 				BE6725212A58021900AEFFEB /* RemainingLeaderbaordTableViewCell.xib in Resources */,
 				BE66CCB328A6543F00C7CE83 /* SelectPostMediaTableViewCell.xib in Resources */,
@@ -3003,6 +3010,7 @@
 				BE66CCC728A673C100C7CE83 /* FeedEcardCategoryListCollectionViewCell.swift in Sources */,
 				987226802461806E00809D7A /* PollOptionsVotedTableViewCell.swift in Sources */,
 				BE6725312A58021900AEFFEB /* LeaderboardCellType.swift in Sources */,
+				BE5FA3752A9315EC008EE532 /* AppreciationBottomSheet.swift in Sources */,
 				98DF76D724338A7500B9B8A1 /* PostRequestBodyGenerator.swift in Sources */,
 				0FA1A67B2A1629CA00107B26 /* CommentDeleteWorker.swift in Sources */,
 				BE9E234A28AB92A700281F86 /* PostPollSelfBottomSheet.swift in Sources */,
