@@ -19,6 +19,13 @@ public protocol CFFMainAppInformationCoordinator : AnyObject {
     func getCurrentAppLanguage() -> String
     func getAllAvailableLanguages() -> [LanguageOptionProtocol]
     func getLaguageNameFromSlug(_ slug: String)  -> String
+    
+    //for joye app
+    func getJoyAppUrl() -> String
+    func saveJoyAppUrl(url:String)
+    func saveJoyAppUrlDate(timeStamp:Date)
+    func getJoyAppUrlDate() -> Date
+    func getJoyeAppRequestBody() -> [String : String]
 }
 
 
