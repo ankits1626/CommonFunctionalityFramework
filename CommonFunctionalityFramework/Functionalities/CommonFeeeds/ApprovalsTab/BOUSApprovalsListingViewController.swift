@@ -143,8 +143,10 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) points"        
         if let unwrappedUserStength = dataValue.nomination.user_strength {
             cell.userStrengthTitle.text = "\(unwrappedUserStength.name)"
+            cell.strengthHeightConstraints?.constant = 20
         }else {
             cell.userStrengthTitle.text = ""
+            cell.strengthHeightConstraints?.constant = 0
         }
 
         

@@ -20,6 +20,7 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
     @IBOutlet weak var awardLabel : UILabel?
     @IBOutlet weak var strengthLabel : UILabel?
     @IBOutlet weak var nominationMessage : ActiveLabel?
+    @IBOutlet weak var strengthHeightConstraints : NSLayoutConstraint?
     
     override func awakeFromNib() {
         super.awakeFromNib()

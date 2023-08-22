@@ -32,7 +32,8 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
             let feedNominationData = feed.getStrengthData()
             let bagesData = feed.getBadgesData()
             cell.strengthLabel?.text = feedNominationData["strengthName"] as? String ?? ""
-            if let unwrappedText = feedNominationData["strengthMessage"] as? String{
+            cell.strengthHeightConstraints?.constant = cell.strengthLabel?.text?.isEmpty ?? true ? 0 : 20
+            if let unwrappedText = feed.getFeedDescription(){
                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
                 ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
                     cell.nominationMessage?.text = nil
