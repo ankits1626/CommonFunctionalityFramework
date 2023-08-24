@@ -221,13 +221,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         postWithSameDepartmentContainer?.isHidden = editablePost?.remotePostId != nil
         setupMessageGuidenceContainer()
         setupCheckbox()
-        
-        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
-            self.postWithContainerView.isHidden = false
-            setupShareWithSegmentedControl()
-        }else {
-            self.postWithContainerView.isHidden = true
-        }
+        self.postWithContainerView.isHidden = false
+        setupShareWithSegmentedControl()
     }
     
     private func setupPostToLabel(){
@@ -259,7 +254,9 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         shareWithSegmentControl?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for:
                 .selected)
         shareWithSegmentControl?.selectedSegmentIndex = selectedIndex
-        updatePostButton()
+        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
+            updatePostButton()
+        }
     }
     
     private func setupMessageGuidenceContainer(){
@@ -840,7 +837,9 @@ extension PostEditorViewController : UITableViewDataSource, UITableViewDelegate{
 
 extension PostEditorViewController{
     @IBAction func segmentControlSelectionChanged(){
-        updatePostButton()
+        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
+            updatePostButton()
+        }
         if let selectedIndex = shareWithSegmentControl?.selectedSegmentIndex{
             let selectedSharePostOption = SharePostOption.getOption(selectedIndex)
             switch selectedSharePostOption {

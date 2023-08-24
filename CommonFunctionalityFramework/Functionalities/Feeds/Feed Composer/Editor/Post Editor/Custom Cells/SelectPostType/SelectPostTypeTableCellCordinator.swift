@@ -20,9 +20,9 @@ class SelectPostTypeTableCellCordinator: NSObject, PostEditorCellCoordinatorProt
         mainAppCoordinator = inputModel.mainAppCoordinator
         if let cell = inputModel.targetCell as? SelectPostTypeTableViewCell{
             cell.posttoDepartment?.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
-            if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
+//            if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
                 cell.containerView?.isHidden = true
-            }
+//            }
         }
     }
     
