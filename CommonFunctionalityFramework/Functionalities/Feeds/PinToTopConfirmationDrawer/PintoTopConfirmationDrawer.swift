@@ -78,14 +78,26 @@ class PintoTopConfirmationDrawer: UIViewController {
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
         closeLabel?.text = "Close".localized
-        if isAlreadyPinned {
-            titleLabel?.text = "Unpin the poll".localized
-            frequencyView?.alpha = 0
-            messageLabel?.text = "".localized
-        }else{
-            titleLabel?.text = "Pin this post to top".localized
-            frequencyView?.alpha = 1
-            messageLabel?.text = "".localized
+        if let unwrappedPoll = targetFeed?.getPoll(){
+              if isAlreadyPinned {
+                  titleLabel?.text = "Unpin the poll".localized
+                  frequencyView?.alpha = 0
+                  messageLabel?.text = "".localized
+              }else{
+                  titleLabel?.text = "Pin this poll to top".localized
+                  frequencyView?.alpha = 1
+                  messageLabel?.text = "".localized
+              }
+        }else {
+              if isAlreadyPinned {
+                  titleLabel?.text = "Unpin the post".localized
+                  frequencyView?.alpha = 0
+                  messageLabel?.text = "".localized
+              }else{
+                  titleLabel?.text = "Pin this post to top".localized
+                  frequencyView?.alpha = 1
+                  messageLabel?.text = "".localized
+              }
         }
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
