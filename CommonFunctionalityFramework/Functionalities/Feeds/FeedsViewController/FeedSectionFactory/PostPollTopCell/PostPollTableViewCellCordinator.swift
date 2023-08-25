@@ -91,11 +91,11 @@ class PostPollTableViewCellCordinator: FeedCellCoordinatorProtocol{
                     cell.pinImage?.isHidden = feed.isPinToPost() ? false : true
                     cell.pinImage.setImageColor(color: UIColor.getControlColor())
                     cell.containerView?.clipsToBounds = true
-                     if !inputModel.datasource.shouldShowMenuOptionForFeed(){
-                        cell.editFeedButton?.isHidden = true
-                    }else{
-                        cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
-                    }
+//                     if !inputModel.datasource.shouldShowMenuOptionForFeed(){
+//                        cell.editFeedButton?.isHidden = true
+//                    }else{
+//                        cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+//                    }
                     cell.editFeedButton?.handleControlEvent(
                         event: .touchUpInside,
                         buttonActionBlock: {
