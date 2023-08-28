@@ -10,6 +10,7 @@ import UIKit
 
 enum AppreciationBottomSheetType: String{
     case Delete = "Delete"
+    case DeleteWithPoints = "DeleteWithPoints"
     case ReportAbuse = "ReportAbuse"
 }
 
@@ -19,8 +20,10 @@ protocol AppreciationBottomSheetTypeProtocol {
 class AppreciationBottomSheet: UIViewController {
     
     @IBOutlet private weak var deleteButton : UIButton?
+    @IBOutlet private weak var deleteWithPointsButton : UIButton?
     @IBOutlet private weak var reportButton : UIButton?
     @IBOutlet private weak var deleteButtonView : UIView?
+    @IBOutlet private weak var deleteButtonWithPointsView : UIView?
     @IBOutlet private weak var reportButtonView : UIView?
     
     var feedIdentifier : Int64 = 0
@@ -73,6 +76,12 @@ extension AppreciationBottomSheet{
     @IBAction func deleteButtonPressed(){
         dismiss(animated: true) {
             self.bottomsheetdelegate?.selectedFilterType(selectedType: .Delete,feedIdentifier: self.feedIdentifier)
+        }
+    }
+    
+    @IBAction func deleteWithPointButtonPressed(){
+        dismiss(animated: true) {
+            self.bottomsheetdelegate?.selectedFilterType(selectedType: .DeleteWithPoints,feedIdentifier: self.feedIdentifier)
         }
     }
     

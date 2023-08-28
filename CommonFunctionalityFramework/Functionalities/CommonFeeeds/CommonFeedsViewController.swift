@@ -341,34 +341,40 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
 extension CommonFeedsViewController : CommonFeedsDelegate{
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
-        var numberofElementsEnabled : CGFloat = 0.0
+        print("show edit option")
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
-            let drawer = AppreciationBottomSheet(nibName: "AppreciationBottomSheet", bundle: Bundle(for: AppreciationBottomSheet.self))
-            drawer.bottomsheetdelegate = self
-            drawer.feedIdentifier = feedIdentifier
-
-            
-            if feed.isLoggedUserAdmin()  == true{
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }
-
-            if feed.isFeedDeleteAllowed() == true{
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }
-            if feed.isFeedReportAbuseAllowed() == true{
-                numberofElementsEnabled = numberofElementsEnabled + 1
-            }
-            
-            drawer.isDeleteFlagEnabled = feed.isFeedDeleteAllowed()
-            drawer.isreportAbusedEnabled = feed.isFeedReportAbuseAllowed()
-            do{
-                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
-            }catch let error{
-                print("show error")
-                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
-                }
+            if feed.isFeedReportAbuseAllowed(){
+                self.showReportAbuseConfirmation(feedIdentifier)
             }
         }
+        
+//        var numberofElementsEnabled : CGFloat = 0.0
+//        if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
+//            let drawer = AppreciationBottomSheet(nibName: "AppreciationBottomSheet", bundle: Bundle(for: AppreciationBottomSheet.self))
+//            drawer.bottomsheetdelegate = self
+//            drawer.feedIdentifier = feedIdentifier
+//
+//            if feed.isLoggedUserAdmin()  == true{
+//                numberofElementsEnabled = numberofElementsEnabled + 1
+//            }
+//
+//            if feed.isFeedDeleteAllowed() == true{
+//                numberofElementsEnabled = numberofElementsEnabled + 1
+//            }
+//            if feed.isFeedReportAbuseAllowed() == true{
+//                numberofElementsEnabled = numberofElementsEnabled + 1
+//            }
+//            
+//            drawer.isDeleteFlagEnabled = feed.isFeedDeleteAllowed()
+//            drawer.isreportAbusedEnabled = feed.isFeedReportAbuseAllowed()
+//            do{
+//                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+//            }catch let error{
+//                print("show error")
+//                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+//                }
+//            }
+//        }
     }
     
     func toggleLikeForComment(commentIdentifier: Int64) {
@@ -734,6 +740,8 @@ extension CommonFeedsViewController : AppreciationBottomSheetTypeProtocol {
             self.showDeletePostConfirmation(feedIdentifier)
         case .ReportAbuse:
             self.showReportAbuseConfirmation(feedIdentifier)
+        case .DeleteWithPoints:
+            self.showDeletePostConfirmation(feedIdentifier)
         }
     }
 }
