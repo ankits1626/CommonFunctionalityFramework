@@ -23,6 +23,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     @IBOutlet private weak var deleteButton : UIButton?
     @IBOutlet private weak var cancelButton : UIButton?
     weak var themeManager: CFFThemeManagerProtocol?
+    var isPostTypeAppreciation : Bool = false
     
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var deletePressedCompletion :(() -> Void)?
@@ -44,7 +45,7 @@ class DeletePostConfirmationDrawer: UIViewController {
                 messageLabel?.text = "Are you sure you want to delete the Poll?".localized
             case .Post:
                 titleLabel?.text = "Delete Post".localized
-                messageLabel?.text = "Are you sure you want to delete the Post?".localized
+                messageLabel?.text = !isPostTypeAppreciation ? "Are you sure you want to delete the Post?".localized : "Are you sure you want to delete the Post and revert the points?".localized
             case .Greeting:
                 break
             }

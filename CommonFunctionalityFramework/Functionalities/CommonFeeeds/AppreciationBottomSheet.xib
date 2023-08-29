@@ -95,7 +95,7 @@
                                         <constraint firstAttribute="height" constant="32" id="Olh-Cy-s28"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
-                                    <state key="normal" title="Delete Without Points">
+                                    <state key="normal" title="Delete With Points">
                                         <color key="titleColor" red="1" green="0.21960784310000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>

@@ -713,6 +713,7 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
     }
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
+        //need to discuss
         if isDesklessEnabled {
             if isPostPollType {
                 if targetFeedItem.isFeedReportAbuseAllowed(){
@@ -773,8 +774,31 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
                     }
                 }
             }else {
-                if targetFeedItem.isFeedReportAbuseAllowed(){
-                    self.showReportAbuseConfirmation(feedIdentifier)
+                var numberofElementsEnabled : CGFloat = 0.0
+                let drawer = AppreciationBottomSheet(nibName: "AppreciationBottomSheet", bundle: Bundle(for: AppreciationBottomSheet.self))
+                drawer.bottomsheetdelegate = self
+                drawer.feedIdentifier = feedIdentifier
+
+                if targetFeedItem.isLoggedUserAdmin()  == true{
+                    numberofElementsEnabled = numberofElementsEnabled + 1
+                }
+
+                if targetFeedItem.isFeedDeleteAllowed() == true{
+                    numberofElementsEnabled = numberofElementsEnabled + 1
+                }
+                if targetFeedItem.isFeedReportAbuseAllowed() == true{
+                    numberofElementsEnabled = numberofElementsEnabled + 1
+                }
+
+                drawer.isDeleteFlagEnabled = targetFeedItem.isFeedDeleteAllowed()
+                drawer.isreportAbusedEnabled = targetFeedItem.isFeedReportAbuseAllowed()
+                drawer.isAdminUser = targetFeedItem.isLoggedUserAdmin()
+                do{
+                    try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+                }catch let error{
+                    print("show error")
+                    ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                    }
                 }
             }
         }
@@ -806,17 +830,18 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
         ).editPost(feed: feed)
     }
     
-    private func showDeletePostConfirmation(_ feedIdentifier : Int64){
+    private func showDeletePostConfirmation(_ feedIdentifier : Int64, revertUserPoints : Bool){
         let deleteConfirmationDrawer = DeletePostConfirmationDrawer(
             nibName: "DeletePostConfirmationDrawer",
             bundle: Bundle(for: DeletePostConfirmationDrawer.self)
         )
         deleteConfirmationDrawer.themeManager = themeManager
         deleteConfirmationDrawer.targetFeed = targetFeedItem
+        deleteConfirmationDrawer.isPostTypeAppreciation = revertUserPoints
         deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
             print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")
             if let unwrappedSelf = self{
-                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier) { (result) in
+                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier, revertUserPoints: revertUserPoints) { (result) in
                     switch result{
                     case .Success(result: _):
                         DispatchQueue.main.async {[weak self] in
@@ -829,7 +854,11 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
                                             CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
                                             DispatchQueue.main.async {
                                                 ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in
-                                                    self?.feedCoordinatorDelegate.removeFeedDetail()
+                                                    if self?.showDisplayOptions == .Appreciation {
+                                                        self?.navigationController?.popViewController(animated: true)
+                                                    }else{
+                                                        self?.feedCoordinatorDelegate.removeFeedDetail()
+                                                    }
                                                 }
                                             }
                                         }
@@ -1031,9 +1060,21 @@ extension FeedsDetailViewController : Click3DotsByMeFilterTypeProtocol {
         case .Pin:
             self.pinToPost(feedIdentifier: feedIdentifier, isAlreadyPinned: isPostAlreadyPinned)
         case .Delete:
-            self.showDeletePostConfirmation(feedIdentifier)
+            self.showDeletePostConfirmation(feedIdentifier, revertUserPoints: false)
         case .ReportAbuse:
             self.showReportAbuseConfirmation(feedIdentifier)
+        }
+    }
+}
+extension FeedsDetailViewController : AppreciationBottomSheetTypeProtocol {
+    func selectedFilterType(selectedType: AppreciationBottomSheetType, feedIdentifier: Int64) {
+        switch selectedType {
+        case .Delete:
+            self.showDeletePostConfirmation(feedIdentifier, revertUserPoints: false)
+        case .ReportAbuse:
+            self.showReportAbuseConfirmation(feedIdentifier)
+        case .DeleteWithPoints:
+            self.showDeletePostConfirmation(feedIdentifier, revertUserPoints: true)
         }
     }
 }

@@ -17,10 +17,10 @@ class PostDeleteWorker  {
     init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func deletePost(_ feedIdentifier: Int64,completionHandler: @escaping PostDeleteWorkerResultHandler) {
+    func deletePost(_ feedIdentifier: Int64, revertUserPoints : Bool, completionHandler: @escaping PostDeleteWorkerResultHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
-                apiRequestProvider: PostDeleteRequestGenerator(feedIdentifier: feedIdentifier, networkRequestCoordinator: networkRequestCoordinator),
+                apiRequestProvider: PostDeleteRequestGenerator(feedIdentifier: feedIdentifier, networkRequestCoordinator: networkRequestCoordinator, _revertUserPoints: revertUserPoints),
                 dataParser: PostDeleteDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
             )
@@ -36,11 +36,13 @@ class PostDeleteRequestGenerator: APIRequestGeneratorProtocol  {
     var requestBuilder: APIRequestBuilderProtocol
     private let networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var feedIdentifier : Int64
-    init( feedIdentifier: Int64, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    var revertUserPoints : Bool
+    init( feedIdentifier: Int64, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, _revertUserPoints : Bool) {
         self.feedIdentifier = feedIdentifier
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
+        self.revertUserPoints = _revertUserPoints
     }
     var apiRequest: URLRequest?{
         get{
@@ -48,7 +50,7 @@ class PostDeleteRequestGenerator: APIRequestGeneratorProtocol  {
                 let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
                     url: URL(string: baseUrl + "feeds/api/posts/\(feedIdentifier)/"),
                     method: .DELETE,
-                    httpBodyDict: nil
+                    httpBodyDict: revertUserPoints == false ? nil :  ["revert_transaction" : true]
                 )
                 return req
             }
