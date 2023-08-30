@@ -22,6 +22,7 @@ class BOUSApprovalsListTableViewCell: UITableViewCell {
     @IBOutlet weak var awardType: UILabel!
     @IBOutlet weak var awardPoints: UILabel!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
+    @IBOutlet weak var strengthHeightConstraints : NSLayoutConstraint?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -131,7 +131,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! BOUSApprovalHeaderTableViewCell
             cell.backBtn?.addTarget (self, action: #selector(popVC(_:)), for: UIControl.Event.touchUpInside)
             if jsonDataValues != nil {
-                cell.titleLbl.text = jsonDataValues.nomination.user_strength.name
+                cell.titleLbl.text = jsonDataValues.nomination.user_strength?.name
                 cell.leftName.text = "\(jsonDataValues.nomination.nominated_team_member.full_name)"
                 cell.rightName.text = "\(jsonDataValues.created_by_user_info.full_name)"
                 cell.dateLbl.text =  getCreationDate(jsonDate: jsonDataValues.created_on)

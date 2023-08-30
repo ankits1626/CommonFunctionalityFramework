@@ -40,7 +40,7 @@ struct nominationKey : Decodable {
         case nominated_team_member = "nominated_team_member"
     }
     let badges : badge
-    let user_strength : userStrength
+    let user_strength : userStrength?
     let nominated_team_member : nominated_team_member
     let category : Int
 }
