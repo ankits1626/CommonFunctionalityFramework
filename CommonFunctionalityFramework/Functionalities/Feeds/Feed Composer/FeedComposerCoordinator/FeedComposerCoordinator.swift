@@ -50,7 +50,7 @@ class FeedComposerCoordinator {
             feedCoordinatorDelegate: feedCoordinatorDelegate
         )
         let feedTitle = type == .Poll ? "Poll" : "Post"
-        feedCoordinatorDelegate.showComposer(_composer: postEditor, postType: feedTitle) { topItem in
+        feedCoordinatorDelegate.showComposer(_composer: postEditor, postType: feedTitle, isFromEditor: editabalePost == nil ? false : true) { topItem in
             postEditor.containerTopBarModel = topItem
         }
     }

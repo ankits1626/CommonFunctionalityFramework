@@ -41,7 +41,8 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     
     var isTypeGreeting = false
     var greetingID  : Int = 0
-
+    var isFromUserProfile = false
+    
     @IBOutlet weak var emptyViewContainer : UIView?
     lazy private var emptyResultView: NoEntryViewController = {
         return NoEntryViewController(
@@ -191,7 +192,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
             }
         }else {
             FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-                nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk, isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
+                nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: isFromUserProfile ? "isFromUserPostPoll" : "postPoll", searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk, isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
                 DispatchQueue.main.async {
                     self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
