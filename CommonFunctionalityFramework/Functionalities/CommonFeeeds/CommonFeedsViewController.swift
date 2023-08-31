@@ -320,7 +320,7 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
             feedDetailVC.selectedTab = selectedTabType
             feedDetailVC.requestCoordinator = requestCoordinator
             feedDetailVC.isDesklessEnabled = isDesklessEnabled
-            //feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate as! FeedsCoordinatorDelegate
+//            feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
             feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
             feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
         }
@@ -342,11 +342,33 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     
     func showFeedEditOptions(targetView: UIView?, feedIdentifier: Int64) {
         print("show edit option")
+        var numberofElementsEnabled : CGFloat = 0.0
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
-            if feed.isFeedReportAbuseAllowed(){
-                self.showReportAbuseConfirmation(feedIdentifier)
+            let drawer = AppreciationBottomSheet(nibName: "AppreciationBottomSheet", bundle: Bundle(for: AppreciationBottomSheet.self))
+            drawer.bottomsheetdelegate = self
+            drawer.feedIdentifier = feedIdentifier
+
+            if feed.isLoggedUserAdmin()  == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
             }
-            
+
+            if feed.isFeedDeleteAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+            if feed.isFeedReportAbuseAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+
+            drawer.isDeleteFlagEnabled = feed.isFeedDeleteAllowed()
+            drawer.isreportAbusedEnabled = feed.isFeedReportAbuseAllowed()
+            drawer.isAdminUser = feed.isLoggedUserAdmin()
+            do{
+                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+            }catch let error{
+                print("show error")
+                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                }
+            }
         }
     }
     
@@ -543,17 +565,18 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
         
     }
     
-    private func showDeletePostConfirmation(_ feedIdentifier : Int64){
+    private func showDeletePostConfirmation(_ feedIdentifier : Int64, revertUserPoints : Bool){
         let deleteConfirmationDrawer = DeletePostConfirmationDrawer(
             nibName: "DeletePostConfirmationDrawer",
             bundle: Bundle(for: DeletePostConfirmationDrawer.self)
         )
         deleteConfirmationDrawer.themeManager = themeManager
+        deleteConfirmationDrawer.isPostTypeAppreciation = revertUserPoints
         deleteConfirmationDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
         deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
             print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")
             if let unwrappedSelf = self{
-                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier) { (result) in
+                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier, revertUserPoints: revertUserPoints) { (result) in
                     switch result{
                     case .Success(result: _):
                         DispatchQueue.main.async {[weak self] in
@@ -704,5 +727,17 @@ extension CommonFeedsViewController:  NSFetchedResultsControllerDelegate {
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         feedsTable?.endUpdates()
+    }
+}
+extension CommonFeedsViewController : AppreciationBottomSheetTypeProtocol {
+    func selectedFilterType(selectedType: AppreciationBottomSheetType, feedIdentifier: Int64) {
+        switch selectedType {
+        case .Delete:
+            self.showDeletePostConfirmation(feedIdentifier, revertUserPoints: false)
+        case .ReportAbuse:
+            self.showReportAbuseConfirmation(feedIdentifier)
+        case .DeleteWithPoints:
+            self.showDeletePostConfirmation(feedIdentifier, revertUserPoints: true)
+        }
     }
 }

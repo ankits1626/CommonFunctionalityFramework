@@ -785,7 +785,7 @@ extension FeedsViewController : FeedsDelegate{
         deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
             print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")
             if let unwrappedSelf = self{
-                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier) { (result) in
+                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier, revertUserPoints: false) { (result) in
                     switch result{
                     case .Success(result: _):
                         DispatchQueue.main.async {[weak self] in

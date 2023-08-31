@@ -140,8 +140,15 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         }else {
             cell.timeRemaining.text = "\(dataValue.time_left)"
         }
-        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) points"
-        cell.userStrengthTitle.text = "\(dataValue.nomination.user_strength.name)"
+        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) points"        
+        if let unwrappedUserStength = dataValue.nomination.user_strength {
+            cell.userStrengthTitle.text = "\(unwrappedUserStength.name)"
+            cell.strengthHeightConstraints?.constant = 20
+        }else {
+            cell.userStrengthTitle.text = ""
+            cell.strengthHeightConstraints?.constant = 0
+        }
+
         
         if let unwrappedText = dataValue.description as? String{
             let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: Int64(dataValue.nomination.id), description: unwrappedText)

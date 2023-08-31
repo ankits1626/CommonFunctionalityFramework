@@ -156,7 +156,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
             self.inspireMeGeneratedTxtField.isHidden = true
             self.yourMessageLbl.isHidden = true
             self.useThisBtn.isHidden = true
-            self.regenerateBtn.isHidden = true
+//            self.regenerateBtn.isHidden = true
             self.holderImg.isHidden = true
             self.loaderView.isHidden = false
             self.collectionVIew.isHidden = true
@@ -165,7 +165,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
             self.inspireMeGeneratedTxtField.isHidden = false
             self.yourMessageLbl.isHidden = false
             self.useThisBtn.isHidden = false
-            self.regenerateBtn.isHidden = false
+//            self.regenerateBtn.isHidden = false
             self.holderImg.isHidden = false
             self.loaderView.isHidden = true
             self.collectionVIew.isHidden = false
