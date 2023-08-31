@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -145,11 +145,17 @@
                 <outlet property="nominationConatiner" destination="BMC-6S-nYx" id="Gnb-Aj-moT"/>
                 <outlet property="nominationImageView" destination="cWf-XV-2aP" id="oXS-OF-CJx"/>
                 <outlet property="nominationMessage" destination="eoX-dO-j6U" id="OqP-AU-a4O"/>
+                <outlet property="strengthHeightConstraints" destination="ixS-dQ-ING" id="GoV-2k-Daf"/>
                 <outlet property="strengthLabel" destination="J2b-dM-svh" id="dKP-yV-GsL"/>
             </connections>
             <point key="canvasLocation" x="-41" y="104"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="eoX-dO-j6U">
+            <size key="intrinsicContentSize" width="1416" height="17"/>
+        </designable>
+    </designables>
     <resources>
         <image name="medalIcon" width="68" height="75.5"/>
         <image name="transaperent_bg" width="343" height="140"/>
