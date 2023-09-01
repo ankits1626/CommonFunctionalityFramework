@@ -47,8 +47,9 @@ public struct GetFeedsViewModel{
     var isGreetingType = false
     var greetingId = 0
     var isDesklessEnabled : Bool = false
+    var isFromUserProfile : Bool = false
 
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0,  _isDesklessEnabled : Bool = false){
+    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0,  _isDesklessEnabled : Bool = false, _isFromUserProfile : Bool = false){
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -65,6 +66,7 @@ public struct GetFeedsViewModel{
         self.isGreetingType = _isGreetingType
         self.greetingId = _greetingId
         self.isDesklessEnabled = _isDesklessEnabled
+        self.isFromUserProfile = _isFromUserProfile
     }
 }
 
@@ -73,7 +75,7 @@ public protocol FeedsCoordinatorDelegate : AnyObject {
     func removeFeedDetail()
     func showComposer(_composer : UIViewController, dismissCompletionBlock : (()-> Void)?, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
     func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
-    func showComposer(_composer : UIViewController, postType : String, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
+    func showComposer(_composer : UIViewController, postType : String,isFromEditor: Bool, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
     func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
     func showMultiOrgPicker(_ orgPicker : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
     
@@ -101,6 +103,7 @@ public class FeedsCoordinator {
         feedsVc.searchText = inputModel.searchText
         feedsVc.isTypeGreeting = inputModel.isGreetingType
         feedsVc.greetingID = inputModel.greetingId
+        feedsVc.isFromUserProfile = inputModel.isFromUserProfile
         if inputModel.isGreetingType {
             feedsVc.selectedTab = "GreetingsFeed"
             UserDefaults.standard.setValue("GreetingsFeed", forKey: "selectedTab")

@@ -78,20 +78,22 @@ class PintoTopConfirmationDrawer: UIViewController {
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
         closeLabel?.text = "Close".localized
-        if isAlreadyPinned {
-            titleLabel?.text = "Unpin the poll".localized
-            frequencyView?.alpha = 0
-            messageLabel?.text = "".localized
-        }else{
-            titleLabel?.text = "Pin this post to top".localized
-            frequencyView?.alpha = 1
-            messageLabel?.text = "".localized
+        if let unwrappedPoll = targetFeed?.getPoll(){
+            isAlreadyPinned ? handleTextLabelUI(frequencyViewAlpha: 0, messageLabelText: "".localized, titleLabelText: "Unpin the poll".localized) : handleTextLabelUI(frequencyViewAlpha: 1, messageLabelText: "".localized, titleLabelText: "Pin this poll to top".localized)
+        }else {
+            isAlreadyPinned ? handleTextLabelUI(frequencyViewAlpha: 0, messageLabelText: "".localized, titleLabelText: "Unpin the post".localized) : handleTextLabelUI(frequencyViewAlpha: 1, messageLabelText: "".localized, titleLabelText: "Pin this post to top".localized)
         }
         titleLabel?.font = .Title1
         titleLabel?.font = .Title1
         messageLabel?.font = .Caption2
         configureConfirmButton()
         configureCancelButton()
+    }
+    
+    func handleTextLabelUI(frequencyViewAlpha: Double,messageLabelText: String,titleLabelText: String ) {
+        titleLabel?.text = titleLabelText
+        frequencyView?.alpha = frequencyViewAlpha
+        messageLabel?.text = messageLabelText
     }
     
     private func configureConfirmButton(){
