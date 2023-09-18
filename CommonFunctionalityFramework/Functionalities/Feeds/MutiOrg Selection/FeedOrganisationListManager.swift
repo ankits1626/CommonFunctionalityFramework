@@ -103,8 +103,16 @@ extension FeedOrganisationListManager : UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 55
+        if self.collapsedSections.contains(section) {
+            return 55
+        }else{
+            if let unwrappedData = initModel.dataManager {
+                return !unwrappedData.isDepartmentEnabled(section: section) && !unwrappedData.isJobFamilyEnabled(section: section) ? 55 : 125
+            }
+            return 0
+        }
     }
+    
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 12
@@ -127,11 +135,13 @@ extension FeedOrganisationListManager{
         })
         let organisation = initModel.dataManager!.getOrganisations()[section]
         header.organisationLbl?.text = organisation.displayName
-        header.organisationLbl?.font = .Body2
-        header.selectionDetailLbl?.font = .Body1
         header.organisationLbl?.textColor = .getTitleTextColor()
-        header.headerContainer?.backgroundColor = .guidenceViewBackgroundColor
-        header.headerContainer?.layer.cornerRadius = 4
+        header.selectAllStackView?.isHidden = self.collapsedSections.contains(section) ? true : false
+        header.selectAllDepartmentView?.isHidden = !initModel.dataManager!.isDepartmentEnabled(section: section)
+        header.selectJobFamilyContainerView?.isHidden = !initModel.dataManager!.isJobFamilyEnabled(section: section)
+        header.selectAllDepartment?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
+        header.selectJobFamilyContainerView?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
+        
         header.headerContainer?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         let image = UIImage(
             named: collapsedSections.contains(section) ? "cff_expand" : "cff_collapse",
@@ -139,19 +149,20 @@ extension FeedOrganisationListManager{
             compatibleWith: nil
         )
         
-        header.expandCollapseBtn?.setImage(
-            image ,
-            for: .normal
-        )
-        if let unwrappedDataManager = initModel.dataManager{
-            if (unwrappedDataManager.checkIfOrganisationIsSelected(organisation)){
-                header.checkBox.isChecked = true
-            }else{
-                header.checkBox.isChecked = false
-            }
-        }
+//        header.expandCollapseBtn?.setImage(
+//            image ,
+//            for: .normal
+//        )
+//        if let unwrappedDataManager = initModel.dataManager{
+//            if (unwrappedDataManager.checkIfOrganisationIsSelected(organisation)){
+//                header.checkBox.isChecked = true
+//            }else{
+//                header.checkBox.isChecked = false
+//            }
+//        }
         
-        header.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
+        header.selectAllDepartment?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
+            [weak self] in
             if let unwrappedSelf = self{
                 unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(
                     organisation,
@@ -162,10 +173,39 @@ extension FeedOrganisationListManager{
                         )
                         unwrappedSelf.initModel.recordSelectedCompletion()
                     })
-//                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)
-//                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
             }
-        }
+        })
+        
+        header.selectAllJobFamiles?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
+            [weak self] in
+            if let unwrappedSelf = self{
+                unwrappedSelf.initModel.dataManager?.toggleJobFamilySelection(
+                    organisation,
+                    {
+                        unwrappedSelf.initModel.tableView?.reloadSections(
+                            IndexSet(integer: section),
+                            with: .none
+                        )
+                        unwrappedSelf.initModel.recordSelectedCompletion()
+                    })
+            }
+        })
+        
+//        header.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
+//            if let unwrappedSelf = self{
+//                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(
+//                    organisation,
+//                    {
+//                        unwrappedSelf.initModel.tableView?.reloadSections(
+//                            IndexSet(integer: section),
+//                            with: .none
+//                        )
+//                        unwrappedSelf.initModel.recordSelectedCompletion()
+//                    })
+////                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)
+////                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
+//            }
+//        }
         
         header.selectionDetailLbl?.text = initModel.dataManager?.getSelectionDetails(organisation)
         
@@ -191,7 +231,7 @@ extension FeedOrganisationListManager{
         }
         
         if let unwrappedDataManager = initModel.dataManager{
-            if (unwrappedDataManager.checkIfDepartmentIsSelected(department)){
+            if (unwrappedDataManager.checkIfDepartmentIsSelected(department)) || (unwrappedDataManager.checkIfJobFamilyIsSelected(department)){
                 cell.checkBox.isChecked = true
             }else{
                 cell.checkBox.isChecked = false

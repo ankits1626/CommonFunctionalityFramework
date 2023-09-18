@@ -21,9 +21,15 @@ enum SelectionOperation{
 class FeedOrganisationDataManager{
     private let initModel: FeedOrganisationDataManagerInitModel
     private var fetchedOrganisations = [FeedOrganisation]()
+    private var fetchedDepartment = [FeedDepartment]()
     
     private var selectedOrganisation = Set<Int>()
     private var selectedDepartment = Set<Int>()
+    private var selectedJobFamily = Set<Int>()
+    
+    var departmentIndex : [[Int]] = [[]]
+    var jobFamilyIndex : [[Int]] = [[]]
+    
     private var isSearchEnabled = false
     
     init(_ initModel: FeedOrganisationDataManagerInitModel){
@@ -31,6 +37,7 @@ class FeedOrganisationDataManager{
         if let unwrappedSelectedOrgDepartment = initModel.selectionModel{
             self.selectedOrganisation = unwrappedSelectedOrgDepartment.selectedOrganisations
             self.selectedDepartment = unwrappedSelectedOrgDepartment.selectedDepartments
+            self.selectedJobFamily = unwrappedSelectedOrgDepartment.selectedJobFamily
         }
     }
     
@@ -88,6 +95,7 @@ extension FeedOrganisationDataManager{
             self.fetchedOrganisations = result
             var refreshedSelectedOrg = Set<Int>()
             var refreshedSelectedDepartment = Set<Int>()
+            var refreshedSelectedJobFamily = Set<Int>()
             for org in result {
                 if !(selectedOrganisation.filter{$0 == org.pk}).isEmpty{
                     refreshedSelectedOrg.insert(org.pk)
@@ -95,13 +103,25 @@ extension FeedOrganisationDataManager{
                 
                 for dep in org.departments {
                     if !(selectedDepartment.filter{$0 == dep.pk}).isEmpty{
-                        refreshedSelectedDepartment.insert(dep.pk)
+                        if !dep.isJobFamily {
+                            refreshedSelectedDepartment.insert(dep.pk)
+                        }
+                        
+                    }
+                }
+                
+                for jobFamily in org.departments {
+                    if !(selectedJobFamily.filter{$0 == jobFamily.pk}).isEmpty{
+                        if jobFamily.isJobFamily {
+                            refreshedSelectedJobFamily.insert(jobFamily.pk)
+                        }
                     }
                 }
                 
             }
             selectedDepartment = refreshedSelectedDepartment
             selectedOrganisation = refreshedSelectedOrg
+            selectedJobFamily = refreshedSelectedJobFamily
             return nil
         case .SuccessWithNoResponseData:
             return "Unexpected response while fetching organisations"
@@ -115,20 +135,102 @@ extension FeedOrganisationDataManager{
     func getOrganisations() -> [FeedOrganisation]{
         return fetchedOrganisations.filter{$0.isDisplayable}
     }
+     
+    func getDepartment() -> [FeedDepartment] {
+        return fetchedDepartment.filter{$0.isDisplayable}
+    }
+    
+    func isDepartmentEnabled(section : Int) -> Bool {
+        for department in  fetchedOrganisations[section].departments {
+            if !department.isJobFamily {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isJobFamilyEnabled(section : Int) -> Bool {
+        for department in  fetchedOrganisations[section].departments {
+            if department.isJobFamily {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isDepartmentDataMatch(departmentData : [FeedDepartment]) -> Bool {
+        for department in departmentData {
+            if selectedDepartment.contains(department.pk) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isJobFamilyDataMatch(departmentData : [FeedDepartment]) -> Bool {
+        for department in departmentData {
+            if selectedJobFamily.contains(department.pk) {
+                return true
+            }
+        }
+        return false
+    }
     
     func toggleOrganisationSelection(_ organisation: FeedOrganisation, _ completion: ()-> Void){
         if checkIfOrganisationIsSelected(organisation){
             selectedOrganisation.remove(organisation.pk)
+        }
+        
+        if isDepartmentDataMatch(departmentData: organisation.departments) {
             for deparment in organisation.departments {
-                selectedDepartment.remove(deparment.pk)
+                if !deparment.isJobFamily {
+                    selectedDepartment.remove(deparment.pk)
+                }
             }
-            
         }else{
-            selectedOrganisation.insert(organisation.pk)
             for deparment in organisation.departments {
-                if deparment.isDisplayable{
+                if deparment.isDisplayable && !deparment.isJobFamily{
                     selectedDepartment.insert(deparment.pk)
                 }
+            }
+            var selectedDepartmentsFromSameOrgCount = 0
+            for department in organisation.departments{
+                if selectedDepartment.contains(department.pk) || selectedJobFamily.contains(department.pk){
+                    selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
+                }
+            }
+            if selectedDepartmentsFromSameOrgCount == organisation.departments.count{
+                selectedOrganisation.insert(organisation.pk)
+            }
+        }
+        completion()
+    }
+    
+    func toggleJobFamilySelection(_ organisation: FeedOrganisation, _ completion: ()-> Void){
+        if checkIfOrganisationIsSelected(organisation){
+            selectedOrganisation.remove(organisation.pk)
+        }
+        if isJobFamilyDataMatch(departmentData: organisation.departments) {
+            for deparment in organisation.departments {
+                if deparment.isJobFamily {
+                    selectedJobFamily.remove(deparment.pk)
+                }
+            }
+        }else{
+            for deparment in organisation.departments {
+                if deparment.isDisplayable && deparment.isJobFamily{
+                    selectedJobFamily.insert(deparment.pk)
+                }
+            }
+            
+            var selectedDepartmentsFromSameOrgCount = 0
+            for department in organisation.departments{
+                if selectedDepartment.contains(department.pk) || selectedJobFamily.contains(department.pk){
+                    selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
+                }
+            }
+            if selectedDepartmentsFromSameOrgCount == organisation.departments.count{
+                selectedOrganisation.insert(organisation.pk)
             }
         }
         completion()
@@ -142,27 +244,57 @@ extension FeedOrganisationDataManager{
         return !selectedDepartment.filter{$0 == department.pk}.isEmpty
     }
     
+    func checkIfJobFamilyIsSelected(_ department: FeedDepartment) -> Bool{
+        return !selectedJobFamily.filter{$0 == department.pk}.isEmpty
+    }
+    
     func toggleDepartmentSelection(_ department: FeedDepartment, _ completion:()->Void){
-        if selectedDepartment.contains(department.pk){
-            selectedDepartment.remove(department.pk)
-            if let parentOrg = department.parentOrganisation,
-               selectedOrganisation.contains(parentOrg.pk){
-                selectedOrganisation.remove(parentOrg.pk)
-            }
-        }else{
-            selectedDepartment.insert(department.pk)
-            var selectedDepartmentsFromSameOrgCount = 0
-            if let targetOrganisation = department.parentOrganisation{
-                for department in targetOrganisation.departments{
-                    if selectedDepartment.contains(department.pk){
-                        selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
+        if !department.isJobFamily {
+            if selectedDepartment.contains(department.pk){
+                selectedDepartment.remove(department.pk)
+                if let parentOrg = department.parentOrganisation,
+                   selectedOrganisation.contains(parentOrg.pk){
+                    selectedOrganisation.remove(parentOrg.pk)
+                }
+            }else{
+                selectedDepartment.insert(department.pk)
+                var selectedDepartmentsFromSameOrgCount = 0
+                if let targetOrganisation = department.parentOrganisation{
+                    for department in targetOrganisation.departments{
+                        if selectedDepartment.contains(department.pk){
+                            selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
+                        }
+                    }
+                    let totalOrgSum = selectedDepartment.count + selectedJobFamily.count
+                    if totalOrgSum == targetOrganisation.departments.count{
+                        selectedOrganisation.insert(targetOrganisation.pk)
                     }
                 }
-                if selectedDepartmentsFromSameOrgCount == targetOrganisation.departments.count{
-                    selectedOrganisation.insert(targetOrganisation.pk)
+            }
+        }else {
+            if selectedJobFamily.contains(department.pk){
+                selectedJobFamily.remove(department.pk)
+                if let parentOrg = department.parentOrganisation,
+                   selectedOrganisation.contains(parentOrg.pk){
+                    selectedOrganisation.remove(parentOrg.pk)
+                }
+            }else{
+                selectedJobFamily.insert(department.pk)
+                var selectedDepartmentsFromSameOrgCount = 0
+                if let targetOrganisation = department.parentOrganisation{
+                    for department in targetOrganisation.departments{
+                        if selectedJobFamily.contains(department.pk){
+                            selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
+                        }
+                    }
+                    let totalOrgSum = selectedDepartment.count + selectedJobFamily.count
+                    if totalOrgSum == targetOrganisation.departments.count{
+                        selectedOrganisation.insert(targetOrganisation.pk)
+                    }
                 }
             }
         }
+        
         completion()
     }
  
@@ -192,13 +324,13 @@ extension FeedOrganisationDataManager{
     }
     
     func checkIfAnyOrganisationOrDepartmentSelected() -> Bool {
-        return !selectedDepartment.isEmpty || !selectedOrganisation.isEmpty
+        return !selectedDepartment.isEmpty || !selectedOrganisation.isEmpty ||  !selectedJobFamily.isEmpty
     }
     
     func getSelectedOrganisationsAndDepartments() -> FeedOrganisationDepartmentSelectionModel{
         return FeedOrganisationDepartmentSelectionModel(
             selectedOrganisation,
-            selectedDepartment
+            selectedDepartment, selectedJobFamily
         )
     }
     

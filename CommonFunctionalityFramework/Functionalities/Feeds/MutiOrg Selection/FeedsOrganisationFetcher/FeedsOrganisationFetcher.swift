@@ -52,7 +52,7 @@ class FeedsOrganisationFetchRequestGenerator: APIRequestGeneratorProtocol  {
         get{
             if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
                 let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: baseUrl + "profiles/api/org_departments/"),
+                    url: URL(string: baseUrl + "profiles/api/org_departments/?job_family=true"),
                     method: .GET,
                     httpBodyDict: nil
                 )
