@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import RewardzCommonComponents
 
 struct FeedOrganisationDataManagerInitModel {
     weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
@@ -23,9 +25,9 @@ class FeedOrganisationDataManager{
     private var fetchedOrganisations = [FeedOrganisation]()
     private var fetchedDepartment = [FeedDepartment]()
     
-    private var selectedOrganisation = Set<Int>()
-    private var selectedDepartment = Set<Int>()
-    private var selectedJobFamily = Set<Int>()
+    var selectedOrganisation = Set<Int>()
+    var selectedDepartment = Set<Int>()
+    var selectedJobFamily = Set<Int>()
     
     var departmentIndex : [[Int]] = [[]]
     var jobFamilyIndex : [[Int]] = [[]]
@@ -135,6 +137,24 @@ extension FeedOrganisationDataManager{
     func getOrganisations() -> [FeedOrganisation]{
         return fetchedOrganisations.filter{$0.isDisplayable}
     }
+    
+    func getDepartmentBackgroundColor() -> UIColor {
+        return RCCThemeDetailProvider.shared.coordinator.getBackgroundColor().withAlphaComponent(0.1)
+    }
+    
+    func getJobFamilyBackgroundColor() -> UIColor {
+        return UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 0.1)
+    }
+    
+    func getDepartmentTitleColor() -> UIColor {
+        return RCCThemeDetailProvider.shared.coordinator.getBackgroundColor().withAlphaComponent(1.0)
+    }
+    
+    func getJobFamilyTitleColor() -> UIColor {
+        return UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 1.0)
+    }
+    
+    
      
     func getDepartment() -> [FeedDepartment] {
         return fetchedDepartment.filter{$0.isDisplayable}

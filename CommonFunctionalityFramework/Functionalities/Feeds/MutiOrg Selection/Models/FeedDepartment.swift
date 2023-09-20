@@ -35,6 +35,14 @@ class FeedDepartment: NSObject{
     func getDisplayName() -> String{
         return rawFeedDepartment["name"] as? String ?? "No Name"
     }
+    
+    func getDepartmentCount() -> Int{
+        return rawFeedDepartment["members"] as? Int ?? 0
+    }
+    
+    func getJobFamilyCount() -> Int{
+        return rawFeedDepartment["members"] as? Int ?? 0
+    }
 }
 
 class JobFamily: NSObject{

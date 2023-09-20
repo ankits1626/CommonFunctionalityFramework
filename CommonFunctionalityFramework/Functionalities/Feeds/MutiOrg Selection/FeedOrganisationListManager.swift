@@ -31,6 +31,9 @@ class FeedOrganisationListManager : NSObject{
     }
     
     func reset(){
+        initModel.dataManager?.selectedDepartment.removeAll()
+        initModel.dataManager?.selectedOrganisation.removeAll()
+        initModel.dataManager?.selectedJobFamily.removeAll()
         self.collapsedSections = Set<Int>()
     }
     
@@ -56,13 +59,9 @@ extension FeedOrganisationListManager{
             ),
             forHeaderFooterViewReuseIdentifier: headerIdentifier
         )
+        initModel.tableView?.separatorStyle = .none
         initModel.tableView?.dataSource = self
         initModel.tableView?.delegate = self
-//        if #available(iOS 15.0, *) {
-//            initModel.tableView?.sectionHeaderTopPadding = 0
-//        } else {
-//            // Fallback on earlier versions
-//        }
     }
     
 }
@@ -123,7 +122,7 @@ extension FeedOrganisationListManager : UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 59
+        return 84
     }
 }
 
@@ -148,18 +147,10 @@ extension FeedOrganisationListManager{
             in: Bundle(for: PostEditorViewController.self),
             compatibleWith: nil
         )
-        
-//        header.expandCollapseBtn?.setImage(
-//            image ,
-//            for: .normal
-//        )
-//        if let unwrappedDataManager = initModel.dataManager{
-//            if (unwrappedDataManager.checkIfOrganisationIsSelected(organisation)){
-//                header.checkBox.isChecked = true
-//            }else{
-//                header.checkBox.isChecked = false
-//            }
-//        }
+        header.expandCollapseBtn?.setImage(
+            image ,
+            for: .normal
+        )
         
         header.selectAllDepartment?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
             [weak self] in
@@ -190,23 +181,6 @@ extension FeedOrganisationListManager{
                     })
             }
         })
-        
-//        header.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
-//            if let unwrappedSelf = self{
-//                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(
-//                    organisation,
-//                    {
-//                        unwrappedSelf.initModel.tableView?.reloadSections(
-//                            IndexSet(integer: section),
-//                            with: .none
-//                        )
-//                        unwrappedSelf.initModel.recordSelectedCompletion()
-//                    })
-////                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)
-////                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
-//            }
-//        }
-        
         header.selectionDetailLbl?.text = initModel.dataManager?.getSelectionDetails(organisation)
         
 
@@ -224,21 +198,12 @@ extension FeedOrganisationListManager{
             inset: 0,
             thickness: 1
         )
-        if isLastDepartment(indexpath){
-            cell.cellSeperator?.backgroundColor = .clear
-        }else{
-            cell.cellSeperator?.backgroundColor = .guidenceViewBackgroundColor
-        }
-        
-        if let unwrappedDataManager = initModel.dataManager{
-            if (unwrappedDataManager.checkIfDepartmentIsSelected(department)) || (unwrappedDataManager.checkIfJobFamilyIsSelected(department)){
-                cell.checkBox.isChecked = true
-            }else{
-                cell.checkBox.isChecked = false
-            }
-        }
-        
-        cell.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
+        cell.departmentCounts?.text = "\(department.isJobFamily ? department.getJobFamilyCount() : department.getDepartmentCount()) \("Members".localized)"
+        cell.rowTypeStatusLabel?.text = department.isJobFamily ? "Job Family".localized : "Department".localized
+        handleDepartmentCell(indexpath: indexpath, cell: cell)
+        cell.rowTypeViewContainer?.backgroundColor = department.isJobFamily ? initModel.dataManager!.getJobFamilyBackgroundColor() : initModel.dataManager!.getDepartmentBackgroundColor()
+        cell.itemListener?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
+            [weak self] in
             if let unwrappedSelf = self{
                 unwrappedSelf.initModel.dataManager?.toggleDepartmentSelection(
                     department,
@@ -246,10 +211,28 @@ extension FeedOrganisationListManager{
                         unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: indexpath.section), with: .none)
                         unwrappedSelf.initModel.recordSelectedCompletion()
                     })
-                
+
+            }
+        })
+    }
+    
+    func handleDepartmentCell(indexpath: IndexPath,cell: FeedOrganisationTableViewCell) {
+        let department = initModel.dataManager!.getOrganisations()[indexpath.section].departments.filter{$0.isDisplayable}[indexpath.row]
+        if let unwrappedDataManager = initModel.dataManager{
+            if (unwrappedDataManager.checkIfDepartmentIsSelected(department)) || (unwrappedDataManager.checkIfJobFamilyIsSelected(department)){
+                cell.rowContainer?.backgroundColor = .getControlColor()
+                cell.departmentLbl?.textColor = .white
+                cell.rowTypeViewContainer?.backgroundColor = .getControlColor().withAlphaComponent(0.1)
+                cell.rowTypeViewContainer?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255,alpha: 0.1), borderWidth: 1.0, cornerRadius: 6.0)
+                cell.rowTypeStatusLabel?.textColor = .white
+            }else{
+                cell.rowContainer?.backgroundColor = .white
+                cell.departmentLbl?.textColor = UIColor(red: 21/255, green: 21/255, blue: 21/255)
+                cell.rowTypeViewContainer?.backgroundColor = .white
+                cell.rowTypeViewContainer?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 6.0)
+                cell.rowTypeStatusLabel?.textColor = department.isJobFamily ? initModel.dataManager!.getJobFamilyTitleColor() : initModel.dataManager!.getDepartmentTitleColor()
             }
         }
-    
     }
     
     private func isLastDepartment(_ indexpath : IndexPath) -> Bool{
