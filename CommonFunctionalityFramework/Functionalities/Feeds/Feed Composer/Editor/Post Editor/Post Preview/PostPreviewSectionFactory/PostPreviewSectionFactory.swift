@@ -80,6 +80,8 @@ class PostPreviewSectionFactory {
             switch initModel.feedDataSource!.getPostShareOption(){
             case .MyOrg:
                 fallthrough
+            case .JobFamilies:
+                fallthrough
             case .MyDepartment:
                 return 1
             case .MultiOrg:

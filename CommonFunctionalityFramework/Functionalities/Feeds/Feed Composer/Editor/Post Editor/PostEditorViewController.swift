@@ -17,6 +17,7 @@ enum SharePostOption : Int{
     case MyOrg = 20
     case MyDepartment = 10
     case MultiOrg = 40
+    case JobFamilies = 50
     
     func displayableTitle() -> String{
         switch self {
@@ -26,6 +27,8 @@ enum SharePostOption : Int{
             return "My Department".localized
         case .MultiOrg:
             return "Custom".localized
+        case .JobFamilies:
+            return "My Job Families".localized
         }
     }
     
@@ -37,15 +40,28 @@ enum SharePostOption : Int{
         return [.MyOrg, .MyDepartment, .MultiOrg]
     }
     
-    static func getOption(_ index : Int) -> SharePostOption{
+    static var nuhsMultiOrgCases : [SharePostOption]{
+        return [.MyOrg, .MyDepartment, .JobFamilies , .MultiOrg]
+    }
+    
+    static func getOption(_ index : Int, isNuhsMultiOrgEnabled : Bool) -> SharePostOption{
         if index == 1{
             return .MyDepartment
         }
         
-        if index == 2{
-            return .MultiOrg
+        if isNuhsMultiOrgEnabled {
+            if index == 3{
+                return .MultiOrg
+            }
+            
+            if index == 2{
+                return .JobFamilies
+            }
+        }else {
+            if index == 2{
+                return .MultiOrg
+            }
         }
-        
         return .MyOrg
     }
 }
@@ -236,7 +252,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         //        = ["My Org", "My Department"]
         
         if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
-            segments = SharePostOption.multiOrgCases
+            segments = (self.mainAppCoordinator?.isNuhsMultiOrgPostEnabled())! ? SharePostOption.nuhsMultiOrgCases : SharePostOption.multiOrgCases
         }
         let tupple = editablePost?.postSharedWith() ?? (SharePostOption.MyOrg, nil)
         var selectedIndex = 0
@@ -249,6 +265,8 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                 at: shareOption.rawValue,
                 animated: false)
         }
+        let font = UIFont.systemFont(ofSize: 10)
+        shareWithSegmentControl?.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         shareWithSegmentControl?.selectedSegmentIndex = 0
         shareWithSegmentControl?.tintColor = .getControlColor()
         shareWithSegmentControl?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for:
@@ -841,9 +859,11 @@ extension PostEditorViewController{
             updatePostButton()
         }
         if let selectedIndex = shareWithSegmentControl?.selectedSegmentIndex{
-            let selectedSharePostOption = SharePostOption.getOption(selectedIndex)
+            let selectedSharePostOption = SharePostOption.getOption(selectedIndex, isNuhsMultiOrgEnabled: self.mainAppCoordinator?.isNuhsMultiOrgPostEnabled() ?? false)
             switch selectedSharePostOption {
             case .MyOrg:
+                fallthrough
+            case .JobFamilies:
                 fallthrough
             case .MyDepartment:
                 postCoordinator.updatePostShareOption(selectedSharePostOption, selectedOrganisationsAndDepartments: nil)
@@ -855,8 +875,10 @@ extension PostEditorViewController{
     
     private func updatePostButton(){
         if let selectedIndex = shareWithSegmentControl?.selectedSegmentIndex{
-            switch SharePostOption.getOption(selectedIndex) {
+            switch SharePostOption.getOption(selectedIndex, isNuhsMultiOrgEnabled: self.mainAppCoordinator?.isNuhsMultiOrgPostEnabled() ?? false) {
             case .MyOrg:
+                fallthrough
+            case .JobFamilies:
                 fallthrough
             case .MyDepartment:
                 createButton?.setTitle(getCreateButtonTitle(), for: .normal)
@@ -879,7 +901,7 @@ extension PostEditorViewController : PostEditorRouterDelegate{
     
     func selectedSharePostOption() -> SharePostOption {
         if let selectedShareOptionIndex = shareWithSegmentControl?.selectedSegmentIndex{
-            return SharePostOption.getOption(selectedShareOptionIndex)
+            return SharePostOption.getOption(selectedShareOptionIndex, isNuhsMultiOrgEnabled: self.mainAppCoordinator?.isNuhsMultiOrgPostEnabled() ?? false)
         }else{
             return SharePostOption.MyOrg
         }

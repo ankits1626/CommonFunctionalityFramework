@@ -26,6 +26,7 @@ public protocol CFFMainAppInformationCoordinator : AnyObject {
     func saveJoyAppUrlDate(timeStamp:Date)
     func getJoyAppUrlDate() -> Date
     func getJoyeAppRequestBody() -> [String : String]
+    func isNuhsMultiOrgPostEnabled() -> Bool
 }
 
 
