@@ -37,11 +37,11 @@ class FeedDepartment: NSObject{
     }
     
     func getDepartmentCount() -> Int{
-        return rawFeedDepartment["members"] as? Int ?? 0
-    }
-    
-    func getJobFamilyCount() -> Int{
-        return rawFeedDepartment["members"] as? Int ?? 0
+        if let unwrappedPk = rawFeedDepartment["users_count"] as? Int {
+            return unwrappedPk
+        }else {
+            return rawFeedDepartment["members"] as? Int ?? 0
+        }
     }
 }
 

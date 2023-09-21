@@ -198,7 +198,7 @@ extension FeedOrganisationListManager{
             inset: 0,
             thickness: 1
         )
-        cell.departmentCounts?.text = "\(department.isJobFamily ? department.getJobFamilyCount() : department.getDepartmentCount()) \("Members".localized)"
+        cell.departmentCounts?.text = "\(department.getDepartmentCount()) \("Members".localized)"
         cell.rowTypeStatusLabel?.text = department.isJobFamily ? "Job Family".localized : "Department".localized
         handleDepartmentCell(indexpath: indexpath, cell: cell)
         cell.rowTypeViewContainer?.backgroundColor = department.isJobFamily ? initModel.dataManager!.getJobFamilyBackgroundColor() : initModel.dataManager!.getDepartmentBackgroundColor()
