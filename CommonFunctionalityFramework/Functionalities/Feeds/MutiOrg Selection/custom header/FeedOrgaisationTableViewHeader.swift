@@ -15,5 +15,11 @@ class FeedOrgaisationTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var organisationLbl: UILabel?
     @IBOutlet weak var selectionDetailLbl: UILabel?
     @IBOutlet weak var expandCollapseBtn: BlockButton?
-    @IBOutlet weak var checkBox : ASCheckBox!
+//    @IBOutlet weak var checkBox : ASCheckBox!
+    @IBOutlet weak var selectAllDepartment: BlockButton?
+    @IBOutlet weak var selectAllJobFamiles : BlockButton?
+    
+    @IBOutlet weak var selectJobFamilyContainerView : UIView?
+    @IBOutlet weak var selectAllDepartmentView : UIView?
+    @IBOutlet weak var selectAllStackView : UIStackView?
 }

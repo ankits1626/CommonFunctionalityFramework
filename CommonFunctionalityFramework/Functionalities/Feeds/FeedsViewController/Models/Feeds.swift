@@ -411,13 +411,17 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         if sharedWith() == .MultiOrg{
             var orgs = Set<Int>()
             var departments =  Set<Int>()
+            var jobFamilies =  Set<Int>()
             if let selectedOrgs = rawFeedDictionary["organizations"] as? [Int]{
                 orgs = Set(selectedOrgs)
             }
             if let selectedDepartments = rawFeedDictionary["departments"] as? [Int]{
                 departments = Set(selectedDepartments)
             }
-            return FeedOrganisationDepartmentSelectionModel(orgs, departments)
+            if let selectedJobFamilies = rawFeedDictionary["job_families"] as? [Int]{
+                jobFamilies = Set(selectedJobFamilies)
+            }
+            return FeedOrganisationDepartmentSelectionModel(orgs, departments, jobFamilies)
         }
         
         return nil

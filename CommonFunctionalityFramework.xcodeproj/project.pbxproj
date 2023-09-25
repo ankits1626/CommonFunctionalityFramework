@@ -421,6 +421,8 @@
 		BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */; };
 		BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543B26FC978400327205 /* UIView+XibSetup.swift */; };
 		BEF4021828201248001B9D7E /* CommonFeedsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */; };
+		BEFAF9372A860E2600900EA6 /* FeedbackCommentChatBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFAF9352A860E2600900EA6 /* FeedbackCommentChatBarView.swift */; };
+		BEFAF9382A860E2600900EA6 /* FeedbackCommentChatBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFAF9362A860E2600900EA6 /* FeedbackCommentChatBarView.xib */; };
 		BEFF9D8A28C740D5009DF1AC /* DeleteCommentDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */; };
 		BEFF9D8B28C740D5009DF1AC /* DeleteCommentDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */; };
 /* End PBXBuildFile section */
@@ -848,6 +850,8 @@
 		BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+NumberOfLines.swift"; sourceTree = "<group>"; };
 		BEEF543B26FC978400327205 /* UIView+XibSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XibSetup.swift"; sourceTree = "<group>"; };
 		BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedsCoordinator.swift; sourceTree = "<group>"; };
+		BEFAF9352A860E2600900EA6 /* FeedbackCommentChatBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCommentChatBarView.swift; sourceTree = "<group>"; };
+		BEFAF9362A860E2600900EA6 /* FeedbackCommentChatBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackCommentChatBarView.xib; sourceTree = "<group>"; };
 		BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentDrawer.swift; sourceTree = "<group>"; };
 		BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteCommentDrawer.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1478,6 +1482,7 @@
 		983500EB2419FC87009084D4 /* Post Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BEFAF9342A860DF800900EA6 /* FeedbackComment */,
 				0FABE4EF2A1DD29F00F5D855 /* Editor Router */,
 				0FABE4F12A1DD29F00F5D855 /* Post Preview */,
 				BE66CCBB28A66E2D00C7CE83 /* FeedEcardSelect */,
@@ -2690,6 +2695,15 @@
 			path = CommonFeeeds;
 			sourceTree = "<group>";
 		};
+		BEFAF9342A860DF800900EA6 /* FeedbackComment */ = {
+			isa = PBXGroup;
+			children = (
+				BEFAF9352A860E2600900EA6 /* FeedbackCommentChatBarView.swift */,
+				BEFAF9362A860E2600900EA6 /* FeedbackCommentChatBarView.xib */,
+			);
+			path = FeedbackComment;
+			sourceTree = "<group>";
+		};
 		F88DD91C5C182AA7C36CE9E2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2851,6 +2865,7 @@
 				BEC2B25326FD97C8008417C3 /* FeedsViewController.xib in Resources */,
 				0F96194928E416F00003FE8D /* BOUSTwoImageTableViewCell.xib in Resources */,
 				0F60219028716B3400D852BD /* CommonNominationSelectAllCell.xib in Resources */,
+				BEFAF9382A860E2600900EA6 /* FeedbackCommentChatBarView.xib in Resources */,
 				BEC2B27926FD9EFE008417C3 /* FeedAttachmentOptionsDrawerViewController.xib in Resources */,
 				BEAE3582270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib in Resources */,
 				BEC2B28526FDA100008417C3 /* PostEditorViewController.xib in Resources */,
@@ -2984,6 +2999,7 @@
 				0FD47F402A25BCDD0096B30C /* AttachmentDataManager.swift in Sources */,
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
+				BEFAF9372A860E2600900EA6 /* FeedbackCommentChatBarView.swift in Sources */,
 				BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */,
 				0FED7F012880438600D490BB /* BOUSGrayDividerCoordinator.swift in Sources */,
 				BC4E6B9C2A91E1850023E99D /* JoyeAppInterface.swift in Sources */,
