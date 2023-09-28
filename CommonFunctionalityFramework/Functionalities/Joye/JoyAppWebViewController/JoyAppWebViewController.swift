@@ -30,7 +30,6 @@ public class JoyAppWebViewController: UIViewController,WKUIDelegate,WKNavigation
         joyScreenTitle?.text = "Joy Level".localized
         self.headerView?.backgroundColor = UIColor.getControlColor()
         self.view.backgroundColor = UIColor.getControlColor()
-        self.tableViewContainer?.backgroundColor = UIColor.getControlColor()
     }
     
     func setupWebView() {
