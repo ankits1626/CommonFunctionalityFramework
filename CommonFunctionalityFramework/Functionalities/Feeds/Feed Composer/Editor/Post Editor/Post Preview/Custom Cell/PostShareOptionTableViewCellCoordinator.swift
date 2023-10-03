@@ -50,7 +50,7 @@ class PostShareOptionTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
         cell.selectedOrgDepartmentLbl?.font = .Caption3
         cell.selectedOrgDepartmentLbl?.textColor = .getControlColor()
         
-        cell.bubble?.backgroundColor = .white
+        cell.bubble?.backgroundColor = .grayBackGroundColor()
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {

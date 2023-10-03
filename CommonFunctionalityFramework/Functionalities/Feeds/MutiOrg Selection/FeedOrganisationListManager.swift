@@ -138,7 +138,7 @@ extension FeedOrganisationListManager{
         header.selectAllStackView?.isHidden = self.collapsedSections.contains(section) ? true : false
         header.selectAllDepartmentView?.isHidden = !initModel.dataManager!.isDepartmentEnabled(section: section)
         header.selectJobFamilyContainerView?.isHidden = !initModel.dataManager!.isJobFamilyEnabled(section: section)
-        header.selectAllDepartment?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
+        header.selectAllDepartmentView?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
         header.selectJobFamilyContainerView?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
         
         header.headerContainer?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -152,6 +152,24 @@ extension FeedOrganisationListManager{
             for: .normal
         )
         
+        if let unwrappedData = self.initModel.dataManager?.getDepartmentCount(organisation: organisation),
+           unwrappedData == true{
+            header.selectAllDepartmentLabel?.backgroundColor = .getControlColor()
+            header.selectAllDepartmentLabel?.textColor = .white
+        }else{
+            header.selectAllDepartmentLabel?.backgroundColor = .white
+            header.selectAllDepartmentLabel?.textColor = UIColor(red: 171.0/255.0, green: 173.0/255.0, blue: 192.0/255.0, alpha: 1.0)
+        }
+        
+        if let unwrappedData = self.initModel.dataManager?.getJobFamiliesCount(organisation: organisation),
+           unwrappedData == true{
+            header.selectAllJobFamilesLabel?.backgroundColor = .getControlColor()
+            header.selectAllJobFamilesLabel?.textColor = .white
+        }else{
+            header.selectAllJobFamilesLabel?.backgroundColor = .white
+            header.selectAllJobFamilesLabel?.textColor = UIColor(red: 171.0/255.0, green: 173.0/255.0, blue: 192.0/255.0, alpha: 1.0)
+        }
+            
         header.selectAllDepartment?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
             [weak self] in
             if let unwrappedSelf = self{
@@ -182,8 +200,6 @@ extension FeedOrganisationListManager{
             }
         })
         header.selectionDetailLbl?.text = initModel.dataManager?.getSelectionDetails(organisation)
-        
-
     }
     
     private func configureDepartmentRow(cell: FeedOrganisationTableViewCell, indexpath: IndexPath){

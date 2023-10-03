@@ -196,6 +196,28 @@ extension FeedOrganisationDataManager{
         return false
     }
     
+    func getDepartmentCount(organisation: FeedOrganisation) ->  Bool{
+        if isDepartmentDataMatch(departmentData: organisation.departments) {
+            for deparment in organisation.departments {
+                if !deparment.isJobFamily {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func getJobFamiliesCount(organisation: FeedOrganisation) ->  Bool{
+        if isJobFamilyDataMatch(departmentData: organisation.departments) {
+            for deparment in organisation.departments {
+                if deparment.isJobFamily {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
     func toggleOrganisationSelection(_ organisation: FeedOrganisation, _ completion: ()-> Void){
         if checkIfOrganisationIsSelected(organisation){
             selectedOrganisation.remove(organisation.pk)
