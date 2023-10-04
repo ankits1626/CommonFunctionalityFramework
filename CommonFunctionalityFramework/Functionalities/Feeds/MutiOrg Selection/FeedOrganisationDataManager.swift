@@ -196,26 +196,44 @@ extension FeedOrganisationDataManager{
         return false
     }
     
-    func getDepartmentCount(organisation: FeedOrganisation) ->  Bool{
-        if isDepartmentDataMatch(departmentData: organisation.departments) {
-            for deparment in organisation.departments {
-                if !deparment.isJobFamily {
-                    return true
-                }
+    func getDepartmentMatchCount(organisation: FeedOrganisation) ->  Int{
+        var count = 0
+        for department in organisation.departments {
+            if selectedDepartment.contains(department.pk) {
+                count = count + 1
             }
         }
-        return false
+        return count
     }
     
-    func getJobFamiliesCount(organisation: FeedOrganisation) ->  Bool{
-        if isJobFamilyDataMatch(departmentData: organisation.departments) {
-            for deparment in organisation.departments {
-                if deparment.isJobFamily {
-                    return true
-                }
+    func getMyDepartmentCounts(organisation: FeedOrganisation) ->  Int{
+        var count = 0
+        for deparment in organisation.departments {
+            if !deparment.isJobFamily {
+                count = count + 1
             }
         }
-        return false
+       return count
+    }
+    
+    func getJobFamiliesMatchCount(organisation: FeedOrganisation) ->  Int{
+        var count = 0
+        for department in organisation.departments {
+            if selectedJobFamily.contains(department.pk) {
+                count = count + 1
+            }
+        }
+        return count
+    }
+    
+    func getMyJobFamiliesCounts(organisation: FeedOrganisation) ->  Int{
+        var count = 0
+        for deparment in organisation.departments {
+            if deparment.isJobFamily {
+                count = count + 1
+            }
+        }
+       return count
     }
     
     func toggleOrganisationSelection(_ organisation: FeedOrganisation, _ completion: ()-> Void){

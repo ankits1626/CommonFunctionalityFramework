@@ -152,8 +152,7 @@ extension FeedOrganisationListManager{
             for: .normal
         )
         
-        if let unwrappedData = self.initModel.dataManager?.getDepartmentCount(organisation: organisation),
-           unwrappedData == true{
+        if self.initModel.dataManager?.getDepartmentMatchCount(organisation: organisation) == self.initModel.dataManager?.getMyDepartmentCounts(organisation: organisation){
             header.selectAllDepartmentLabel?.backgroundColor = .getControlColor()
             header.selectAllDepartmentLabel?.textColor = .white
         }else{
@@ -161,8 +160,7 @@ extension FeedOrganisationListManager{
             header.selectAllDepartmentLabel?.textColor = UIColor(red: 171.0/255.0, green: 173.0/255.0, blue: 192.0/255.0, alpha: 1.0)
         }
         
-        if let unwrappedData = self.initModel.dataManager?.getJobFamiliesCount(organisation: organisation),
-           unwrappedData == true{
+        if self.initModel.dataManager?.getJobFamiliesMatchCount(organisation: organisation) == self.initModel.dataManager?.getMyJobFamiliesCounts(organisation: organisation){
             header.selectAllJobFamilesLabel?.backgroundColor = .getControlColor()
             header.selectAllJobFamilesLabel?.textColor = .white
         }else{
