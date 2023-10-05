@@ -321,12 +321,12 @@ extension FeedOrganisationDataManager{
                 var selectedDepartmentsFromSameOrgCount = 0
                 if let targetOrganisation = department.parentOrganisation{
                     for department in targetOrganisation.departments{
-                        if selectedDepartment.contains(department.pk){
+                        if selectedDepartment.contains(department.pk) || selectedJobFamily.contains(department.pk){
                             selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
                         }
                     }
                     let totalOrgSum = selectedDepartment.count + selectedJobFamily.count
-                    if totalOrgSum == targetOrganisation.departments.count{
+                    if selectedDepartmentsFromSameOrgCount == targetOrganisation.departments.count{
                         selectedOrganisation.insert(targetOrganisation.pk)
                     }
                 }
@@ -343,12 +343,12 @@ extension FeedOrganisationDataManager{
                 var selectedDepartmentsFromSameOrgCount = 0
                 if let targetOrganisation = department.parentOrganisation{
                     for department in targetOrganisation.departments{
-                        if selectedJobFamily.contains(department.pk){
+                        if selectedJobFamily.contains(department.pk) || selectedDepartment.contains(department.pk){
                             selectedDepartmentsFromSameOrgCount = selectedDepartmentsFromSameOrgCount + 1
                         }
                     }
                     let totalOrgSum = selectedDepartment.count + selectedJobFamily.count
-                    if totalOrgSum == targetOrganisation.departments.count{
+                    if selectedDepartmentsFromSameOrgCount == targetOrganisation.departments.count{
                         selectedOrganisation.insert(targetOrganisation.pk)
                     }
                 }
