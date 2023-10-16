@@ -15,6 +15,7 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet private weak var feedsTable : UITableView?
     
     @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    var userPk: Int!
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var feedCoordinatorDelegate: FeedsCommonCoordinatorDelegate!
@@ -180,8 +181,19 @@ class CommonFeedsViewController: UIViewController,UIImagePickerControllerDelegat
     @objc private func loadFeeds(){
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         //loader.showActivityIndicator(self.currentWindow!)
-        FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-            nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: selectedTabType, searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk,selectedTopGetterPk: self.selectedTopGettersPK) {[weak self] (result) in
+        var feedFetchInputModel = FeedFetcherInputModel(
+            userPk: userPk,
+            nextPageUrl: lastFetchedFeeds?.nextPageUrl,
+            feedType: selectedTabType,
+            searchText: searchText,
+            feedTypePk: self.feedTypePk,
+            organisationPK: self.organisationPK,
+            departmentPK: self.departmentPK,
+            dateRangePK: self.dateRangePK,
+            coreValuePk: self.coreValuePk,
+            selectedTopGetterPk: self.selectedTopGettersPK
+        )
+        FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(feedFetchInputModel) {[weak self] (result) in
                 DispatchQueue.main.async {
                     // self?.loader.hideActivityIndicator((self?.currentWindow!)!)
                     self?.feedsTable?.loadCFFControl?.endLoading()
