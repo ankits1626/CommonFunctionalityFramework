@@ -100,6 +100,7 @@ class ShowSelectedUserRecognition: UIViewController{
         removeExistingContainer()
         addViewControllerToContainer(CommonFeedsCoordinator().getFeedsView(
             GetCommonFeedsViewModel(
+                userPk: selectedUserPk,
                 networkRequestCoordinator: requestCoordinator,
                 mediaCoordinator: mediaFetcher,
                 feedCoordinatorDelegate: self,
