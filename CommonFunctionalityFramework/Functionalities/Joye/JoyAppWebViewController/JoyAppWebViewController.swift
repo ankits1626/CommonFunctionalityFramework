@@ -20,10 +20,16 @@ public class JoyAppWebViewController: UIViewController,WKUIDelegate,WKNavigation
     public var joyAppBaseUrl : String!
     var loader = MFLoader()
     public var delegate : JoyAppWebViewCompletionDone?
+    @IBOutlet weak var tableViewContainer : UIView?
+    @IBOutlet weak var headerView : UIView?
+    @IBOutlet weak var joyScreenTitle : UILabel?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupWebView()
+        joyScreenTitle?.text = "Joy Level".localized
+        self.headerView?.backgroundColor = UIColor.getControlColor()
+        self.view.backgroundColor = UIColor.getControlColor()
     }
     
     func setupWebView() {
@@ -40,6 +46,11 @@ public class JoyAppWebViewController: UIViewController,WKUIDelegate,WKNavigation
         webView.uiDelegate = self
         webView.navigationDelegate = self
         loadRequestInWebview(URLRequest(url: URL(string:joyAppBaseUrl)!))
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableViewContainer?.roundCorners(corners: [.topLeft,.topRight], radius: 8.0)
     }
     
     private func loadRequestInWebview(_ request : URLRequest){

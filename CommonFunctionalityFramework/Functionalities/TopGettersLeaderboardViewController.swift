@@ -149,6 +149,8 @@ extension TopGettersLeaderboardViewController : LeaderboardCellAdapterDelegate {
             showSelectedUser.selectedUserName = fetchedData.getHeroes()[sender.tag].getFullName()
             if showFeedScreen != nil {
                 showSelectedUser.feedScreenType = showFeedScreen
+            }else {
+                showSelectedUser.feedScreenType = .Received
             }
             self.navigationController?.pushViewController(showSelectedUser, animated: true)
         }

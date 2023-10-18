@@ -15,6 +15,7 @@ target 'CommonFunctionalityFramework' do
   #pod 'SDWebImageFLPlugin'
   pod 'RewardzCommonComponents', :git => 'https://github.com/ankits1626/RewardzCommonComponents.git', :branch => 'dev'
 pod 'IQKeyboardManagerSwift'
+pod 'ReachabilitySwift', '= 4.3.1'
   # Pods for CommonFunctionalityFramework
   pod 'Giphy'
 end
