@@ -289,6 +289,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = true
+        vc.badgeId = jsonDataValues.nomination.badges.id
+        vc.nominationPoints = jsonDataValues.nomination.badges.points
         vc.selectedPrivacyvalue = selectedPrivacyvalue
         vc.selectedCategory = selectedPk!
         vc.delegate = self
@@ -307,6 +309,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = false
+        vc.badgeId = jsonDataValues.nomination.badges.id
+        vc.nominationPoints = jsonDataValues.nomination.badges.points
         vc.selectedPrivacyvalue = selectedPrivacyvalue
         vc.selectedCategory = selectedPk!
         vc.delegate = self

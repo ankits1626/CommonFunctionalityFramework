@@ -18,10 +18,10 @@ class BOUSNominationAppoveRejectWorker  {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     func postnomination(postId: Int, multipleNominations: String?, message: String?,approvalStatus: String,selectedPrivacyvalue : Int,
-                        selectedCategory: Int, completionHandler: @escaping BOUSNominationAppoveRejectWorkerResultHandler) {
+                        badgeId: Int, points : String,  completionHandler: @escaping BOUSNominationAppoveRejectWorkerResultHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
-                apiRequestProvider: BOUSNominationAppoveRejectRequestGenerator(feedIdentifier: postId, message: message, multipleNominations: multipleNominations, approvalStatus: approvalStatus, selectedPrivacyvalue: selectedPrivacyvalue,selectedCategory: selectedCategory,  networkRequestCoordinator: networkRequestCoordinator),
+                apiRequestProvider: BOUSNominationAppoveRejectRequestGenerator(feedIdentifier: postId, message: message, multipleNominations: multipleNominations, approvalStatus: approvalStatus, selectedPrivacyvalue: selectedPrivacyvalue, badgeId: badgeId,points: points,networkRequestCoordinator: networkRequestCoordinator),
                 dataParser: ReportAbuseDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
             )
@@ -41,15 +41,17 @@ class BOUSNominationAppoveRejectRequestGenerator: APIRequestGeneratorProtocol  {
     var approvalStatus : String
     var multipleNominations: String?
     var selectedPrivacyvalue : Int
-    var selectedCategory: Int
+    var badgeId: Int
+    var points : String
     init(feedIdentifier: Int, message: String?,multipleNominations: String?, approvalStatus: String, selectedPrivacyvalue : Int,
-    selectedCategory: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+         badgeId: Int, points : String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.feedIdentifier = feedIdentifier
         self.message = message
         self.approvalStatus = approvalStatus
         self.networkRequestCoordinator = networkRequestCoordinator
         self.multipleNominations = multipleNominations
-        self.selectedCategory = selectedCategory
+        self.badgeId = badgeId
+        self.points = points
         self.selectedPrivacyvalue = selectedPrivacyvalue
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
@@ -67,7 +69,7 @@ class BOUSNominationAppoveRejectRequestGenerator: APIRequestGeneratorProtocol  {
                         return req
                 }else {
                     let req =  self.requestBuilder.apiRequestWithMultiPartFormHeader(
-                        url: URL(string: baseUrl + "nominations/api/nominations/\(feedIdentifier)/update_status/?appreciation=1"),
+                        url: URL(string: baseUrl + "nominations/api/nominations/\(feedIdentifier)/update_status/"),
                         method: .POST,
                         httpBodyString: self.prepareHttpBody()
                     )
@@ -81,7 +83,7 @@ class BOUSNominationAppoveRejectRequestGenerator: APIRequestGeneratorProtocol  {
     
     private func prepareHttpBody() -> String{
         var params = ""
-        params = "comment=\(message ?? "")&approval_status=\(approvalStatus)&shared_with=\(selectedPrivacyvalue)&category=\(selectedCategory)" as String
+        params = "comment=\(message ?? "")&approval_status=\(approvalStatus)&shared_with=\(selectedPrivacyvalue)&badge=\(self.badgeId)&points=\(self.points)" as String
         return params
     }
     

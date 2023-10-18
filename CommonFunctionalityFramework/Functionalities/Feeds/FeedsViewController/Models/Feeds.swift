@@ -139,7 +139,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         var badgeBackgroundColor = ""
         
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
-            if let badgesDic = userStrength["badges"] as? NSDictionary {
+            if let badgesDic = userStrength["badge"] as? NSDictionary {
                 badgeName = badgesDic["name"] as! String
                 badgeIcon = badgesDic["icon"] as! String
                 badgeBackgroundColor = badgesDic["background_color"] as! String
