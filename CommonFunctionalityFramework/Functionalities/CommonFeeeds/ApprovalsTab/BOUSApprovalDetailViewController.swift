@@ -94,9 +94,9 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             jsonDataValues =  jsonData
             if let awardId = jsonDataValues.nomination.category as? Int{
                 self.selectedPk = awardId
-                self.awardTitle = jsonDataValues.nomination.badges.name
-                self.awardPoints = "\(jsonDataValues.nomination.badges.award_points) Points"
-                self.awardImgUrl = jsonDataValues.nomination.badges.icon ?? ""
+                self.awardTitle = jsonDataValues.nomination.badge.name
+                self.awardPoints = "\(jsonDataValues.nomination.badge.award_points) Points"
+                self.awardImgUrl = jsonDataValues.nomination.badge.icon ?? ""
             }
 
             if let PrivacyType = jsonData.shared_with as? Int{
@@ -148,7 +148,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                     cell.rightArrowImg.isHidden = false
                 }
 
-                cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color,alpha:  0.1)
+                cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badge.background_color,alpha:  0.1)
                 
                 if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String, leftImg.count > 0 {
                      mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: leftImg)
@@ -289,8 +289,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = true
-        vc.badgeId = jsonDataValues.nomination.badges.id
-        vc.nominationPoints = jsonDataValues.nomination.badges.points
+        vc.badgeId = jsonDataValues.nomination.badge.id
+        vc.nominationPoints = jsonDataValues.nomination.badge.points
         vc.selectedPrivacyvalue = selectedPrivacyvalue
         vc.selectedCategory = selectedPk!
         vc.delegate = self
@@ -309,8 +309,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = false
-        vc.badgeId = jsonDataValues.nomination.badges.id
-        vc.nominationPoints = jsonDataValues.nomination.badges.points
+        vc.badgeId = jsonDataValues.nomination.badge.id
+        vc.nominationPoints = jsonDataValues.nomination.badge.points
         vc.selectedPrivacyvalue = selectedPrivacyvalue
         vc.selectedCategory = selectedPk!
         vc.delegate = self

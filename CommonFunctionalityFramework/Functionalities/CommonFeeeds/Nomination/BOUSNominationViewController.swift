@@ -90,8 +90,8 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
             cell.usrImg.setImageForName(dataValue.nomination.nominated_team_member.full_name, circular: false, textAttributes: nil)
         }
         
-        if !dataValue.nomination.badges.icon.isEmpty{
-            mediaFetcher.fetchImageAndLoad(cell.awardThumbnail, imageEndPoint: dataValue.nomination.badges.icon)
+        if !dataValue.nomination.badge.icon.isEmpty{
+            mediaFetcher.fetchImageAndLoad(cell.awardThumbnail, imageEndPoint: dataValue.nomination.badge.icon)
         }else{
             cell.awardThumbnail.image = nil
         }
@@ -118,8 +118,8 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         }else{
             cell.userStrengthDescription.text = dataValue.description
         }
-        cell.awardType.text = "\(dataValue.nomination.badges.name)"
-        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) \("Points".localized)"
+        cell.awardType.text = "\(dataValue.nomination.badge.name)"
+        cell.awardPoints.text = "\(dataValue.nomination.badge.award_points) \("Points".localized)"
         cell.timeRemaining.text = "\(dataValue.nomination.nom_status)"
         cell.timeRemaining.curvedWithoutBorderedControl(borderColor: .clear, borderWidth: 1.0, cornerRadius: 6.0)
         if let nom_color = dataValue.nomination.nom_status_color {

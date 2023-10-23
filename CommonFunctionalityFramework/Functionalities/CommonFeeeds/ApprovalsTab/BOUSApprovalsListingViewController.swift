@@ -132,7 +132,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BOUSApprovalsListTableViewCell
         let dataValue = jsonDataValues[indexPath.row]
         cell.nominatedUserName.text = "\(dataValue.nomination.nominated_team_member.full_name) nominated"
-        cell.awardType.text = "\(dataValue.nomination.badges.name)"
+        cell.awardType.text = "\(dataValue.nomination.badge.name)"
         cell.nominatedBy.text = "by \(dataValue.nomination.nominator_name)"
         cell.nominatedDate.text = getCreationDate(jsonData: dataValue)
         if dataValue.time_left.isEmpty {
@@ -140,7 +140,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
         }else {
             cell.timeRemaining.text = "\(dataValue.time_left)"
         }
-        cell.awardPoints.text = "\(dataValue.nomination.badges.award_points) points"        
+        cell.awardPoints.text = "\(dataValue.nomination.badge.award_points) points"
         if let unwrappedUserStength = dataValue.nomination.user_strength {
             cell.userStrengthTitle.text = "\(unwrappedUserStength.name)"
             cell.strengthHeightConstraints?.constant = 20
@@ -172,8 +172,8 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
             mediaFetcher.fetchImageAndLoad(cell.usrImg, imageEndPoint: dataValue.nomination.nominated_team_member.profile_img ?? "")
         }
         
-        if !dataValue.nomination.badges.icon.isEmpty{
-            mediaFetcher.fetchImageAndLoad(cell.awardThumbnail, imageEndPoint: dataValue.nomination.badges.icon)
+        if !dataValue.nomination.badge.icon.isEmpty{
+            mediaFetcher.fetchImageAndLoad(cell.awardThumbnail, imageEndPoint: dataValue.nomination.badge.icon)
         }else{
             
             cell.awardThumbnail.image = nil

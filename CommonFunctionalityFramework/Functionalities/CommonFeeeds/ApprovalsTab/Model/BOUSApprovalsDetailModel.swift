@@ -35,11 +35,11 @@ struct nominationKey : Decodable {
     let id : Int
     let nominator_name : String
     enum CodingValue : String, CodingKey {
-        case badge = "badges"
+        case badge = "badge"
         case user_strength = "user_strength"
         case nominated_team_member = "nominated_team_member"
     }
-    let badges : badge
+    let badge : badge
     let user_strength : userStrength?
     let nominated_team_member : nominated_team_member
     let category : Int
