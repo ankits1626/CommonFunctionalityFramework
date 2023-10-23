@@ -41,6 +41,10 @@ class PreviewableLocalMediaItem : MediaItemProtocol{
 
 
 class PreviewablePost : FeedsItemProtocol{
+    func getCreatorUserPK() -> Int {
+        return 0
+    }
+    
     func getNewFeedType() -> NewFeedPostType {
         return .Appreciation
     }

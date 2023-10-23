@@ -531,6 +531,12 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
+        if let feed = getFeedItem(feedIdentifier: feedIdentifier){
+            let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+            feedCoordinatorDelegate.openOtherProfileView(feedDetailVC, otherUserPk: feed.getCreatorUserPK())
+        }
+    }
     func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
         
     }

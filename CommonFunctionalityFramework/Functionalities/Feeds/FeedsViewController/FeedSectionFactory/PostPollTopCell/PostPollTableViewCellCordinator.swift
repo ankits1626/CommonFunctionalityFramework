@@ -32,6 +32,14 @@ class PostPollTableViewCellCordinator: FeedCellCoordinatorProtocol{
             }
             
             let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
+            cell.openUserProfileButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate?.showUserProfileView(
+                        targetView: cell.editFeedButton,
+                        feedIdentifier: feed.feedIdentifier
+                    )
+            })
             
             if selectedtabValue == "GreetingsFeed" {
                 cell.userName?.text = feed.getUserName()
