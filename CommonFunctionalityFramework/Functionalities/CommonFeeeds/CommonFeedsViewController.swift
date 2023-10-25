@@ -354,7 +354,8 @@ extension CommonFeedsViewController : CommonFeedsDelegate{
     func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
         if let feed = getFeedItem(feedIdentifier: feedIdentifier){
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
-            feedCoordinatorDelegate.openOtherProfileView(feedDetailVC, otherUserPk: feed.getCreatorUserPK())
+            let profilePK = selectedTabType == "received" ? feed.getCreatorUserPK() : feed.getReceiverUserPK()
+            feedCoordinatorDelegate.openOtherProfileView(feedDetailVC, otherUserPk: profilePK)
         }
     }
     

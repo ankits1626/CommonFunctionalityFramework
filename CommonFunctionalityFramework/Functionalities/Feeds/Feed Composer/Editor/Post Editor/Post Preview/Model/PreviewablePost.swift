@@ -41,6 +41,10 @@ class PreviewableLocalMediaItem : MediaItemProtocol{
 
 
 class PreviewablePost : FeedsItemProtocol{
+    func getReceiverUserPK() -> Int {
+        return 0
+    }
+    
     func getCreatorUserPK() -> Int {
         return 0
     }
