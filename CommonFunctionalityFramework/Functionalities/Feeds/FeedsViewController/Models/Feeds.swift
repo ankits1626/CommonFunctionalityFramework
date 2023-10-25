@@ -63,6 +63,7 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getSingleImageHeight() -> CGFloat
     func getGifImageHeight() -> CGFloat
     func getGreeting() -> GreetingAnniAndBday?
+    func getCreatorUserPK() -> Int
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -573,6 +574,13 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             userImg = userDic["organization_logo"] as? String ?? nil
         }
         return userImg
+    }
+    
+    func getCreatorUserPK() -> Int {
+        if let userDic = rawFeedDictionary["created_by_user_info"] as? NSDictionary {
+            return userDic["pk"] as? Int ?? 0
+        }
+        return 0
     }
     
     func getHomeUserCreatedName() -> String? {

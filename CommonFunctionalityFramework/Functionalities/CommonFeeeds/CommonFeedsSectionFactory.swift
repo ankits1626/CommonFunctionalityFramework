@@ -20,6 +20,7 @@ protocol CommonFeedsDatasource {
 }
 
 protocol CommonFeedsDelegate : class {
+    func showUserProfileView(targetView: UIView?, feedIdentifier: Int64)
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
     func showLikedByUsersList()
     func showMediaBrowser(feedIdentifier : Int64,scrollToItemIndex: Int)

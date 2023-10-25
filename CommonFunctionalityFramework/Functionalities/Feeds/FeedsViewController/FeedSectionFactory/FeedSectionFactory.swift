@@ -25,6 +25,7 @@ protocol FeedsDatasource : AnyObject {
 }
 
 protocol FeedsDelegate : AnyObject {
+    func showUserProfileView(targetView : UIView?, feedIdentifier : Int64)
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64)
     func showLikedByUsersList()
     func showPostReactions()
