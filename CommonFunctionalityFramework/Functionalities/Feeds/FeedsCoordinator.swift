@@ -34,6 +34,7 @@ public struct GetFeedsViewModel{
     var networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol
     var mediaCoordinator : CFFMediaCoordinatorProtocol
     var feedCoordinatorDelegate : FeedsCoordinatorDelegate
+    var apreciatefeedCoordinatorDelegate : FeedsCommonCoordinatorDelegate
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var shouldShowCreateButton : Bool = false
@@ -50,7 +51,7 @@ public struct GetFeedsViewModel{
     var isDesklessEnabled : Bool = false
     var isFromUserProfile : Bool = false
     var userPk: Int
-    public init (userPk: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0,  _isDesklessEnabled : Bool = false, _isFromUserProfile : Bool = false){
+    public init (userPk: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0,  _isDesklessEnabled : Bool = false, _isFromUserProfile : Bool = false,apreciatefeedCoordinatorDelegate : FeedsCommonCoordinatorDelegate){
         self.userPk = userPk
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
@@ -69,6 +70,7 @@ public struct GetFeedsViewModel{
         self.greetingId = _greetingId
         self.isDesklessEnabled = _isDesklessEnabled
         self.isFromUserProfile = _isFromUserProfile
+        self.apreciatefeedCoordinatorDelegate = apreciatefeedCoordinatorDelegate
     }
 }
 

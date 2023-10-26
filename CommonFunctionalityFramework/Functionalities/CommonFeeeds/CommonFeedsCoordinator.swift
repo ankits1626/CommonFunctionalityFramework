@@ -165,6 +165,7 @@ public class CommonFeedsCoordinator {
                         feedDetailVC.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
                         feedDetailVC.isDesklessEnabled = inputModel.isDesklessEnabled
                         feedDetailVC.pollSelectedAnswerMapper = SelectedPollAnswerMapper()
+                        feedDetailVC.appreciatefeedCoordinatorDelegate = inputModel.apreciatefeedCoordinatorDelegate
                         inputModel.feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
                     }
                 case .SuccessWithNoResponseData:

@@ -38,6 +38,7 @@ class FeedsDetailViewController: UIViewController, PostEditorCellFactoryDelegate
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     weak var themeManager: CFFThemeManagerProtocol?
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
+    var appreciatefeedCoordinatorDelegate: FeedsCommonCoordinatorDelegate!
     weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var selectedTab = ""
     @IBOutlet weak var downloadCompletedView: UIView!
@@ -445,7 +446,18 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 
 extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownload{
     func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
-        print("here")
+        let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+        let profilePK = self.showDisplayOptions == .POSTPOLL ? targetFeedItem.getCreatorUserPK() : selectedTab == "received" ? targetFeedItem.getCreatorUserPK() : targetFeedItem.getReceiverUserPK()
+        if showDisplayOptions == .POSTPOLL {
+            feedCoordinatorDelegate.openOtherProfileView(feedDetailVC, otherUserPk: profilePK)
+        }else {
+            if let unwrappedData =  appreciatefeedCoordinatorDelegate {
+                unwrappedData.openOtherProfileView(feedDetailVC, otherUserPk: profilePK)
+            }else {
+                feedCoordinatorDelegate.openOtherProfileView(feedDetailVC, otherUserPk: profilePK)
+            }
+        }
+        
     }
     
  

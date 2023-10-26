@@ -64,7 +64,14 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
 //            if let nominatedName = feed.getNominatedByUserName() {
 //                cell.appraacitedBy.text = "From \(nominatedName)"
 //            }
-
+            cell.openProfileButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate?.showUserProfileView(
+                        targetView: cell.editFeedButton,
+                        feedIdentifier: feed.feedIdentifier
+                    )
+                })
             let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
             if selectedtabValue == "received" {
                 cell.userName?.text =  "From \(feed.getUserName() ?? "")"

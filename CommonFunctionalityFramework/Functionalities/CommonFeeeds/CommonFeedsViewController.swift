@@ -332,6 +332,7 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
             feedDetailVC.selectedTab = selectedTabType
             feedDetailVC.requestCoordinator = requestCoordinator
             feedDetailVC.isDesklessEnabled = isDesklessEnabled
+            feedDetailVC.appreciatefeedCoordinatorDelegate = feedCoordinatorDelegate
 //            feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
             feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
             feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
