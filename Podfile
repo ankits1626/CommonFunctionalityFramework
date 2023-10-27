@@ -16,5 +16,4 @@ target 'CommonFunctionalityFramework' do
   pod 'RewardzCommonComponents', :git => 'https://github.com/ankits1626/RewardzCommonComponents.git', :branch => 'dev'
 pod 'IQKeyboardManagerSwift'
   # Pods for CommonFunctionalityFramework
-  pod 'Giphy'
 end

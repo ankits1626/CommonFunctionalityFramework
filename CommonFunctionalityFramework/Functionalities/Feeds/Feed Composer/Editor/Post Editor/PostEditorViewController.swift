@@ -11,7 +11,7 @@ import SimpleCheckbox
 import CoreData
 import Photos
 import RewardzCommonComponents
-import GiphyUISDK
+//import GiphyUISDK
 
 enum SharePostOption : Int{
     case MyOrg = 20
@@ -427,13 +427,13 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         //            }
         //        }
         
-        let giphy = GiphyViewController()
-        Giphy.configure(apiKey: "sUhGOw62fGSyGbWUT0hrlsfLL3gBMQ3h")
-        giphy.delegate = self
-        giphy.mediaTypeConfig = [.gifs, .stickers, .text, .emoji]
-        GiphyViewController.trayHeightMultiplier = 1.0
-        giphy.theme = GPHTheme(type: .lightBlur)
-        present(giphy, animated: true, completion: nil)
+//        let giphy = GiphyViewController()
+//        Giphy.configure(apiKey: "sUhGOw62fGSyGbWUT0hrlsfLL3gBMQ3h")
+//        giphy.delegate = self
+//        giphy.mediaTypeConfig = [.gifs, .stickers, .text, .emoji]
+//        GiphyViewController.trayHeightMultiplier = 1.0
+//        giphy.theme = GPHTheme(type: .lightBlur)
+//        present(giphy, animated: true, completion: nil)
         
     }
     
@@ -931,21 +931,21 @@ extension  PostEditorViewController : DidTapOnEcard {
     
 }
 
-extension PostEditorViewController: GiphyDelegate {
-    func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia)   {
-        let gifURL = media.url(rendition: .downsized, fileType: .gif)
-        // your user tapped a GIF!
-        self.selectedGif = gifURL!
-        postCoordinator.attachGifyGifItem(gifURL!)
-        //        self.documentsArr.append(["Gif" : self.selectedGif])
-        //self.tableView.reloadData()
-        giphyViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    func didDismiss(controller: GiphyViewController?) {
-        // your user dismissed the controller without selecting a GIF.
-    }
-}
+//extension PostEditorViewController: GiphyDelegate {
+//    func didSelectMedia(giphyViewController: GiphyViewController, media: GPHMedia)   {
+//        let gifURL = media.url(rendition: .downsized, fileType: .gif)
+//        // your user tapped a GIF!
+//        self.selectedGif = gifURL!
+//        postCoordinator.attachGifyGifItem(gifURL!)
+//        //        self.documentsArr.append(["Gif" : self.selectedGif])
+//        //self.tableView.reloadData()
+//        giphyViewController.dismiss(animated: true, completion: nil)
+//    }
+//
+//    func didDismiss(controller: GiphyViewController?) {
+//        // your user dismissed the controller without selecting a GIF.
+//    }
+//}
 extension PostEditorViewController:  FeedsImageDelegate {
     func selectedImageType(isCamera : Bool) {
         if isCamera {
