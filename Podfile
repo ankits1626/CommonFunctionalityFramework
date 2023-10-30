@@ -17,5 +17,4 @@ target 'CommonFunctionalityFramework' do
 pod 'IQKeyboardManagerSwift'
 pod 'ReachabilitySwift', '= 4.3.1'
   # Pods for CommonFunctionalityFramework
-  pod 'Giphy'
 end
