@@ -144,6 +144,10 @@ class ShowSelectedUserRecognition: UIViewController{
 }
 
 extension ShowSelectedUserRecognition :  FeedsCommonCoordinatorDelegate {
+    func openOtherProfileView(_ detailViewController: UIViewController, otherUserPk: Int) {
+        
+    }
+    
     func showFeedDetail(_ detailViewController: UIViewController) {
         let feedDetailContainer = SelectedRecognitionDetailViewController(nibName: "SelectedRecognitionDetailViewController", bundle: Bundle(for: SelectedRecognitionDetailViewController.self))
         feedDetailContainer.feedDetailVC = detailViewController

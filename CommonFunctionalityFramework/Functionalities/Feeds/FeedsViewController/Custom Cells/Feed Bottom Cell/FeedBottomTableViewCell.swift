@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Reactions
 
 class FeedBottomTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var clapsButton : BlockButton?

@@ -52,6 +52,7 @@ public struct GetCommonFeedsViewModel{
 
 
 public protocol FeedsCommonCoordinatorDelegate {
+    func openOtherProfileView(_ detailViewController : UIViewController, otherUserPk : Int)
     func showFeedDetail(_ detailViewController : UIViewController)
     func removeFeedDetail()
     func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))

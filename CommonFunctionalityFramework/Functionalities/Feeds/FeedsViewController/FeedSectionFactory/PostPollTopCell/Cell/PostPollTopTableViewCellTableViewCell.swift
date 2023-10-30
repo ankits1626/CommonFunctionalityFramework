@@ -19,6 +19,7 @@ class PostPollTopTableViewCellTableViewCell: UITableViewCell, FeedsCustomCellPro
     @IBOutlet weak var pinPostButton : BlockButton?
     @IBOutlet weak var pinImage: UIImageView!
     @IBOutlet weak var pinPostWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var openUserProfileButton : BlockButton?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
