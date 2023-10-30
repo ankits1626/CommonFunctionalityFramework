@@ -770,7 +770,7 @@ extension FeedsViewController : FeedsDelegate{
                 numberofElementsEnabled = numberofElementsEnabled + 1
             }
             
-            drawer.isPintoPostEnabled = feed.isLoggedUserAdmin()
+            drawer.isPintoPostEnabled = (feed.isLoggedUserAdmin() && !isFromUserProfile)
             drawer.isDeleteEnabled = feed.isFeedDeleteAllowed()
             drawer.isreportAbusedEnabled = feed.isFeedReportAbuseAllowed()
             do{
