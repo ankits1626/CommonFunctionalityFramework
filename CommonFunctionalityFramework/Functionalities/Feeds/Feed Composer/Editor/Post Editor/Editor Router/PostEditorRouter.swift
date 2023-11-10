@@ -58,6 +58,7 @@ class PostEditorRouter{
         let orgPicker = FeedOrganisationSelectionViewController(
             FeedOrganisationSelectionInitModel(
                 requestCoordinator: initModel.requestCoordinator,
+                mainConatiner: initModel.mainAppCoordinator,
                 selectionModel: initModel.routerDelegate?.getSavedOrganisationAndDepartmentSelection(),
                 selectionCompletionHandler: {  [weak self] selectedOrganisationsAndDeparments,displayable  in
                     self?.initModel.routerDelegate?.saveOrganisationAndDepartmentSelection(selectedOrganisationsAndDeparments)
