@@ -83,7 +83,7 @@ class PostPollSelfBottomSheet: UIViewController {
     
     func presentDrawer(numberofElementsEnabled : CGFloat) throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: numberofElementsEnabled * 64.5)
+            slideInTransitioningDelegate.direction = .bottom(height: numberofElementsEnabled * 84.5)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
