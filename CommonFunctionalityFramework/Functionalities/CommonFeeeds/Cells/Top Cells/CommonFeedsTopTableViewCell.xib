@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -83,19 +83,27 @@
                                     <constraint firstAttribute="height" constant="16" id="P3O-EA-wcT"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hK-Y8-epo" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                <rect key="frame" x="8" y="8" width="244" height="49"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="r9X-1H-hzs" firstAttribute="top" secondItem="GSA-R8-ZAE" secondAttribute="top" id="1nG-Wc-7h0"/>
                             <constraint firstAttribute="trailing" secondItem="r9X-1H-hzs" secondAttribute="trailing" constant="8" id="4qN-8N-M8d"/>
                             <constraint firstItem="uSh-OD-oQi" firstAttribute="top" secondItem="GSA-R8-ZAE" secondAttribute="top" id="LtX-3v-TVq"/>
+                            <constraint firstItem="3hK-Y8-epo" firstAttribute="leading" secondItem="F1B-LZ-GLV" secondAttribute="leading" constant="8" id="S3B-hM-AcG"/>
                             <constraint firstItem="GSA-R8-ZAE" firstAttribute="leading" secondItem="F1B-LZ-GLV" secondAttribute="leading" constant="8" id="Tuf-0S-RfN"/>
+                            <constraint firstAttribute="bottom" secondItem="3hK-Y8-epo" secondAttribute="bottom" id="VgB-3g-Lb8"/>
                             <constraint firstItem="EoD-NB-Q00" firstAttribute="leading" secondItem="GSA-R8-ZAE" secondAttribute="trailing" constant="10" id="bK5-a0-L71"/>
+                            <constraint firstItem="r9X-1H-hzs" firstAttribute="leading" secondItem="3hK-Y8-epo" secondAttribute="trailing" constant="16" id="dwb-oz-Xqh"/>
                             <constraint firstItem="EoD-NB-Q00" firstAttribute="top" secondItem="uSh-OD-oQi" secondAttribute="bottom" constant="5" id="ef5-4w-IP4"/>
                             <constraint firstItem="GSA-R8-ZAE" firstAttribute="top" secondItem="F1B-LZ-GLV" secondAttribute="top" constant="8" id="gHo-ny-bRO"/>
                             <constraint firstItem="EoD-NB-Q00" firstAttribute="top" secondItem="uSh-OD-oQi" secondAttribute="bottom" constant="4" id="hxt-Hk-P62"/>
                             <constraint firstItem="uSh-OD-oQi" firstAttribute="leading" secondItem="GSA-R8-ZAE" secondAttribute="trailing" constant="10" id="j8R-d7-RVM"/>
                             <constraint firstItem="r9X-1H-hzs" firstAttribute="leading" secondItem="uSh-OD-oQi" secondAttribute="trailing" constant="10" id="kaU-vX-UE6"/>
+                            <constraint firstItem="3hK-Y8-epo" firstAttribute="top" secondItem="F1B-LZ-GLV" secondAttribute="top" constant="8" id="ppq-hF-ju9"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -113,6 +121,7 @@
                 <outlet property="dateLabel" destination="FNu-f2-YPo" id="Fkf-ok-XHC"/>
                 <outlet property="dot" destination="ufO-YD-JfP" id="m5c-Qf-Ucp"/>
                 <outlet property="editFeedButton" destination="r9X-1H-hzs" id="6pQ-Zw-OxW"/>
+                <outlet property="openUserProfileButton" destination="3hK-Y8-epo" id="PZY-vY-2Kl"/>
                 <outlet property="profileImage" destination="GSA-R8-ZAE" id="FVx-Q5-ejI"/>
                 <outlet property="userName" destination="uSh-OD-oQi" id="8Dc-Ox-4dL"/>
             </connections>
