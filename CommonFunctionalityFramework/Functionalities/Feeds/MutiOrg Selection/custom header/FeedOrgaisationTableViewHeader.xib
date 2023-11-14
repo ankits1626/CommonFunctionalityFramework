@@ -74,7 +74,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSA-JQ-Heg">
                             <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select All Departments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcy-FD-erG">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select All Departments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="Bcy-FD-erG">
                                     <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <color key="textColor" red="0.6705882352941176" green="0.67843137254901964" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
@@ -100,7 +100,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGg-el-Edq">
                             <rect key="frame" x="195" y="0.0" width="187" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select All Job Family" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXZ-RZ-m9b">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select All Job Famlies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="mXZ-RZ-m9b">
                                     <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <color key="textColor" red="0.6705882353" green="0.67843137249999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -146,8 +146,10 @@
                 <outlet property="headerContainer" destination="jXj-HO-tH4" id="66W-t9-RQP"/>
                 <outlet property="organisationLbl" destination="Gqe-fK-UZu" id="0g3-q4-41b"/>
                 <outlet property="selectAllDepartment" destination="bh0-GV-EDo" id="K9L-6K-NuP"/>
+                <outlet property="selectAllDepartmentLabel" destination="Bcy-FD-erG" id="xcn-p3-mdA"/>
                 <outlet property="selectAllDepartmentView" destination="HSA-JQ-Heg" id="DsU-6b-2I9"/>
                 <outlet property="selectAllJobFamiles" destination="gCD-tD-mje" id="Wax-ad-5xi"/>
+                <outlet property="selectAllJobFamilesLabel" destination="mXZ-RZ-m9b" id="xul-n3-IaP"/>
                 <outlet property="selectAllStackView" destination="5pB-5h-WKH" id="Bg2-DK-9Qt"/>
                 <outlet property="selectJobFamilyContainerView" destination="NGg-el-Edq" id="B78-Qd-qfN"/>
                 <outlet property="selectionDetailLbl" destination="DS8-I7-ri1" id="Tkp-qd-n9T"/>
@@ -156,6 +158,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cff_collapse" width="25" height="25"/>
+        <image name="cff_collapse" width="16" height="16"/>
     </resources>
 </document>

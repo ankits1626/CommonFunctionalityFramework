@@ -138,7 +138,7 @@ extension FeedOrganisationListManager{
         header.selectAllStackView?.isHidden = self.collapsedSections.contains(section) ? true : false
         header.selectAllDepartmentView?.isHidden = !initModel.dataManager!.isDepartmentEnabled(section: section)
         header.selectJobFamilyContainerView?.isHidden = !initModel.dataManager!.isJobFamilyEnabled(section: section)
-        header.selectAllDepartment?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
+        header.selectAllDepartmentView?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
         header.selectJobFamilyContainerView?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
         
         header.headerContainer?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -152,6 +152,22 @@ extension FeedOrganisationListManager{
             for: .normal
         )
         
+        if self.initModel.dataManager?.getDepartmentMatchCount(organisation: organisation) == self.initModel.dataManager?.getMyDepartmentCounts(organisation: organisation){
+            header.selectAllDepartmentLabel?.backgroundColor = .getControlColor()
+            header.selectAllDepartmentLabel?.textColor = .white
+        }else{
+            header.selectAllDepartmentLabel?.backgroundColor = .white
+            header.selectAllDepartmentLabel?.textColor = UIColor(red: 171.0/255.0, green: 173.0/255.0, blue: 192.0/255.0, alpha: 1.0)
+        }
+        
+        if self.initModel.dataManager?.getJobFamiliesMatchCount(organisation: organisation) == self.initModel.dataManager?.getMyJobFamiliesCounts(organisation: organisation){
+            header.selectAllJobFamilesLabel?.backgroundColor = .getControlColor()
+            header.selectAllJobFamilesLabel?.textColor = .white
+        }else{
+            header.selectAllJobFamilesLabel?.backgroundColor = .white
+            header.selectAllJobFamilesLabel?.textColor = UIColor(red: 171.0/255.0, green: 173.0/255.0, blue: 192.0/255.0, alpha: 1.0)
+        }
+            
         header.selectAllDepartment?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
             [weak self] in
             if let unwrappedSelf = self{
@@ -182,8 +198,6 @@ extension FeedOrganisationListManager{
             }
         })
         header.selectionDetailLbl?.text = initModel.dataManager?.getSelectionDetails(organisation)
-        
-
     }
     
     private func configureDepartmentRow(cell: FeedOrganisationTableViewCell, indexpath: IndexPath){
@@ -220,13 +234,15 @@ extension FeedOrganisationListManager{
         let department = initModel.dataManager!.getOrganisations()[indexpath.section].departments.filter{$0.isDisplayable}[indexpath.row]
         if let unwrappedDataManager = initModel.dataManager{
             if (unwrappedDataManager.checkIfDepartmentIsSelected(department)) || (unwrappedDataManager.checkIfJobFamilyIsSelected(department)){
-                cell.rowContainer?.backgroundColor = .getControlColor()
+                cell.rowContainer?.backgroundColor = department.isJobFamily ? UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 1.0) : .getControlColor()
                 cell.departmentLbl?.textColor = .white
-                cell.rowTypeViewContainer?.backgroundColor = .getControlColor().withAlphaComponent(0.1)
+                cell.rowTypeViewContainer?.backgroundColor = department.isJobFamily ? UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 0.1) :  .getControlColor().withAlphaComponent(0.1)
                 cell.rowTypeViewContainer?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255,alpha: 0.1), borderWidth: 1.0, cornerRadius: 6.0)
                 cell.rowTypeStatusLabel?.textColor = .white
+                cell.departmentCounts?.textColor = .white
             }else{
                 cell.rowContainer?.backgroundColor = .white
+                cell.departmentCounts?.textColor = UIColor(red: 171/255, green: 173/255, blue: 192/255)
                 cell.departmentLbl?.textColor = UIColor(red: 21/255, green: 21/255, blue: 21/255)
                 cell.rowTypeViewContainer?.backgroundColor = .white
                 cell.rowTypeViewContainer?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 6.0)

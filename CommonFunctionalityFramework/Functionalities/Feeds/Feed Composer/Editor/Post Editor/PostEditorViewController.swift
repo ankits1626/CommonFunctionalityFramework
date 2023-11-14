@@ -265,7 +265,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                 at: shareOption.rawValue,
                 animated: false)
         }
-        let font = UIFont.systemFont(ofSize: 10)
+        let font = UIFont.systemFont(ofSize: 11.5)
         shareWithSegmentControl?.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         shareWithSegmentControl?.selectedSegmentIndex = 0
         shareWithSegmentControl?.tintColor = .getControlColor()
@@ -883,7 +883,8 @@ extension PostEditorViewController{
             case .MyDepartment:
                 createButton?.setTitle(getCreateButtonTitle(), for: .normal)
             case .MultiOrg:
-                createButton?.setTitle("Select Org/Dept".localized.uppercased(), for: .normal)
+                let isNuhsMultiOrgEnabled = (self.mainAppCoordinator?.isNuhsMultiOrgPostEnabled())! ? "Select Org/Dept/Job Family".localized : "Select Org/Dept".localized.localized
+                createButton?.setTitle(isNuhsMultiOrgEnabled.localized.uppercased(), for: .normal)
             }
         }
     }

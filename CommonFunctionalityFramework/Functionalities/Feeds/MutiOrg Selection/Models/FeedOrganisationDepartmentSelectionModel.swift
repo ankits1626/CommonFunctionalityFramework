@@ -28,7 +28,13 @@ struct FeedOrganisationDepartmentSelectionDisplayModel{
                     }
                 }
                 if !deps.isEmpty{
-                    retval.append("\(org.displayName) - \(deps.joined(separator: ",")) - \(JobFamily.joined(separator: ","))")
+                    let jobFamilyData = !JobFamily.isEmpty ?  "- \(JobFamily.joined(separator: ","))"  : ""
+                    retval.append("\(org.displayName) - \(deps.joined(separator: ","))")
+                    if !JobFamily.isEmpty {
+                        retval.append("jobfamily\(org.displayName) \(jobFamilyData)")
+                    }
+                }else if !JobFamily.isEmpty{
+                    retval.append("jobfamily\(org.displayName) - \(JobFamily.joined(separator: ","))")
                 }
             }
             

@@ -47,7 +47,6 @@ class PostPreviewSectionFactory {
             PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
-            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
         ]
     }
     
@@ -223,9 +222,6 @@ extension PostPreviewSectionFactory{
             }
             rows.append(PollBottomTableViewCelType())
         }
-        
-        rows.append(FeedBottomTableViewCellType())
-        
         return rows
     }
 }

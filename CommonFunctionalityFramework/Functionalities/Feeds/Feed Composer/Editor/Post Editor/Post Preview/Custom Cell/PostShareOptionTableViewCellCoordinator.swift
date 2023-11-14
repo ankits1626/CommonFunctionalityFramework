@@ -43,14 +43,21 @@ class PostShareOptionTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.selectedOrgDepartmentLbl?.text = "My Job Families".localized
         case .MultiOrg:
             let displayable = datasource.getPostSharedWithOrgAndDepartment()!.displayables()[targetIndexpath.row]
-            cell.selectedOrgDepartmentLbl?.text = displayable
+            if displayable.contains("jobfamily") {
+                let jobFamilyData = displayable.replacingOccurrences(of: "jobfamily", with: "")
+                cell.selectedOrgDepartmentLbl?.text = jobFamilyData
+                cell.selectedOrgDepartmentLbl?.textColor = UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 1.0)
+                cell.bubble?.backgroundColor = UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 0.1)
+            }else {
+                cell.selectedOrgDepartmentLbl?.text = displayable
+                cell.selectedOrgDepartmentLbl?.textColor = .getControlColor()
+                cell.bubble?.backgroundColor = .grayBackGroundColor()
+            }
         }
         
         cell.selectedOrgDepartmentLbl?.backgroundColor = .clear
         cell.selectedOrgDepartmentLbl?.font = .Caption3
-        cell.selectedOrgDepartmentLbl?.textColor = .getControlColor()
         
-        cell.bubble?.backgroundColor = .white
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {

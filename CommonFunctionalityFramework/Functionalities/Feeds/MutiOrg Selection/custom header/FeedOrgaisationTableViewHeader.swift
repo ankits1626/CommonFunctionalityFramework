@@ -19,6 +19,9 @@ class FeedOrgaisationTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var selectAllDepartment: BlockButton?
     @IBOutlet weak var selectAllJobFamiles : BlockButton?
     
+    @IBOutlet weak var selectAllDepartmentLabel: UILabel?
+    @IBOutlet weak var selectAllJobFamilesLabel : UILabel?
+    
     @IBOutlet weak var selectJobFamilyContainerView : UIView?
     @IBOutlet weak var selectAllDepartmentView : UIView?
     @IBOutlet weak var selectAllStackView : UIStackView?

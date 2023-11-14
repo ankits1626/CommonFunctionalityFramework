@@ -56,6 +56,13 @@ extension FeedEditorLocalMediaCollectionCoordinator : UICollectionViewDataSource
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "MediaItemCollectionViewCell",
         for: indexPath) as! MediaItemCollectionViewCell
         cell.removeButton?.isHidden = false
+        cell.removeButton?.setImage(
+            UIImage(
+                named: "cff_media_cancel",
+                in: Bundle(for: FeedEditorLocalMediaCollectionCoordinator.self),
+                compatibleWith: nil),
+            for: .normal
+        )
         cell.editTransparentView?.isHidden = false
         cell.pageControl.isHidden = true
         cell.curvedCornerControl()

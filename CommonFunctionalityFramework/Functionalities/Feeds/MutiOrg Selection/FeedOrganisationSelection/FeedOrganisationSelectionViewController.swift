@@ -12,6 +12,7 @@ import RewardzCommonComponents
 
 struct FeedOrganisationSelectionInitModel{
     weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
+    weak var mainConatiner : CFFMainAppInformationCoordinator?
     var selectionModel: FeedOrganisationDepartmentSelectionModel?
     var selectionCompletionHandler : (_ selectionModel: FeedOrganisationDepartmentSelectionModel?, _ displayable: FeedOrganisationDepartmentSelectionDisplayModel) -> Void
 }
@@ -36,7 +37,8 @@ class FeedOrganisationSelectionViewController: UIViewController {
     @IBOutlet private weak var clearButton: UIButton?
     
     private func setupContainerTopbar(){
-        containerTopBarModel?.title?.text = "Select Orgs/Dept".localized
+        let nuhsMultiOrg = (self.initModel.mainConatiner?.isNuhsMultiOrgPostEnabled())! ? "Select Org/Dept/Job Family".localized : "Select Orgs/Dept".localized
+        containerTopBarModel?.title?.text = nuhsMultiOrg
     }
     
     private lazy var dataManager: FeedOrganisationDataManager = {
