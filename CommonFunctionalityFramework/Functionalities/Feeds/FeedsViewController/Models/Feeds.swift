@@ -90,7 +90,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
-                    strengthMessage = rawFeedDictionary["description"] as! String
+                    strengthMessage = rawFeedDictionary["description"] as? String ?? ""
                     // strengthIcon = userStengthDic["icon"] as! String
                     badgeBackgroundColor = userStengthDic["background_color"] as? String ?? "#EBEBEB"
                     backGroundLite = userStengthDic["background_color_lite"] as? String ?? "#EBEBEB"
