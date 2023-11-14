@@ -38,6 +38,8 @@ class PostPreviewHeaderCoordinator{
                 
             case .MyOrg:
                 fallthrough
+            case .JobFamilies:
+                fallthrough
             case .MyDepartment:
                 header?.headerTitleLabel?.text = "Post to".localized
                 header?.headerActionButton?.isHidden = true

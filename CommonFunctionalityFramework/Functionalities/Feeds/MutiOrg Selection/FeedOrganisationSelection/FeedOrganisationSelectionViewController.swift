@@ -12,6 +12,7 @@ import RewardzCommonComponents
 
 struct FeedOrganisationSelectionInitModel{
     weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
+    weak var mainConatiner : CFFMainAppInformationCoordinator?
     var selectionModel: FeedOrganisationDepartmentSelectionModel?
     var selectionCompletionHandler : (_ selectionModel: FeedOrganisationDepartmentSelectionModel?, _ displayable: FeedOrganisationDepartmentSelectionDisplayModel) -> Void
 }
@@ -29,16 +30,15 @@ class FeedOrganisationSelectionViewController: UIViewController {
     }
     private let initModel : FeedOrganisationSelectionInitModel
     
-    @IBOutlet private weak var topInfoLabel : UILabel?
     @IBOutlet private weak var proceedButton : UIButton?
     @IBOutlet private weak var proceedButtonContainerHeight : NSLayoutConstraint?
     @IBOutlet private weak var searchTextField: UITextField?
     @IBOutlet private weak var organisationListTableView: UITableView?
     @IBOutlet private weak var clearButton: UIButton?
-    @IBOutlet private weak var clearButtonWidthConstraint: NSLayoutConstraint?
     
     private func setupContainerTopbar(){
-        containerTopBarModel?.title?.text = "Select Orgs/Dept".localized.uppercased()
+        let nuhsMultiOrg = (self.initModel.mainConatiner?.isNuhsMultiOrgPostEnabled())! ? "Select Org/Dept/Job Family".localized : "Select Orgs/Dept".localized
+        containerTopBarModel?.title?.text = nuhsMultiOrg
     }
     
     private lazy var dataManager: FeedOrganisationDataManager = {
@@ -85,28 +85,21 @@ extension FeedOrganisationSelectionViewController{
         configureSearchBar()
         configureProceedButton()
         askDataManagerToFetchData()
-        setupTopInfoLabel()
         toggleClearSearchButtonVisibility()
     }
     
     private func toggleClearSearchButtonVisibility(){
         if let unwrappedSearchText = searchTextField?.text,
            !unwrappedSearchText.isEmpty{
-            clearButtonWidthConstraint?.constant = 70
+            clearButton?.isHidden = false
         }else{
-            clearButtonWidthConstraint?.constant = 0
+            clearButton?.isHidden = true
         }
     }
     
-    private func setupTopInfoLabel(){
-        topInfoLabel?.font = .Caption1
-        topInfoLabel?.textColor = .black35
-        topInfoLabel?.text = "Select Organizations/Departments who can view your post".localized
-    }
-    
     private func configureSearchBar(){
-        searchTextField?.backgroundColor = UIColor(red: 249, green: 249, blue: 251)
-        searchTextField?.placeholder = "🔍 " + "search organisations/departments".localized.lowercased()
+        searchTextField?.backgroundColor = UIColor(red: 245, green: 248, blue: 255)
+        searchTextField?.placeholder = " 🔍 " + "search organisations/departments".localized.lowercased()
         searchTextField?.addTarget(
             self,
             action: #selector(performSearch),
@@ -117,6 +110,12 @@ extension FeedOrganisationSelectionViewController{
             action: #selector(searchFieldDidChanged),
             for: .editingChanged
         )
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        searchTextField?.roundCorners(corners: .allCorners, radius: 8.0)
+        proceedButton?.roundCorners(corners: .allCorners, radius: 8.0)
     }
     
     private func configureProceedButton(){

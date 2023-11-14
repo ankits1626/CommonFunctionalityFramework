@@ -367,6 +367,28 @@
 		BEB0084428A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */; };
 		BEB0084728A76DF200E3F1B0 /* AddECardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */; };
 		BEB0084828A76DF200E3F1B0 /* AddECardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */; };
+		BEB7BDD32AE637E300FD652D /* Facebook.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB42AE637E300FD652D /* Facebook.xcassets */; };
+		BEB7BDD42AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB52AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict */; };
+		BEB7BDD52AE637E300FD652D /* FeedbackLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB72AE637E300FD652D /* FeedbackLocalizable.strings */; };
+		BEB7BDD62AE637E300FD652D /* ReactionSummaryLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB92AE637E300FD652D /* ReactionSummaryLocalizable.strings */; };
+		BEB7BDD72AE637E300FD652D /* FacebookReactionLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDBB2AE637E300FD652D /* FacebookReactionLocalizable.strings */; };
+		BEB7BDD82AE637E300FD652D /* ComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDC22AE637E300FD652D /* ComponentBuilder.swift */; };
+		BEB7BDD92AE637E300FD652D /* ReactionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDC32AE637E300FD652D /* ReactionSummary.swift */; };
+		BEB7BDDA2AE637E300FD652D /* ReactionFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDC42AE637E300FD652D /* ReactionFeedback.swift */; };
+		BEB7BDDB2AE637E300FD652D /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDC52AE637E300FD652D /* Configurable.swift */; };
+		BEB7BDDC2AE637E300FD652D /* ReactionSummaryConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDC62AE637E300FD652D /* ReactionSummaryConfig.swift */; };
+		BEB7BDDD2AE637E300FD652D /* ReactionButtonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDC72AE637E300FD652D /* ReactionButtonConfig.swift */; };
+		BEB7BDDE2AE637E300FD652D /* UIReactionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDC82AE637E300FD652D /* UIReactionControl.swift */; };
+		BEB7BDDF2AE637E300FD652D /* FacebookReactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDC92AE637E300FD652D /* FacebookReactions.swift */; };
+		BEB7BDE02AE637E300FD652D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDCA2AE637E300FD652D /* Extensions.swift */; };
+		BEB7BDE12AE637E300FD652D /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDCB2AE637E300FD652D /* Reaction.swift */; };
+		BEB7BDE22AE637E300FD652D /* ReactionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDCC2AE637E300FD652D /* ReactionSelector.swift */; };
+		BEB7BDE32AE637E300FD652D /* ReactionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDCD2AE637E300FD652D /* ReactionAlignment.swift */; };
+		BEB7BDE42AE637E300FD652D /* CAReactionSummaryLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDCE2AE637E300FD652D /* CAReactionSummaryLayer.swift */; };
+		BEB7BDE52AE637E300FD652D /* ReactionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDCF2AE637E300FD652D /* ReactionButton.swift */; };
+		BEB7BDE62AE637E300FD652D /* ReactionFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDD02AE637E300FD652D /* ReactionFeedbackDelegate.swift */; };
+		BEB7BDE72AE637E300FD652D /* ReactionSelectorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDD12AE637E300FD652D /* ReactionSelectorConfig.swift */; };
+		BEB7BDE82AE637E300FD652D /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7BDD22AE637E300FD652D /* Components.swift */; };
 		BEBFD1E428A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBFD1E328A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift */; };
 		BEBFD1E728A9F167006E5D8B /* PostPollLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBFD1E528A9F167006E5D8B /* PostPollLikeTableViewCell.swift */; };
 		BEBFD1E828A9F167006E5D8B /* PostPollLikeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBFD1E628A9F167006E5D8B /* PostPollLikeTableViewCell.xib */; };
@@ -422,8 +444,11 @@
 		BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */; };
 		BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543B26FC978400327205 /* UIView+XibSetup.swift */; };
 		BEF4021828201248001B9D7E /* CommonFeedsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */; };
+		BEFAF9372A860E2600900EA6 /* FeedbackCommentChatBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFAF9352A860E2600900EA6 /* FeedbackCommentChatBarView.swift */; };
+		BEFAF9382A860E2600900EA6 /* FeedbackCommentChatBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFAF9362A860E2600900EA6 /* FeedbackCommentChatBarView.xib */; };
 		BEFF9D8A28C740D5009DF1AC /* DeleteCommentDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */; };
 		BEFF9D8B28C740D5009DF1AC /* DeleteCommentDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */; };
+		E2CBF573EDDE1E6B0C07DD95 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709CFF4C44E33011CC7ED079 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -808,6 +833,32 @@
 		BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTypeTableCellCordinator.swift; sourceTree = "<group>"; };
 		BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTableViewCell.swift; sourceTree = "<group>"; };
 		BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddECardTableViewCell.xib; sourceTree = "<group>"; };
+		BEB7BDB42AE637E300FD652D /* Facebook.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Facebook.xcassets; sourceTree = "<group>"; };
+		BEB7BDB62AE637E300FD652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/ReactionSummaryLocalizable.stringsdict; sourceTree = "<group>"; };
+		BEB7BDB82AE637E300FD652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/FeedbackLocalizable.strings; sourceTree = "<group>"; };
+		BEB7BDBA2AE637E300FD652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/ReactionSummaryLocalizable.strings; sourceTree = "<group>"; };
+		BEB7BDBC2AE637E300FD652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/FacebookReactionLocalizable.strings; sourceTree = "<group>"; };
+		BEB7BDBD2AE637E300FD652D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/ReactionSummaryLocalizable.stringsdict; sourceTree = "<group>"; };
+		BEB7BDBE2AE637E300FD652D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FeedbackLocalizable.strings; sourceTree = "<group>"; };
+		BEB7BDBF2AE637E300FD652D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ReactionSummaryLocalizable.strings; sourceTree = "<group>"; };
+		BEB7BDC02AE637E300FD652D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FacebookReactionLocalizable.strings; sourceTree = "<group>"; };
+		BEB7BDC22AE637E300FD652D /* ComponentBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentBuilder.swift; sourceTree = "<group>"; };
+		BEB7BDC32AE637E300FD652D /* ReactionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSummary.swift; sourceTree = "<group>"; };
+		BEB7BDC42AE637E300FD652D /* ReactionFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionFeedback.swift; sourceTree = "<group>"; };
+		BEB7BDC52AE637E300FD652D /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		BEB7BDC62AE637E300FD652D /* ReactionSummaryConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSummaryConfig.swift; sourceTree = "<group>"; };
+		BEB7BDC72AE637E300FD652D /* ReactionButtonConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionButtonConfig.swift; sourceTree = "<group>"; };
+		BEB7BDC82AE637E300FD652D /* UIReactionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIReactionControl.swift; sourceTree = "<group>"; };
+		BEB7BDC92AE637E300FD652D /* FacebookReactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookReactions.swift; sourceTree = "<group>"; };
+		BEB7BDCA2AE637E300FD652D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BEB7BDCB2AE637E300FD652D /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		BEB7BDCC2AE637E300FD652D /* ReactionSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSelector.swift; sourceTree = "<group>"; };
+		BEB7BDCD2AE637E300FD652D /* ReactionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionAlignment.swift; sourceTree = "<group>"; };
+		BEB7BDCE2AE637E300FD652D /* CAReactionSummaryLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAReactionSummaryLayer.swift; sourceTree = "<group>"; };
+		BEB7BDCF2AE637E300FD652D /* ReactionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionButton.swift; sourceTree = "<group>"; };
+		BEB7BDD02AE637E300FD652D /* ReactionFeedbackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionFeedbackDelegate.swift; sourceTree = "<group>"; };
+		BEB7BDD12AE637E300FD652D /* ReactionSelectorConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSelectorConfig.swift; sourceTree = "<group>"; };
+		BEB7BDD22AE637E300FD652D /* Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		BEBFD1E328A9F153006E5D8B /* PostPollLikeTableViewCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPollLikeTableViewCordinator.swift; sourceTree = "<group>"; };
 		BEBFD1E528A9F167006E5D8B /* PostPollLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPollLikeTableViewCell.swift; sourceTree = "<group>"; };
 		BEBFD1E628A9F167006E5D8B /* PostPollLikeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostPollLikeTableViewCell.xib; sourceTree = "<group>"; };
@@ -863,6 +914,8 @@
 		BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+NumberOfLines.swift"; sourceTree = "<group>"; };
 		BEEF543B26FC978400327205 /* UIView+XibSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XibSetup.swift"; sourceTree = "<group>"; };
 		BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedsCoordinator.swift; sourceTree = "<group>"; };
+		BEFAF9352A860E2600900EA6 /* FeedbackCommentChatBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCommentChatBarView.swift; sourceTree = "<group>"; };
+		BEFAF9362A860E2600900EA6 /* FeedbackCommentChatBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackCommentChatBarView.xib; sourceTree = "<group>"; };
 		BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentDrawer.swift; sourceTree = "<group>"; };
 		BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteCommentDrawer.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -873,6 +926,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */,
+				E2CBF573EDDE1E6B0C07DD95 /* Pods_CommonFunctionalityFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,6 +1547,7 @@
 		983500EB2419FC87009084D4 /* Post Editor */ = {
 			isa = PBXGroup;
 			children = (
+				BEFAF9342A860DF800900EA6 /* FeedbackComment */,
 				0FABE4EF2A1DD29F00F5D855 /* Editor Router */,
 				0FABE4F12A1DD29F00F5D855 /* Post Preview */,
 				BE66CCBB28A66E2D00C7CE83 /* FeedEcardSelect */,
@@ -2018,6 +2073,7 @@
 		98B90DE1240CACD90013E9D2 /* CommonFunctionalityFramework */ = {
 			isa = PBXGroup;
 			children = (
+				BEB7BDB22AE637CA00FD652D /* Reaction */,
 				0F7AA80729D54C4A006DF6FE /* Extensions */,
 				0F72619428E6D5CF00EECB50 /* FTImageSize.swift */,
 				98F62690265787BC0086B818 /* UILoadControl */,
@@ -2620,6 +2676,51 @@
 			path = AddECardType;
 			sourceTree = "<group>";
 		};
+		BEB7BDB22AE637CA00FD652D /* Reaction */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7BDB32AE637E300FD652D /* Resources */,
+				BEB7BDC12AE637E300FD652D /* Sources */,
+			);
+			path = Reaction;
+			sourceTree = "<group>";
+		};
+		BEB7BDB32AE637E300FD652D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7BDB42AE637E300FD652D /* Facebook.xcassets */,
+				BEB7BDB52AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict */,
+				BEB7BDB72AE637E300FD652D /* FeedbackLocalizable.strings */,
+				BEB7BDB92AE637E300FD652D /* ReactionSummaryLocalizable.strings */,
+				BEB7BDBB2AE637E300FD652D /* FacebookReactionLocalizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BEB7BDC12AE637E300FD652D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7BDC22AE637E300FD652D /* ComponentBuilder.swift */,
+				BEB7BDC32AE637E300FD652D /* ReactionSummary.swift */,
+				BEB7BDC42AE637E300FD652D /* ReactionFeedback.swift */,
+				BEB7BDC52AE637E300FD652D /* Configurable.swift */,
+				BEB7BDC62AE637E300FD652D /* ReactionSummaryConfig.swift */,
+				BEB7BDC72AE637E300FD652D /* ReactionButtonConfig.swift */,
+				BEB7BDC82AE637E300FD652D /* UIReactionControl.swift */,
+				BEB7BDC92AE637E300FD652D /* FacebookReactions.swift */,
+				BEB7BDCA2AE637E300FD652D /* Extensions.swift */,
+				BEB7BDCB2AE637E300FD652D /* Reaction.swift */,
+				BEB7BDCC2AE637E300FD652D /* ReactionSelector.swift */,
+				BEB7BDCD2AE637E300FD652D /* ReactionAlignment.swift */,
+				BEB7BDCE2AE637E300FD652D /* CAReactionSummaryLayer.swift */,
+				BEB7BDCF2AE637E300FD652D /* ReactionButton.swift */,
+				BEB7BDD02AE637E300FD652D /* ReactionFeedbackDelegate.swift */,
+				BEB7BDD12AE637E300FD652D /* ReactionSelectorConfig.swift */,
+				BEB7BDD22AE637E300FD652D /* Components.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		BEBFD1E228A9F11D006E5D8B /* PostPollLikeButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2714,6 +2815,15 @@
 			path = CommonFeeeds;
 			sourceTree = "<group>";
 		};
+		BEFAF9342A860DF800900EA6 /* FeedbackComment */ = {
+			isa = PBXGroup;
+			children = (
+				BEFAF9352A860E2600900EA6 /* FeedbackCommentChatBarView.swift */,
+				BEFAF9362A860E2600900EA6 /* FeedbackCommentChatBarView.xib */,
+			);
+			path = FeedbackComment;
+			sourceTree = "<group>";
+		};
 		F88DD91C5C182AA7C36CE9E2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2787,6 +2897,7 @@
 				ja,
 				ms,
 				vi,
+				fr,
 			);
 			mainGroup = 98B90DD5240CACD90013E9D2;
 			productRefGroup = 98B90DE0240CACD90013E9D2 /* Products */;
@@ -2840,12 +2951,14 @@
 				0FB1635729B71117000AA631 /* AnniversaryDetailTableViewCell.xib in Resources */,
 				BEC2B28F26FDA2AE008417C3 /* FeedsDetailViewController.xib in Resources */,
 				BEC2B25B26FD992A008417C3 /* MultipleMediaTableViewCell.xib in Resources */,
+				BEB7BDD62AE637E300FD652D /* ReactionSummaryLocalizable.strings in Resources */,
 				0F6021A3287414F800D852BD /* CommonFeedDescriptionTableViewCell.xib in Resources */,
 				BCC705342A6281E0000413E3 /* InspireMeView.storyboard in Resources */,
 				0FD47F432A25BCDD0096B30C /* AvailableAttachmentOptionsDrawerViewController.xib in Resources */,
 				BEC2B24F26FD9573008417C3 /* DropDownTableViewCell.xib in Resources */,
 				0FABE4EE2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.xib in Resources */,
 				BEBFD1E828A9F167006E5D8B /* PostPollLikeTableViewCell.xib in Resources */,
+				BEB7BDD52AE637E300FD652D /* FeedbackLocalizable.strings in Resources */,
 				0FD47F3D2A25BCDD0096B30C /* ASChatBarAttachmentViewController.xib in Resources */,
 				BE6725632A5C284900AEFFEB /* ShowSelectedUserRecognition.xib in Resources */,
 				BEC2B27726FD9EB8008417C3 /* FeedsGIFSelectorViewController.xib in Resources */,
@@ -2867,6 +2980,7 @@
 				BEFF9D8B28C740D5009DF1AC /* DeleteCommentDrawer.xib in Resources */,
 				BEC2B26726FD9A81008417C3 /* PollSubmitButtonCell.xib in Resources */,
 				BEC2B27126FD9D67008417C3 /* ASMentionSelectorViewController.xib in Resources */,
+				BEB7BDD32AE637E300FD652D /* Facebook.xcassets in Resources */,
 				BEC2B28726FDA153008417C3 /* FeedsComposerDrawer.xib in Resources */,
 				BE500D8628229B5500423E5A /* CommonPressLikeButtonTableViewCell.xib in Resources */,
 				BC5240772A62334900178F05 /* BousLanguageTableViewCell.xib in Resources */,
@@ -2876,10 +2990,12 @@
 				BEC2B25326FD97C8008417C3 /* FeedsViewController.xib in Resources */,
 				0F96194928E416F00003FE8D /* BOUSTwoImageTableViewCell.xib in Resources */,
 				0F60219028716B3400D852BD /* CommonNominationSelectAllCell.xib in Resources */,
+				BEFAF9382A860E2600900EA6 /* FeedbackCommentChatBarView.xib in Resources */,
 				BEC2B27926FD9EFE008417C3 /* FeedAttachmentOptionsDrawerViewController.xib in Resources */,
 				BEAE3582270ABEA200E95DF9 /* PintoTopConfirmationDrawer.xib in Resources */,
 				BEC2B28526FDA100008417C3 /* PostEditorViewController.xib in Resources */,
 				BED3ADAF28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib in Resources */,
+				BEB7BDD72AE637E300FD652D /* FacebookReactionLocalizable.strings in Resources */,
 				BEAFDF2F29E54E2100C04FC4 /* TopMonthlyCollectionViewCell.xib in Resources */,
 				BE500D7F2822960600423E5A /* CommonLikesSectionTableViewCell.xib in Resources */,
 				BEC2B27526FD9E5B008417C3 /* GifCollectionViewCell.xib in Resources */,
@@ -2896,6 +3012,7 @@
 				BEC2B28326FDA04A008417C3 /* FeedEditorTitleTableViewCell.xib in Resources */,
 				BE66CCBA28A65A0800C7CE83 /* SelectPostTypeTableViewCell.xib in Resources */,
 				BEC2B26526FD9A4D008417C3 /* PollBottomTableViewCell.xib in Resources */,
+				BEB7BDD42AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict in Resources */,
 				BEC2B26926FD9AB6008417C3 /* PollOptionsTableViewCell.xib in Resources */,
 				BE500D8D2822ACCD00423E5A /* CommonNominationTableViewCell.xib in Resources */,
 				0FD47F442A25BCDD0096B30C /* ImageAttachmentOptionsViewController.xib in Resources */,
@@ -2972,17 +3089,21 @@
 				9868C0EA24125E1900B12321 /* ClappedByUser.swift in Sources */,
 				9868C0FF2419EB2D00B12321 /* FeedsComposerDrawer.swift in Sources */,
 				9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */,
+				BEB7BDE02AE637E300FD652D /* Extensions.swift in Sources */,
 				0FA1A5FB2A1610EF00107B26 /* FeedOrganisationSelectionViewController.swift in Sources */,
 				9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */,
 				BE94C3112821418800E323E1 /* NominationFeedContentCoordinator.swift in Sources */,
 				986B9737258DDD1B006EBDA9 /* ASTaggedUser.swift in Sources */,
 				98CC2FD72425C86600E8F9E0 /* LikedByTableViewCell.swift in Sources */,
+				BEB7BDE22AE637E300FD652D /* ReactionSelector.swift in Sources */,
 				BEB0084728A76DF200E3F1B0 /* AddECardTableViewCell.swift in Sources */,
 				9873D63F24C09C830041504C /* FeedDescriptionParser.swift in Sources */,
 				0FB1635529B71117000AA631 /* AnniversaryDetailTableViewCell.swift in Sources */,
 				98B02FC2241A663700CB8690 /* EditablePost.swift in Sources */,
 				0FD47F422A25BCDD0096B30C /* AvailableAttachmentOptionsDrawerViewController.swift in Sources */,
+				BEB7BDDA2AE637E300FD652D /* ReactionFeedback.swift in Sources */,
 				BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */,
+				BEB7BDE82AE637E300FD652D /* Components.swift in Sources */,
 				BEAFDF2B29E541CF00C04FC4 /* TopMonthlyHeroesWorker.swift in Sources */,
 				98722674246179B800809D7A /* SelectedPollAnswerMapper.swift in Sources */,
 				BE6725202A58021900AEFFEB /* RemainingLeaderboardConfigurator.swift in Sources */,
@@ -2992,6 +3113,7 @@
 				0FB4AFD028BDDC130020008B /* BOUSAwardLevelNominationTableViewCell.swift in Sources */,
 				BCC705242A62533E000413E3 /* InspireMeViewController.swift in Sources */,
 				BE94C30D282140AC00E323E1 /* CommonFeedContentCoordinatorProtocol.swift in Sources */,
+				BEB7BDDD2AE637E300FD652D /* ReactionButtonConfig.swift in Sources */,
 				0F94B75128883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift in Sources */,
 				BEAFDF2A29E541CF00C04FC4 /* TopHeroesModel.swift in Sources */,
 				BE39BA4A28A925B7004ADA9E /* PostPollTitleCellCordinator.swift in Sources */,
@@ -3009,6 +3131,7 @@
 				0FD47F402A25BCDD0096B30C /* AttachmentDataManager.swift in Sources */,
 				981912122459B85E0078A2FF /* PollsActiveDaysTableViewCellCoordinator.swift in Sources */,
 				9819120F2459B5BD0078A2FF /* PollsActiveDaysTableViewCell.swift in Sources */,
+				BEFAF9372A860E2600900EA6 /* FeedbackCommentChatBarView.swift in Sources */,
 				BEAE3585270AC06D00E95DF9 /* PostPinWorker.swift in Sources */,
 				0FED7F012880438600D490BB /* BOUSGrayDividerCoordinator.swift in Sources */,
 				BC4E6B9C2A91E1850023E99D /* JoyeAppInterface.swift in Sources */,
@@ -3027,8 +3150,10 @@
 				0F32907228897051008BF09D /* BOUSDetailFeedOutstandingTableViewCell.swift in Sources */,
 				BEC33A9F2A4557C900C936C6 /* BOUSAwardHistoryTableViewCell.swift in Sources */,
 				9872266C24616BBE00809D7A /* ManagedPostComment+RawRepresentable.swift in Sources */,
+				BEB7BDE32AE637E300FD652D /* ReactionAlignment.swift in Sources */,
 				987D0BA82583DA58001A0F07 /* ASMentionCoordinator.swift in Sources */,
 				98C648B9241BC952006689E9 /* PostPublisher.swift in Sources */,
+				BEB7BDD92AE637E300FD652D /* ReactionSummary.swift in Sources */,
 				9868C02F240F7A1500B12321 /* MultipleMediaTableViewCell.swift in Sources */,
 				0FC40A332A650F6200B921BE /* eCardImageTableViewCell.swift in Sources */,
 				BE94C30B28213F7D00E323E1 /* CommonFeedsSectionFactory.swift in Sources */,
@@ -3052,12 +3177,14 @@
 				98C648C0241F9008006689E9 /* FeedDetailHeaderCoordinator.swift in Sources */,
 				0F7AA80929D54C84006DF6FE /* UIView+AnimateShowHideViewExtension.swift in Sources */,
 				98BF39CC2588D11100498C85 /* TagUserListProvider.swift in Sources */,
+				BEB7BDDF2AE637E300FD652D /* FacebookReactions.swift in Sources */,
 				9876834C26143D6A00B597B0 /* CFFCoreDataManager.swift in Sources */,
 				0F961A1C28E457900003FE8D /* BOUSTwoImageDetailCoordinator.swift in Sources */,
 				0FA1A5FD2A1610EF00107B26 /* FeedsOrganisationFetcher.swift in Sources */,
 				0FED7EF5287F013100D490BB /* BOUSApprovalsModel.swift in Sources */,
 				9872266824616BBE00809D7A /* ManagedPost+RawRepresentable.swift in Sources */,
 				0FD47F3E2A25BCDD0096B30C /* ASChatBarAttachmentViewController.swift in Sources */,
+				BEB7BDE52AE637E300FD652D /* ReactionButton.swift in Sources */,
 				980F563A245BFC680093AFE7 /* PollSubmitButtonCell.swift in Sources */,
 				0FC40A312A650F6200B921BE /* eCardImageTableViewCellCoordinator.swift in Sources */,
 				987D0BB42583DA58001A0F07 /* ASMentionPresenter.swift in Sources */,
@@ -3065,6 +3192,7 @@
 				BEC74DE32A5D4F5E0074324B /* FilterSectionAdapter.swift in Sources */,
 				BE66CCB628A659F700C7CE83 /* SelectPostTypeTableCellCordinator.swift in Sources */,
 				0FB4AFC428BCF5D30020008B /* BOUSApprovalHistory.swift in Sources */,
+				BEB7BDD82AE637E300FD652D /* ComponentBuilder.swift in Sources */,
 				9868C047240F9DCF00B12321 /* FeedBottomTableViewCellCoordinator.swift in Sources */,
 				9868C0512410086600B12321 /* FeedContentCoordinatorProtocol.swift in Sources */,
 				98BC8A22241A1C56007C175D /* FeedEditorDescriptionTableViewCellCoordinator.swift in Sources */,
@@ -3097,6 +3225,7 @@
 				98BC8A24241A1C6A007C175D /* FeedEditorAttachedMediaTableViewCellCoordinator.swift in Sources */,
 				BEBFD1E728A9F167006E5D8B /* PostPollLikeTableViewCell.swift in Sources */,
 				BE6725272A58021900AEFFEB /* Top3userCellConfigurator.swift in Sources */,
+				BEB7BDE72AE637E300FD652D /* ReactionSelectorConfig.swift in Sources */,
 				0F961A1328E457550003FE8D /* BOUSTwoImageDetailTableViewCell.swift in Sources */,
 				0F72619528E6D5CF00EECB50 /* FTImageSize.swift in Sources */,
 				0FB1635629B71117000AA631 /* AnniversaryTableViewCellCoordinator.swift in Sources */,
@@ -3153,6 +3282,7 @@
 				0F32908428897B2F008BF09D /* BOUSMultipleImageTableViewCellCoordinator.swift in Sources */,
 				98C6489D241B87A3006689E9 /* PostFeedContentCoordinator.swift in Sources */,
 				BE2DDBC72898434F007E2FC0 /* MultipleImageFlowLayout.swift in Sources */,
+				BEB7BDE42AE637E300FD652D /* CAReactionSummaryLayer.swift in Sources */,
 				0F6021AE2874159E00D852BD /* ReactionsListTableViewCellCoordinator.swift in Sources */,
 				9873D61824B63A410041504C /* FeedAttachmentOptionsDrawerViewController.swift in Sources */,
 				9811DD02241A885F003B91FD /* PostCoordinator.swift in Sources */,
@@ -3168,6 +3298,7 @@
 				0F32908928898F65008BF09D /* BOUSNominationAppoveRejectWorker.swift in Sources */,
 				98726546245044C100CD4530 /* FeedClapToggler.swift in Sources */,
 				BEC74DF82A5D62170074324B /* RecognitionSeparator.swift in Sources */,
+				BEB7BDDE2AE637E300FD652D /* UIReactionControl.swift in Sources */,
 				0FD47F3F2A25BCDD0096B30C /* CommentAttachedDocument.swift in Sources */,
 				98CC2FAC2425C43700E8F9E0 /* DashboardFeedSectionProvider.swift in Sources */,
 				BED3ADAE28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.swift in Sources */,
@@ -3199,6 +3330,7 @@
 				987D0BA72583DA58001A0F07 /* ASMentionStore.swift in Sources */,
 				BE66CCC928A6743E00C7CE83 /* FeedEcardListTableViewCell.swift in Sources */,
 				9811DCFF241A82F8003B91FD /* FeedEditorLocalMediaCollectionCoordinator.swift in Sources */,
+				BEB7BDDB2AE637E300FD652D /* Configurable.swift in Sources */,
 				BE6725622A5C284900AEFFEB /* ShowSelectedUserRecognition.swift in Sources */,
 				0FABE5052A1DD29F00F5D855 /* PostShareOptionTableViewCell.swift in Sources */,
 				980F5648245C1D3F0093AFE7 /* PollBottomTableViewCellCoordinator.swift in Sources */,
@@ -3213,12 +3345,14 @@
 				9868C0822410B13A00B12321 /* DummyFeedProvider.swift in Sources */,
 				BEC74DFA2A5D623F0074324B /* HeroMonthSeparator.swift in Sources */,
 				BE94C31C2821743C00E323E1 /* CommonFeedsTopTableViewCell.swift in Sources */,
+				BEB7BDDC2AE637E300FD652D /* ReactionSummaryConfig.swift in Sources */,
 				98BC8A14241A1797007C175D /* FeedEditorDescriptionTableViewCell.swift in Sources */,
 				0F32906B2889630B008BF09D /* BOUSReactionsListModel.swift in Sources */,
 				0FD47F3B2A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.swift in Sources */,
 				9868C02B240F79E800B12321 /* SingleVideoTableViewCell.swift in Sources */,
 				98F056062462C1FD0000DEF0 /* FeedOrderManager.swift in Sources */,
 				0FA1A5F92A1610EF00107B26 /* FeedOrgaisationTableViewHeader.swift in Sources */,
+				BEB7BDE62AE637E300FD652D /* ReactionFeedbackDelegate.swift in Sources */,
 				9873D62F24B80CBE0041504C /* GifFetcher.swift in Sources */,
 				BEB0084428A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift in Sources */,
 				0FED7EF7287F06BD00D490BB /* BOUSApprovalsListTableViewCell.swift in Sources */,
@@ -3242,6 +3376,7 @@
 				983C4F892462F08000FDEB76 /* DeletePostConfirmationDrawer.swift in Sources */,
 				BE67252B2A58021900AEFFEB /* LeaderboardCellConfigurationInputModel.swift in Sources */,
 				BEF4021828201248001B9D7E /* CommonFeedsCoordinator.swift in Sources */,
+				BEB7BDE12AE637E300FD652D /* Reaction.swift in Sources */,
 				980F563D245BFC810093AFE7 /* PollSubmitButtonCellCoordinator.swift in Sources */,
 				0FED7EEF287EB21800D490BB /* BOUSApproveRejectPopViewController.swift in Sources */,
 				9811DD55241AC860003B91FD /* FeedFetcher.swift in Sources */,
@@ -3259,6 +3394,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BEB7BDB52AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEB7BDB62AE637E300FD652D /* Base */,
+				BEB7BDBD2AE637E300FD652D /* fr */,
+			);
+			name = ReactionSummaryLocalizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		BEB7BDB72AE637E300FD652D /* FeedbackLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEB7BDB82AE637E300FD652D /* Base */,
+				BEB7BDBE2AE637E300FD652D /* fr */,
+			);
+			name = FeedbackLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		BEB7BDB92AE637E300FD652D /* ReactionSummaryLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEB7BDBA2AE637E300FD652D /* Base */,
+				BEB7BDBF2AE637E300FD652D /* fr */,
+			);
+			name = ReactionSummaryLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		BEB7BDBB2AE637E300FD652D /* FacebookReactionLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEB7BDBC2AE637E300FD652D /* Base */,
+				BEB7BDC02AE637E300FD652D /* fr */,
+			);
+			name = FacebookReactionLocalizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		98B90DE5240CACD90013E9D2 /* Debug */ = {

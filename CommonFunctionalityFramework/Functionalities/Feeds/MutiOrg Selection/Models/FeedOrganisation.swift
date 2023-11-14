@@ -32,7 +32,22 @@ class FeedOrganisation : NSObject{
         var fetchedDapartments = [FeedDepartment]()
         if let rawDepartments = rawFeedOrgansation["departments"] as? [[String : Any]]{
             for rawDepartment in rawDepartments {
-                fetchedDapartments.append(FeedDepartment(rawDepartment, parentOrganisation: self))
+                fetchedDapartments.append(FeedDepartment(rawDepartment, parentOrganisation: self,_isJobFamily: false))
+            }
+        }
+        if let rawDepartments = rawFeedOrgansation["job_families"] as? [[String : Any]]{
+            for rawDepartment in rawDepartments {
+                fetchedDapartments.append(FeedDepartment(rawDepartment, parentOrganisation: self,_isJobFamily: true))
+            }
+        }
+        return fetchedDapartments
+    }()
+    
+    lazy var jobFamily: [JobFamily] = {
+        var fetchedDapartments = [JobFamily]()
+        if let rawDepartments = rawFeedOrgansation["departments"] as? [[String : Any]]{
+            for rawDepartment in rawDepartments {
+                fetchedDapartments.append(JobFamily(rawDepartment, parentOrganisation: self))
             }
         }
         return fetchedDapartments

@@ -47,7 +47,6 @@ class PostPreviewSectionFactory {
             PollSubmitButtonCellType().cellIdentifier : PollSubmitButtonCellCoordinator(),
             PollBottomTableViewCelType().cellIdentifier : PollBottomTableViewCellCoordinator(),
             PollOptionsVotedTableViewCellType().cellIdentifier : PollOptionsVotedTableViewCellCoordinator(),
-            FeedBottomTableViewCellType().cellIdentifier : FeedBottomTableViewCellCoordinator()
         ]
     }
     
@@ -79,6 +78,8 @@ class PostPreviewSectionFactory {
         case .ShareWithInfoSection:
             switch initModel.feedDataSource!.getPostShareOption(){
             case .MyOrg:
+                fallthrough
+            case .JobFamilies:
                 fallthrough
             case .MyDepartment:
                 return 1
@@ -221,9 +222,6 @@ extension PostPreviewSectionFactory{
             }
             rows.append(PollBottomTableViewCelType())
         }
-        
-        rows.append(FeedBottomTableViewCellType())
-        
         return rows
     }
 }

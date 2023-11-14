@@ -100,6 +100,7 @@ class ShowSelectedUserRecognition: UIViewController{
         removeExistingContainer()
         addViewControllerToContainer(CommonFeedsCoordinator().getFeedsView(
             GetCommonFeedsViewModel(
+                userPk: selectedUserPk,
                 networkRequestCoordinator: requestCoordinator,
                 mediaCoordinator: mediaFetcher,
                 feedCoordinatorDelegate: self,
@@ -143,6 +144,10 @@ class ShowSelectedUserRecognition: UIViewController{
 }
 
 extension ShowSelectedUserRecognition :  FeedsCommonCoordinatorDelegate {
+    func openOtherProfileView(_ detailViewController: UIViewController, otherUserPk: Int) {
+        
+    }
+    
     func showFeedDetail(_ detailViewController: UIViewController) {
         let feedDetailContainer = SelectedRecognitionDetailViewController(nibName: "SelectedRecognitionDetailViewController", bundle: Bundle(for: SelectedRecognitionDetailViewController.self))
         feedDetailContainer.feedDetailVC = detailViewController

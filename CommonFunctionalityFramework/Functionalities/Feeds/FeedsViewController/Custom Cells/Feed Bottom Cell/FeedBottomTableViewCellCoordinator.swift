@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Reactions
 
 class FeedBottomTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
     var reactionBtn : ReactionButton?

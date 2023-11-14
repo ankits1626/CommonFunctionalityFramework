@@ -63,6 +63,8 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getSingleImageHeight() -> CGFloat
     func getGifImageHeight() -> CGFloat
     func getGreeting() -> GreetingAnniAndBday?
+    func getCreatorUserPK() -> Int
+    func getReceiverUserPK() -> Int
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -411,13 +413,17 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         if sharedWith() == .MultiOrg{
             var orgs = Set<Int>()
             var departments =  Set<Int>()
+            var jobFamilies =  Set<Int>()
             if let selectedOrgs = rawFeedDictionary["organizations"] as? [Int]{
                 orgs = Set(selectedOrgs)
             }
             if let selectedDepartments = rawFeedDictionary["departments"] as? [Int]{
                 departments = Set(selectedDepartments)
             }
-            return FeedOrganisationDepartmentSelectionModel(orgs, departments)
+            if let selectedJobFamilies = rawFeedDictionary["job_families"] as? [Int]{
+                jobFamilies = Set(selectedJobFamilies)
+            }
+            return FeedOrganisationDepartmentSelectionModel(orgs, departments, jobFamilies)
         }
         
         return nil
@@ -558,6 +564,13 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
         return userImg
     }
+        
+    func getReceiverUserPK() -> Int {
+        if let userDic = rawFeedDictionary["user"] as? NSDictionary {
+            return userDic["pk"] as? Int ?? 0
+        }
+        return 0
+    }
     
     func getOrganizationName() -> String? {
         var userImg : String?
@@ -573,6 +586,13 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             userImg = userDic["organization_logo"] as? String ?? nil
         }
         return userImg
+    }
+    
+    func getCreatorUserPK() -> Int {
+        if let userDic = rawFeedDictionary["created_by_user_info"] as? NSDictionary {
+            return userDic["pk"] as? Int ?? 0
+        }
+        return 0
     }
     
     func getHomeUserCreatedName() -> String? {
