@@ -95,15 +95,15 @@ class ApprovalAwardCategoryDataParser: DataParserProtocol {
 }
 
 
-struct ApprovalAwardCategoryModel{
-    var pk : Int
-    var name : String
-    var icon : String
-    var backGroundColor : String
-    var points : String
-    var parentPK : Int
+public struct ApprovalAwardCategoryModel{
+    public var pk : Int
+    public var name : String
+    public var icon : String
+    public var backGroundColor : String
+    public var points : String
+    public var parentPK : Int
     
-    init(_pk : Int, _name : String, _icon : String, _backGroundColor: String, _points : String, _parentPK : Int) {
+   public init(_pk : Int, _name : String, _icon : String, _backGroundColor: String, _points : String, _parentPK : Int) {
         self.pk = _pk
         self.name = _name
         self.icon = _icon
