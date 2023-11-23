@@ -39,6 +39,9 @@ class SelectMediaTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorPr
             cell.imageButton?.addTarget(self, action: #selector(SelectMediaTableViewCellCoordinator.openImages(_:)), for: UIControl.Event.touchUpInside)
             cell.gifButton?.addTarget(self, action: #selector(SelectMediaTableViewCellCoordinator.opengifs(_:)), for: UIControl.Event.touchUpInside)
             cell.ecardButton?.addTarget(self, action: #selector(SelectMediaTableViewCellCoordinator.openEcards(_:)), for: UIControl.Event.touchUpInside)
+            cell.gifButtonView?.isHidden = !(inputModel.mainAppCoordinator?.isGifAttachmentAllowedToPost() ?? false)
+            cell.imageButtonView?.isHidden = !(inputModel.mainAppCoordinator?.isMediaAttachmentAllowedToPost() ?? false)
+            cell.ecardButtonView?.isHidden = !(inputModel.mainAppCoordinator?.isMediaAttachmentAllowedToPost() ?? false)
         }
     }
     
