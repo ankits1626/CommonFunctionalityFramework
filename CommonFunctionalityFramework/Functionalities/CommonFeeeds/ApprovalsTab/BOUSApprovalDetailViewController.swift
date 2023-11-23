@@ -26,6 +26,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     
     var selectedNominationId = Int()
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var loader = MFLoader()
     var jsonDataValues : BOUSApprovalsDetailData!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
@@ -325,7 +326,10 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     
     func popToVC() {
         self.navigationController?.popToRootViewController(animated: false)
-        delegate?.popToApprovalsAndReload()
+        if let unwrappedData =  mainAppCoordinator,
+               unwrappedData.isBousApprovalScreen() == true{
+                   delegate?.popToApprovalsAndReload()
+        }
     }
     
     @IBAction func backTapped(_ sender: Any) {
@@ -333,10 +337,11 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     }
     
     func selectedAwardLevel(awardDataSelected : ApprovalAwardCategoryModel,selectedPointsPK : Int) {
-        self.awardTitle = awardDataSelected.name
-        self.awardPoints = "\(awardDataSelected.points) Points"
-        self.awardImgUrl = awardDataSelected.icon
-        self.selectedPk = awardDataSelected.pk
+        
+        self.awardTitle = awardDataSelected.badgeData[0].name
+        self.awardPoints = "\(awardDataSelected.badgeData[0].points) Points"
+        self.awardImgUrl = awardDataSelected.badgeData[0].icon
+        self.selectedPk = awardDataSelected.badgeData[0].badgePk
         self.tableView.beginUpdates()
         let indexPath = IndexPath(item: 2, section: 0)
         self.tableView.reloadRows(at: [indexPath], with: .automatic)

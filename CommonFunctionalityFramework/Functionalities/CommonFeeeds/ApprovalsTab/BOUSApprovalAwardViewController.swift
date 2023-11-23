@@ -57,14 +57,17 @@ class BOUSApprovalAwardViewController: UIViewController, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.awardCategory.count
+        if self.awardCategory.count > 0 {
+            return self.awardCategory[0].badgeData.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                             for: indexPath) as? BOUSApprovalAwardLevelCollectionViewCell
             else { fatalError("unexpected cell in collection view") }
-        let dataSource = self.awardCategory[indexPath.row]
+        let dataSource = self.awardCategory[0].badgeData[indexPath.row]
         cell.awardTitle?.text = dataSource.name
         cell.awardPoints?.text = "\(dataSource.points) Points"
         if dataSource.icon.contains("https://"){
@@ -73,7 +76,7 @@ class BOUSApprovalAwardViewController: UIViewController, UICollectionViewDelegat
             mediaFetcher.fetchImageAndLoad(cell.logoImg, imageEndPoint: dataSource.icon)
         }
       
-        if userSelectedAwardPK == dataSource.pk {
+        if userSelectedAwardPK == dataSource.badgePk {
             cell.tickImg.isHidden = false
             cell.contentView.backgroundColor = UIColor(red: 245, green: 248, blue: 255)
             cell.contentView.curvedUIBorderedControl(borderColor: UIColor.getControlColor(), borderWidth: 1.0, cornerRadius: 8.0)
@@ -87,10 +90,14 @@ class BOUSApprovalAwardViewController: UIViewController, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let dataSource = self.awardCategory[indexPath.row]
-        self.userSelectedAwardPK = dataSource.pk
+        let dataSource = self.awardCategory[0].badgeData[indexPath.row]
+        self.userSelectedAwardPK = dataSource.badgePk
         self.collectionView.reloadData()
-        delegate?.selectedAwardLevel(awardDataSelected: dataSource, selectedPointsPK: userSelectedAwardPK)
+        var badgeData : [BadgeData] = []
+        badgeData.removeAll()
+        badgeData.append(dataSource)
+        let data = ApprovalAwardCategoryModel(_isMultipleUser: self.awardCategory[0].isMultipleUser, self.awardCategory[0].isSelfEnabled, _isCoreValueEnabled: self.awardCategory[0].isCoreValueEnabled, _parentPK: self.awardCategory[0].parentPK, _badgeData: badgeData)
+        delegate?.selectedAwardLevel(awardDataSelected: data, selectedPointsPK: userSelectedAwardPK)
         self.dismiss(animated: true, completion: nil)
     }
     

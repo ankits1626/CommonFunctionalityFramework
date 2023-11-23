@@ -14,6 +14,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
     @IBOutlet weak var selectAllBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var jsonDataValues = [BOUSApprovalDataResponseValues]()
     var loader = MFLoader()
     var mediaFetcher: CFFMediaCoordinatorProtocol!
@@ -168,6 +169,7 @@ class BOUSNominationViewController: UIViewController, UITableViewDelegate,UITabl
         controller.isComingFromNominationPage = true
         controller.selectedNominationId = dataValue.id
         controller.requestCoordinator = requestCoordinator
+        controller.mainAppCoordinator = mainAppCoordinator
         controller.mediaFetcher = mediaFetcher
         self.tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)

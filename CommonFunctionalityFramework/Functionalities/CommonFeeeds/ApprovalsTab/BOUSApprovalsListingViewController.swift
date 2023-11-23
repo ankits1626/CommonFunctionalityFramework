@@ -14,6 +14,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var tableView: UITableView!
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var jsonDataValues = [BOUSApprovalDataResponseValues]()
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var loader = MFLoader()
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     @IBOutlet weak var approvalView: UIView!
@@ -214,6 +215,7 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
             controller.delegate = self
             controller.requestCoordinator = requestCoordinator
             controller.mediaFetcher = mediaFetcher
+            controller.mainAppCoordinator = mainAppCoordinator
             self.tabBarController?.tabBar.isHidden = true
             NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
             self.navigationController?.pushViewController(controller, animated: true)
