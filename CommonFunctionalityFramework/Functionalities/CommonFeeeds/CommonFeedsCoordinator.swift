@@ -138,6 +138,7 @@ public class CommonFeedsCoordinator {
         let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
+        feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.searchText = inputModel.searchText
         return feedsVc
 

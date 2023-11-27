@@ -304,11 +304,16 @@ class BOUSApprovalsListingViewController: UIViewController, UITableViewDelegate,
     }
     
     func popToVC() {
-        self.isSelectedAll = false
-        self.selectAllViewHeightConstraint.constant = 80
-        self.approveBtn.isHidden = true
-        self.rejectButton.isHidden = true
-        loadApprovalsList(isFromApproval: true)
+        if let unwrappedData =  mainAppCoordinator,
+               unwrappedData.isBousApprovalScreen() == false{
+            self.navigationController?.popToRootViewController(animated: false)
+        }else {
+            self.isSelectedAll = false
+            self.selectAllViewHeightConstraint.constant = 80
+            self.approveBtn.isHidden = true
+            self.rejectButton.isHidden = true
+            loadApprovalsList(isFromApproval: true)
+        }
     }
     
     func popToApprovalsAndReload() {
