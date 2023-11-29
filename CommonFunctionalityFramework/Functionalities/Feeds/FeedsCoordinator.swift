@@ -21,6 +21,7 @@ public protocol CFFMainAppInformationCoordinator : AnyObject {
     func getLaguageNameFromSlug(_ slug: String)  -> String
     func isMediaAttachmentAllowedToPost() -> Bool
     func isGifAttachmentAllowedToPost() -> Bool
+    func getCoreValueTitle() -> String
     //for joye app
     func getJoyAppUrl() -> String
     func saveJoyAppUrl(url:String)

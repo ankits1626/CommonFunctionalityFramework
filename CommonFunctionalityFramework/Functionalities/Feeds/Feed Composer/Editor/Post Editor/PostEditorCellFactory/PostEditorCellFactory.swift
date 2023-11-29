@@ -60,6 +60,7 @@ struct PostEditorGetHeightModel {
     var targetIndexpath : IndexPath
     var datasource: PostEditorCellFactoryDatasource
     weak var postImageMapper : EditablePostMediaRepository?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
 }
 
 protocol PostEditorCellCoordinatorProtocol {
@@ -201,7 +202,9 @@ class PostEditorCellFactory {
             PostEditorGetHeightModel(
                 targetIndexpath: indexPath,
                 datasource: input.datasource!,
-                postImageMapper: input.postImageMapper)
+                postImageMapper: input.postImageMapper,
+                mainAppCoordinator: input.mainAppCoordinator
+            )
         )
     }
     
