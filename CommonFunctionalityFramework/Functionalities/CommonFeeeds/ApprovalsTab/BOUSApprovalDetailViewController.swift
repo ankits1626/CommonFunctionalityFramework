@@ -39,6 +39,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     var awardTitle = ""
     var awardPoints = ""
     var selectedPk : Int?
+    var badgePoints : String = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,8 +94,9 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let jsonData = try decoder.decode(BOUSApprovalsDetailData.self, from: data)
             
             jsonDataValues =  jsonData
-            if let awardId = jsonDataValues.nomination.category as? Int{
+            if let awardId = jsonDataValues.nomination.badge.id as? Int{
                 self.selectedPk = awardId
+                self.badgePoints = jsonDataValues.nomination.badge.points
                 self.awardTitle = jsonDataValues.nomination.badge.name
                 self.awardPoints = "\(jsonDataValues.nomination.badge.award_points) Points"
                 self.awardImgUrl = jsonDataValues.nomination.badge.icon ?? ""
@@ -290,8 +292,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = true
-        vc.badgeId = jsonDataValues.nomination.badge.id
-        vc.nominationPoints = jsonDataValues.nomination.badge.points
+        vc.badgeId = selectedPk ?? 0
+        vc.nominationPoints = self.badgePoints
         vc.selectedPrivacyvalue = selectedPrivacyvalue
         vc.selectedCategory = selectedPk!
         vc.delegate = self
@@ -310,8 +312,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = false
-        vc.badgeId = jsonDataValues.nomination.badge.id
-        vc.nominationPoints = jsonDataValues.nomination.badge.points
+        vc.badgeId = selectedPk ?? 0
+        vc.nominationPoints = self.badgePoints
         vc.selectedPrivacyvalue = selectedPrivacyvalue
         vc.selectedCategory = selectedPk!
         vc.delegate = self
@@ -339,6 +341,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     func selectedAwardLevel(awardDataSelected : ApprovalAwardCategoryModel,selectedPointsPK : Int) {
         
         self.awardTitle = awardDataSelected.badgeData[0].name
+        self.badgePoints = awardDataSelected.badgeData[0].decimalPoints
         self.awardPoints = "\(awardDataSelected.badgeData[0].points) Points"
         self.awardImgUrl = awardDataSelected.badgeData[0].icon
         self.selectedPk = awardDataSelected.badgeData[0].badgePk
