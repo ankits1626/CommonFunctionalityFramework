@@ -149,6 +149,7 @@ class PostEditorRouter{
             name: "InpireMeErrorView",
             bundle: Bundle(for: InpireMeErrorViewController.self))
         let vc = storyboard.instantiateViewController(withIdentifier: storyboardVcIdentifier) as! InpireMeErrorViewController
+        vc.mainAppCoordinator = initModel.mainAppCoordinator
         vc.forExTextMessage = forExTextMessage
         var topViewController = UIApplication.shared.keyWindow?.rootViewController
         while topViewController?.presentedViewController != nil

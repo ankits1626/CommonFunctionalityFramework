@@ -46,7 +46,9 @@ class SelectMediaTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorPr
     }
     
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
-        return 104
+        let isGifAailable = (inputModel.mainAppCoordinator?.isGifAttachmentAllowedToPost() ?? false)
+        let isMediaAttachmentAailable = (inputModel.mainAppCoordinator?.isMediaAttachmentAllowedToPost() ?? false)
+        return (isGifAailable || isMediaAttachmentAailable) ?  104 : 0
     }
     
     @IBAction func openImages(_ sender: Any) {
