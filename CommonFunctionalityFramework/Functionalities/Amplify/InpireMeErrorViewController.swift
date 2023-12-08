@@ -47,7 +47,7 @@ public class InpireMeErrorViewController: UIViewController {
         self.holderView.layer.cornerRadius = 8.0
         amplifyLabel?.text = "Amplify".localized
         howToAmplifyTextView?.text = "How to Amplify Your Message".localized
-        step1TextView?.text = "Select a \(mainAppCoordinator.getCoreValueTitle())"
+        step1TextView?.text = "Select \(mainAppCoordinator.getCoreValueTitle())"
         step2TextView?.text = "Write exactly what you are thanking the recipient for. (e.g. catching an accounting error.)".localized
         step3TextView?.text = "Write the positive outcome of their effort. (e.g. saved over 10 hours of recovering from a bad invoice.)".localized
         step4Label?.text = "Then click on the button".localized
