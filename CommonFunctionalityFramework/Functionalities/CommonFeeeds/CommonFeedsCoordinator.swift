@@ -89,6 +89,9 @@ public class CommonFeedsCoordinator {
     public func getNominationView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
         let storyBoard : UIStoryboard = UIStoryboard(name: "CommonFeeds", bundle:nil)
         let nominationViewController = storyBoard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
+        nominationViewController.mainAppCoordinator = inputModel.mainAppCoordinator
+        nominationViewController.requestCoordinator = inputModel.networkRequestCoordinator
+        nominationViewController.mediaFetcher = inputModel.mediaCoordinator
         return nominationViewController
     }
     
@@ -100,6 +103,7 @@ public class CommonFeedsCoordinator {
         let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSNominationViewController") as! BOUSNominationViewController
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.statusType = inputModel.selectedTabType
+        feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         return feedsVc
 
@@ -123,6 +127,7 @@ public class CommonFeedsCoordinator {
         controller.selectedNominationId = approvalsId
         controller.requestCoordinator = inputModel.networkRequestCoordinator
         controller.mediaFetcher = inputModel.mediaCoordinator
+        controller.mainAppCoordinator = inputModel.mainAppCoordinator
         return controller
     }
     
@@ -133,6 +138,7 @@ public class CommonFeedsCoordinator {
         let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
+        feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.searchText = inputModel.searchText
         return feedsVc
 

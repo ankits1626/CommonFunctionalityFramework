@@ -25,6 +25,8 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
     var rejectedText = ""
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var postId : Int!
+    var badgeId : Int = 0
+    var nominationPoints : String = "0"
     var isNominationApproved = false
     @IBOutlet weak var holderViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var rejectText: UITextView!
@@ -88,7 +90,7 @@ class BOUSApproveAndRejectNominationViewController: UIViewController {
     }
     
     func postToServer(approvalStatus: String, message: String?) {
-        BOUSNominationAppoveRejectWorker(networkRequestCoordinator: self.requestCoordinator).postnomination(postId: postId, multipleNominations: multipleNomination, message: message ?? "", approvalStatus: approvalStatus, selectedPrivacyvalue: selectedPrivacyvalue, selectedCategory: selectedCategory) { (result) in
+        BOUSNominationAppoveRejectWorker(networkRequestCoordinator: self.requestCoordinator).postnomination(postId: postId, multipleNominations: multipleNomination, message: message ?? "", approvalStatus: approvalStatus, selectedPrivacyvalue: selectedPrivacyvalue, badgeId: self.badgeId,points: self.nominationPoints) { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(_):

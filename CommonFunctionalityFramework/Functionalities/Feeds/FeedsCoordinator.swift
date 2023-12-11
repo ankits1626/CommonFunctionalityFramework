@@ -29,6 +29,7 @@ public protocol CFFMainAppInformationCoordinator : AnyObject {
     func getJoyAppUrlDate() -> Date
     func getJoyeAppRequestBody() -> [String : String]
     func isNuhsMultiOrgPostEnabled() -> Bool
+    func isBousApprovalScreen() -> Bool
 }
 
 
