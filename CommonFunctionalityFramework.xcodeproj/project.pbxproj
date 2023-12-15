@@ -448,7 +448,21 @@
 		BEFAF9382A860E2600900EA6 /* FeedbackCommentChatBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFAF9362A860E2600900EA6 /* FeedbackCommentChatBarView.xib */; };
 		BEFF9D8A28C740D5009DF1AC /* DeleteCommentDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */; };
 		BEFF9D8B28C740D5009DF1AC /* DeleteCommentDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */; };
+		D5F795BCBADE5F45A6F2D662 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709CFF4C44E33011CC7ED079 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE50010D2AED92F100522D00 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04C15C9B02DE6A511518E2F8 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
@@ -912,6 +926,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */,
+				D5F795BCBADE5F45A6F2D662 /* Pods_CommonFunctionalityFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2841,6 +2856,7 @@
 				98B90DDB240CACD90013E9D2 /* Sources */,
 				98B90DDC240CACD90013E9D2 /* Frameworks */,
 				98B90DDD240CACD90013E9D2 /* Resources */,
+				BE50010D2AED92F100522D00 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

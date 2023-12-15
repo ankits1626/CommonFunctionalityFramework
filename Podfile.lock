@@ -1,19 +1,8 @@
 PODS:
   - ActiveLabel (1.1.5)
   - FLAnimatedImage (1.0.17)
-  - Giphy (2.2.1):
-    - libwebp
-  - IQKeyboardManagerSwift (6.5.10)
+  - IQKeyboardManagerSwift (6.5.12)
   - KUIPopOver (1.1.2)
-  - libwebp (1.2.4):
-    - libwebp/demux (= 1.2.4)
-    - libwebp/mux (= 1.2.4)
-    - libwebp/webp (= 1.2.4)
-  - libwebp/demux (1.2.4):
-    - libwebp/webp
-  - libwebp/mux (1.2.4):
-    - libwebp/demux
-  - libwebp/webp (1.2.4)
   - Loaf (0.7.0)
   - ReachabilitySwift (4.3.1)
   - RewardzCommonComponents (0.0.6):
@@ -26,7 +15,6 @@ PODS:
 DEPENDENCIES:
   - ActiveLabel (from `https://github.com/ankits1626/ActiveLabel.swift`, branch `CFF_Customizations`)
   - FLAnimatedImage (~> 1.0)
-  - Giphy
   - IQKeyboardManagerSwift
   - KUIPopOver (= 1.1.2)
   - Loaf
@@ -38,10 +26,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - FLAnimatedImage
-    - Giphy
     - IQKeyboardManagerSwift
     - KUIPopOver
-    - libwebp
     - Loaf
     - ReachabilitySwift
     - SDWebImage
@@ -60,22 +46,20 @@ CHECKOUT OPTIONS:
     :commit: ea733162acf07eded0c7e79affcf5d85fdddab11
     :git: https://github.com/ankits1626/ActiveLabel.swift
   RewardzCommonComponents:
-    :commit: a12127b77df4ce2d348e2b30d74fd764572107ec
+    :commit: 43c62945cd7c99570e673489e3351dfebc94d00a
     :git: https://github.com/ankits1626/RewardzCommonComponents.git
 
 SPEC CHECKSUMS:
   ActiveLabel: d757b2404064bc63127c25c1a6beab0ca578bbaa
   FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
-  Giphy: cdfd21712d85750188dd7c9ae782d2641766f4a5
-  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  IQKeyboardManagerSwift: 371b08cb39664fb56030f5345c815a4ffc74bbc0
   KUIPopOver: fc7ccb3c1c1ada51f5251477a7993ec452e3eefb
-  libwebp: f62cb61d0a484ba548448a4bd52aabf150ff6eef
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   RewardzCommonComponents: c279b08e35926d5c8685a00185fb7f85d986407b
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: b18265650571100f7a9f58743f10fc24e60ed878
+PODFILE CHECKSUM: 4a2099aab919de649aef8bfa7454b41e1109cb6f
 
 COCOAPODS: 1.11.3
