@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SimpleCheckbox
 import CoreData
 import Photos
 import RewardzCommonComponents
@@ -92,7 +91,6 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet private weak var guidenceMessage: UILabel?
     @IBOutlet private weak var messageGuidenceContainerHeightContraint: NSLayoutConstraint?
     @IBOutlet private weak var shareWithSegmentControl: UISegmentedControl?
-    @IBOutlet private weak var postWithSameDepartmentCheckBox : Checkbox?
     
     @IBOutlet weak var postWithContainerView: UIView!
     var loader = CommonLoader()
@@ -236,7 +234,6 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         }
         postWithSameDepartmentContainer?.isHidden = editablePost?.remotePostId != nil
         setupMessageGuidenceContainer()
-        setupCheckbox()
         self.postWithContainerView.isHidden = false
         setupShareWithSegmentedControl()
     }
@@ -288,28 +285,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
         guidenceMessage?.text = "Only s3 & s4 messages can be shared on this platform".localized
         guidenceMessage?.font = .Body1
     }
-    
-    private func setupCheckbox(){
-        postWithSameDepartmentCheckBox?.uncheckedBorderColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
-        postWithSameDepartmentCheckBox?.checkmarkColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
-        postWithSameDepartmentCheckBox?.checkedBorderColor =  themeManager?.getControlActiveColor() ?? .stepperActiveColor
-    }
-    
-    private func setupPostWithDepartment() {
-        postWithSameDepartmentCheckBox?.isHidden = true
-        postWithSameDepartmentCheckBox?.borderLineWidth = 1
-        postWithSameDepartmentCheckBox?.isEnabled = false// postCoordinator.isDepartmentSharedWithEditable()
-        postWithSameDepartmentCheckBox?.checkmarkStyle = .tick
-        //        postWithSameDepartmentCheckBox?.isChecked = postCoordinator.isPostWithSameDepartment()
-        //        postWithSameDepartmentCheckBox?.valueChanged = {[weak self] (isChecked) in
-        //            self?.postCoordinator.updatePostWithSameDepartment(isChecked)
-        //        }
-        //
-        //        postWithSameDepartmentMessage?.text = "Post to my department only".localized
-        //        postWithSameDepartmentMessage?.font = .Highlighter2
-        
-    }
-    
+            
     private func setupTableView(){
         postEditorTable?.tableFooterView = UIView(frame: CGRect.zero)
         postEditorTable?.rowHeight = UITableView.automaticDimension
