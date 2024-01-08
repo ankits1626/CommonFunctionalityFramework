@@ -45,7 +45,7 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
 
     var sandBoxInspireMeURL = "https://sandbox-api.inspireme.ai/b2b/api/v1.1/lan/generate-ai"
 //    var sandBoxInspireEditToneURL = "https://sandbox-api.inspireme.ai/b2b/api/v1.1/lan/generate-ai/edit-tone"
-    var productionInspireMeURL = "https://api.inspireme.ai/b2b/api/v1.1/lan/generate-ai"
+    var productionInspireMeURL = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
 //    var productionInspireEditToneURL = "https://api.inspireme.ai/b2b/api/v1.1/lan/generate-ai/edit-employee-recognition-tone"
     
     init(model: AmplifyRequestHelperProtocol, language: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
@@ -58,7 +58,7 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     var apiRequest: URLRequest?{
         get{
             let urlStr = String(format: "%@/%@", productionInspireMeURL, model.endPoint)
-            let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParamsForInspireMe(
+            let req = self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
                 url:  URL(string: urlStr),
                 method: .POST ,
                 httpBodyDict: prepareHttpBodyDict() as NSDictionary
