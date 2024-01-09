@@ -450,6 +450,19 @@
 		BEFF9D8B28C740D5009DF1AC /* DeleteCommentDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BE50010D2AED92F100522D00 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		04C15C9B02DE6A511518E2F8 /* Pods-CommonFunctionalityFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonFunctionalityFramework.release.xcconfig"; path = "Target Support Files/Pods-CommonFunctionalityFramework/Pods-CommonFunctionalityFramework.release.xcconfig"; sourceTree = "<group>"; };
 		0F31325F2862D8470017B28C /* CommonOutastandingImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonOutastandingImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -2841,6 +2854,7 @@
 				98B90DDB240CACD90013E9D2 /* Sources */,
 				98B90DDC240CACD90013E9D2 /* Frameworks */,
 				98B90DDD240CACD90013E9D2 /* Resources */,
+				BE50010D2AED92F100522D00 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
