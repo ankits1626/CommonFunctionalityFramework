@@ -31,6 +31,9 @@ class FeedOrganisationListManager : NSObject{
     }
     
     func reset(){
+        initModel.dataManager?.selectedDepartment.removeAll()
+        initModel.dataManager?.selectedOrganisation.removeAll()
+        initModel.dataManager?.selectedJobFamily.removeAll()
         self.collapsedSections = Set<Int>()
     }
     
@@ -56,13 +59,9 @@ extension FeedOrganisationListManager{
             ),
             forHeaderFooterViewReuseIdentifier: headerIdentifier
         )
+        initModel.tableView?.separatorStyle = .none
         initModel.tableView?.dataSource = self
         initModel.tableView?.delegate = self
-//        if #available(iOS 15.0, *) {
-//            initModel.tableView?.sectionHeaderTopPadding = 0
-//        } else {
-//            // Fallback on earlier versions
-//        }
     }
     
 }
@@ -103,8 +102,16 @@ extension FeedOrganisationListManager : UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 55
+        if self.collapsedSections.contains(section) {
+            return 55
+        }else{
+            if let unwrappedData = initModel.dataManager {
+                return !unwrappedData.isDepartmentEnabled(section: section) && !unwrappedData.isJobFamilyEnabled(section: section) ? 55 : 125
+            }
+            return 0
+        }
     }
+    
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 12
@@ -115,7 +122,7 @@ extension FeedOrganisationListManager : UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 59
+        return 84
     }
 }
 
@@ -127,31 +134,42 @@ extension FeedOrganisationListManager{
         })
         let organisation = initModel.dataManager!.getOrganisations()[section]
         header.organisationLbl?.text = organisation.displayName
-        header.organisationLbl?.font = .Body2
-        header.selectionDetailLbl?.font = .Body1
         header.organisationLbl?.textColor = .getTitleTextColor()
-        header.headerContainer?.backgroundColor = .guidenceViewBackgroundColor
-        header.headerContainer?.layer.cornerRadius = 4
+        header.selectAllStackView?.isHidden = self.collapsedSections.contains(section) ? true : false
+        header.selectAllDepartmentView?.isHidden = !initModel.dataManager!.isDepartmentEnabled(section: section)
+        header.selectJobFamilyContainerView?.isHidden = !initModel.dataManager!.isJobFamilyEnabled(section: section)
+        header.selectAllDepartmentView?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
+        header.selectJobFamilyContainerView?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)
+        
         header.headerContainer?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         let image = UIImage(
             named: collapsedSections.contains(section) ? "cff_expand" : "cff_collapse",
             in: Bundle(for: PostEditorViewController.self),
             compatibleWith: nil
         )
-        
         header.expandCollapseBtn?.setImage(
             image ,
             for: .normal
         )
-        if let unwrappedDataManager = initModel.dataManager{
-            if (unwrappedDataManager.checkIfOrganisationIsSelected(organisation)){
-                header.checkBox.isChecked = true
-            }else{
-                header.checkBox.isChecked = false
-            }
+        
+        if self.initModel.dataManager?.getDepartmentMatchCount(organisation: organisation) == self.initModel.dataManager?.getMyDepartmentCounts(organisation: organisation){
+            header.selectAllDepartmentLabel?.backgroundColor = .getControlColor()
+            header.selectAllDepartmentLabel?.textColor = .white
+        }else{
+            header.selectAllDepartmentLabel?.backgroundColor = .white
+            header.selectAllDepartmentLabel?.textColor = UIColor(red: 171.0/255.0, green: 173.0/255.0, blue: 192.0/255.0, alpha: 1.0)
         }
         
-        header.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
+        if self.initModel.dataManager?.getJobFamiliesMatchCount(organisation: organisation) == self.initModel.dataManager?.getMyJobFamiliesCounts(organisation: organisation){
+            header.selectAllJobFamilesLabel?.backgroundColor = .getControlColor()
+            header.selectAllJobFamilesLabel?.textColor = .white
+        }else{
+            header.selectAllJobFamilesLabel?.backgroundColor = .white
+            header.selectAllJobFamilesLabel?.textColor = UIColor(red: 171.0/255.0, green: 173.0/255.0, blue: 192.0/255.0, alpha: 1.0)
+        }
+            
+        header.selectAllDepartment?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
+            [weak self] in
             if let unwrappedSelf = self{
                 unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(
                     organisation,
@@ -162,14 +180,24 @@ extension FeedOrganisationListManager{
                         )
                         unwrappedSelf.initModel.recordSelectedCompletion()
                     })
-//                unwrappedSelf.initModel.dataManager?.toggleOrganisationSelection(section)
-//                unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: section), with: .none)
             }
-        }
+        })
         
+        header.selectAllJobFamiles?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
+            [weak self] in
+            if let unwrappedSelf = self{
+                unwrappedSelf.initModel.dataManager?.toggleJobFamilySelection(
+                    organisation,
+                    {
+                        unwrappedSelf.initModel.tableView?.reloadSections(
+                            IndexSet(integer: section),
+                            with: .none
+                        )
+                        unwrappedSelf.initModel.recordSelectedCompletion()
+                    })
+            }
+        })
         header.selectionDetailLbl?.text = initModel.dataManager?.getSelectionDetails(organisation)
-        
-
     }
     
     private func configureDepartmentRow(cell: FeedOrganisationTableViewCell, indexpath: IndexPath){
@@ -184,21 +212,12 @@ extension FeedOrganisationListManager{
             inset: 0,
             thickness: 1
         )
-        if isLastDepartment(indexpath){
-            cell.cellSeperator?.backgroundColor = .clear
-        }else{
-            cell.cellSeperator?.backgroundColor = .guidenceViewBackgroundColor
-        }
-        
-        if let unwrappedDataManager = initModel.dataManager{
-            if (unwrappedDataManager.checkIfDepartmentIsSelected(department)){
-                cell.checkBox.isChecked = true
-            }else{
-                cell.checkBox.isChecked = false
-            }
-        }
-        
-        cell.checkBox.toggleCheckBoxSelectionCompletion = {[weak self] in
+        cell.departmentCounts?.text = "\(department.getDepartmentCount()) \("Members".localized)"
+        cell.rowTypeStatusLabel?.text = department.isJobFamily ? "Job Family".localized : "Department".localized
+        handleDepartmentCell(indexpath: indexpath, cell: cell)
+        cell.rowTypeViewContainer?.backgroundColor = department.isJobFamily ? initModel.dataManager!.getJobFamilyBackgroundColor() : initModel.dataManager!.getDepartmentBackgroundColor()
+        cell.itemListener?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
+            [weak self] in
             if let unwrappedSelf = self{
                 unwrappedSelf.initModel.dataManager?.toggleDepartmentSelection(
                     department,
@@ -206,10 +225,30 @@ extension FeedOrganisationListManager{
                         unwrappedSelf.initModel.tableView?.reloadSections(IndexSet(integer: indexpath.section), with: .none)
                         unwrappedSelf.initModel.recordSelectedCompletion()
                     })
-                
+
+            }
+        })
+    }
+    
+    func handleDepartmentCell(indexpath: IndexPath,cell: FeedOrganisationTableViewCell) {
+        let department = initModel.dataManager!.getOrganisations()[indexpath.section].departments.filter{$0.isDisplayable}[indexpath.row]
+        if let unwrappedDataManager = initModel.dataManager{
+            if (unwrappedDataManager.checkIfDepartmentIsSelected(department)) || (unwrappedDataManager.checkIfJobFamilyIsSelected(department)){
+                cell.rowContainer?.backgroundColor = department.isJobFamily ? UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 1.0) : .getControlColor()
+                cell.departmentLbl?.textColor = .white
+                cell.rowTypeViewContainer?.backgroundColor = department.isJobFamily ? UIColor(red: 52/255, green: 170/255, blue: 220/255, alpha: 0.1) :  .getControlColor().withAlphaComponent(0.1)
+                cell.rowTypeViewContainer?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255,alpha: 0.1), borderWidth: 1.0, cornerRadius: 6.0)
+                cell.rowTypeStatusLabel?.textColor = .white
+                cell.departmentCounts?.textColor = .white
+            }else{
+                cell.rowContainer?.backgroundColor = .white
+                cell.departmentCounts?.textColor = UIColor(red: 171/255, green: 173/255, blue: 192/255)
+                cell.departmentLbl?.textColor = UIColor(red: 21/255, green: 21/255, blue: 21/255)
+                cell.rowTypeViewContainer?.backgroundColor = .white
+                cell.rowTypeViewContainer?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 6.0)
+                cell.rowTypeStatusLabel?.textColor = department.isJobFamily ? initModel.dataManager!.getJobFamilyTitleColor() : initModel.dataManager!.getDepartmentTitleColor()
             }
         }
-    
     }
     
     private func isLastDepartment(_ indexpath : IndexPath) -> Bool{

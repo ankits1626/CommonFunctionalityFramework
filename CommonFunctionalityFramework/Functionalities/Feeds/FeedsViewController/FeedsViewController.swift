@@ -22,6 +22,7 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var noRecordsLabel: UILabel?
     @IBOutlet private weak var feedCreateViewConstraints : NSLayoutConstraint?
     var selectedTab = ""
+    var userPk: Int!
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
@@ -191,8 +192,20 @@ class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UIN
                 }
             }
         }else {
-            FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-                nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: isFromUserProfile ? "isFromUserPostPoll" : "postPoll", searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk, isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
+            var feedFetchInputModel = FeedFetcherInputModel(
+                userPk: userPk,
+                nextPageUrl: lastFetchedFeeds?.nextPageUrl,
+                feedType: isFromUserProfile ? "isFromUserPostPoll" : "postPoll",
+                searchText: searchText,
+                feedTypePk: self.feedTypePk,
+                organisationPK: self.organisationPK,
+                departmentPK: self.departmentPK,
+                dateRangePK: self.dateRangePK,
+                coreValuePk: self.coreValuePk,
+                isComingFromProfile: self.isComingFromProfilePage
+            )
+            
+            FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(feedFetchInputModel) {[weak self] (result) in
                 DispatchQueue.main.async {
                     self?.feedsTable?.loadCFFControl?.endLoading()
                     switch result{
@@ -518,6 +531,12 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
+        if let feed = getFeedItem(feedIdentifier: feedIdentifier){
+            let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+            feedCoordinatorDelegate.openOtherProfileView(feedDetailVC, otherUserPk: feed.getCreatorUserPK())
+        }
+    }
     func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
         
     }
@@ -751,7 +770,7 @@ extension FeedsViewController : FeedsDelegate{
                 numberofElementsEnabled = numberofElementsEnabled + 1
             }
             
-            drawer.isPintoPostEnabled = feed.isLoggedUserAdmin()
+            drawer.isPintoPostEnabled = (feed.isLoggedUserAdmin() && !isFromUserProfile)
             drawer.isDeleteEnabled = feed.isFeedDeleteAllowed()
             drawer.isreportAbusedEnabled = feed.isFeedReportAbuseAllowed()
             do{

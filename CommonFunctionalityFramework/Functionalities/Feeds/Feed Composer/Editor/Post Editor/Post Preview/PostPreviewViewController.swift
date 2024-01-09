@@ -78,7 +78,7 @@ class PostPreviewViewController: UIViewController {
     }
     private func setupContainerTopbar(){
         containerTopBarModel?.container?.backgroundColor = .clear
-        containerTopBarModel?.title?.text = "PREVIEW POST".localized.uppercased()
+        containerTopBarModel?.title?.text = initModel.post.getEditablePost().postType == .Post ? "PREVIEW POST".localized.uppercased() : "PREVIEW POLL".localized.uppercased()
         containerTopBarModel?.rightButton?.tintColor = .black
         containerTopBarModel?.rightButton?.setImage(
             UIImage(named: "cff_edit", in: Bundle(for: PostEditorViewController.self), compatibleWith: nil),

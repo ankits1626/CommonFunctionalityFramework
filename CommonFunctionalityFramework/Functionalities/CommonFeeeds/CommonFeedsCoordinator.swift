@@ -18,7 +18,7 @@ public struct GetCommonFeedsViewModel{
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var selectedTabType : String
     var searchText : String?
-    
+    var userPk: Int
     var feedTypePk : Int = 0
     var organisationPK : Int = 0
     var departmentPK : Int = 0
@@ -29,7 +29,8 @@ public struct GetCommonFeedsViewModel{
     var isDesklessEnabled : Bool = false
     var selectedTopGettersUserPK : Int = 0
 
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int, _isCreationButtonRequired : Bool = false, _hideTopLeaderboard : Bool = false, _isDesklessEnabled : Bool = false, _selectedTopGettersUserPK : Int = 0){
+    public init (userPk: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCommonCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, selectedTabType : String, searchText : String?, _feedTypePk : Int, _organisationPK : Int, _departmentPK : Int, _dateRangePK : Int, _coreValuePk : Int, _isCreationButtonRequired : Bool = false, _hideTopLeaderboard : Bool = false, _isDesklessEnabled : Bool = false, _selectedTopGettersUserPK : Int = 0){
+        self.userPk = userPk
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -51,6 +52,7 @@ public struct GetCommonFeedsViewModel{
 
 
 public protocol FeedsCommonCoordinatorDelegate {
+    func openOtherProfileView(_ detailViewController : UIViewController, otherUserPk : Int)
     func showFeedDetail(_ detailViewController : UIViewController)
     func removeFeedDetail()
     func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
@@ -64,6 +66,7 @@ public class CommonFeedsCoordinator {
     
     public func getFeedsView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
         let feedsVc =  CommonFeedsViewController(nibName: "CommonFeedsViewController", bundle: Bundle(for: CommonFeedsViewController.self))
+        feedsVc.userPk = inputModel.userPk
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         feedsVc.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
@@ -86,6 +89,9 @@ public class CommonFeedsCoordinator {
     public func getNominationView(_ inputModel : GetCommonFeedsViewModel) -> UIViewController{
         let storyBoard : UIStoryboard = UIStoryboard(name: "CommonFeeds", bundle:nil)
         let nominationViewController = storyBoard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
+        nominationViewController.mainAppCoordinator = inputModel.mainAppCoordinator
+        nominationViewController.requestCoordinator = inputModel.networkRequestCoordinator
+        nominationViewController.mediaFetcher = inputModel.mediaCoordinator
         return nominationViewController
     }
     
@@ -97,6 +103,7 @@ public class CommonFeedsCoordinator {
         let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSNominationViewController") as! BOUSNominationViewController
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.statusType = inputModel.selectedTabType
+        feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         return feedsVc
 
@@ -120,6 +127,7 @@ public class CommonFeedsCoordinator {
         controller.selectedNominationId = approvalsId
         controller.requestCoordinator = inputModel.networkRequestCoordinator
         controller.mediaFetcher = inputModel.mediaCoordinator
+        controller.mainAppCoordinator = inputModel.mainAppCoordinator
         return controller
     }
     
@@ -130,6 +138,7 @@ public class CommonFeedsCoordinator {
         let feedsVc = storyboard.instantiateViewController(withIdentifier: "BOUSApprovalsListingViewController") as! BOUSApprovalsListingViewController
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
+        feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
         feedsVc.searchText = inputModel.searchText
         return feedsVc
 
@@ -137,7 +146,8 @@ public class CommonFeedsCoordinator {
 
     public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
         self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId, feedType: "given") { (result) in
+        var feedFetchInputModel = FeedFetcherInputModel(feedID: feedId, feedType: "given")
+        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedFetchInputModel) { (result) in
             DispatchQueue.main.async {
                 self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
                 switch result{

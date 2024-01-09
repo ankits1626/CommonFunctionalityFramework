@@ -32,6 +32,14 @@ class PostPollTableViewCellCordinator: FeedCellCoordinatorProtocol{
             }
             
             let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
+            cell.openUserProfileButton?.handleControlEvent(
+                event: .touchUpInside,
+                buttonActionBlock: {
+                    inputModel.delegate?.showUserProfileView(
+                        targetView: cell.editFeedButton,
+                        feedIdentifier: feed.feedIdentifier
+                    )
+            })
             
             if selectedtabValue == "GreetingsFeed" {
                 cell.userName?.text = feed.getUserName()
@@ -91,11 +99,7 @@ class PostPollTableViewCellCordinator: FeedCellCoordinatorProtocol{
                     cell.pinImage?.isHidden = feed.isPinToPost() ? false : true
                     cell.pinImage.setImageColor(color: UIColor.getControlColor())
                     cell.containerView?.clipsToBounds = true
-//                     if !inputModel.datasource.shouldShowMenuOptionForFeed(){
-//                        cell.editFeedButton?.isHidden = true
-//                    }else{
-//                        cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
-//                    }
+                    cell.editFeedButton?.isHidden = feed.feedIdentifier == -1 ? true : false
                     cell.editFeedButton?.handleControlEvent(
                         event: .touchUpInside,
                         buttonActionBlock: {

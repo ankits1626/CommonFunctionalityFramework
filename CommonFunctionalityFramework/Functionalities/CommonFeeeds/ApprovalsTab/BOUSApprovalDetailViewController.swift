@@ -26,6 +26,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     
     var selectedNominationId = Int()
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
     var loader = MFLoader()
     var jsonDataValues : BOUSApprovalsDetailData!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
@@ -38,6 +39,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     var awardTitle = ""
     var awardPoints = ""
     var selectedPk : Int?
+    var badgePoints : String = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,11 +94,12 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
             let jsonData = try decoder.decode(BOUSApprovalsDetailData.self, from: data)
             
             jsonDataValues =  jsonData
-            if let awardId = jsonDataValues.nomination.category as? Int{
+            if let awardId = jsonDataValues.nomination.badge.id as? Int{
                 self.selectedPk = awardId
-                self.awardTitle = jsonDataValues.nomination.badges.name
-                self.awardPoints = "\(jsonDataValues.nomination.badges.award_points) Points"
-                self.awardImgUrl = jsonDataValues.nomination.badges.icon ?? ""
+                self.badgePoints = jsonDataValues.nomination.badge.points
+                self.awardTitle = jsonDataValues.nomination.badge.name
+                self.awardPoints = "\(jsonDataValues.nomination.badge.award_points) Points"
+                self.awardImgUrl = jsonDataValues.nomination.badge.icon ?? ""
             }
 
             if let PrivacyType = jsonData.shared_with as? Int{
@@ -148,7 +151,7 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
                     cell.rightArrowImg.isHidden = false
                 }
 
-                cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badges.background_color,alpha:  0.1)
+                cell.contentView.backgroundColor = Rgbconverter.HexToColor(jsonDataValues.nomination.badge.background_color,alpha:  0.1)
                 
                 if let leftImg = jsonDataValues.nomination.nominated_team_member.profile_img as? String, leftImg.count > 0 {
                      mediaFetcher.fetchImageAndLoad(cell.leftImg, imageEndPoint: leftImg)
@@ -289,6 +292,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = true
+        vc.badgeId = selectedPk ?? 0
+        vc.nominationPoints = self.badgePoints
         vc.selectedPrivacyvalue = selectedPrivacyvalue
         vc.selectedCategory = selectedPk!
         vc.delegate = self
@@ -307,6 +312,8 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
         vc.requestCoordinator = requestCoordinator
         vc.postId = jsonDataValues.nomination.id
         vc.isNominationApproved = false
+        vc.badgeId = selectedPk ?? 0
+        vc.nominationPoints = self.badgePoints
         vc.selectedPrivacyvalue = selectedPrivacyvalue
         vc.selectedCategory = selectedPk!
         vc.delegate = self
@@ -321,7 +328,10 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     
     func popToVC() {
         self.navigationController?.popToRootViewController(animated: false)
-        delegate?.popToApprovalsAndReload()
+        if let unwrappedData =  mainAppCoordinator,
+               unwrappedData.isBousApprovalScreen() == true{
+                   delegate?.popToApprovalsAndReload()
+        }
     }
     
     @IBAction func backTapped(_ sender: Any) {
@@ -329,10 +339,12 @@ class BOUSApprovalDetailViewController: UIViewController, UITableViewDelegate,UI
     }
     
     func selectedAwardLevel(awardDataSelected : ApprovalAwardCategoryModel,selectedPointsPK : Int) {
-        self.awardTitle = awardDataSelected.name
-        self.awardPoints = "\(awardDataSelected.points) Points"
-        self.awardImgUrl = awardDataSelected.icon
-        self.selectedPk = awardDataSelected.pk
+        
+        self.awardTitle = awardDataSelected.badgeData[0].name
+        self.badgePoints = awardDataSelected.badgeData[0].decimalPoints
+        self.awardPoints = "\(awardDataSelected.badgeData[0].points) Points"
+        self.awardImgUrl = awardDataSelected.badgeData[0].icon
+        self.selectedPk = awardDataSelected.badgeData[0].badgePk
         self.tableView.beginUpdates()
         let indexPath = IndexPath(item: 2, section: 0)
         self.tableView.reloadRows(at: [indexPath], with: .automatic)

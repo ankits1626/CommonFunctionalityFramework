@@ -39,11 +39,16 @@ class SelectMediaTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorPr
             cell.imageButton?.addTarget(self, action: #selector(SelectMediaTableViewCellCoordinator.openImages(_:)), for: UIControl.Event.touchUpInside)
             cell.gifButton?.addTarget(self, action: #selector(SelectMediaTableViewCellCoordinator.opengifs(_:)), for: UIControl.Event.touchUpInside)
             cell.ecardButton?.addTarget(self, action: #selector(SelectMediaTableViewCellCoordinator.openEcards(_:)), for: UIControl.Event.touchUpInside)
+            cell.gifButtonView?.isHidden = !(inputModel.mainAppCoordinator?.isGifAttachmentAllowedToPost() ?? false)
+            cell.imageButtonView?.isHidden = !(inputModel.mainAppCoordinator?.isMediaAttachmentAllowedToPost() ?? false)
+            cell.ecardButtonView?.isHidden = !(inputModel.mainAppCoordinator?.isMediaAttachmentAllowedToPost() ?? false)
         }
     }
     
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
-        return 104
+        let isGifAailable = (inputModel.mainAppCoordinator?.isGifAttachmentAllowedToPost() ?? false)
+        let isMediaAttachmentAailable = (inputModel.mainAppCoordinator?.isMediaAttachmentAllowedToPost() ?? false)
+        return (isGifAailable || isMediaAttachmentAailable) ?  104 : 0
     }
     
     @IBAction func openImages(_ sender: Any) {

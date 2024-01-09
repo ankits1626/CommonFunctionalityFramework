@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Reactions
 
 class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     var reactionBtn : ReactionButton?
@@ -24,6 +23,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     var image1: Bool?
     var image2: Bool?
     var reactionsCount : Int64!
+    var reactionType = ["0", "3", "6" , "2", "1"]
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? CommonPressLikeButtonTableViewCell{
@@ -152,28 +152,24 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     }
     
     @objc func facebookButtonReactionTouchedUpAction(_ sender: AnyObject) {
-//        if reactionBtn?.isSelected == false {
-//            reactionBtn?.reaction   = Reaction.facebook.like
-//        }
-        
-        if let feed = inputModel?.datasource.getFeedItem(sender.tag) {
-            let getReactionidType = getReactionIdFromString(reactionType: (reactionBtn?.reaction.id)!)
-            inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: "\(getReactionidType)")
-            
-           // cell.reactionCountBtn.setTitle("\(reactionsCount)", for: .normal)
-            //cell.reactionImg1.isHidden = false
-           // cell.reactionCountBtn.isHidden = false
-            var getImageType = setReactionImageType(reactionType: Int(getReactionidType)!)
-            if let isImage1 = image1 {
-                if !isImage1 {
-                    cell.reactionImg1.setImage(UIImage(named: getImageType), for: .normal)
+        if selectedEmojiPathIndex >= 0 {
+            if let feed = inputModel?.datasource.getFeedItem(sender.tag) {
+                let getReactionidType = reactionType[selectedEmojiPathIndex]
+                inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: "\(getReactionidType)")
+                
+                var getImageType = setReactionImageType(reactionType: Int(getReactionidType)!)
+                if let isImage1 = image1 {
+                    if !isImage1 {
+                        cell.reactionImg1.setImage(UIImage(named: getImageType), for: .normal)
+                    }
                 }
-            }
-            
-            if let isImage2 = image2 {
-                if !isImage2 {
-                    cell.reactionImg2.setImage(UIImage(named: getImageType), for: .normal)
+                
+                if let isImage2 = image2 {
+                    if !isImage2 {
+                        cell.reactionImg2.setImage(UIImage(named: getImageType), for: .normal)
+                    }
                 }
+                selectedEmojiPathIndex = -1
             }
         }
     }

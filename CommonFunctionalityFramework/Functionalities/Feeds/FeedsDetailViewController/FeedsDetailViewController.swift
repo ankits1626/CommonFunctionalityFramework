@@ -444,6 +444,10 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownload{
+    func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
+        print("here")
+    }
+    
  
     func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
         print(commentedByPk)

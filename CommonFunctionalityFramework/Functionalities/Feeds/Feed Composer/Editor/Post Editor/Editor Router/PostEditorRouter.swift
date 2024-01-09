@@ -58,6 +58,7 @@ class PostEditorRouter{
         let orgPicker = FeedOrganisationSelectionViewController(
             FeedOrganisationSelectionInitModel(
                 requestCoordinator: initModel.requestCoordinator,
+                mainConatiner: initModel.mainAppCoordinator,
                 selectionModel: initModel.routerDelegate?.getSavedOrganisationAndDepartmentSelection(),
                 selectionCompletionHandler: {  [weak self] selectedOrganisationsAndDeparments,displayable  in
                     self?.initModel.routerDelegate?.saveOrganisationAndDepartmentSelection(selectedOrganisationsAndDeparments)
@@ -148,6 +149,7 @@ class PostEditorRouter{
             name: "InpireMeErrorView",
             bundle: Bundle(for: InpireMeErrorViewController.self))
         let vc = storyboard.instantiateViewController(withIdentifier: storyboardVcIdentifier) as! InpireMeErrorViewController
+        vc.mainAppCoordinator = initModel.mainAppCoordinator
         vc.forExTextMessage = forExTextMessage
         var topViewController = UIApplication.shared.keyWindow?.rootViewController
         while topViewController?.presentedViewController != nil

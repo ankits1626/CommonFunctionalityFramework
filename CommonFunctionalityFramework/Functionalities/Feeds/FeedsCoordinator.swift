@@ -19,13 +19,17 @@ public protocol CFFMainAppInformationCoordinator : AnyObject {
     func getCurrentAppLanguage() -> String
     func getAllAvailableLanguages() -> [LanguageOptionProtocol]
     func getLaguageNameFromSlug(_ slug: String)  -> String
-    
+    func isMediaAttachmentAllowedToPost() -> Bool
+    func isGifAttachmentAllowedToPost() -> Bool
+    func getCoreValueTitle() -> String
     //for joye app
     func getJoyAppUrl() -> String
     func saveJoyAppUrl(url:String)
     func saveJoyAppUrlDate(timeStamp:Date)
     func getJoyAppUrlDate() -> Date
     func getJoyeAppRequestBody() -> [String : String]
+    func isNuhsMultiOrgPostEnabled() -> Bool
+    func isBousApprovalScreen() -> Bool
 }
 
 
@@ -48,8 +52,9 @@ public struct GetFeedsViewModel{
     var greetingId = 0
     var isDesklessEnabled : Bool = false
     var isFromUserProfile : Bool = false
-
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0,  _isDesklessEnabled : Bool = false, _isFromUserProfile : Bool = false){
+    var userPk: Int
+    public init (userPk: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0,  _isDesklessEnabled : Bool = false, _isFromUserProfile : Bool = false){
+        self.userPk = userPk
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
@@ -71,6 +76,7 @@ public struct GetFeedsViewModel{
 }
 
 public protocol FeedsCoordinatorDelegate : AnyObject {
+    func openOtherProfileView(_ detailViewController : UIViewController, otherUserPk : Int)
     func showFeedDetail(_ detailViewController : UIViewController)
     func removeFeedDetail()
     func showComposer(_composer : UIViewController, dismissCompletionBlock : (()-> Void)?, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
@@ -88,6 +94,7 @@ public class FeedsCoordinator {
     
     public func getFeedsView(_ inputModel : GetFeedsViewModel) -> UIViewController{
         let feedsVc =  FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
+        feedsVc.userPk = inputModel.userPk
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         feedsVc.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
@@ -115,7 +122,11 @@ public class FeedsCoordinator {
     }
     
     public func showFeedsDetailView(feedId: Int,isPostType : Bool = false, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
-        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId, feedType: "") { (result) in
+        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(
+            FeedFetcherInputModel(
+                feedID: feedId,
+                feedType: "")
+        ) { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(let result):

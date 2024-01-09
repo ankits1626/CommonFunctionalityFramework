@@ -18,6 +18,7 @@ class CommonFeedsTopTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var dot: UIImageView!
     @IBOutlet weak var appraacitedBy: UILabel!
     @IBOutlet weak var pinPostWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var openUserProfileButton : BlockButton?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

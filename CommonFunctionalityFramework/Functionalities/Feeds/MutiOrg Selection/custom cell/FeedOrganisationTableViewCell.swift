@@ -12,11 +12,14 @@ class FeedOrganisationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var departmentLbl: UILabel?
     @IBOutlet weak var rowContainer: UIView?
-    @IBOutlet weak var cellSeperator: UIView?
-    @IBOutlet weak var checkBox : ASCheckBox!
+    @IBOutlet weak var itemListener : BlockButton?
+    @IBOutlet weak var rowTypeViewContainer : UIView?
+    @IBOutlet weak var rowTypeStatusLabel : UILabel?
+    @IBOutlet weak var departmentCounts : UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        rowContainer?.curvedUIBorderedControl(borderColor: UIColor(red: 237, green: 240, blue: 255), borderWidth: 1.0, cornerRadius: 8.0)        
         // Initialization code
     }
 

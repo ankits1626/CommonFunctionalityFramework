@@ -13,6 +13,7 @@ class SelectPostTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var posttoDepartment : UISwitch?
     @IBOutlet weak var departmentLabel : UILabel?
+    @IBOutlet weak var seperator : UIView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
