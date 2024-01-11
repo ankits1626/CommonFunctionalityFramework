@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -166,6 +166,7 @@
                 <outlet property="feedText" destination="ppk-96-Eon" id="zav-Kq-PBU"/>
                 <outlet property="feedThumbnail" destination="tnQ-I9-tvb" id="qFJ-g1-yZK"/>
                 <outlet property="pointBtn" destination="k9C-CW-MBr" id="GOc-c8-unB"/>
+                <outlet property="pointBtnHeightConstraints" destination="aIg-ru-KTz" id="CDh-mb-VoC"/>
                 <outlet property="readMorebutton" destination="dcs-0q-5qH" id="txc-Ny-zUy"/>
             </connections>
             <point key="canvasLocation" x="118.84057971014494" y="150"/>
@@ -180,7 +181,7 @@
         <image name="cff_appreciationImage" width="86" height="87"/>
         <image name="icon_points-2" width="36" height="23"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

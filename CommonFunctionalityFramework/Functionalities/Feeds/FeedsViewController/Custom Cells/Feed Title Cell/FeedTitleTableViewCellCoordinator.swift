@@ -85,7 +85,8 @@ class FeedTitleTableViewCellCoordinator: NSObject, FeedCellCoordinatorProtocol{
             }
             cell.appreciationSubject?.text =  feedTitle["strengthName"] as? String ?? ""
             cell.pointBtn.setTitle("\(feedTitle["points"] as? String ?? "") Points", for: .normal)
-            
+            cell.pointBtn.alpha = feedTitle["points"] as? String ?? "0" > "0" ? 1 : 0
+            cell.pointBtnHeightConstraints?.constant = feedTitle["points"] as? String ?? "0" > "0" ? 50 : 20
             inputModel.mediaFetcher.fetchImageAndLoad(cell.feedThumbnail, imageEndPoint: feedTitle["illustration"] as? String ?? "")
             let backGroundColor = feedTitle["badgeBackgroundColor"] as? String ?? ""
             let backGroundColorLite = feedTitle["background_color_lite"] as? String ?? ""
