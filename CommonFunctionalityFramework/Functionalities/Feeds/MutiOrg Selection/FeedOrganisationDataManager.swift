@@ -32,6 +32,10 @@ class FeedOrganisationDataManager{
     var departmentIndex : [[Int]] = [[]]
     var jobFamilyIndex : [[Int]] = [[]]
     
+    var selectedOrganisationPk = Set<Int>()
+    var selectedDepartmentPk = Set<Int>()
+    var selectedJobFamilyPk = Set<Int>()
+    
     private var isSearchEnabled = false
     
     init(_ initModel: FeedOrganisationDataManagerInitModel){
@@ -98,12 +102,20 @@ extension FeedOrganisationDataManager{
             var refreshedSelectedOrg = Set<Int>()
             var refreshedSelectedDepartment = Set<Int>()
             var refreshedSelectedJobFamily = Set<Int>()
+            self.selectedOrganisationPk.removeAll()
+            self.selectedDepartmentPk.removeAll()
+            self.selectedJobFamilyPk.removeAll()
             for org in result {
+                self.selectedOrganisationPk.insert(org.pk)
                 if !(selectedOrganisation.filter{$0 == org.pk}).isEmpty{
                     refreshedSelectedOrg.insert(org.pk)
                 }
                 
                 for dep in org.departments {
+                    if !dep.isJobFamily {
+                        self.selectedDepartmentPk.insert(dep.pk)
+                    }
+                    
                     if !(selectedDepartment.filter{$0 == dep.pk}).isEmpty{
                         if !dep.isJobFamily {
                             refreshedSelectedDepartment.insert(dep.pk)
@@ -113,6 +125,10 @@ extension FeedOrganisationDataManager{
                 }
                 
                 for jobFamily in org.departments {
+                    if jobFamily.isJobFamily {
+                        self.selectedJobFamilyPk.insert(jobFamily.pk)
+                    }
+                    
                     if !(selectedJobFamily.filter{$0 == jobFamily.pk}).isEmpty{
                         if jobFamily.isJobFamily {
                             refreshedSelectedJobFamily.insert(jobFamily.pk)
