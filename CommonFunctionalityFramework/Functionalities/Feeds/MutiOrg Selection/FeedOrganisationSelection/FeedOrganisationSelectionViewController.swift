@@ -35,17 +35,23 @@ class FeedOrganisationSelectionViewController: UIViewController {
     @IBOutlet private weak var searchTextField: UITextField?
     @IBOutlet private weak var organisationListTableView: UITableView?
     @IBOutlet private weak var clearButton: UIButton?
+    @IBOutlet private weak var selectAllParentContainerView : UIView?
+    @IBOutlet private weak var selectAllContainerView : UIView?
+    @IBOutlet private weak var selectAllTitleLabel : UILabel?
+    @IBOutlet private weak var selectAllSwitch : UISwitch?
     
     private func setupContainerTopbar(){
         let nuhsMultiOrg = (self.initModel.mainConatiner?.isNuhsMultiOrgPostEnabled())! ? "Select Org/Dept/Job Family".localized : "Select Orgs/Dept".localized
         containerTopBarModel?.title?.text = nuhsMultiOrg
+        selectAllParentContainerView?.isHidden = (self.initModel.mainConatiner?.isNuhsMultiOrgPostEnabled())! ? false : true
     }
     
     private lazy var dataManager: FeedOrganisationDataManager = {
         return FeedOrganisationDataManager(
             FeedOrganisationDataManagerInitModel(
                 requestCoordinator: initModel.requestCoordinator,
-                selectionModel: initModel.selectionModel
+                selectionModel: initModel.selectionModel,
+                everyonNuhsSwitch: self.selectAllSwitch
             )
         )
     }()
@@ -57,6 +63,7 @@ class FeedOrganisationSelectionViewController: UIViewController {
                 tableView: organisationListTableView,
                 recordSelectedCompletion: { [weak self] in
                     self?.configureProceedButton()
+                    self?.checkSwitchState()
                 }
             )
         )
@@ -86,6 +93,7 @@ extension FeedOrganisationSelectionViewController{
         configureProceedButton()
         askDataManagerToFetchData()
         toggleClearSearchButtonVisibility()
+        setupSelectAllSwitch()
     }
     
     private func toggleClearSearchButtonVisibility(){
@@ -115,12 +123,20 @@ extension FeedOrganisationSelectionViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         searchTextField?.roundCorners(corners: .allCorners, radius: 8.0)
+        selectAllContainerView?.roundCorners(corners: .allCorners, radius: 8.0)
         proceedButton?.roundCorners(corners: .allCorners, radius: 8.0)
     }
     
+    private func setupSelectAllSwitch() {
+        selectAllSwitch?.onTintColor = UIColor.getControlColor()
+        selectAllSwitch?.tintColor = UIColor.getControlColor()
+        selectAllSwitch?.subviews[0].subviews[0].backgroundColor = UIColor(red: 171, green: 173, blue: 192)
+    }
+    
     private func configureProceedButton(){
-        proceedButton?.backgroundColor = .getControlColor()
-        proceedButtonContainerHeight?.constant = dataManager.checkIfAnyOrganisationOrDepartmentSelected() ? 52 : 0
+        self.proceedButton?.backgroundColor = .getControlColor()
+        self.proceedButton?.alpha = self.dataManager.checkIfAnyOrganisationOrDepartmentSelected() ? 1 : 0.5
+        self.proceedButton?.isUserInteractionEnabled = self.dataManager.checkIfAnyOrganisationOrDepartmentSelected() ? true : false
     }
     
     private func askDataManagerToFetchData(){
@@ -175,4 +191,27 @@ extension FeedOrganisationSelectionViewController{
         
     }
     
+    @IBAction func switchValueDidChange(_ sender: UISwitch) {
+        if let unwrappedSwitch = selectAllSwitch,
+           unwrappedSwitch.isOn{
+            self.dataManager.selectedJobFamily = self.dataManager.selectedJobFamilyPk
+            self.dataManager.selectedDepartment = self.dataManager.selectedDepartmentPk
+            self.dataManager.selectedOrganisation = self.dataManager.selectedOrganisationPk
+            listManager.loadListAfterDataFetch()
+        }else {
+            self.dataManager.selectedJobFamily = Set<Int>()
+            self.dataManager.selectedDepartment = Set<Int>()
+            self.dataManager.selectedOrganisation = Set<Int>()
+            listManager.loadListAfterDataFetch()
+        }
+        configureProceedButton()
+    }
+    
+    func checkSwitchState() {
+        if self.dataManager.selectedOrganisation == self.dataManager.selectedOrganisationPk {
+            selectAllSwitch?.isOn = true
+        }else {
+            selectAllSwitch?.isOn = false
+        }
+    }
 }
