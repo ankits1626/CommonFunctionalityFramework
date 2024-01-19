@@ -13,6 +13,7 @@ import RewardzCommonComponents
 struct FeedOrganisationDataManagerInitModel {
     weak var requestCoordinator: CFFNetworkRequestCoordinatorProtocol?
     var selectionModel: FeedOrganisationDepartmentSelectionModel?
+    var everyonNuhsSwitch : UISwitch?
 }
 
 enum SelectionOperation{
@@ -140,6 +141,15 @@ extension FeedOrganisationDataManager{
             selectedDepartment = refreshedSelectedDepartment
             selectedOrganisation = refreshedSelectedOrg
             selectedJobFamily = refreshedSelectedJobFamily
+            
+            
+            if let unwrappedSwitch = self.initModel.everyonNuhsSwitch {
+                if selectedOrganisation == selectedOrganisationPk {
+                    unwrappedSwitch.isOn = true
+                }else {
+                    unwrappedSwitch.isOn = false
+                }
+            }
             return nil
         case .SuccessWithNoResponseData:
             return "Unexpected response while fetching organisations"

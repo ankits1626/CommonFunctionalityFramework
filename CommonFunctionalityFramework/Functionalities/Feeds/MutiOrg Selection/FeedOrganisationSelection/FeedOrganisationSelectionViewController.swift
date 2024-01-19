@@ -50,7 +50,8 @@ class FeedOrganisationSelectionViewController: UIViewController {
         return FeedOrganisationDataManager(
             FeedOrganisationDataManagerInitModel(
                 requestCoordinator: initModel.requestCoordinator,
-                selectionModel: initModel.selectionModel
+                selectionModel: initModel.selectionModel,
+                everyonNuhsSwitch: self.selectAllSwitch
             )
         )
     }()
