@@ -30,7 +30,7 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
             cell.containerView?.layer.borderColor = #colorLiteral(red: 0.9294112921, green: 0.9411767125, blue: 0.9999989867, alpha: 1)
             cell.containerView?.layer.borderWidth = 1.0
             cell.containerView?.layer.cornerRadius = 8.0
-            cell.descriptionText?.textContainer.maximumNumberOfLines = 1
+            cell.descriptionText?.textContainer.maximumNumberOfLines = 2
             cell.descriptionText?.delegate = self
             cell.descriptionText?.tag = inputModel.targetIndexpath.row
             cell.descriptionText?.placeholder = targetIndexPath.row > 1 ? " \("+ Add Option".localized) \("(Optional)".localized)" : "\("+ Add Option".localized) \(targetIndexPath.row + 1)"
@@ -58,7 +58,7 @@ class FeedEditorPollOptionTableViewCellCoordinator: NSObject, PostEditorCellCoor
     }
     
     func getHeight(_ inputModel: PostEditorGetHeightModel) -> CGFloat {
-        return 64
+        return 80
     }
     
     var cellType: FeedCellTypeProtocol{
