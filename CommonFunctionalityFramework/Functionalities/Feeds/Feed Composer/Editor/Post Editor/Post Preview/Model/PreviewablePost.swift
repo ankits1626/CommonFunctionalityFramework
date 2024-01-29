@@ -41,6 +41,14 @@ class PreviewableLocalMediaItem : MediaItemProtocol{
 
 
 class PreviewablePost : FeedsItemProtocol{
+    func getQuestionType() -> [NominationDetailQuestionType]? {
+        return [NominationDetailQuestionType]()
+    }
+    
+    func getUserEnteredAnsers() -> [NominationEnteredData]? {
+        return [NominationEnteredData]()
+    }
+    
     func getReceiverUserPK() -> Int {
         return 0
     }

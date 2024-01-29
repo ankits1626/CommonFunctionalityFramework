@@ -65,6 +65,8 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getGreeting() -> GreetingAnniAndBday?
     func getCreatorUserPK() -> Int
     func getReceiverUserPK() -> Int
+    func getQuestionType() -> [NominationDetailQuestionType]?
+    func getUserEnteredAnsers() -> [NominationEnteredData]?
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -697,6 +699,41 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
     }
     
+    func getQuestionType() -> [NominationDetailQuestionType]? {
+        var questionType = [NominationDetailQuestionType]()
+        if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let questionsArray = nominationDict["question"] as? [[String: Any]] {
+            for question in questionsArray {
+                if let unwrappedQuestionType = question["question_type"] as? Int {
+                    questionType.append(NominationDetailQuestionType(rawValue: unwrappedQuestionType) ?? .Unknown)
+                }
+            }
+            return questionType
+        }
+        return nil
+    }
+    
+    func getUserEnteredAnsers() -> [NominationEnteredData]? {
+        var answersDict = [NominationEnteredData]()
+        if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let questionsArray = nominationDict["question"] as? [[String: Any]] {
+            for question in questionsArray {
+                if let unwrappedAnswerArray = question["answer"] as? [[String: Any]] {
+                    for answer in unwrappedAnswerArray {
+                        if let answerId = answer["id"] as? Int,
+                           let answerText = answer["answer"] as? String,
+                           let questionPk = answer["question"] as? Int,
+                           let supportingDoc = answer["supporting_doc"] as? String {
+                            answersDict.append(NominationEnteredData(answersId: answerId, questionsId: questionPk, ansers: answerText, supportingDoc: supportingDoc))
+                        }
+                    }
+                }
+            }
+            return answersDict
+        }
+        return nil
+    }
+    
     func getFeedDescription() -> String? {
         if let unwrappedDescription  = rawFeedDictionary["description"] as? String,
            !unwrappedDescription.isEmpty{
@@ -741,4 +778,19 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     func hasOnlyMedia() -> Bool {
         return getFeedTitle() == nil && getFeedDescription() == nil
     }
+}
+enum NominationDetailQuestionType : Int, CaseIterable {
+    case OneLiner = 0
+    case MultiLiner = 1
+    case DepartmentChoice = 2
+    case Document = 3
+    case LineManagerChoice = 4
+    case Choice = 5
+    case Unknown
+}
+struct NominationEnteredData {
+    var answersId : Int
+    var questionsId : Int
+    var ansers : String
+    var supportingDoc : String
 }
