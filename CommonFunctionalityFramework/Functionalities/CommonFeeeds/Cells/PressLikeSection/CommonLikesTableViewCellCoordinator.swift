@@ -23,9 +23,10 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     var image1: Bool?
     var image2: Bool?
     var reactionsCount : Int64!
-    var reactionType = ["0", "3", "6" , "2", "1"]
+    var reactionType: [String] = []
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
+        addReactionIndex()
         if let cell  = inputModel.targetCell as? CommonPressLikeButtonTableViewCell{
             self.inputModel = inputModel
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
@@ -189,6 +190,29 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
             return "0"
         }
     }
+    
+    private func addReactionIndex() {
+        reactionType.removeAll()
+        
+        // Add reactions based on user defaults
+        if UserDefaults.standard.bool(forKey: "like") {
+            reactionType.append("0")
+        }
 
+        if UserDefaults.standard.bool(forKey: "love") {
+            reactionType.append("3")
+        }
+
+        if UserDefaults.standard.bool(forKey: "clap") {
+            reactionType.append("6")
+        }
+
+        if UserDefaults.standard.bool(forKey: "support") {
+            reactionType.append("2")
+        }
+
+        if UserDefaults.standard.bool(forKey: "celebrate") {
+            reactionType.append("1")
+        }
+    }
 }
-
