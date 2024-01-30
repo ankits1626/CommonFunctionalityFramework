@@ -153,7 +153,7 @@ class CommonLikesTableViewCellCoordinator :  CommonFeedCellCoordinatorProtocol{
     }
     
     @objc func facebookButtonReactionTouchedUpAction(_ sender: AnyObject) {
-        if selectedEmojiPathIndex >= 0 {
+        if selectedEmojiPathIndex >= 0 && reactionType.count > 0{
             if let feed = inputModel?.datasource.getFeedItem(sender.tag) {
                 let getReactionidType = reactionType[selectedEmojiPathIndex]
                 inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: "\(getReactionidType)")
