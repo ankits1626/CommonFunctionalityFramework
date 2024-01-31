@@ -45,27 +45,52 @@ public final class ReactionSelector: UIReactionControl {
         var reactions: [Reaction] = []
         
         // Add reactions based on user defaults
-        if UserDefaults.standard.bool(forKey: "like") {
-            reactions.append(Reaction.facebook.like)
-        }
-        
-        if UserDefaults.standard.bool(forKey: "love") {
-            reactions.append(Reaction.facebook.love)
-        }
-        
-        if UserDefaults.standard.bool(forKey: "clap") {
-            reactions.append(Reaction.facebook.haha)
-        }
-        
-        if UserDefaults.standard.bool(forKey: "support") {
-            reactions.append(Reaction.facebook.sad)
-        }
-        
-        if UserDefaults.standard.bool(forKey: "celebrate") {
-            reactions.append(Reaction.facebook.wow)
-        }
-        
-        return reactions
+      
+      if UserDefaults.standard.bool(forKey: "isPostAndPoll") {
+          if UserDefaults.standard.bool(forKey: "feedLike") {
+              reactions.append(Reaction.facebook.like)
+          }
+
+          if UserDefaults.standard.bool(forKey: "feedLove") {
+              reactions.append(Reaction.facebook.love)
+          }
+
+          if UserDefaults.standard.bool(forKey: "feedClap") {
+              reactions.append(Reaction.facebook.haha)
+          }
+
+          if UserDefaults.standard.bool(forKey: "feedSupport") {
+              reactions.append(Reaction.facebook.sad)
+          }
+
+          if UserDefaults.standard.bool(forKey: "feedCelebrate") {
+              reactions.append(Reaction.facebook.wow)
+          }
+
+          return reactions
+      } else {
+          if UserDefaults.standard.bool(forKey: "like") {
+              reactions.append(Reaction.facebook.like)
+          }
+
+          if UserDefaults.standard.bool(forKey: "love") {
+              reactions.append(Reaction.facebook.love)
+          }
+
+          if UserDefaults.standard.bool(forKey: "clap") {
+              reactions.append(Reaction.facebook.haha)
+          }
+
+          if UserDefaults.standard.bool(forKey: "support") {
+              reactions.append(Reaction.facebook.sad)
+          }
+
+          if UserDefaults.standard.bool(forKey: "celebrate") {
+              reactions.append(Reaction.facebook.wow)
+          }
+
+          return reactions
+      }
     }()
   /**
    The reactions available in the selector.

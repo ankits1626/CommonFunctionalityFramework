@@ -199,23 +199,23 @@ class PostPollLikeTableViewCordinator :  FeedCellCoordinatorProtocol{
         reactionType.removeAll()
         
         // Add reactions based on user defaults
-        if UserDefaults.standard.bool(forKey: "like") {
+        if UserDefaults.standard.bool(forKey: "feedLike") {
             reactionType.append("0")
         }
 
-        if UserDefaults.standard.bool(forKey: "love") {
+        if UserDefaults.standard.bool(forKey: "feedLove") {
             reactionType.append("3")
         }
 
-        if UserDefaults.standard.bool(forKey: "clap") {
+        if UserDefaults.standard.bool(forKey: "feedClap") {
             reactionType.append("6")
         }
 
-        if UserDefaults.standard.bool(forKey: "support") {
+        if UserDefaults.standard.bool(forKey: "feedSupport") {
             reactionType.append("2")
         }
 
-        if UserDefaults.standard.bool(forKey: "celebrate") {
+        if UserDefaults.standard.bool(forKey: "feedCelebrate") {
             reactionType.append("1")
         }
     }
