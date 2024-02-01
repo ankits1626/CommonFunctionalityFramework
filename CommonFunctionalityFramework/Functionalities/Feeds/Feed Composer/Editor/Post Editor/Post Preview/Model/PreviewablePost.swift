@@ -41,6 +41,14 @@ class PreviewableLocalMediaItem : MediaItemProtocol{
 
 
 class PreviewablePost : FeedsItemProtocol{
+    func getQuestionLabel() -> [String] {
+        return []
+    }
+    
+    func getNominatedUsers() -> [NominationNominatedMembers] {
+        return [NominationNominatedMembers]()
+    }
+    
     func getQuestionType() -> [NominationDetailQuestionType]? {
         return [NominationDetailQuestionType]()
     }

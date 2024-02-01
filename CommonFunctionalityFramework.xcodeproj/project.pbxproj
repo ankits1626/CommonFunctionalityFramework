@@ -441,6 +441,12 @@
 		BED3ADAF28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */; };
 		BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */; };
 		BEDA6B3728CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA6B3628CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift */; };
+		BEED7B5A2B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED7B582B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift */; };
+		BEED7B5B2B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEED7B592B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib */; };
+		BEED7B5D2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED7B5C2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift */; };
+		BEED7B612B6A4CFA00A2EA55 /* NominationQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED7B5F2B6A4CF900A2EA55 /* NominationQuestionTableViewCell.swift */; };
+		BEED7B622B6A4CFA00A2EA55 /* NominationQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEED7B602B6A4CF900A2EA55 /* NominationQuestionTableViewCell.xib */; };
+		BEED7B642B6A4FE200A2EA55 /* NominationAttachmentCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED7B632B6A4FE100A2EA55 /* NominationAttachmentCellCoordinator.swift */; };
 		BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */; };
 		BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543B26FC978400327205 /* UIView+XibSetup.swift */; };
 		BEF4021828201248001B9D7E /* CommonFeedsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */; };
@@ -910,6 +916,12 @@
 		BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonAppreciationSubjectTableViewCell.xib; sourceTree = "<group>"; };
 		BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppreciationSubjectTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		BEDA6B3628CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BousDetailSingleImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		BEED7B582B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineNominationQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		BEED7B592B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultiLineNominationQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		BEED7B5C2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineQuestionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		BEED7B5F2B6A4CF900A2EA55 /* NominationQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		BEED7B602B6A4CF900A2EA55 /* NominationQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NominationQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		BEED7B632B6A4FE100A2EA55 /* NominationAttachmentCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationAttachmentCellCoordinator.swift; sourceTree = "<group>"; };
 		BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+NumberOfLines.swift"; sourceTree = "<group>"; };
 		BEEF543B26FC978400327205 /* UIView+XibSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XibSetup.swift"; sourceTree = "<group>"; };
 		BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedsCoordinator.swift; sourceTree = "<group>"; };
@@ -2142,6 +2154,8 @@
 		98B90DED240CAD010013E9D2 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BEED7B5E2B6A4CCB00A2EA55 /* NominationDocument */,
+				BEED7B572B6A453200A2EA55 /* MultiLineNominationQuestion */,
 				0FC40A2D2A650F5000B921BE /* eCardImage */,
 				0FB1635129B7110B000AA631 /* AnniversayCell */,
 				0F32907028897025008BF09D /* OutStandingCell */,
@@ -2782,6 +2796,26 @@
 			path = "Appreciation Cells";
 			sourceTree = "<group>";
 		};
+		BEED7B572B6A453200A2EA55 /* MultiLineNominationQuestion */ = {
+			isa = PBXGroup;
+			children = (
+				BEED7B582B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift */,
+				BEED7B592B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib */,
+				BEED7B5C2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift */,
+			);
+			path = MultiLineNominationQuestion;
+			sourceTree = "<group>";
+		};
+		BEED7B5E2B6A4CCB00A2EA55 /* NominationDocument */ = {
+			isa = PBXGroup;
+			children = (
+				BEED7B5F2B6A4CF900A2EA55 /* NominationQuestionTableViewCell.swift */,
+				BEED7B602B6A4CF900A2EA55 /* NominationQuestionTableViewCell.xib */,
+				BEED7B632B6A4FE100A2EA55 /* NominationAttachmentCellCoordinator.swift */,
+			);
+			path = NominationDocument;
+			sourceTree = "<group>";
+		};
 		BEF402162820120F001B9D7E /* CommonFeeeds */ = {
 			isa = PBXGroup;
 			children = (
@@ -2923,6 +2957,7 @@
 				BEC2B27B26FD9F4D008417C3 /* PollsActiveDaysTableViewCell.xib in Resources */,
 				0FD47F3C2A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.xib in Resources */,
 				BE94C31D2821743C00E323E1 /* CommonFeedsTopTableViewCell.xib in Resources */,
+				BEED7B5B2B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib in Resources */,
 				0F961A1828E4576E0003FE8D /* BOUSThreeImageDetailTableViewCell.xib in Resources */,
 				0F3290742889705D008BF09D /* BOUSDetailFeedOutstandingTableViewCell.xib in Resources */,
 				0FA1A5FC2A1610EF00107B26 /* FeedOrganisationSelectionViewController.xib in Resources */,
@@ -2956,6 +2991,7 @@
 				BEC2B24F26FD9573008417C3 /* DropDownTableViewCell.xib in Resources */,
 				0FABE4EE2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.xib in Resources */,
 				BEBFD1E828A9F167006E5D8B /* PostPollLikeTableViewCell.xib in Resources */,
+				BEED7B622B6A4CFA00A2EA55 /* NominationQuestionTableViewCell.xib in Resources */,
 				BEB7BDD52AE637E300FD652D /* FeedbackLocalizable.strings in Resources */,
 				0FD47F3D2A25BCDD0096B30C /* ASChatBarAttachmentViewController.xib in Resources */,
 				BE6725632A5C284900AEFFEB /* ShowSelectedUserRecognition.xib in Resources */,
@@ -3089,6 +3125,7 @@
 				9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */,
 				BEB7BDE02AE637E300FD652D /* Extensions.swift in Sources */,
 				0FA1A5FB2A1610EF00107B26 /* FeedOrganisationSelectionViewController.swift in Sources */,
+				BEED7B5A2B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift in Sources */,
 				9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */,
 				BE94C3112821418800E323E1 /* NominationFeedContentCoordinator.swift in Sources */,
 				986B9737258DDD1B006EBDA9 /* ASTaggedUser.swift in Sources */,
@@ -3113,6 +3150,7 @@
 				BE94C30D282140AC00E323E1 /* CommonFeedContentCoordinatorProtocol.swift in Sources */,
 				BEB7BDDD2AE637E300FD652D /* ReactionButtonConfig.swift in Sources */,
 				0F94B75128883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift in Sources */,
+				BEED7B5D2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift in Sources */,
 				BEAFDF2A29E541CF00C04FC4 /* TopHeroesModel.swift in Sources */,
 				BE39BA4A28A925B7004ADA9E /* PostPollTitleCellCordinator.swift in Sources */,
 				BEC74DDB2A5D4C050074324B /* TopGettersFilterViewController.swift in Sources */,
@@ -3289,7 +3327,9 @@
 				0F961A1A28E457820003FE8D /* BOUSThreeImageDetailCoordinator.swift in Sources */,
 				0F9C4A7328B79751000A99A2 /* BOUSApprovalPrivacyViewController.swift in Sources */,
 				9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */,
+				BEED7B642B6A4FE200A2EA55 /* NominationAttachmentCellCoordinator.swift in Sources */,
 				BE39BA4628A91856004ADA9E /* PostPollTopTableViewCellTableViewCell.swift in Sources */,
+				BEED7B612B6A4CFA00A2EA55 /* NominationQuestionTableViewCell.swift in Sources */,
 				0FABE4E92A1DD26000F5D855 /* EditCommentDrawer.swift in Sources */,
 				BE6725282A58021900AEFFEB /* LeaderboardCellConfiguratorProtocol.swift in Sources */,
 				0FABE5002A1DD29F00F5D855 /* PostEditorRouter.swift in Sources */,

@@ -67,6 +67,8 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getReceiverUserPK() -> Int
     func getQuestionType() -> [NominationDetailQuestionType]?
     func getUserEnteredAnsers() -> [NominationEnteredData]?
+    func getNominatedUsers() -> [NominationNominatedMembers]
+    func getQuestionLabel() -> [String]
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -93,7 +95,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
                     strengthMessage = rawFeedDictionary["description"] as? String ?? ""
-                    // strengthIcon = userStengthDic["icon"] as! String
+                     strengthIcon = userStengthDic["icon"] as? String ?? ""
                     badgeBackgroundColor = userStengthDic["background_color"] as? String ?? "#EBEBEB"
                     backGroundLite = userStengthDic["background_color_lite"] as? String ?? "#EBEBEB"
                     
@@ -559,6 +561,35 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return getFeedAuthor()?.getAuthorName()
     }
     
+    func getNominatedUsers() -> [NominationNominatedMembers]{
+        var nominatedUsers : [NominationNominatedMembers] = []
+        var nominatedUserDepartment : String = ""
+        if let nominationObject = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let nominatedUsersObject = nominationObject["nominees"] as? [NSDictionary] {
+            for listData in nominatedUsersObject {
+                let pk = listData.object(forKey: "pk") as? Int ?? 0
+                let email = listData.object(forKey: "email") as? String ?? ""
+                let firstName = listData.object(forKey: "first_name") as? String ?? ""
+                let lastName = listData.object(forKey: "last_name") as? String ?? ""
+                let profilePic = listData.object(forKey: "profile_img") as? String ?? ""
+                let fullName = listData.object(forKey: "full_name") as? String ?? ""
+                if let unwrappedCreatorDepartment = listData.object(forKey: "departments") as? [NSDictionary] {
+                    if unwrappedCreatorDepartment.count > 0 {
+                        nominatedUserDepartment = unwrappedCreatorDepartment[0].object(forKey: "name") as? String ?? ""
+                    }else{
+                        nominatedUserDepartment = ""
+                    }
+                }else {
+                    nominatedUserDepartment = ""
+                }
+                let data = NominationNominatedMembers(nominatedPk: pk, email: email, firstName: firstName, lastName: lastName, department: nominatedUserDepartment, profilePic: profilePic, fullName: fullName)
+                nominatedUsers.append(data)
+            }
+            
+        }
+        return nominatedUsers
+    }
+    
     func getHomeUserImg() -> String? {
         var userImg : String?
         if let userDic = rawFeedDictionary["user"] as? NSDictionary {
@@ -713,6 +744,20 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return nil
     }
     
+    func getQuestionLabel() -> [String] {
+        var questionsDict = [String]()
+        if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let questionsArray = nominationDict["question"] as? [[String: Any]] {
+            for question in questionsArray {
+                if let unwrappedQuestionType = question["question_lable"] as? String {
+                    questionsDict.append(unwrappedQuestionType)
+                }
+            }
+            return questionsDict
+        }
+        return []
+    }
+    
     func getUserEnteredAnsers() -> [NominationEnteredData]? {
         var answersDict = [NominationEnteredData]()
         if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
@@ -793,4 +838,13 @@ struct NominationEnteredData {
     var questionsId : Int
     var ansers : String
     var supportingDoc : String
+}
+struct NominationNominatedMembers {
+    var nominatedPk : Int
+    var email : String
+    var firstName : String
+    var lastName : String
+    var department : String
+    var profilePic : String
+    var fullName : String
 }

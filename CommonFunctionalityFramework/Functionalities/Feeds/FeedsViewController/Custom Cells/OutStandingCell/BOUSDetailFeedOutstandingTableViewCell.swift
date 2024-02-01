@@ -16,11 +16,18 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
     @IBOutlet weak var badgeImageView : UIImageView?
     @IBOutlet weak var nominationConatiner : UIView?
     @IBOutlet weak var messageContainer : UIView?
-    
     @IBOutlet weak var awardLabel : UILabel?
     @IBOutlet weak var strengthLabel : UILabel?
     @IBOutlet weak var nominationMessage : ActiveLabel?
     @IBOutlet weak var strengthHeightConstraints : NSLayoutConstraint?
+    @IBOutlet weak var categoryImageView : UIImageView?
+    @IBOutlet weak var categoryName : UILabel?
+    
+    @IBOutlet weak var badgeName : UILabel?
+    @IBOutlet weak var badgePoints : UILabel?
+    @IBOutlet weak var strengthIconButton : UIButton?
+    
+    @IBOutlet weak var strengthIcon : UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

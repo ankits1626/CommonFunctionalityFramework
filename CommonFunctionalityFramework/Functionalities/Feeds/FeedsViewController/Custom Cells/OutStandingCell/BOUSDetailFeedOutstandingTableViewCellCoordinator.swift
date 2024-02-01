@@ -39,6 +39,13 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
             cell.imageContainer?.backgroundColor = Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 1)
             cell.nominationConatiner?.backgroundColor = Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 0.2)
             inputModel.mediaFetcher.fetchImageAndLoad(cell.badgeImageView, imageEndPoint:  bagesData["badgeIcon"] as! String)
+            
+            let strengthIcon = feedNominationData["icon"] as? String ?? ""
+            if !strengthIcon.isEmpty {
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.strengthIcon, imageEndPoint: URL(string: strengthIcon))
+            }else {
+                cell.strengthIconButton?.setImage(UIImage(named: "PlaceHolderImage"), for: .normal)
+            }
         }
     }
     

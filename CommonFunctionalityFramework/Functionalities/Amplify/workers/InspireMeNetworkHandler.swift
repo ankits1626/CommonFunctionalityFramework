@@ -45,8 +45,9 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
 
     var sandBoxInspireMeURL = "https://sandbox-api.inspireme.ai/b2b/api/v1.1/lan/generate-ai"
 //    var sandBoxInspireEditToneURL = "https://sandbox-api.inspireme.ai/b2b/api/v1.1/lan/generate-ai/edit-tone"
-    var productionInspireMeURL = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
+    var productionInspireMeURL = "https://api.inspireme.ai/b2b/api/v1.1/lan/generate-ai"
 //    var productionInspireEditToneURL = "https://api.inspireme.ai/b2b/api/v1.1/lan/generate-ai/edit-employee-recognition-tone"
+    let serverUrl = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
     
     init(model: AmplifyRequestHelperProtocol, language: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.model = model
@@ -57,8 +58,8 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     
     var apiRequest: URLRequest?{
         get{
-            let urlStr = String(format: "%@/%@", productionInspireMeURL, model.endPoint)
-            let req = self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+            let urlStr = String(format: "%@%@", serverUrl, model.endPoint)
+            let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
                 url:  URL(string: urlStr),
                 method: .POST ,
                 httpBodyDict: prepareHttpBodyDict() as NSDictionary

@@ -52,9 +52,14 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                 if let nominatedName = feed.getHomeUserCreatedName() {
                     cell.appraacitedBy.text = "\("From".localized) \(nominatedName)"
                 }
-                cell.userName?.text = "\(feed.getHomeUserReceivedName() ?? "")"
-                
-                
+                if feed.getPostType() == .Appreciation {
+                    cell.userName?.text = "\(feed.getHomeUserReceivedName() ?? "")"
+                }else {
+                    let nominatedUser = feed.getNominatedUsers()
+                    if nominatedUser.count > 0 && nominatedUser.count < 2 {
+                        cell.userName?.text = "\(nominatedUser[0].fullName)"
+                    }
+                }
                 if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
                     inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
                 }else{
