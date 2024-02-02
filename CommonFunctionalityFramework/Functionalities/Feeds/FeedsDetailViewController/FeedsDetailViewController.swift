@@ -456,14 +456,14 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
         drawer.bottomsheetdelegate = self
         drawer.commentFeedIdentifier = commentIdentifier
         drawer.chatMessage = chatMessage
-        if mainAppCoordinator?.getUserPK() == commentedByPk {
+        if mainAppCoordinator?.getUserPK() == commentedByPk || targetFeedItem.isFeedEditAllowed() {
             drawer.isEditEnabled = true
             numberofElementsEnabled = numberofElementsEnabled + 1
         }else{
             drawer.isEditEnabled = false
         }
         
-        if mainAppCoordinator?.getUserPK() == commentedByPk || self.mainAppCoordinator?.isUserAllowedToCreatePoll() == true{
+        if mainAppCoordinator?.getUserPK() == commentedByPk || targetFeedItem.isFeedDeleteAllowed() {
             numberofElementsEnabled = numberofElementsEnabled + 1
             drawer.isDeleteEnabled = true
         }else{
