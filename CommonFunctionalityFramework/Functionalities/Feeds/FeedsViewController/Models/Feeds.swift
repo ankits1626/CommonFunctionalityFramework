@@ -143,13 +143,15 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         var badgeName = ""
         var badgeIcon = ""
         var badgeBackgroundColor = ""
+        var badgePoints = ""
         
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
             if let badgesDic = userStrength["badge"] as? NSDictionary {
                 badgeName = badgesDic["name"] as! String
                 badgeIcon = badgesDic["icon"] as! String
                 badgeBackgroundColor = badgesDic["background_color"] as! String
-                dataDic = ["badgeName" : badgeName, "badgeIcon" : badgeIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+                badgePoints = badgesDic["award_points"] as? String ?? "0"
+                dataDic = ["badgeName" : badgeName, "badgeIcon" : badgeIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : badgePoints]
             }
         }
         

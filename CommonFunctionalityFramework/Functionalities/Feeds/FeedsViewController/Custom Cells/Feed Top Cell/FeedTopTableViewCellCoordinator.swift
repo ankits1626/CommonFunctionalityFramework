@@ -80,6 +80,20 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                     cell.appraacitedBy.text = "From \(nominatedName)"
                 }
                 cell.userName?.text = "\(feed.getHomeUserReceivedName() ?? "")"
+                
+                //
+                if feed.getPostType() == .Appreciation {
+                    cell.userName?.text = "\(feed.getHomeUserReceivedName() ?? "")"
+                }else {
+                    let nominatedUser = feed.getNominatedUsers()
+                    if nominatedUser.count > 0 && nominatedUser.count < 2 {
+                        cell.userName?.text = "\(nominatedUser[0].fullName)"
+                    }else {
+                        cell.userName?.text = getCommaSeparatedUser(nominationUsers: nominatedUser)
+                    }
+                }
+                
+                //
                 if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
                     inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
                 }else{
@@ -186,5 +200,10 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
                     })
             }
         }
+    }
+    
+    func getCommaSeparatedUser(nominationUsers : [NominationNominatedMembers]) -> String {
+        let names = nominationUsers.map { $0.fullName }
+        return names.joined(separator: ", ")
     }
 }

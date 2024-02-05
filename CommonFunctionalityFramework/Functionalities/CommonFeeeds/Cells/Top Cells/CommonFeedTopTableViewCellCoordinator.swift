@@ -58,6 +58,8 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                     let nominatedUser = feed.getNominatedUsers()
                     if nominatedUser.count > 0 && nominatedUser.count < 2 {
                         cell.userName?.text = "\(nominatedUser[0].fullName)"
+                    }else {
+                        cell.userName?.text = getCommaSeparatedUser(nominationUsers: nominatedUser)
                     }
                 }
                 if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
@@ -96,6 +98,12 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                     )
                 })
         }
+    }
+    
+    func getCommaSeparatedUser(nominationUsers : [NominationNominatedMembers]) -> String {
+        let userName = nominationUsers[0].fullName
+        let remainingCount = nominationUsers.count > 1 ? " + \(nominationUsers.count - 1)..."  : ""
+        return userName + remainingCount
     }
     
 }

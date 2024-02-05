@@ -9,6 +9,9 @@
 import UIKit
 
 class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorProtocol{
+    
+    let serverUrl = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
+
     var cellType: FeedCellTypeProtocol{
         return FeedDetailOutstandingTableViewCellType()
     }
@@ -40,13 +43,23 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
             cell.nominationConatiner?.backgroundColor = Rgbconverter.HexToColor(bagesData["badgeBackgroundColor"] as! String, alpha: 0.2)
             inputModel.mediaFetcher.fetchImageAndLoad(cell.badgeImageView, imageEndPoint:  bagesData["badgeIcon"] as! String)
             
-            let strengthIcon = feedNominationData["icon"] as? String ?? ""
+            let strengthIcon = feedNominationData["strengthIcon"] as? String ?? ""
             if !strengthIcon.isEmpty {
-                inputModel.mediaFetcher.fetchImageAndLoad(cell.strengthIcon, imageEndPoint: URL(string: strengthIcon))
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.strengthIcon, imageEndPoint: URL(string: serverUrl+strengthIcon))
             }else {
-                cell.strengthIconButton?.setImage(UIImage(named: "PlaceHolderImage"), for: .normal)
+                cell.strengthIcon?.image = UIImage(named: "PlaceHolderImage")
             }
+            
+            if !strengthIcon.isEmpty {
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.categoryImageView, imageEndPoint: URL(string: serverUrl+strengthIcon))
+            }else {
+                cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
+            }
+            
+            cell.categoryName?.text = "Suyesh"
+            cell.badgeName?.text = bagesData["badgeName"] as? String ?? ""
+            cell.badgePoints?.text = bagesData["points"] as? String ?? ""
+            
         }
     }
-    
 }

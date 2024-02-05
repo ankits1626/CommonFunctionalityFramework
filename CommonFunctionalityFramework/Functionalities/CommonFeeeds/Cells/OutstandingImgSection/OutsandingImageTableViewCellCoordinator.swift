@@ -12,6 +12,8 @@ import Foundation
 
 class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
     
+    let serverUrl = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
+    
     var cellType: CommonFeedCellTypeProtocol{
         return CommonOutastandingImageTableViewCellType()
     }
@@ -23,7 +25,7 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
     }
     
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
-        return 253
+        return 293
     }
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
@@ -69,6 +71,23 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
                 }
   
             }
+            
+            let strengthIcon = feedNominationData["strengthIcon"] as? String ?? ""
+            if !strengthIcon.isEmpty {
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.strengthIcon, imageEndPoint: URL(string: serverUrl+strengthIcon))
+            }else {
+                cell.strengthIcon?.image = UIImage(named: "PlaceHolderImage")
+            }
+            
+            if !strengthIcon.isEmpty {
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.categoryImageView, imageEndPoint: URL(string: serverUrl+strengthIcon))
+            }else {
+                cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
+            }
+            
+            cell.categoryName?.text = "Suyesh"
+            cell.badgeName?.text = bagesData["badgeName"] as? String ?? ""
+            cell.badgePoints?.text = bagesData["points"] as? String ?? ""
         }
     }
     
