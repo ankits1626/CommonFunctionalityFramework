@@ -16,7 +16,7 @@ public protocol AmplifyRequestHelperProtocol{
 
 public struct CoreValueAmplifyInputModel : AmplifyRequestHelperProtocol{
     public var endPoint: String{
-        return "amplify-core-value-recognition"
+        return "feeds/api/inspire_me/amplify_core_value_recognition/"
     }
     
     public var requestParamas: [String : String]{
@@ -42,7 +42,7 @@ public struct CoreValueAmplifyInputModel : AmplifyRequestHelperProtocol{
 
 public struct PostAmplifyInputModel : AmplifyRequestHelperProtocol{
     public var endPoint: String{
-        return "amplify-content-post"
+        return "feeds/api/inspire_me/amplify_content_post/"
     }
     
     public var requestParamas: [String : String]{
@@ -68,7 +68,7 @@ public struct PostAmplifyInputModel : AmplifyRequestHelperProtocol{
 
 public struct PollAmplifyInputModel : AmplifyRequestHelperProtocol{
     public var endPoint: String{
-        return "amplify-content-poll"
+        return "feeds/api/inspire_me/amplify_content_poll/"
     }
     
     public var requestParamas: [String : String]{
@@ -90,7 +90,7 @@ public struct PollAmplifyInputModel : AmplifyRequestHelperProtocol{
 
 public struct EditToneAmplifyInputModel : AmplifyRequestHelperProtocol{
     public var endPoint: String{
-        return "edit-tone"
+        return "feeds/api/inspire_me/edit_tone/"
     }
     
     public var requestParamas: [String : String]{
