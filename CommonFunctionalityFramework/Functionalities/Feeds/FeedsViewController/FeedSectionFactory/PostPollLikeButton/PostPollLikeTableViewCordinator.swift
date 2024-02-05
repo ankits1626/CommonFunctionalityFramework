@@ -23,9 +23,10 @@ class PostPollLikeTableViewCordinator :  FeedCellCoordinatorProtocol{
     var image1: Bool?
     var image2: Bool?
     var reactionsCount : Int64!
-    var reactionType = ["0", "3", "6" , "2", "1"]
+    var reactionType: [String] = []
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
+        addReactionIndex()
         if let cell  = inputModel.targetCell as? PostPollLikeTableViewCell{
             self.inputModel = inputModel
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
@@ -154,7 +155,7 @@ class PostPollLikeTableViewCordinator :  FeedCellCoordinatorProtocol{
     }
     
     @objc func facebookButtonReactionTouchedUpAction(_ sender: AnyObject) {
-        if selectedEmojiPathIndex >= 0 {
+        if selectedEmojiPathIndex >= 0 && reactionType.count > 0 {
             if let feed = inputModel?.datasource.getFeedItem(sender.tag) {
                 let getReactionidType = reactionType[selectedEmojiPathIndex]
                 inputModel?.delegate?.postReaction(feedId: feed.feedIdentifier, reactionType: "\(getReactionidType)")
@@ -193,7 +194,30 @@ class PostPollLikeTableViewCordinator :  FeedCellCoordinatorProtocol{
             return "0"
         }
     }
+    
+    private func addReactionIndex() {
+        reactionType.removeAll()
+        
+        // Add reactions based on user defaults
+        if UserDefaults.standard.bool(forKey: "feedLike") {
+            reactionType.append("0")
+        }
 
+        if UserDefaults.standard.bool(forKey: "feedLove") {
+            reactionType.append("3")
+        }
+
+        if UserDefaults.standard.bool(forKey: "feedClap") {
+            reactionType.append("6")
+        }
+
+        if UserDefaults.standard.bool(forKey: "feedSupport") {
+            reactionType.append("2")
+        }
+
+        if UserDefaults.standard.bool(forKey: "feedCelebrate") {
+            reactionType.append("1")
+        }
+    }
 }
-
 
