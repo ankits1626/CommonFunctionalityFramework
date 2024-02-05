@@ -456,7 +456,7 @@ extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownlo
         drawer.bottomsheetdelegate = self
         drawer.commentFeedIdentifier = commentIdentifier
         drawer.chatMessage = chatMessage
-        if mainAppCoordinator?.getUserPK() == commentedByPk || targetFeedItem.isFeedEditAllowed(){
+        if mainAppCoordinator?.getUserPK() == commentedByPk || targetFeedItem.isFeedEditAllowed() {
             drawer.isEditEnabled = true
             numberofElementsEnabled = numberofElementsEnabled + 1
         }else{

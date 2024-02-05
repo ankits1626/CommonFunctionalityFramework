@@ -61,7 +61,57 @@ extension Reaction {
     }
 
     /// The list of standard facebook reactions in this order: `.like`, `.love`, `.haha`, `.wow`, `.sad`, `.angry`.
-    public static let all: [Reaction] = [facebook.like, facebook.love, facebook.haha, facebook.sad, facebook.wow ]
+    //public static let all: [Reaction] = [facebook.like, facebook.love, facebook.haha, facebook.sad, facebook.wow ]
+      public static let all: [Reaction] = {
+          var reactions: [Reaction] = []
+          
+          // Add reactions based on user defaults
+          if UserDefaults.standard.bool(forKey: "isPostAndPoll") {
+              if UserDefaults.standard.bool(forKey: "feedLike") {
+                  reactions.append(facebook.like)
+              }
+              
+              if UserDefaults.standard.bool(forKey: "feedLove") {
+                  reactions.append(facebook.love)
+              }
+              
+              if UserDefaults.standard.bool(forKey: "feedClap") {
+                  reactions.append(facebook.haha)
+              }
+              
+              if UserDefaults.standard.bool(forKey: "feedSupport") {
+                  reactions.append(facebook.sad)
+              }
+              
+              if UserDefaults.standard.bool(forKey: "feedCelebrate") {
+                  reactions.append(facebook.wow)
+              }
+              
+              return reactions
+          } else {
+              if UserDefaults.standard.bool(forKey: "like") {
+                  reactions.append(facebook.like)
+              }
+              
+              if UserDefaults.standard.bool(forKey: "love") {
+                  reactions.append(facebook.love)
+              }
+              
+              if UserDefaults.standard.bool(forKey: "clap") {
+                  reactions.append(facebook.haha)
+              }
+              
+              if UserDefaults.standard.bool(forKey: "support") {
+                  reactions.append(facebook.sad)
+              }
+              
+              if UserDefaults.standard.bool(forKey: "celebrate") {
+                  reactions.append(facebook.wow)
+              }
+              
+              return reactions
+          }
+      }()
 
     // MARK: - Convenience Methods
 
