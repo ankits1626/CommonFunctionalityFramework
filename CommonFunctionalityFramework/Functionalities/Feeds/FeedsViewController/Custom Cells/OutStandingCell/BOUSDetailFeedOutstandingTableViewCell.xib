@@ -86,7 +86,7 @@
                                                     <constraint firstAttribute="height" constant="17" id="jXb-Vf-hPC"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="categoryEyeIcon"/>
+                                                <state key="normal" image="teamInfoIcon"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -272,6 +272,8 @@
                 <outlet property="nominationMessage" destination="hMD-W5-xr2" id="pnH-ED-7UF"/>
                 <outlet property="strengthIcon" destination="1gD-rx-OHo" id="kZQ-Pu-PHe"/>
                 <outlet property="strengthLabel" destination="TJZ-0L-rk2" id="eOd-dA-357"/>
+                <outlet property="teamView" destination="fvU-jR-AUF" id="qqi-0W-Zii"/>
+                <outlet property="teamViewHeightConstraints" destination="89L-qk-PII" id="HRy-RW-E57"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
         </tableViewCell>
@@ -280,8 +282,8 @@
         <designable name="hMD-W5-xr2"/>
     </designables>
     <resources>
-        <image name="categoryEyeIcon" width="14.5" height="14.5"/>
         <image name="medalBanner" width="343" height="140"/>
         <image name="medalIcon" width="68" height="75.5"/>
+        <image name="teamInfoIcon" width="14.5" height="14.5"/>
     </resources>
 </document>

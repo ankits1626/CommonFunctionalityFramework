@@ -75,6 +75,20 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                     cell.appraacitedBy.isHidden = true
                     cell.dot.isHidden = true
                 }
+                
+                if feed.getPostType() == .Appreciation {
+                    if let toUserName = feed.toUserName() {
+                        cell.userName?.text = "\("To".localized) \(toUserName)"
+                    }
+                }else {
+                    let nominatedUser = feed.getNominatedUsers()
+                    if nominatedUser.count > 0 && nominatedUser.count < 2 {
+                        cell.userName?.text = "\(nominatedUser[0].fullName)"
+                    }else {
+                        cell.userName?.text = getCommaSeparatedUser(nominationUsers: nominatedUser)
+                    }
+                }
+                
                 if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
                     inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
                 }else{
@@ -102,8 +116,9 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
     
     func getCommaSeparatedUser(nominationUsers : [NominationNominatedMembers]) -> String {
         let userName = nominationUsers[0].fullName
+        let userName2 = nominationUsers[1].fullName
         let remainingCount = nominationUsers.count > 1 ? " + \(nominationUsers.count - 1)..."  : ""
-        return userName + remainingCount
+        return userName + ", " + userName2 + remainingCount
     }
     
 }

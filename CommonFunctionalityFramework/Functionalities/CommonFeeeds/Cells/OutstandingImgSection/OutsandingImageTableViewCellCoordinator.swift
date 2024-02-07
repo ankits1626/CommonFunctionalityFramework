@@ -25,7 +25,7 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
     }
     
     func getHeight(_ inputModel: CommonFeedCellGetHeightModel) -> CGFloat {
-        return 293
+        return UITableView.automaticDimension
     }
     
     func loadDataCell(_ inputModel: CommonFeedCellLoadDataModel) {
@@ -33,6 +33,7 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             let feedNominationData = feed.getStrengthData()
             let bagesData = feed.getBadgesData()
+
             cell.strengthLabel?.text = feedNominationData["strengthName"] as? String ?? ""
             cell.strengthHeightConstraints?.constant = cell.strengthLabel?.text?.isEmpty ?? true ? 0 : 20
             if let unwrappedText = feed.getFeedDescription(){
@@ -60,6 +61,27 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
                 }
             }
             
+            cell.categoryName?.text = feed.getCategoryName()?.name
+            cell.badgeName?.text = bagesData["badgeName"] as? String ?? ""
+            cell.badgePoints?.text = bagesData["points"] as? String ?? ""
+            
+            if let unwrappedGroupData = feed.getCategoryName(),
+               unwrappedGroupData.isGroupEnabled {
+                cell.teamView?.isHidden = false
+                cell.teamViewHeightConstraints?.constant = 17
+            }else {
+                cell.teamView?.isHidden = true
+                cell.teamViewHeightConstraints?.constant = 0
+            }
+           
+            
+            if let unwrappedCategoryImg =  feed.getCategoryName(),
+               !unwrappedCategoryImg.image.isEmpty{
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.categoryImageView, imageEndPoint: URL(string: serverUrl+unwrappedCategoryImg.image))
+            }else {
+                cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
+            }
+            
             if let badgeData = bagesData as? NSDictionary {
                 if bagesData.count > 0 {
                     cell.awardLabel?.text = badgeData["badgeName"] as! String
@@ -84,10 +106,6 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
             }else {
                 cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
             }
-            
-            cell.categoryName?.text = "Suyesh"
-            cell.badgeName?.text = bagesData["badgeName"] as? String ?? ""
-            cell.badgePoints?.text = bagesData["points"] as? String ?? ""
         }
     }
     

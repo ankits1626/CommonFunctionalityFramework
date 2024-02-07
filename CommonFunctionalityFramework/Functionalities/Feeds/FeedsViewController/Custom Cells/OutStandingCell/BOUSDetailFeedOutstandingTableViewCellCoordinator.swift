@@ -56,10 +56,25 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
                 cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
             }
             
-            cell.categoryName?.text = "Suyesh"
+            cell.categoryName?.text = feed.getCategoryName()?.name
             cell.badgeName?.text = bagesData["badgeName"] as? String ?? ""
             cell.badgePoints?.text = bagesData["points"] as? String ?? ""
             
+            if let unwrappedGroupData = feed.getCategoryName(),
+               unwrappedGroupData.isGroupEnabled {
+                cell.teamView?.isHidden = false
+                cell.teamViewHeightConstraints?.constant = 17
+            }else {
+                cell.teamView?.isHidden = true
+                cell.teamViewHeightConstraints?.constant = 0
+            }
+            
+            if let unwrappedCategoryImg =  feed.getCategoryName(),
+               !unwrappedCategoryImg.image.isEmpty{
+                inputModel.mediaFetcher.fetchImageAndLoad(cell.categoryImageView, imageEndPoint: URL(string: serverUrl+unwrappedCategoryImg.image))
+            }else {
+                cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
+            }
         }
     }
 }

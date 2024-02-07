@@ -23,6 +23,9 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryImageView : UIImageView?
     @IBOutlet weak var categoryName : UILabel?
     
+    @IBOutlet weak var teamView : UIView?
+    @IBOutlet weak var teamViewHeightConstraints : NSLayoutConstraint?
+    
     @IBOutlet weak var badgeName : UILabel?
     @IBOutlet weak var badgePoints : UILabel?
     @IBOutlet weak var strengthIconButton : UIButton?

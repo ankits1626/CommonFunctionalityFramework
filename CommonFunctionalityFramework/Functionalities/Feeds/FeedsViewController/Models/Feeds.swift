@@ -69,6 +69,7 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getUserEnteredAnsers() -> [NominationEnteredData]?
     func getNominatedUsers() -> [NominationNominatedMembers]
     func getQuestionLabel() -> [String]
+    func getCategoryName() -> CategoryData?
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -746,6 +747,18 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return nil
     }
     
+    func getCategoryName() -> CategoryData? {
+        if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let nominationData = nominationDict["category"] as? NSDictionary {
+            let id = nominationData.object(forKey: "id") as? Int ?? 0
+            let name = nominationData.object(forKey: "name") as? String ?? "NA"
+            let image = nominationData.object(forKey: "img") as? String ?? ""
+            let groupEnabled = nominationData.object(forKey: "is_group_nomination") as? Bool ?? false
+            return CategoryData(id: id, name: name, image: image, isGroupEnabled: groupEnabled)
+        }
+        return nil
+    }
+    
     func getQuestionLabel() -> [String] {
         var questionsDict = [String]()
         if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
@@ -785,9 +798,11 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         if let unwrappedDescription  = rawFeedDictionary["description"] as? String,
            !unwrappedDescription.isEmpty{
             return unwrappedDescription
-        }else{
-            return nil
+        }else if let unwappedQuestion = getQuestionType(),
+                unwappedQuestion.count > 0{
+            return "\(unwappedQuestion.count) Questions & Answer"
         }
+            return nil
     }
     
     func getMediaList() -> [MediaItemProtocol]? {
@@ -849,4 +864,10 @@ struct NominationNominatedMembers {
     var department : String
     var profilePic : String
     var fullName : String
+}
+struct CategoryData {
+    var id : Int
+    var name : String
+    var image : String
+    var isGroupEnabled : Bool
 }

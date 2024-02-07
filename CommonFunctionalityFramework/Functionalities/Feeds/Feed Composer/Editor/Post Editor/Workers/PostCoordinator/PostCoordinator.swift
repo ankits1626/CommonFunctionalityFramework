@@ -338,11 +338,13 @@ extension PostCoordinator {
     private func parsePoll(_ amplifiedText: String){
         let quotesRemoved = amplifiedText.replacingOccurrences(of: "\"", with: "")
         let components = quotesRemoved.components(separatedBy: "#")
-        updatePostTitle(title: components.first)
-        let pollOptions = Array(components[1...]).prefix(4)
-        for (index , pollOption) in pollOptions.enumerated(){
-            if !pollOption.isEmpty{
-                savePostOption(index: index, option: pollOption)
+        if components.count > 1 {
+            updatePostTitle(title: components.first)
+            let pollOptions = Array(components[1...]).prefix(4)
+            for (index , pollOption) in pollOptions.enumerated(){
+                if !pollOption.isEmpty{
+                    savePostOption(index: index, option: pollOption)
+                }
             }
         }
     }
