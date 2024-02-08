@@ -41,6 +41,10 @@ class PreviewableLocalMediaItem : MediaItemProtocol{
 
 
 class PreviewablePost : FeedsItemProtocol{
+    func getNominationDescription() -> String? {
+        return nil
+    }
+    
     func getCategoryName() -> CategoryData? {
         return nil
     }

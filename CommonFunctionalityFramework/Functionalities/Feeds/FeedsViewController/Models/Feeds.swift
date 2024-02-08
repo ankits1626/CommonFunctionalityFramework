@@ -70,6 +70,7 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getNominatedUsers() -> [NominationNominatedMembers]
     func getQuestionLabel() -> [String]
     func getCategoryName() -> CategoryData?
+    func getNominationDescription() -> String?
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -803,6 +804,14 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             return "\(unwappedQuestion.count) Questions & Answer"
         }
             return nil
+    }
+    
+    func getNominationDescription() -> String? {
+        if let unwrappedDescription  = rawFeedDictionary["description"] as? String,
+           !unwrappedDescription.isEmpty{
+            return unwrappedDescription
+        }
+        return nil
     }
     
     func getMediaList() -> [MediaItemProtocol]? {

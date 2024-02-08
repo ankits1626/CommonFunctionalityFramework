@@ -93,6 +93,7 @@ class PostCoordinator {
     func attachGifyGifItem(_ selectedGif: String) {
         currentPost.selectedMediaItems = nil
         currentPost.selectedEcardMediaItems = nil
+        currentPost.currentEcardPK = nil
         deleteAllRemoteAttachedMediaItems()
         currentPost.attachedGiflyGif = selectedGif
         postObsever?.allAttachedMediaRemovedFromPost()
