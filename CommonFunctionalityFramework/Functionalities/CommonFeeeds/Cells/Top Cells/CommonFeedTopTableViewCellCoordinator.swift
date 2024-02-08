@@ -11,6 +11,8 @@ import Foundation
 
 class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
     
+    let serverUrl = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
+    
     var cellType: CommonFeedCellTypeProtocol{
         return CommonFeedsTopTableViewCellType()
     }
@@ -30,7 +32,7 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
             
             let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
-            
+            cell.profileImage?.setImageColor(color: UIColor.clear)
             cell.openUserProfileButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {
@@ -54,19 +56,26 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                 }
                 if feed.getPostType() == .Appreciation {
                     cell.userName?.text = "\(feed.getHomeUserReceivedName() ?? "")"
+                    if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
+                        inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                    }else{
+                        cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+                    }
                 }else {
                     let nominatedUser = feed.getNominatedUsers()
                     if nominatedUser.count > 0 && nominatedUser.count < 2 {
                         cell.userName?.text = "\(nominatedUser[0].fullName)"
+                        if !nominatedUser[0].profilePic.isEmpty{
+                            inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: nominatedUser[0].profilePic)
+                        }else{
+                            cell.profileImage?.setImageForName(nominatedUser[0].fullName , circular: false, textAttributes: nil)
+                        }
                     }else {
                         cell.userName?.text = getCommaSeparatedUser(nominationUsers: nominatedUser)
-                    }
-                }
-                if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
-                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
-                }else{
-                    if let nominatedName = feed.getNominatedByUserName() {
-                        cell.profileImage?.setImageForName(nominatedName ?? "NN", circular: false, textAttributes: nil)
+                        cell.profileImage?.image = UIImage(named: "cff_ group_nomination_icon",
+                                        in: Bundle(for: CommonFeedTopTableViewCellCoordinator.self),
+                                        compatibleWith: nil)
+                        cell.profileImage?.setImageColor(color: UIColor.getControlColor())
                     }
                 }
             }else {
@@ -80,20 +89,30 @@ class CommonFeedTopTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol{
                     if let toUserName = feed.toUserName() {
                         cell.userName?.text = "\("To".localized) \(toUserName)"
                     }
+                    if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
+                        inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                    }else{
+                        cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+                    }
                 }else {
                     let nominatedUser = feed.getNominatedUsers()
                     if nominatedUser.count > 0 && nominatedUser.count < 2 {
                         cell.userName?.text = "\(nominatedUser[0].fullName)"
+                        if !nominatedUser[0].profilePic.isEmpty{
+                            inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: nominatedUser[0].profilePic)
+                        }else{
+                            cell.profileImage?.setImageForName(nominatedUser[0].fullName , circular: false, textAttributes: nil)
+                        }
                     }else {
                         cell.userName?.text = getCommaSeparatedUser(nominationUsers: nominatedUser)
+                        cell.profileImage?.image = UIImage(named: "cff_ group_nomination_icon",
+                                                           in: Bundle(for: CommonFeedTopTableViewCellCoordinator.self),
+                                                           compatibleWith: nil)
+                        cell.profileImage?.setImageColor(color: UIColor.getControlColor())
                     }
                 }
                 
-                if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
-                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
-                }else{
-                    cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
-                }
+                
             }
             
             cell.dateLabel?.text = feed.getAppreciationCreationMonthDate()
