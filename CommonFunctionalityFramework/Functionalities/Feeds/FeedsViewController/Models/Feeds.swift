@@ -749,7 +749,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     
     func getCategoryName() -> CategoryData? {
         if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
-           let nominationData = nominationDict["category"] as? NSDictionary {
+           let nominationData = nominationDict["category_data"] as? NSDictionary {
             let id = nominationData.object(forKey: "id") as? Int ?? 0
             let name = nominationData.object(forKey: "name") as? String ?? "NA"
             let image = nominationData.object(forKey: "img") as? String ?? ""

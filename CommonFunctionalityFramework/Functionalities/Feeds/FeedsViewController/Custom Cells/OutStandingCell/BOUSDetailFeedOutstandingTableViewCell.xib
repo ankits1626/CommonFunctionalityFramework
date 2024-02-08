@@ -79,18 +79,16 @@
                                                 <color key="textColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Lm-wu-BbO">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamInfoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zRU-fa-dbd">
                                                 <rect key="frame" x="66" y="0.0" width="17" height="17"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="17" id="f33-i1-n03"/>
-                                                    <constraint firstAttribute="height" constant="17" id="jXb-Vf-hPC"/>
+                                                    <constraint firstAttribute="height" constant="17" id="QlC-yc-hvE"/>
+                                                    <constraint firstAttribute="width" constant="17" id="bpr-AR-JGY"/>
                                                 </constraints>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="teamInfoIcon"/>
-                                            </button>
+                                            </imageView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3es-36-wxp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3es-36-wxp" customClass="BlockButton" customModule="RewardzCommonComponents">
                                         <rect key="frame" x="0.0" y="0.0" width="87" height="17"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     </button>
@@ -265,6 +263,7 @@
                 <outlet property="badgePoints" destination="qhg-qk-SUR" id="V16-h7-YH2"/>
                 <outlet property="categoryImageView" destination="CkQ-uy-NmA" id="Y0T-Eg-216"/>
                 <outlet property="categoryName" destination="NrG-gX-XsD" id="msX-iM-For"/>
+                <outlet property="groupNominationAction" destination="3es-36-wxp" id="agq-RV-tqe"/>
                 <outlet property="imageContainer" destination="BMZ-gF-lwE" id="PkI-gy-Afk"/>
                 <outlet property="messageContainer" destination="mzd-Xq-Gbe" id="L6O-0p-Sr1"/>
                 <outlet property="nominationConatiner" destination="4UT-tg-eHZ" id="hdm-XL-tvG"/>
@@ -272,6 +271,8 @@
                 <outlet property="nominationMessage" destination="hMD-W5-xr2" id="pnH-ED-7UF"/>
                 <outlet property="strengthIcon" destination="1gD-rx-OHo" id="kZQ-Pu-PHe"/>
                 <outlet property="strengthLabel" destination="TJZ-0L-rk2" id="eOd-dA-357"/>
+                <outlet property="teamIconImageView" destination="zRU-fa-dbd" id="h0d-Lf-zoP"/>
+                <outlet property="teamLabel" destination="VAb-Ct-4ps" id="7up-uG-XS2"/>
                 <outlet property="teamView" destination="fvU-jR-AUF" id="qqi-0W-Zii"/>
                 <outlet property="teamViewHeightConstraints" destination="89L-qk-PII" id="HRy-RW-E57"/>
             </connections>

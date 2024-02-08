@@ -58,7 +58,7 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
             
             cell.categoryName?.text = feed.getCategoryName()?.name
             cell.badgeName?.text = bagesData["badgeName"] as? String ?? ""
-            cell.badgePoints?.text = bagesData["points"] as? String ?? ""
+            cell.badgePoints?.text = "\(bagesData["points"] as? String ?? "") \("Points".localized)"
             
             if let unwrappedGroupData = feed.getCategoryName(),
                unwrappedGroupData.isGroupEnabled {
@@ -75,6 +75,10 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
             }else {
                 cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
             }
+            
+            cell.groupNominationAction?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {
+                inputModel.delegate?.showTeamInfo()
+            })
         }
     }
 }

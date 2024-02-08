@@ -367,6 +367,8 @@
 		BEB0084428A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */; };
 		BEB0084728A76DF200E3F1B0 /* AddECardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */; };
 		BEB0084828A76DF200E3F1B0 /* AddECardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */; };
+		BEB4B6182B74AACC00B3E3EF /* GroupBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB4B6162B74AACC00B3E3EF /* GroupBottomSheet.swift */; };
+		BEB4B6192B74AACD00B3E3EF /* GroupBottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB4B6172B74AACC00B3E3EF /* GroupBottomSheet.xib */; };
 		BEB7BDD32AE637E300FD652D /* Facebook.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB42AE637E300FD652D /* Facebook.xcassets */; };
 		BEB7BDD42AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB52AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict */; };
 		BEB7BDD52AE637E300FD652D /* FeedbackLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB72AE637E300FD652D /* FeedbackLocalizable.strings */; };
@@ -838,6 +840,8 @@
 		BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTypeTableCellCordinator.swift; sourceTree = "<group>"; };
 		BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTableViewCell.swift; sourceTree = "<group>"; };
 		BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddECardTableViewCell.xib; sourceTree = "<group>"; };
+		BEB4B6162B74AACC00B3E3EF /* GroupBottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBottomSheet.swift; sourceTree = "<group>"; };
+		BEB4B6172B74AACC00B3E3EF /* GroupBottomSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupBottomSheet.xib; sourceTree = "<group>"; };
 		BEB7BDB42AE637E300FD652D /* Facebook.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Facebook.xcassets; sourceTree = "<group>"; };
 		BEB7BDB62AE637E300FD652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/ReactionSummaryLocalizable.stringsdict; sourceTree = "<group>"; };
 		BEB7BDB82AE637E300FD652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/FeedbackLocalizable.strings; sourceTree = "<group>"; };
@@ -2154,6 +2158,7 @@
 		98B90DED240CAD010013E9D2 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BEB4B6152B74AAB400B3E3EF /* TeamInfoSheet */,
 				BEED7B5E2B6A4CCB00A2EA55 /* NominationDocument */,
 				BEED7B572B6A453200A2EA55 /* MultiLineNominationQuestion */,
 				0FC40A2D2A650F5000B921BE /* eCardImage */,
@@ -2688,6 +2693,15 @@
 			path = AddECardType;
 			sourceTree = "<group>";
 		};
+		BEB4B6152B74AAB400B3E3EF /* TeamInfoSheet */ = {
+			isa = PBXGroup;
+			children = (
+				BEB4B6162B74AACC00B3E3EF /* GroupBottomSheet.swift */,
+				BEB4B6172B74AACC00B3E3EF /* GroupBottomSheet.xib */,
+			);
+			path = TeamInfoSheet;
+			sourceTree = "<group>";
+		};
 		BEB7BDB22AE637CA00FD652D /* Reaction */ = {
 			isa = PBXGroup;
 			children = (
@@ -3042,6 +3056,7 @@
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
 				BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */,
 				BEC74DDC2A5D4C050074324B /* TopGettersFilterViewController.xib in Resources */,
+				BEB4B6192B74AACD00B3E3EF /* GroupBottomSheet.xib in Resources */,
 				BE94C30928212E4600E323E1 /* CommonFeedsViewController.xib in Resources */,
 				BEC2B28326FDA04A008417C3 /* FeedEditorTitleTableViewCell.xib in Resources */,
 				BE66CCBA28A65A0800C7CE83 /* SelectPostTypeTableViewCell.xib in Resources */,
@@ -3315,6 +3330,7 @@
 				0F32907628897073008BF09D /* BOUSDetailFeedOutstandingTableViewCellCoordinator.swift in Sources */,
 				98575A3F2532BBC1007644FE /* ReportAbuseWorker.swift in Sources */,
 				98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */,
+				BEB4B6182B74AACC00B3E3EF /* GroupBottomSheet.swift in Sources */,
 				0F32908428897B2F008BF09D /* BOUSMultipleImageTableViewCellCoordinator.swift in Sources */,
 				98C6489D241B87A3006689E9 /* PostFeedContentCoordinator.swift in Sources */,
 				BE2DDBC72898434F007E2FC0 /* MultipleImageFlowLayout.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import ActiveLabel
+import RewardzCommonComponents
 
 class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
 
@@ -25,12 +26,16 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var teamView : UIView?
     @IBOutlet weak var teamViewHeightConstraints : NSLayoutConstraint?
+    @IBOutlet weak var teamLabel : UILabel?
+    @IBOutlet weak var teamIconImageView : UIImageView?
     
     @IBOutlet weak var badgeName : UILabel?
     @IBOutlet weak var badgePoints : UILabel?
     @IBOutlet weak var strengthIconButton : UIButton?
     
     @IBOutlet weak var strengthIcon : UIImageView!
+    @IBOutlet weak var groupNominationAction : BlockButton?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +45,8 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
         nominationConatiner?.clipsToBounds = true
         nominationConatiner?.layer.cornerRadius = 8
         nominationConatiner?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        teamLabel?.textColor = UIColor.getControlColor()
+        teamIconImageView?.setImageColor(color: UIColor.getControlColor())
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

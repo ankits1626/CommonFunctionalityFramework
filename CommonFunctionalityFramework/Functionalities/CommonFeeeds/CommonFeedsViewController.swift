@@ -351,6 +351,10 @@ extension CommonFeedsViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension CommonFeedsViewController : CommonFeedsDelegate{
+    func showTeamInfo() {
+        debugPrint("here")
+    }
+    
     func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
         if let feed = getFeedItem(feedIdentifier: feedIdentifier){
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))

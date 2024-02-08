@@ -444,6 +444,16 @@ extension FeedsDetailViewController : UITableViewDataSource, UITableViewDelegate
 }
 
 extension FeedsDetailViewController : FeedsDelegate, CompletedCertificatedDownload{
+    func showTeamInfo() {
+        let groupVc = GroupBottomSheet(nibName: "GroupBottomSheet", bundle: Bundle(for: GroupBottomSheet.self))
+        if let unwrapedData = targetFeedItem.getCategoryName() {
+            groupVc.categoryName = unwrapedData.name
+            groupVc.categoryImage = unwrapedData.image
+        }
+        groupVc.modalPresentationStyle = .overCurrentContext
+        self.present(groupVc, animated: true)
+    }
+    
     func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
         print("here")
     }

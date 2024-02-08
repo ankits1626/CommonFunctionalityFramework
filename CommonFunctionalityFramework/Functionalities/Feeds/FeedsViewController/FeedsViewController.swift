@@ -531,6 +531,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showTeamInfo() {
+        debugPrint("team info clicked")
+    }
+    
     func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
         if let feed = getFeedItem(feedIdentifier: feedIdentifier){
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))

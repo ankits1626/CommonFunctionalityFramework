@@ -35,7 +35,7 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
             let bagesData = feed.getBadgesData()
 
             cell.strengthLabel?.text = feedNominationData["strengthName"] as? String ?? ""
-            cell.strengthHeightConstraints?.constant = cell.strengthLabel?.text?.isEmpty ?? true ? 0 : 20
+//            cell.strengthHeightConstraints?.constant = cell.strengthLabel?.text?.isEmpty ?? true ? 0 : 20
             if let unwrappedText = feed.getFeedDescription(){
                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
                 ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
@@ -63,7 +63,7 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
             
             cell.categoryName?.text = feed.getCategoryName()?.name
             cell.badgeName?.text = bagesData["badgeName"] as? String ?? ""
-            cell.badgePoints?.text = bagesData["points"] as? String ?? ""
+            cell.badgePoints?.text = "\(bagesData["points"] as? String ?? "") \("Points".localized)"
             
             if let unwrappedGroupData = feed.getCategoryName(),
                unwrappedGroupData.isGroupEnabled {
@@ -99,12 +99,6 @@ class OutsandingImageTableViewCellCoordinator: CommonFeedCellCoordinatorProtocol
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.strengthIcon, imageEndPoint: URL(string: serverUrl+strengthIcon))
             }else {
                 cell.strengthIcon?.image = UIImage(named: "PlaceHolderImage")
-            }
-            
-            if !strengthIcon.isEmpty {
-                inputModel.mediaFetcher.fetchImageAndLoad(cell.categoryImageView, imageEndPoint: URL(string: serverUrl+strengthIcon))
-            }else {
-                cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
             }
         }
     }
