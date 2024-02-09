@@ -110,26 +110,36 @@ class PostEditorRouter{
     }
     
     func routeToAmplifyScreen(_ amplifyInputModel: AmplifyRequestHelperProtocol, delegate: InspireMeDelegate?){
-        let storyboard = UIStoryboard(
-            name: "InspireMeView",
-            bundle: Bundle(for: InspireMeViewController.self)
-        )
-        let vc = storyboard.instantiateViewController(withIdentifier: "InspireMeViewController") as! InspireMeViewController
-        vc.networkRequestCoordinator = initModel.requestCoordinator
-        vc.mainAppCoordinator = initModel.mainAppCoordinator
-        vc.themeManager = initModel.themeManager
-        vc.mediaCoordinator = initModel.mediaFetcher
-        vc.inputModel = amplifyInputModel
-        vc.delegate = delegate
-//        vc.userText = "test"
-        var topViewController = UIApplication.shared.keyWindow?.rootViewController
-        while topViewController?.presentedViewController != nil
-        {
-            topViewController = topViewController?.presentedViewController
+        if ConnectionManager.shared.hasConnectivity() {
+            let storyboard = UIStoryboard(
+                name: "InspireMeView",
+                bundle: Bundle(for: InspireMeViewController.self)
+            )
+            let vc = storyboard.instantiateViewController(withIdentifier: "InspireMeViewController") as! InspireMeViewController
+            vc.networkRequestCoordinator = initModel.requestCoordinator
+            vc.mainAppCoordinator = initModel.mainAppCoordinator
+            vc.themeManager = initModel.themeManager
+            vc.mediaCoordinator = initModel.mediaFetcher
+            vc.inputModel = amplifyInputModel
+            vc.delegate = delegate
+    //        vc.userText = "test"
+            var topViewController = UIApplication.shared.keyWindow?.rootViewController
+            while topViewController?.presentedViewController != nil
+            {
+                topViewController = topViewController?.presentedViewController
+            }
+            topViewController?.present(vc, animated: false) {
+                debugPrint("<<<<<<<<<<, completed presenting inspire me")
+            }
+        }else {
+            var topViewController = UIApplication.shared.keyWindow?.rootViewController
+            while topViewController?.presentedViewController != nil
+            {
+                topViewController = topViewController?.presentedViewController
+            }
+            topViewController?.showAlert(title: NSLocalizedString("Error", comment: ""), message: "The Internet connection appears to be offline.".localized)
         }
-        topViewController?.present(vc, animated: false) {
-            debugPrint("<<<<<<<<<<, completed presenting inspire me")
-        }
+        
     }
     
     func routeToAmplifyErrorScreen(){
