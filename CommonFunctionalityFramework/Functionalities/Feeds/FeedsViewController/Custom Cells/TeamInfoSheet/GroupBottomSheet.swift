@@ -28,7 +28,7 @@ class GroupBottomSheet: UIViewController {
     }
     
     private func setupView() {
-        setUpData()
+        infoDescription.text = "With the 'As a Group' nomination feature, you can now nominate multiple candidates together. No more individual approvals – streamline the process and get your group of nominees approved in one go!"
         blurImg.makeBlurImage(targetImageView: blurImg)
         self.okayBtn.backgroundColor = UIColor.getControlColor()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))

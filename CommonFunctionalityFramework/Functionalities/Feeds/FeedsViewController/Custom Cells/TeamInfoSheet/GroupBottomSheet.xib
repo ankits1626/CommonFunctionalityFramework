@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupBottomSheet" customModule="AIA_Pride" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupBottomSheet" customModule="CommonFunctionalityFramework" customModuleProvider="target">
             <connections>
                 <outlet property="blurImg" destination="pay-DH-gnb" id="Tal-Tb-0Kw"/>
                 <outlet property="dismissLabel" destination="byr-Yw-vZu" id="Sr3-ES-W6i"/>
@@ -80,7 +81,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81x-CR-z78">
                             <rect key="frame" x="136.66666666666666" y="79" width="119.99999999999997" height="89"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="groupByIllustration" translatesAutoresizingMaskIntoConstraints="NO" id="whV-g5-JSO">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_groupByIllustration" translatesAutoresizingMaskIntoConstraints="NO" id="whV-g5-JSO">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="89"/>
                                 </imageView>
                             </subviews>
@@ -139,7 +140,7 @@
         </view>
     </objects>
     <resources>
-        <image name="groupByIllustration" width="121" height="88.666664123535156"/>
+        <image name="cff_groupByIllustration" width="121" height="88.666664123535156"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
