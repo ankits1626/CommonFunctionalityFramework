@@ -113,8 +113,8 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
                             points = pts
                         }
                         
-                        strengthName = userStengthDic["name"] as! String
-                        strengthMessage = rawFeedDictionary["description"] as! String
+                        strengthName = userStengthDic["name"] as? String ?? ""
+                        strengthMessage = rawFeedDictionary["description"] as? String ?? ""
                         strengthIcon = userStengthDic["icon"] as? String ?? ""
                         if let unwrappedBgColor = userStengthDic["background_color"] as? String,
                            !unwrappedBgColor.isEmpty {

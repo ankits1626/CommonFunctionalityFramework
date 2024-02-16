@@ -21,6 +21,7 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
     @IBOutlet weak var strengthLabel : UILabel?
     @IBOutlet weak var nominationMessage : ActiveLabel?
     @IBOutlet weak var strengthHeightConstraints : NSLayoutConstraint?
+    @IBOutlet weak var strength1HeightConstraints : NSLayoutConstraint?
     @IBOutlet weak var categoryImageView : UIImageView?
     @IBOutlet weak var categoryName : UILabel?
     

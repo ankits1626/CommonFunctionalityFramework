@@ -269,6 +269,8 @@
                 <outlet property="nominationConatiner" destination="4UT-tg-eHZ" id="hdm-XL-tvG"/>
                 <outlet property="nominationImageView" destination="JJu-Bf-ZVH" id="oLn-uk-RvP"/>
                 <outlet property="nominationMessage" destination="hMD-W5-xr2" id="pnH-ED-7UF"/>
+                <outlet property="strength1HeightConstraints" destination="ZeA-ur-nBH" id="yiF-zK-aQt"/>
+                <outlet property="strengthHeightConstraints" destination="h6g-iH-4bB" id="uAQ-aU-eVx"/>
                 <outlet property="strengthIcon" destination="1gD-rx-OHo" id="kZQ-Pu-PHe"/>
                 <outlet property="strengthLabel" destination="TJZ-0L-rk2" id="eOd-dA-357"/>
                 <outlet property="teamIconImageView" destination="zRU-fa-dbd" id="h0d-Lf-zoP"/>

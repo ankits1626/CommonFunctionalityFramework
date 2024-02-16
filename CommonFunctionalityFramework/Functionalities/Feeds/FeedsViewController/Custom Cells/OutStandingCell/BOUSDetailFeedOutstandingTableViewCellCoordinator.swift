@@ -27,7 +27,8 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
             let feedNominationData = feed.getStrengthData()
             let bagesData = feed.getBadgesData()
             cell.strengthLabel?.text = feedNominationData["strengthName"] as? String ?? ""
-            cell.strengthHeightConstraints?.constant = cell.strengthLabel?.text?.isEmpty ?? true ? 0 : 20
+            cell.strengthHeightConstraints?.constant = cell.strengthLabel?.text?.isEmpty ?? true ? -20 : 20
+            cell.strength1HeightConstraints?.constant = cell.strengthLabel?.text?.isEmpty ?? true ? -20 : 20
             if let unwrappedText = feed.getNominationDescription(){
                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
                 ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
@@ -47,7 +48,7 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
             if !strengthIcon.isEmpty {
                 inputModel.mediaFetcher.fetchImageAndLoad(cell.strengthIcon, imageEndPoint: URL(string: serverUrl+strengthIcon))
             }else {
-                cell.strengthIcon?.image = UIImage(named: "PlaceHolderImage")
+                cell.strengthIcon?.image = UIImage(named: "")
             }
             
             if !strengthIcon.isEmpty {
