@@ -39,6 +39,7 @@ class FeedOrganisationSelectionViewController: UIViewController {
     @IBOutlet private weak var selectAllContainerView : UIView?
     @IBOutlet private weak var selectAllTitleLabel : UILabel?
     @IBOutlet private weak var selectAllSwitch : UISwitch?
+    @IBOutlet private weak var filterByLabel : UILabel?
     
     private func setupContainerTopbar(){
         let nuhsMultiOrg = (self.initModel.mainConatiner?.isNuhsMultiOrgPostEnabled())! ? "Select Org/Dept/Job Family".localized : "Select Orgs/Dept".localized
@@ -81,6 +82,7 @@ class FeedOrganisationSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupOnViewDidLoad()
+        filterByLabel?.text = "Filter by".localized
         proceedButton?.setTitle("PROCEED".localized, for: .normal)
     }
 
