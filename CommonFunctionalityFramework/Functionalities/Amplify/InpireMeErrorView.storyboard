@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -512,9 +512,12 @@
                         <outlet property="blurImg" destination="u0J-5S-aFs" id="ibV-ls-lF7"/>
                         <outlet property="forExText" destination="51A-cL-weQ" id="xHl-sb-mdf"/>
                         <outlet property="holderView" destination="QyE-Wo-PbV" id="aOX-Zi-yqp"/>
+                        <outlet property="howtoAmplifyTitleLabel" destination="PSf-PE-IOO" id="sv8-Md-hoq"/>
                         <outlet property="numberLbl1" destination="QJE-An-Io0" id="kIE-vc-rdX"/>
                         <outlet property="numberLbl2" destination="fBw-zX-Pl8" id="5oi-0H-23W"/>
                         <outlet property="okBtn" destination="ijZ-u6-jcL" id="aPM-vP-hsD"/>
+                        <outlet property="postPollSteps1" destination="tht-xV-c0V" id="9dQ-JV-Kqw"/>
+                        <outlet property="postPollSteps2" destination="yJx-RF-fLa" id="FRa-dE-Zgw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYy-ug-qai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -727,6 +730,7 @@
                         <outlet property="blurImg" destination="Xyb-cN-YlB" id="pG4-rE-pHJ"/>
                         <outlet property="forExText" destination="RJ6-Qa-gQL" id="Xut-PX-slQ"/>
                         <outlet property="holderView" destination="JsO-jb-9kB" id="WPM-jV-pEv"/>
+                        <outlet property="howtoAmplifyTitleLabel" destination="ZLn-E0-O10" id="xui-NW-sal"/>
                         <outlet property="numberLbl1" destination="Q7P-Zg-95S" id="dWu-Dp-tdl"/>
                         <outlet property="numberLbl2" destination="S1Q-VS-X0v" id="wNN-aU-NVg"/>
                         <outlet property="okBtn" destination="yfR-ul-0DC" id="7Zz-zX-YMy"/>
@@ -740,7 +744,7 @@
     <resources>
         <image name="cff_amplify_big_logo" width="72" height="72"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

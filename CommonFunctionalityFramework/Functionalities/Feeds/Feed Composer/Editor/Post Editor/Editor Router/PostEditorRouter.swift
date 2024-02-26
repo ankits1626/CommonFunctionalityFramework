@@ -151,7 +151,7 @@ class PostEditorRouter{
             forExTextMessage = "For example: choose your views on the new policy."
         case .Post:
             storyboardVcIdentifier = "AmplifyPostErrorScreen"
-            forExTextMessage = "For example: We have a new teammate, Jacob Floyd.  Call him Jacob. He is joining us on  June19."
+            forExTextMessage = "For example: We have a new teammate, Jacob Floyd.  Call him Jacob. He is joining us on  June19.".localized
         case .Greeting:
             storyboardVcIdentifier = "AmplifyPostErrorScreen"
         }

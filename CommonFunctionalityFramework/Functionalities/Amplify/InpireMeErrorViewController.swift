@@ -29,6 +29,11 @@ public class InpireMeErrorViewController: UIViewController {
     @IBOutlet private weak var step4Label: UILabel?
     @IBOutlet private weak var step4AmplifyLabel: UILabel?
     
+    @IBOutlet private weak var howtoAmplifyTitleLabel : UITextView?
+
+    @IBOutlet private weak var postPollSteps1 : UITextView?
+    @IBOutlet private weak var postPollSteps2 : UILabel?
+    
     var forExTextMessage : String?
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +52,10 @@ public class InpireMeErrorViewController: UIViewController {
         self.holderView.layer.cornerRadius = 8.0
         amplifyLabel?.text = "Amplify".localized
         howToAmplifyTextView?.text = "How to Amplify Your Message".localized
-        step1TextView?.text = "Select \(mainAppCoordinator.getCoreValueTitle())"
+        self.howtoAmplifyTitleLabel?.text = "How to Amplify Your Message".localized
+        self.postPollSteps1?.text = "Give us the brief on what you want to post and let us help you draft a beauiful post.".localized
+        self.postPollSteps2?.text = "Then click on the button".localized
+        step1TextView?.text = "\("Select".localized) \(mainAppCoordinator.getCoreValueTitle())"
         step2TextView?.text = "Write exactly what you are thanking the recipient for. (e.g. catching an accounting error.)".localized
         step3TextView?.text = "Write the positive outcome of their effort. (e.g. saved over 10 hours of recovering from a bad invoice.)".localized
         step4Label?.text = "Then click on the button".localized
