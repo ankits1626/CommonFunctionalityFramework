@@ -95,7 +95,7 @@
                                 <constraint firstAttribute="trailing" secondItem="whV-g5-JSO" secondAttribute="trailing" id="sq9-DH-Qq6"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADW-Ii-aLj">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.84999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="ADW-Ii-aLj">
                             <rect key="frame" x="24" y="200" width="345" height="67"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="67" id="GbS-yb-yL2"/>
