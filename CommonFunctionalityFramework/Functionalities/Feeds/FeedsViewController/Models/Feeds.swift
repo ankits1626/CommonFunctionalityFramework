@@ -785,7 +785,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
                            let answerText = answer["answer"] as? String,
                            let questionPk = answer["question"] as? Int,
                            let supportingDoc = answer["supporting_doc"] as? String {
-                            answersDict.append(NominationEnteredData(answersId: answerId, questionsId: questionPk, ansers: answerText, supportingDoc: supportingDoc))
+                            answersDict.append(NominationEnteredData(answersId: answerId, questionsId: questionPk, ansers: answerText.count == 0 ? "Not answered".localized : answerText, supportingDoc: supportingDoc))
                         }
                     }
                 }
@@ -801,7 +801,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             return unwrappedDescription
         }else if let unwappedQuestion = getQuestionType(),
                 unwappedQuestion.count > 0{
-            return "\(unwappedQuestion.count) Questions & Answer"
+            return "\(unwappedQuestion.count) \("Questions & Answer".localized)"
         }
             return nil
     }

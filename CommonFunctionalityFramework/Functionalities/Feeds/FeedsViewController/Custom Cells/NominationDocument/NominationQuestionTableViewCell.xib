@@ -33,19 +33,32 @@
                             <constraint firstAttribute="width" constant="120" id="nQt-uO-Ng2"/>
                         </constraints>
                     </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No document attached" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCs-Mj-VGU">
+                        <rect key="frame" x="16" y="96.666666666666671" width="148.33333333333334" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="6LY-Qo-4gW"/>
+                            <constraint firstAttribute="height" constant="21" id="fje-O9-Hyc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.08235294118" green="0.08235294118" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5ty-gO-TiV" firstAttribute="top" secondItem="chY-66-vTR" secondAttribute="bottom" constant="12" id="2LQ-QY-U2Z"/>
+                    <constraint firstItem="uCs-Mj-VGU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4Ch-r9-bDc"/>
                     <constraint firstItem="chY-66-vTR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="W6s-cF-EfK"/>
                     <constraint firstItem="chY-66-vTR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="YNx-LU-agN"/>
                     <constraint firstAttribute="trailing" secondItem="chY-66-vTR" secondAttribute="trailing" constant="16" id="cxS-ut-lxU"/>
                     <constraint firstItem="5ty-gO-TiV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lKH-fG-gtS"/>
+                    <constraint firstItem="uCs-Mj-VGU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="17" id="p9o-Mt-opb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="attachmentImage" destination="5ty-gO-TiV" id="nxd-oI-ShN"/>
                 <outlet property="attachmentName" destination="chY-66-vTR" id="GdT-6J-5SN"/>
+                <outlet property="noDatalabel" destination="uCs-Mj-VGU" id="62Z-ZA-VXk"/>
             </connections>
             <point key="canvasLocation" x="113.74045801526717" y="56.338028169014088"/>
         </tableViewCell>

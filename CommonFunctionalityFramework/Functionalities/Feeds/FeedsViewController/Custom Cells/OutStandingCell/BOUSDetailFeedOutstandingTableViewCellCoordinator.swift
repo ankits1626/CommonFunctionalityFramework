@@ -56,7 +56,7 @@ class BOUSDetailFeedOutstandingTableViewCellCoordinator :  FeedCellCoordinatorPr
             }else {
                 cell.categoryImageView?.image = UIImage(named: "PlaceHolderImage")
             }
-            
+            cell.teamLabel?.text = "As a Group".localized
             cell.categoryName?.text = feed.getCategoryName()?.name
             cell.badgeName?.text = bagesData["badgeName"] as? String ?? ""
             cell.badgePoints?.text = "\(bagesData["points"] as? String ?? "") \("Points".localized)"

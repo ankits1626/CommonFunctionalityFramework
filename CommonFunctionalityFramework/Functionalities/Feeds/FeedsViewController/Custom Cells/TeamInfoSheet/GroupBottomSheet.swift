@@ -28,7 +28,9 @@ class GroupBottomSheet: UIViewController {
     }
     
     private func setupView() {
-        infoDescription.text = "With the 'As a Group' nomination feature, you can now nominate multiple candidates together. No more individual approvals – streamline the process and get your group of nominees approved in one go!"
+        infoDescription.text = "With the 'As a Group' nomination feature, you can now nominate multiple candidates together. No more individual approvals – streamline the process and get your group of nominees approved in one go!".localized
+        infoTitle.text = "As a Group Nomination".localized
+        okayBtn.setTitle("Continue".localized, for: .normal)
         blurImg.makeBlurImage(targetImageView: blurImg)
         self.okayBtn.backgroundColor = UIColor.getControlColor()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -58,7 +60,7 @@ class GroupBottomSheet: UIViewController {
             infoImg?.image = UIImage(named: "UserLogo")
         }
         infoTitle.text = nominationCategoryName
-        infoDescription.text = "With the 'As a Group' nomination feature, you can now nominate multiple candidates together. No more individual approvals – streamline the process and get your group of nominees approved in one go!"
+        infoDescription.text = "With the 'As a Group' nomination feature, you can now nominate multiple candidates together. No more individual approvals – streamline the process and get your group of nominees approved in one go!".localized
     }
     
     @IBAction func okayPressed(_ sender: Any) {

@@ -13,6 +13,7 @@ class NominationQuestionTableViewCell: UITableViewCell {
     @IBOutlet weak var attachmentContainerView : UIView?
     @IBOutlet weak var attachmentName : UILabel?
     @IBOutlet weak var attachmentImage : UIImageView?
+    @IBOutlet weak var noDatalabel : UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()

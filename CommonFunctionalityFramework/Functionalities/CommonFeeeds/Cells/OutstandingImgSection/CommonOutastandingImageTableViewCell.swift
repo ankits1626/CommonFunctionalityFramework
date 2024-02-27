@@ -45,6 +45,8 @@ class CommonOutastandingImageTableViewCell: UITableViewCell {
         nominationConatiner?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         teamLabel?.textColor = UIColor.getControlColor()
         teamIconImageView?.setImageColor(color: UIColor.getControlColor())
+        
+        teamLabel?.text = "As a Group".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
