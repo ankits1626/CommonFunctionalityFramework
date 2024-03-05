@@ -26,12 +26,14 @@ class FeedCommentPostWorker  {
     init(networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
-    func postComment(comment:PostbaleComment, completionHandler: @escaping PostPublisherHandler) {
+    func postComment(comment:PostbaleComment,isPostEditing : Bool,commentID : Int64, completionHandler: @escaping PostPublisherHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider: FeedCommentPosRequestGenerator(
                     comment: comment,
-                    networkRequestCoordinator: networkRequestCoordinator
+                    networkRequestCoordinator: networkRequestCoordinator,
+                    _isEditingComment: isPostEditing,
+                    _commentID: commentID
                 ),
                 dataParser: FeedCommentPostDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
@@ -51,23 +53,39 @@ class FeedCommentPosRequestGenerator: APIRequestGeneratorProtocol  {
     private lazy var feedPostRequestBodyGenerator : PostRequestBodyGenerator = {
         return PostRequestBodyGenerator()
     }()
-    init( comment:PostbaleComment, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    var isEditingComment : Bool
+    var commentID : Int64
+    init( comment:PostbaleComment, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, _isEditingComment : Bool, _commentID : Int64) {
         self.comment = comment
+        self.isEditingComment = _isEditingComment
+        self.commentID = _commentID
         self.networkRequestCoordinator = networkRequestCoordinator
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
     }
     var apiRequest: URLRequest?{
         get{
-            if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
-                let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
-                    url: URL(string: baseUrl + "feeds/api/posts/\(comment.feedId)/comments/"),
-                    method: .POST,
-                    httpBodyDict: comment.getNetworkPostableFormat() as NSDictionary
-                )
-                return req
+            if self.isEditingComment {
+                if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                    let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                        url: URL(string: baseUrl + "/feeds/api/comments/\(self.commentID)/"),
+                        method: .PATCH,
+                        httpBodyDict: comment.getNetworkPostableFormat() as NSDictionary
+                    )
+                    return req
+                }
+                return nil
+            }else{
+                if let baseUrl = networkRequestCoordinator.getBaseUrlProvider().baseURLString(){
+                    let req =  self.requestBuilder.apiRequestWithHttpParamsAggregatedHttpParams(
+                        url: URL(string: baseUrl + "feeds/api/posts/\(comment.feedId)/comments/"),
+                        method: .POST,
+                        httpBodyDict: comment.getNetworkPostableFormat() as NSDictionary
+                    )
+                    return req
+                }
+                return nil
             }
-            return nil
         }
     }
 }

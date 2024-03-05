@@ -61,21 +61,36 @@ class FeedDetailHeaderCoordinator {
     }
     
     private func configureCommentsHeader(_ view : FeedDetailHeader?){
-        view?.headerTitleLabel?.text = "Comments"
+        if let commentsCount =  feedDataSource.getCommentProvider()?.getNumberOfComments() {
+            if commentsCount > 1 {
+                view?.headerTitleLabel?.text = "\(commentsCount) \("Comments".localized)".localized
+            }else {
+                view?.headerTitleLabel?.text = "\(commentsCount) \("Comment".localized)".localized
+            }
+        }
+        
         view?.headerActionButton?.isHidden = true
         view?.headerSecondaryTitleLabel?.text = nil
     }
     
     private func configureClapsHeader(_ view : FeedDetailHeader?){
-        view?.headerTitleLabel?.text = "Claps"
-        view?.headerActionButton?.setTitle("SEE ALL", for: .normal)
+        if let reactionCount = feedDataSource.getClappedByUsers() {
+            if reactionCount.count > 1 {
+                view?.headerTitleLabel?.text = "\(reactionCount.count) \("Reactions".localized)".localized
+            }else {
+                view?.headerTitleLabel?.text = "\(reactionCount.count) \("Reaction".localized)".localized
+            }
+            
+        }
+        view?.headerActionButton?.setTitle("SEE ALL".localized, for: .normal)
         view?.headerActionButton?.setTitleColor(themeManager?.getControlActiveColor() ?? .bottomButtonTextColor, for: .normal)
         view?.headerActionButton?.titleLabel?.font = .Highlighter1
-        view?.headerActionButton?.isHidden = false
+        view?.headerActionButton?.isHidden = true
         view?.headerSecondaryTitleLabel?.text = nil
         view?.headerActionButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
-            self?.delegate?.showLikedByUsersList()
+            self?.delegate?.showPostReactions()
         })
+        
     }
     
     func getHeight(section: FeedDetailSection) -> CGFloat {
@@ -85,13 +100,13 @@ class FeedDetailHeaderCoordinator {
         case .ClapsSection:
             if let clappedByUsers = feedDataSource.getClappedByUsers(),
             !clappedByUsers.isEmpty{
-                 return 40
+                 return 30
             }
             
         case .Comments:
             if let comments = feedDataSource.getCommentProvider()?.getNumberOfComments(),
             comments != 0 {
-                return 40
+                return 30
             }
         }
         return 0

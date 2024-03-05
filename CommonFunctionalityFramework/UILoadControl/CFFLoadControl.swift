@@ -14,7 +14,7 @@ public class CFFLoadControl: UIControl {
     fileprivate var activityIndicatorView: UIActivityIndicatorView!
     private var originalDelegate: UIScrollViewDelegate?
     
-    internal var target: AnyObject?
+    internal weak var target: AnyObject?
     internal var action: Selector!
     
     public var heightLimit: CGFloat = 80.0
@@ -55,7 +55,6 @@ public class CFFLoadControl: UIControl {
     override public func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     /*
      Update layout at finsih to load
      */

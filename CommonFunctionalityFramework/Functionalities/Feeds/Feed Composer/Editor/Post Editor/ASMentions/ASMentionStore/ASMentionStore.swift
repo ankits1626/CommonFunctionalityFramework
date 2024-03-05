@@ -20,6 +20,14 @@ class ASMentionStore {
         self.mentions = mentions
     }
     
+    func clearAllMentions() {
+        if mentions != nil {
+            mentions.removeAll()
+        }else{
+            print("****Mention is nil")
+        }
+    }
+    
     func updateStoreAfterTextDeletion(_ deletionRange: NSRange) {
         mentions.forEach { (aMention) in
             if deletionRange.location < aMention.range.location{

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 struct EditablePostMediaMapperInitModel {
     weak var datasource : PostEditorCellFactoryDatasource?
@@ -57,7 +58,7 @@ class EditablePostMediaRepository {
                 imageView?.image = croppedImage
                 imageView?.contentMode = .scaleAspectFit
             }else if let asset = mediaItem.asset{
-                input.localMediaManager?.fetchImageForAsset(asset: asset, size: (imageView?.bounds.size)!, completion: { (_, fetchedImage) in
+                input.localMediaManager?.fetchImageForAsset(asset: asset, size: PHImageManagerMaximumSize, completion: { (_, fetchedImage) in
                     imageView?.image = fetchedImage
                 })
             }
@@ -70,4 +71,21 @@ class EditablePostMediaRepository {
         }
     }
 
+}
+
+extension EditablePostMediaRepository{
+    func getMediaListForPreview(_ post : EditablePostProtocol?) -> [MediaItemProtocol]? {
+        var mediaItems = [MediaItemProtocol]()
+        if let remoteItems = post?.remoteAttachedMedia{
+            mediaItems = remoteItems
+        }
+        
+        if let unwrappedLocalMediaUrls = post?.postableLocalMediaUrls{
+            for localMediaUrl in unwrappedLocalMediaUrls {
+                mediaItems.append(PreviewableLocalMediaItem(localMediaUrl))
+            }
+        }
+        
+        return mediaItems.isEmpty ? nil : mediaItems
+    }
 }

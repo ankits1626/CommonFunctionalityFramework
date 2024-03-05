@@ -24,8 +24,11 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
         for: inputModel.targetIndexpath)
         if let cell  = targetCell as? FeedCommentTableViewCell{
             let comment = inputModel.datasource.getCommentProvider()?.getComment(inputModel.targetIndexpath.row)
-            cell.commentLabel?.text = comment?.getCommentText()
-            cell.commentLabel?.font = UIFont.Body1
+            ASMentionCoordinator.shared.getPresentableMentionText(comment?.getCommentText(), completion: { (attr) in
+               cell.commentLabel?.text = nil
+               cell.commentLabel?.attributedText = attr
+                cell.commentLabel?.font = UIFont.Body1
+           })
         }
         return targetCell
     }
@@ -39,11 +42,14 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.commentDateLabel?.text = comment?.getCommentDate()
             cell.commentDateLabel?.font = .Caption1
             cell.commentDateLabel?.textColor = .getSubTitleTextColor()
-            cell.userDepartmentLabel?.text = comment?.getCommentUser().getAuthorDepartmentName()
-            cell.userDepartmentLabel?.font = UIFont.Caption1
+            cell.userDepartmentLabel?.text = comment?.getCommentDate()
+            cell.userDepartmentLabel?.font = .Caption1
             cell.userDepartmentLabel?.textColor = .getSubTitleTextColor()
-            cell.commentLabel?.text = comment?.getCommentText()
-            cell.commentLabel?.font = UIFont.Body1
+            ASMentionCoordinator.shared.getPresentableMentionText(comment?.getCommentText(), completion: { (attr) in
+               cell.commentLabel?.text = nil
+               cell.commentLabel?.attributedText = attr
+                cell.commentLabel?.font = UIFont.Body1
+           })
             if inputModel.targetIndexpath.row + 1 == (inputModel.datasource.getCommentProvider()?.getNumberOfComments() ?? 0){
                 cell.containerView?.addBorders(edges: [.left, .right, .bottom], color: .feedCellBorderColor)
                 cell.containerView?.roundCorners(corners: [.bottomRight, .bottomLeft], radius: AppliedCornerRadius.standardCornerRadius)
@@ -73,6 +79,15 @@ class FeedCommentTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                     event: .touchUpInside,
                     buttonActionBlock: {
                         inputModel.delegate?.toggleLikeForComment(commentIdentifier: commentId)
+                })
+            }
+            
+            if let commentId = comment?.getComentId(),
+                commentId != -1{
+                cell.editOptionsButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        inputModel.delegate?.editComment(commentIdentifier: commentId, chatMessage: comment?.getCommentText() ?? "", commentedByPk: comment?.getCommentUser().getCommentedUserPk() ?? 0)
                 })
             }
         }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="167" id="Ygs-Yh-uMo" customClass="BOUSMultipleImageTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ygs-Yh-uMo" id="bBa-8n-ESm">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4G-zv-VFE">
+                        <rect key="frame" x="12" y="0.0" width="297" height="167"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="By6-ld-ohr">
+                                <rect key="frame" x="11" y="16" width="276" height="135"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gb4-gi-l16" customClass="MultipleImageFlowLayout" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="By6-ld-ohr" firstAttribute="top" secondItem="H4G-zv-VFE" secondAttribute="top" constant="16" id="5UV-dY-yqf"/>
+                            <constraint firstAttribute="bottom" secondItem="By6-ld-ohr" secondAttribute="bottom" constant="16" id="6Pm-J3-SXS"/>
+                            <constraint firstAttribute="trailing" secondItem="By6-ld-ohr" secondAttribute="trailing" constant="10" id="PKp-p1-Kp5"/>
+                            <constraint firstItem="By6-ld-ohr" firstAttribute="leading" secondItem="H4G-zv-VFE" secondAttribute="leading" constant="11" id="ZuU-et-Bik"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="H4G-zv-VFE" secondAttribute="bottom" id="5oc-pv-n0c"/>
+                    <constraint firstAttribute="trailing" secondItem="H4G-zv-VFE" secondAttribute="trailing" constant="11" id="YeR-TZ-dLb"/>
+                    <constraint firstItem="H4G-zv-VFE" firstAttribute="top" secondItem="bBa-8n-ESm" secondAttribute="top" id="fKt-3K-uzX"/>
+                    <constraint firstItem="H4G-zv-VFE" firstAttribute="leading" secondItem="bBa-8n-ESm" secondAttribute="leading" constant="12" id="ksL-OO-BWw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="MOg-PQ-iey"/>
+            <connections>
+                <outlet property="containerView" destination="H4G-zv-VFE" id="0Tc-v0-PHw"/>
+                <outlet property="mediaCollectionView" destination="By6-ld-ohr" id="AYw-1a-seZ"/>
+            </connections>
+            <point key="canvasLocation" x="133.33333333333334" y="76.004464285714278"/>
+        </tableViewCell>
+    </objects>
+</document>

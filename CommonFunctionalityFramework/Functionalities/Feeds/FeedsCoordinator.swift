@@ -8,8 +8,28 @@
 
 import UIKit
 
-public protocol CFFMainAppInformationCoordinator : class {
+public protocol CFFMainAppInformationCoordinator : AnyObject {
     func isUserAllowedToPostFeed() -> Bool
+    func isUserAllowedToCreatePoll() -> Bool
+    func isMultiOrgPostEnabled() -> Bool
+    func getCurrentUserName() -> String
+    func getCurrenUserProfilePicUrl() -> String
+    func getCurrentUserDepartment() -> String
+    func getUserPK() -> Int
+    func getCurrentAppLanguage() -> String
+    func getAllAvailableLanguages() -> [LanguageOptionProtocol]
+    func getLaguageNameFromSlug(_ slug: String)  -> String
+    func isMediaAttachmentAllowedToPost() -> Bool
+    func isGifAttachmentAllowedToPost() -> Bool
+    func getCoreValueTitle() -> String
+    //for joye app
+    func getJoyAppUrl() -> String
+    func saveJoyAppUrl(url:String)
+    func saveJoyAppUrlDate(timeStamp:Date)
+    func getJoyAppUrlDate() -> Date
+    func getJoyeAppRequestBody() -> [String : String]
+    func isNuhsMultiOrgPostEnabled() -> Bool
+    func isBousApprovalScreen() -> Bool
 }
 
 
@@ -19,21 +39,53 @@ public struct GetFeedsViewModel{
     var feedCoordinatorDelegate : FeedsCoordinatorDelegate
     var themeManager : CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    var shouldShowCreateButton : Bool = false
+    var isFeedLoadingFromProfilePage : Bool = false
+    var searchText : String? = nil
     
-    public init (networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?){
+    var feedTypePk : Int = 0
+    var organisationPK : Int = 0
+    var departmentPK : Int = 0
+    var dateRangePK : Int = 0
+    var coreValuePk : Int = 0
+    var isGreetingType = false
+    var greetingId = 0
+    var isDesklessEnabled : Bool = false
+    var isFromUserProfile : Bool = false
+    var userPk: Int
+    public init (userPk: Int, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, mediaCoordinator : CFFMediaCoordinatorProtocol, feedCoordinatorDelegate : FeedsCoordinatorDelegate, themeManager : CFFThemeManagerProtocol?, mainAppCoordinator : CFFMainAppInformationCoordinator?, shouldShowCreateButton: Bool, _isFeedLoadingFromProfilePage : Bool = false, searchText : String?, _feedTypePk : Int = 0, _organisationPK : Int = 0, _departmentPK : Int = 0, _dateRangePK : Int = 0, _coreValuePk : Int = 0, _isGreetingType : Bool = false, _greetingId : Int = 0,  _isDesklessEnabled : Bool = false, _isFromUserProfile : Bool = false){
+        self.userPk = userPk
         self.networkRequestCoordinator = networkRequestCoordinator
         self.mediaCoordinator = mediaCoordinator
         self.feedCoordinatorDelegate = feedCoordinatorDelegate
         self.themeManager = themeManager
         self.mainAppCoordinator = mainAppCoordinator
+        self.shouldShowCreateButton = shouldShowCreateButton
+        self.isFeedLoadingFromProfilePage = _isFeedLoadingFromProfilePage
+        self.searchText = searchText
+        self.feedTypePk = _feedTypePk
+        self.organisationPK = _organisationPK
+        self.departmentPK = _departmentPK
+        self.dateRangePK = _dateRangePK
+        self.coreValuePk = _coreValuePk
+        self.isGreetingType = _isGreetingType
+        self.greetingId = _greetingId
+        self.isDesklessEnabled = _isDesklessEnabled
+        self.isFromUserProfile = _isFromUserProfile
     }
 }
 
-public protocol FeedsCoordinatorDelegate {
+public protocol FeedsCoordinatorDelegate : AnyObject {
+    func openOtherProfileView(_ detailViewController : UIViewController, otherUserPk : Int)
     func showFeedDetail(_ detailViewController : UIViewController)
     func removeFeedDetail()
+    func showComposer(_composer : UIViewController, dismissCompletionBlock : (()-> Void)?, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
     func showComposer(_composer : UIViewController, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
-    func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void)) 
+    func showComposer(_composer : UIViewController, postType : String,isFromEditor: Bool, completion : @escaping ((_ topItem : EditorContainerModel) -> Void))
+    func showPostLikeList(_ likeListVC : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
+    func showMultiOrgPicker(_ orgPicker : UIViewController, presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void))
+    
+    func getVCEmbeddedInContainer(_ targetVC : UIViewController,presentationOption: GenericContainerPresentationOption, completion : @escaping ((_ topItem : GenericContainerTopBarModel) -> Void)) -> UIViewController
 }
 
 public class FeedsCoordinator {
@@ -42,16 +94,39 @@ public class FeedsCoordinator {
     
     public func getFeedsView(_ inputModel : GetFeedsViewModel) -> UIViewController{
         let feedsVc =  FeedsViewController(nibName: "FeedsViewController", bundle: Bundle(for: FeedsViewController.self))
+        feedsVc.userPk = inputModel.userPk
         feedsVc.requestCoordinator = inputModel.networkRequestCoordinator
         feedsVc.mediaFetcher = inputModel.mediaCoordinator
         feedsVc.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
         feedsVc.themeManager = inputModel.themeManager
         feedsVc.mainAppCoordinator = inputModel.mainAppCoordinator
+        feedsVc.shouldShowCreateButton = inputModel.shouldShowCreateButton
+        feedsVc.isComingFromProfilePage = inputModel.isFeedLoadingFromProfilePage
+        feedsVc.feedTypePk = inputModel.feedTypePk
+        feedsVc.organisationPK = inputModel.organisationPK
+        feedsVc.departmentPK = inputModel.departmentPK
+        feedsVc.dateRangePK = inputModel.dateRangePK
+        feedsVc.coreValuePk = inputModel.coreValuePk
+        feedsVc.searchText = inputModel.searchText
+        feedsVc.isTypeGreeting = inputModel.isGreetingType
+        feedsVc.greetingID = inputModel.greetingId
+        feedsVc.isFromUserProfile = inputModel.isFromUserProfile
+        if inputModel.isGreetingType {
+            feedsVc.selectedTab = "GreetingsFeed"
+            UserDefaults.standard.setValue("GreetingsFeed", forKey: "selectedTab")
+        }else {
+            feedsVc.selectedTab = ""
+            UserDefaults.standard.setValue("SearchFromHome", forKey: "selectedTab")
+        }
         return feedsVc
     }
     
-    public func showFeedsDetailView(feedId: Int, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
-        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(feedId) { (result) in
+    public func showFeedsDetailView(feedId: Int,isPostType : Bool = false, inputModel : GetFeedsViewModel,completionClosure : @escaping (_ repos :NSDictionary?) ->()){
+        FeedFetcher(networkRequestCoordinator: inputModel.networkRequestCoordinator).fetchFeedDetail(
+            FeedFetcherInputModel(
+                feedID: feedId,
+                feedType: "")
+        ) { (result) in
             DispatchQueue.main.async {
                 switch result{
                 case .Success(let result):
@@ -66,12 +141,23 @@ public class FeedsCoordinator {
                             )
                         }
                         let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+                        feedDetailVC.mainAppCoordinator = inputModel.mainAppCoordinator
+                        feedDetailVC.isPostPollType = isPostType
                         feedDetailVC.themeManager = inputModel.themeManager
                         feedDetailVC.targetFeedItem = rawFeed //feeds[indexPath.section]
                         feedDetailVC.mediaFetcher = inputModel.mediaCoordinator
+                        feedDetailVC.mainAppCoordinator = inputModel.mainAppCoordinator
                         feedDetailVC.requestCoordinator = inputModel.networkRequestCoordinator
                         feedDetailVC.feedCoordinatorDelegate = inputModel.feedCoordinatorDelegate
+                        feedDetailVC.isDesklessEnabled = inputModel.isDesklessEnabled
                         feedDetailVC.pollSelectedAnswerMapper = SelectedPollAnswerMapper()
+                        if inputModel.isGreetingType {
+                            feedDetailVC.selectedTab = "GreetingsFeed"
+                            UserDefaults.standard.setValue("GreetingsFeed", forKey: "selectedTab")
+                        }else {
+                            feedDetailVC.selectedTab = ""
+                            UserDefaults.standard.setValue("SearchFromHome", forKey: "selectedTab")
+                        }
                         inputModel.feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
                     }
                 case .SuccessWithNoResponseData:

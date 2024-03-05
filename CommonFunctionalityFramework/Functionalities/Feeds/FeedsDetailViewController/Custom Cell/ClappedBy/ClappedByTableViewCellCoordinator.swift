@@ -21,11 +21,19 @@ class ClappedByTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? ClappedByTableViewCell{
             cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-            cell.seeAllButton?.handleControlEvent(
-                event: .touchUpInside,
-                buttonActionBlock: {
-                    inputModel.delegate?.showLikedByUsersList()
+//            cell.seeAllButton?.handleControlEvent(
+//                event: .touchUpInside,
+//                buttonActionBlock: {
+//                    inputModel.delegate?.showLikedByUsersList()
+//            })
+            
+            let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
+            
+            cell.seeAllButton?.handleControlEvent(event: .touchUpInside,   buttonActionBlock: {
+                inputModel.delegate?.showPostReactions()
             })
+            
+            
             cell.clappedByUsers?.forEach({ (aView) in
                 aView.isHidden = true
                 aView.curvedCornerControl()
@@ -39,6 +47,23 @@ class ClappedByTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                             inputModel.mediaFetcher.fetchImageAndLoad(
                                 imageView,
                                 imageEndPoint: profileImage)
+                            
+                            if let reactionImg = cell.reactionImgType?.get(index: index){
+                                if clappedByUser.reactionType == 0 {
+                                    reactionImg.image = UIImage(named: "icon_React_like")
+                                }else if clappedByUser.reactionType == 3 {
+                                    reactionImg.image = UIImage(named: "icon_React_love")
+                                }else if clappedByUser.reactionType == 6 {
+                                    reactionImg.image = UIImage(named: "icon_React_clap")
+                                }else if clappedByUser.reactionType == 1 {
+                                    reactionImg.image = UIImage(named: "icon_React_celebrate")
+                                }else if clappedByUser.reactionType == 2 {
+                                    reactionImg.image = UIImage(named: "icon_React_support")
+                                }
+                                
+                            }
+                            
+                           
                         }else{
                             imageView.isHidden = true
                             imageView.image = nil

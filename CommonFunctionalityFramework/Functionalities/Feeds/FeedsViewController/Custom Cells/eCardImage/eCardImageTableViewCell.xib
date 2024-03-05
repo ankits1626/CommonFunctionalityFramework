@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="215" id="Puo-wa-zDz" customClass="eCardImageTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="215"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Puo-wa-zDz" id="fO7-a8-a6I">
+                <rect key="frame" x="0.0" y="0.0" width="321" height="215"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyR-1R-gJ0">
+                        <rect key="frame" x="16" y="0.0" width="289" height="215"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4On-hG-d9b">
+                                <rect key="frame" x="9" y="0.0" width="273" height="207"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHc-Oh-tkh" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2C8-5G-nDO" customClass="BlockButton" customModule="RewardzCommonComponents">
+                                <rect key="frame" x="262" y="5" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="cCL-xi-g1R"/>
+                                    <constraint firstAttribute="height" constant="22" id="lmY-zd-XxP"/>
+                                </constraints>
+                                <state key="normal" image="icon_remove"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4On-hG-d9b" secondAttribute="trailing" constant="7" id="bBk-Jx-MTA"/>
+                            <constraint firstAttribute="centerX" secondItem="4On-hG-d9b" secondAttribute="centerX" constant="-1" id="dhI-Bi-RLN"/>
+                            <constraint firstAttribute="height" secondItem="4On-hG-d9b" secondAttribute="height" constant="8" id="f2O-9o-ugU"/>
+                            <constraint firstAttribute="width" secondItem="4On-hG-d9b" secondAttribute="width" constant="16" id="lSU-dY-uEp"/>
+                            <constraint firstItem="4On-hG-d9b" firstAttribute="leading" secondItem="cyR-1R-gJ0" secondAttribute="leading" constant="9" id="moI-Zj-fLM"/>
+                            <constraint firstAttribute="centerY" secondItem="4On-hG-d9b" secondAttribute="centerY" constant="4" id="oHS-NU-2K9"/>
+                            <constraint firstAttribute="bottom" secondItem="4On-hG-d9b" secondAttribute="bottom" constant="8" id="xjT-Td-yN5"/>
+                            <constraint firstAttribute="top" secondItem="cyR-1R-gJ0" secondAttribute="top" id="yRM-YP-KwD"/>
+                            <constraint firstItem="4On-hG-d9b" firstAttribute="top" secondItem="cyR-1R-gJ0" secondAttribute="top" id="zsK-Fg-op4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="cyR-1R-gJ0" firstAttribute="leading" secondItem="fO7-a8-a6I" secondAttribute="leading" constant="16" id="78w-rG-xG2"/>
+                    <constraint firstAttribute="trailing" secondItem="cyR-1R-gJ0" secondAttribute="trailing" constant="16" id="Dg5-Ho-AwK"/>
+                    <constraint firstAttribute="bottom" secondItem="cyR-1R-gJ0" secondAttribute="bottom" id="MpC-CE-ms1"/>
+                    <constraint firstItem="cyR-1R-gJ0" firstAttribute="top" secondItem="fO7-a8-a6I" secondAttribute="top" id="eVI-D7-MgK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="diB-XB-p5b"/>
+            <connections>
+                <outlet property="containerView" destination="cyR-1R-gJ0" id="23H-fW-XSh"/>
+                <outlet property="feedImageView" destination="4On-hG-d9b" id="jKJ-2p-HnA"/>
+            </connections>
+            <point key="canvasLocation" x="138.1679389312977" y="143.3098591549296"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_remove" width="18" height="18"/>
+    </resources>
+</document>

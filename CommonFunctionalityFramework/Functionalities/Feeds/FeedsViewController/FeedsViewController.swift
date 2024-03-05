@@ -8,27 +8,56 @@
 
 import UIKit
 import CoreData
+import Photos
+import RewardzCommonComponents
 
-class FeedsViewController: UIViewController {
+class FeedsViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBOutlet private weak var composeBarContainerHeightConstraint : NSLayoutConstraint?
     @IBOutlet private weak var composeLabel : UILabel?
     @IBOutlet private weak var feedsTable : UITableView?
     @IBOutlet private weak var whatsInYourMindView : UIView?
     @IBOutlet private weak var cameraContainerViewView : UIView?
-    
+    @IBOutlet private weak var feedCreateView : UIView?
+    @IBOutlet weak var createBtnHolderView: UIView!
+    @IBOutlet weak var noRecordsLabel: UILabel?
+    @IBOutlet private weak var feedCreateViewConstraints : NSLayoutConstraint?
+    var selectedTab = ""
+    var userPk: Int!
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     var mediaFetcher: CFFMediaCoordinatorProtocol!
     var feedCoordinatorDelegate: FeedsCoordinatorDelegate!
     var themeManager: CFFThemeManagerProtocol?
     var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    var bottomSafeArea : CGFloat!
+    var loader = MFLoader()
+    var shouldShowCreateButton: Bool = false
+    var isComingFromProfilePage : Bool = false
+    var searchText : String?
     
+    var feedTypePk : Int = 0
+    var organisationPK : Int = 0
+    var departmentPK : Int = 0
+    var dateRangePK : Int = 0
+    var coreValuePk : Int = 0
+    
+    var isTypeGreeting = false
+    var greetingID  : Int = 0
+    var isFromUserProfile = false
+    
+    @IBOutlet weak var emptyViewContainer : UIView?
+    lazy private var emptyResultView: NoEntryViewController = {
+        return NoEntryViewController(
+            nibName: "NoEntryViewController",
+            bundle: Bundle(for: NoEntryViewController.self)
+        )
+    }()
     lazy var feedSectionFactory: FeedSectionFactory = {
         return FeedSectionFactory(
             feedsDatasource: self,
             mediaFetcher: mediaFetcher,
             targetTableView: feedsTable,
             selectedOptionMapper: pollSelectedAnswerMapper,
-            themeManager: themeManager
+            themeManager: themeManager, selectedTab: selectedTab, mainAppCoordinator: mainAppCoordinator
         )
     }()
     
@@ -51,12 +80,33 @@ class FeedsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(scrollTableView(notification:)), name: NSNotification.Name(rawValue: "PostScroll"), object: nil)
+        feedCreateView?.layer.cornerRadius = (feedCreateView?.frame.size.width)!/2
+        feedCreateView?.clipsToBounds = true
+        feedCreateView?.backgroundColor = UIColor.getControlColor()
         registerForPostUpdateNotifications()
         clearAnyExistingFeedsData {[weak self] in
             self?.initializeFRC()
             self?.setup()
             self?.loadFeeds()
         }
+        self.feedsTable?.showsVerticalScrollIndicator = false
+        self.noRecordsLabel?.text = "No Records Found!".localized
+    }
+        
+    @objc func scrollTableView(notification: NSNotification) {
+        
+        if let paymentData = notification.object as? Dictionary<String, Any> {
+            if let paymentID = paymentData["isScrollable"] as? Bool {
+                print("paymentID ----- \(paymentID)")
+                self.feedsTable?.bounces = true
+                self.feedsTable?.isScrollEnabled = paymentID
+            }
+        }
+    }
+    
+    deinit {
+        print("Notification deinit")
     }
     
     private func registerForPostUpdateNotifications(){
@@ -98,20 +148,98 @@ class FeedsViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+    }
+    
+    @objc private func bottomLoader(){
+        if !(lastFetchedFeeds?.nextPageUrl?.isEmpty ?? true) {
+            loadFeeds()
+        }else{
+            self.feedsTable?.loadCFFControl?.endLoading()
+        }
+    }
+    
     @objc private func loadFeeds(){
-        FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
-        nextPageUrl: lastFetchedFeeds?.nextPageUrl) {[weak self] (result) in
-            DispatchQueue.main.async {
-                self?.feedsTable?.loadCFFControl?.endLoading()
-                switch result{
-                case .Success(let result):
-                    self?.handleFetchedFeedsResult(fetchedfeeds: result)
-                case .SuccessWithNoResponseData:
-                    ErrorDisplayer.showError(errorMsg: "No record Found") { (_) in}
-                case .Failure(let error):
-                    ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+        self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+        
+        if isTypeGreeting {
+            GreetingsWishesFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(
+                greetingID: greetingID, nextPageUrl: lastFetchedFeeds?.nextPageUrl, feedType: "postPoll", searchText: searchText,feedTypePk: self.feedTypePk, organisationPK: self.organisationPK,departmentPK: self.departmentPK,dateRangePK: self.dateRangePK,coreValuePk: self.coreValuePk, isComingFromProfile: self.isComingFromProfilePage) {[weak self] (result) in
+                DispatchQueue.main.async {
+                    self?.feedsTable?.loadCFFControl?.endLoading()
+                    switch result{
+                    case .Success(let result):
+                        if result.fetchedRawFeeds?.count == 0 {
+                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                        }
+                        if let resultData = result.fetchedRawFeeds as? NSDictionary {
+                            if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
+                                self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                                self?.noRecordsLabel?.isHidden = false
+                            }else{
+                                self?.noRecordsLabel?.isHidden = true
+                            }
+                        }
+                        
+                        self?.handleFetchedFeedsResult(fetchedfeeds: result)
+                        self?.handleaddButton(fetchedfeeds: result)
+                    case .SuccessWithNoResponseData:
+                        ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
+                    case .Failure(let error):
+                        ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                    }
                 }
             }
+        }else {
+            var feedFetchInputModel = FeedFetcherInputModel(
+                userPk: userPk,
+                nextPageUrl: lastFetchedFeeds?.nextPageUrl,
+                feedType: isFromUserProfile ? "isFromUserPostPoll" : "postPoll",
+                searchText: searchText,
+                feedTypePk: self.feedTypePk,
+                organisationPK: self.organisationPK,
+                departmentPK: self.departmentPK,
+                dateRangePK: self.dateRangePK,
+                coreValuePk: self.coreValuePk,
+                isComingFromProfile: self.isComingFromProfilePage
+            )
+            
+            FeedFetcher(networkRequestCoordinator: requestCoordinator).fetchFeeds(feedFetchInputModel) {[weak self] (result) in
+                DispatchQueue.main.async {
+                    self?.feedsTable?.loadCFFControl?.endLoading()
+                    switch result{
+                    case .Success(let result):
+                        if result.fetchedRawFeeds?.count == 0 {
+                            self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                        }
+                        if let resultData = result.fetchedRawFeeds as? NSDictionary {
+                            if let feedData = resultData["results"]as? [NSDictionary], feedData.count == 0{
+                                self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
+                                self?.noRecordsLabel?.isHidden = false
+                            }else{
+                                self?.noRecordsLabel?.isHidden = true
+                            }
+                        }
+                        
+                        self?.handleFetchedFeedsResult(fetchedfeeds: result)
+                        self?.handleaddButton(fetchedfeeds: result)
+                    case .SuccessWithNoResponseData:
+                        ErrorDisplayer.showError(errorMsg: "No record Found".localized) { (_) in}
+                    case .Failure(let error):
+                        ErrorDisplayer.showError(errorMsg: error.displayableErrorMessage()) { (_) in}
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func handleaddButton(fetchedfeeds : FetchedFeedModel) {
+        if #available(iOS 11.0, *) {
+            bottomSafeArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+        }else{
+            bottomSafeArea = 0.0
         }
     }
     
@@ -148,6 +276,16 @@ class FeedsViewController: UIViewController {
     
     private func setup(){
         view.backgroundColor = .viewBackgroundColor
+        
+        if let unwrappedCanUserCreatePost = self.mainAppCoordinator?.isUserAllowedToPostFeed(),
+           unwrappedCanUserCreatePost == false{
+            self.createBtnHolderView.isHidden = true
+        }
+        
+        if shouldShowCreateButton || isTypeGreeting {
+            self.createBtnHolderView.isHidden = true
+        }
+        
         setupTopBar()
         setupTableView()
     }
@@ -161,7 +299,7 @@ class FeedsViewController: UIViewController {
         whatsInYourMindView?.backgroundColor = UIColor.grayBackGroundColor()
         cameraContainerViewView?.curvedCornerControl()
         cameraContainerViewView?.backgroundColor = UIColor.grayBackGroundColor()
-        composeLabel?.text = "Whats on your mind"
+        composeLabel?.text = "Whats on your mind".localized
         composeLabel?.font = .Highlighter1
         composeLabel?.textColor = .getSubTitleTextColor()
     }
@@ -173,7 +311,7 @@ class FeedsViewController: UIViewController {
         feedsTable?.estimatedRowHeight = 500
         feedsTable?.dataSource = self
         feedsTable?.delegate = self
-        feedsTable?.loadCFFControl = CFFLoadControl(target: self, action: #selector(loadFeeds))
+        feedsTable?.loadCFFControl = CFFLoadControl(target: self, action: #selector(bottomLoader))
         feedsTable?.loadCFFControl?.tintColor = .gray
         feedsTable?.loadCFFControl?.heightLimit = 100.0
     }
@@ -182,11 +320,54 @@ class FeedsViewController: UIViewController {
 extension FeedsViewController{
     
     @IBAction func openFeedComposerSelectionDrawer(){
+        continueWithFeedCreation(nil, nil)
+    }
+    
+    private func triggerMutiOrgPath(){
+        let orgPicker = FeedOrganisationSelectionViewController(
+            FeedOrganisationSelectionInitModel(
+                requestCoordinator: requestCoordinator,
+                selectionCompletionHandler: { [weak self] selectedOrganisationsAndDeparments,displayable  in
+                    self?.continueWithFeedCreation(selectedOrganisationsAndDeparments, displayable)
+                })
+        )
+        feedCoordinatorDelegate.showMultiOrgPicker(orgPicker, presentationOption: .Navigate) { topBarModel in
+            orgPicker.containerTopBarModel = topBarModel
+        }
+    }
+    
+    private func continueWithFeedCreation(_ selectedOrganisationsAndDeparments: FeedOrganisationDepartmentSelectionModel?, _ displayable : FeedOrganisationDepartmentSelectionDisplayModel?){
         let drawer = FeedsComposerDrawer(nibName: "FeedsComposerDrawer", bundle: Bundle(for: FeedsComposerDrawer.self))
+        drawer.mainAppCoordinator = mainAppCoordinator
         drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
         drawer.requestCoordinator = requestCoordinator
         drawer.mediaFetcher = mediaFetcher
         drawer.themeManager = themeManager
+        drawer.selectedOrganisationsAndDepartment = selectedOrganisationsAndDeparments
+        drawer.displayable = displayable
+        
+        do{
+            if let unwrappedCanUserCreatePost = self.mainAppCoordinator?.isUserAllowedToCreatePoll(),
+               unwrappedCanUserCreatePost == false{
+                try drawer.opnPostViewController()
+            }else{
+                try drawer.presentDrawer()
+            }
+        }catch let error{
+            print("show error")
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+            }
+        }
+    }
+    
+    @IBAction func openImagePickerToComposePost(){
+        let drawer = FeedsImageDrawer(nibName: "FeedsImageDrawer", bundle: Bundle(for: FeedsImageDrawer.self))
+        drawer.mainAppCoordinator = mainAppCoordinator
+        drawer.feedCoordinatorDeleagate = feedCoordinatorDelegate
+        drawer.requestCoordinator = requestCoordinator
+        drawer.mediaFetcher = mediaFetcher
+        drawer.themeManager = themeManager
+        drawer.delegate = self
         do{
             try drawer.presentDrawer()
         }catch let error{
@@ -196,12 +377,66 @@ extension FeedsViewController{
         }
     }
     
-    @IBAction func openImagePickerToComposePost(){
-        PhotosPermissionChecker().checkPermissions {[weak self] in
-            self?.showImagePicker()
+    func openCameraInput(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        switch authStatus {
+        case .authorized:
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+            break
+        case .denied:
+            self.alertPromptToAllowCameraAccessViaSettings()
+            break
+        default:
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+            break
         }
     }
     
+    func alertPromptToAllowCameraAccessViaSettings() {
+        DispatchQueue.main.async {
+            let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")as? String ?? ""
+            let alert = UIAlertController(title: "\"\(String(describing: appName))\" Would Like To Access the Camera/Gallery", message: "Please grant permission", preferredStyle: .alert )
+            alert.addAction(UIAlertAction(title: "Open Settings", style: .cancel) { alert in
+                if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSettingsURL)
+                }
+            })
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var placeholderAsset: PHObjectPlaceholder? = nil
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        PHPhotoLibrary.shared().performChanges({
+            let newAssetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+            placeholderAsset = newAssetRequest.placeholderForCreatedAsset
+        }, completionHandler: { [weak self] (sucess, error) in
+            DispatchQueue.main.async {
+                if sucess, let `self` = self, let identifier = placeholderAsset?.localIdentifier {
+                    guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [identifier], options: nil).firstObject else { return }
+                    AssetGridViewController.presentCameraPickerStack(presentationModel: CameraPickerPresentationModel(localMediaManager: LocalMediaManager(), selectedAssets: nil, assetSelectionCompletion: { (selectedMediaItems) in
+                        FeedComposerCoordinator(
+                            delegate: self.feedCoordinatorDelegate,
+                            requestCoordinator: self.requestCoordinator,
+                            mediaFetcher: self.mediaFetcher,
+                            selectedAssets: selectedMediaItems,
+                            themeManager: self.themeManager,
+                            selectedOrganisationsAndDepartments: nil,
+                            mainAppCoordinator: self.mainAppCoordinator
+                        ).showFeedItemEditor(type: .Post)
+                    }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: self.themeManager, _identifier: asset.localIdentifier, _mediaType: asset.mediaType, _asset: asset))
+                }
+            }
+        })
+        dismiss(animated: true, completion: nil)
+    }
     private func showImagePicker(){
         AssetGridViewController.presentMediaPickerStack(
             presentationModel: MediaPickerPresentationModel(
@@ -213,7 +448,9 @@ extension FeedsViewController{
                         requestCoordinator: self.requestCoordinator,
                         mediaFetcher: self.mediaFetcher,
                         selectedAssets: selectedMediaItems,
-                        themeManager: self.themeManager
+                        themeManager: self.themeManager,
+                        selectedOrganisationsAndDepartments: nil,
+                        mainAppCoordinator: self.mainAppCoordinator
                     ).showFeedItemEditor(type: .Post)
             }, maximumItemSelectionAllowed: 10, presentingViewController: self, themeManager: themeManager
             )
@@ -226,6 +463,25 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return feedSectionFactory.getNumberOfSections()
+//
+//        if feedSectionFactory.getNumberOfSections() > 0 {
+//                //self.feedsTable?.backgroundView = nil
+//                //self.feedsTable?.separatorStyle = .singleLine
+//                return feedSectionFactory.getNumberOfSections()
+//            }
+//
+//            let rect = CGRect(x: 0,
+//                              y: 0,
+//                              width: self.feedsTable?.bounds.size.width ?? 360,
+//                              height: self.feedsTable?.bounds.size.height ?? 360)
+//            let noDataLabel: UILabel = UILabel(frame: rect)
+//            noDataLabel.text = "No Records Found!"
+//            noDataLabel.textColor = .black
+//            noDataLabel.textAlignment = NSTextAlignment.center
+//            self.feedsTable?.backgroundView = noDataLabel
+//            self.feedsTable?.separatorStyle = .none
+//
+//            return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -233,6 +489,7 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        self.noRecordsLabel?.isHidden = feedSectionFactory.getNumberOfRows(section: 0) > 0 ? true : false
         return  feedSectionFactory.getCell(indexPath: indexPath, tableView: tableView)
     }
     
@@ -246,26 +503,137 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if getFeedItem(indexPath.section).shouldShowDetail(){
-            let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
-            feedDetailVC.themeManager = themeManager
-            feedDetailVC.mainAppCoordinator = mainAppCoordinator
-            feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
-            feedDetailVC.mediaFetcher = mediaFetcher
-            feedDetailVC.requestCoordinator = requestCoordinator
-            feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
-            feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
-            feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
+        if isTypeGreeting {} else {
+            if getFeedItem(indexPath.section).shouldShowDetail(){
+                UserDefaults.standard.setValue(false, forKey: "notRefreshFeedDetail")
+                let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+                feedDetailVC.themeManager = themeManager
+                feedDetailVC.showDisplayOptions = .POSTPOLL
+                feedDetailVC.mainAppCoordinator = mainAppCoordinator
+                feedDetailVC.targetFeedItem = getFeedItem(indexPath.section) //feeds[indexPath.section]
+                feedDetailVC.mediaFetcher = mediaFetcher
+                feedDetailVC.requestCoordinator = requestCoordinator
+                feedDetailVC.feedCoordinatorDelegate = feedCoordinatorDelegate
+                feedDetailVC.pollSelectedAnswerMapper = pollSelectedAnswerMapper
+                feedDetailVC.isPostPollType = true
+                feedCoordinatorDelegate.showFeedDetail(feedDetailVC)
+            }
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.loadCFFControl?.update()
+        if scrollView.contentOffset.y <= 0
+        {
+            scrollView.contentOffset = .zero
+        }
     }
 }
 
 extension FeedsViewController : FeedsDelegate{
-    func toggleLikeForComment(commentIdentifier: Int64) {}
+    func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
+        if let feed = getFeedItem(feedIdentifier: feedIdentifier){
+            let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
+            feedCoordinatorDelegate.openOtherProfileView(feedDetailVC, otherUserPk: feed.getCreatorUserPK())
+        }
+    }
+    func editComment(commentIdentifier: Int64, chatMessage: String, commentedByPk: Int) {
+        
+    }
+    
+    func deleteComment(commentIdentifier: Int64) {
+        
+    }
+    
+    func showPostReactions(feedIdentifier: Int64) {
+        let storyboard = UIStoryboard(name: "CommonFeeds",bundle: Bundle(for: CommonFeedsViewController.self))
+        let controller = storyboard.instantiateViewController(withIdentifier: "BOUSReactionsListViewController") as! BOUSReactionsListViewController
+        controller.postId = Int(feedIdentifier)
+        controller.requestCoordinator = requestCoordinator
+        controller.mediaFetcher = mediaFetcher
+        self.tabBarController?.tabBar.isHidden = true
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "hideMenuButton"), object: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func postReaction(feedId: Int64, reactionType: String) {
+        if let feed = getFeedItem(feedIdentifier: feedId){
+            if let reactionId = reactionType as? String{
+                BOUSReactionPostWorker(networkRequestCoordinator: requestCoordinator).postReaction(postId: Int(feedId), reactionType: Int(reactionId)!){ (result) in
+                    DispatchQueue.main.async {
+                        switch result{
+                        case .Success(result: let result):
+                            CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
+                                let post = ((feed as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
+                                if let likesResult =  result as? NSDictionary {
+                                    if let dataVal = likesResult["post_reactions"] as? NSArray {
+                                        post?.reactionTypesData =  dataVal
+                                        post?.messageType = Int64(likesResult.object(forKey: "reaction_type") as? Int ?? -1)
+                                        post?.numberOfLikes = Int64(dataVal.count)
+                                    }
+                                }
+                                CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
+                                    CFFCoreDataManager.sharedInstance.manager.saveChangesToStore()
+                                }
+                            }
+                            
+                            break
+                        case .SuccessWithNoResponseData:
+                            fallthrough
+                        case .Failure(_):
+                            ErrorDisplayer.showError(errorMsg: "Failed to post, please try again.".localized) { (_) in}
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    func showPostReactions() {
+        
+    }
+    
+    func toggleLikeForComment(commentIdentifier: Int64) {
+        
+    }
+    
+    func pinToPost(feedIdentifier : Int64, isAlreadyPinned: Bool) {
+        print("<<<<<<Feed identifier-\(feedIdentifier)")
+        showPintoPostConfirmation(feedIdentifier, isAlreadyPinned: isAlreadyPinned)
+    }
+        
+    private func showPintoPostConfirmation(_ feedIdentifier : Int64, isAlreadyPinned: Bool){
+        let pinPostDrawer = PintoTopConfirmationDrawer(
+            nibName: "PintoTopConfirmationDrawer",
+            bundle: Bundle(for: PintoTopConfirmationDrawer.self)
+        )
+        pinPostDrawer.themeManager = themeManager
+        pinPostDrawer.isAlreadyPinned = isAlreadyPinned
+        pinPostDrawer.targetFeed = getFeedItem(feedIdentifier: feedIdentifier)
+        pinPostDrawer.confirmedCompletion = {postFrequency in
+            PostPinWorker(networkRequestCoordinator: self.requestCoordinator).postPin(feedIdentifier, frequency: postFrequency) { (result) in
+                DispatchQueue.main.async {
+                    switch result{
+                    case .Success(_):
+                        
+                        ErrorDisplayer.showError(errorMsg: isAlreadyPinned ? "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll") is unpinned successfully".localized : "\(pinPostDrawer.targetFeed?.getFeedType() == .Post ? "Post" : "Poll") is pinned successfully".localized, okActionHandler: { (_) in
+                          NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
+                        })
+                    case .SuccessWithNoResponseData:
+                        fallthrough
+                    case .Failure(_):
+                        ErrorDisplayer.showError(errorMsg: "Failed to pin poll, please try again.".localized) { (_) in}
+                    }
+                }
+            }
+        }
+        do{
+            try pinPostDrawer.presentDrawer()
+        }catch {
+            
+        }
+    }
     
     func showAllClaps(feedIdentifier: Int64) {
         print("show all claps for \(feedIdentifier)")
@@ -276,7 +644,7 @@ extension FeedsViewController : FeedsDelegate{
         )
         feedCoordinatorDelegate.showPostLikeList(likeListVC, presentationOption: .Navigate) { (topBarModel) in
             likeListVC.containerTopBarModel = topBarModel
-        } 
+        }
     }
     
     func submitPollAnswer(feedIdentifier : Int64){
@@ -304,7 +672,7 @@ extension FeedsViewController : FeedsDelegate{
                 
             }
         }else{
-            ErrorDisplayer.showError(errorMsg: "Please select an option.") { (_) in
+            ErrorDisplayer.showError(errorMsg: "Please select an option.".localized) { (_) in
                 
             }
         }
@@ -340,7 +708,7 @@ extension FeedsViewController : FeedsDelegate{
                     }
                 case .SuccessWithNoResponseData:
                     fallthrough
-                case .Failure(error: _):
+                case .Failure(error: let _):
                     print("<<<<<<<<<< like/unlike call completed \(result)")
                 }
                 
@@ -353,7 +721,7 @@ extension FeedsViewController : FeedsDelegate{
         fetchRequest.predicate = NSPredicate (format: "postId == %d", feedIdentifier)
         do{
             let filterfilteredFeeds = try CFFCoreDataManager.sharedInstance.manager.mainQueueContext.fetch(fetchRequest)
-            return filterfilteredFeeds.first?.getRawObject() as? FeedsItemProtocol
+            return filterfilteredFeeds.first?.getRawObject() as! FeedsItemProtocol
         }catch{
             return nil
         }
@@ -377,35 +745,41 @@ extension FeedsViewController : FeedsDelegate{
     
     func showFeedEditOptions(targetView : UIView?, feedIdentifier : Int64) {
         print("show edit option")
+        var numberofElementsEnabled : CGFloat = 0.0
         if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
-            var options = [FloatingMenuOption]()
-            if feed.getFeedType() == .Post,
-            feed.isFeedEditAllowed(){
-                options.append(
-                    FloatingMenuOption(title: "EDIT", action: {
-                        print("Edit post - \(feedIdentifier)")
-                        self.openFeedEditor(feed)
-                    }
-                    )
-                )
+            let drawer = PostPollSelfBottomSheet(nibName: "PostPollSelfBottomSheet", bundle: Bundle(for: PostPollSelfBottomSheet.self))
+            drawer.bottomsheetdelegate = self
+            drawer.feedIdentifier = feedIdentifier
+            drawer.isPostAlreadyPinned = feed.isPinToPost()
+
+            if feed.isFeedEditAllowed() && feed.getFeedType() == .Post {
+                drawer.isEditEnabled = true
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }else{
+                drawer.isEditEnabled = false
             }
-            if feed.isFeedDeleteAllowed(){
-                options.append( FloatingMenuOption(title: "DELETE", action: {[weak self] in
-                    print("Delete post- \(feedIdentifier)")
-                    self?.showDeletePostConfirmation(feedIdentifier)
-                    }
-                    )
-                )
+            
+            if feed.isLoggedUserAdmin()  == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
             }
-            if feed.isFeedReportAbuseAllowed(){
-                options.append( FloatingMenuOption(title: "REPORT ABUSE", action: {[weak self] in
-                    print("report abuse- \(feedIdentifier)")
-                    self?.showReportAbuseConfirmation(feedIdentifier)
-                    }
-                    )
-                )
+
+            if feed.isFeedDeleteAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
             }
-            FloatingMenuOptions(options: options).showPopover(sourceView: targetView!)
+            if feed.isFeedReportAbuseAllowed() == true{
+                numberofElementsEnabled = numberofElementsEnabled + 1
+            }
+            
+            drawer.isPintoPostEnabled = (feed.isLoggedUserAdmin() && !isFromUserProfile)
+            drawer.isDeleteEnabled = feed.isFeedDeleteAllowed()
+            drawer.isreportAbusedEnabled = feed.isFeedReportAbuseAllowed()
+            do{
+                try drawer.presentDrawer(numberofElementsEnabled: numberofElementsEnabled)
+            }catch let error{
+                print("show error")
+                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
+                }
+            }
         }
     }
     
@@ -415,7 +789,9 @@ extension FeedsViewController : FeedsDelegate{
             requestCoordinator: requestCoordinator,
             mediaFetcher: mediaFetcher,
             selectedAssets: nil,
-            themeManager: themeManager
+            themeManager: themeManager,
+            selectedOrganisationsAndDepartments: nil,
+            mainAppCoordinator: mainAppCoordinator
         ).editPost(feed: feed)
     }
     
@@ -429,7 +805,7 @@ extension FeedsViewController : FeedsDelegate{
         deleteConfirmationDrawer.deletePressedCompletion = {[weak self] in
             print("<<<<<<<<< proceed with feed delete \(feedIdentifier)")
             if let unwrappedSelf = self{
-                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier) { (result) in
+                PostDeleteWorker(networkRequestCoordinator: unwrappedSelf.requestCoordinator).deletePost(feedIdentifier, revertUserPoints: false) { (result) in
                     switch result{
                     case .Success(result: _):
                         DispatchQueue.main.async {[weak self] in
@@ -443,7 +819,7 @@ extension FeedsViewController : FeedsDelegate{
                                         }
                                     }
                                 }
-                                 ErrorDisplayer.showError(errorMsg: "Deleted successfully.") { (_) in}
+                                ErrorDisplayer.showError(errorMsg: "Deleted successfully.".localized) { (_) in}
                             }
                         }
                     case .SuccessWithNoResponseData:
@@ -474,11 +850,11 @@ extension FeedsViewController : FeedsDelegate{
                 DispatchQueue.main.async {
                     switch result{
                     case .Success(_):
-                        ErrorDisplayer.showError(errorMsg: "Reported successfully.") { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Reported successfully.".localized) { (_) in}
                     case .SuccessWithNoResponseData:
                         fallthrough
                     case .Failure(_):
-                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.") { (_) in}
+                        ErrorDisplayer.showError(errorMsg: "Failed to report, please try again.".localized) { (_) in}
                     }
                 }
                 
@@ -494,6 +870,14 @@ extension FeedsViewController : FeedsDelegate{
 
 
 extension FeedsViewController : FeedsDatasource{
+    func getPostShareOption() -> SharePostOption {
+        return .MyOrg //dummy will be changes if we plan to show selected org/department on feed detail
+    }
+    
+    func getPostSharedWithOrgAndDepartment() -> FeedOrganisationDepartmentSelectionDisplayModel? {
+        return nil
+    }
+    
     
     func shouldShowMenuOptionForFeed() -> Bool {
         return mainAppCoordinator?.isUserAllowedToPostFeed() ?? true
@@ -578,7 +962,37 @@ extension FeedsViewController:  NSFetchedResultsControllerDelegate {
     
     // did change
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
         feedsTable?.endUpdates()
     }
 }
+extension FeedsViewController:  FeedsImageDelegate {
+    func selectedImageType(isCamera : Bool) {
+        if isCamera {
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.openCameraInput()
+            }
+        }else{
+            PhotosPermissionChecker().checkPermissions {[weak self] in
+                self?.showImagePicker()
+            }
+        }
+    }
+}
 
+extension FeedsViewController : Click3DotsByMeFilterTypeProtocol {
+    func selectedFilterType(selectedType: Click3DotsByMeFilterType, feedIdentifier: Int64, isPostAlreadyPinned: Bool) {
+        switch selectedType {
+        case .Edit:
+            if let feed =  getFeedItem(feedIdentifier: feedIdentifier){
+                self.openFeedEditor(feed)
+            }
+        case .Pin:
+            self.pinToPost(feedIdentifier: feedIdentifier, isAlreadyPinned: isPostAlreadyPinned)
+        case .Delete:
+            self.showDeletePostConfirmation(feedIdentifier)
+        case .ReportAbuse:
+            self.showReportAbuseConfirmation(feedIdentifier)
+        }
+    }
+}

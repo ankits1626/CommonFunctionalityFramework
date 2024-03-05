@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FeedsComposerDrawerError {
-    static let UnableToGetTopViewController = NSError(
+public class FeedsComposerDrawerError {
+    public static let UnableToGetTopViewController = NSError(
         domain: "com.commonfunctionality.FeedsComposerDrawer",
         code: 1,
         userInfo: [NSLocalizedDescriptionKey: "Unable to get top view controller"]
@@ -18,6 +18,11 @@ class FeedsComposerDrawerError {
 
 class FeedsComposerDrawer: UIViewController {
     
+    @IBOutlet weak var pollImg: UIImageView!
+    @IBOutlet weak var postImg: UIImageView!
+    @IBOutlet weak var createNewLabel : UILabel?
+    @IBOutlet weak var postLabel : UILabel?
+    @IBOutlet weak var pollLabel : UILabel?
     @IBOutlet private weak var createPostButton : UIButton?
     @IBOutlet private weak var createPollButton : UIButton?
     var feedCoordinatorDeleagate: FeedsCoordinatorDelegate!
@@ -25,23 +30,32 @@ class FeedsComposerDrawer: UIViewController {
     var requestCoordinator: CFFNetworkRequestCoordinatorProtocol!
     weak var mediaFetcher : CFFMediaCoordinatorProtocol?
     weak var themeManager: CFFThemeManagerProtocol?
+    var selectedOrganisationsAndDepartment : FeedOrganisationDepartmentSelectionModel?
+    var displayable : FeedOrganisationDepartmentSelectionDisplayModel?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+       // setup()
+        pollImg.setImageColor(color: UIColor.getControlColor())
+        postImg.setImageColor(color: UIColor.getControlColor())
+        createNewLabel?.text = "Create new".localized
+        postLabel?.text = "POST".localized
+        pollLabel?.text = "POLL".localized
     }
     
     private func setup() {
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-        setupButtons()
+        //setupButtons()
     }
     
     private func setupButtons(){
-        createPollButton?.setTitle("CREATE POLL", for: .normal)
+        createPollButton?.setTitle("CREATE POLL".localized, for: .normal)
         createPollButton?.borderedControl()
         createPollButton?.titleLabel?.font = UIFont.Button
         createPollButton?.setTitleColor(.black, for: .normal)
-        createPostButton?.setTitle("CREATE POST", for: .normal)
+        createPostButton?.setTitle("CREATE POST".localized, for: .normal)
         createPostButton?.borderedControl()
         createPostButton?.titleLabel?.font = UIFont.Button
         createPostButton?.setTitleColor(.black, for: .normal)
@@ -49,7 +63,7 @@ class FeedsComposerDrawer: UIViewController {
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: 198.0)
+            slideInTransitioningDelegate.direction = .bottom(height: 228)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
@@ -58,6 +72,9 @@ class FeedsComposerDrawer: UIViewController {
         }
     }
     
+    func opnPostViewController() throws{
+        dismissAndShowEditor(type: .Post)
+    }
 }
 
 extension FeedsComposerDrawer{
@@ -74,7 +91,11 @@ extension FeedsComposerDrawer{
             FeedComposerCoordinator(
                 delegate: self.feedCoordinatorDeleagate,
                 requestCoordinator: self.requestCoordinator,
-                mediaFetcher: self.mediaFetcher, selectedAssets: nil, themeManager: self.themeManager).showFeedItemEditor(type: type)
+                mediaFetcher: self.mediaFetcher,
+                selectedAssets: nil,
+                themeManager: self.themeManager,
+                selectedOrganisationsAndDepartments: self.selectedOrganisationsAndDepartment,
+                mainAppCoordinator: self.mainAppCoordinator).showFeedItemEditor(type: type)
         }
     }
     

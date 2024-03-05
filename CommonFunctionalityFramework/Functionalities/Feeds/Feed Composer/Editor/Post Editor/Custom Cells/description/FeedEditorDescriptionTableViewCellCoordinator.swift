@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol{
-    var delegate : PostEditorCellFactoryDelegate?
+    weak var delegate : PostEditorCellFactoryDelegate?
     var targetIndexPath : IndexPath = []
     
     var tagPicker : ASMentionSelectorViewController?
@@ -18,7 +18,7 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
         let targetCell = inputModel.targetTableView.dequeueReusableCell(
         withIdentifier: cellType.cellIdentifier,
         for: inputModel.targetIndexpath)
-        let post = inputModel.datasource.getTargetPost()
+        let post = inputModel.datasource?.getTargetPost()
         if let cell  = targetCell as? FeedEditorDescriptionTableViewCell{
             cell.descriptionText?.text = post?.postDesciption
             setupCoordinator(cell.descriptionText)
@@ -33,7 +33,7 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
             //cell.descriptionText?.delegate = self
             ASMentionCoordinator.shared.delegate = delegate
             //ASMentionCoordinator.shared.presentingViewController = delegate as? UIViewController
-            cell.descriptionText?.placeholder = "Whats on your mind?"
+            cell.descriptionText?.placeholder = "What would you like to post?".localized
             cell.descriptionText?.placeholderColor = .gray
             
             if let mediaItems = inputModel.datasource.getTargetPost()?.selectedMediaItems,
@@ -46,6 +46,9 @@ class FeedEditorDescriptionTableViewCellCoordinator: NSObject, PostEditorCellCoo
             }
            
             cell.containerView?.clipsToBounds = true
+            cell.amplifyButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+                self?.delegate?.triggerAmplify()
+            })
         }
     }
     
@@ -75,7 +78,9 @@ extension FeedEditorDescriptionTableViewCellCoordinator : UITextViewDelegate{
 
 extension FeedEditorDescriptionTableViewCellCoordinator : ASMentionCoordinatortextUpdateListener{
     func textUpdated() {
-        delegate?.updatePostDescription(decription: ASMentionCoordinator.shared.getPostableTaggedText())
+        delegate?.updatePostDescription(
+            decription: ASMentionCoordinator.shared.getPostableTaggedText()
+        )
         delegate?.reloadTextViewContainingRow(indexpath: targetIndexPath)
     }
 }

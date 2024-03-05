@@ -14,14 +14,20 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 44
+        return 52
     }
-    
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? PollOptionsTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            var delta = 1
+            var delta = 2
+            let feedActive = feed.getPollState()
+            switch feedActive {
+                case .NotActive:
+                    delta = 2
+                default:
+                    delta = 1
+            }
             if !(feed.getFeedTitle()?.isEmpty ?? true){
                 delta = delta + 1
             }
@@ -33,7 +39,7 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
             cell.optionTitle?.text = feedOption?.title
             cell.optionTitle?.font = UIFont.Body1
             cell.containerView?.backgroundColor = .optionContainerBackGroundColor
-            
+            cell.circleLbl.backgroundColor = inputModel.themeManager?.getControlActiveColor()
             if let selectedOptionMapper = inputModel.selectedoptionMapper,
                 selectedOptionMapper.isOptionSelected(feedOption!){
                 cell.optionContainerView?.backgroundColor = .white
@@ -47,9 +53,13 @@ class PollOptionsTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
                     borderColor: .unVotedPollOptionBorderColor ,
                     borderWidth: BorderWidths.standardBorderWidth
                 )
+                cell.optionContainerView?.layer.cornerRadius = 8.0
             }
-            
-            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+               // cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
+            }else{
+                //cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
+            }
             cell.optionSelectionButton?.handleControlEvent(
                 event: .touchUpInside,
                 buttonActionBlock: {

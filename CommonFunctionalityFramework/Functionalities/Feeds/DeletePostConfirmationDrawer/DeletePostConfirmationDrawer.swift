@@ -23,6 +23,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     @IBOutlet private weak var deleteButton : UIButton?
     @IBOutlet private weak var cancelButton : UIButton?
     weak var themeManager: CFFThemeManagerProtocol?
+    var isPostTypeAppreciation : Bool = false
     
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var deletePressedCompletion :(() -> Void)?
@@ -36,18 +37,21 @@ class DeletePostConfirmationDrawer: UIViewController {
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
         closeLabel?.font = .Caption1
+        closeLabel?.text = "Close".localized
         if let type = targetFeed?.getFeedType() {
             switch type {
             case .Poll:
-                titleLabel?.text = "Delete Poll"
-                messageLabel?.text = "Are you sure you want to delete the Poll?"
+                titleLabel?.text = "Delete Poll".localized
+                messageLabel?.text = "Are you sure you want to delete the Poll?".localized
             case .Post:
-                titleLabel?.text = "Delete Post"
-                messageLabel?.text = "Are you sure you want to delete the Post?"
+                titleLabel?.text = "Delete Post".localized
+                messageLabel?.text = !isPostTypeAppreciation ? "Are you sure you want to delete the Post?".localized : "Are you sure you want to delete the Post and revert the points?".localized
+            case .Greeting:
+                break
             }
         }else{
-            titleLabel?.text = "Delete Post"
-            messageLabel?.text = "Are you sure you want to delete the Feed?"
+            titleLabel?.text = "Delete Post".localized
+            messageLabel?.text = "Are you sure you want to delete the Feed?".localized
         }
         
         titleLabel?.font = .Title1
@@ -58,7 +62,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     }
     
     private func configureConfirmButton(){
-        deleteButton?.setTitle("CONFIRM", for: .normal)
+        deleteButton?.setTitle("CONFIRM".localized, for: .normal)
         deleteButton?.titleLabel?.font = .Button
         deleteButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
         deleteButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
@@ -70,7 +74,7 @@ class DeletePostConfirmationDrawer: UIViewController {
     }
     
     private func configureCancelButton(){
-        cancelButton?.setTitle("CANCEL", for: .normal)
+        cancelButton?.setTitle("CANCEL".localized, for: .normal)
         cancelButton?.titleLabel?.font = .Button
         cancelButton?.setTitleColor(.bottomDestructiveButtonTextColor, for: .normal)
         cancelButton?.backgroundColor = .bottomDestructiveBackgroundColor

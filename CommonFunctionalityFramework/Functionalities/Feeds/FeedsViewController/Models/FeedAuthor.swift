@@ -13,6 +13,7 @@ protocol FeedBaseUser{
     func getAuthorName() -> String
     func getAuthorDepartmentName() -> String
     func getAuthorProfileImageUrl() -> String?
+    func getCommentedUserPk() -> Int
 }
 
 extension FeedBaseUser{
@@ -44,6 +45,10 @@ extension FeedBaseUser{
             name.append(" \(getLastName())")
         }
         return name
+    }
+    
+    func getCommentedUserPk() -> Int {
+        return rawUserDictionary["pk"] as? Int ?? 0
     }
     
     private func getFirstName() -> String {

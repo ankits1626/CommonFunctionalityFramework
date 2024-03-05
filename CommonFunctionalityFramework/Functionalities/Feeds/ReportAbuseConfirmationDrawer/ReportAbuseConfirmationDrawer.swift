@@ -10,12 +10,16 @@ import UIKit
 
 class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak var closeLabel : UILabel?
     @IBOutlet private weak var titleLabel : UILabel?
+    @IBOutlet private weak var reportAbuseTitleLabel : UILabel?
+    @IBOutlet private weak var reportAbuseSubTitleLabel : UILabel?
+    @IBOutlet weak var reportAbuseImg: UIImageView!
     @IBOutlet private weak var messageLabel : UILabel?
     @IBOutlet private weak var commentsLabel : UILabel?
     @IBOutlet private weak var confirmButton : UIButton?
     @IBOutlet private weak var cancelButton : UIButton?
     weak var themeManager: CFFThemeManagerProtocol?
     @IBOutlet private weak var descriptionText : KMPlaceholderTextView?
+    var bottomSafeArea : CGFloat!
     
     private lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     var confirmPressedCompletion :((_ notes: String?) -> Void)?
@@ -28,24 +32,21 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     private func setup(){
         view.clipsToBounds = true
         view.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-        closeLabel?.font = .Caption1
-        titleLabel?.text = "Report Abuse"
-        messageLabel?.text = "If you have any concerns regarding the feed please share below."
-        titleLabel?.font = .Title1
-        titleLabel?.font = .Title1
-        messageLabel?.font = .Body3
-        commentsLabel?.font = .Highlighter1
         configureConfirmButton()
         configureCancelButton()
-        descriptionText?.placeholder = "Please type in your concerns"
+        descriptionText?.placeholder = "Please type in your concerns".localized
         descriptionText?.placeholderColor = .gray
         descriptionText?.font = .Body1
         descriptionText?.delegate = self
+        reportAbuseImg.setImageColor(color: UIColor.getControlColor())
+        reportAbuseTitleLabel?.text = "Report Abuse".localized
+        reportAbuseSubTitleLabel?.text = "If you have any concerns regarding this feed.Please share below".localized
     }
     
     private func configureConfirmButton(){
+        confirmButton?.alpha = 0.5
         confirmButton?.isEnabled = false
-        confirmButton?.setTitle("CONFIRM", for: .normal)
+        confirmButton?.setTitle("Report".localized, for: .normal)
         confirmButton?.titleLabel?.font = .Button
         confirmButton?.setTitleColor(.bottomAssertiveButtonTextColor, for: .normal)
         confirmButton?.backgroundColor = themeManager?.getControlActiveColor() ?? .bottomAssertiveBackgroundColor
@@ -57,12 +58,12 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     }
     
     private func configureCancelButton(){
-        cancelButton?.setTitle("CANCEL", for: .normal)
+        cancelButton?.setTitle("Cancel".localized, for: .normal)
         cancelButton?.titleLabel?.font = .Button
         cancelButton?.setTitleColor(.bottomDestructiveButtonTextColor, for: .normal)
         cancelButton?.backgroundColor = .bottomDestructiveBackgroundColor
         if let controlColor = themeManager?.getControlActiveColor(){
-            cancelButton?.curvedBorderedControl(borderColor: controlColor, borderWidth: 1.0)
+            //cancelButton?.curvedBorderedControl(borderColor: controlColor, borderWidth: 1.0)
             cancelButton?.setTitleColor(controlColor, for: .normal)
         }else{
             cancelButton?.curvedBorderedControl()
@@ -71,7 +72,12 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
     
     func presentDrawer() throws{
         if let topviewController : UIViewController = UIApplication.topViewController(){
-            slideInTransitioningDelegate.direction = .bottom(height: 380)
+            if #available(iOS 11.0, *) {
+                bottomSafeArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+            }else{
+                bottomSafeArea = 0.0
+            }
+            slideInTransitioningDelegate.direction = .bottom(height: 510 + bottomSafeArea)
             transitioningDelegate = slideInTransitioningDelegate
             modalPresentationStyle = .custom
             topviewController.present(self, animated: true, completion: nil)
@@ -99,8 +105,10 @@ class ReportAbuseConfirmationDrawer: UIViewController {@IBOutlet private weak va
 extension ReportAbuseConfirmationDrawer : UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
         if !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty{
+            confirmButton?.alpha = 1.0
             confirmButton?.isEnabled = true
         }else{
+            confirmButton?.alpha = 0.5
             confirmButton?.isEnabled = false
         }
     }

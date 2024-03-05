@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="width" constant="22" id="1NP-UV-Hvu"/>
                                     <constraint firstAttribute="height" constant="22" id="vdy-mW-xn4"/>
                                 </constraints>
-                                <state key="normal" image="cff_closeIcon"/>
+                                <state key="normal" image="icon_remove"/>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="cnl-s9-Bvg">
                                 <rect key="frame" x="134.5" y="89.5" width="20" height="20"/>
@@ -46,9 +46,9 @@
                             <constraint firstItem="6tj-I7-h76" firstAttribute="centerX" secondItem="zW6-5X-CQp" secondAttribute="centerX" id="FYi-jZ-W1h"/>
                             <constraint firstItem="6tj-I7-h76" firstAttribute="height" secondItem="zW6-5X-CQp" secondAttribute="height" id="G2z-KL-FdT"/>
                             <constraint firstItem="zW6-5X-CQp" firstAttribute="top" secondItem="Hu7-xb-Cu3" secondAttribute="top" id="KrK-Lz-6av"/>
-                            <constraint firstItem="PLd-lg-HVY" firstAttribute="top" secondItem="Hu7-xb-Cu3" secondAttribute="top" constant="5" id="Nee-by-dYW"/>
+                            <constraint firstItem="PLd-lg-HVY" firstAttribute="top" secondItem="Hu7-xb-Cu3" secondAttribute="top" constant="-1" id="Nee-by-dYW"/>
                             <constraint firstItem="6tj-I7-h76" firstAttribute="centerY" secondItem="zW6-5X-CQp" secondAttribute="centerY" id="Q4h-so-j1w"/>
-                            <constraint firstAttribute="trailing" secondItem="PLd-lg-HVY" secondAttribute="trailing" constant="5" id="cxN-I4-tE4"/>
+                            <constraint firstAttribute="trailing" secondItem="PLd-lg-HVY" secondAttribute="trailing" id="cxN-I4-tE4"/>
                             <constraint firstItem="cnl-s9-Bvg" firstAttribute="centerY" secondItem="zW6-5X-CQp" secondAttribute="centerY" id="h3d-DP-bFx"/>
                             <constraint firstAttribute="trailing" secondItem="zW6-5X-CQp" secondAttribute="trailing" id="mmf-xK-CdI"/>
                             <constraint firstItem="zW6-5X-CQp" firstAttribute="leading" secondItem="Hu7-xb-Cu3" secondAttribute="leading" id="vWK-zH-Qq2"/>
@@ -56,6 +56,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Hu7-xb-Cu3" firstAttribute="leading" secondItem="SIj-3w-nsc" secondAttribute="leading" constant="16" id="2f6-Bj-BLO"/>
                     <constraint firstItem="Hu7-xb-Cu3" firstAttribute="top" secondItem="SIj-3w-nsc" secondAttribute="top" id="QcB-t9-Enq"/>
@@ -75,6 +76,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cff_closeIcon" width="128" height="128"/>
+        <image name="icon_remove" width="18" height="18"/>
     </resources>
 </document>

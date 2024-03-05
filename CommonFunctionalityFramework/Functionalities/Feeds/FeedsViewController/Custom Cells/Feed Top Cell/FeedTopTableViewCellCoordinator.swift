@@ -12,22 +12,30 @@ struct FeedCellDequeueModel {
     var targetIndexpath : IndexPath
     var targetTableView : UITableView
     var datasource: FeedsDatasource
+    var isFeedDetailPage : Bool
+    weak var themeManager: CFFThemeManagerProtocol?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
 }
 
 struct FeedCellLoadDataModel {
     var targetIndexpath : IndexPath
     var targetTableView: UITableView?
     var targetCell : UITableViewCell
-    var datasource: FeedsDatasource
+    weak var datasource: FeedsDatasource!
     var mediaFetcher: CFFMediaCoordinatorProtocol
-    var delegate : FeedsDelegate?
+    weak var delegate : FeedsDelegate?
     weak var selectedoptionMapper : SelectedPollAnswerMapper?
     weak var themeManager: CFFThemeManagerProtocol?
+    weak var mainAppCoordinator : CFFMainAppInformationCoordinator?
+    var isFeedDetailPage : Bool
+    var selectedTab : String
+    var canDownload : Bool = false
+    var isDesklessEnabled : Bool = false
 }
 
 struct FeedCellGetHeightModel {
     var targetIndexpath : IndexPath
-    var datasource: FeedsDatasource
+    weak var datasource: FeedsDatasource!
 }
 
 protocol FeedCellCongiguratorProtocol {
@@ -52,38 +60,131 @@ class FeedTopTableViewCellCoordinator: FeedCellCoordinatorProtocol{
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? FeedTopTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            cell.userName?.text = feed.getUserName()
+//            cell.userName?.text = feed.getUserName()
+//            if let nominatedName = feed.getNominatedByUserName() {
+//                cell.appraacitedBy.text = "From \(nominatedName)"
+//            }
+
+            let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
+            if selectedtabValue == "received" {
+                cell.userName?.text =  "From \(feed.getUserName() ?? "")"
+                cell.appraacitedBy.isHidden = true
+                cell.dot.isHidden = true
+                if let profileImageEndpoint = feed.getUserImageUrl(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+                }
+            }else if selectedtabValue == "SearchFromHome" {
+                if let nominatedName = feed.getHomeUserCreatedName() {
+                    cell.appraacitedBy.text = "From \(nominatedName)"
+                }
+                cell.userName?.text = "\(feed.getHomeUserReceivedName() ?? "")"
+                if let profileImageEndpoint = feed.getHomeUserReceivedImg(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    if let nominatedName = feed.getNominatedByUserName() {
+                        cell.profileImage?.setImageForName(nominatedName ?? "NN", circular: false, textAttributes: nil)
+                    }
+                }
+            }else {
+                if let toUserName = feed.toUserName() {
+                    cell.userName?.text = "To \(toUserName)"
+                    cell.appraacitedBy.isHidden = true
+                    cell.dot.isHidden = true
+                }
+                if let profileImageEndpoint = feed.getGivenTabUserImg(){
+                    inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
+                }else{
+                    cell.profileImage?.setImageForName(feed.getUserName() ?? "NN", circular: false, textAttributes: nil)
+                }
+            }
+
             cell.userName?.font = UIFont.Body2
             cell.userName?.textColor = UIColor.getTitleTextColor()
             cell.departmentName?.text = feed.getDepartmentName()
             cell.departmentName?.font = UIFont.Caption1
             cell.departmentName?.textColor = UIColor.getSubTitleTextColor()
-            cell.dateLabel?.text = feed.getfeedCreationDate()
-            cell.dateLabel?.font = UIFont.Caption1
-            cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
-            cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
-            cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
-            cell.containerView?.clipsToBounds = true
-            if !inputModel.datasource.shouldShowMenuOptionForFeed(){
-                cell.editFeedButton?.isHidden = true
+            cell.dateLabel?.text = feed.getAppreciationCreationMonthDate()
+            //cell.dateLabel?.font = UIFont.Caption1
+            //cell.dateLabel?.textColor = UIColor.getSubTitleTextColor()
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: 0)
+                cell.containerView?.addBorders(edges: [.top, .left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-                cell.editFeedButton?.isHidden = !feed.isActionsAllowed()
+                cell.containerView?.roundCorners(corners: [.topLeft, .topRight], radius: AppliedCornerRadius.standardCornerRadius)
+                cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)
+            }
+            cell.pinPostButton?.setImage(
+                UIImage(
+                    named: feed.isPinToPost() ? "cff_coloredPinPostIcon" : "cff_pinPostIcon",
+                    in: Bundle(for: FeedTopTableViewCell.self),
+                    compatibleWith: nil),
+                for: .normal
+            )
+            cell.pinPostButton?.isHidden = true
+            cell.containerView?.clipsToBounds = true
+             if !inputModel.datasource!.shouldShowMenuOptionForFeed(){
+                cell.editFeedButton?.isHidden = (feed.getNewFeedType() == .Poll || feed.getNewFeedType() == .Post) ? true : !feed.isFeedReportAbuseAllowed()
+            }else{
+                cell.editFeedButton?.isHidden = (feed.getNewFeedType() == .Poll || feed.getNewFeedType() == .Post) ?  !feed.isActionsAllowed() : false
+            }
+            if let unwrappedDelegate = inputModel.delegate{
+                cell.pinPostButton?.handleControlEvent(
+                    event: .touchUpInside, buttonActionBlock: {
+                        unwrappedDelegate.pinToPost(
+                            feedIdentifier: feed.feedIdentifier,
+                            isAlreadyPinned: feed.isPinToPost()
+                        )
+                    }
+                )
+                cell.editFeedButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        unwrappedDelegate.showFeedEditOptions(
+                            targetView: cell.editFeedButton,
+                            feedIdentifier: feed.feedIdentifier
+                        )
+                })
             }
             
-            cell.editFeedButton?.handleControlEvent(
-                event: .touchUpInside,
-                buttonActionBlock: {
-                    inputModel.delegate?.showFeedEditOptions(
-                        targetView: cell.editFeedButton,
-                        feedIdentifier: feed.feedIdentifier
+            cell.pinPostButton?.handleControlEvent(
+                event: .touchUpInside, buttonActionBlock: {
+                    inputModel.delegate?.pinToPost(
+                        feedIdentifier: feed.feedIdentifier,
+                        isAlreadyPinned: feed.isPinToPost()
                     )
-            })
-            if let profileImageEndpoint = feed.getUserImageUrl(){
-                inputModel.mediaFetcher.fetchImageAndLoad(cell.profileImage, imageEndPoint: profileImageEndpoint)
-            }else{
-                cell.profileImage?.image = nil
+                }
+            )
+            
+            if inputModel.isDesklessEnabled {
+                if  feed.getPostType() == .Appreciation {
+                    if inputModel.canDownload {
+                        cell.editFeedButton?.layer.borderWidth = 0
+                        cell.editFeedButton?.setImage(UIImage(named: "icon_setasdefault-2"), for: .normal)
+                        cell.editFeedButton?.isHidden = false
+                        cell.editFeedButton?.handleControlEvent(
+                            event: .touchUpInside,
+                            buttonActionBlock: {
+                                inputModel.delegate?.showFeedEditOptions(
+                                    targetView: cell.editFeedButton,
+                                    feedIdentifier: feed.feedIdentifier
+                                )
+                            })
+                    }else {
+                        cell.editFeedButton?.isHidden = true
+                    }
+                }
+            }else {
+                cell.editFeedButton?.handleControlEvent(
+                    event: .touchUpInside,
+                    buttonActionBlock: {
+                        inputModel.delegate?.showFeedEditOptions(
+                            targetView: cell.editFeedButton,
+                            feedIdentifier: feed.feedIdentifier
+                        )
+                    })
             }
         }
     }
-    
 }

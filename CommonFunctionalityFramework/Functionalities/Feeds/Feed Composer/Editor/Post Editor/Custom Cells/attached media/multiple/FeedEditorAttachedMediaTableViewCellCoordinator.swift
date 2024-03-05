@@ -14,6 +14,10 @@ class FeedEditorAttachedMutipleMediaTableViewCellCoordinator :  PostEditorCellCo
         return inputModel.postImageMapper?.getMediaCount(inputModel.datasource.getTargetPost()) == 1 ? 273 : 122
     }
     
+    deinit{
+        debugPrint("************  FeedEditorAttachedMutipleMediaTableViewCellCoordinator deinit")
+    }
+    
     func loadDataCell(_ inputModel: PostEditorCellLoadDataModel) {
         if let cell  = inputModel.targetCell as? MultipleMediaTableViewCell{
             cell.selectionStyle = .none

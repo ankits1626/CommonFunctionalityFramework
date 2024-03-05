@@ -45,6 +45,10 @@ extension UIFont{
         return UIFont.systemFont(ofSize: 15, weight: .bold)
     }
     
+    static var FloatingButton : UIFont{
+        return UIFont.systemFont(ofSize: 12, weight: .medium)
+    }
+    
     static var SemiBold14 : UIFont{
         return UIFont.systemFont(ofSize: 14, weight: .semibold)
     }
@@ -118,6 +122,10 @@ extension UIColor{
     
     static var feedCellBorderColor : UIColor {
         return .clear
+    }
+    
+    static var pinToPostCellBorderColor : UIColor {
+        return .red
     }
     
     static var unVotedPollOptionBorderColor : UIColor {

@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinatorProtocol{
-    var delegate : PostEditorCellFactoryDelegate?
+    weak var delegate : PostEditorCellFactoryDelegate?
     var targetIndexPath : IndexPath = []
     private weak var targetTableView : UITableView?
     private let POST_MAX_CHARACTER_LENGTH = 80
@@ -20,7 +20,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         let targetCell = inputModel.targetTableView.dequeueReusableCell(
         withIdentifier: cellType.cellIdentifier,
         for: inputModel.targetIndexpath)
-        let post = inputModel.datasource.getTargetPost()
+        let post = inputModel.datasource?.getTargetPost()
         
         if let cell  = targetCell as? FeedEditorTitleTableViewCell{
             cell.titleText?.text = post?.title
@@ -31,7 +31,7 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
     fileprivate func updateMaxCharacterLabel(_ cell: FeedEditorTitleTableViewCell) {
         let length = cell.titleText?.text.count ?? 0
         if length == 0{
-            cell.maxCharacterLabel?.text = "(Max \(max_title_length) Characters)"
+            cell.maxCharacterLabel?.text = "(\("Max".localized) \(max_title_length) \("Characters".localized))"
         }else{
             cell.maxCharacterLabel?.text = "\(max_title_length - (cell.titleText?.text.count ?? 0))"
         }
@@ -44,17 +44,26 @@ class FeedEditorTitleTableViewCellCoordinator: NSObject, PostEditorCellCoordinat
         if let cell = inputModel.targetCell as? FeedEditorTitleTableViewCell{
             cell.selectionStyle = .none
             cell.titleText?.delegate = self
+            cell.amplifyButton?.isHidden = true
             switch post!.postType {
             case .Poll:
-                cell.titleText?.placeholder = "Ask something"
+                cell.titleText?.placeholder = "Write Your Question".localized
                 max_title_length = POLL_MAX_CHARACTER_LENGTH
+                cell.maxCharacterLabel?.isHidden = false
+                cell.amplifyButton?.isHidden = false
+                cell.amplifyButton?.handleControlEvent(event: .touchUpInside, buttonActionBlock: {[weak self] in
+                    self?.delegate?.triggerAmplify()
+                })
             case .Post:
-                cell.titleText?.placeholder = "Title"
-                cell.titleText?.font = .SemiBold14
+                cell.titleText?.placeholder = "Title".localized
+                cell.titleText?.font = .Title1
                 max_title_length = POST_MAX_CHARACTER_LENGTH
+                cell.maxCharacterLabel?.isHidden = true
+            case .Greeting:
+                break
             }
             cell.titleText?.placeholderColor = UIColor.getPlaceholderTextColor()
-            cell.titleText?.placeholderFont = .Body2
+            cell.titleText?.placeholderFont = .Title1
             cell.maxCharacterLabel?.textColor = UIColor.getPlaceholderTextColor()
             cell.maxCharacterLabel?.font = .Caption1
             cell.containerView?.addBorders(edges: [.top, .left, .right], color: .feedCellBorderColor)

@@ -1,56 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Bold.otf">
+            <string>SFProText-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FeedTitleTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="208" id="vJZ-Mk-spy" customClass="FeedTitleTableViewCell" customModule="CommonFunctionalityFramework" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vJZ-Mk-spy" id="vZp-tu-72P">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-4f-ENv">
-                        <rect key="frame" x="16" y="0.0" width="288" height="44"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJk-d9-49Y">
+                        <rect key="frame" x="16" y="0.0" width="288" height="208"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdA-JJ-BXp" customClass="ActiveLabel" customModule="ActiveLabel">
-                                <rect key="frame" x="12" y="12" width="264" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cff_appreciationImage" translatesAutoresizingMaskIntoConstraints="NO" id="tnQ-I9-tvb">
+                                <rect key="frame" x="234" y="5" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Jq6-gO-Bdb"/>
+                                    <constraint firstAttribute="width" constant="50" id="tgB-Db-B9v"/>
+                                </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xhE-VJ-cgu">
+                                <rect key="frame" x="8" y="8" width="226" height="182"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great Communication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUg-7K-rpu">
+                                        <rect key="frame" x="0.0" y="0.0" width="226" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="205-Fc-ce8"/>
+                                            <constraint firstAttribute="width" constant="226" id="zdq-NQ-yz8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppk-96-Eon" customClass="ActiveLabel" customModule="ActiveLabel">
+                                        <rect key="frame" x="0.0" y="25" width="221" height="103"/>
+                                        <string key="text">Title Cell Title CellTitle CellTitle CellTitle CellTitle CellTitle CellTitle CellTitle Cell Title CellTitle CellTitle CellTitle CellTitle CellTitle CellTitle Cell</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="leading" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9C-CW-MBr">
+                                        <rect key="frame" x="0.0" y="132" width="226" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="aIg-ru-KTz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="icon_points-2"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="502" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcs-0q-5qH">
+                                        <rect key="frame" x="0.0" y="182" width="57" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="GtZ-hM-bnz"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Read More">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" metaFont="message" size="11"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                            <tabStops>
+                                                                <textTab alignment="left" location="28.299999237060547">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="56.650001525878906">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="85">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="113.34999847412109">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="141.69999694824219">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="170.05000305175781">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="198.39999389648438">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="226.75">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="255.10000610351562">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="283.45001220703125">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="311.79998779296875">
+                                                                    <options/>
+                                                                </textTab>
+                                                                <textTab alignment="left" location="340.14999389648438">
+                                                                    <options/>
+                                                                </textTab>
+                                                            </tabStops>
+                                                        </paragraphStyle>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                        <color key="NSUnderlineColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dcs-0q-5qH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ppk-96-Eon" secondAttribute="bottom" constant="5" id="4Ef-Vr-htw"/>
+                                    <constraint firstAttribute="trailing" secondItem="dcs-0q-5qH" secondAttribute="trailing" constant="169" id="6Xs-ge-XAv"/>
+                                    <constraint firstItem="WUg-7K-rpu" firstAttribute="leading" secondItem="xhE-VJ-cgu" secondAttribute="leading" id="FLn-Ue-aUQ"/>
+                                    <constraint firstItem="k9C-CW-MBr" firstAttribute="top" secondItem="ppk-96-Eon" secondAttribute="bottom" constant="4" id="GRV-nH-aW4"/>
+                                    <constraint firstItem="k9C-CW-MBr" firstAttribute="leading" secondItem="xhE-VJ-cgu" secondAttribute="leading" id="NRS-h9-DdC"/>
+                                    <constraint firstAttribute="trailing" secondItem="ppk-96-Eon" secondAttribute="trailing" constant="5" id="P9L-AA-rfM"/>
+                                    <constraint firstItem="dcs-0q-5qH" firstAttribute="top" secondItem="k9C-CW-MBr" secondAttribute="bottom" id="Ylu-qi-84E"/>
+                                    <constraint firstItem="ppk-96-Eon" firstAttribute="top" secondItem="WUg-7K-rpu" secondAttribute="bottom" constant="4" id="cS1-K0-60b"/>
+                                    <constraint firstAttribute="trailing" secondItem="k9C-CW-MBr" secondAttribute="trailing" id="flc-PR-B4V"/>
+                                    <constraint firstItem="WUg-7K-rpu" firstAttribute="top" secondItem="xhE-VJ-cgu" secondAttribute="top" id="usc-kG-QEZ"/>
+                                    <constraint firstItem="ppk-96-Eon" firstAttribute="leading" secondItem="xhE-VJ-cgu" secondAttribute="leading" id="zeH-RG-PXT"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="DdA-JJ-BXp" secondAttribute="trailing" constant="12" id="BaD-Lh-eiR"/>
-                            <constraint firstAttribute="bottom" secondItem="DdA-JJ-BXp" secondAttribute="bottom" constant="11.5" id="JqT-3l-rxp"/>
-                            <constraint firstItem="DdA-JJ-BXp" firstAttribute="top" secondItem="BbI-4f-ENv" secondAttribute="top" constant="12" id="Su3-F2-Dmf"/>
-                            <constraint firstItem="DdA-JJ-BXp" firstAttribute="leading" secondItem="BbI-4f-ENv" secondAttribute="leading" constant="12" id="wQR-9o-qa9"/>
+                            <constraint firstAttribute="bottom" secondItem="xhE-VJ-cgu" secondAttribute="bottom" constant="18" id="08N-pA-MhW"/>
+                            <constraint firstItem="xhE-VJ-cgu" firstAttribute="top" secondItem="RJk-d9-49Y" secondAttribute="top" constant="8" id="XTX-YP-Api"/>
+                            <constraint firstAttribute="trailing" secondItem="tnQ-I9-tvb" secondAttribute="trailing" constant="4" id="pPB-BO-XdW"/>
+                            <constraint firstItem="xhE-VJ-cgu" firstAttribute="leading" secondItem="RJk-d9-49Y" secondAttribute="leading" constant="8" id="pfM-zl-78Z"/>
+                            <constraint firstAttribute="trailing" secondItem="xhE-VJ-cgu" secondAttribute="trailing" constant="54" id="rhj-5l-cM7"/>
+                            <constraint firstItem="tnQ-I9-tvb" firstAttribute="top" secondItem="RJk-d9-49Y" secondAttribute="top" constant="5" id="yic-an-yRH"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="BbI-4f-ENv" secondAttribute="bottom" id="MxP-bC-2Uc"/>
-                    <constraint firstItem="BbI-4f-ENv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ufi-Ho-i3I"/>
-                    <constraint firstAttribute="trailing" secondItem="BbI-4f-ENv" secondAttribute="trailing" constant="16" id="ga2-qK-G8u"/>
-                    <constraint firstItem="BbI-4f-ENv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="r0Z-XU-aWl"/>
+                    <constraint firstAttribute="bottom" secondItem="RJk-d9-49Y" secondAttribute="bottom" id="1wz-ni-b0r"/>
+                    <constraint firstItem="RJk-d9-49Y" firstAttribute="leading" secondItem="vZp-tu-72P" secondAttribute="leading" constant="16" id="9sb-gK-PGR"/>
+                    <constraint firstItem="RJk-d9-49Y" firstAttribute="top" secondItem="vZp-tu-72P" secondAttribute="top" id="IF0-B8-tuW"/>
+                    <constraint firstAttribute="trailing" secondItem="RJk-d9-49Y" secondAttribute="trailing" constant="16" id="uoS-sQ-IDN"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <viewLayoutGuide key="safeArea" id="Wpc-Cc-a2a"/>
+            <inset key="separatorInset" minX="5000" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="containerView" destination="BbI-4f-ENv" id="DxC-lz-Uku"/>
-                <outlet property="feedTitle" destination="DdA-JJ-BXp" id="ZoF-Bj-iMg"/>
+                <outlet property="appreciationSubject" destination="WUg-7K-rpu" id="jTO-bZ-P8W"/>
+                <outlet property="containerView" destination="RJk-d9-49Y" id="749-iY-mF0"/>
+                <outlet property="feedText" destination="ppk-96-Eon" id="zav-Kq-PBU"/>
+                <outlet property="feedThumbnail" destination="tnQ-I9-tvb" id="qFJ-g1-yZK"/>
+                <outlet property="pointBtn" destination="k9C-CW-MBr" id="GOc-c8-unB"/>
+                <outlet property="readMorebutton" destination="dcs-0q-5qH" id="txc-Ny-zUy"/>
             </connections>
-            <point key="canvasLocation" x="139" y="87"/>
+            <point key="canvasLocation" x="118.84057971014494" y="150"/>
         </tableViewCell>
     </objects>
     <designables>
-        <designable name="DdA-JJ-BXp"/>
+        <designable name="ppk-96-Eon">
+            <size key="intrinsicContentSize" width="1064" height="20.5"/>
+        </designable>
     </designables>
+    <resources>
+        <image name="cff_appreciationImage" width="86" height="87"/>
+        <image name="icon_points-2" width="36" height="23"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

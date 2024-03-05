@@ -10,8 +10,14 @@ import UIKit
 import ActiveLabel
 
 class FeedTitleTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
-    @IBOutlet weak var feedTitle : ActiveLabel?
+    
+    @IBOutlet weak var feedText : ActiveLabel?
+    @IBOutlet weak var readMorebutton : UIButton?
+    @IBOutlet weak var appreciationSubject : UILabel?
     @IBOutlet weak var containerView : UIView?
+    @IBOutlet weak var pointBtn: UIButton!
+    @IBOutlet weak var feedThumbnail: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

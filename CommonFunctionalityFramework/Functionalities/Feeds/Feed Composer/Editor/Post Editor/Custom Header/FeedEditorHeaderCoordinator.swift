@@ -31,7 +31,7 @@ class FeedEditorHeaderCoordinator {
             )
             header?.headerTitleLabel?.font = UIFont.Highlighter1
             header?.headerTitleLabel?.textColor = .stepperInactiveColor
-            header?.headerTitleLabel?.text = "PHOTOS"
+            header?.headerTitleLabel?.text = "PHOTOS".localized
             header?.headerSecondaryTitleLabel?.isHidden = true
             //configureHeader(ConfigureHeaderInput(view: header, section: input.section))
             return header
@@ -42,6 +42,12 @@ class FeedEditorHeaderCoordinator {
         case .PollOptions:
             fallthrough
         case .PollActiveForDays:
+            fallthrough
+        case .PostType:
+            fallthrough
+        case .AddMedia:
+            fallthrough
+        case .ECardMedia:
             fallthrough
         case .AttachedGif:
             return nil
@@ -64,6 +70,12 @@ class FeedEditorHeaderCoordinator {
         case .PollOptions:
             fallthrough
         case .PollActiveForDays:
+            fallthrough
+        case .AddMedia:
+            fallthrough
+        case .PostType:
+            fallthrough
+        case .ECardMedia:
             fallthrough
         case .AttachedGif:
              return  0

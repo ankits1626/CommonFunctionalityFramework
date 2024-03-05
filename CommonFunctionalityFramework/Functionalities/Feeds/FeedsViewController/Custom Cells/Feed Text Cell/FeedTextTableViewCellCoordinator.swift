@@ -20,15 +20,33 @@ class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
         for: inputModel.targetIndexpath)
         if let cell  = targetCell as? FeedTextTableViewCell{
             let feed = inputModel.datasource.getFeedItem(inputModel.targetIndexpath.section)
-            if inputModel.datasource.showShowFullfeedDescription(){
+            let selectedtabValue = UserDefaults.standard.value(forKey: "selectedTab") as? String ?? ""
+            if selectedtabValue == "GreetingsFeed" {
                 cell.feedText?.numberOfLines = 0
                 cell.feedText?.lineBreakMode = NSLineBreakMode.byClipping
+                cell.readMorebutton?.isHidden = true
+            }else {
+                if inputModel.datasource.showShowFullfeedDescription(){
+                    cell.feedText?.numberOfLines = 0
+                    cell.feedText?.lineBreakMode = NSLineBreakMode.byClipping
+                }
+                cell.readMorebutton?.titleLabel?.attributedText = NSAttributedString(string: "Read More".localized,attributes: [NSAttributedString.Key.underlineStyle : 1])
+                if inputModel.datasource.showShowFullfeedDescription(){
+                    cell.readMorebutton?.isHidden = true
+                }else{
+                   cell.readMorebutton?.isHidden = !(cell.feedText?.isTruncated ?? false)
+                    cell.readMorebutton?.setAttributedTitle(cell.readMorebutton?.titleLabel?.attributedText, for: .normal)
+                }
+                cell.readMorebutton?.isUserInteractionEnabled = false
             }
+            
             cell.feedText?.enabledTypes  = [.url]
             if let unwrappedText = feed.getFeedDescription(){
                 let model = FeedDescriptionMarkupParser.sharedInstance.getDescriptionParserOutputModelForFeed(feedId: feed.feedIdentifier, description: unwrappedText)
                 //cell.feedText?.text = model?.displayableDescription.string
-                 ASMentionCoordinator.shared.getPresentableMentionText(model?.displayableDescription.string, completion: { (attr) in
+                 ASMentionCoordinator.shared.getPresentableMentionText(
+                    model?.displayableDescription.string,
+                    completion: { (attr) in
                     cell.feedText?.text = nil
                     cell.feedText?.attributedText = attr
                 })
@@ -60,13 +78,12 @@ class FeedTextTableViewCellCoordinator : NSObject,  FeedCellCoordinatorProtocol{
                     )
                 }
             })
-            cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
-            if inputModel.datasource.showShowFullfeedDescription(){
-                cell.readMorebutton?.isHidden = true
+            if feed.isPinToPost() && !inputModel.isFeedDetailPage {
+                //cell.containerView?.addBorders(edges: [.left, .right], color: inputModel.themeManager != nil ? inputModel.themeManager!.getControlActiveColor()  : .pinToPostCellBorderColor)
             }else{
-               cell.readMorebutton?.isHidden = !(cell.feedText?.isTruncated ?? false)
+                //cell.containerView?.addBorders(edges: [.left, .right], color: .feedCellBorderColor)
             }
-            cell.readMorebutton?.isUserInteractionEnabled = false
+          
         }
         return targetCell
     }

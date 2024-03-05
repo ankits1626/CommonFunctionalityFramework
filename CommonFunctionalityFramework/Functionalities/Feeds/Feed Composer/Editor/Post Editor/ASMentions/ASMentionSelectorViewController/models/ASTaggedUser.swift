@@ -35,6 +35,6 @@ struct ASTaggedUser {
     }
     
     func getTagMarkup() -> String {
-        return "<tag><display_name>\(displayName.isEmpty ? "\(userId)" : displayName)</display_name><pk>\(userId)</pk><email_id>\(emailId)</email_id></tag>"
+        return "<tag><display_name>\(displayName.isEmpty ? "\(userId)" : displayName)</display_name><user_id>\(userId)</user_id><email_id>\(emailId)</email_id></tag>"
     }
 }
