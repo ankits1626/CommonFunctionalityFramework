@@ -98,6 +98,6 @@ extension FeedEditorTitleTableViewCellCoordinator : UITextViewDelegate{
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        return textView.text.count + (text.count - range.length) <= max_title_length
+        return true
     }
 }

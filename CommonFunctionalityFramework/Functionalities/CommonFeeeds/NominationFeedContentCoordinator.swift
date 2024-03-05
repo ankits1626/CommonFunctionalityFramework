@@ -53,7 +53,19 @@ class NominationFeedContentCoordinator  : CommonFeedContentCoordinatorProtocol{
         let feed = feedsDataSource.getFeedItem(feedIndex)
         var rows = [CommonFeedCellTypeProtocol] ()
         
-        print(feed.getPostType())
+        if let unwrappedQuestionType = feed.getQuestionType(),
+           unwrappedQuestionType.count > 0{
+            for data in unwrappedQuestionType{
+                switch data {
+                case .OneLiner, .MultiLiner, .DepartmentChoice, .LineManagerChoice, .Choice:
+                    print("Show label with q and answers")
+                case .Document:
+                    print("Show attachments")
+                case .Unknown:
+                    break
+                }
+            }
+        }
         
         if feed.getPostType() == .Nomination {
             rows.append(CommonFeedsTopTableViewCellType())

@@ -40,6 +40,7 @@ protocol FeedsDelegate : AnyObject {
     func showPostReactions(feedIdentifier : Int64)
     func deleteComment(commentIdentifier : Int64)
     func editComment(commentIdentifier : Int64, chatMessage : String, commentedByPk : Int)
+    func showTeamInfo()
 }
 
 class FeedSectionFactory{

@@ -14,7 +14,7 @@ class PollOptionsVotedTableViewCellCoordinator:  FeedCellCoordinatorProtocol{
     }
     
     func getHeight(_ inputModel: FeedCellGetHeightModel) -> CGFloat {
-        return 52
+        return 65
     }
     
     func loadDataCell(_ inputModel: FeedCellLoadDataModel) {

@@ -25,4 +25,5 @@ class FeedOrgaisationTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var selectJobFamilyContainerView : UIView?
     @IBOutlet weak var selectAllDepartmentView : UIView?
     @IBOutlet weak var selectAllStackView : UIStackView?
+    
 }

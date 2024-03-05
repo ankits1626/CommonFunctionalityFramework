@@ -531,6 +531,10 @@ extension FeedsViewController : UITableViewDataSource, UITableViewDelegate{
 }
 
 extension FeedsViewController : FeedsDelegate{
+    func showTeamInfo() {
+        debugPrint("team info clicked")
+    }
+    
     func showUserProfileView(targetView: UIView?, feedIdentifier: Int64) {
         if let feed = getFeedItem(feedIdentifier: feedIdentifier){
             let feedDetailVC = FeedsDetailViewController(nibName: "FeedsDetailViewController", bundle: Bundle(for: FeedsDetailViewController.self))
@@ -566,10 +570,11 @@ extension FeedsViewController : FeedsDelegate{
                             CFFCoreDataManager.sharedInstance.manager.privateQueueContext.perform {
                                 let post = ((feed as? RawObjectProtocol)?.getManagedObject() as? ManagedPost)
                                 if let likesResult =  result as? NSDictionary {
+                                    let reactionCount = likesResult["count"] as? Int ?? 0
+                                    post?.numberOfLikes = Int64(reactionCount)
                                     if let dataVal = likesResult["post_reactions"] as? NSArray {
                                         post?.reactionTypesData =  dataVal
                                         post?.messageType = Int64(likesResult.object(forKey: "reaction_type") as? Int ?? -1)
-                                        post?.numberOfLikes = Int64(dataVal.count)
                                     }
                                 }
                                 CFFCoreDataManager.sharedInstance.manager.pushChangesToUIContext {
