@@ -11,7 +11,7 @@ import RewardzCommonComponents
 import SDWebImage
 
 public protocol InspireMeDelegate {
-    func aiText(userText: String)
+    func aiText(contentData : NSDictionary)
 }
 
 enum AmpliFyMessageTone : Int, CaseIterable{
@@ -58,6 +58,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     public var mainAppCoordinator : CFFMainAppInformationCoordinator!
     public var mediaCoordinator : CFFMediaCoordinatorProtocol!
     public var networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol!
+    public var isJSONRequired : Bool = true
     
     @IBOutlet weak var collectionVIew: UICollectionView!
     @IBOutlet weak var holderImg: UIImageView!
@@ -70,6 +71,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var regenerateBtn: UIButton!
     public var inputModel : AmplifyRequestHelperProtocol!
     var aiMessage = ""
+    var amplifyData : NSDictionary?
     public var delegate : InspireMeDelegate?
     @IBOutlet weak var blurImg: UIImageView!
     @IBOutlet weak var holderView: UIView!
@@ -177,7 +179,8 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
         if ConnectionManager.shared.hasConnectivity() {
             InspireMeFormWorker(networkRequestCoordinator: networkRequestCoordinator).getInspireMe(
                 model: callAmplifyModel ?? inputModel,
-                language: mainAppCoordinator.getLaguageNameFromSlug(currentlySelectedLanguageSlug)
+                language: mainAppCoordinator.getLaguageNameFromSlug(currentlySelectedLanguageSlug), 
+                isRequestJson: self.isJSONRequired
             ) { [weak self] (result) in
                 DispatchQueue.main.async {
                     guard let unwrappedSelf = self else {
@@ -187,7 +190,35 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                     switch result{
                     case .Success(result: let response):
                         unwrappedSelf.showLoaderByHidingElements(shouldHide: false)
-                        if let aiMessage = response["ai_message"] as? String {
+                        if let aiMessage = response["ai_message"] as? NSDictionary {
+                            if unwrappedSelf.firstMessageCount == 0 {
+                                unwrappedSelf.firstFetchedOriginalText = aiMessage.object(forKey: "content") as? String ?? ""
+                                unwrappedSelf.firstMessageCount = 1
+                            }
+                            if let unwrppedContent = aiMessage.object(forKey: "content") as? String {
+                                unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = unwrppedContent
+                                unwrappedSelf.aiMessage = unwrppedContent
+                                let aiMessage = Message(title: aiMessage.object(forKey: "title") as? String ?? "", content: unwrppedContent)
+                                let formattedMessage = aiMessage.formattedMessage()
+                                unwrappedSelf.inspireMeGeneratedTxtField.attributedText = formattedMessage
+                            }
+                            
+                            if let unwrppedContent = aiMessage.object(forKey: "Poll Question") as? String {
+                                unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = unwrppedContent
+                                unwrappedSelf.aiMessage = unwrppedContent
+                                let aiPoll = PollContent(options: [
+                                    "1 text": aiMessage.object(forKey: "Option 1 text") as? String ?? "",
+                                    "2 text": aiMessage.object(forKey: "Option 2 text") as? String ?? "",
+                                    "3 text": aiMessage.object(forKey: "Option 3 text") as? String ?? "",
+                                    "4 text": aiMessage.object(forKey: "Option 4 text") as? String ?? ""
+                                ], question: unwrppedContent)
+
+                                let formattedPoll = aiPoll.formattedPoll()
+                                unwrappedSelf.inspireMeGeneratedTxtField.attributedText = formattedPoll
+                            }
+                            
+                            unwrappedSelf.amplifyData = aiMessage
+                        }else if let aiMessage = response["ai_message"] as? String {
                             if unwrappedSelf.firstMessageCount == 0 {
                                 unwrappedSelf.firstFetchedOriginalText = aiMessage
                                 unwrappedSelf.firstMessageCount = 1
@@ -195,6 +226,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                             unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = aiMessage
                             unwrappedSelf.aiMessage = aiMessage
                             unwrappedSelf.inspireMeGeneratedTxtField.text = aiMessage
+                            unwrappedSelf.amplifyData = response
                         }
                         unwrappedSelf.collectionVIew.reloadData()
                     case .Failure(_):
@@ -214,7 +246,9 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     @IBAction func useThisBtnPressed(_ sender: Any) {
         //        commonToolTipDisplay(toolTipLbl: label, transformLbl: labelTransform, disableToolTip: label, disableTransformLbl: labelTransform)
         //        UIPasteboard.general.string = self.aiMessage
-        delegate?.aiText(userText: self.aiMessage)
+        if let unwrappedAmplifyData = self.amplifyData {
+            delegate?.aiText(contentData: unwrappedAmplifyData)
+        }
         self.dismiss(animated: true)
     }
     
@@ -261,6 +295,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         currentMessageTone = AmpliFyMessageTone.allCases[indexPath.row]
         let userStringORAiString = shouldUsefirstFetchedOriginalText ? firstFetchedOriginalText : inputModel.getUserInputText()
+        self.isJSONRequired = false
         if let cachedMessage = generatedMessageRepository[currentMessageTone]{
             self.inspireMeGeneratedTxtField.text = cachedMessage
             self.aiMessage = cachedMessage
@@ -368,5 +403,71 @@ extension InspireMeViewController : DropDownProtocol{
     public func selectedValue(index : Int) {
         currentlySelectedLanguageSlug = mainAppCoordinator.getAllAvailableLanguages()[index].slug
         setupLanguageSelectionView()
+    }
+}
+//struct Message {
+//    var title: String
+//    var content: String
+//
+//    func formattedMessage() -> String {
+//        let titleLabel = "**\(title)**"
+//        let contentLabel = "\(content)"
+//        return "\(titleLabel)\n \n\(contentLabel)"
+//    }
+//}
+
+//struct PollContent {
+//    var options: [String: String]
+//    var question: String
+//
+//    func formattedPoll() -> String {
+//        var formattedString = "\(question)\n\n"
+//        
+//        for (index, option) in options.sorted(by: { $0.key < $1.key }) {
+//            formattedString += "\(option)\n\n"
+//        }
+//        
+//        return formattedString
+//    }
+//}
+
+struct Message {
+    var title: String
+    var content: String
+
+    func formattedMessage() -> NSAttributedString {
+        let boldTitle = "\(title)"
+        let attributedString = NSMutableAttributedString(string: boldTitle + "\n \n")
+        let contentAttributedString = NSAttributedString(string: "\(content)")
+        attributedString.append(contentAttributedString)
+
+        // Apply bold font to title
+        let titleRange = NSRange(location: 0, length: boldTitle.count)
+        let titleAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)]
+        attributedString.addAttributes(titleAttributes, range: titleRange)
+
+        return attributedString
+    }
+}
+
+struct PollContent {
+    var options: [String: String]
+    var question: String
+
+    func formattedPoll() -> NSAttributedString {
+        let boldQuestion = "\(question)"
+        let formattedString = NSMutableAttributedString(string: "\(boldQuestion)\n\n")
+
+        for (index, option) in options.sorted(by: { $0.key < $1.key }) {
+            let optionString = "\(option)\n \n"
+            let attributedOption = NSAttributedString(string: optionString)
+            formattedString.append(attributedOption)
+        }
+
+        // Apply bold font to title
+        let titleRange = NSRange(location: 0, length: boldQuestion.count)
+        let titleAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)]
+        formattedString.addAttributes(titleAttributes, range: titleRange)
+        return formattedString
     }
 }

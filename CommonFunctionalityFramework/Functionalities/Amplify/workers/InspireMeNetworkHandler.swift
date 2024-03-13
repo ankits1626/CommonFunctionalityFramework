@@ -18,13 +18,14 @@ class  InspireMeFormWorker  {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     
-    func getInspireMe(model: AmplifyRequestHelperProtocol, language: String, completionHandler: @escaping InspireMeFormWorkerCompletionHandler) {
+    func getInspireMe(model: AmplifyRequestHelperProtocol, language: String, isRequestJson : Bool, completionHandler: @escaping InspireMeFormWorkerCompletionHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider:  InspireMeFormWorkerRequestGenerator(
                     model: model,
                     language: language,
-                    networkRequestCoordinator: networkRequestCoordinator
+                    networkRequestCoordinator: networkRequestCoordinator, 
+                    requestJson: isRequestJson
                 ),
                 dataParser: InspireMeFormDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
@@ -41,6 +42,7 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     var urlBuilder: ParameterizedURLBuilder
     var requestBuilder: APIRequestBuilderProtocol
     var language = ""
+    var requestJson : Bool = true
     var model: AmplifyRequestHelperProtocol
 
     var sandBoxInspireMeURL = "https://sandbox-api.inspireme.ai/b2b/api/v1.1/lan/generate-ai"
@@ -49,9 +51,10 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
 //    var productionInspireEditToneURL = "https://api.inspireme.ai/b2b/api/v1.1/lan/generate-ai/edit-employee-recognition-tone"
     let serverUrl = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
     
-    init(model: AmplifyRequestHelperProtocol, language: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol) {
+    init(model: AmplifyRequestHelperProtocol, language: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, requestJson : Bool) {
         self.model = model
         self.language = language
+        self.requestJson = requestJson
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
     }
@@ -74,6 +77,9 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
             mutableBodyDict["messageTone"] = "One paragraph casual tone"
         }
         mutableBodyDict["language"] = language
+        if requestJson {
+            mutableBodyDict["formatResponse"] = "json"
+        }
         return NSDictionary(dictionary: mutableBodyDict)
     }
     

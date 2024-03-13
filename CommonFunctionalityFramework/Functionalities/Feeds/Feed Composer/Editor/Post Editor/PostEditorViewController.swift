@@ -783,8 +783,8 @@ extension PostEditorViewController : InspireMeDelegate{
         
     }
     
-    func aiText(userText: String){
-        postCoordinator.parseAmplifiedtext(userText) {[weak self] in
+    func aiText(contentData: NSDictionary) {
+        postCoordinator.parseAmplifiedtext(contentData) {[weak self] in
             self?.updatePollOptionsAfterAmplifyIfRequired()
         }
         postEditorTable?.reloadData()
