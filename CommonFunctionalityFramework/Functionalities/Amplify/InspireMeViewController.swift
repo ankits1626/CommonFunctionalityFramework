@@ -196,26 +196,39 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                                 unwrappedSelf.firstMessageCount = 1
                             }
                             if let unwrppedContent = aiMessage.object(forKey: "content") as? String {
+                                let messageWithContent = AIMessageWithContent(title: aiMessage.object(forKey: "title") as? String ?? "", content: unwrppedContent)
+                                debugPrint(self?.formatData(aiMessage: .withContent(message: messageWithContent), messageTone: "One paragraph casual tone", language: "English"))
                                 unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = unwrppedContent
                                 unwrappedSelf.aiMessage = unwrppedContent
                                 let aiMessage = Message(title: aiMessage.object(forKey: "title") as? String ?? "", content: unwrppedContent)
                                 let formattedMessage = aiMessage.formattedMessage()
                                 unwrappedSelf.inspireMeGeneratedTxtField.attributedText = formattedMessage
+                                
+                                
                             }
                             
-                            if let unwrppedContent = aiMessage.object(forKey: "Poll Question") as? String {
-                                unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = unwrppedContent
-                                unwrappedSelf.aiMessage = unwrppedContent
-                                let aiPoll = PollContent(options: [
-                                    "1 text": aiMessage.object(forKey: "Option 1 text") as? String ?? "",
-                                    "2 text": aiMessage.object(forKey: "Option 2 text") as? String ?? "",
-                                    "3 text": aiMessage.object(forKey: "Option 3 text") as? String ?? "",
-                                    "4 text": aiMessage.object(forKey: "Option 4 text") as? String ?? ""
-                                ], question: unwrppedContent)
+                            if let _ = aiMessage.object(forKey: "Option 1 text") as? String {
+                                if let unwrppedContent = aiMessage.object(forKey: "title") as? String {
+                                    
+                                    let title = aiMessage.object(forKey: "title") as? String ?? ""
+                                    
+                                    unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = unwrppedContent
+                                    unwrappedSelf.aiMessage = unwrppedContent
+                                    let aiPoll = PollContent(options: [
+                                        "1 text": aiMessage.object(forKey: "Option 1 text") as? String ?? "",
+                                        "2 text": aiMessage.object(forKey: "Option 2 text") as? String ?? "",
+                                        "3 text": aiMessage.object(forKey: "Option 3 text") as? String ?? "",
+                                        "4 text": aiMessage.object(forKey: "Option 4 text") as? String ?? ""
+                                    ], question: unwrppedContent)
 
-                                let formattedPoll = aiPoll.formattedPoll()
-                                unwrappedSelf.inspireMeGeneratedTxtField.attributedText = formattedPoll
+                                    let formattedPoll = aiPoll.formattedPoll()
+                                    unwrappedSelf.inspireMeGeneratedTxtField.attributedText = formattedPoll
+                                    let options = [aiMessage.object(forKey: "Option 1 text") as? String ?? "", aiMessage.object(forKey: "Option 2 text") as? String ?? "", aiMessage.object(forKey: "Option 3 text") as? String ?? "", aiMessage.object(forKey: "Option 4 text") as? String ?? ""]
+                                    let messageWithOptions = AIMessageWithOptions(title: title,options: options)
+                                    debugPrint(self?.formatData(aiMessage: .withOptions(message: messageWithOptions), messageTone: "One paragraph casual tone", language: "English"))
+                                }
                             }
+                            
                             
                             unwrappedSelf.amplifyData = aiMessage
                         }else if let aiMessage = response["ai_message"] as? String {
@@ -227,6 +240,16 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                             unwrappedSelf.aiMessage = aiMessage
                             unwrappedSelf.inspireMeGeneratedTxtField.text = aiMessage
                             unwrappedSelf.amplifyData = response
+                        }else {
+                            if unwrappedSelf.firstMessageCount == 0 {
+                                unwrappedSelf.firstFetchedOriginalText = ""
+                                unwrappedSelf.firstMessageCount = 0
+                            }
+                            unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = ""
+                            unwrappedSelf.aiMessage = ""
+                            unwrappedSelf.inspireMeGeneratedTxtField.text = ""
+                            unwrappedSelf.amplifyData = NSDictionary()
+                            unwrappedSelf.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
                         }
                         unwrappedSelf.collectionVIew.reloadData()
                     case .Failure(_):
@@ -295,7 +318,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         currentMessageTone = AmpliFyMessageTone.allCases[indexPath.row]
         let userStringORAiString = shouldUsefirstFetchedOriginalText ? firstFetchedOriginalText : inputModel.getUserInputText()
-        self.isJSONRequired = false
+//        self.isJSONRequired = false
         if let cachedMessage = generatedMessageRepository[currentMessageTone]{
             self.inspireMeGeneratedTxtField.text = cachedMessage
             self.aiMessage = cachedMessage
@@ -314,6 +337,23 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
             showLoaderByHidingElements(shouldHide: true)
         }
     }
+    
+    // Function to format the AI message data into the required input format
+    func formatData(aiMessage: AIMessageType, messageTone: String, language: String) -> [String: Any] {
+        switch aiMessage {
+        case .withOptions(let messageWithOptions):
+            // If the message contains options, concatenate title and options
+            let concatenatedText = messageWithOptions.options.reduce(messageWithOptions.title) { $0 + " " + $1 }
+            let inputData = InputData(textToEdit: concatenatedText, messageTone: messageTone, language: language)
+            return ["inputs": [inputData.dictionaryRepresentation]]
+        case .withContent(let messageWithContent):
+            // If the message contains content, concatenate title and content
+            let concatenatedText = "\(messageWithContent.title) \(messageWithContent.content)"
+            let inputData = InputData(textToEdit: concatenatedText, messageTone: messageTone, language: language)
+            return ["inputs": [inputData.dictionaryRepresentation]]
+        }
+    }
+    
     
     // MARK: - Tooltip show and hide common function
     func commonToolTipDisplay(toolTipLbl: ToolTip, transformLbl:  CGAffineTransform, disableToolTip: ToolTip, disableTransformLbl: CGAffineTransform) {
@@ -405,32 +445,6 @@ extension InspireMeViewController : DropDownProtocol{
         setupLanguageSelectionView()
     }
 }
-//struct Message {
-//    var title: String
-//    var content: String
-//
-//    func formattedMessage() -> String {
-//        let titleLabel = "**\(title)**"
-//        let contentLabel = "\(content)"
-//        return "\(titleLabel)\n \n\(contentLabel)"
-//    }
-//}
-
-//struct PollContent {
-//    var options: [String: String]
-//    var question: String
-//
-//    func formattedPoll() -> String {
-//        var formattedString = "\(question)\n\n"
-//        
-//        for (index, option) in options.sorted(by: { $0.key < $1.key }) {
-//            formattedString += "\(option)\n\n"
-//        }
-//        
-//        return formattedString
-//    }
-//}
-
 struct Message {
     var title: String
     var content: String
@@ -469,5 +483,39 @@ struct PollContent {
         let titleAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)]
         formattedString.addAttributes(titleAttributes, range: titleRange)
         return formattedString
+    }
+}
+
+// Define a struct to represent the AI message with options
+struct AIMessageWithOptions {
+    let title: String
+    let options: [String]
+}
+
+
+// Define a struct to represent the AI message with content
+struct AIMessageWithContent {
+    let title: String
+    let content: String
+}
+
+// Enum to represent the possible AI message types
+enum AIMessageType {
+    case withOptions(message: AIMessageWithOptions)
+    case withContent(message: AIMessageWithContent)
+}
+
+// Define a struct to represent the input data
+struct InputData {
+    let textToEdit: String
+    let messageTone: String
+    let language: String
+    
+    var dictionaryRepresentation: [String: Any] {
+        return [
+            "textToEdit": textToEdit,
+            "messageTone": messageTone,
+            "language": language
+        ]
     }
 }
