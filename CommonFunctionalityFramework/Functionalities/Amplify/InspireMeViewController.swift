@@ -82,6 +82,8 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     var firstFetchedOriginalText = ""
     var firstMessageCount = 0
     var shouldUsefirstFetchedOriginalText = true
+    var editTonePayload = [[String : String]]()
+    var editToneData = [String: Any]()
     
     @IBOutlet private weak var changeLanguageContainer : UIView?
     @IBOutlet private weak var languageLabel : UILabel?
@@ -180,7 +182,8 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
             InspireMeFormWorker(networkRequestCoordinator: networkRequestCoordinator).getInspireMe(
                 model: callAmplifyModel ?? inputModel,
                 language: mainAppCoordinator.getLaguageNameFromSlug(currentlySelectedLanguageSlug), 
-                isRequestJson: self.isJSONRequired
+                isRequestJson: self.isJSONRequired, 
+                editToneData: self.editToneData
             ) { [weak self] (result) in
                 DispatchQueue.main.async {
                     guard let unwrappedSelf = self else {
@@ -196,8 +199,9 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                                 unwrappedSelf.firstMessageCount = 1
                             }
                             if let unwrppedContent = aiMessage.object(forKey: "content") as? String {
-                                let messageWithContent = AIMessageWithContent(title: aiMessage.object(forKey: "title") as? String ?? "", content: unwrppedContent)
-                                debugPrint(self?.formatData(aiMessage: .withContent(message: messageWithContent), messageTone: "One paragraph casual tone", language: "English"))
+                                let options = [aiMessage.object(forKey: "title") as? String ?? "", unwrppedContent]
+                                let messageWithContent = AIMessageWithContent(content: options, count: options.count)
+                                self?.editToneData = (self?.formatData(messageWithOptions: messageWithContent, messageTone: (self?.currentMessageTone.getToneDetails())!, language: "English", type: "post"))!
                                 unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = unwrppedContent
                                 unwrappedSelf.aiMessage = unwrppedContent
                                 let aiMessage = Message(title: aiMessage.object(forKey: "title") as? String ?? "", content: unwrppedContent)
@@ -223,9 +227,9 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
 
                                     let formattedPoll = aiPoll.formattedPoll()
                                     unwrappedSelf.inspireMeGeneratedTxtField.attributedText = formattedPoll
-                                    let options = [aiMessage.object(forKey: "Option 1 text") as? String ?? "", aiMessage.object(forKey: "Option 2 text") as? String ?? "", aiMessage.object(forKey: "Option 3 text") as? String ?? "", aiMessage.object(forKey: "Option 4 text") as? String ?? ""]
-                                    let messageWithOptions = AIMessageWithOptions(title: title,options: options)
-                                    debugPrint(self?.formatData(aiMessage: .withOptions(message: messageWithOptions), messageTone: "One paragraph casual tone", language: "English"))
+                                    let options = [title, aiMessage.object(forKey: "Option 1 text") as? String ?? "", aiMessage.object(forKey: "Option 2 text") as? String ?? "", aiMessage.object(forKey: "Option 3 text") as? String ?? "", aiMessage.object(forKey: "Option 4 text") as? String ?? ""]
+                                    let messageWithOptions = AIMessageWithContent(content: options, count: options.count)
+                                    self?.editToneData = (self?.formatData(messageWithOptions: messageWithOptions, messageTone: (self?.currentMessageTone.getToneDetails())!, language: "English", type: "poll"))!
                                 }
                             }
                             
@@ -339,19 +343,19 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     // Function to format the AI message data into the required input format
-    func formatData(aiMessage: AIMessageType, messageTone: String, language: String) -> [String: Any] {
-        switch aiMessage {
-        case .withOptions(let messageWithOptions):
-            // If the message contains options, concatenate title and options
-            let concatenatedText = messageWithOptions.options.reduce(messageWithOptions.title) { $0 + " " + $1 }
-            let inputData = InputData(textToEdit: concatenatedText, messageTone: messageTone, language: language)
-            return ["inputs": [inputData.dictionaryRepresentation]]
-        case .withContent(let messageWithContent):
-            // If the message contains content, concatenate title and content
-            let concatenatedText = "\(messageWithContent.title) \(messageWithContent.content)"
-            let inputData = InputData(textToEdit: concatenatedText, messageTone: messageTone, language: language)
-            return ["inputs": [inputData.dictionaryRepresentation]]
+    func formatData(messageWithOptions: AIMessageWithContent, messageTone: String, language: String,type : String) -> [String: Any] {
+        for i in 0..<messageWithOptions.count {
+            var selectedReceiptData : [String : String]!
+            selectedReceiptData = [
+                "textToEdit" : "\(messageWithOptions.content[i])",
+                "messageTone": messageTone,
+                "language": language]
+            self.editTonePayload.append(selectedReceiptData)
         }
+        
+        // Construct the dictionary with the "inputs" key
+        let finalDictionary: [String: Any] = ["inputs": self.editTonePayload,"content_type" : type]
+        return finalDictionary
     }
     
     
@@ -486,36 +490,10 @@ struct PollContent {
     }
 }
 
-// Define a struct to represent the AI message with options
-struct AIMessageWithOptions {
-    let title: String
-    let options: [String]
-}
-
-
 // Define a struct to represent the AI message with content
 struct AIMessageWithContent {
-    let title: String
-    let content: String
+    let content: [String]
+    let count : Int
 }
 
-// Enum to represent the possible AI message types
-enum AIMessageType {
-    case withOptions(message: AIMessageWithOptions)
-    case withContent(message: AIMessageWithContent)
-}
 
-// Define a struct to represent the input data
-struct InputData {
-    let textToEdit: String
-    let messageTone: String
-    let language: String
-    
-    var dictionaryRepresentation: [String: Any] {
-        return [
-            "textToEdit": textToEdit,
-            "messageTone": messageTone,
-            "language": language
-        ]
-    }
-}

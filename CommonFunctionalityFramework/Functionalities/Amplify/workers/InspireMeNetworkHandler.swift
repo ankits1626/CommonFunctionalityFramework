@@ -18,14 +18,15 @@ class  InspireMeFormWorker  {
         self.networkRequestCoordinator = networkRequestCoordinator
     }
     
-    func getInspireMe(model: AmplifyRequestHelperProtocol, language: String, isRequestJson : Bool, completionHandler: @escaping InspireMeFormWorkerCompletionHandler) {
+    func getInspireMe(model: AmplifyRequestHelperProtocol, language: String, isRequestJson : Bool,editToneData : [String : Any], completionHandler: @escaping InspireMeFormWorkerCompletionHandler) {
         if (commonAPICall == nil){
             self.commonAPICall = CommonAPICall(
                 apiRequestProvider:  InspireMeFormWorkerRequestGenerator(
                     model: model,
                     language: language,
                     networkRequestCoordinator: networkRequestCoordinator, 
-                    requestJson: isRequestJson
+                    requestJson: isRequestJson,
+                    _editToneData: editToneData
                 ),
                 dataParser: InspireMeFormDataParser(),
                 logouthandler: networkRequestCoordinator.getLogoutHandler()
@@ -44,6 +45,7 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     var language = ""
     var requestJson : Bool = true
     var model: AmplifyRequestHelperProtocol
+    var editToneData : [String : Any]
 
     var sandBoxInspireMeURL = "https://sandbox-api.inspireme.ai/b2b/api/v1.1/lan/generate-ai"
 //    var sandBoxInspireEditToneURL = "https://sandbox-api.inspireme.ai/b2b/api/v1.1/lan/generate-ai/edit-tone"
@@ -51,9 +53,10 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
 //    var productionInspireEditToneURL = "https://api.inspireme.ai/b2b/api/v1.1/lan/generate-ai/edit-employee-recognition-tone"
     let serverUrl = UserDefaults.standard.value(forKey: "base_url_for_image_height") as? String ?? ""
     
-    init(model: AmplifyRequestHelperProtocol, language: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, requestJson : Bool) {
+    init(model: AmplifyRequestHelperProtocol, language: String, networkRequestCoordinator: CFFNetworkRequestCoordinatorProtocol, requestJson : Bool, _editToneData : [String : Any]) {
         self.model = model
         self.language = language
+        self.editToneData = _editToneData
         self.requestJson = requestJson
         urlBuilder = ParameterizedURLBuilder(baseURLProvider: networkRequestCoordinator.getBaseUrlProvider())
         requestBuilder = APIRequestBuilder(tokenProvider: networkRequestCoordinator.getTokenProvider())
@@ -72,6 +75,9 @@ class  InspireMeFormWorkerRequestGenerator: APIRequestGeneratorProtocol  {
     }
     
     private func prepareHttpBodyDict() -> NSDictionary{
+        if self.editToneData.count > 0 {
+            return NSDictionary(dictionary: self.editToneData)
+        }
         var mutableBodyDict = model.requestParamas //NSMutableDictionary()
         if mutableBodyDict["messageTone"] == nil{
             mutableBodyDict["messageTone"] = "One paragraph casual tone"

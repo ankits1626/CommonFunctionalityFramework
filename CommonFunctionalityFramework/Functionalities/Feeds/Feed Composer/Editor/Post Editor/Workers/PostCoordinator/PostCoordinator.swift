@@ -338,7 +338,7 @@ extension PostCoordinator {
     
     private func parsePoll(_ amplifiedText: NSDictionary?){
         if let unwrappedData = amplifiedText {
-            let title = unwrappedData.object(forKey: "Poll Question") as? String ?? ""
+            let title = unwrappedData.object(forKey: "title") as? String ?? ""
             updatePostTitle(title: title)
             let poll1 = unwrappedData.object(forKey: "Option 1 text") as? String ?? ""
             savePostOption(index: 0, option: poll1)
