@@ -84,6 +84,9 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     var shouldUsefirstFetchedOriginalText = true
     var editTonePayload = [[String : String]]()
     var editToneData = [String: Any]()
+    var messageWithOptions: AIMessageWithContent?
+    var postType : String = "post"
+    var userSelectedLanguage : String = ""
     
     @IBOutlet private weak var changeLanguageContainer : UIView?
     @IBOutlet private weak var languageLabel : UILabel?
@@ -97,7 +100,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     private var editToneInputModel : AmplifyRequestHelperProtocol!
-    private var generatedMessageRepository = [AmpliFyMessageTone : String]()
+    private var generatedMessageRepository = [AmpliFyMessageTone : NSAttributedString]()
     private var currentMessageTone : AmpliFyMessageTone = .DEFAULT
     
     public override func viewDidLoad() {
@@ -108,6 +111,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     func setUpUI() {
         yourMessageLbl.text = "Your message..... Amplified!".localized
         currentlySelectedLanguageSlug = mainAppCoordinator.getCurrentAppLanguage()
+        self.userSelectedLanguage = self.mainAppCoordinator.getLaguageNameFromSlug(currentlySelectedLanguageSlug)
         self.useThisBtn.setTitle("Use".localized, for: .normal)
         self.regenerateBtn.setTitle("Regenerate".localized, for: .normal)
         aspireMeLoadingText?.text = "Amplifying message...".localized
@@ -201,12 +205,13 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                             if let unwrppedContent = aiMessage.object(forKey: "content") as? String {
                                 let options = [aiMessage.object(forKey: "title") as? String ?? "", unwrppedContent]
                                 let messageWithContent = AIMessageWithContent(content: options, count: options.count)
-                                self?.editToneData = (self?.formatData(messageWithOptions: messageWithContent, messageTone: (self?.currentMessageTone.getToneDetails())!, language: "English", type: "post"))!
-                                unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = unwrppedContent
+                                self?.messageWithOptions = messageWithContent
+                                self?.editToneData = (self?.formatData(messageWithOptions: messageWithContent, messageTone: (self?.currentMessageTone.getToneDetails())!, language: self?.userSelectedLanguage ?? "English", type: self?.postType ?? "post"))!
                                 unwrappedSelf.aiMessage = unwrppedContent
                                 let aiMessage = Message(title: aiMessage.object(forKey: "title") as? String ?? "", content: unwrppedContent)
                                 let formattedMessage = aiMessage.formattedMessage()
                                 unwrappedSelf.inspireMeGeneratedTxtField.attributedText = formattedMessage
+                                unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = formattedMessage
                                 
                                 
                             }
@@ -216,7 +221,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                                     
                                     let title = aiMessage.object(forKey: "title") as? String ?? ""
                                     
-                                    unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = unwrppedContent
+                                    
                                     unwrappedSelf.aiMessage = unwrppedContent
                                     let aiPoll = PollContent(options: [
                                         "1 text": aiMessage.object(forKey: "Option 1 text") as? String ?? "",
@@ -227,9 +232,11 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
 
                                     let formattedPoll = aiPoll.formattedPoll()
                                     unwrappedSelf.inspireMeGeneratedTxtField.attributedText = formattedPoll
+                                    unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = formattedPoll
                                     let options = [title, aiMessage.object(forKey: "Option 1 text") as? String ?? "", aiMessage.object(forKey: "Option 2 text") as? String ?? "", aiMessage.object(forKey: "Option 3 text") as? String ?? "", aiMessage.object(forKey: "Option 4 text") as? String ?? ""]
                                     let messageWithOptions = AIMessageWithContent(content: options, count: options.count)
-                                    self?.editToneData = (self?.formatData(messageWithOptions: messageWithOptions, messageTone: (self?.currentMessageTone.getToneDetails())!, language: "English", type: "poll"))!
+                                    self?.messageWithOptions = messageWithOptions
+                                    self?.editToneData = (self?.formatData(messageWithOptions: messageWithOptions, messageTone: (self?.currentMessageTone.getToneDetails())!, language: self?.userSelectedLanguage ?? "English", type: self?.postType ?? "poll"))!
                                 }
                             }
                             
@@ -240,7 +247,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                                 unwrappedSelf.firstFetchedOriginalText = aiMessage
                                 unwrappedSelf.firstMessageCount = 1
                             }
-                            unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = aiMessage
+                            unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = NSAttributedString(string: aiMessage)
                             unwrappedSelf.aiMessage = aiMessage
                             unwrappedSelf.inspireMeGeneratedTxtField.text = aiMessage
                             unwrappedSelf.amplifyData = response
@@ -249,7 +256,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
                                 unwrappedSelf.firstFetchedOriginalText = ""
                                 unwrappedSelf.firstMessageCount = 0
                             }
-                            unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = ""
+                            unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = NSAttributedString(string: "")
                             unwrappedSelf.aiMessage = ""
                             unwrappedSelf.inspireMeGeneratedTxtField.text = ""
                             unwrappedSelf.amplifyData = NSDictionary()
@@ -282,7 +289,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     @IBAction func regenerateBtnPressed(_ sender: Any) {
         
         shouldUsefirstFetchedOriginalText = true
-        generatedMessageRepository = [AmpliFyMessageTone: String]()
+        generatedMessageRepository = [AmpliFyMessageTone: NSAttributedString]()
         if currentMessageTone == .DEFAULT{
             showLoaderByHidingElements(shouldHide: true)
             loadInspireMeText(callAmplifyModel: nil)
@@ -322,10 +329,13 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         currentMessageTone = AmpliFyMessageTone.allCases[indexPath.row]
         let userStringORAiString = shouldUsefirstFetchedOriginalText ? firstFetchedOriginalText : inputModel.getUserInputText()
-//        self.isJSONRequired = false
+        if let unwrapedContent = messageWithOptions {
+            self.editToneData = (self.formatData(messageWithOptions: unwrapedContent, messageTone: (self.currentMessageTone.getToneDetails()), language: self.userSelectedLanguage , type: self.postType ))
+        }
+        
         if let cachedMessage = generatedMessageRepository[currentMessageTone]{
-            self.inspireMeGeneratedTxtField.text = cachedMessage
-            self.aiMessage = cachedMessage
+            self.inspireMeGeneratedTxtField.attributedText = cachedMessage
+            self.aiMessage = ""
             self.collectionVIew.reloadData()
         }else{
             if currentMessageTone == .DEFAULT{
@@ -344,6 +354,7 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     
     // Function to format the AI message data into the required input format
     func formatData(messageWithOptions: AIMessageWithContent, messageTone: String, language: String,type : String) -> [String: Any] {
+        self.editTonePayload.removeAll()
         for i in 0..<messageWithOptions.count {
             var selectedReceiptData : [String : String]!
             selectedReceiptData = [

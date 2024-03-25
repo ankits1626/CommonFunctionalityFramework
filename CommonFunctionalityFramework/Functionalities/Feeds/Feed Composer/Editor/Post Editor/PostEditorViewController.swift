@@ -702,7 +702,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     func triggerAmplify() {
         debugPrint("<<<<<<< trigger amplify")
         if let amplifyInputModel = postCoordinator.getAmplifyInputModel(){
-            router.routeToAmplifyScreen(amplifyInputModel, delegate: self)
+            router.routeToAmplifyScreen(amplifyInputModel, type: postCoordinator.getAmplifyPostType(), delegate: self)
         }else{
             router.routeToAmplifyErrorScreen()
         }

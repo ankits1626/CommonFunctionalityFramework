@@ -335,6 +335,17 @@ extension PostCoordinator {
         }
     }
     
+    func getAmplifyPostType() -> String {
+        switch postType{
+        case .Poll:
+            return "poll"
+        case .Post:
+            return "post"
+        case .Greeting:
+            return "post"
+        }
+    }
+    
     
     private func parsePoll(_ amplifiedText: NSDictionary?){
         if let unwrappedData = amplifiedText {
