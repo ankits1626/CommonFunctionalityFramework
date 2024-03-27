@@ -335,32 +335,48 @@ extension PostCoordinator {
         }
     }
     
-    
-    private func parsePoll(_ amplifiedText: String){
-        let quotesRemoved = amplifiedText.replacingOccurrences(of: "\"", with: "")
-        let components = quotesRemoved.components(separatedBy: "#")
-        if components.count > 1 {
-            updatePostTitle(title: components.first)
-            let pollOptions = Array(components[1...]).prefix(4)
-            for (index , pollOption) in pollOptions.enumerated(){
-                if !pollOption.isEmpty{
-                    savePostOption(index: index, option: pollOption)
-                }
-            }
+    func getAmplifyPostType() -> String {
+        switch postType{
+        case .Poll:
+            return "poll"
+        case .Post:
+            return "post"
+        case .Greeting:
+            return "post"
         }
     }
     
-    private func parsePost(_ amplifiedText: String){
-        let components = amplifiedText.components(separatedBy: "#")
-        updatePostTitle(title:components.count == 2 ? components.first : nil)
-        updatePostDescription(decription: components.count == 2 ? components[safe: 1] : components.first)
+    
+    private func parsePoll(_ amplifiedText: NSDictionary?){
+        if let unwrappedData = amplifiedText {
+            let title = unwrappedData.object(forKey: "title") as? String ?? ""
+            updatePostTitle(title: title)
+            let poll1 = unwrappedData.object(forKey: "Option 1 text") as? String ?? ""
+            savePostOption(index: 0, option: poll1)
+            let poll2 = unwrappedData.object(forKey: "Option 2 text") as? String ?? ""
+            savePostOption(index: 1, option: poll2)
+            let poll3 = unwrappedData.object(forKey: "Option 3 text") as? String ?? ""
+            savePostOption(index: 2, option: poll3)
+            let poll4 = unwrappedData.object(forKey: "Option 4 text") as? String ?? ""
+            savePostOption(index: 3, option: poll4)
+        }
     }
     
-    private func parseGreeting(_ amplifiedText: String){
+    private func parsePost(_ amplifiedText: NSDictionary?){
+//        let components = amplifiedText.components(separatedBy: "#")
+        if let unwrappedData = amplifiedText {
+            let title = unwrappedData.object(forKey: "title") as? String ?? ""
+            let description = unwrappedData.object(forKey: "content") as? String ?? ""
+            updatePostTitle(title: title)
+            updatePostDescription(decription: description)
+        }
+    }
+    
+    private func parseGreeting(_ amplifiedText: NSDictionary?){
         
     }
         
-    func parseAmplifiedtext(_ amplifiedText: String, completion: () -> Void){
+    func parseAmplifiedtext(_ amplifiedText: NSDictionary?, completion: () -> Void){
         switch postType{
         case .Poll:
             parsePoll(amplifiedText)

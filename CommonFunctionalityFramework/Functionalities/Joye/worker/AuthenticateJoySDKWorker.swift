@@ -48,8 +48,9 @@ class AuthenticateJoySDKDataRequestGenerator: APIRequestGeneratorProtocol  {
     var apiRequest: URLRequest?{
         
         get{
-            return self.requestBuilder.apiRequestWithSubscriptionInAuthorizationHeader(url: URL(string: "https://jy-test-fd-emaud3eab6f2e8ce.z01.azurefd.net/user/authenticate"),
-                                                                                       method: .POST , httpBodyDict: self.orgData as NSDictionary)
+            return self.requestBuilder.apiRequestWithSubscriptionInAuthorizationHeader(url: URL(string: UserDefaults.standard.value(forKey: "joyeUrl") as? String ?? ""),
+                                                                                       method: .POST , httpBodyDict: self.orgData as NSDictionary,
+                                                                                       opmKey: UserDefaults.standard.value(forKey: "joyeKey") as? String ?? "")
         }
     }
 }

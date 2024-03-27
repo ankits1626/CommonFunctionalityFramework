@@ -308,9 +308,9 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     private func setupCreateButton(){
         switch postType {
         case .Poll:
-            createButton?.setTitle("Create".localized, for: .normal)
+            createButton?.setTitle(getCreateButtonTitle(), for: .normal)
         case .Post:
-            createButton?.setTitle("POST".localized, for: .normal)
+            createButton?.setTitle(getCreateButtonTitle(), for: .normal)
         case .Greeting:
             break
         }
@@ -513,91 +513,28 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     @IBAction func createButtonPressed() {
-        if self.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
-            do{
-                //            createButton?.isUserInteractionEnabled  = false
-                try postCoordinator.checkIfPostReadyToPublish()
-                PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
-                    postCoordinator.getCurrentPost()) { localImageUrls, error in
-                        if let unwrappedUrls = localImageUrls{
-                            self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
-                        }
-                        if let unwrappedError = error{
-                            self.createButton?.isUserInteractionEnabled  = true
-                            ErrorDisplayer.showError(
-                                errorMsg: unwrappedError.localizedDescription) { _ in }
-                            print("<<<<<<<<<<<<<<<<<<< erorr observed \(unwrappedError)")
-                        }else{
-                            self.router.routeToNextScreenFromEditor()
-                        }
+        do{
+            //            createButton?.isUserInteractionEnabled  = false
+            try postCoordinator.checkIfPostReadyToPublish()
+            PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
+                postCoordinator.getCurrentPost()) { localImageUrls, error in
+                    if let unwrappedUrls = localImageUrls{
+                        self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
                     }
-                
-            }catch let error{
-                createButton?.isUserInteractionEnabled  = true
-                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in}
-            }
-        }else {
-            do{
-                createButton?.isUserInteractionEnabled  = false
-                try postCoordinator.checkIfPostReadyToPublish()
-                self.loader.showActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                PostImageDataMapper(localMediaManager).prepareMediaUrlMapForPost(
-                    self.postCoordinator.getCurrentPost()) { (localImageUrls, error) in
-                        if let unwrappedUrls = localImageUrls{
-                            self.postCoordinator.saveLocalMediaUrls(unwrappedUrls)
-                        }
-                        if error == nil{
-                            PostPublisher(networkRequestCoordinator: self.requestCoordinator).publishPost(
-                                post: self.postCoordinator.getCurrentPost()) {[weak self] (callResult) in
-                                    DispatchQueue.main.async {
-                                        self?.loader.hideActivityIndicator(UIApplication.shared.keyWindow?.rootViewController?.view ?? UIView())
-                                        switch callResult{
-                                        case .Success(let rawFeed):
-                                            self?.feedOrderManager.insertFeeds(
-                                                rawFeeds: [rawFeed],
-                                                insertDirection: self?.editablePost?.remotePostId == nil ? .Top : .Bottom,
-                                                completion: {[weak self] in
-                                                    DispatchQueue.main.async {
-                                                        //                                            NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
-                                                        ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
-                                                            self?.createButton?.isUserInteractionEnabled  = true
-                                                            if self?.mainAppCoordinator?.isMultiOrgPostEnabled() == true {
-                                                                self?.navigationController?.popViewController(animated: true)
-                                                            }else {
-                                                                self?.dismiss(animated: true, completion: nil)
-                                                            }
-                                                        }
-                                                    }
-                                                })
-                                            
-                                        case .SuccessWithNoResponseData:
-                                            self?.createButton?.isUserInteractionEnabled  = true
-                                            ErrorDisplayer.showError(errorMsg: "Unable to post.".localized) { (_) in
-                                                
-                                            }
-                                        case .Failure(let error):
-                                            self?.createButton?.isUserInteractionEnabled  = true
-                                            ErrorDisplayer.showError(errorMsg: "\("Unable to post due to".localized) \(error.displayableErrorMessage())") { (_) in
-                                                
-                                            }
-                                        }
-                                    }
-                                }
-                        }
-                        else{
-                            self.createButton?.isUserInteractionEnabled  = true
-                            print("<<<<<<<<<<<<<<<<<<< erorr observed \(error)")
-                        }
+                    if let unwrappedError = error{
+                        self.createButton?.isUserInteractionEnabled  = true
+                        ErrorDisplayer.showError(
+                            errorMsg: unwrappedError.localizedDescription) { _ in }
+                        print("<<<<<<<<<<<<<<<<<<< erorr observed \(unwrappedError)")
+                    }else{
+                        self.router.routeToNextScreenFromEditor()
                     }
-            }catch let error{
-                createButton?.isUserInteractionEnabled  = true
-                ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in
-                    
                 }
-            }
+            
+        }catch let error{
+            createButton?.isUserInteractionEnabled  = true
+            ErrorDisplayer.showError(errorMsg: error.localizedDescription) { (_) in}
         }
-        
-        
     }
     
     private func postToNetwork(_ completion : @escaping ()-> Void){
@@ -617,11 +554,7 @@ class PostEditorViewController: UIViewController,UIImagePickerControllerDelegate
                                    // NotificationCenter.default.post(name: .didUpdatedPosts, object: nil)
                                     ErrorDisplayer.showError(errorMsg: self?.postCoordinator.getPostSuccessMessage() ?? "Success") { (_) in
                                         self?.clearTagDelegation()
-                                        if self?.mainAppCoordinator?.isMultiOrgPostEnabled() == true{
                                             self?.navigationController?.popToRootViewController(animated: false)
-                                        }else {
-                                            self?.dismiss(animated: true, completion: nil)
-                                        }
                                     }
                                 }
                             })
@@ -769,7 +702,7 @@ extension PostEditorViewController : PostEditorCellFactoryDelegate{
     func triggerAmplify() {
         debugPrint("<<<<<<< trigger amplify")
         if let amplifyInputModel = postCoordinator.getAmplifyInputModel(){
-            router.routeToAmplifyScreen(amplifyInputModel, delegate: self)
+            router.routeToAmplifyScreen(amplifyInputModel, type: postCoordinator.getAmplifyPostType(), delegate: self)
         }else{
             router.routeToAmplifyErrorScreen()
         }
@@ -783,8 +716,8 @@ extension PostEditorViewController : InspireMeDelegate{
         
     }
     
-    func aiText(userText: String){
-        postCoordinator.parseAmplifiedtext(userText) {[weak self] in
+    func aiText(contentData: NSDictionary) {
+        postCoordinator.parseAmplifiedtext(contentData) {[weak self] in
             self?.updatePollOptionsAfterAmplifyIfRequired()
         }
         postEditorTable?.reloadData()

@@ -109,7 +109,7 @@ class PostEditorRouter{
         initModel.baseNavigationController?.popViewController(animated: true)
     }
     
-    func routeToAmplifyScreen(_ amplifyInputModel: AmplifyRequestHelperProtocol, delegate: InspireMeDelegate?){
+    func routeToAmplifyScreen(_ amplifyInputModel: AmplifyRequestHelperProtocol,type : String, delegate: InspireMeDelegate?){
         if ConnectionManager.shared.hasConnectivity() {
             let storyboard = UIStoryboard(
                 name: "InspireMeView",
@@ -121,6 +121,7 @@ class PostEditorRouter{
             vc.themeManager = initModel.themeManager
             vc.mediaCoordinator = initModel.mediaFetcher
             vc.inputModel = amplifyInputModel
+            vc.postType = type
             vc.delegate = delegate
     //        vc.userText = "test"
             var topViewController = UIApplication.shared.keyWindow?.rootViewController
