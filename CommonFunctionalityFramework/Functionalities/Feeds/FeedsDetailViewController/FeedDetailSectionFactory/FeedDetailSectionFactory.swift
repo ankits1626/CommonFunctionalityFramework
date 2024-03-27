@@ -72,7 +72,9 @@ class FeedDetailSectionFactory {
             FeedDetailOutstandingTableViewCellType().cellIdentifier :
                 BOUSDetailFeedOutstandingTableViewCellCoordinator(),
             BOUSTwoImageDetailTableViewCellType().cellIdentifier : BOUSTwoImageDetailCoordinator(),
-            BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator()
+            BOUSThreeImageDetailTableViewCellType().cellIdentifier : BOUSThreeImageDetailCoordinator(),
+            MultiLineNominationQuestionTableViewCellType().cellIdentifier : MultiLineQuestionTableViewCellCoordinator(),
+            NominationAttachmentTableViewCellType().cellIdentifier : NominationAttachmentCellCoordinator()
         ]
     }()
     
@@ -381,6 +383,20 @@ extension FeedDetailSectionFactory{
             }else {
                 rows.append(FeedTitleTableViewCellType())
             }
+            
+            if let unwrappeQuestionType = feed?.getQuestionType() {
+                for data in unwrappeQuestionType {
+                    switch data {
+                    case .OneLiner, .MultiLiner, .DepartmentChoice, .LineManagerChoice, .Choice:
+                        rows.append(MultiLineNominationQuestionTableViewCellType())
+                    case .Document:
+                        rows.append(NominationAttachmentTableViewCellType())
+                    case .Unknown:
+                        break
+                    }
+                }
+            }
+            
             switch feed!.getMediaCountState() {
             case .None:
                 break

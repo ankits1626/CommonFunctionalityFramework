@@ -16,6 +16,7 @@ class FeedTitleTableViewCell: UITableViewCell, FeedsCustomCellProtcol {
     @IBOutlet weak var appreciationSubject : UILabel?
     @IBOutlet weak var containerView : UIView?
     @IBOutlet weak var pointBtn: UIButton!
+    @IBOutlet weak var pointBtnHeightConstraints : NSLayoutConstraint?
     @IBOutlet weak var feedThumbnail: UIImageView!
     
     override func awakeFromNib() {

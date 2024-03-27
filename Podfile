@@ -5,7 +5,7 @@ target 'CommonFunctionalityFramework' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 	pod 'KUIPopOver', '= 1.1.2'
-  pod 'SimpleCheckbox'
+#  pod 'SimpleCheckbox'
 #  pod 'UILoadControl', :git => 'https://github.com/ankits1626/UILoadControl', :branch => 'master'
   pod 'ActiveLabel', :git => 'https://github.com/ankits1626/ActiveLabel.swift', :branch => 'CFF_Customizations'
   pod 'Loaf'

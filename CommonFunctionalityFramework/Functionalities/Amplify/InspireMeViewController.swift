@@ -174,34 +174,39 @@ public class InspireMeViewController: UIViewController, UICollectionViewDelegate
     }
     
     private func loadInspireMeText(callAmplifyModel : AmplifyRequestHelperProtocol?){
-        
-        InspireMeFormWorker(networkRequestCoordinator: networkRequestCoordinator).getInspireMe(
-            model: callAmplifyModel ?? inputModel,
-            language: mainAppCoordinator.getLaguageNameFromSlug(currentlySelectedLanguageSlug)
-        ) { [weak self] (result) in
-            DispatchQueue.main.async {
-                guard let unwrappedSelf = self else {
-                    return
-                }
-                switch result{
-                case .Success(result: let response):
-                    unwrappedSelf.showLoaderByHidingElements(shouldHide: false)
-                    if let aiMessage = response["ai_message"] as? String {
-                        if unwrappedSelf.firstMessageCount == 0 {
-                            unwrappedSelf.firstFetchedOriginalText = aiMessage
-                            unwrappedSelf.firstMessageCount = 1
-                        }
-                        unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = aiMessage
-                        unwrappedSelf.aiMessage = aiMessage
-                        unwrappedSelf.inspireMeGeneratedTxtField.text = aiMessage
+        if ConnectionManager.shared.hasConnectivity() {
+            InspireMeFormWorker(networkRequestCoordinator: networkRequestCoordinator).getInspireMe(
+                model: callAmplifyModel ?? inputModel,
+                language: mainAppCoordinator.getLaguageNameFromSlug(currentlySelectedLanguageSlug)
+            ) { [weak self] (result) in
+                DispatchQueue.main.async {
+                    guard let unwrappedSelf = self else {
+                        self?.showLoaderByHidingElements(shouldHide: false)
+                        return
                     }
-                    unwrappedSelf.collectionVIew.reloadData()
-                case .Failure(_):
-                    unwrappedSelf.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
-                case .SuccessWithNoResponseData:
-                    unwrappedSelf.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
+                    switch result{
+                    case .Success(result: let response):
+                        unwrappedSelf.showLoaderByHidingElements(shouldHide: false)
+                        if let aiMessage = response["ai_message"] as? String {
+                            if unwrappedSelf.firstMessageCount == 0 {
+                                unwrappedSelf.firstFetchedOriginalText = aiMessage
+                                unwrappedSelf.firstMessageCount = 1
+                            }
+                            unwrappedSelf.generatedMessageRepository[unwrappedSelf.currentMessageTone] = aiMessage
+                            unwrappedSelf.aiMessage = aiMessage
+                            unwrappedSelf.inspireMeGeneratedTxtField.text = aiMessage
+                        }
+                        unwrappedSelf.collectionVIew.reloadData()
+                    case .Failure(_):
+                        let error =  ConnectionManager.shared.hasConnectivity() ? "Please try to amplify again.".localized : "The Internet connection appears to be offline.".localized
+                        unwrappedSelf.showAlert(title: NSLocalizedString("Error", comment: ""), message: error)
+                    case .SuccessWithNoResponseData:
+                        unwrappedSelf.showAlert(title: NSLocalizedString("Error", comment: ""), message: "Please try to amplify again.".localized)
+                    }
                 }
             }
+        }else {
+            showAlert(title: NSLocalizedString("Error", comment: ""), message: "The Internet connection appears to be offline.".localized)
         }
     }
     

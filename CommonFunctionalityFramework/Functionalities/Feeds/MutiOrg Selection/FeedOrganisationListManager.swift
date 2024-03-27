@@ -132,6 +132,8 @@ extension FeedOrganisationListManager{
             [weak self] in
             self?.toggleSection(section: section)
         })
+        header.selectAllDepartmentLabel?.text = "Select All Departments".localized
+        header.selectAllJobFamilesLabel?.text = "Select All Job Famlies".localized
         let organisation = initModel.dataManager!.getOrganisations()[section]
         header.organisationLbl?.text = organisation.displayName
         header.organisationLbl?.textColor = .getTitleTextColor()

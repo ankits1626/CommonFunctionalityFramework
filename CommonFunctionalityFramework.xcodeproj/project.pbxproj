@@ -367,6 +367,8 @@
 		BEB0084428A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */; };
 		BEB0084728A76DF200E3F1B0 /* AddECardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */; };
 		BEB0084828A76DF200E3F1B0 /* AddECardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */; };
+		BEB4B6182B74AACC00B3E3EF /* GroupBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB4B6162B74AACC00B3E3EF /* GroupBottomSheet.swift */; };
+		BEB4B6192B74AACD00B3E3EF /* GroupBottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB4B6172B74AACC00B3E3EF /* GroupBottomSheet.xib */; };
 		BEB7BDD32AE637E300FD652D /* Facebook.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB42AE637E300FD652D /* Facebook.xcassets */; };
 		BEB7BDD42AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB52AE637E300FD652D /* ReactionSummaryLocalizable.stringsdict */; };
 		BEB7BDD52AE637E300FD652D /* FeedbackLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEB7BDB72AE637E300FD652D /* FeedbackLocalizable.strings */; };
@@ -441,6 +443,12 @@
 		BED3ADAF28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */; };
 		BED3ADB128228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */; };
 		BEDA6B3728CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA6B3628CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift */; };
+		BEED7B5A2B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED7B582B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift */; };
+		BEED7B5B2B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEED7B592B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib */; };
+		BEED7B5D2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED7B5C2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift */; };
+		BEED7B612B6A4CFA00A2EA55 /* NominationQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED7B5F2B6A4CF900A2EA55 /* NominationQuestionTableViewCell.swift */; };
+		BEED7B622B6A4CFA00A2EA55 /* NominationQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEED7B602B6A4CF900A2EA55 /* NominationQuestionTableViewCell.xib */; };
+		BEED7B642B6A4FE200A2EA55 /* NominationAttachmentCellCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEED7B632B6A4FE100A2EA55 /* NominationAttachmentCellCoordinator.swift */; };
 		BEEF543C26FC978400327205 /* UITextView+NumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */; };
 		BEEF543D26FC978400327205 /* UIView+XibSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEF543B26FC978400327205 /* UIView+XibSetup.swift */; };
 		BEF4021828201248001B9D7E /* CommonFeedsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */; };
@@ -448,7 +456,6 @@
 		BEFAF9382A860E2600900EA6 /* FeedbackCommentChatBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFAF9362A860E2600900EA6 /* FeedbackCommentChatBarView.xib */; };
 		BEFF9D8A28C740D5009DF1AC /* DeleteCommentDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF9D8828C740D5009DF1AC /* DeleteCommentDrawer.swift */; };
 		BEFF9D8B28C740D5009DF1AC /* DeleteCommentDrawer.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEFF9D8928C740D5009DF1AC /* DeleteCommentDrawer.xib */; };
-		EF3D73C7B402476B6BF882D9 /* Pods_CommonFunctionalityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709CFF4C44E33011CC7ED079 /* Pods_CommonFunctionalityFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -833,6 +840,8 @@
 		BEB0084328A76DD500E3F1B0 /* AddECardTypeTableCellCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTypeTableCellCordinator.swift; sourceTree = "<group>"; };
 		BEB0084528A76DF200E3F1B0 /* AddECardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddECardTableViewCell.swift; sourceTree = "<group>"; };
 		BEB0084628A76DF200E3F1B0 /* AddECardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddECardTableViewCell.xib; sourceTree = "<group>"; };
+		BEB4B6162B74AACC00B3E3EF /* GroupBottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupBottomSheet.swift; sourceTree = "<group>"; };
+		BEB4B6172B74AACC00B3E3EF /* GroupBottomSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupBottomSheet.xib; sourceTree = "<group>"; };
 		BEB7BDB42AE637E300FD652D /* Facebook.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Facebook.xcassets; sourceTree = "<group>"; };
 		BEB7BDB62AE637E300FD652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/ReactionSummaryLocalizable.stringsdict; sourceTree = "<group>"; };
 		BEB7BDB82AE637E300FD652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/FeedbackLocalizable.strings; sourceTree = "<group>"; };
@@ -911,6 +920,12 @@
 		BED3ADAD28227FCF004F58AC /* CommonAppreciationSubjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonAppreciationSubjectTableViewCell.xib; sourceTree = "<group>"; };
 		BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppreciationSubjectTableViewCellCoordinator.swift; sourceTree = "<group>"; };
 		BEDA6B3628CB24FE00F8E94B /* BousDetailSingleImageTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BousDetailSingleImageTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		BEED7B582B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineNominationQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		BEED7B592B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultiLineNominationQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		BEED7B5C2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineQuestionTableViewCellCoordinator.swift; sourceTree = "<group>"; };
+		BEED7B5F2B6A4CF900A2EA55 /* NominationQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		BEED7B602B6A4CF900A2EA55 /* NominationQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NominationQuestionTableViewCell.xib; sourceTree = "<group>"; };
+		BEED7B632B6A4FE100A2EA55 /* NominationAttachmentCellCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominationAttachmentCellCoordinator.swift; sourceTree = "<group>"; };
 		BEEF543A26FC978400327205 /* UITextView+NumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+NumberOfLines.swift"; sourceTree = "<group>"; };
 		BEEF543B26FC978400327205 /* UIView+XibSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+XibSetup.swift"; sourceTree = "<group>"; };
 		BEF4021728201248001B9D7E /* CommonFeedsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFeedsCoordinator.swift; sourceTree = "<group>"; };
@@ -926,7 +941,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				980D121F2614295F00995F41 /* RewardzCommonComponents.framework in Frameworks */,
-				EF3D73C7B402476B6BF882D9 /* Pods_CommonFunctionalityFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2144,6 +2158,9 @@
 		98B90DED240CAD010013E9D2 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BEB4B6152B74AAB400B3E3EF /* TeamInfoSheet */,
+				BEED7B5E2B6A4CCB00A2EA55 /* NominationDocument */,
+				BEED7B572B6A453200A2EA55 /* MultiLineNominationQuestion */,
 				0FC40A2D2A650F5000B921BE /* eCardImage */,
 				0FB1635129B7110B000AA631 /* AnniversayCell */,
 				0F32907028897025008BF09D /* OutStandingCell */,
@@ -2676,6 +2693,15 @@
 			path = AddECardType;
 			sourceTree = "<group>";
 		};
+		BEB4B6152B74AAB400B3E3EF /* TeamInfoSheet */ = {
+			isa = PBXGroup;
+			children = (
+				BEB4B6162B74AACC00B3E3EF /* GroupBottomSheet.swift */,
+				BEB4B6172B74AACC00B3E3EF /* GroupBottomSheet.xib */,
+			);
+			path = TeamInfoSheet;
+			sourceTree = "<group>";
+		};
 		BEB7BDB22AE637CA00FD652D /* Reaction */ = {
 			isa = PBXGroup;
 			children = (
@@ -2782,6 +2808,26 @@
 				BED3ADB028228030004F58AC /* CommonAppreciationSubjectTableViewCellCoordinator.swift */,
 			);
 			path = "Appreciation Cells";
+			sourceTree = "<group>";
+		};
+		BEED7B572B6A453200A2EA55 /* MultiLineNominationQuestion */ = {
+			isa = PBXGroup;
+			children = (
+				BEED7B582B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift */,
+				BEED7B592B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib */,
+				BEED7B5C2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift */,
+			);
+			path = MultiLineNominationQuestion;
+			sourceTree = "<group>";
+		};
+		BEED7B5E2B6A4CCB00A2EA55 /* NominationDocument */ = {
+			isa = PBXGroup;
+			children = (
+				BEED7B5F2B6A4CF900A2EA55 /* NominationQuestionTableViewCell.swift */,
+				BEED7B602B6A4CF900A2EA55 /* NominationQuestionTableViewCell.xib */,
+				BEED7B632B6A4FE100A2EA55 /* NominationAttachmentCellCoordinator.swift */,
+			);
+			path = NominationDocument;
 			sourceTree = "<group>";
 		};
 		BEF402162820120F001B9D7E /* CommonFeeeds */ = {
@@ -2925,6 +2971,7 @@
 				BEC2B27B26FD9F4D008417C3 /* PollsActiveDaysTableViewCell.xib in Resources */,
 				0FD47F3C2A25BCDD0096B30C /* ComentAttachedDocumentCollectionViewCell.xib in Resources */,
 				BE94C31D2821743C00E323E1 /* CommonFeedsTopTableViewCell.xib in Resources */,
+				BEED7B5B2B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.xib in Resources */,
 				0F961A1828E4576E0003FE8D /* BOUSThreeImageDetailTableViewCell.xib in Resources */,
 				0F3290742889705D008BF09D /* BOUSDetailFeedOutstandingTableViewCell.xib in Resources */,
 				0FA1A5FC2A1610EF00107B26 /* FeedOrganisationSelectionViewController.xib in Resources */,
@@ -2958,6 +3005,7 @@
 				BEC2B24F26FD9573008417C3 /* DropDownTableViewCell.xib in Resources */,
 				0FABE4EE2A1DD27B00F5D855 /* FeedOrganisationTableViewCell.xib in Resources */,
 				BEBFD1E828A9F167006E5D8B /* PostPollLikeTableViewCell.xib in Resources */,
+				BEED7B622B6A4CFA00A2EA55 /* NominationQuestionTableViewCell.xib in Resources */,
 				BEB7BDD52AE637E300FD652D /* FeedbackLocalizable.strings in Resources */,
 				0FD47F3D2A25BCDD0096B30C /* ASChatBarAttachmentViewController.xib in Resources */,
 				BE6725632A5C284900AEFFEB /* ShowSelectedUserRecognition.xib in Resources */,
@@ -3008,6 +3056,7 @@
 				BEC2B26326FD9A18008417C3 /* PollOptionsVotedTableViewCell.xib in Resources */,
 				BE202E9728A6788D0021E112 /* FeedEcard.storyboard in Resources */,
 				BEC74DDC2A5D4C050074324B /* TopGettersFilterViewController.xib in Resources */,
+				BEB4B6192B74AACD00B3E3EF /* GroupBottomSheet.xib in Resources */,
 				BE94C30928212E4600E323E1 /* CommonFeedsViewController.xib in Resources */,
 				BEC2B28326FDA04A008417C3 /* FeedEditorTitleTableViewCell.xib in Resources */,
 				BE66CCBA28A65A0800C7CE83 /* SelectPostTypeTableViewCell.xib in Resources */,
@@ -3091,6 +3140,7 @@
 				9873D62624B808850041504C /* ManagedGifs+CoreDataProperties.swift in Sources */,
 				BEB7BDE02AE637E300FD652D /* Extensions.swift in Sources */,
 				0FA1A5FB2A1610EF00107B26 /* FeedOrganisationSelectionViewController.swift in Sources */,
+				BEED7B5A2B6A454F00A2EA55 /* MultiLineNominationQuestionTableViewCell.swift in Sources */,
 				9868C016240F786600B12321 /* FeedTitleTableViewCell.swift in Sources */,
 				BE94C3112821418800E323E1 /* NominationFeedContentCoordinator.swift in Sources */,
 				986B9737258DDD1B006EBDA9 /* ASTaggedUser.swift in Sources */,
@@ -3115,6 +3165,7 @@
 				BE94C30D282140AC00E323E1 /* CommonFeedContentCoordinatorProtocol.swift in Sources */,
 				BEB7BDDD2AE637E300FD652D /* ReactionButtonConfig.swift in Sources */,
 				0F94B75128883ADE003AC4C8 /* BOUSGetSelectedApprovalWorker.swift in Sources */,
+				BEED7B5D2B6A45CF00A2EA55 /* MultiLineQuestionTableViewCellCoordinator.swift in Sources */,
 				BEAFDF2A29E541CF00C04FC4 /* TopHeroesModel.swift in Sources */,
 				BE39BA4A28A925B7004ADA9E /* PostPollTitleCellCordinator.swift in Sources */,
 				BEC74DDB2A5D4C050074324B /* TopGettersFilterViewController.swift in Sources */,
@@ -3279,6 +3330,7 @@
 				0F32907628897073008BF09D /* BOUSDetailFeedOutstandingTableViewCellCoordinator.swift in Sources */,
 				98575A3F2532BBC1007644FE /* ReportAbuseWorker.swift in Sources */,
 				98B90E1A240CAD010013E9D2 /* FeedsViewController.swift in Sources */,
+				BEB4B6182B74AACC00B3E3EF /* GroupBottomSheet.swift in Sources */,
 				0F32908428897B2F008BF09D /* BOUSMultipleImageTableViewCellCoordinator.swift in Sources */,
 				98C6489D241B87A3006689E9 /* PostFeedContentCoordinator.swift in Sources */,
 				BE2DDBC72898434F007E2FC0 /* MultipleImageFlowLayout.swift in Sources */,
@@ -3291,7 +3343,9 @@
 				0F961A1A28E457820003FE8D /* BOUSThreeImageDetailCoordinator.swift in Sources */,
 				0F9C4A7328B79751000A99A2 /* BOUSApprovalPrivacyViewController.swift in Sources */,
 				9873D61D24B6C26D0041504C /* FeedsGIFSelectorViewController.swift in Sources */,
+				BEED7B642B6A4FE200A2EA55 /* NominationAttachmentCellCoordinator.swift in Sources */,
 				BE39BA4628A91856004ADA9E /* PostPollTopTableViewCellTableViewCell.swift in Sources */,
+				BEED7B612B6A4CFA00A2EA55 /* NominationQuestionTableViewCell.swift in Sources */,
 				0FABE4E92A1DD26000F5D855 /* EditCommentDrawer.swift in Sources */,
 				BE6725282A58021900AEFFEB /* LeaderboardCellConfiguratorProtocol.swift in Sources */,
 				0FABE5002A1DD29F00F5D855 /* PostEditorRouter.swift in Sources */,

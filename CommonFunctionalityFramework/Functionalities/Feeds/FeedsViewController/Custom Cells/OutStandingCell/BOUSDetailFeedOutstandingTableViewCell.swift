@@ -8,6 +8,7 @@
 
 import UIKit
 import ActiveLabel
+import RewardzCommonComponents
 
 class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
 
@@ -16,11 +17,26 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
     @IBOutlet weak var badgeImageView : UIImageView?
     @IBOutlet weak var nominationConatiner : UIView?
     @IBOutlet weak var messageContainer : UIView?
-    
     @IBOutlet weak var awardLabel : UILabel?
     @IBOutlet weak var strengthLabel : UILabel?
     @IBOutlet weak var nominationMessage : ActiveLabel?
     @IBOutlet weak var strengthHeightConstraints : NSLayoutConstraint?
+    @IBOutlet weak var strength1HeightConstraints : NSLayoutConstraint?
+    @IBOutlet weak var categoryImageView : UIImageView?
+    @IBOutlet weak var categoryName : UILabel?
+    
+    @IBOutlet weak var teamView : UIView?
+    @IBOutlet weak var teamViewHeightConstraints : NSLayoutConstraint?
+    @IBOutlet weak var teamLabel : UILabel?
+    @IBOutlet weak var teamIconImageView : UIImageView?
+    
+    @IBOutlet weak var badgeName : UILabel?
+    @IBOutlet weak var badgePoints : UILabel?
+    @IBOutlet weak var strengthIconButton : UIButton?
+    
+    @IBOutlet weak var strengthIcon : UIImageView!
+    @IBOutlet weak var groupNominationAction : BlockButton?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +46,8 @@ class BOUSDetailFeedOutstandingTableViewCell: UITableViewCell {
         nominationConatiner?.clipsToBounds = true
         nominationConatiner?.layer.cornerRadius = 8
         nominationConatiner?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        teamLabel?.textColor = UIColor.getControlColor()
+        teamIconImageView?.setImageColor(color: UIColor.getControlColor())
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

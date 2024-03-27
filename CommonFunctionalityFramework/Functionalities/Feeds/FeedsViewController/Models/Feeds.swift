@@ -65,6 +65,12 @@ protocol FeedsItemProtocol : Likeable, AnyObject {
     func getGreeting() -> GreetingAnniAndBday?
     func getCreatorUserPK() -> Int
     func getReceiverUserPK() -> Int
+    func getQuestionType() -> [NominationDetailQuestionType]?
+    func getUserEnteredAnsers() -> [NominationEnteredData]?
+    func getNominatedUsers() -> [NominationNominatedMembers]
+    func getQuestionLabel() -> [String]
+    func getCategoryName() -> CategoryData?
+    func getNominationDescription() -> String?
 }
 
 public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
@@ -91,7 +97,7 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
             if let userStengthDic = userStrength["user_strength"] as? NSDictionary {
                 if let userName = userStengthDic["name"] as? String, !userName.isEmpty {
                     strengthMessage = rawFeedDictionary["description"] as? String ?? ""
-                    // strengthIcon = userStengthDic["icon"] as! String
+                     strengthIcon = userStengthDic["icon"] as? String ?? ""
                     badgeBackgroundColor = userStengthDic["background_color"] as? String ?? "#EBEBEB"
                     backGroundLite = userStengthDic["background_color_lite"] as? String ?? "#EBEBEB"
                     
@@ -107,8 +113,8 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
                             points = pts
                         }
                         
-                        strengthName = userStengthDic["name"] as! String
-                        strengthMessage = rawFeedDictionary["description"] as! String
+                        strengthName = userStengthDic["name"] as? String ?? ""
+                        strengthMessage = rawFeedDictionary["description"] as? String ?? ""
                         strengthIcon = userStengthDic["icon"] as? String ?? ""
                         if let unwrappedBgColor = userStengthDic["background_color"] as? String,
                            !unwrappedBgColor.isEmpty {
@@ -139,13 +145,15 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         var badgeName = ""
         var badgeIcon = ""
         var badgeBackgroundColor = ""
+        var badgePoints = ""
         
         if let userStrength = rawFeedDictionary["nomination"] as? [String : Any]{
             if let badgesDic = userStrength["badge"] as? NSDictionary {
                 badgeName = badgesDic["name"] as! String
                 badgeIcon = badgesDic["icon"] as! String
                 badgeBackgroundColor = badgesDic["background_color"] as! String
-                dataDic = ["badgeName" : badgeName, "badgeIcon" : badgeIcon, "badgeBackgroundColor" : badgeBackgroundColor]
+                badgePoints = badgesDic["award_points"] as? String ?? "0"
+                dataDic = ["badgeName" : badgeName, "badgeIcon" : badgeIcon, "badgeBackgroundColor" : badgeBackgroundColor, "points" : badgePoints]
             }
         }
         
@@ -557,6 +565,35 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         return getFeedAuthor()?.getAuthorName()
     }
     
+    func getNominatedUsers() -> [NominationNominatedMembers]{
+        var nominatedUsers : [NominationNominatedMembers] = []
+        var nominatedUserDepartment : String = ""
+        if let nominationObject = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let nominatedUsersObject = nominationObject["nominees"] as? [NSDictionary] {
+            for listData in nominatedUsersObject {
+                let pk = listData.object(forKey: "pk") as? Int ?? 0
+                let email = listData.object(forKey: "email") as? String ?? ""
+                let firstName = listData.object(forKey: "first_name") as? String ?? ""
+                let lastName = listData.object(forKey: "last_name") as? String ?? ""
+                let profilePic = listData.object(forKey: "profile_img") as? String ?? ""
+                let fullName = listData.object(forKey: "full_name") as? String ?? ""
+                if let unwrappedCreatorDepartment = listData.object(forKey: "departments") as? [NSDictionary] {
+                    if unwrappedCreatorDepartment.count > 0 {
+                        nominatedUserDepartment = unwrappedCreatorDepartment[0].object(forKey: "name") as? String ?? ""
+                    }else{
+                        nominatedUserDepartment = ""
+                    }
+                }else {
+                    nominatedUserDepartment = ""
+                }
+                let data = NominationNominatedMembers(nominatedPk: pk, email: email, firstName: firstName, lastName: lastName, department: nominatedUserDepartment, profilePic: profilePic, fullName: fullName)
+                nominatedUsers.append(data)
+            }
+            
+        }
+        return nominatedUsers
+    }
+    
     func getHomeUserImg() -> String? {
         var userImg : String?
         if let userDic = rawFeedDictionary["user"] as? NSDictionary {
@@ -697,13 +734,84 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
         }
     }
     
+    func getQuestionType() -> [NominationDetailQuestionType]? {
+        var questionType = [NominationDetailQuestionType]()
+        if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let questionsArray = nominationDict["question"] as? [[String: Any]] {
+            for question in questionsArray {
+                if let unwrappedQuestionType = question["question_type"] as? Int {
+                    questionType.append(NominationDetailQuestionType(rawValue: unwrappedQuestionType) ?? .Unknown)
+                }
+            }
+            return questionType
+        }
+        return nil
+    }
+    
+    func getCategoryName() -> CategoryData? {
+        if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let nominationData = nominationDict["category_data"] as? NSDictionary {
+            let id = nominationData.object(forKey: "id") as? Int ?? 0
+            let name = nominationData.object(forKey: "name") as? String ?? "NA"
+            let image = nominationData.object(forKey: "img") as? String ?? ""
+            let groupEnabled = nominationData.object(forKey: "is_group_nomination") as? Bool ?? false
+            return CategoryData(id: id, name: name, image: image, isGroupEnabled: groupEnabled)
+        }
+        return nil
+    }
+    
+    func getQuestionLabel() -> [String] {
+        var questionsDict = [String]()
+        if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let questionsArray = nominationDict["question"] as? [[String: Any]] {
+            for question in questionsArray {
+                if let unwrappedQuestionType = question["question_lable"] as? String {
+                    questionsDict.append(unwrappedQuestionType)
+                }
+            }
+            return questionsDict
+        }
+        return []
+    }
+    
+    func getUserEnteredAnsers() -> [NominationEnteredData]? {
+        var answersDict = [NominationEnteredData]()
+        if let nominationDict = self.rawFeedDictionary["nomination"] as? [String: Any],
+           let questionsArray = nominationDict["question"] as? [[String: Any]] {
+            for question in questionsArray {
+                if let unwrappedAnswerArray = question["answer"] as? [[String: Any]] {
+                    for answer in unwrappedAnswerArray {
+                        if let answerId = answer["id"] as? Int,
+                           let answerText = answer["answer"] as? String,
+                           let questionPk = answer["question"] as? Int,
+                           let supportingDoc = answer["supporting_doc"] as? String {
+                            answersDict.append(NominationEnteredData(answersId: answerId, questionsId: questionPk, ansers: answerText.count == 0 ? "Not answered".localized : answerText, supportingDoc: supportingDoc))
+                        }
+                    }
+                }
+            }
+            return answersDict
+        }
+        return nil
+    }
+    
     func getFeedDescription() -> String? {
         if let unwrappedDescription  = rawFeedDictionary["description"] as? String,
            !unwrappedDescription.isEmpty{
             return unwrappedDescription
-        }else{
-            return nil
+        }else if let unwappedQuestion = getQuestionType(),
+                unwappedQuestion.count > 0{
+            return "\(unwappedQuestion.count) \("Questions & Answer".localized)"
         }
+            return nil
+    }
+    
+    func getNominationDescription() -> String? {
+        if let unwrappedDescription  = rawFeedDictionary["description"] as? String,
+           !unwrappedDescription.isEmpty{
+            return unwrappedDescription
+        }
+        return nil
     }
     
     func getMediaList() -> [MediaItemProtocol]? {
@@ -741,4 +849,34 @@ public class RawFeed : FeedsItemProtocol, RawObjectProtocol {
     func hasOnlyMedia() -> Bool {
         return getFeedTitle() == nil && getFeedDescription() == nil
     }
+}
+enum NominationDetailQuestionType : Int, CaseIterable {
+    case OneLiner = 0
+    case MultiLiner = 1
+    case DepartmentChoice = 2
+    case Document = 3
+    case LineManagerChoice = 4
+    case Choice = 5
+    case Unknown
+}
+struct NominationEnteredData {
+    var answersId : Int
+    var questionsId : Int
+    var ansers : String
+    var supportingDoc : String
+}
+struct NominationNominatedMembers {
+    var nominatedPk : Int
+    var email : String
+    var firstName : String
+    var lastName : String
+    var department : String
+    var profilePic : String
+    var fullName : String
+}
+struct CategoryData {
+    var id : Int
+    var name : String
+    var image : String
+    var isGroupEnabled : Bool
 }

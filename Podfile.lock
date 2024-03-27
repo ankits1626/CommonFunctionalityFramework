@@ -10,7 +10,6 @@ PODS:
   - SDWebImage (5.1.0):
     - SDWebImage/Core (= 5.1.0)
   - SDWebImage/Core (5.1.0)
-  - SimpleCheckbox (2.1.0)
 
 DEPENDENCIES:
   - ActiveLabel (from `https://github.com/ankits1626/ActiveLabel.swift`, branch `CFF_Customizations`)
@@ -21,7 +20,6 @@ DEPENDENCIES:
   - ReachabilitySwift (= 4.3.1)
   - RewardzCommonComponents (from `https://github.com/ankits1626/RewardzCommonComponents.git`, branch `dev`)
   - SDWebImage (= 5.1.0)
-  - SimpleCheckbox
 
 SPEC REPOS:
   trunk:
@@ -31,7 +29,6 @@ SPEC REPOS:
     - Loaf
     - ReachabilitySwift
     - SDWebImage
-    - SimpleCheckbox
 
 EXTERNAL SOURCES:
   ActiveLabel:
@@ -58,8 +55,7 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   RewardzCommonComponents: c279b08e35926d5c8685a00185fb7f85d986407b
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
-  SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
 
-PODFILE CHECKSUM: 4a2099aab919de649aef8bfa7454b41e1109cb6f
+PODFILE CHECKSUM: 1c61d0a1a9356663e5c73ede28dd300b53de909b
 
 COCOAPODS: 1.11.3
